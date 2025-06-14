@@ -1,5 +1,5 @@
 # Desktop Niko
-Niko is a playable character from the game One Shot, but now he will be right on your screen!
+Niko is a playable character from the game OneShot, but now he will be right on your screen!
 The Steam version of the 2024 "The World Machine Edition" was used as the basis, as can be seen in the application settings.
 
 ## Features
@@ -19,5 +19,5 @@ The Steam version of the 2024 "The World Machine Edition" was used as the basis,
 To create and export the project, I used Godot Engine 4.4.1 to simplify creation and expansion, I did not use any additional plugins, so in theory it should be easy to compile.
 It's probably wrong to use Godot for such purposes, but I tried to maximize performance.
 
-## I was in no way involved in the creation of the original game and am not a member of the One Shot development team, this project is purely a fan project.
+## I was in no way involved in the creation of the original game and am not a member of the OneShot development team, this project is purely a fan project.
 Almost all the sprites and sounds were taken from the original game and were not created by me.
