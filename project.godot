@@ -1,0 +1,83 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Desktop Niko"
+config/name_localized={
+"ru": "Нико на твоём экране"
+}
+config/version="1.0.0"
+config/tags=PackedStringArray("niko", "non_com", "one_shot", "software")
+run/main_scene="uid://cj66sb2a5oolj"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="DesktopNiko"
+config/auto_accept_quit=false
+config/features=PackedStringArray("4.4", "GL Compatibility")
+run/low_processor_mode=true
+run/low_processor_mode_sleep_usec=13800
+boot_splash/show_image=false
+config/icon="uid://qsweuhlblj1"
+
+[autoload]
+
+GlobalControlls="*res://scripts/global_controlls.gd"
+
+[display]
+
+window/size/viewport_width=124
+window/size/viewport_height=134
+window/size/resizable=false
+window/size/borderless=true
+window/size/always_on_top=true
+window/size/transparent=true
+window/energy_saving/keep_screen_on=false
+window/subwindows/embed_subwindows=false
+window/per_pixel_transparency/allowed=true
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
+[input]
+
+flip={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":70,"physical_keycode":0,"key_label":0,"unicode":102,"location":0,"echo":false,"script":null)
+]
+}
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://translations.en.translation", "res://translations.ru.translation")
+
+[physics]
+
+common/physics_ticks_per_second=24
+2d/physics_engine="Dummy"
+3d/physics_engine="Dummy"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+gl_compatibility/fallback_to_angle=false
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+viewport/transparent_background=true
+lights_and_shadows/positional_shadow/atlas_quadrant_0_subdiv=0
+lights_and_shadows/positional_shadow/atlas_quadrant_1_subdiv=0
+lights_and_shadows/positional_shadow/atlas_quadrant_2_subdiv=0
+lights_and_shadows/positional_shadow/atlas_quadrant_3_subdiv=0
+renderer/positional_shadow/atlas_quadrant_3_subdiv=0
+renderer/positional_shadow/atlas_quadrant_2_subdiv=0

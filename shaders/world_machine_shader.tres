@@ -1,0 +1,30 @@
+[gd_resource type="Shader" format=3 uid="uid://cho81n7f68yqs"]
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform float time_scale;
+
+vec4 black_and_white(vec4 color, float power) {
+	float d = (color.r + color.g + color.b) / 3.0;
+	return mix(color, vec4(d,d,d,color.a), power);
+}
+vec4 full_bw(vec4 color) {
+	return vec4((color.r + color.g + color.b) / 3.0);
+}
+
+void fragment() {
+	vec4 base_color = texture(TEXTURE, UV);
+	vec4 overlay_color = vec4(1.0, .6, 1.0, 1.0);
+
+	float p = UV.y / (TEXTURE_PIXEL_SIZE.y*2.0);
+	float p2 = 1.0 - p;
+	float rp = mix(p, p2, ceil(TIME * time_scale - round(TIME * time_scale)));
+	float noise_overlay = round(round(rp) - rp + 0.5);
+
+	vec4 light_overlay = floor(full_bw(base_color * vec4(1,1,0,1)) + vec4(.4,.4,.4,0)) + noise_overlay*0.1;
+
+	COLOR.xyz = pow(black_and_white(base_color, .75)/1.5 + overlay_color/5.0, vec4(1.5)).xyz + light_overlay.xyz/5.0;
+}
+"
