@@ -82,9 +82,6 @@ func _on_niko_input(event: InputEvent) -> void: # main Niko operations
 			timed_clicks += 1
 			click_count_label.text = str(GlobalControlls.clicks)
 			
-			DiscordRPC.start_timestamp = int(Time.get_unix_time_from_system())
-			DiscordRPC.refresh()
-			
 			anim_niko() # :O
 			
 			is_dragging = true

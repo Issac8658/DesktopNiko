@@ -29,8 +29,6 @@ config/icon="uid://qsweuhlblj1"
 [autoload]
 
 GlobalControlls="*res://scripts/global_controlls.gd"
-DiscordRPC_Controller="*res://scripts/discord_rpc.gd"
-DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
 
 [display]
 
@@ -43,15 +41,6 @@ window/size/transparent=true
 window/energy_saving/keep_screen_on=false
 window/subwindows/embed_subwindows=false
 window/per_pixel_transparency/allowed=true
-
-[editor]
-
-version_control/plugin_name="GitPlugin"
-version_control/autoload_on_startup=true
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg")
 
 [input]
 
