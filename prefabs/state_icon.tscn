@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1ypbdeyjoksp"]
+
+[ext_resource type="Texture2D" uid="uid://bw465n3hiy0mk" path="res://ui_sprites/ui_shit.png" id="1_0kwcu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86ymt"]
+atlas = ExtResource("1_0kwcu")
+region = Rect2(33, 0, 16, 16)
+
+[sub_resource type="GDScript" id="GDScript_si2mt"]
+resource_name = "checkbox_state_icon"
+script/source = "extends Button
+
+@export var on_icon : Texture2D
+@export var off_icon : Texture2D
+var parent
+
+func _ready() -> void:
+	parent = get_parent()
+	parent.toggled.connect(update_icon)
+	update_icon(parent.button_pressed)
+	
+	parent.mouse_entered.connect(func ():
+		theme_type_variation = \"AlwaysActivatedButton\"
+	)
+	parent.mouse_exited.connect(func ():
+		theme_type_variation = \"IconButton\"
+	)
+
+func update_icon(state: bool):
+	if state:
+		icon = on_icon
+	else:
+		icon = off_icon
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_si2mt"]
+atlas = ExtResource("1_0kwcu")
+region = Rect2(33, 17, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ni6q4"]
+atlas = ExtResource("1_0kwcu")
+region = Rect2(33, 0, 16, 16)
+
+[node name="StateIcon" type="Button"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -12.5
+offset_right = 24.0
+offset_bottom = 11.5
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = SubResource("AtlasTexture_86ymt")
+script = SubResource("GDScript_si2mt")
+on_icon = SubResource("AtlasTexture_si2mt")
+off_icon = SubResource("AtlasTexture_ni6q4")

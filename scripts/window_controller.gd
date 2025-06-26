@@ -18,6 +18,5 @@ func _on_topbar_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and is_dragging:
 		MoveWindow(event.position - mouse_offset);
 
-
 func _on_close_button_pressed() -> void:
 	visible = false

@@ -1,0 +1,9 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://xejvk4sbddea"]
+
+[ext_resource type="FontFile" uid="uid://edmkyk3dcbjn" path="res://fonts/ST01R.TTF" id="1_fqnys"]
+
+[resource]
+base_font = ExtResource("1_fqnys")
+spacing_glyph = -2
+spacing_space = -4
+spacing_top = -7

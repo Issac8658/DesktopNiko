@@ -1,6 +1,11 @@
 extends PopupMenu
 
-func _on_id_pressed(id: int) -> void:
+func _ready() -> void:
+	GlobalControlls.gaming_mode_changed.connect(func (state):
+			set_item_checked(2, state)
+	)
+
+func _on_id_pressed(id: int) -> void: # on any tray popup button pressed
 	match id:
 		0: # close
 			GlobalControlls.try_quit()

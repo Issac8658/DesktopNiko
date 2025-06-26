@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://pgpd62tnvt1"]
+
+[ext_resource type="Shader" uid="uid://bb86jns4ke5m2" path="res://shaders/radial_light.gdshader" id="1_inx56"]
+
+[resource]
+shader = ExtResource("1_inx56")
