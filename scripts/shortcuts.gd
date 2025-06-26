@@ -31,3 +31,8 @@ func _ready():
 func _on_close_button_input(event) -> void: # Close button work
 	if event is InputEventMouseButton and event.double_click:
 		GlobalControlls.quit_request.emit()
+
+
+func _on_github_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.double_click:
+		OS.shell_open("https://github.com/Issac8658/DesktopNiko")
