@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=4 uid="uid://cj66sb2a5oolj"]
+[gd_scene load_steps=120 format=4 uid="uid://cj66sb2a5oolj"]
 
 [ext_resource type="Script" uid="uid://b8e5fhar3jgaj" path="res://scripts/niko_controls.gd" id="1_2c62f"]
 [ext_resource type="AudioStream" uid="uid://5tnvrblu5h4j" path="res://niko/niko_meows/meow1.wav" id="2_ghshe"]
@@ -21,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://qsweuhlblj1" path="res://icon.png" id="10_wr18j"]
 [ext_resource type="Texture2D" uid="uid://dgmfa7kusbs5v" path="res://niko/niko_gasmask.png" id="11_m35m6"]
 [ext_resource type="Script" uid="uid://cqdig7ltehghd" path="res://scripts/status_icon_controller.gd" id="11_qwutr"]
-[ext_resource type="Texture2D" uid="uid://6apmsss1rlbv" path="res://niko/niko_happy.png" id="12_u0ygc"]
 [ext_resource type="AudioStream" uid="uid://dhwgvb6t1ulx" path="res://sounds/twm_notif2.wav" id="13_1n88h"]
 [ext_resource type="Texture2D" uid="uid://bdvy620c6x60m" path="res://niko/niko_pancakes.png" id="13_7th4q"]
 [ext_resource type="Texture2D" uid="uid://bextf2un1mfx4" path="res://ui_sprites/shortcuts.png" id="14_o7u2a"]
@@ -41,7 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://crlrkmttey356" path="res://ui_sprites/unreal.png" id="26_38t8r"]
 [ext_resource type="AudioStream" uid="uid://bnv7o6bmlo6ic" path="res://sounds/twm_notif3.wav" id="26_xy6fp"]
 [ext_resource type="AudioStream" uid="uid://dw73t7aavxakx" path="res://sounds/HELLO_big.wav" id="27_jef5d"]
-[ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://ui_sprites/pancake_clicker.png" id="27_uwk5n"]
+[ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://pancake_clicker/pancake_clicker.png" id="27_uwk5n"]
 [ext_resource type="AudioStream" uid="uid://54f4ilgm2r3g" path="res://sounds/twm_notif4.wav" id="27_uws2o"]
 [ext_resource type="Texture2D" uid="uid://cr3ixq7u1lyrk" path="res://ui_sprites/github.png" id="29_o63de"]
 [ext_resource type="Shortcut" uid="uid://belx0egi5ts8h" path="res://shortcuts/escape_shortcut.tres" id="29_uws2o"]
@@ -1993,7 +1992,6 @@ offset_bottom = 12.0
 
 [node name="ClickSound" type="CheckBox" parent="SettingsWindow/Control/VBoxContainer/Content/MarginContainer/SettingsContainer"]
 layout_mode = 2
-tooltip_text = "PEACEFUL_MODE_HINT"
 tooltip_auto_translate_mode = 1
 mouse_default_cursor_shape = 2
 button_pressed = true
@@ -2067,7 +2065,7 @@ mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
 selected = 0
-item_count = 10
+item_count = 9
 popup/item_0/text = "SMILE"
 popup/item_0/icon = ExtResource("2_gyfs4")
 popup/item_0/id = 0
@@ -2083,21 +2081,18 @@ popup/item_3/id = 3
 popup/item_4/text = "GASMASK"
 popup/item_4/icon = ExtResource("11_m35m6")
 popup/item_4/id = 4
-popup/item_5/text = "HAPPY"
-popup/item_5/icon = ExtResource("12_u0ygc")
-popup/item_5/id = 5
-popup/item_6/text = "PANCAKES"
-popup/item_6/icon = ExtResource("13_7th4q")
-popup/item_6/id = 6
-popup/item_7/text = "SIMPLE"
-popup/item_7/icon = ExtResource("16_7th4q")
-popup/item_7/id = 7
-popup/item_8/text = "NIKO"
-popup/item_8/icon = ExtResource("21_fv2he")
-popup/item_8/id = 8
-popup/item_9/text = "SMUG"
-popup/item_9/icon = ExtResource("22_5smuj")
-popup/item_9/id = 9
+popup/item_5/text = "PANCAKES"
+popup/item_5/icon = ExtResource("13_7th4q")
+popup/item_5/id = 6
+popup/item_6/text = "SIMPLE"
+popup/item_6/icon = ExtResource("16_7th4q")
+popup/item_6/id = 7
+popup/item_7/text = "NIKO"
+popup/item_7/icon = ExtResource("21_fv2he")
+popup/item_7/id = 8
+popup/item_8/text = "SMUG"
+popup/item_8/icon = ExtResource("22_5smuj")
+popup/item_8/id = 9
 
 [node name="VSeparator" type="VSeparator" parent="SettingsWindow/Control/VBoxContainer/Content/MarginContainer/SettingsContainer/FacepicksSelect/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -2132,7 +2127,7 @@ mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
 selected = 1
-item_count = 10
+item_count = 9
 popup/item_0/text = "SMILE"
 popup/item_0/icon = ExtResource("2_gyfs4")
 popup/item_0/id = 0
@@ -2148,21 +2143,18 @@ popup/item_3/id = 3
 popup/item_4/text = "GASMASK"
 popup/item_4/icon = ExtResource("11_m35m6")
 popup/item_4/id = 4
-popup/item_5/text = "HAPPY"
-popup/item_5/icon = ExtResource("12_u0ygc")
-popup/item_5/id = 5
-popup/item_6/text = "PANCAKES"
-popup/item_6/icon = ExtResource("13_7th4q")
-popup/item_6/id = 6
-popup/item_7/text = "SIMPLE"
-popup/item_7/icon = ExtResource("16_7th4q")
-popup/item_7/id = 7
-popup/item_8/text = "NIKO"
-popup/item_8/icon = ExtResource("21_fv2he")
-popup/item_8/id = 8
-popup/item_9/text = "SMUG"
-popup/item_9/icon = ExtResource("22_5smuj")
-popup/item_9/id = 9
+popup/item_5/text = "PANCAKES"
+popup/item_5/icon = ExtResource("13_7th4q")
+popup/item_5/id = 6
+popup/item_6/text = "SIMPLE"
+popup/item_6/icon = ExtResource("16_7th4q")
+popup/item_6/id = 7
+popup/item_7/text = "NIKO"
+popup/item_7/icon = ExtResource("21_fv2he")
+popup/item_7/id = 8
+popup/item_8/text = "SMUG"
+popup/item_8/icon = ExtResource("22_5smuj")
+popup/item_8/id = 9
 
 [node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/VBoxContainer/Content/MarginContainer/SettingsContainer/FacepicksSelect/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -2216,7 +2208,7 @@ mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
 selected = 2
-item_count = 10
+item_count = 9
 popup/item_0/text = "SMILE"
 popup/item_0/icon = ExtResource("2_gyfs4")
 popup/item_0/id = 0
@@ -2232,21 +2224,18 @@ popup/item_3/id = 3
 popup/item_4/text = "GASMASK"
 popup/item_4/icon = ExtResource("11_m35m6")
 popup/item_4/id = 4
-popup/item_5/text = "HAPPY"
-popup/item_5/icon = ExtResource("12_u0ygc")
-popup/item_5/id = 5
-popup/item_6/text = "PANCAKES"
-popup/item_6/icon = ExtResource("13_7th4q")
-popup/item_6/id = 6
-popup/item_7/text = "SIMPLE"
-popup/item_7/icon = ExtResource("16_7th4q")
-popup/item_7/id = 7
-popup/item_8/text = "NIKO"
-popup/item_8/icon = ExtResource("21_fv2he")
-popup/item_8/id = 8
-popup/item_9/text = "SMUG"
-popup/item_9/icon = ExtResource("22_5smuj")
-popup/item_9/id = 9
+popup/item_5/text = "PANCAKES"
+popup/item_5/icon = ExtResource("13_7th4q")
+popup/item_5/id = 6
+popup/item_6/text = "SIMPLE"
+popup/item_6/icon = ExtResource("16_7th4q")
+popup/item_6/id = 7
+popup/item_7/text = "NIKO"
+popup/item_7/icon = ExtResource("21_fv2he")
+popup/item_7/id = 8
+popup/item_8/text = "SMUG"
+popup/item_8/icon = ExtResource("22_5smuj")
+popup/item_8/id = 9
 
 [node name="VSeparator4" type="VSeparator" parent="SettingsWindow/Control/VBoxContainer/Content/MarginContainer/SettingsContainer/FacepicksSelect/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -2281,7 +2270,7 @@ mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
 selected = 3
-item_count = 10
+item_count = 9
 popup/item_0/text = "SMILE"
 popup/item_0/icon = ExtResource("2_gyfs4")
 popup/item_0/id = 0
@@ -2297,21 +2286,18 @@ popup/item_3/id = 3
 popup/item_4/text = "GASMASK"
 popup/item_4/icon = ExtResource("11_m35m6")
 popup/item_4/id = 4
-popup/item_5/text = "HAPPY"
-popup/item_5/icon = ExtResource("12_u0ygc")
-popup/item_5/id = 5
-popup/item_6/text = "PANCAKES"
-popup/item_6/icon = ExtResource("13_7th4q")
-popup/item_6/id = 6
-popup/item_7/text = "SIMPLE"
-popup/item_7/icon = ExtResource("16_7th4q")
-popup/item_7/id = 7
-popup/item_8/text = "NIKO"
-popup/item_8/icon = ExtResource("21_fv2he")
-popup/item_8/id = 8
-popup/item_9/text = "SMUG"
-popup/item_9/icon = ExtResource("22_5smuj")
-popup/item_9/id = 9
+popup/item_5/text = "PANCAKES"
+popup/item_5/icon = ExtResource("13_7th4q")
+popup/item_5/id = 6
+popup/item_6/text = "SIMPLE"
+popup/item_6/icon = ExtResource("16_7th4q")
+popup/item_6/id = 7
+popup/item_7/text = "NIKO"
+popup/item_7/icon = ExtResource("21_fv2he")
+popup/item_7/id = 8
+popup/item_8/text = "SMUG"
+popup/item_8/icon = ExtResource("22_5smuj")
+popup/item_8/id = 9
 
 [node name="SoundSelectionContainer" type="HBoxContainer" parent="SettingsWindow/Control/VBoxContainer/Content/MarginContainer/SettingsContainer"]
 layout_mode = 2
@@ -2421,10 +2407,12 @@ texture = SubResource("AtlasTexture_j8kkg")
 [node name="LoadingIcon" type="Window" parent="." node_paths=PackedStringArray("animator")]
 transparent_bg = true
 size = Vector2i(96, 96)
-visible = false
+mouse_passthrough_polygon = PackedVector2Array(0, 0, 96, 0, 0, 0, 0, 0)
 unresizable = true
 borderless = true
+always_on_top = true
 transparent = true
+unfocusable = true
 script = ExtResource("81_ubkm4")
 animator = NodePath("AnimationPlayer")
 

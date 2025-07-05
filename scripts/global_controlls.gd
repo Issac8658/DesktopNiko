@@ -6,6 +6,8 @@ signal theme_update()
 signal quit_request()
 signal saving()
 signal saved()
+@warning_ignore("unused_signal")
+signal second_ticked()
 
 @onready var niko_controller = $/root/TheWorldMachine
 var global_color_palette : ColorPalette = load("res://themes/twm_theme/purple_color_palette.tres")

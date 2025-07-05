@@ -8,7 +8,10 @@ func _ready() -> void:
 	position = DisplayServer.screen_get_position(primary_screen) + DisplayServer.screen_get_size(primary_screen) - Vector2i(112, 156)
 	
 	GlobalControlls.saving.connect(func ():
-		visible = true
+		mouse_passthrough_polygon[1].x = 96.0
+		mouse_passthrough_polygon[2].x = 96.0
+		mouse_passthrough_polygon[2].y = 96.0
+		mouse_passthrough_polygon[3].y = 96.0
 		animator.play("RESET")
 	)
 	GlobalControlls.saved.connect(func ():
@@ -16,5 +19,8 @@ func _ready() -> void:
 	)
 	animator.animation_finished.connect(func (anim):
 		if anim == "fade_out":
-			visible = false
+			mouse_passthrough_polygon[1].x = 0
+			mouse_passthrough_polygon[2].x = 0
+			mouse_passthrough_polygon[2].y = 0
+			mouse_passthrough_polygon[3].y = 0
 	)

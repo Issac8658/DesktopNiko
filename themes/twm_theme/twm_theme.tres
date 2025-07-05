@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=40 format=3 uid="uid://cxsdp1anrqw7m"]
+[gd_resource type="Theme" load_steps=45 format=3 uid="uid://cxsdp1anrqw7m"]
 
 [ext_resource type="StyleBox" uid="uid://cmgrg6b15xr45" path="res://themes/twm_theme/button_hover.stylebox" id="1_h7d4g"]
 [ext_resource type="StyleBox" uid="uid://dph0mqvrcdp86" path="res://themes/twm_theme/button_normal.stylebox" id="2_u5xpi"]
@@ -12,8 +12,10 @@
 [ext_resource type="StyleBox" uid="uid://c4n8bdxdvabv6" path="res://themes/twm_theme/thin_panel_big_padding.stylebox" id="8_r20nx"]
 [ext_resource type="StyleBox" uid="uid://seh5m867naoa" path="res://themes/twm_theme/thin_panel.stylebox" id="9_1ext6"]
 [ext_resource type="FontFile" uid="uid://ckcoy708n8osl" path="res://fonts/TerminusTTF-Bold.ttf" id="10_0dyn4"]
+[ext_resource type="StyleBox" uid="uid://dund2p5rsk3d8" path="res://themes/twm_theme/tab_selected.stylebox" id="11_jq0fa"]
 [ext_resource type="Script" uid="uid://cm26f3vhmimf4" path="res://scripts/theme_colors_applier.gd" id="11_u5xpi"]
 [ext_resource type="StyleBox" uid="uid://bd2g4ws0gk1b6" path="res://themes/twm_theme/vertical_line.stylebox" id="11_xdasf"]
+[ext_resource type="StyleBox" uid="uid://bw42vqrrivgmt" path="res://themes/twm_theme/tab.stylebox" id="12_d6ho4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcy5n"]
 content_margin_left = 4.0
@@ -88,6 +90,12 @@ thickness = 2
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_owxno"]
 color = Color(0.588235, 0.392157, 1, 1)
 thickness = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d6ho4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jq0fa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r20nx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dm15m"]
 
@@ -168,6 +176,7 @@ OptionButton/constants/arrow_margin = 8
 OptionButton/constants/modulate_arrow = 1
 OptionButton/icons/arrow = SubResource("AtlasTexture_1bdgr")
 Panel/styles/panel = ExtResource("7_d6ho4")
+PanelContainer/styles/panel = ExtResource("9_1ext6")
 PopupMenu/colors/font_color = Color(0.588235, 0.392157, 1, 1)
 PopupMenu/colors/font_hover_color = Color(0.392157, 0.258824, 0.647059, 1)
 PopupMenu/colors/font_separator_color = Color(0.588235, 0.392157, 1, 1)
@@ -178,6 +187,16 @@ PopupMenu/styles/labeled_separator_left = SubResource("StyleBoxLine_31yms")
 PopupMenu/styles/labeled_separator_right = SubResource("StyleBoxLine_h0ux4")
 PopupMenu/styles/panel = ExtResource("8_r20nx")
 PopupMenu/styles/separator = SubResource("StyleBoxLine_owxno")
+TabBar/styles/tab_focus = SubResource("StyleBoxEmpty_d6ho4")
+TabBar/styles/tab_selected = ExtResource("11_jq0fa")
+TabContainer/colors/font_hovered_color = Color(0.392157, 0.258824, 0.647059, 1)
+TabContainer/colors/font_selected_color = Color(0.588235, 0.392157, 1, 1)
+TabContainer/colors/font_unselected_color = Color(0.294118, 0.196078, 0.498039, 1)
+TabContainer/styles/panel = SubResource("StyleBoxEmpty_jq0fa")
+TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_r20nx")
+TabContainer/styles/tab_hovered = ExtResource("12_d6ho4")
+TabContainer/styles/tab_selected = ExtResource("11_jq0fa")
+TabContainer/styles/tab_unselected = ExtResource("12_d6ho4")
 ThinPanel/base_type = &"Panel"
 ThinPanel/styles/panel = ExtResource("9_1ext6")
 TooltipLabel/styles/normal = ExtResource("2_u5xpi")

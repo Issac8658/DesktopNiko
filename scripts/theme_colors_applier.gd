@@ -29,5 +29,9 @@ func update_colors():
 	set_color("font_color", "PopupMenu", GlobalControlls.global_color_palette.colors[0])
 	set_color("font_hover_color", "PopupMenu", GlobalControlls.global_color_palette.colors[1])
 	set_color("font_separator_color", "PopupMenu", GlobalControlls.global_color_palette.colors[0])
-	#Other
+	# TabContainer
+	set_color("font_hovered_color", "TabContainer", GlobalControlls.global_color_palette.colors[1])
+	set_color("font_selected_color", "TabContainer", GlobalControlls.global_color_palette.colors[0])
+	set_color("font_unselected_color", "TabContainer", GlobalControlls.global_color_palette.colors[4])
+	# Other
 	set_color("icon_normal_color", "AlwaysActivatedButton", GlobalControlls.global_color_palette.colors[1])

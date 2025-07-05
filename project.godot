@@ -29,7 +29,7 @@ config/icon="uid://qsweuhlblj1"
 [autoload]
 
 GlobalControlls="*res://scripts/global_controlls.gd"
-PancakeClickerGlobalController="*res://scripts/pancake_clicker_global_controller.gd"
+PancakeClickerGlobalController="*res://pancake_clicker/pancake_clicker_global_controller.gd"
 
 [display]
 
@@ -59,7 +59,7 @@ mouse_down={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://translations.en.translation", "res://translations.ru.translation")
+locale/translations=PackedStringArray("res://translations.en.translation", "res://translations.ru.translation", "res://pancake_clicker/pancake_clicker_lang.en.translation", "res://pancake_clicker/pancake_clicker_lang.ru.translation")
 
 [physics]
 

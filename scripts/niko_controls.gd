@@ -4,7 +4,7 @@ const main_window_id = DisplayServer.MAIN_WINDOW_ID
 
 const anim_duration = .2
 const scare_threshold = 6
-const afk_time : int = 180
+const afk_time : int = 10
 
 @onready var main_window = get_window()
 
@@ -152,6 +152,8 @@ func _on_timer_tick() -> void: # CPS Counter
 		current_afk_time = 0
 		animator.play("niko_look_around")
 		GlobalControlls.save()
+	
+	GlobalControlls.second_ticked.emit()
 
 
 func _on_close_button_mouse_entered() -> void: # Niko sad facepick on exit button hover

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxfqu8xs5tg7u"
-path="res://.godot/imported/pancake.png-c0f0017789fd51ab3ae61f4c89c85e5b.ctex"
+uid="uid://c8a2o0ruiwceh"
+path="res://.godot/imported/place_holder.png-ae5319f7eb41624f294c8112a325d75c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui_sprites/pancake.png"
-dest_files=["res://.godot/imported/pancake.png-c0f0017789fd51ab3ae61f4c89c85e5b.ctex"]
+source_file="res://ui_sprites/place_holder.png"
+dest_files=["res://.godot/imported/place_holder.png-ae5319f7eb41624f294c8112a325d75c.ctex"]
 
 [params]
 

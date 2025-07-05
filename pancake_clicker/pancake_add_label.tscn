@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cg23wbewrjbxw"]
 
-[ext_resource type="Texture2D" uid="uid://k3j8qcm4l4wu" path="res://ui_sprites/little_pancake.png" id="1_251ri"]
+[ext_resource type="Texture2D" uid="uid://k3j8qcm4l4wu" path="res://pancake_clicker/little_pancake.png" id="1_251ri"]
 
 [sub_resource type="Animation" id="Animation_rube6"]
 length = 0.001

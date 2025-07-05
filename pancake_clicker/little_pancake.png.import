@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://k3j8qcm4l4wu"
-path="res://.godot/imported/little_pancake.png-524c2e85b6e6799ab6fa9e2a63f3fa2f.ctex"
+path="res://.godot/imported/little_pancake.png-c93942e3dd3b0f76ded0ebb78876fe2d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui_sprites/little_pancake.png"
-dest_files=["res://.godot/imported/little_pancake.png-524c2e85b6e6799ab6fa9e2a63f3fa2f.ctex"]
+source_file="res://pancake_clicker/little_pancake.png"
+dest_files=["res://.godot/imported/little_pancake.png-c93942e3dd3b0f76ded0ebb78876fe2d.ctex"]
 
 [params]
 
