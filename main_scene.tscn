@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=4 uid="uid://cj66sb2a5oolj"]
+[gd_scene load_steps=121 format=4 uid="uid://cj66sb2a5oolj"]
 
 [ext_resource type="Script" uid="uid://b8e5fhar3jgaj" path="res://scripts/niko_controls.gd" id="1_2c62f"]
 [ext_resource type="AudioStream" uid="uid://5tnvrblu5h4j" path="res://niko/niko_meows/meow1.wav" id="2_ghshe"]
@@ -78,6 +78,7 @@
 [ext_resource type="StyleBox" uid="uid://b2iwdd0005o3h" path="res://themes/themed/teal_file_hover.stylebox" id="58_iiypn"]
 [ext_resource type="StyleBox" uid="uid://bfxcdu2fwodgt" path="res://themes/themed/green_file_focus.stylebox" id="60_jl6hu"]
 [ext_resource type="StyleBox" uid="uid://d1ts0vt0gn68j" path="res://themes/themed/green_file_hover.stylebox" id="61_uwk5n"]
+[ext_resource type="PackedScene" uid="uid://dp8vs0u0ahn2l" path="res://pancake_clicker/pancakes_clicker.tscn" id="77_o63de"]
 [ext_resource type="Texture2D" uid="uid://dxo8m8apw6ajl" path="res://ui_sprites/bulb_anim_24.png" id="81_id8vy"]
 [ext_resource type="Script" uid="uid://c45ltmpprf6rs" path="res://scripts/loading_icon.gd" id="81_ubkm4"]
 [ext_resource type="Shader" uid="uid://dd7eru3n37u4q" path="res://shaders/light_blub_anim_shader.gdshader" id="81_xtheg"]
@@ -808,7 +809,6 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Pancake" type="MarginContainer" parent="ShortcutsWindow/Control/VBoxContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
-visible = false
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_filter = 2
@@ -825,7 +825,7 @@ theme_type_variation = &"FlatButton"
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
-metadata/TargetWindow = NodePath("")
+metadata/TargetWindow = NodePath("../../../../../../../../../../PancakesClickerWindow")
 
 [node name="ButtonMargin" type="MarginContainer" parent="ShortcutsWindow/Control/VBoxContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Pancake"]
 layout_mode = 2
@@ -2404,15 +2404,19 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = SubResource("AtlasTexture_j8kkg")
 
+[node name="PancakesClickerWindow" parent="." instance=ExtResource("77_o63de")]
+visible = false
+
 [node name="LoadingIcon" type="Window" parent="." node_paths=PackedStringArray("animator")]
 transparent_bg = true
 size = Vector2i(96, 96)
-mouse_passthrough_polygon = PackedVector2Array(0, 0, 96, 0, 0, 0, 0, 0)
+visible = false
 unresizable = true
 borderless = true
 always_on_top = true
 transparent = true
 unfocusable = true
+mouse_passthrough = true
 script = ExtResource("81_ubkm4")
 animator = NodePath("AnimationPlayer")
 

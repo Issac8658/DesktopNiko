@@ -4,7 +4,7 @@ const main_window_id = DisplayServer.MAIN_WINDOW_ID
 
 const anim_duration = .2
 const scare_threshold = 6
-const afk_time : int = 10
+const afk_time : int = 180
 
 @onready var main_window = get_window()
 
@@ -14,7 +14,7 @@ const afk_time : int = 10
 @export var meow_sounds : Array[AudioStream]
 
 @export_group("objects")
-@export var settings_window : Window
+@export var settings_window : Window # window to open when you click on the menu button
 @export var niko_sound : AudioStreamPlayer
 @export var animator : AnimationPlayer
 @export var niko_rect : TextureRect
@@ -24,16 +24,15 @@ const afk_time : int = 10
 @export var cps_counter : Label
 @export var menu_label : Control
 
-var is_scared = false
+var is_scared : bool = false
 var mouse_offset : Vector2;
 var is_dragging : bool = false;
 var PositionBeforeMove : Vector2i;
-var in_anim = false
+var in_anim : bool = false
 
 var current_afk_time : int = 0
 var timed_clicks : int = 0
 var cps : int = 0
-#var time = 0
 
 
 func _ready() -> void: # applying saved parameters
@@ -45,7 +44,7 @@ func _ready() -> void: # applying saved parameters
 	click_count_label.text = str(GlobalControlls.clicks)
 	update_facepick()
 
-func _process(_delta: float) -> void:
+func _process(_delta: float) -> void: # show again if niko minimized(hidden)
 	if main_window.mode == Window.MODE_MINIMIZED:
 		main_window.mode = Window.MODE_WINDOWED
 
@@ -84,7 +83,7 @@ func _input(event) -> void: # Niko flip
 		niko_rect.flip_h = not niko_rect.flip_h
 
 
-func anim_niko(): # Niko facepick animation
+func anim_niko(): # Niko click facepick animation
 	in_anim = true
 	update_facepick()
 	await get_tree().create_timer(anim_duration).timeout
@@ -152,9 +151,6 @@ func _on_timer_tick() -> void: # CPS Counter
 		current_afk_time = 0
 		animator.play("niko_look_around")
 		GlobalControlls.save()
-	
-	GlobalControlls.second_ticked.emit()
-
 
 func _on_close_button_mouse_entered() -> void: # Niko sad facepick on exit button hover
 	GlobalControlls.is_exit_button_hovered = true

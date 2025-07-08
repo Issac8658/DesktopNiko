@@ -5,8 +5,10 @@ const right_panel_poses = [404, 696, 708, 1000]
 
 @export var window : Window
 @export var pancake_animator : AnimationPlayer
-@export var pancakes_count_label : Label
 @export var pancake_add_template_label : PackedScene
+@export_group("Top Bar")
+@export var pancakes_count_label : Label
+@export var yellis_count_label : Label
 @export_group("Panels")
 @export_subgroup("Left Panel", "left")
 @export var left_panel : Control
@@ -27,9 +29,10 @@ var labels_list = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pancake_animator.animation_finished.connect(func (_anim):
-		PancakeClickerGlobalController.pancakes += 1
-		pancakes_count_label.text = str(PancakeClickerGlobalController.pancakes)
-		show_pancake_add_label(1)
+		var capcakes = roundi((1 + PancakeClickerGlobalController.pancakes_add) * PancakeClickerGlobalController.pancakes_multiplier)
+		PancakeClickerGlobalController.pancakes += capcakes
+		update_labels()
+		show_pancake_add_label(capcakes)
 	)
 	# Panels
 	left_panel_grabber.gui_input.connect(func (event):
@@ -59,6 +62,15 @@ func _ready() -> void:
 	)
 	update_left_panel()
 	update_right_panel()
+	
+	PancakeClickerGlobalController.labels_update.connect(update_labels)
+	update_labels()
+
+
+func update_labels():
+	pancakes_count_label.text = str(PancakeClickerGlobalController.pancakes)
+	yellis_count_label.text = str(PancakeClickerGlobalController.format_big_number(round(PancakeClickerGlobalController.yelli * 10) / 10))
+
 
 func _process(_delta: float) -> void:
 	for label in labels_list:

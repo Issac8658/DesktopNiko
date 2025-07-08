@@ -1,22 +1,37 @@
-[gd_scene load_steps=24 format=3 uid="uid://dp8vs0u0ahn2l"]
+[gd_scene load_steps=39 format=3 uid="uid://dp8vs0u0ahn2l"]
 
 [ext_resource type="Theme" uid="uid://cxsdp1anrqw7m" path="res://themes/twm_theme/twm_theme.tres" id="1_3vmky"]
 [ext_resource type="Script" uid="uid://m6hjiig1mkmj" path="res://scripts/window_controller.gd" id="2_3pkbe"]
 [ext_resource type="StyleBox" uid="uid://blhi8kc1si6eq" path="res://themes/twm_theme/window_right_panel_grabber.stylebox" id="3_3hslv"]
 [ext_resource type="StyleBox" uid="uid://crl4yywird4qv" path="res://themes/twm_theme/window_left_panel_grabber.stylebox" id="4_yd10f"]
 [ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://pancake_clicker/pancake_clicker.png" id="5_1w58l"]
-[ext_resource type="Texture2D" uid="uid://c8a2o0ruiwceh" path="res://ui_sprites/place_holder.png" id="5_3pkbe"]
+[ext_resource type="Script" uid="uid://jp2jihaawwmf" path="res://pancake_clicker/pancakes_shop.gd" id="5_dal33"]
 [ext_resource type="Texture2D" uid="uid://k3j8qcm4l4wu" path="res://pancake_clicker/little_pancake.png" id="6_54lkb"]
 [ext_resource type="Script" uid="uid://omp0kg08c6r5" path="res://pancake_clicker/seller_graphic_drawer.gd" id="6_bwxy2"]
+[ext_resource type="PackedScene" uid="uid://cv5lfw2irwt6u" path="res://pancake_clicker/ShopItems/frying_pan_shop_item.res" id="6_dal33"]
+[ext_resource type="Script" uid="uid://dejs724gpqk3l" path="res://pancake_clicker/pancakes_sell.gd" id="6_w1tn6"]
+[ext_resource type="FastNoiseLite" uid="uid://bu3pu405qskuq" path="res://pancake_clicker/seller1_noise.res" id="7_14ttt"]
 [ext_resource type="StyleBox" uid="uid://diyefi1ar48ag" path="res://themes/twm_theme/pancake_count_panel.stylebox" id="7_hn7jv"]
+[ext_resource type="PackedScene" uid="uid://bfd7djl3gtfvc" path="res://pancake_clicker/ShopItems/better_pancake_formula_shop_item.res" id="7_o2ypj"]
 [ext_resource type="Texture2D" uid="uid://bo3x8yy4g81xb" path="res://ui_sprites/close_button.tres" id="8_iaa12"]
+[ext_resource type="FastNoiseLite" uid="uid://31vk8tb6esyx" path="res://pancake_clicker/seller2_noise.res" id="8_n7vm1"]
 [ext_resource type="Script" uid="uid://cl16644rl3lsd" path="res://scripts/stylebox_color_applier.gd" id="9_3hslv"]
+[ext_resource type="FastNoiseLite" uid="uid://7dcr2txewwnx" path="res://pancake_clicker/seller3_noise.res" id="9_i38w4"]
 [ext_resource type="Script" uid="uid://d3rx5jkh2x7if" path="res://pancake_clicker/pancake_clicker_controller.gd" id="9_t85sw"]
 [ext_resource type="PackedScene" uid="uid://cg23wbewrjbxw" path="res://pancake_clicker/pancake_add_label.tscn" id="10_lcrlj"]
 [ext_resource type="StyleBox" uid="uid://c2nlew8188nva" path="res://themes/twm_theme/vertical_line_wide.stylebox" id="11_82yeu"]
 [ext_resource type="Material" uid="uid://pgpd62tnvt1" path="res://shaders/radial_light_material.tres" id="12_0lcqn"]
 [ext_resource type="Material" uid="uid://db230eaasl2pl" path="res://shaders/shadow_material.tres" id="13_ay4v1"]
 [ext_resource type="Texture2D" uid="uid://cxfqu8xs5tg7u" path="res://pancake_clicker/pancake.png" id="14_np8ea"]
+[ext_resource type="Texture2D" uid="uid://br4701p8hqx6s" path="res://pancake_clicker/ling_frame_1.res" id="24_pl65s"]
+[ext_resource type="Texture2D" uid="uid://rycgfy271h5t" path="res://pancake_clicker/ling_frame_2.res" id="25_demwq"]
+[ext_resource type="Texture2D" uid="uid://c86sc3k6s18bi" path="res://pancake_clicker/ling_frame_3.res" id="26_uql61"]
+[ext_resource type="Texture2D" uid="uid://dwsx0yaxpdhix" path="res://pancake_clicker/ling_frame_4.res" id="27_wdust"]
+[ext_resource type="Texture2D" uid="uid://bnqmw1c7qm080" path="res://pancake_clicker/ling_frame_5.res" id="28_2ye5r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_14ttt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w1tn6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yd10f"]
 content_margin_left = 8.0
@@ -81,12 +96,34 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
+[sub_resource type="Animation" id="Animation_05ld0"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("24_pl65s"), ExtResource("25_demwq"), ExtResource("26_uql61"), ExtResource("27_wdust"), ExtResource("28_2ye5r")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_demwq"]
+_data = {
+&"idle": SubResource("Animation_05ld0")
+}
+
 [node name="PancakesClickerWindow" type="Window"]
 auto_translate_mode = 1
 disable_3d = true
 transparent_bg = true
 title = "SETTINGS"
-position = Vector2i(37, 0)
+position = Vector2i(26, 0)
 size = Vector2i(1000, 680)
 mouse_passthrough_polygon = PackedVector2Array(300, 0, 700, 0, 700, 67, 1000, 67, 1000, 627, 700, 627, 700, 680, 300, 680, 300, 627, 0, 628, 0, 36, 300, 36)
 unresizable = true
@@ -195,10 +232,9 @@ theme_override_constants/margin_bottom = 0
 
 [node name="TabContainer" type="TabContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer"]
 layout_mode = 2
-current_tab = 1
+current_tab = 0
 
 [node name="SHOP" type="MarginContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
@@ -212,78 +248,35 @@ layout_mode = 2
 [node name="ItemsContainer" type="VBoxContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content"]
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("5_dal33")
 
-[node name="ShopItem" type="PanelContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer"]
+[node name="FryingPanShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer" instance=ExtResource("6_dal33")]
 layout_mode = 2
 
-[node name="ItemMargin" type="MarginContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ShopItem"]
+[node name="BetterPancakeFormulaShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer" instance=ExtResource("7_o2ypj")]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
-
-[node name="ItemContent" type="HBoxContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ShopItem/ItemMargin"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Icon" type="Button" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ShopItem/ItemMargin/ItemContent"]
-texture_filter = 1
-custom_minimum_size = Vector2(48, 0)
-layout_mode = 2
-mouse_filter = 2
-theme_type_variation = &"IconButton"
-icon = ExtResource("5_3pkbe")
-expand_icon = true
-
-[node name="InfoContainer" type="VBoxContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ShopItem/ItemMargin/ItemContent"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-
-[node name="ItemName" type="Label" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ShopItem/ItemMargin/ItemContent/InfoContainer"]
-custom_minimum_size = Vector2(10, 10)
-layout_mode = 2
-text = "Item name here"
-autowrap_mode = 3
-
-[node name="HSeparator" type="HSeparator" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ShopItem/ItemMargin/ItemContent/InfoContainer"]
-layout_mode = 2
-theme_override_constants/separation = 5
-
-[node name="CostContainer" type="HBoxContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ShopItem/ItemMargin/ItemContent/InfoContainer"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Padding" type="Control" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ShopItem/ItemMargin/ItemContent/InfoContainer/CostContainer"]
-custom_minimum_size = Vector2(4, 0)
-layout_mode = 2
-
-[node name="CostLabel" type="Label" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ShopItem/ItemMargin/ItemContent/InfoContainer/CostContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "0¥"
-
-[node name="BuyButton" type="Button" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ShopItem/ItemMargin/ItemContent/InfoContainer/CostContainer"]
-custom_minimum_size = Vector2(136, 0)
-layout_mode = 2
-text = "BUY"
 
 [node name="SELL" type="MarginContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
+script = ExtResource("6_w1tn6")
 metadata/_tab_index = 1
 
 [node name="ItemsContainer" type="VBoxContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Seller1" type="PanelContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer"]
+[node name="Seller1" type="MarginContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller1"]
 layout_mode = 2
@@ -293,27 +286,80 @@ theme_override_constants/separation = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SellerGraphicDrawer" type="Control" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller1/VBoxContainer/PanelContainer"]
+[node name="SellerGraphicDrawer" type="Control" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller1/VBoxContainer/PanelContainer" node_paths=PackedStringArray("label_min", "label_max", "label_current")]
 layout_mode = 2
 script = ExtResource("6_bwxy2")
+custom_noise = ExtResource("7_14ttt")
+label_min = NodePath("Min")
+label_max = NodePath("Max")
+label_current = NodePath("../../HBoxContainer/Current")
+max_cost = 1.0
 metadata/_custom_type_script = "uid://omp0kg08c6r5"
+
+[node name="Max" type="Label" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller1/VBoxContainer/PanelContainer/SellerGraphicDrawer"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_bottom = 21.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_14ttt")
+text = "100"
+
+[node name="Min" type="Label" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller1/VBoxContainer/PanelContainer/SellerGraphicDrawer"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -21.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_14ttt")
+text = "0"
+visible_characters = 5
+visible_ratio = 5.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller1/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Current" type="Label" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+visible_characters = 6
+visible_ratio = 6.0
 
 [node name="Label" type="Label" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller1/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "0¥ ppc"
+text = "¥ ppc"
 
-[node name="Button" type="Button" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller1/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(160, 0)
+[node name="SellButton" type="Button" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller1/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "SELL_BUTTON"
 
-[node name="Seller2" type="PanelContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer"]
+[node name="VSeparator" type="VSeparator" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_w1tn6")
+
+[node name="SellAllButton" type="Button" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller1/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+text = "ALL"
+
+[node name="Seller2" type="MarginContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller2"]
 layout_mode = 2
@@ -323,22 +369,81 @@ theme_override_constants/separation = 2
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="SellerGraphicDrawer" type="Control" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller2/VBoxContainer/PanelContainer" node_paths=PackedStringArray("label_min", "label_max", "label_current")]
+layout_mode = 2
+script = ExtResource("6_bwxy2")
+custom_noise = ExtResource("8_n7vm1")
+label_min = NodePath("Min")
+label_max = NodePath("Max")
+label_current = NodePath("../../HBoxContainer/Current")
+save_to = 2
+max_cost = 0.9
+metadata/_custom_type_script = "uid://omp0kg08c6r5"
+
+[node name="Max" type="Label" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller2/VBoxContainer/PanelContainer/SellerGraphicDrawer"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_bottom = 21.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_14ttt")
+text = "100"
+
+[node name="Min" type="Label" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller2/VBoxContainer/PanelContainer/SellerGraphicDrawer"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -21.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_14ttt")
+text = "0"
+visible_characters = 5
+visible_ratio = 5.0
+
 [node name="HBoxContainer" type="HBoxContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller2/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Current" type="Label" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+visible_characters = 6
+visible_ratio = 6.0
 
 [node name="Label" type="Label" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "0¥ ppc"
+text = "¥ ppc"
 
-[node name="Button" type="Button" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller2/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(160, 0)
+[node name="SellButton" type="Button" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller2/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "SELL_BUTTON"
 
-[node name="Seller3" type="PanelContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer"]
+[node name="VSeparator2" type="VSeparator" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_w1tn6")
+
+[node name="SellAllButton" type="Button" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller2/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+text = "ALL"
+
+[node name="Seller3" type="MarginContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller3"]
 layout_mode = 2
@@ -348,18 +453,73 @@ theme_override_constants/separation = 2
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="SellerGraphicDrawer" type="Control" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller3/VBoxContainer/PanelContainer" node_paths=PackedStringArray("label_min", "label_max", "label_current")]
+layout_mode = 2
+script = ExtResource("6_bwxy2")
+custom_noise = ExtResource("9_i38w4")
+label_min = NodePath("Min")
+label_max = NodePath("Max")
+label_current = NodePath("../../HBoxContainer/Current")
+save_to = 3
+max_cost = 1.0
+metadata/_custom_type_script = "uid://omp0kg08c6r5"
+
+[node name="Max" type="Label" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller3/VBoxContainer/PanelContainer/SellerGraphicDrawer"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_bottom = 21.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_14ttt")
+text = "100"
+
+[node name="Min" type="Label" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller3/VBoxContainer/PanelContainer/SellerGraphicDrawer"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -21.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_14ttt")
+text = "0"
+visible_characters = 5
+visible_ratio = 5.0
+
 [node name="HBoxContainer" type="HBoxContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller3/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Current" type="Label" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+visible_characters = 6
+visible_ratio = 6.0
 
 [node name="Label" type="Label" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller3/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "0¥ ppc"
+text = "¥ ppc"
 
-[node name="Button" type="Button" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller3/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(160, 0)
+[node name="SellButton" type="Button" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller3/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "SELL_BUTTON"
+
+[node name="VSeparator3" type="VSeparator" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_w1tn6")
+
+[node name="SellAllButton" type="Button" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SELL/ItemsContainer/Seller3/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+text = "ALL"
 
 [node name="ClickerWindow" type="Control" parent="."]
 texture_filter = 1
@@ -417,6 +577,7 @@ expand_icon = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "PANCAKECLICKER"
+text_overrun_behavior = 3
 
 [node name="IconContainer2" type="MarginContainer" parent="ClickerWindow/VBoxContainer/Topbar/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -451,34 +612,34 @@ layout_mode = 2
 size_flags_vertical = 6
 text = "0"
 
-[node name="Money" type="MarginContainer" parent="ClickerWindow/VBoxContainer/Topbar/MarginContainer/HBoxContainer"]
+[node name="Yelli" type="MarginContainer" parent="ClickerWindow/VBoxContainer/Topbar/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 4
 
-[node name="PanelContainer" type="PanelContainer" parent="ClickerWindow/VBoxContainer/Topbar/MarginContainer/HBoxContainer/Money"]
+[node name="PanelContainer" type="PanelContainer" parent="ClickerWindow/VBoxContainer/Topbar/MarginContainer/HBoxContainer/Yelli"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yd10f")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ClickerWindow/VBoxContainer/Topbar/MarginContainer/HBoxContainer/Money/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ClickerWindow/VBoxContainer/Topbar/MarginContainer/HBoxContainer/Yelli/PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="ClickerWindow/VBoxContainer/Topbar/MarginContainer/HBoxContainer/Money/PanelContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="ClickerWindow/VBoxContainer/Topbar/MarginContainer/HBoxContainer/Yelli/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 text = "0"
 
-[node name="A" type="Label" parent="ClickerWindow/VBoxContainer/Topbar/MarginContainer/HBoxContainer/Money/PanelContainer/HBoxContainer"]
+[node name="A" type="Label" parent="ClickerWindow/VBoxContainer/Topbar/MarginContainer/HBoxContainer/Yelli/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 text = "¥"
 
 [node name="CloseButtonContainer" type="MarginContainer" parent="ClickerWindow/VBoxContainer/Topbar/MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 4
+theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
@@ -492,15 +653,16 @@ icon = ExtResource("8_iaa12")
 flat = true
 expand_icon = true
 
-[node name="Content" type="Panel" parent="ClickerWindow/VBoxContainer" node_paths=PackedStringArray("window", "pancake_animator", "pancakes_count_label", "left_panel", "left_panel_grabber", "right_panel", "right_panel_grabber")]
+[node name="Content" type="Panel" parent="ClickerWindow/VBoxContainer" node_paths=PackedStringArray("window", "pancake_animator", "pancakes_count_label", "yellis_count_label", "left_panel", "left_panel_grabber", "right_panel", "right_panel_grabber")]
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("9_t85sw")
 window = NodePath("../../..")
 pancake_animator = NodePath("MarginContainer/HBoxContainer/ClickerMargin/PancakeAnimator")
-pancakes_count_label = NodePath("../Topbar/MarginContainer/HBoxContainer/Pancakes/PanelContainer/Label")
 pancake_add_template_label = ExtResource("10_lcrlj")
+pancakes_count_label = NodePath("../Topbar/MarginContainer/HBoxContainer/Pancakes/PanelContainer/Label")
+yellis_count_label = NodePath("../Topbar/MarginContainer/HBoxContainer/Yelli/PanelContainer/HBoxContainer/Label")
 left_panel = NodePath("../../../LeftPanel")
 left_panel_grabber = NodePath("../../../LeftPanel/HBoxContainer/Grabber")
 right_panel = NodePath("../../../RightPanel")
@@ -596,6 +758,21 @@ theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 icon = ExtResource("14_np8ea")
 icon_alignment = 1
 expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="ClickerWindow/VBoxContainer/Content"]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 37.0
+offset_right = 350.0
+offset_bottom = 101.0
+texture = ExtResource("24_pl65s")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ClickerWindow/VBoxContainer/Content/TextureRect"]
+reset_on_save = false
+libraries = {
+&"": SubResource("AnimationLibrary_demwq")
+}
 
 [connection signal="gui_input" from="ClickerWindow/VBoxContainer/Topbar" to="." method="_on_topbar_gui_input"]
 [connection signal="pressed" from="ClickerWindow/VBoxContainer/Topbar/MarginContainer/HBoxContainer/CloseButtonContainer/CloseButton" to="." method="_on_close_button_pressed"]

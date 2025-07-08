@@ -19,28 +19,37 @@ func _ready() -> void:
 func resize(size_delta: Vector2i, direction: Direction):
 	match direction:
 		Direction.TopLeft:
-			window.position += size_delta
-			window.size -= size_delta
+			if window.size.x > window.min_size.x:
+				window.position.x += size_delta.x
+				window.size.x -= size_delta.x
+			if window.size.y > window.min_size.y:
+				window.position.y += size_delta.y
+				window.size.y -= size_delta.y
 		Direction.Top:
-			window.position.y += size_delta.y
-			window.size.y -= size_delta.y
+			if window.size.y > window.min_size.y:
+				window.position.y += size_delta.y
+				window.size.y -= size_delta.y
 		Direction.TopRight:
-			window.position.y += size_delta.y
+			if window.size.y > window.min_size.y:
+				window.position.y += size_delta.y
+				window.size.y -= size_delta.y
 			window.size.x += size_delta.x
-			window.size.y -= size_delta.y
 		Direction.Right:
 			window.size.x += size_delta.x
 		Direction.BottomRight:
 			window.size += size_delta
 		Direction.Bottom:
-			window.size.y += size_delta.y
+			if window.size.y > window.min_size.y:
+				window.size.y += size_delta.y
 		Direction.BottomLeft:
-			window.position.x += size_delta.x
-			window.size.x -= size_delta.x
+			if window.size.x > window.min_size.x:
+				window.position.x += size_delta.x
+				window.size.x -= size_delta.x
 			window.size.y += size_delta.y
 		Direction.Left:
-			window.position.x += size_delta.x
-			window.size.x -= size_delta.x
+			if window.size.x > window.min_size.x:
+				window.position.x += size_delta.x
+				window.size.x -= size_delta.x
 
 
 func on_any_resize_zone_input(event, direction: Direction):

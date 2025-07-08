@@ -7,11 +7,12 @@ signal quit_request()
 signal saving()
 signal saved()
 @warning_ignore("unused_signal")
-signal second_ticked()
 
 @onready var niko_controller = $/root/TheWorldMachine
 var global_color_palette : ColorPalette = load("res://themes/twm_theme/purple_color_palette.tres")
 var global_color_palette_id = 0
+
+var scripts_to_save = []
 
 var idle_facepick : Texture2D
 var speak_facepick : Texture2D
@@ -50,18 +51,29 @@ func _ready() -> void: # loading all parameters
 	DisplayServer.window_set_position(config_file.get_value("Main", "NikoPosition", get_default_pos()), DisplayServer.MAIN_WINDOW_ID)
 	
 	facepick_update.emit()
+	
+	for child in $/root/TheWorldMachine.get_children():
+		if child is Window:
+			match child.visible:
+				false: child.process_mode = Node.PROCESS_MODE_DISABLED
+				true: child.process_mode = Node.PROCESS_MODE_INHERIT
+			child.visibility_changed.connect(func ():
+				match child.visible:
+					false: child.process_mode = Node.PROCESS_MODE_DISABLED
+					true: child.process_mode = Node.PROCESS_MODE_INHERIT
+			)
 
 
 func _notification(what): # exit request capture
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		quit_request.emit()
 
+
 func save():
-	saving.emit();
+	saving.emit()
 	
 	config_file.set_value("Main", "Clicks", clicks)
 	config_file.set_value("Main", "MeowSoundId", current_meow_sound_id)
-	
 	
 	config_file.set_value("Settings", "Language", language)
 	config_file.set_value("Settings", "IdleFacepick",
@@ -85,13 +97,10 @@ func save():
 	
 	config_file.save("user://NikoMemories.cfg")
 	
-	print("Niko's memories saved!")
+	for script in scripts_to_save:
+		script.save()
+	
 	saved.emit()
-
-func get_default_pos(): # calculatig center of main screen
-	var screen_pos = DisplayServer.screen_get_position(DisplayServer.get_primary_screen())
-	var result_pos = screen_pos + DisplayServer.screen_get_size(DisplayServer.get_primary_screen())/2
-	return result_pos
 
 
 func try_quit(): # saving all parameters and exit
@@ -104,7 +113,14 @@ func set_gaming_mode(state: bool): # setting gaming mode window state
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_MOUSE_PASSTHROUGH, state, DisplayServer.MAIN_WINDOW_ID)
 	gaming_mode_changed.emit(state)
 
+
 func set_theme(color_palette : ColorPalette, theme_id : int):
 	global_color_palette = color_palette
 	global_color_palette_id = theme_id
 	theme_update.emit()
+
+
+func get_default_pos(): # calculatig center of main screen
+	var screen_pos = DisplayServer.screen_get_position(DisplayServer.get_primary_screen())
+	var result_pos = screen_pos + DisplayServer.screen_get_size(DisplayServer.get_primary_screen())/2
+	return result_pos
