@@ -19,37 +19,30 @@ func _ready() -> void:
 func resize(size_delta: Vector2i, direction: Direction):
 	match direction:
 		Direction.TopLeft:
-			if window.size.x > window.min_size.x:
-				window.position.x += size_delta.x
-				window.size.x -= size_delta.x
-			if window.size.y > window.min_size.y:
-				window.position.y += size_delta.y
-				window.size.y -= size_delta.y
+			window.position.x += window.size.x - win_size_clamp_x(window.size.x - size_delta.x)
+			window.size.x -= size_delta.x
+			window.position.y += window.size.y - win_size_clamp_y(window.size.y - size_delta.y)
+			window.size.y -= size_delta.y
 		Direction.Top:
-			if window.size.y > window.min_size.y:
-				window.position.y += size_delta.y
-				window.size.y -= size_delta.y
+			window.position.y += window.size.y - win_size_clamp_y(window.size.y - size_delta.y)
+			window.size.y -= size_delta.y
 		Direction.TopRight:
-			if window.size.y > window.min_size.y:
-				window.position.y += size_delta.y
-				window.size.y -= size_delta.y
+			window.position.y += window.size.y - win_size_clamp_y(window.size.y - size_delta.y)
+			window.size.y -= size_delta.y
 			window.size.x += size_delta.x
 		Direction.Right:
 			window.size.x += size_delta.x
 		Direction.BottomRight:
 			window.size += size_delta
 		Direction.Bottom:
-			if window.size.y > window.min_size.y:
-				window.size.y += size_delta.y
+			window.size.y += size_delta.y
 		Direction.BottomLeft:
-			if window.size.x > window.min_size.x:
-				window.position.x += size_delta.x
-				window.size.x -= size_delta.x
+			window.position.x += window.size.x - win_size_clamp_x(window.size.x - size_delta.x)
+			window.size.x -= size_delta.x
 			window.size.y += size_delta.y
 		Direction.Left:
-			if window.size.x > window.min_size.x:
-				window.position.x += size_delta.x
-				window.size.x -= size_delta.x
+			window.position.x += window.size.x - win_size_clamp_x(window.size.x - size_delta.x)
+			window.size.x -= size_delta.x
 
 
 func on_any_resize_zone_input(event, direction: Direction):
@@ -62,3 +55,9 @@ func on_any_resize_zone_input(event, direction: Direction):
 			is_dragging = false
 	if event is InputEventMouseMotion and is_dragging:
 		resize(Vector2i(event.position - last_offset), direction);
+
+
+func win_size_clamp_x(size : int):
+	return clampi(size, window.min_size.x, window.max_size.x)
+func win_size_clamp_y(size : int):
+	return clampi(size, window.min_size.y, window.max_size.y)
