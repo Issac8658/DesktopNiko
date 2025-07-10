@@ -57,7 +57,7 @@ func on_any_resize_zone_input(event, direction: Direction):
 		resize(Vector2i(event.position - last_offset), direction);
 
 
-func win_size_clamp_x(size : int):
-	return clampi(size, window.min_size.x, window.max_size.x)
-func win_size_clamp_y(size : int):
-	return clampi(size, window.min_size.y, window.max_size.y)
+func win_size_clamp_x(_size : int):
+	return clampi(_size, window.min_size.x, window.max_size.x)
+func win_size_clamp_y(_size : int):
+	return clampi(_size, window.min_size.y, window.max_size.y)

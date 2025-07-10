@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://beloub2o0etmy"]
+
+[ext_resource type="Shader" uid="uid://dd7eru3n37u4q" path="res://shaders/light_blub_anim_shader.gdshader" id="1_m7md6"]
+
+[resource]
+shader = ExtResource("1_m7md6")

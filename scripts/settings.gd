@@ -24,6 +24,12 @@ func _ready() -> void:
 		GlobalControlls.is_mouse_sound_enabled = toggled
 	)
 	
+	var saving_icon_checkbox = get_node("SavingIcon")
+	saving_icon_checkbox.button_pressed = GlobalControlls.show_saving_icon
+	saving_icon_checkbox.toggled.connect(func (toggled):
+		GlobalControlls.show_saving_icon = toggled
+	)
+	
 	var language_option_button = get_node("Language/LanguageSelectionOptionButton")
 	TranslationServer.set_locale(locales[GlobalControlls.language])
 	language_option_button.selected = GlobalControlls.language

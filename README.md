@@ -3,7 +3,7 @@ Niko is a playable character from the game OneShot, but now he will be right on 
 The Steam version of the 2024 "The World Machine Edition" was used as the basis, as can be seen in the application settings.
 
 ## Features
-- Meow sound on click (There are currently 5 variants available)
+- Meow sound on click (There are currently 6 variants available)
 - Clicks and CPS counter
 - Don't click too often! It will scare Niko! (This can be disabled by turning on the "peaceful" mode.)
 - Setting up facepicks for each state (default, speak, scared, scared speak)

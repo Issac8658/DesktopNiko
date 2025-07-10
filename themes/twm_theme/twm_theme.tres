@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=45 format=3 uid="uid://cxsdp1anrqw7m"]
+[gd_resource type="Theme" load_steps=47 format=3 uid="uid://cxsdp1anrqw7m"]
 
 [ext_resource type="StyleBox" uid="uid://cmgrg6b15xr45" path="res://themes/twm_theme/button_hover.stylebox" id="1_h7d4g"]
+[ext_resource type="StyleBox" uid="uid://cr0r4j0ofjw5b" path="res://themes/twm_theme/disabled_button.stylebox" id="1_r20nx"]
 [ext_resource type="StyleBox" uid="uid://dph0mqvrcdp86" path="res://themes/twm_theme/button_normal.stylebox" id="2_u5xpi"]
 [ext_resource type="Texture2D" uid="uid://bw465n3hiy0mk" path="res://ui_sprites/ui_shit.png" id="3_5peh5"]
 [ext_resource type="Texture2D" uid="uid://gfqymydag805" path="res://ui_sprites/zero_sprite.tres" id="3_xdasf"]
@@ -16,18 +17,7 @@
 [ext_resource type="Script" uid="uid://cm26f3vhmimf4" path="res://scripts/theme_colors_applier.gd" id="11_u5xpi"]
 [ext_resource type="StyleBox" uid="uid://bd2g4ws0gk1b6" path="res://themes/twm_theme/vertical_line.stylebox" id="11_xdasf"]
 [ext_resource type="StyleBox" uid="uid://bw42vqrrivgmt" path="res://themes/twm_theme/tab.stylebox" id="12_d6ho4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcy5n"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.1, 0.1, 0.1, 0.3)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
+[ext_resource type="StyleBox" uid="uid://2qrce0mr2fdx" path="res://themes/twm_theme/scroll_bar_graber.stylebox" id="15_1ext6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8odgm"]
 
@@ -99,6 +89,10 @@ thickness = 2
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dm15m"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0dyn4"]
+content_margin_left = 6.0
+content_margin_right = 4.0
+
 [resource]
 default_base_scale = 2.0
 default_font = ExtResource("10_0dyn4")
@@ -106,7 +100,7 @@ default_font_size = 20
 AlwaysActivatedButton/base_type = &"IconButton"
 AlwaysActivatedButton/colors/icon_normal_color = Color(0.392157, 0.258824, 0.647059, 1)
 Button/colors/font_color = Color(0.588235, 0.392157, 1, 1)
-Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_disabled_color = Color(0.294118, 0.196078, 0.498039, 1)
 Button/colors/font_focus_color = Color(0.588235, 0.392157, 1, 1)
 Button/colors/font_hover_color = Color(0.392157, 0.258824, 0.647059, 1)
 Button/colors/font_hover_pressed_color = Color(0.588235, 0.392157, 1, 1)
@@ -118,7 +112,7 @@ Button/constants/align_to_largest_stylebox = 0
 Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
-Button/styles/disabled = SubResource("StyleBoxFlat_xcy5n")
+Button/styles/disabled = ExtResource("1_r20nx")
 Button/styles/focus = SubResource("StyleBoxEmpty_8odgm")
 Button/styles/hover = ExtResource("1_h7d4g")
 Button/styles/normal = ExtResource("2_u5xpi")
@@ -201,6 +195,10 @@ ThinPanel/base_type = &"Panel"
 ThinPanel/styles/panel = ExtResource("9_1ext6")
 TooltipLabel/styles/normal = ExtResource("2_u5xpi")
 TooltipPanel/styles/panel = SubResource("StyleBoxEmpty_dm15m")
+VScrollBar/styles/grabber = ExtResource("15_1ext6")
+VScrollBar/styles/grabber_highlight = ExtResource("15_1ext6")
+VScrollBar/styles/grabber_pressed = ExtResource("15_1ext6")
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_0dyn4")
 VSeparator/constants/separation = 6
 VSeparator/styles/separator = ExtResource("11_xdasf")
 script = ExtResource("11_u5xpi")

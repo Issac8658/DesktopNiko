@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=4 uid="uid://cj66sb2a5oolj"]
+[gd_scene load_steps=122 format=4 uid="uid://cj66sb2a5oolj"]
 
 [ext_resource type="Script" uid="uid://b8e5fhar3jgaj" path="res://scripts/niko_controls.gd" id="1_2c62f"]
 [ext_resource type="AudioStream" uid="uid://5tnvrblu5h4j" path="res://niko/niko_meows/meow1.wav" id="2_ghshe"]
@@ -17,6 +17,7 @@
 [ext_resource type="Theme" uid="uid://cxsdp1anrqw7m" path="res://themes/twm_theme/twm_theme.tres" id="7_nfk4m"]
 [ext_resource type="Script" uid="uid://c07kbh8vp2klh" path="res://scripts/facepicks_select_controller.gd" id="8_2jcla"]
 [ext_resource type="Texture2D" uid="uid://d1otdr07j46jh" path="res://niko/niko_shock.png" id="8_7ycvg"]
+[ext_resource type="AudioStream" uid="uid://y5wudf67lir6" path="res://niko/niko_meows/omori_meow.ogg" id="9_30vx0"]
 [ext_resource type="Texture2D" uid="uid://dupq4qhtqbvbt" path="res://niko/niko_surprised.png" id="9_wr18j"]
 [ext_resource type="Texture2D" uid="uid://qsweuhlblj1" path="res://icon.png" id="10_wr18j"]
 [ext_resource type="Texture2D" uid="uid://dgmfa7kusbs5v" path="res://niko/niko_gasmask.png" id="11_m35m6"]
@@ -79,9 +80,10 @@
 [ext_resource type="StyleBox" uid="uid://bfxcdu2fwodgt" path="res://themes/themed/green_file_focus.stylebox" id="60_jl6hu"]
 [ext_resource type="StyleBox" uid="uid://d1ts0vt0gn68j" path="res://themes/themed/green_file_hover.stylebox" id="61_uwk5n"]
 [ext_resource type="PackedScene" uid="uid://dp8vs0u0ahn2l" path="res://pancake_clicker/pancakes_clicker.tscn" id="77_o63de"]
+[ext_resource type="Script" uid="uid://0dbjehngsr5f" path="res://scripts/add_to_autorun.gd" id="77_q4750"]
+[ext_resource type="Material" uid="uid://beloub2o0etmy" path="res://shaders/light_blub_anim_shader.tres" id="81_30vx0"]
 [ext_resource type="Texture2D" uid="uid://dxo8m8apw6ajl" path="res://ui_sprites/bulb_anim_24.png" id="81_id8vy"]
 [ext_resource type="Script" uid="uid://c45ltmpprf6rs" path="res://scripts/loading_icon.gd" id="81_ubkm4"]
-[ext_resource type="Shader" uid="uid://dd7eru3n37u4q" path="res://shaders/light_blub_anim_shader.gdshader" id="81_xtheg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3dpcr"]
 
@@ -369,7 +371,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ubkm4"]
 resource_name = "fade_out"
-length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -377,10 +378,10 @@ tracks/0/path = NodePath("TextureRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.433333, 0.6, 1),
+"transitions": PackedFloat32Array(1, 19.6983, 1.10957, 1.10957, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.870588), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k2ony"]
@@ -389,14 +390,11 @@ _data = {
 &"fade_out": SubResource("Animation_ubkm4")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ubkm4"]
-shader = ExtResource("81_xtheg")
-
 [node name="TheWorldMachine" type="Node" node_paths=PackedStringArray("settings_window", "niko_sound", "animator", "niko_rect", "facepicks_container", "meow_sound_option_button", "click_count_label", "cps_counter", "menu_label")]
 script = ExtResource("1_2c62f")
 niko_sad = ExtResource("2_kv3aw")
 niko_cry = ExtResource("3_jip8q")
-meow_sounds = Array[AudioStream]([ExtResource("2_ghshe"), ExtResource("3_fv2he"), ExtResource("4_5smuj"), ExtResource("5_5smuj"), ExtResource("6_y5ved")])
+meow_sounds = Array[AudioStream]([ExtResource("2_ghshe"), ExtResource("3_fv2he"), ExtResource("4_5smuj"), ExtResource("5_5smuj"), ExtResource("6_y5ved"), ExtResource("9_30vx0")])
 settings_window = NodePath("ShortcutsWindow")
 niko_sound = NodePath("MeowSound")
 animator = NodePath("NikoLayer/NikoBase/Niko/AnimationPlayer")
@@ -504,12 +502,12 @@ auto_translate_mode = 1
 disable_3d = true
 title = "SHORTCUTS"
 position = Vector2i(175, 0)
-size = Vector2i(356, 348)
+size = Vector2i(358, 348)
 visible = false
 borderless = true
 always_on_top = true
 sharp_corners = true
-min_size = Vector2i(184, 270)
+min_size = Vector2i(193, 270)
 max_size = Vector2i(1920, 1040)
 keep_title_visible = true
 theme = ExtResource("7_nfk4m")
@@ -598,19 +596,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ShortcutsWindow/Control/VBoxContainer/Content/MarginContainer"]
 layout_mode = 2
-vertical_scroll_mode = 3
+horizontal_scroll_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="ShortcutsWindow/Control/VBoxContainer/Content/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
 [node name="GridContainer" type="HFlowContainer" parent="ShortcutsWindow/Control/VBoxContainer/Content/MarginContainer/ScrollContainer/MarginContainer" node_paths=PackedStringArray("shutdown_popup", "shutdown_accept_button")]
 layout_mode = 2
@@ -809,6 +811,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Pancake" type="MarginContainer" parent="ShortcutsWindow/Control/VBoxContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
+visible = false
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_filter = 2
@@ -1122,12 +1125,12 @@ auto_translate_mode = 1
 disable_3d = true
 title = "THEMES"
 position = Vector2i(575, 0)
-size = Vector2i(352, 380)
+size = Vector2i(358, 380)
 visible = false
 borderless = true
 always_on_top = true
 sharp_corners = true
-min_size = Vector2i(184, 270)
+min_size = Vector2i(193, 270)
 max_size = Vector2i(1920, 1040)
 keep_title_visible = true
 script = ExtResource("6_nfk4m")
@@ -1221,21 +1224,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ThemesWindow/Control/VBoxContainer/Content/MarginContainer"]
 layout_mode = 2
 scroll_vertical_custom_step = 15.0
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
+horizontal_scroll_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="ThemesWindow/Control/VBoxContainer/Content/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
 [node name="GridContainer" type="HFlowContainer" parent="ThemesWindow/Control/VBoxContainer/Content/MarginContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
@@ -1866,7 +1872,7 @@ theme_override_constants/margin_bottom = 12
 disable_3d = true
 title = "SETTINGS"
 position = Vector2i(278, 0)
-size = Vector2i(366, 605)
+size = Vector2i(366, 677)
 visible = false
 unresizable = true
 borderless = true
@@ -1998,6 +2004,19 @@ button_pressed = true
 text = "CLICK_SOUND"
 
 [node name="StateIcon" parent="SettingsWindow/Control/VBoxContainer/Content/MarginContainer/SettingsContainer/ClickSound" instance=ExtResource("42_sp30j")]
+layout_mode = 1
+offset_top = -12.0
+offset_bottom = 12.0
+
+[node name="SavingIcon" type="CheckBox" parent="SettingsWindow/Control/VBoxContainer/Content/MarginContainer/SettingsContainer"]
+layout_mode = 2
+tooltip_text = "SAVING_ICON_HINT"
+tooltip_auto_translate_mode = 1
+mouse_default_cursor_shape = 2
+button_pressed = true
+text = "SHOW_SAVING_ICON"
+
+[node name="StateIcon" parent="SettingsWindow/Control/VBoxContainer/Content/MarginContainer/SettingsContainer/SavingIcon" instance=ExtResource("42_sp30j")]
 layout_mode = 1
 offset_top = -12.0
 offset_bottom = 12.0
@@ -2299,6 +2318,11 @@ popup/item_8/text = "SMUG"
 popup/item_8/icon = ExtResource("22_5smuj")
 popup/item_8/id = 9
 
+[node name="Button" type="Button" parent="SettingsWindow/Control/VBoxContainer/Content/MarginContainer/SettingsContainer"]
+layout_mode = 2
+text = "ADD_TO_AUTO_RUN"
+script = ExtResource("77_q4750")
+
 [node name="SoundSelectionContainer" type="HBoxContainer" parent="SettingsWindow/Control/VBoxContainer/Content/MarginContainer/SettingsContainer"]
 layout_mode = 2
 
@@ -2323,7 +2347,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 selected = 0
-item_count = 5
+item_count = 6
 popup/item_0/text = "MEOW1"
 popup/item_0/id = 0
 popup/item_1/text = "MEOW2"
@@ -2334,6 +2358,8 @@ popup/item_3/text = "MEOW4"
 popup/item_3/id = 3
 popup/item_4/text = "MEOW5"
 popup/item_4/id = 4
+popup/item_5/text = "OMORI_MEOW"
+popup/item_5/id = 5
 
 [node name="Language" type="HBoxContainer" parent="SettingsWindow/Control/VBoxContainer/Content/MarginContainer/SettingsContainer"]
 layout_mode = 2
@@ -2405,6 +2431,7 @@ grow_vertical = 0
 texture = SubResource("AtlasTexture_j8kkg")
 
 [node name="PancakesClickerWindow" parent="." instance=ExtResource("77_o63de")]
+title = "PANCAKECLICKER"
 visible = false
 
 [node name="LoadingIcon" type="Window" parent="." node_paths=PackedStringArray("animator")]
@@ -2427,7 +2454,7 @@ libraries = {
 
 [node name="TextureRect" type="TextureRect" parent="LoadingIcon"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_ubkm4")
+material = ExtResource("81_30vx0")
 offset_right = 240.0
 offset_bottom = 240.0
 scale = Vector2(0.4, 0.4)

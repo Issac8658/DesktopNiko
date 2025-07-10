@@ -1,33 +1,95 @@
-[gd_scene load_steps=39 format=3 uid="uid://dp8vs0u0ahn2l"]
+[gd_scene load_steps=81 format=3 uid="uid://dp8vs0u0ahn2l"]
 
 [ext_resource type="Theme" uid="uid://cxsdp1anrqw7m" path="res://themes/twm_theme/twm_theme.tres" id="1_3vmky"]
 [ext_resource type="Script" uid="uid://m6hjiig1mkmj" path="res://scripts/window_controller.gd" id="2_3pkbe"]
 [ext_resource type="StyleBox" uid="uid://blhi8kc1si6eq" path="res://themes/twm_theme/window_right_panel_grabber.stylebox" id="3_3hslv"]
+[ext_resource type="Texture2D" uid="uid://b6n3amdargohp" path="res://pancake_clicker/right_panel_part1.png" id="3_nt7dl"]
+[ext_resource type="Texture2D" uid="uid://dfffqi0n451v0" path="res://pancake_clicker/no_additional_ingredient.atlastex" id="4_5us08"]
+[ext_resource type="Texture2D" uid="uid://ds31khwukmrr8" path="res://pancake_clicker/shop_items/item_syrup_maple.atlastex" id="4_683df"]
 [ext_resource type="StyleBox" uid="uid://crl4yywird4qv" path="res://themes/twm_theme/window_left_panel_grabber.stylebox" id="4_yd10f"]
 [ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://pancake_clicker/pancake_clicker.png" id="5_1w58l"]
+[ext_resource type="Script" uid="uid://dagblxl7ulofl" path="res://pancake_clicker/syrup_select.gd" id="5_2pldd"]
+[ext_resource type="Script" uid="uid://b3wdforqspr2t" path="res://pancake_clicker/additional_ingredient.gd" id="5_71nsd"]
 [ext_resource type="Script" uid="uid://jp2jihaawwmf" path="res://pancake_clicker/pancakes_shop.gd" id="5_dal33"]
+[ext_resource type="Texture2D" uid="uid://dh8pems3cw83o" path="res://pancake_clicker/shop_items/item_syrup_strawberry.atlastex" id="5_mulr5"]
+[ext_resource type="Texture2D" uid="uid://cgt306bwbyv4g" path="res://pancake_clicker/hazelnut_additional_ingredient.atlastex" id="6_0gwvg"]
+[ext_resource type="Texture2D" uid="uid://bhsja3fqhop3y" path="res://pancake_clicker/shop_items/item_syrup_chocolate.atlastex" id="6_2pldd"]
 [ext_resource type="Texture2D" uid="uid://k3j8qcm4l4wu" path="res://pancake_clicker/little_pancake.png" id="6_54lkb"]
 [ext_resource type="Script" uid="uid://omp0kg08c6r5" path="res://pancake_clicker/seller_graphic_drawer.gd" id="6_bwxy2"]
-[ext_resource type="PackedScene" uid="uid://cv5lfw2irwt6u" path="res://pancake_clicker/ShopItems/frying_pan_shop_item.res" id="6_dal33"]
+[ext_resource type="PackedScene" uid="uid://urfugtibtdn3" path="res://pancake_clicker/shop_items/burner_shop_item.res" id="6_uql61"]
 [ext_resource type="Script" uid="uid://dejs724gpqk3l" path="res://pancake_clicker/pancakes_sell.gd" id="6_w1tn6"]
 [ext_resource type="FastNoiseLite" uid="uid://bu3pu405qskuq" path="res://pancake_clicker/seller1_noise.res" id="7_14ttt"]
+[ext_resource type="PackedScene" uid="uid://btk8g24wkkjny" path="res://pancake_clicker/shop_items/syrup_maple_shop_item.res" id="7_gr6p0"]
 [ext_resource type="StyleBox" uid="uid://diyefi1ar48ag" path="res://themes/twm_theme/pancake_count_panel.stylebox" id="7_hn7jv"]
-[ext_resource type="PackedScene" uid="uid://bfd7djl3gtfvc" path="res://pancake_clicker/ShopItems/better_pancake_formula_shop_item.res" id="7_o2ypj"]
+[ext_resource type="Texture2D" uid="uid://dsxv8e5388ckq" path="res://pancake_clicker/shop_items/item_syrup_caramel.atlastex" id="7_p55uh"]
+[ext_resource type="Texture2D" uid="uid://b51o0eua03r0l" path="res://pancake_clicker/chocolate_additional_ingredient.atlastex" id="7_q6lm5"]
+[ext_resource type="Texture2D" uid="uid://c2nhe4mbgmomk" path="res://pancake_clicker/shop_items/item_syrup_apple.atlastex" id="8_gkrte"]
 [ext_resource type="Texture2D" uid="uid://bo3x8yy4g81xb" path="res://ui_sprites/close_button.tres" id="8_iaa12"]
 [ext_resource type="FastNoiseLite" uid="uid://31vk8tb6esyx" path="res://pancake_clicker/seller2_noise.res" id="8_n7vm1"]
+[ext_resource type="PackedScene" uid="uid://bxdpj1me31rfq" path="res://pancake_clicker/shop_items/syrup_strawberry_shop_item.res" id="8_u3gf7"]
 [ext_resource type="Script" uid="uid://cl16644rl3lsd" path="res://scripts/stylebox_color_applier.gd" id="9_3hslv"]
+[ext_resource type="Texture2D" uid="uid://dfy3gya1l825g" path="res://pancake_clicker/shop_items/item_syrup_blueberries.atlastex" id="9_3pmd8"]
+[ext_resource type="PackedScene" uid="uid://14wfg4rqqeod" path="res://pancake_clicker/shop_items/syrup_chocolate_shop_item.res" id="9_ae0do"]
 [ext_resource type="FastNoiseLite" uid="uid://7dcr2txewwnx" path="res://pancake_clicker/seller3_noise.res" id="9_i38w4"]
 [ext_resource type="Script" uid="uid://d3rx5jkh2x7if" path="res://pancake_clicker/pancake_clicker_controller.gd" id="9_t85sw"]
 [ext_resource type="PackedScene" uid="uid://cg23wbewrjbxw" path="res://pancake_clicker/pancake_add_label.tscn" id="10_lcrlj"]
-[ext_resource type="StyleBox" uid="uid://c2nlew8188nva" path="res://themes/twm_theme/vertical_line_wide.stylebox" id="11_82yeu"]
+[ext_resource type="PackedScene" uid="uid://crd0kbq5oliym" path="res://pancake_clicker/shop_items/syrup_caramel_shop_item.res" id="10_ns18c"]
+[ext_resource type="Texture2D" uid="uid://cwbuxrho5jnxl" path="res://pancake_clicker/shop_items/butter_dish.png" id="11_2pldd"]
+[ext_resource type="PackedScene" uid="uid://b6wrcxi50260d" path="res://pancake_clicker/shop_items/syrup_apple_shop_item.res" id="11_ykhli"]
 [ext_resource type="Material" uid="uid://pgpd62tnvt1" path="res://shaders/radial_light_material.tres" id="12_0lcqn"]
+[ext_resource type="PackedScene" uid="uid://xv8bjsxh5iqs" path="res://pancake_clicker/shop_items/syrup_blueberries_shop_item.res" id="12_8phvi"]
+[ext_resource type="Script" uid="uid://cqaah06ld3kyt" path="res://pancake_clicker/butter_check.gd" id="12_p55uh"]
 [ext_resource type="Material" uid="uid://db230eaasl2pl" path="res://shaders/shadow_material.tres" id="13_ay4v1"]
+[ext_resource type="Texture2D" uid="uid://0dtmu6xrsq0e" path="res://pancake_clicker/right_panel_part1_light.png" id="13_br1jh"]
 [ext_resource type="Texture2D" uid="uid://cxfqu8xs5tg7u" path="res://pancake_clicker/pancake.png" id="14_np8ea"]
-[ext_resource type="Texture2D" uid="uid://br4701p8hqx6s" path="res://pancake_clicker/ling_frame_1.res" id="24_pl65s"]
-[ext_resource type="Texture2D" uid="uid://rycgfy271h5t" path="res://pancake_clicker/ling_frame_2.res" id="25_demwq"]
-[ext_resource type="Texture2D" uid="uid://c86sc3k6s18bi" path="res://pancake_clicker/ling_frame_3.res" id="26_uql61"]
-[ext_resource type="Texture2D" uid="uid://dwsx0yaxpdhix" path="res://pancake_clicker/ling_frame_4.res" id="27_wdust"]
-[ext_resource type="Texture2D" uid="uid://bnqmw1c7qm080" path="res://pancake_clicker/ling_frame_5.res" id="28_2ye5r"]
+[ext_resource type="PackedScene" uid="uid://ctgbpgvbb8aqo" path="res://pancake_clicker/shop_items/butter_shop_item.res" id="23_gkrte"]
+[ext_resource type="PackedScene" uid="uid://ca8p8qii8w03a" path="res://pancake_clicker/shop_items/pancake_layer_shop_item.res" id="24_3pmd8"]
+[ext_resource type="Texture2D" uid="uid://crb2wdj4kdpoi" path="res://pancake_clicker/layered_pancake/pancake1.atlastex" id="25_odieh"]
+[ext_resource type="Texture2D" uid="uid://cotkjkk1tk1xd" path="res://pancake_clicker/layered_pancake/pancake2.atlastex" id="26_5qef0"]
+[ext_resource type="Texture2D" uid="uid://j7u4iuvjlwwj" path="res://pancake_clicker/layered_pancake/pancake3.atlastex" id="27_xt8ux"]
+[ext_resource type="Texture2D" uid="uid://c3p3imtjbd2vj" path="res://pancake_clicker/layered_pancake/pancake4.atlastex" id="28_1bsnl"]
+[ext_resource type="Texture2D" uid="uid://bq5a4hq1hnubp" path="res://pancake_clicker/layered_pancake/pancake6.atlastex" id="28_u3gf7"]
+[ext_resource type="Texture2D" uid="uid://wtch388bkits" path="res://pancake_clicker/layered_pancake/pancake5.atlastex" id="29_u3gf7"]
+[ext_resource type="Texture2D" uid="uid://botjvibp8efcr" path="res://pancake_clicker/layered_pancake/syrup6.atlastex" id="30_ae0do"]
+[ext_resource type="PackedScene" uid="uid://bmql0bobngawa" path="res://pancake_clicker/shop_items/hazelnut_shop_item.res" id="30_kwtr8"]
+[ext_resource type="Texture2D" uid="uid://dswr8b6vhs14w" path="res://pancake_clicker/layered_pancake/syrup1.atlastex" id="31_1bsnl"]
+[ext_resource type="Texture2D" uid="uid://y2rn58tekmmh" path="res://pancake_clicker/layered_pancake/syrup_light1.atlastex" id="31_ns18c"]
+[ext_resource type="PackedScene" uid="uid://c3y6vvuvphyc2" path="res://pancake_clicker/shop_items/cacao_bob_shop_item.res" id="31_tkjt1"]
+[ext_resource type="Texture2D" uid="uid://dtrnsp7rsyark" path="res://pancake_clicker/layered_pancake/butter_top.atlastex" id="32_8phvi"]
+[ext_resource type="Texture2D" uid="uid://c648r8yugo7oh" path="res://pancake_clicker/layered_pancake/syrup2.atlastex" id="32_e70g8"]
+[ext_resource type="Texture2D" uid="uid://qp0lfgs3yja1" path="res://pancake_clicker/layered_pancake/butter.atlastex" id="32_ykhli"]
+[ext_resource type="Texture2D" uid="uid://bgxjdbne873kc" path="res://pancake_clicker/layered_pancake/syrup3.atlastex" id="33_kvbg3"]
+[ext_resource type="Texture2D" uid="uid://chotl5iv5bhq1" path="res://pancake_clicker/layered_pancake/syrup4.atlastex" id="34_mlynl"]
+[ext_resource type="Texture2D" uid="uid://dpv0i0k5luf1k" path="res://pancake_clicker/layered_pancake/syrup5.atlastex" id="35_wsxfk"]
+[ext_resource type="Texture2D" uid="uid://d2wee0kc54a50" path="res://pancake_clicker/layered_pancake/syrup_light2.atlastex" id="38_683df"]
+[ext_resource type="Texture2D" uid="uid://bphtnp87wxljn" path="res://pancake_clicker/layered_pancake/syrup_light3.atlastex" id="39_mulr5"]
+[ext_resource type="Texture2D" uid="uid://d3k14xpv8mlgg" path="res://pancake_clicker/layered_pancake/syrup_light4.atlastex" id="40_2pldd"]
+[ext_resource type="Texture2D" uid="uid://ddjdr2l167nyt" path="res://pancake_clicker/layered_pancake/syrup_light5.atlastex" id="41_p55uh"]
+[ext_resource type="Texture2D" uid="uid://tmwl7ns2joy7" path="res://pancake_clicker/layered_pancake/syrup_light6.atlastex" id="42_gkrte"]
+[ext_resource type="Texture2D" uid="uid://bg5i1615jceyd" path="res://pancake_clicker/layered_pancake/butter_shadow.atlastex" id="60_usvc6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nt7dl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m3lb3"]
+font_size = 12
+
+[sub_resource type="GDScript" id="GDScript_nt7dl"]
+resource_name = "BurnerCountShow"
+script/source = "extends Label
+
+func _ready() -> void:
+	update()
+	PancakeClickerGlobalController.item_buyed.connect(func (_item_id):
+		update()
+	)
+
+
+func update():
+	if PancakeClickerGlobalController.shop_items.has(\"burner\"):
+		text = \"x\"+PancakeClickerGlobalController.format_big_number(int(PancakeClickerGlobalController.shop_items[\"burner\"]))
+	else:
+		text = \"x1\"
+"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_14ttt"]
 
@@ -53,14 +115,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CenterContainer/Pancake:custom_minimum_size")
+tracks/0/path = NodePath("CenterContainer/LayeredPancake:custom_minimum_size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(258, 258)]
+"values": [Vector2(136, 134)]
 }
 
 [sub_resource type="Animation" id="Animation_q4750"]
@@ -69,14 +131,14 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CenterContainer/Pancake:custom_minimum_size")
+tracks/0/path = NodePath("CenterContainer/LayeredPancake:custom_minimum_size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0333333, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(258, 258), Vector2(230, 230), Vector2(258, 258)]
+"values": [Vector2(136, 134), Vector2(136, 126), Vector2(136, 134)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rkakh"]
@@ -96,34 +158,23 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="Animation" id="Animation_05ld0"]
-resource_name = "idle"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("24_pl65s"), ExtResource("25_demwq"), ExtResource("26_uql61"), ExtResource("27_wdust"), ExtResource("28_2ye5r")]
-}
+[sub_resource type="Shader" id="Shader_ykhli"]
+code = "shader_type canvas_item;
+render_mode blend_mul;
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_demwq"]
-_data = {
-&"idle": SubResource("Animation_05ld0")
+void fragment() {
+	COLOR = COLOR + vec4(1) - texture(TEXTURE, UV);
 }
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8phvi"]
+shader = SubResource("Shader_ykhli")
 
 [node name="PancakesClickerWindow" type="Window"]
 auto_translate_mode = 1
 disable_3d = true
 transparent_bg = true
 title = "SETTINGS"
-position = Vector2i(26, 0)
 size = Vector2i(1000, 680)
 mouse_passthrough_polygon = PackedVector2Array(300, 0, 700, 0, 700, 67, 1000, 67, 1000, 627, 700, 627, 700, 680, 300, 680, 300, 627, 0, 628, 0, 36, 300, 36)
 unresizable = true
@@ -159,6 +210,192 @@ theme_override_constants/separation = -4
 [node name="Panel" type="Panel" parent="RightPanel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="TopBG" type="TextureRect" parent="RightPanel/HBoxContainer/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 4.0
+offset_top = 12.0
+offset_right = 292.0
+offset_bottom = 172.0
+texture = ExtResource("3_nt7dl")
+
+[node name="BurnersCount" type="Label" parent="RightPanel/HBoxContainer/Panel/TopBG"]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 119.0
+offset_right = 260.0
+offset_bottom = 131.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nt7dl")
+text = "x1"
+label_settings = SubResource("LabelSettings_m3lb3")
+script = SubResource("GDScript_nt7dl")
+
+[node name="NoAdditionalIngredient" type="Button" parent="RightPanel/HBoxContainer/Panel/TopBG"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 28.0
+offset_right = 178.0
+offset_bottom = 62.0
+scale = Vector2(1.00476, 1)
+theme_type_variation = &"IconButton"
+theme_override_colors/icon_disabled_color = Color(0.796078, 0.972549, 0.823529, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.667969, 0.667969, 0.667969, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.745098, 0.996078, 1)
+theme_override_colors/icon_normal_color = Color(1, 0.744088, 0.99461, 1)
+icon = ExtResource("4_5us08")
+expand_icon = true
+script = ExtResource("5_71nsd")
+
+[node name="HazelnutAdditionalIngredient" type="Button" parent="RightPanel/HBoxContainer/Panel/TopBG"]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 18.0
+offset_right = 224.0
+offset_bottom = 52.0
+scale = Vector2(1.00476, 1)
+theme_type_variation = &"IconButton"
+theme_override_colors/icon_disabled_color = Color(0.796078, 0.972549, 0.823529, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.667969, 0.667969, 0.667969, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.745098, 0.996078, 1)
+theme_override_colors/icon_normal_color = Color(1, 0.744088, 0.99461, 1)
+icon = ExtResource("6_0gwvg")
+expand_icon = true
+script = ExtResource("5_71nsd")
+pancake_type = 1
+
+[node name="ChocolateAdditionalIngredient" type="Button" parent="RightPanel/HBoxContainer/Panel/TopBG"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 18.0
+offset_right = 248.0
+offset_bottom = 52.0
+scale = Vector2(1.00476, 1)
+theme_type_variation = &"IconButton"
+theme_override_colors/icon_disabled_color = Color(0.796078, 0.972549, 0.823529, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.667969, 0.667969, 0.667969, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.745098, 0.996078, 1)
+theme_override_colors/icon_normal_color = Color(1, 0.744088, 0.99461, 1)
+icon = ExtResource("7_q6lm5")
+expand_icon = true
+script = ExtResource("5_71nsd")
+pancake_type = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RightPanel/HBoxContainer/Panel/TopBG"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 56.0
+offset_right = 186.0
+offset_bottom = 120.0
+theme_override_constants/separation = 2
+
+[node name="TextureRect" type="Button" parent="RightPanel/HBoxContainer/Panel/TopBG/HBoxContainer"]
+custom_minimum_size = Vector2(20, 64)
+layout_mode = 2
+theme_type_variation = &"IconButton"
+theme_override_colors/icon_disabled_color = Color(0.858151, 1, 0.806729, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.813695, 0.813695, 0.914063, 1)
+theme_override_colors/icon_focus_color = Color(0.890196, 0.890196, 1, 1)
+theme_override_colors/icon_normal_color = Color(0.891465, 0.891929, 1, 1)
+icon = ExtResource("4_683df")
+expand_icon = true
+script = ExtResource("5_2pldd")
+
+[node name="TextureRect2" type="Button" parent="RightPanel/HBoxContainer/Panel/TopBG/HBoxContainer"]
+custom_minimum_size = Vector2(20, 64)
+layout_mode = 2
+theme_type_variation = &"IconButton"
+theme_override_colors/icon_disabled_color = Color(0.858151, 1, 0.806729, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.813695, 0.813695, 0.914063, 1)
+theme_override_colors/icon_focus_color = Color(0.890196, 0.890196, 1, 1)
+theme_override_colors/icon_normal_color = Color(0.891465, 0.891929, 1, 1)
+icon = ExtResource("5_mulr5")
+expand_icon = true
+script = ExtResource("5_2pldd")
+syrup_type = 1
+
+[node name="TextureRect3" type="Button" parent="RightPanel/HBoxContainer/Panel/TopBG/HBoxContainer"]
+custom_minimum_size = Vector2(20, 64)
+layout_mode = 2
+theme_type_variation = &"IconButton"
+theme_override_colors/icon_disabled_color = Color(0.858151, 1, 0.806729, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.813695, 0.813695, 0.914063, 1)
+theme_override_colors/icon_focus_color = Color(0.890196, 0.890196, 1, 1)
+theme_override_colors/icon_normal_color = Color(0.891465, 0.891929, 1, 1)
+icon = ExtResource("6_2pldd")
+expand_icon = true
+script = ExtResource("5_2pldd")
+syrup_type = 2
+
+[node name="TextureRect4" type="Button" parent="RightPanel/HBoxContainer/Panel/TopBG/HBoxContainer"]
+custom_minimum_size = Vector2(20, 64)
+layout_mode = 2
+theme_type_variation = &"IconButton"
+theme_override_colors/icon_disabled_color = Color(0.858151, 1, 0.806729, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.813695, 0.813695, 0.914063, 1)
+theme_override_colors/icon_focus_color = Color(0.890196, 0.890196, 1, 1)
+theme_override_colors/icon_normal_color = Color(0.891465, 0.891929, 1, 1)
+icon = ExtResource("7_p55uh")
+expand_icon = true
+script = ExtResource("5_2pldd")
+syrup_type = 3
+
+[node name="TextureRect5" type="Button" parent="RightPanel/HBoxContainer/Panel/TopBG/HBoxContainer"]
+custom_minimum_size = Vector2(20, 64)
+layout_mode = 2
+theme_type_variation = &"IconButton"
+theme_override_colors/icon_disabled_color = Color(0.858151, 1, 0.806729, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.813695, 0.813695, 0.914063, 1)
+theme_override_colors/icon_focus_color = Color(0.890196, 0.890196, 1, 1)
+theme_override_colors/icon_normal_color = Color(0.891465, 0.891929, 1, 1)
+icon = ExtResource("8_gkrte")
+expand_icon = true
+script = ExtResource("5_2pldd")
+syrup_type = 4
+
+[node name="TextureRect6" type="Button" parent="RightPanel/HBoxContainer/Panel/TopBG/HBoxContainer"]
+custom_minimum_size = Vector2(20, 64)
+layout_mode = 2
+theme_type_variation = &"IconButton"
+theme_override_colors/icon_disabled_color = Color(0.858151, 1, 0.806729, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.813695, 0.813695, 0.914063, 1)
+theme_override_colors/icon_focus_color = Color(0.890196, 0.890196, 1, 1)
+theme_override_colors/icon_normal_color = Color(0.891465, 0.891929, 1, 1)
+icon = ExtResource("9_3pmd8")
+expand_icon = true
+script = ExtResource("5_2pldd")
+syrup_type = 5
+
+[node name="ButterDish" type="TextureRect" parent="RightPanel/HBoxContainer/Panel/TopBG"]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 108.0
+offset_right = 196.0
+offset_bottom = 132.0
+texture = ExtResource("11_2pldd")
+script = ExtResource("12_p55uh")
+
+[node name="Light" type="TextureRect" parent="RightPanel/HBoxContainer/Panel/TopBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("13_br1jh")
 
 [node name="Grabber" type="MarginContainer" parent="RightPanel/HBoxContainer"]
 layout_mode = 2
@@ -250,10 +487,65 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("5_dal33")
 
-[node name="FryingPanShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer" instance=ExtResource("6_dal33")]
+[node name="FiltersAndSortingContainer" type="HBoxContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer"]
+visible = false
 layout_mode = 2
 
-[node name="BetterPancakeFormulaShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer" instance=ExtResource("7_o2ypj")]
+[node name="TextEdit" type="TextEdit" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/FiltersAndSortingContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "SEARCH"
+
+[node name="Button" type="Button" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/FiltersAndSortingContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "🔎"
+
+[node name="HSeparator" type="HSeparator" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer"]
+visible = false
+layout_mode = 2
+
+[node name="ItemsContainer" type="VBoxContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer"]
+layout_mode = 2
+
+[node name="BurnerShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("6_uql61")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+
+[node name="SyrupMapleShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("7_gr6p0")]
+layout_mode = 2
+
+[node name="SyrupStrawberryShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("8_u3gf7")]
+layout_mode = 2
+
+[node name="SyrupChocolateShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("9_ae0do")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+
+[node name="SyrupCaramelShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("10_ns18c")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+
+[node name="SyrupAppleShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("11_ykhli")]
+layout_mode = 2
+
+[node name="SyrupBlueberriesShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("12_8phvi")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+
+[node name="ButterShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("23_gkrte")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+
+[node name="PancakeShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("24_3pmd8")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+
+[node name="HazelnutShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("30_kwtr8")]
+layout_mode = 2
+
+[node name="CacaoBobShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("31_tkjt1")]
 layout_mode = 2
 
 [node name="SELL" type="MarginContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer"]
@@ -653,7 +945,7 @@ icon = ExtResource("8_iaa12")
 flat = true
 expand_icon = true
 
-[node name="Content" type="Panel" parent="ClickerWindow/VBoxContainer" node_paths=PackedStringArray("window", "pancake_animator", "pancakes_count_label", "yellis_count_label", "left_panel", "left_panel_grabber", "right_panel", "right_panel_grabber")]
+[node name="Content" type="Panel" parent="ClickerWindow/VBoxContainer" node_paths=PackedStringArray("window", "pancake_animator", "pancake", "syrup_base", "syrup_light", "butter", "pancakes_count_label", "yellis_count_label", "left_panel", "left_panel_grabber", "right_panel", "right_panel_grabber")]
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -661,8 +953,18 @@ script = ExtResource("9_t85sw")
 window = NodePath("../../..")
 pancake_animator = NodePath("MarginContainer/HBoxContainer/ClickerMargin/PancakeAnimator")
 pancake_add_template_label = ExtResource("10_lcrlj")
+pancake = NodePath("MarginContainer/HBoxContainer/ClickerMargin/CenterContainer/LayeredPancake")
+syrup_base = NodePath("MarginContainer/HBoxContainer/ClickerMargin/CenterContainer/LayeredPancake/Syrup")
+syrup_light = NodePath("MarginContainer/HBoxContainer/ClickerMargin/CenterContainer/LayeredPancake/Syrup/SyrupLight")
+butter = NodePath("MarginContainer/HBoxContainer/ClickerMargin/CenterContainer/LayeredPancake/Butter")
 pancakes_count_label = NodePath("../Topbar/MarginContainer/HBoxContainer/Pancakes/PanelContainer/Label")
 yellis_count_label = NodePath("../Topbar/MarginContainer/HBoxContainer/Yelli/PanelContainer/HBoxContainer/Label")
+pancake_offsets = Array[int]([20, 16, 12, 8, 4, 0])
+pancake_colors = Array[Color]([Color(1, 1, 1, 1), Color(1, 0.946338, 0.700872, 1), Color(1, 0.70183, 0.405018, 1)])
+pancake_layers = Array[Texture2D]([ExtResource("25_odieh"), ExtResource("26_5qef0"), ExtResource("27_xt8ux"), ExtResource("28_1bsnl"), ExtResource("29_u3gf7"), ExtResource("28_u3gf7")])
+syrup_layers = Array[Texture2D]([ExtResource("31_1bsnl"), ExtResource("32_e70g8"), ExtResource("33_kvbg3"), ExtResource("34_mlynl"), ExtResource("35_wsxfk"), ExtResource("30_ae0do")])
+syrup_light_layers = Array[Texture2D]([ExtResource("31_ns18c"), ExtResource("38_683df"), ExtResource("39_mulr5"), ExtResource("40_2pldd"), ExtResource("41_p55uh"), ExtResource("42_gkrte")])
+syrup_colors = Array[Color]([Color(1, 0.847059, 0, 1), Color(1, 0.847059, 0, 0.698039), Color(1, 0.396078, 0, 1), Color(1, 0.4, 0, 0.698039), Color(0.603922, 0.380392, 0, 1), Color(0.5625, 0.351136, 0, 0.698039), Color(1, 1, 0, 1), Color(1, 1, 0, 0.698039), Color(0.768627, 1, 0.564706, 1), Color(0.780392, 1, 0.780392, 0.698039), Color(0.443137, 0.647059, 1, 1), Color(0.529412, 0.580392, 1, 0.698039)])
 left_panel = NodePath("../../../LeftPanel")
 left_panel_grabber = NodePath("../../../LeftPanel/HBoxContainer/Grabber")
 right_panel = NodePath("../../../RightPanel")
@@ -683,17 +985,6 @@ theme_override_constants/margin_bottom = 4
 [node name="HBoxContainer" type="HBoxContainer" parent="ClickerWindow/VBoxContainer/Content/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
-
-[node name="UpgradesListMargin" type="MarginContainer" parent="ClickerWindow/VBoxContainer/Content/MarginContainer/HBoxContainer"]
-visible = false
-clip_contents = true
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-
-[node name="VSeparator" type="VSeparator" parent="ClickerWindow/VBoxContainer/Content/MarginContainer/HBoxContainer"]
-visible = false
-layout_mode = 2
-theme_override_styles/separator = ExtResource("11_82yeu")
 
 [node name="ClickerMargin" type="Control" parent="ClickerWindow/VBoxContainer/Content/MarginContainer/HBoxContainer"]
 clip_contents = true
@@ -747,6 +1038,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Pancake" type="Button" parent="ClickerWindow/VBoxContainer/Content/MarginContainer/HBoxContainer/ClickerMargin/CenterContainer"]
+visible = false
 material = ExtResource("13_ay4v1")
 custom_minimum_size = Vector2(258, 258)
 layout_mode = 2
@@ -759,20 +1051,100 @@ icon = ExtResource("14_np8ea")
 icon_alignment = 1
 expand_icon = true
 
-[node name="TextureRect" type="TextureRect" parent="ClickerWindow/VBoxContainer/Content"]
-layout_mode = 0
-offset_left = 310.0
-offset_top = 37.0
-offset_right = 350.0
-offset_bottom = 101.0
-texture = ExtResource("24_pl65s")
-flip_h = true
+[node name="LayeredPancake" type="Button" parent="ClickerWindow/VBoxContainer/Content/MarginContainer/HBoxContainer/ClickerMargin/CenterContainer"]
+custom_minimum_size = Vector2(136, 134)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+icon = ExtResource("28_u3gf7")
+icon_alignment = 1
+expand_icon = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ClickerWindow/VBoxContainer/Content/TextureRect"]
-reset_on_save = false
-libraries = {
-&"": SubResource("AnimationLibrary_demwq")
-}
+[node name="Butter" type="Button" parent="ClickerWindow/VBoxContainer/Content/MarginContainer/HBoxContainer/ClickerMargin/CenterContainer/LayeredPancake"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+icon = ExtResource("32_ykhli")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ButterTop" type="Button" parent="ClickerWindow/VBoxContainer/Content/MarginContainer/HBoxContainer/ClickerMargin/CenterContainer/LayeredPancake/Butter"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+icon = ExtResource("32_8phvi")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ButterShadow" type="Button" parent="ClickerWindow/VBoxContainer/Content/MarginContainer/HBoxContainer/ClickerMargin/CenterContainer/LayeredPancake/Butter"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+icon = ExtResource("60_usvc6")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Syrup" type="Button" parent="ClickerWindow/VBoxContainer/Content/MarginContainer/HBoxContainer/ClickerMargin/CenterContainer/LayeredPancake"]
+self_modulate = Color(1, 0.819608, 0, 1)
+material = SubResource("ShaderMaterial_8phvi")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+icon = ExtResource("30_ae0do")
+icon_alignment = 1
+expand_icon = true
+
+[node name="SyrupLight" type="Button" parent="ClickerWindow/VBoxContainer/Content/MarginContainer/HBoxContainer/ClickerMargin/CenterContainer/LayeredPancake/Syrup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+icon = ExtResource("42_gkrte")
+icon_alignment = 1
+expand_icon = true
 
 [connection signal="gui_input" from="ClickerWindow/VBoxContainer/Topbar" to="." method="_on_topbar_gui_input"]
 [connection signal="pressed" from="ClickerWindow/VBoxContainer/Topbar/MarginContainer/HBoxContainer/CloseButtonContainer/CloseButton" to="." method="_on_close_button_pressed"]

@@ -44,6 +44,8 @@ func _ready() -> void: # applying saved parameters
 	click_count_label.text = str(GlobalControlls.clicks)
 	update_facepick()
 
+	
+
 func _process(_delta: float) -> void: # show again if niko minimized(hidden)
 	if main_window.mode == Window.MODE_MINIMIZED:
 		main_window.mode = Window.MODE_WINDOWED

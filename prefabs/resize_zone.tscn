@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://jf3fe5rn6ijb"]
+[gd_scene load_steps=4 format=3 uid="uid://jf3fe5rn6ijb"]
 
 [ext_resource type="Script" uid="uid://dupfag105mf6t" path="res://scripts/window_resize_controller.gd" id="1_3vdsj"]
+[ext_resource type="Theme" uid="uid://cxsdp1anrqw7m" path="res://themes/twm_theme/twm_theme.tres" id="2_gvt2p"]
+[ext_resource type="Texture2D" uid="uid://j2lw1hsnhwk" path="res://ui_sprites/resize_hint.tres" id="2_m1nqu"]
 
 [node name="ResizeZone" type="Control"]
 layout_mode = 3
@@ -96,3 +98,21 @@ offset_right = 8.0
 offset_bottom = -8.0
 grow_vertical = 2
 mouse_default_cursor_shape = 10
+
+[node name="ResizeHint" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme = ExtResource("2_gvt2p")
+theme_type_variation = &"IconButton"
+icon = ExtResource("2_m1nqu")
+expand_icon = true

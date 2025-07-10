@@ -11,6 +11,7 @@ func update_colors():
 	set_color("font_color", "Label", GlobalControlls.global_color_palette.colors[0])
 	# Button
 	set_color("font_color", "Button", GlobalControlls.global_color_palette.colors[0])
+	set_color("font_disabled_color", "Button", GlobalControlls.global_color_palette.colors[4])
 	set_color("font_focus_color", "Button", GlobalControlls.global_color_palette.colors[0])
 	set_color("font_hover_color", "Button", GlobalControlls.global_color_palette.colors[1])
 	set_color("font_hover_pressed_color", "Button", GlobalControlls.global_color_palette.colors[0])

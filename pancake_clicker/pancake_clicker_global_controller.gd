@@ -8,9 +8,19 @@ var shop_items = {}
 
 @warning_ignore("unused_signal")
 signal labels_update()
+@warning_ignore("unused_signal")
+signal item_buyed(item_id)
+@warning_ignore("unused_signal")
+signal pancake_update()
+signal update_items_buyed_count()
 
 var pancakes : int = 0
 var yelli : float = 0
+var selected_syrup : int = 0
+var pancake_layers : int = 0
+var pancake_type : int = 0
+var has_syrup = false
+var has_butter = false
 
 var seller_cost_1 : float = 0
 var seller_cost_2 : float = 0
@@ -31,10 +41,14 @@ func _ready() -> void:
 	pancakes_add = pancakes_save_file.get_value("Values", "PancakesAdd", 0)
 	yelli_multiplier = pancakes_save_file.get_value("Values", "YelliMultiplier", 1)
 	yelli_add = pancakes_save_file.get_value("Values", "YelliAdd", 0)
+	selected_syrup = pancakes_save_file.get_value("Values", "Syrup", 0)
 	
-	for shop_item_id in pancakes_save_file.get_section_keys("ShopItems"):
-		pass
-		
+	if pancakes_save_file.has_section("ShopItems"):
+		for shop_item_id in pancakes_save_file.get_section_keys("ShopItems"):
+			var value = pancakes_save_file.get_value("ShopItems", shop_item_id)
+			shop_items[shop_item_id] = value
+	update_items_buyed_count.emit()
+	
 	labels_update.emit()
 
 
@@ -45,13 +59,14 @@ func save():
 	pancakes_save_file.set_value("Values", "PancakesAdd", pancakes_add)
 	pancakes_save_file.set_value("Values", "YelliMultiplier", yelli_multiplier)
 	pancakes_save_file.set_value("Values", "YelliAdd", yelli_add)
+	pancakes_save_file.set_value("Values", "Syrup", selected_syrup)
 	var shop_items_names = shop_items.keys()
 	for i in range(len(shop_items)):
 		pancakes_save_file.set_value("ShopItems", shop_items_names[i], shop_items[shop_items_names[i]])
 	pancakes_save_file.save(SAVE_FILE_PATH)
 
 
-func format_big_number(number : float) -> String:
+func format_big_number(number) -> String:
 	if number >= 1000:
 		number = roundi(number)
 		var degree = floor(log10(number) + 0.01)

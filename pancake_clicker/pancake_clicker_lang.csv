@@ -3,8 +3,18 @@ PANCAKECLICKER,Pancake Clicker,Pancake Clicker
 SHOP,Shop,Магазин
 COST,Cost: ,Стоимость: 
 BUY,Buy,Купить
+BUYED,Buyed!,Куплено!
 SELL,Sell,Продажа
 SELL_BUTTON,Sell,Продать
 ALL,All,Всё
 NEW_FRY_PAN,New frying pan, Новая сковорода
-PANCAKE_FORMULA,New pancake formula,Новая формула блинов
+BURNER,Burner,Конфорка
+SYRUP_MAPLE,Maple syrup,Кленовый сироп
+SYRUP_STRAWBERRY,Strawberry syrup,Клубничный сироп
+SYRUP_CARAMEL,Caramel syrup,Карамельный сироп
+SYRUP_APPLE,Apple syrup,Яблочный сироп
+SYRUP_CHOCOLATE,Chocolate syrup,Шоколадный сироп
+SYRUP_BLUEBERRIES,Blueberry syrup,Черничный сироп
+BUTTER,Butter,Масло
+NEW_PANCAKE_LAYER,New layer,Новый слой
+BURNER_DESC,A new burner for pancakes!\nAnd don't forget to buy some dishes!,Новая конфорка для готовки блинов!\nИ не забудьте докупить посуды!

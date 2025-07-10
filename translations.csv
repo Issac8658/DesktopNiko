@@ -2,8 +2,9 @@
 LANGUAGE,Language: ,Язык: 
 SETTINGS,Settings,Настройки
 GAMING_MODE,Gaming mode,Игровой режим
-GAMING_MODE_N,Gaming mode(not full work),Игровой режим(не закончен)
+GAMING_MODE_N,Gaming mode(doesn't fully work),Игровой режим(не закончен)
 PEACEFUL_MODE,"""Peaceful""" mode,"""Мирный""" режим
+SHOW_SAVING_ICON,Saving icon,Значок сохранения
 FACEPICK_DEFAULT,Default,Обычный
 FACEPICK_SPEAK,Speak,Мяуканье
 FACEPICK_SCARED,Scared,Напуган
@@ -25,11 +26,13 @@ MEOW2,Meow 2,Мяу 2
 MEOW3,Meow 3,Мяу 3
 MEOW4,Meow 4,Мяу 4
 MEOW5,Meow 5,Мяу 5
+OMORI_MEOW,OMORI meow,Мяу из OMORI
 RESET_POS,Reset position,Сбросить положение
 SHORTCUTS,Shortcuts,Ярлыки
 THEMES,Themes,Темы
 JUKEBOX,Jukebox,Музыкальная шкатулка
 PEACEFUL_MODE_HINT,"Niko doesn't get scared when clicks are too fast",Нико не пугается при слишком быстрых кликах
+SAVING_ICON_HINT,"Show save icon, the same as in OneShot WME. Saving takes place every three minutes.","Показывать значок сохранения, такой же как в OneShot WME. Сохранение происходит раз в три минуты."
 SHUTDOWN_QUEST,"Do you really want to shut down The World Machine?","Вы действительно хотите завершить работу Мировой Машины?"
 YES,Yes,Да
 NO,No,Нет
@@ -45,3 +48,6 @@ GREEN,Green,Зелёная
 RAINBOW,Rainbow,Радужная
 CLICK_SOUND,Click sound,Звук клика
 CONSOLE,Console,Консоль
+ADD_TO_AUTO_RUN,Add to autorun,Добавить в автозагрузку
+REMOVE_FROM_AUTO_RUN,Remove from autoru,Удалить из автозагрузки
+WINDOWS_ONLY,Autorun only for Windows,Автозагрузка только для Windows

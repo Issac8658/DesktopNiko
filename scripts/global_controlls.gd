@@ -23,6 +23,7 @@ var is_mouse_sound_enabled = true
 var is_shutdown_popup_shown = false
 var is_exit_button_hovered = false
 var peaceful_mode = false
+var show_saving_icon = true
 var is_niko_hovered = false
 
 var config_file = ConfigFile.new()
@@ -47,6 +48,7 @@ func _ready() -> void: # loading all parameters
 	
 	global_color_palette_id = config_file.get_value("Settings", "Theme", 0)
 	is_mouse_sound_enabled = config_file.get_value("Settings", "ClickSound", true)
+	show_saving_icon = config_file.get_value("Settings", "SavingIcon", true)
 	
 	DisplayServer.window_set_position(config_file.get_value("Main", "NikoPosition", get_default_pos()), DisplayServer.MAIN_WINDOW_ID)
 	
@@ -62,6 +64,7 @@ func _ready() -> void: # loading all parameters
 					false: child.process_mode = Node.PROCESS_MODE_DISABLED
 					true: child.process_mode = Node.PROCESS_MODE_INHERIT
 			)
+	print("Hello, Niko!")
 
 
 func _notification(what): # exit request capture
@@ -91,6 +94,7 @@ func save():
 	
 	config_file.set_value("Settings", "Theme", global_color_palette_id)
 	config_file.set_value("Settings", "ClickSound", is_mouse_sound_enabled)
+	config_file.set_value("Settings", "SavingIcon", show_saving_icon)
 	
 	config_file.set_value("Main", "NikoPosition",
 	DisplayServer.window_get_position(DisplayServer.MAIN_WINDOW_ID))
@@ -105,6 +109,7 @@ func save():
 
 func try_quit(): # saving all parameters and exit
 	save()
+	print("Goodbye, Niko!")
 	get_tree().quit()
 
 

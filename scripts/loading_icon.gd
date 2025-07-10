@@ -4,12 +4,14 @@ extends Window
 
 func _ready() -> void:
 	GlobalControlls.saving.connect(func ():
-		position = get_target_position()
-		visible = true
-		animator.play("RESET")
+		if GlobalControlls.show_saving_icon:
+			position = get_target_position()
+			visible = true
+			animator.play("RESET")
 	)
 	GlobalControlls.saved.connect(func ():
-		animator.play("fade_out")
+		if GlobalControlls.show_saving_icon:
+			animator.play("fade_out")
 	)
 	animator.animation_finished.connect(func (anim):
 		if anim == "fade_out":
