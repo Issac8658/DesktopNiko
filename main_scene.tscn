@@ -2161,13 +2161,15 @@ custom_minimum_size = Vector2(132, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 selected = 0
-item_count = 3
+item_count = 4
 popup/item_0/text = "English"
 popup/item_0/id = 0
 popup/item_1/text = "Русский"
 popup/item_1/id = 1
 popup/item_2/text = "Deutsch"
 popup/item_2/id = 2
+popup/item_3/text = "Українська"
+popup/item_3/id = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel"]
 layout_mode = 2

@@ -1,6 +1,6 @@
 extends Node
 
-const locales = ["en-US", "ru-RU", "de-DE"]
+const locales = ["en-US", "ru-RU", "de-DE", "ua-UA"]
 
 @export var gaming_mod_checkbox : CheckBox
 @export var peaceful_check_box : CheckBox
