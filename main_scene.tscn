@@ -1,4 +1,4 @@
-[gd_scene load_steps=158 format=4 uid="uid://cj66sb2a5oolj"]
+[gd_scene load_steps=159 format=4 uid="uid://cj66sb2a5oolj"]
 
 [ext_resource type="Script" uid="uid://b8e5fhar3jgaj" path="res://scripts/niko_controls.gd" id="1_2c62f"]
 [ext_resource type="AudioStream" uid="uid://5tnvrblu5h4j" path="res://niko/niko_meows/meow1.wav" id="2_ghshe"]
@@ -98,6 +98,7 @@
 [ext_resource type="Texture2D" uid="uid://dnwbeed7hrv83" path="res://ui_sprites/achievements_test_shit.png" id="92_ixb38"]
 [ext_resource type="Script" uid="uid://dbaokjrp7ef13" path="res://scripts/achievement_show.gd" id="92_l8no8"]
 [ext_resource type="Material" uid="uid://cmlk3yixxx4u4" path="res://shaders/world_machine_glitch_material.tres" id="92_ldlqy"]
+[ext_resource type="StyleBox" uid="uid://denfelpk5qb15" path="res://themes/twm_theme/panel.stylebox" id="99_j53bq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3dpcr"]
 
@@ -1245,9 +1246,6 @@ stream = ExtResource("30_id8vy")
 [node name="ShutdownPopup" parent="." instance=ExtResource("33_id8vy")]
 title = "SHUTDOWN"
 visible = false
-
-[node name="Topbar" parent="ShutdownPopup/Control/WindowContainer" index="0"]
-z_index = 0
 
 [node name="Icon" parent="ShutdownPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
 icon = ExtResource("25_opjno")
@@ -3060,19 +3058,50 @@ icon = ExtResource("10_wr18j")
 script = ExtResource("88_7y85w")
 styled_menu = NodePath("../IndicatorPopup")
 
-[node name="IndicatorPopup" type="PopupMenu" parent="."]
-size = Vector2i(192, 87)
+[node name="IndicatorPopup" type="Window" parent="." node_paths=PackedStringArray("gaming_mode_checkbox", "reset_pos_button", "shutdown_button")]
+size = Vector2i(240, 120)
+visible = false
+transient = true
+transient_to_focused = true
+unresizable = true
+borderless = true
+popup_window = true
 theme = ExtResource("7_nfk4m")
-allow_search = false
-item_count = 3
-item_0/text = "SHUTDOWN"
-item_0/id = 0
-item_1/text = "RESET_POS"
-item_1/id = 1
-item_2/text = "GAMING_MODE"
-item_2/checkable = 1
-item_2/id = 2
 script = ExtResource("11_qwutr")
+gaming_mode_checkbox = NodePath("Panel/MarginContainer/VBoxContainer/GamingMode")
+reset_pos_button = NodePath("Panel/MarginContainer/VBoxContainer/ResetPos")
+shutdown_button = NodePath("Panel/MarginContainer/VBoxContainer/Shutdown")
+
+[node name="Panel" type="PanelContainer" parent="IndicatorPopup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("99_j53bq")
+
+[node name="MarginContainer" type="MarginContainer" parent="IndicatorPopup/Panel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="IndicatorPopup/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="GamingMode" type="CheckBox" parent="IndicatorPopup/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "GAMING_MODE"
+
+[node name="StateIcon" parent="IndicatorPopup/Panel/MarginContainer/VBoxContainer/GamingMode" instance=ExtResource("42_sp30j")]
+layout_mode = 1
+
+[node name="ResetPos" type="Button" parent="IndicatorPopup/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "RESET_POS"
+alignment = 0
+
+[node name="Shutdown" type="Button" parent="IndicatorPopup/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SHUTDOWN"
+alignment = 0
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -3092,7 +3121,6 @@ ignore_time_scale = true
 [connection signal="item_selected" from="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer/Scare/OptionButton" to="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" method="_on_scare_item_selected"]
 [connection signal="item_selected" from="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer/ScareSpeak/OptionButton" to="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" method="_on_scare_speak_item_selected"]
 [connection signal="item_selected" from="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SoundSelectionContainer/MeowSoundSelectionOptionButton" to="." method="_on_meow_sound_selected"]
-[connection signal="id_pressed" from="IndicatorPopup" to="IndicatorPopup" method="_on_id_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_tick"]
 
 [editable path="ShortcutsWindow"]

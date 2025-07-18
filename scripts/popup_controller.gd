@@ -5,6 +5,7 @@ extends "res://scripts/window_controller.gd"
 @export var Sounds : Array[AudioStream]
 
 func _ready() -> void:
+	super()
 	about_to_popup.connect(func ():
 		PopupStreamPlayer.stream = Sounds[randi_range(0, len(Sounds)-1)]
 		PopupStreamPlayer.play()

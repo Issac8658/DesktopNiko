@@ -50,10 +50,11 @@ func _ready() -> void: # loading all parameters
 		sleep_time = config_file.get_value("Main", "SleepTime", 900)
 	
 	language = config_file.get_value("Settings", "Language", 0)
-	idle_facepick = str(config_file.get_value("Settings", "IdleFacepick", "niko_smile"))
-	speak_facepick = str(config_file.get_value("Settings", "SpeakFacepick", "niko_speak"))
-	scare_facepick = str(config_file.get_value("Settings", "ScareFacepick", "niko_shock"))
-	scare_speak_facepick = str(config_file.get_value("Settings", "ScareSpeakFacepick", "niko_surprised"))
+	if not config_file.get_value("Settings", "IdleFacepick", "niko_smile") is int:
+		idle_facepick = config_file.get_value("Settings", "IdleFacepick", "niko_smile")
+		speak_facepick = config_file.get_value("Settings", "SpeakFacepick", "niko_speak")
+		scare_facepick = config_file.get_value("Settings", "ScareFacepick", "niko_shock")
+		scare_speak_facepick = config_file.get_value("Settings", "ScareSpeakFacepick", "niko_surprised")
 	
 	global_color_palette_id = config_file.get_value("Settings", "Theme", 0)
 	is_mouse_sound_enabled = config_file.get_value("Settings", "ClickSound", true)

@@ -11,6 +11,8 @@ var achievements_buffer : Array[String] = []
 var buffer_playing = false
 
 func _ready() -> void:
+	if not OS.get_name() == "Windows":
+		image_rect.visible = false
 	update_pos()
 	animator.play("RESET")
 	animator.animation_finished.connect(func (anim):
@@ -27,7 +29,6 @@ func _ready() -> void:
 func _process(_delta) -> void:
 	if visible and image_rect.is_visible_in_tree():
 		image_rect.texture = ImageTexture.create_from_image(DisplayServer.screen_get_image_rect(Rect2i(position,size)))
-
 func start_buffer_play():
 	if len(achievements_buffer) > 0:
 		buffer_playing = true

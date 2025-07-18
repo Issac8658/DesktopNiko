@@ -23,9 +23,6 @@ Sounds = Array[AudioStream]([ExtResource("2_tokai"), ExtResource("4_w1na8"), Ext
 stream = ExtResource("2_tokai")
 volume_db = -10.0
 
-[node name="Topbar" parent="Control/WindowContainer" index="0"]
-mouse_filter = 1
-
 [node name="Title" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
 text = "Popup Window"
 

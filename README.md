@@ -4,6 +4,7 @@ The Steam version of the 2024 "The World Machine Edition" was used as the basis,
 
 ## Features
 - Meow sound on click (There are currently 6 variants available)
+- Achievements!
 - Clicks and CPS counter
 - Don't click too often! It will scare Niko! (This can be disabled by turning on the "peaceful" mode.)
 - Setting up facepicks for each state (default, speak, scared, scared speak)
