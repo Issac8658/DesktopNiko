@@ -1,0 +1,9 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://c2ecs2kfpewaq"]
+
+[ext_resource type="FontFile" uid="uid://ckcoy708n8osl" path="res://fonts/TerminusTTF-Bold.ttf" id="1_2rg2x"]
+
+[resource]
+base_font = ExtResource("1_2rg2x")
+spacing_space = -2
+spacing_top = -2
+spacing_bottom = -3

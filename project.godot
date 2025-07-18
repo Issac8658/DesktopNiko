@@ -14,7 +14,7 @@ config/name="Desktop Niko"
 config/name_localized={
 "ru": "Нико на твоём экране"
 }
-config/version="1.1.2"
+config/version="1.1.3"
 config/tags=PackedStringArray("niko", "non_com", "one_shot", "software")
 run/main_scene="uid://cj66sb2a5oolj"
 config/use_custom_user_dir=true
@@ -26,15 +26,21 @@ run/low_processor_mode_sleep_usec=13800
 boot_splash/show_image=false
 config/icon="uid://qsweuhlblj1"
 
+[audio]
+
+buses/default_bus_layout="res://meow_sound_bus.tres"
+
 [autoload]
 
 GlobalControlls="*res://scripts/global_controlls.gd"
+NikoSpritesModule="*res://scripts/niko_sprites_module.gd"
+AchievementsGlobalConroller="*res://scripts/achievements_global_conroller.gd"
 PancakeClickerGlobalController="*res://pancake_clicker/pancake_clicker_global_controller.gd"
 
 [display]
 
 window/size/viewport_width=124
-window/size/viewport_height=134
+window/size/viewport_height=152
 window/size/resizable=false
 window/size/borderless=true
 window/size/always_on_top=true
@@ -42,6 +48,12 @@ window/size/transparent=true
 window/energy_saving/keep_screen_on=false
 window/subwindows/embed_subwindows=false
 window/per_pixel_transparency/allowed=true
+
+[gui]
+
+theme/default_font_antialiasing=0
+theme/default_font_hinting=0
+theme/default_font_subpixel_positioning=0
 
 [input]
 
@@ -59,7 +71,7 @@ mouse_down={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://translations.en.translation", "res://translations.ru.translation", "res://pancake_clicker/pancake_clicker_lang.en.translation", "res://pancake_clicker/pancake_clicker_lang.ru.translation")
+locale/translations=PackedStringArray("res://translations.en.translation", "res://translations.ru.translation", "res://pancake_clicker/pancake_clicker_lang.en.translation", "res://pancake_clicker/pancake_clicker_lang.ru.translation", "res://translations.de.translation")
 
 [physics]
 
@@ -83,3 +95,10 @@ lights_and_shadows/positional_shadow/atlas_quadrant_2_subdiv=0
 lights_and_shadows/positional_shadow/atlas_quadrant_3_subdiv=0
 renderer/positional_shadow/atlas_quadrant_3_subdiv=0
 renderer/positional_shadow/atlas_quadrant_2_subdiv=0
+
+[shader_globals]
+
+wm_overlay_color={
+"type": "color",
+"value": Color(1, 0.6, 1, 1)
+}

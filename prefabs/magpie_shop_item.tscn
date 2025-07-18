@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://clo633qc1pd8w"]
+
+[ext_resource type="Texture2D" uid="uid://c8a2o0ruiwceh" path="res://ui_sprites/place_holder.png" id="1_j06oa"]
+[ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://pancake_clicker/pancake_clicker.png" id="2_33qed"]
+[ext_resource type="Texture2D" uid="uid://bhkcmk72oktdr" path="res://ui_sprites/click.png" id="3_cdfg7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwncm"]
+bg_color = Color(0, 0, 0, 0.392157)
+corner_detail = 1
+
+[node name="MagpieShopItem" type="PanelContainer"]
+custom_minimum_size = Vector2(250, 76)
+theme_override_styles/panel = SubResource("StyleBoxFlat_lwncm")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_right = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+clip_contents = true
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("1_j06oa")
+expand_icon = true
+
+[node name="TextInfo" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer/TextInfo"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Name"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/TextInfo"]
+layout_mode = 2
+
+[node name="ConstContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/TextInfo"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Cost" type="Label" parent="MarginContainer/HBoxContainer/TextInfo/ConstContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "0"
+vertical_alignment = 1
+
+[node name="Yelli" type="Label" parent="MarginContainer/HBoxContainer/TextInfo/ConstContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+text = "¥"
+vertical_alignment = 1
+
+[node name="PancakeIcon" type="Button" parent="MarginContainer/HBoxContainer/TextInfo/ConstContainer"]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("2_33qed")
+expand_icon = true
+
+[node name="ClicksIcon2" type="Button" parent="MarginContainer/HBoxContainer/TextInfo/ConstContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("3_cdfg7")
+expand_icon = true

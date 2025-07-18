@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi5pu8hc54t3d"]
+
+[ext_resource type="Texture2D" uid="uid://widgkfxwlx5" path="res://ui_sprites/achievements/unknown_gray.png" id="1_w05dq"]
+[ext_resource type="FontVariation" uid="uid://c2ecs2kfpewaq" path="res://fonts/TightTerminus.tres" id="2_yrdct"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yrdct"]
+
+[node name="Achievement" type="HBoxContainer"]
+theme_override_constants/separation = 4
+
+[node name="Icon" type="TextureRect" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("1_w05dq")
+
+[node name="TextInfo" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="AchievementName" type="Label" parent="TextInfo"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Achievement text"
+
+[node name="HSeparator" type="HSeparator" parent="TextInfo"]
+layout_mode = 2
+theme_override_constants/separation = 8
+theme_override_styles/separator = SubResource("StyleBoxEmpty_yrdct")
+
+[node name="AchievementDesc" type="Label" parent="TextInfo"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_yrdct")
+theme_override_font_sizes/font_size = 16
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 3

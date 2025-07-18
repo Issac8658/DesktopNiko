@@ -10,6 +10,7 @@ signal check()
 @export var use_pancakes : bool = false
 @export var buy_button : Button
 @export var cost_label : Label
+@export var info_panel : PackedScene
 @export_group("Data")
 @export var item_id : String = "replace_this_string_to_unique"
 @export var buyed_for : int = 0
@@ -32,6 +33,11 @@ func _ready() -> void:
 		update()
 	)
 	update()
+	
+	mouse_entered.connect(func ():
+		if info_panel:
+			PancakeClickerGlobalController.show_info_panel(info_panel)
+	)
 
 
 func update():

@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6x3pchks2f73"]
+
+[ext_resource type="Theme" uid="uid://bll84jclxrjw1" path="res://themes/theme.tres" id="1_cjtxb"]
+[ext_resource type="Script" uid="uid://hmewgd3lbmoo" path="res://scripts/dialog.gd" id="2_lmnfy"]
+[ext_resource type="Texture2D" uid="uid://c8a2o0ruiwceh" path="res://ui_sprites/place_holder.png" id="2_mms0k"]
+[ext_resource type="AudioStream" uid="uid://b6rgfk26heet7" path="res://sounds/text.wav" id="3_ioiif"]
+[ext_resource type="Texture2D" uid="uid://bw465n3hiy0mk" path="res://ui_sprites/ui_shit.png" id="3_lmnfy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cjtxb"]
+bg_color = Color(0.0823529, 0.027451, 0.0823529, 0.701961)
+
+[node name="BaseDialogWindow" type="Window" node_paths=PackedStringArray("stream_player", "timer", "text_label", "rect")]
+auto_translate_mode = 1
+transparent_bg = true
+size = Vector2i(664, 128)
+transient = true
+unresizable = true
+borderless = true
+transparent = true
+theme = ExtResource("1_cjtxb")
+script = ExtResource("2_lmnfy")
+stream_player = NodePath("AudioStreamPlayer")
+timer = NodePath("Timer")
+text_label = NodePath("Content/MarginContainer/HBoxContainer/VBoxContainer/RichTextLabel")
+rect = NodePath("Content/MarginContainer/HBoxContainer/TextureRect")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ioiif")
+volume_db = -15.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Content" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cjtxb")
+
+[node name="MarginContainer" type="MarginContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Content/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Text here [color=red]asg[/color] gege"
+
+[node name="TextureRect" type="TextureRect" parent="Content/MarginContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+texture = ExtResource("2_mms0k")
+
+[node name="Outline" type="NinePatchRect" parent="."]
+texture_filter = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("3_lmnfy")
+region_rect = Rect2(0, 9, 12, 12)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6

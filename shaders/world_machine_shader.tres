@@ -4,8 +4,7 @@
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
-const vec4 overlay_color = vec4(1.0, .6, 1.0, 1.0);
-
+const vec4 overlay_color = vec4(1.0,0.6,1.0,1.0);
 uniform float time_scale;
 
 vec4 black_and_white(vec4 color, float power) {

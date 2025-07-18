@@ -2,6 +2,8 @@
 extends Control
 class_name SellerGraphicDrawer
 
+const syrups_mult : Array[float] = [2, 3, 4, 5, 6, 7]
+
 @export var custom_noise : Noise
 @export var label_min : Label
 @export var label_max : Label
@@ -29,6 +31,8 @@ func _process(delta: float) -> void:
 	if is_visible_in_tree():
 		for i in range(res):
 			var value = (custom_noise.get_noise_1d(pos - i/res*100)/2 + 0.5)
+			if PancakeClickerGlobalController.has_syrup:
+				value *= syrups_mult[PancakeClickerGlobalController.selected_syrup]
 			values[i] = value * (max_cost + PancakeClickerGlobalController.yelli_add) * PancakeClickerGlobalController.yelli_multiplier
 		
 		pos += delta * 75

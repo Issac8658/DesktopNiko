@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cmlk3yixxx4u4"]
+
+[ext_resource type="Shader" uid="uid://h1n3xmu87u2t" path="res://shaders/world_machine_glitch_shader.gdshader" id="1_tr5og"]
+[ext_resource type="Texture2D" uid="uid://dtdcnd128f61b" path="res://ui_sprites/achievement_mask.tres" id="2_2fbwb"]
+
+[resource]
+shader = ExtResource("1_tr5og")
+shader_parameter/mask = ExtResource("2_2fbwb")

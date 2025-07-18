@@ -27,6 +27,7 @@ func check():
 
 func add_to_autorun():
 	var path = OS.get_executable_path()
+	path = '\"\"\"' + path.replace("/", "\\") + '\"\"\"'
 	var succses = OS.execute("reg", ["add", AUTORUN_PATH, "/v", "DesktopNiko", "/t", "REG_SZ", "/d", path, "/f"])
 	print(succses)
 

@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv66pdvp7d3p0"]
+
+[ext_resource type="Texture2D" uid="uid://c8a2o0ruiwceh" path="res://ui_sprites/place_holder.png" id="1_fcqyb"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+
+[node name="Icon" type="Button" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("1_fcqyb")
+expand_icon = true
+
+[node name="EffectInfo" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Name" type="Label" parent="EffectInfo"]
+layout_mode = 2
+text = "Effect name"
+
+[node name="HSeparator" type="HSeparator" parent="EffectInfo"]
+layout_mode = 2
+
+[node name="Time" type="Label" parent="EffectInfo"]
+layout_mode = 2
+text = "00:00:00:00"

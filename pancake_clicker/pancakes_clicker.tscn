@@ -1,19 +1,20 @@
-[gd_scene load_steps=81 format=3 uid="uid://dp8vs0u0ahn2l"]
+[gd_scene load_steps=84 format=3 uid="uid://dp8vs0u0ahn2l"]
 
 [ext_resource type="Theme" uid="uid://cxsdp1anrqw7m" path="res://themes/twm_theme/twm_theme.tres" id="1_3vmky"]
 [ext_resource type="Script" uid="uid://m6hjiig1mkmj" path="res://scripts/window_controller.gd" id="2_3pkbe"]
 [ext_resource type="StyleBox" uid="uid://blhi8kc1si6eq" path="res://themes/twm_theme/window_right_panel_grabber.stylebox" id="3_3hslv"]
 [ext_resource type="Texture2D" uid="uid://b6n3amdargohp" path="res://pancake_clicker/right_panel_part1.png" id="3_nt7dl"]
 [ext_resource type="Texture2D" uid="uid://dfffqi0n451v0" path="res://pancake_clicker/no_additional_ingredient.atlastex" id="4_5us08"]
-[ext_resource type="Texture2D" uid="uid://ds31khwukmrr8" path="res://pancake_clicker/shop_items/item_syrup_maple.atlastex" id="4_683df"]
+[ext_resource type="Texture2D" uid="uid://ds31khwukmrr8" path="res://pancake_clicker/shop_items/resources/item_syrup_maple.atlastex" id="4_683df"]
+[ext_resource type="FontVariation" uid="uid://xejvk4sbddea" path="res://fonts/SuperText.tres" id="4_tkjt1"]
 [ext_resource type="StyleBox" uid="uid://crl4yywird4qv" path="res://themes/twm_theme/window_left_panel_grabber.stylebox" id="4_yd10f"]
 [ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://pancake_clicker/pancake_clicker.png" id="5_1w58l"]
 [ext_resource type="Script" uid="uid://dagblxl7ulofl" path="res://pancake_clicker/syrup_select.gd" id="5_2pldd"]
 [ext_resource type="Script" uid="uid://b3wdforqspr2t" path="res://pancake_clicker/additional_ingredient.gd" id="5_71nsd"]
 [ext_resource type="Script" uid="uid://jp2jihaawwmf" path="res://pancake_clicker/pancakes_shop.gd" id="5_dal33"]
-[ext_resource type="Texture2D" uid="uid://dh8pems3cw83o" path="res://pancake_clicker/shop_items/item_syrup_strawberry.atlastex" id="5_mulr5"]
+[ext_resource type="Texture2D" uid="uid://dh8pems3cw83o" path="res://pancake_clicker/shop_items/resources/item_syrup_strawberry.atlastex" id="5_mulr5"]
 [ext_resource type="Texture2D" uid="uid://cgt306bwbyv4g" path="res://pancake_clicker/hazelnut_additional_ingredient.atlastex" id="6_0gwvg"]
-[ext_resource type="Texture2D" uid="uid://bhsja3fqhop3y" path="res://pancake_clicker/shop_items/item_syrup_chocolate.atlastex" id="6_2pldd"]
+[ext_resource type="Texture2D" uid="uid://bhsja3fqhop3y" path="res://pancake_clicker/shop_items/resources/item_syrup_chocolate.atlastex" id="6_2pldd"]
 [ext_resource type="Texture2D" uid="uid://k3j8qcm4l4wu" path="res://pancake_clicker/little_pancake.png" id="6_54lkb"]
 [ext_resource type="Script" uid="uid://omp0kg08c6r5" path="res://pancake_clicker/seller_graphic_drawer.gd" id="6_bwxy2"]
 [ext_resource type="PackedScene" uid="uid://urfugtibtdn3" path="res://pancake_clicker/shop_items/burner_shop_item.res" id="6_uql61"]
@@ -21,20 +22,20 @@
 [ext_resource type="FastNoiseLite" uid="uid://bu3pu405qskuq" path="res://pancake_clicker/seller1_noise.res" id="7_14ttt"]
 [ext_resource type="PackedScene" uid="uid://btk8g24wkkjny" path="res://pancake_clicker/shop_items/syrup_maple_shop_item.res" id="7_gr6p0"]
 [ext_resource type="StyleBox" uid="uid://diyefi1ar48ag" path="res://themes/twm_theme/pancake_count_panel.stylebox" id="7_hn7jv"]
-[ext_resource type="Texture2D" uid="uid://dsxv8e5388ckq" path="res://pancake_clicker/shop_items/item_syrup_caramel.atlastex" id="7_p55uh"]
+[ext_resource type="Texture2D" uid="uid://dsxv8e5388ckq" path="res://pancake_clicker/shop_items/resources/item_syrup_caramel.atlastex" id="7_p55uh"]
 [ext_resource type="Texture2D" uid="uid://b51o0eua03r0l" path="res://pancake_clicker/chocolate_additional_ingredient.atlastex" id="7_q6lm5"]
-[ext_resource type="Texture2D" uid="uid://c2nhe4mbgmomk" path="res://pancake_clicker/shop_items/item_syrup_apple.atlastex" id="8_gkrte"]
+[ext_resource type="Texture2D" uid="uid://c2nhe4mbgmomk" path="res://pancake_clicker/shop_items/resources/item_syrup_apple.atlastex" id="8_gkrte"]
 [ext_resource type="Texture2D" uid="uid://bo3x8yy4g81xb" path="res://ui_sprites/close_button.tres" id="8_iaa12"]
 [ext_resource type="FastNoiseLite" uid="uid://31vk8tb6esyx" path="res://pancake_clicker/seller2_noise.res" id="8_n7vm1"]
 [ext_resource type="PackedScene" uid="uid://bxdpj1me31rfq" path="res://pancake_clicker/shop_items/syrup_strawberry_shop_item.res" id="8_u3gf7"]
 [ext_resource type="Script" uid="uid://cl16644rl3lsd" path="res://scripts/stylebox_color_applier.gd" id="9_3hslv"]
-[ext_resource type="Texture2D" uid="uid://dfy3gya1l825g" path="res://pancake_clicker/shop_items/item_syrup_blueberries.atlastex" id="9_3pmd8"]
+[ext_resource type="Texture2D" uid="uid://dfy3gya1l825g" path="res://pancake_clicker/shop_items/resources/item_syrup_blueberries.atlastex" id="9_3pmd8"]
 [ext_resource type="PackedScene" uid="uid://14wfg4rqqeod" path="res://pancake_clicker/shop_items/syrup_chocolate_shop_item.res" id="9_ae0do"]
 [ext_resource type="FastNoiseLite" uid="uid://7dcr2txewwnx" path="res://pancake_clicker/seller3_noise.res" id="9_i38w4"]
 [ext_resource type="Script" uid="uid://d3rx5jkh2x7if" path="res://pancake_clicker/pancake_clicker_controller.gd" id="9_t85sw"]
 [ext_resource type="PackedScene" uid="uid://cg23wbewrjbxw" path="res://pancake_clicker/pancake_add_label.tscn" id="10_lcrlj"]
 [ext_resource type="PackedScene" uid="uid://crd0kbq5oliym" path="res://pancake_clicker/shop_items/syrup_caramel_shop_item.res" id="10_ns18c"]
-[ext_resource type="Texture2D" uid="uid://cwbuxrho5jnxl" path="res://pancake_clicker/shop_items/butter_dish.png" id="11_2pldd"]
+[ext_resource type="Texture2D" uid="uid://cwbuxrho5jnxl" path="res://pancake_clicker/shop_items/resources/butter_dish.png" id="11_2pldd"]
 [ext_resource type="PackedScene" uid="uid://b6wrcxi50260d" path="res://pancake_clicker/shop_items/syrup_apple_shop_item.res" id="11_ykhli"]
 [ext_resource type="Material" uid="uid://pgpd62tnvt1" path="res://shaders/radial_light_material.tres" id="12_0lcqn"]
 [ext_resource type="PackedScene" uid="uid://xv8bjsxh5iqs" path="res://pancake_clicker/shop_items/syrup_blueberries_shop_item.res" id="12_8phvi"]
@@ -42,6 +43,8 @@
 [ext_resource type="Material" uid="uid://db230eaasl2pl" path="res://shaders/shadow_material.tres" id="13_ay4v1"]
 [ext_resource type="Texture2D" uid="uid://0dtmu6xrsq0e" path="res://pancake_clicker/right_panel_part1_light.png" id="13_br1jh"]
 [ext_resource type="Texture2D" uid="uid://cxfqu8xs5tg7u" path="res://pancake_clicker/pancake.png" id="14_np8ea"]
+[ext_resource type="Script" uid="uid://bch2oxx7r1acu" path="res://pancake_clicker/pancake_upgrade_info.gd" id="19_mv44d"]
+[ext_resource type="PackedScene" uid="uid://cv66pdvp7d3p0" path="res://prefabs/base_effect.tscn" id="20_a1mxl"]
 [ext_resource type="PackedScene" uid="uid://ctgbpgvbb8aqo" path="res://pancake_clicker/shop_items/butter_shop_item.res" id="23_gkrte"]
 [ext_resource type="PackedScene" uid="uid://ca8p8qii8w03a" path="res://pancake_clicker/shop_items/pancake_layer_shop_item.res" id="24_3pmd8"]
 [ext_resource type="Texture2D" uid="uid://crb2wdj4kdpoi" path="res://pancake_clicker/layered_pancake/pancake1.atlastex" id="25_odieh"]
@@ -71,7 +74,9 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nt7dl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m3lb3"]
-font_size = 12
+font = ExtResource("4_tkjt1")
+font_size = 10
+font_color = Color(0, 1, 0, 1)
 
 [sub_resource type="GDScript" id="GDScript_nt7dl"]
 resource_name = "BurnerCountShow"
@@ -170,7 +175,7 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8phvi"]
 shader = SubResource("Shader_ykhli")
 
-[node name="PancakesClickerWindow" type="Window"]
+[node name="PancakesClickerWindow" type="Window" node_paths=PackedStringArray("topbar", "CloseButton")]
 auto_translate_mode = 1
 disable_3d = true
 transparent_bg = true
@@ -183,6 +188,8 @@ always_on_top = true
 transparent = true
 theme = ExtResource("1_3vmky")
 script = ExtResource("2_3pkbe")
+topbar = NodePath("ClickerWindow/VBoxContainer/Topbar")
+CloseButton = NodePath("ClickerWindow/VBoxContainer/Topbar/MarginContainer/HBoxContainer/CloseButtonContainer/CloseButton")
 
 [node name="RightPanel" type="Control" parent="."]
 layout_mode = 3
@@ -222,13 +229,14 @@ texture = ExtResource("3_nt7dl")
 
 [node name="BurnersCount" type="Label" parent="RightPanel/HBoxContainer/Panel/TopBG"]
 layout_mode = 0
-offset_left = 220.0
-offset_top = 119.0
-offset_right = 260.0
+offset_left = 217.0
+offset_top = 120.0
+offset_right = 253.0
 offset_bottom = 131.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_nt7dl")
 text = "x1"
 label_settings = SubResource("LabelSettings_m3lb3")
+clip_text = true
 script = SubResource("GDScript_nt7dl")
 
 [node name="NoAdditionalIngredient" type="Button" parent="RightPanel/HBoxContainer/Panel/TopBG"]
@@ -397,6 +405,55 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("13_br1jh")
 
+[node name="TabContainer" type="TabContainer" parent="RightPanel/HBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 176.0
+offset_right = 284.0
+offset_bottom = 548.0
+current_tab = 0
+
+[node name="INFO" type="MarginContainer" parent="RightPanel/HBoxContainer/Panel/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+script = ExtResource("19_mv44d")
+metadata/_tab_index = 0
+
+[node name="EFFECTS" type="MarginContainer" parent="RightPanel/HBoxContainer/Panel/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RightPanel/HBoxContainer/Panel/TabContainer/EFFECTS"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="RightPanel/HBoxContainer/Panel/TabContainer/EFFECTS/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" parent="RightPanel/HBoxContainer/Panel/TabContainer/EFFECTS/VBoxContainer/PanelContainer" instance=ExtResource("20_a1mxl")]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="RightPanel/HBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 205.0
+offset_right = 290.0
+offset_bottom = 207.0
+
+[node name="HSeparator2" type="HSeparator" parent="RightPanel/HBoxContainer/Panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 207.0
+offset_right = 290.0
+offset_bottom = 209.0
+
 [node name="Grabber" type="MarginContainer" parent="RightPanel/HBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 10
@@ -512,41 +569,52 @@ layout_mode = 2
 [node name="BurnerShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("6_uql61")]
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+mouse_filter = 0
 
 [node name="SyrupMapleShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("7_gr6p0")]
 layout_mode = 2
+mouse_filter = 0
 
 [node name="SyrupStrawberryShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("8_u3gf7")]
 layout_mode = 2
+mouse_filter = 0
 
 [node name="SyrupChocolateShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("9_ae0do")]
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+mouse_filter = 0
 
 [node name="SyrupCaramelShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("10_ns18c")]
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+mouse_filter = 0
 
 [node name="SyrupAppleShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("11_ykhli")]
 layout_mode = 2
+mouse_filter = 0
 
 [node name="SyrupBlueberriesShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("12_8phvi")]
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+mouse_filter = 0
 
 [node name="ButterShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("23_gkrte")]
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+mouse_filter = 0
 
 [node name="PancakeShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("24_3pmd8")]
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
+mouse_filter = 0
 
 [node name="HazelnutShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("30_kwtr8")]
 layout_mode = 2
+mouse_filter = 0
 
 [node name="CacaoBobShopItem" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer/SHOP/Content/ItemsContainer/ItemsContainer" instance=ExtResource("31_tkjt1")]
 layout_mode = 2
+mouse_filter = 0
 
 [node name="SELL" type="MarginContainer" parent="LeftPanel/HBoxContainer/Panel/MarginContainer/TabContainer"]
 visible = false

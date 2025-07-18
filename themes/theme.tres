@@ -1,0 +1,79 @@
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://bll84jclxrjw1"]
+
+[ext_resource type="Texture2D" uid="uid://bw465n3hiy0mk" path="res://ui_sprites/ui_shit.png" id="1_oryc4"]
+[ext_resource type="FontFile" uid="uid://ckcoy708n8osl" path="res://fonts/TerminusTTF-Bold.ttf" id="2_kgv31"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3dpcr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mb0op"]
+texture = ExtResource("1_oryc4")
+texture_margin_left = 10.0
+texture_margin_top = 4.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 35, 20, 8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i56l1"]
+texture = ExtResource("1_oryc4")
+texture_margin_left = 10.0
+texture_margin_top = 4.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(11, 0, 20, 8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0u5hu"]
+texture = ExtResource("1_oryc4")
+texture_margin_left = 10.0
+texture_margin_top = 4.0
+texture_margin_right = 10.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 44, 20, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg1mt"]
+atlas = ExtResource("1_oryc4")
+region = Rect2(24, 23, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64y80"]
+atlas = ExtResource("1_oryc4")
+region = Rect2(13, 9, 8, 8)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tpv13"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i5iti"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tueiq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w3fh6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_upyio"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h4j26"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_17k7a"]
+texture = ExtResource("1_oryc4")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(4, 22, 12, 12)
+
+[resource]
+default_font = ExtResource("2_kgv31")
+default_font_size = 18
+Button/styles/focus = SubResource("StyleBoxEmpty_3dpcr")
+Button/styles/hover = SubResource("StyleBoxTexture_mb0op")
+Button/styles/normal = SubResource("StyleBoxTexture_i56l1")
+Button/styles/pressed = SubResource("StyleBoxTexture_0u5hu")
+CheckBox/colors/font_color = Color(1, 1, 1, 1)
+CheckBox/constants/check_v_offset = 3
+CheckBox/constants/h_separation = 0
+CheckBox/constants/wr = 0
+CheckBox/icons/checked = SubResource("AtlasTexture_jg1mt")
+CheckBox/icons/unchecked = SubResource("AtlasTexture_64y80")
+CheckBox/styles/disabled = SubResource("StyleBoxEmpty_tpv13")
+CheckBox/styles/focus = SubResource("StyleBoxEmpty_i5iti")
+CheckBox/styles/hover = SubResource("StyleBoxEmpty_tueiq")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxEmpty_w3fh6")
+CheckBox/styles/normal = SubResource("StyleBoxEmpty_upyio")
+CheckBox/styles/pressed = SubResource("StyleBoxEmpty_h4j26")
+Panel/styles/panel = SubResource("StyleBoxTexture_17k7a")

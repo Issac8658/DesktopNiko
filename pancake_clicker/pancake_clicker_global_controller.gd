@@ -13,6 +13,7 @@ signal item_buyed(item_id)
 @warning_ignore("unused_signal")
 signal pancake_update()
 signal update_items_buyed_count()
+signal info_panel_show_request(info_panel : PackedScene)
 
 var pancakes : int = 0
 var yelli : float = 0
@@ -83,6 +84,10 @@ func format_big_number(number) -> String:
 		return formated_number
 	else:
 		return str(number)
+
+
+func show_info_panel(info : PackedScene):
+	info_panel_show_request.emit(info)
 
 
 func log10(number : float) -> float:

@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=3 uid="uid://o3kl3g87pn3q"]
+
+[ext_resource type="Theme" uid="uid://cxsdp1anrqw7m" path="res://themes/twm_theme/twm_theme.tres" id="1_xtp28"]
+[ext_resource type="Script" uid="uid://m6hjiig1mkmj" path="res://scripts/window_controller.gd" id="2_in0ps"]
+[ext_resource type="Texture2D" uid="uid://c8a2o0ruiwceh" path="res://ui_sprites/place_holder.png" id="3_cp0xp"]
+[ext_resource type="Texture2D" uid="uid://bo3x8yy4g81xb" path="res://ui_sprites/close_button.tres" id="4_73js7"]
+
+[node name="BaseWindow" type="Window" node_paths=PackedStringArray("topbar", "CloseButton")]
+auto_translate_mode = 1
+disable_3d = true
+title = "Base Window"
+position = Vector2i(175, 0)
+size = Vector2i(400, 400)
+borderless = true
+always_on_top = true
+sharp_corners = true
+min_size = Vector2i(200, 100)
+keep_title_visible = true
+theme = ExtResource("1_xtp28")
+script = ExtResource("2_in0ps")
+topbar = NodePath("Control/WindowContainer/Topbar")
+CloseButton = NodePath("Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/CloseButtonContainer/CloseButton")
+
+[node name="Control" type="Control" parent="."]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WindowContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Topbar" type="Panel" parent="Control/WindowContainer"]
+z_index = 1
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/WindowContainer/Topbar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/WindowContainer/Topbar/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="IconContainer" type="MarginContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Icon" type="Button" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("3_cp0xp")
+flat = true
+expand_icon = true
+
+[node name="Title" type="Label" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Base Window"
+
+[node name="CloseButtonContainer" type="MarginContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="CloseButton" type="Button" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/CloseButtonContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("4_73js7")
+flat = true
+expand_icon = true
+
+[node name="Content" type="Panel" parent="Control/WindowContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3

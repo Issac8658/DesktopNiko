@@ -21,4 +21,4 @@ func _ready() -> void:
 
 func get_target_position():
 	var target_screen = DisplayServer.window_get_current_screen(DisplayServer.MAIN_WINDOW_ID)
-	return DisplayServer.screen_get_position(target_screen) + DisplayServer.screen_get_size(target_screen) - Vector2i(112, 156)
+	return DisplayServer.screen_get_usable_rect(target_screen).end - Vector2i(112, 112)

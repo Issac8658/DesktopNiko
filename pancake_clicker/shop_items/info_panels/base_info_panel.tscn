@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1sta4cfu2vd4"]
+
+[ext_resource type="Texture2D" uid="uid://c8a2o0ruiwceh" path="res://ui_sprites/place_holder.png" id="1_erm3t"]
+
+[node name="BaseInfoPanel" type="VBoxContainer"]
+custom_minimum_size = Vector2(240, 0)
+
+[node name="BaseInfo" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="BaseInfo"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+texture = ExtResource("1_erm3t")
+stretch_mode = 5
+
+[node name="TextInfo" type="VBoxContainer" parent="BaseInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Name" type="Label" parent="BaseInfo/TextInfo"]
+layout_mode = 2
+text = "Hello, Niko!"
+
+[node name="HSeparator" type="HSeparator" parent="BaseInfo/TextInfo"]
+layout_mode = 2
+
+[node name="Multipliers" type="Label" parent="BaseInfo/TextInfo"]
+layout_mode = 2
+text = "Multipliers here"
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(0, 21)
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "yummy [color=chocolate]pancakes[/color]!!🥰😋"
+fit_content = true

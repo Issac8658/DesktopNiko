@@ -34,5 +34,13 @@ func update_colors():
 	set_color("font_hovered_color", "TabContainer", GlobalControlls.global_color_palette.colors[1])
 	set_color("font_selected_color", "TabContainer", GlobalControlls.global_color_palette.colors[0])
 	set_color("font_unselected_color", "TabContainer", GlobalControlls.global_color_palette.colors[4])
+	# TabBar
+	set_color("font_hovered_color", "TabBar", GlobalControlls.global_color_palette.colors[1])
+	set_color("font_selected_color", "TabBar", GlobalControlls.global_color_palette.colors[0])
+	set_color("font_unselected_color", "TabBar", GlobalControlls.global_color_palette.colors[4])
+	# RichTextLabel
+	set_color("default_color", "RichTextLabel", GlobalControlls.global_color_palette.colors[0])
+	set_color("font_selected_color", "RichTextLabel", GlobalControlls.global_color_palette.colors[6])
+	set_color("selection_color", "RichTextLabel", GlobalControlls.global_color_palette.colors[0])
 	# Other
 	set_color("icon_normal_color", "AlwaysActivatedButton", GlobalControlls.global_color_palette.colors[1])
