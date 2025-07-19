@@ -1,97 +1,97 @@
-,en,ru,de
-LANGUAGE,Language: ,Язык: ,Sprache: 
-SETTINGS,Settings,Настройки,Einstellungen
-GAMING_MODE,Gaming mode,Игровой режим,Spielmodus
-GAMING_MODE_N,Gaming mode(doesn't fully work),Игровой режим(не закончен),Spielmodus(nicht komplett fertig)
-PEACEFUL_MODE,Peaceful mode,Мирный режим,Friedliches Regime
-SHOW_SAVING_ICON,Saving icon,Значок сохранения,Symbol speichern
-FACEPICK_DEFAULT,Default,Обычный,Gewöhnlich
-FACEPICK_SPEAK,Speak,Мяуканье,Miauen
-FACEPICK_SCARED,Scared,Напуган,Erschreckt
-FACEPICK_SCARED_SPEAK,Scared speak,Удивлён,Berrascht
-MEOW_SOUND,Meow Sound: ,Звук мява: ,Miau-Geräusch: 
-NIKO_SCALE,Niko's scale: ,Масштаб нико: ,Skala von Niko: 
-MEOW_VOLUME,Meow volume,Громкость мява,Miau-Lautstärke
-MASTER_VOLUME,Master volume,Общая громкость,Gesamtlautstärke
-SHUTDOWN,Shutdown,Завершение работы,Shutdown
-SMILE,Smile,Улыбка,Lächeln
-SPEAK,Speak,Мяукает,Miauen
-SHOCK,Shock,Шок,Schock
-SURPRISED,Surprised,Удивлён,Berrascht
-GASMASK,Gasmask,Газовая маска,Gasmaske
-HAPPY,Happy,Радостный,Fröhlich
-PANCAKES,Pancakes,Блинчики,Pancakes
-SIMPLE,Simple,Простой,Einfach
-NIKO,Niko,Нико,Niko
-SMUG,Smug,Довольный,Selbstgefällig
-MEOW1,Meow 1,Мяу 1,Miau 1
-MEOW2,Meow 2,Мяу 2,Miau 2
-MEOW3,Meow 3,Мяу 3,Miau 3
-MEOW4,Meow 4,Мяу 4,Miau 4
-MEOW5,Meow 5,Мяу 5,Miau 5
-OMORI_MEOW,OMORI meow,Мяу из OMORI,Miau von OMORI
-RESET_POS,Reset position,Сбросить положение,Position zurücksetzen
-SHORTCUTS,Shortcuts,Ярлыки,Verknüpfungen
-THEMES,Themes,Темы,Themen
-JUKEBOX,Jukebox,Музыкальная шкатулка,Spieldose
-PEACEFUL_MODE_HINT,"Niko doesn't get scared when clicks are too fast",Нико не пугается при слишком быстрых кликах,Nico hat keine Angst vor zu schnellen Klicks
-SAVING_ICON_HINT,"Show save icon, same as in OneShot WME. Saving takes place every three minutes.","Показывать значок сохранения, такой же как в OneShot WME. Сохранение происходит раз в три минуты.","Zeigt das Speichersymbol an, das dem in OneShot WME entspricht. Die Speicherung erfolgt alle drei Minuten."
-GAMING_MODE_HINT,"Completely disables interaction with Niko.\n[color=gold]ATTENTION[/color]\nIn order to restore the state back, use system tray icon or, as a last resort, completely restart the application.","Полностью отключает взаимодействие с Нико.\n[color=gold]ВНИМАНИЕ[/color]\nДля того чтобы вернуть состояние обратно используйте значок в системном трее или в крайнем случае полностью перезапустите приложение.","Deaktiviert die Interaktion mit Nico vollständig.\n[color=gold]ACHTUNG[/color]\nUm den Status wiederherzustellen, verwenden Sie das Taskleistensymbol oder starten Sie die Anwendung im Notfall vollständig neu."
-CLICK_SOUND_HINT,"Play a click sound in windows identical to click sounds in OneShot WME","Воспроизводить звук клика в окнах, идентичный звукам клика в OneShot WME","Klickgeräusche in Fenstern wiedergeben, die mit den Klickgeräuschen in OneShot WME identisch sind"
-SHUTDOWN_QUEST,"Do you really want to shut down The World Machine?","Вы действительно хотите завершить работу Мировой Машины?","Möchten Sie wirklich die Weltmaschine abschließen?"
-YES,Yes,Да,Ja
-NO,No,Нет,Nein
-PURPLE,Purple,Фиолетовая,Lila
-BLUE,Blue,Синяя,Blaue
-YELLOW,Yellow,Жёлтая,Gelbe
-RED,Red,Красная,Rote
-PINK,Pink,Розовая,Rosa
-WHITE,White,Белая,Weiß
-ORANGE,Orange,Оранжевая,Oranje
-TEAL,Teal,Бирюзовая,Tuerkisene
-GREEN,Green,Зелёная,Grün
-RAINBOW,Rainbow,Радужная,Regenbogenfarbige
-CLICK_SOUND,Click sound,Звук клика,Klickgeräusch
-CONSOLE,Console,Консоль,Konsole
-ACTIONS,Actions,Действия,Handeln
-GENERAL,General,Главное,Hauptsache
-ADD_TO_AUTO_RUN,Add to autorun,Добавить в автозагрузку,Zum Autostart hinzufügen
-REMOVE_FROM_AUTO_RUN,Remove from autorun,Удалить из автозагрузки,Aus dem Autostart entfernen
-WINDOWS_ONLY,Autorun only for Windows,Автозагрузка только для Windows,Autostart nur für Windows
-OPEN_LOGS_FOLDER,Open logs folder,Открыть папку логов,Log-Ordner öffnen
-STATISTICS,Statistics,Статистика,Statistik
-CLICKS,Clicks,Клики,Cliquen
-TOTAL_TIME,Total time,Время работы,Betriebsdauer
-HINT,Hint,Подсказка,Hinweis
-OTHER,Other,Другое,Andere
-LEGACY_FACEPICKS,Legacy facepicks,Старые спрайты,Alte Sprites
-SLEEPING,Sleeping,Сон,Chlafen
-CAN_SLEEP,Can sleep,Может спать,Kann schlafen
-TIME_TO_SLEEP,Time to sleep,Время до сна,Zeit zum Schlafen
-H,h,ч,h
-M,m,м,m
-S,s,с,s
-SHOW_ACHIEVEMENTS,Show achievements,Отображать достижения,Erfolge anzeigen
-SHOW_ACHIEVEMENTS_HINT,Determines whether to show achievement animation in corner of screen. Sound will still be played.,"Определяет, показывать ли анимацию получения достижения в углу экрана. Звук по-прежнему будет воспроизводиться.","Legt fest, ob die Animation des Erfolgs in der Ecke des Bildschirms angezeigt wird. Der Ton wird weiterhin abgespielt."
-ACHIEVEMENTS,Achivements,Достижения,Erreichung
-ACHIEVEMENT_HIDDEN_TEXT,Unlock this achievement to learn more about it!,"Разблокируйте это достижение, чтобы узнать о нём больше!","Schalte diese Errungenschaft frei, um mehr über sie zu erfahren!"
-ACHIEVEMENT_1_NAME,First meet,Первое знакомство,Erstes Treffen
-ACHIEVEMENT_1_DESC,Get your first 10 clicks.,Получите ваши первые 10 кликов.,Holen Sie sich Ihre ersten 10 Klicks.
-ACHIEVEMENT_2_NAME,This is progress!,Это прогресс!,Das ist ein Fortschritt!
-ACHIEVEMENT_2_DESC,Get 100 clicks.,Получите 100 кликов.,Erhalten Sie 100 Klicks.
-ACHIEVEMENT_3_NAME,That's enough for a chest..,Этого хватит на сундук..,Das reicht für eine Truhe..
-ACHIEVEMENT_3_DESC,Get 1000 clicks.,Получите 1000 кликов.,Erhalten Sie 100 Klicks.
-ACHIEVEMENT_4_NAME,So many...,Так много...,So viele...
-ACHIEVEMENT_4_DESC,"Get 100,000 clicks.","Получите 100,000 кликов.","Erhalten Sie 100,000 Klicks."
-ACHIEVEMENT_5_NAME,"I'm a millionaire!",Я миллионер!,Ich bin ein Millionär!
-ACHIEVEMENT_5_DESC,"Get 1,000,000 clicks.","Получите 1,000,000 кликов.","Erhalten Sie 1,000,000 Klicks."
-ACHIEVEMENT_6_NAME,"It's impossible.",Это невозможно.,Das ist unmöglich.
-ACHIEVEMENT_6_DESC,"Get 1,000,000,000 clicks.","Получите 1,000,000,000 кликов.","Erhalten Sie 100,000,000 Klicks."
-ACHIEVEMENT_IM_SCARED_NAME,You scared me!,Ты напугал меня!,Du hast mich erschreckt!
-ACHIEVEMENT_IM_SCARED_DESC,Don't click too fast!,Не кликай слишком быстро!,Klicke nicht zu schnell!
-ACHIEVEMENT_WHAT_YOU_DO_NAME,WHAT ARE YOU DOING?!,ЧТО ТЫ ДЕЛАЕШЬ?!,WAS MACHST DU?!
-ACHIEVEMENT_WHAT_YOU_DO_DESC,100 clicks per second? Are you serious?,100 кликов в секунду? Ты серьезно?,100 klicks pro Sekunde? Meinst du das ernst?
-ACHIEVEMENT_SWEET_DREAMS_NAME,Sweet dreams!,Сладких снов!,Träum süß!
-ACHIEVEMENT_SWEET_DREAMS_DESC,"Isn't it time for us to sleep?",Не пора ли нам поспать?,Ist es nicht Zeit für uns zu schlafen?
-ACHIEVEMENT_HELLO_NAME,"Hello, Secret!","Привет, Секрет!","Hallo, das Geheimnis!"
-ACHIEVEMENT_HELLO_DESC,What was that?,Что это было?,Was war das?
+,en,ru,de,ua
+LANGUAGE,Language: ,Язык: ,Sprache: ,Мова: 
+SETTINGS,Settings,Настройки,Einstellungen,Налаштування
+GAMING_MODE,Gaming mode,Игровой режим,Spielmodus,Ігровий режим
+GAMING_MODE_N,Gaming mode(doesn't fully work),Игровой режим(не закончен),Spielmodus(nicht komplett fertig),Ігровий режим(не закінчений)
+PEACEFUL_MODE,Peaceful mode,Мирный режим,Friedliches Regime,Мирний режим
+SHOW_SAVING_ICON,Saving icon,Значок сохранения,Symbol speichern,Значок збереження
+FACEPICK_DEFAULT,Default,Обычный,Gewöhnlich,Звичайний
+FACEPICK_SPEAK,Speak,Мяуканье,Miauen,Мяукання
+FACEPICK_SCARED,Scared,Напуган,Erschreckt,Наляканий
+FACEPICK_SCARED_SPEAK,Scared speak,Удивлён,Berrascht,Здивований
+MEOW_SOUND,Meow Sound: ,Звук мява: ,Miau-Geräusch: ,Звук мяву:
+NIKO_SCALE,Niko's scale: ,Масштаб нико: ,Skala von Niko: ,Масштаб Ніко:
+MEOW_VOLUME,Meow volume,Громкость мява,Miau-Lautstärke,Гучність мяву
+MASTER_VOLUME,Master volume,Общая громкость,Gesamtlautstärke,Загальна гучність
+SHUTDOWN,Shutdown,Завершение работы,Shutdown,Завершення роботи
+SMILE,Smile,Улыбка,Lächeln,Усмішка
+SPEAK,Speak,Мяукает,Miauen,Мяукає
+SHOCK,Shock,Шок,Schock,Шок
+SURPRISED,Surprised,Удивлён,Berrascht,Здивований
+GASMASK,Gasmask,Газовая маска,Gasmaske,Протигаз
+HAPPY,Happy,Радостный,Fröhlich,Щасливий
+PANCAKES,Pancakes,Блинчики,Pancakes,Млинці
+SIMPLE,Simple,Простой,Einfach,Простий
+NIKO,Niko,Нико,Niko,Ніко
+SMUG,Smug,Довольный,Selbstgefällig,Щасливий
+MEOW1,Meow 1,Мяу 1,Miau 1,Мяу 1
+MEOW2,Meow 2,Мяу 2,Miau 2,Мяу 2
+MEOW3,Meow 3,Мяу 3,Miau 3,Мяу 3
+MEOW4,Meow 4,Мяу 4,Miau 4,Мяу 4
+MEOW5,Meow 5,Мяу 5,Miau 5,Мяу 5
+OMORI_MEOW,OMORI meow,Мяу из OMORI,Miau von OMORI,Мяу з OMORI
+RESET_POS,Reset position,Сбросить положение,Position zurücksetzen,Скинути положення
+SHORTCUTS,Shortcuts,Ярлыки,Verknüpfungen,Ярлики
+THEMES,Themes,Темы,Themen,Теми
+JUKEBOX,Jukebox,Музыкальная шкатулка,Spieldose,Музична скринька
+PEACEFUL_MODE_HINT,"Niko doesn't get scared when clicks are too fast",Нико не пугается при слишком быстрых кликах,Nico hat keine Angst vor zu schnellen Klicks,Ніко не лякається при занадто швидких кліках
+SAVING_ICON_HINT,"Show save icon, same as in OneShot WME. Saving takes place every three minutes.","Показывать значок сохранения, такой же как в OneShot WME. Сохранение происходит раз в три минуты.","Zeigt das Speichersymbol an, das dem in OneShot WME entspricht. Die Speicherung erfolgt alle drei Minuten.","Показувати значок збереження, такий як в OneShot WME. Збереження відбувається кожні три хвилини."
+GAMING_MODE_HINT,"Completely disables interaction with Niko.\n[color=gold]ATTENTION[/color]\nIn order to restore the state back, use system tray icon or, as a last resort, completely restart the application.","Полностью отключает взаимодействие с Нико.\n[color=gold]ВНИМАНИЕ[/color]\nДля того чтобы вернуть состояние обратно используйте значок в системном трее или в крайнем случае полностью перезапустите приложение.","Deaktiviert die Interaktion mit Nico vollständig.\n[color=gold]ACHTUNG[/color]\nUm den Status wiederherzustellen, verwenden Sie das Taskleistensymbol oder starten Sie die Anwendung im Notfall vollständig neu.","Повністю вимикає взаємодію з Ніко.\n[color=gold]УВАГА[/color]\nЩоб відновити стан назад, використовуйте значок в системному лотку або, як крайній випадок, повністю перезапустіть програму."
+CLICK_SOUND_HINT,"Play a click sound in windows identical to click sounds in OneShot WME","Воспроизводить звук клика в окнах, идентичный звукам клика в OneShot WME","Klickgeräusche in Fenstern wiedergeben, die mit den Klickgeräuschen in OneShot WME identisch sind","Відтворювати звук кліка у вікнах, ідентичний звукам кліка в OneShot WME"
+SHUTDOWN_QUEST,"Do you really want to shut down The World Machine?","Вы действительно хотите завершить работу Мировой Машины?","Möchten Sie wirklich die Weltmaschine abschließen?","Ви дійсно хочете завершити роботу Світової Машини?"
+YES,Yes,Да,Ja,Так
+NO,No,Нет,Nein,Ні
+PURPLE,Purple,Фиолетовая,Lila,Фіолетова
+BLUE,Blue,Синяя,Blaue,Синя
+YELLOW,Yellow,Жёлтая,Gelbe,Жовта
+RED,Red,Красная,Rote,Червона
+PINK,Pink,Розовая,Rosa,Рожева
+WHITE,White,Белая,Weiß,Біла
+ORANGE,Orange,Оранжевая,Oranje,Помаранчева
+TEAL,Teal,Бирюзовая,Tuerkisene,Бірюзова
+GREEN,Green,Зелёная,Grün,Зелена
+RAINBOW,Rainbow,Радужная,Regenbogenfarbige,Райдужна
+CLICK_SOUND,Click sound,Звук клика,Klickgeräusch,Звук кліка
+CONSOLE,Console,Консоль,Konsole,Консоль
+ACTIONS,Actions,Действия,Handeln,Дії
+GENERAL,General,Главное,Hauptsache,Загальне
+ADD_TO_AUTO_RUN,Add to autorun,Добавить в автозагрузку,Zum Autostart hinzufügen,Додати в автозавантаження
+REMOVE_FROM_AUTO_RUN,Remove from autorun,Удалить из автозагрузки,Aus dem Autostart entfernen,Видалити з автозавантаження
+WINDOWS_ONLY,Autorun only for Windows,Автозагрузка только для Windows,Autostart nur für Windows,Автозавантаження тільки для Windows
+OPEN_LOGS_FOLDER,Open logs folder,Открыть папку логов,Log-Ordner öffnen,Відкрити папку логів
+STATISTICS,Statistics,Статистика,Statistik,Статистика
+CLICKS,Clicks,Клики,Cliquen,Кліки
+TOTAL_TIME,Total time,Время работы,Betriebsdauer,Загальний час
+HINT,Hint,Подсказка,Hinweis,Підказка
+OTHER,Other,Другое,Andere,Інше
+LEGACY_FACEPICKS,Legacy facepicks,Старые спрайты,Alte Sprites,Старі спрайти
+SLEEPING,Sleeping,Сон,Chlafen,Сон
+CAN_SLEEP,Can sleep,Может спать,Kann schlafen,Може спати
+TIME_TO_SLEEP,Time to sleep,Время до сна,Zeit zum Schlafen,Час до сну
+H,h,ч,h,г
+M,m,м,m,х
+S,s,с,s,с
+SHOW_ACHIEVEMENTS,Show achievements,Отображать достижения,Erfolge anzeigen,Показувати досягнення
+SHOW_ACHIEVEMENTS_HINT,Determines whether to show achievement animation in corner of screen. Sound will still be played.,"Определяет, показывать ли анимацию получения достижения в углу экрана. Звук по-прежнему будет воспроизводиться.","Legt fest, ob die Animation des Erfolgs in der Ecke des Bildschirms angezeigt wird. Der Ton wird weiterhin abgespielt.","Визначає, чи показувати анімацію отримання досягнення в кутку екрана. Звук все ще буде відтворюватися."
+ACHIEVEMENTS,Achivements,Достижения,Erreichung,"Досягнення"
+ACHIEVEMENT_HIDDEN_TEXT,Unlock this achievement to learn more about it!,"Разблокируйте это достижение, чтобы узнать о нём больше!","Schalte diese Errungenschaft frei, um mehr über sie zu erfahren!","Розблокуйте це досягнення, щоб дізнатися про нього більше!"
+ACHIEVEMENT_1_NAME,First meet,Первое знакомство,Erstes Treffen,Перше знайомство
+ACHIEVEMENT_1_DESC,Get your first 10 clicks.,Получите ваши первые 10 кликов.,Holen Sie sich Ihre ersten 10 Klicks.,Отримайте ваші перші 10 кліків.
+ACHIEVEMENT_2_NAME,This is progress!,Это прогресс!,Das ist ein Fortschritt!,Це прогрес!
+ACHIEVEMENT_2_DESC,Get 100 clicks.,Получите 100 кликов.,Erhalten Sie 100 Klicks.,Отримайте 100 кліків.
+ACHIEVEMENT_3_NAME,That's enough for a chest..,Этого хватит на сундук..,Das reicht für eine Truhe..,Цього вистачить на скриню..
+ACHIEVEMENT_3_DESC,Get 1000 clicks.,Получите 1000 кликов.,Erhalten Sie 100 Klicks.,Отримайте 1000 кліків.
+ACHIEVEMENT_4_NAME,So many...,Так много...,So viele...,Так багато...
+ACHIEVEMENT_4_DESC,"Get 100,000 clicks.","Получите 100,000 кликов.","Erhalten Sie 100,000 Klicks.","Отримайте 100,000 кліків."
+ACHIEVEMENT_5_NAME,"I'm a millionaire!",Я миллионер!,Ich bin ein Millionär!,Я мільйонер!
+ACHIEVEMENT_5_DESC,"Get 1,000,000 clicks.","Получите 1,000,000 кликов.","Erhalten Sie 1,000,000 Klicks.","Отримайте 1,000,000 кліків."
+ACHIEVEMENT_6_NAME,"It's impossible.",Это невозможно.,Das ist unmöglich.,Це неможливо.
+ACHIEVEMENT_6_DESC,"Get 1,000,000,000 clicks.","Получите 1,000,000,000 кликов.","Erhalten Sie 100,000,000 Klicks.","Отримайте 1,000,000,000 кліків."
+ACHIEVEMENT_IM_SCARED_NAME,You scared me!,Ты напугал меня!,Du hast mich erschreckt!,Ти налякав мене!
+ACHIEVEMENT_IM_SCARED_DESC,Don't click too fast!,Не кликай слишком быстро!,Klicke nicht zu schnell!,Не клікай занадто швидко!
+ACHIEVEMENT_WHAT_YOU_DO_NAME,WHAT ARE YOU DOING?!,ЧТО ТЫ ДЕЛАЕШЬ?!,WAS MACHST DU?!,ШО ТИ РОБИШ?!
+ACHIEVEMENT_WHAT_YOU_DO_DESC,100 clicks per second? Are you serious?,100 кликов в секунду? Ты серьезно?,100 klicks pro Sekunde? Meinst du das ernst?,100 кліків в секунду? Ти серйозно?
+ACHIEVEMENT_SWEET_DREAMS_NAME,Sweet dreams!,Сладких снов!,Träum süß!,Солодких снів!
+ACHIEVEMENT_SWEET_DREAMS_DESC,"Isn't it time for us to sleep?",Не пора ли нам поспать?,Ist es nicht Zeit für uns zu schlafen?,Чи не час нам поспати?
+ACHIEVEMENT_HELLO_NAME,"Hello, Secret!","Привет, Секрет!","Hallo, das Geheimnis!","Привіт, Секрет!"
+ACHIEVEMENT_HELLO_DESC,What was that?,Что это было?,Was war das?,Що це було?

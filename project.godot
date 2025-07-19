@@ -71,7 +71,7 @@ mouse_down={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://translations.en.translation", "res://translations.ru.translation", "res://pancake_clicker/pancake_clicker_lang.en.translation", "res://pancake_clicker/pancake_clicker_lang.ru.translation", "res://translations.de.translation")
+locale/translations=PackedStringArray("res://translations.en.translation", "res://translations.ru.translation", "res://pancake_clicker/pancake_clicker_lang.en.translation", "res://pancake_clicker/pancake_clicker_lang.ru.translation", "res://translations.de.translation", "res://translations.ua.translation")
 
 [physics]
 
