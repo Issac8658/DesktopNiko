@@ -48,4 +48,5 @@ func start_buffer_play():
 
 func update_pos():
 	var main_window_screen_id = DisplayServer.window_get_current_screen(MAIN_WINDOW_ID)
-	position = DisplayServer.screen_get_position(main_window_screen_id) + Vector2i(DisplayServer.screen_get_size(main_window_screen_id).x - size.x, 0)
+	var usable_rect = DisplayServer.screen_get_usable_rect(main_window_screen_id)
+	position = usable_rect.position + Vector2i(usable_rect.size.x - size.x, 0)
