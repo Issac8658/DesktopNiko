@@ -20,7 +20,7 @@ run/main_scene="uid://cj66sb2a5oolj"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="DesktopNiko"
 config/auto_accept_quit=false
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 run/low_processor_mode=true
 run/low_processor_mode_sleep_usec=13800
 boot_splash/show_image=false
@@ -29,6 +29,7 @@ config/icon="uid://qsweuhlblj1"
 [audio]
 
 buses/default_bus_layout="res://meow_sound_bus.tres"
+driver/enable_input=true
 
 [autoload]
 
@@ -48,6 +49,10 @@ window/size/transparent=true
 window/energy_saving/keep_screen_on=false
 window/subwindows/embed_subwindows=false
 window/per_pixel_transparency/allowed=true
+
+[dotnet]
+
+project/assembly_name="Desktop Niko"
 
 [gui]
 

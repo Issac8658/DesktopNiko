@@ -2,6 +2,7 @@ extends Window
 
 @export var topbar : Control
 @export var CloseButton : BaseButton
+@export var HideButton : BaseButton
 
 var is_dragging : bool = false;
 var mouse_offset : Vector2;
@@ -22,6 +23,10 @@ func _ready() -> void:
 	CloseButton.pressed.connect(func ():
 		visible = false
 	)
+	if HideButton:
+		HideButton.pressed.connect(func ():
+			mode = MODE_MINIMIZED
+		)
 	max_size = DisplayServer.screen_get_usable_rect(DisplayServer.SCREEN_PRIMARY).size
 
 func MoveWindow(Offset:Vector2i) -> void:

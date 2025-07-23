@@ -1,6 +1,6 @@
 extends Node
 
-signal gaming_mode_changed(state: bool)
+signal gaming_mode_changed()
 signal facepick_update()
 signal theme_update()
 signal quit_request()
@@ -28,6 +28,7 @@ var is_exit_button_hovered = false
 var peaceful_mode = false
 var show_saving_icon = true
 var is_niko_hovered = false
+var gaming_mode_enabled = false
 
 var config_file = ConfigFile.new()
 var clicks : int = 0
@@ -80,6 +81,7 @@ func _ready() -> void: # loading all parameters
 						true: child.process_mode = Node.PROCESS_MODE_INHERIT
 		)
 	print("Hello, Niko!")
+	
 
 
 func _notification(what): # exit request capture
@@ -133,7 +135,8 @@ func try_quit(): # saving all parameters and exit
 func set_gaming_mode(state: bool): # setting gaming mode window state
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_NO_FOCUS, state, DisplayServer.MAIN_WINDOW_ID)
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_MOUSE_PASSTHROUGH, state, DisplayServer.MAIN_WINDOW_ID)
-	gaming_mode_changed.emit(state)
+	gaming_mode_enabled = state
+	gaming_mode_changed.emit()
 
 
 func set_theme(color_palette : ColorPalette, theme_id : int):

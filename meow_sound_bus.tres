@@ -1,4 +1,7 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://bhb1lhs548lii"]
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://bhb1lhs548lii"]
+
+[sub_resource type="AudioEffectCapture" id="AudioEffectCapture_u064v"]
+resource_name = "Capture"
 
 [resource]
 bus/1/name = &"MeowSound"
@@ -7,3 +10,11 @@ bus/1/mute = false
 bus/1/bypass_fx = false
 bus/1/volume_db = 0.0
 bus/1/send = &"Master"
+bus/2/name = &"Microphone"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectCapture_u064v")
+bus/2/effect/0/enabled = true

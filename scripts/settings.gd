@@ -24,8 +24,8 @@ func _ready() -> void:
 		GlobalControlls.facepick_update.emit()
 	)
 	
-	GlobalControlls.gaming_mode_changed.connect(func (state):
-		gaming_mod_checkbox.button_pressed = state
+	GlobalControlls.gaming_mode_changed.connect(func ():
+		gaming_mod_checkbox.button_pressed = GlobalControlls.gaming_mode_enabled
 	)
 	
 	click_sound_checkbox.button_pressed = GlobalControlls.is_mouse_sound_enabled

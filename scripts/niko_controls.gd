@@ -51,12 +51,12 @@ func _ready() -> void: # applying saved parameters
 	meow_sound_option_button.selected = GlobalControlls.current_meow_sound_id
 	click_count_label.text = str(GlobalControlls.clicks)
 	update_facepick()
-	
+	get_window()
 
 func _process(_delta: float) -> void: # show again if niko minimized(hidden)
-	if main_window.mode == Window.MODE_MINIMIZED:
-		main_window.mode = Window.MODE_WINDOWED
-
+	#if main_window.mode == Window.MODE_MINIMIZED:
+	#	main_window.mode = Window.MODE_WINDOWED
+	pass
 
 # Niko functions
 func _on_animation_finished(_anim_name: StringName) -> void: #afk animation stop
@@ -163,7 +163,13 @@ func _on_window_mouse_exited() -> void: # Niko menu hide
 
 
 func _on_menu_button_pressed() -> void: # Menu toggle
-	window_to_open.visible = not window_to_open.visible
+	if window_to_open.mode == Window.MODE_MINIMIZED and window_to_open.visible:
+		window_to_open.visible = false
+		window_to_open.mode = Window.MODE_WINDOWED
+		window_to_open.visible = true
+	else:
+		window_to_open.mode = Window.MODE_WINDOWED
+		window_to_open.visible = not window_to_open.visible
 
 
 func move_window(Offset:Vector2i) -> void: # Move Niko

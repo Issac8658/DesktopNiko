@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://o3kl3g87pn3q"]
+[gd_scene load_steps=6 format=3 uid="uid://o3kl3g87pn3q"]
 
 [ext_resource type="Theme" uid="uid://cxsdp1anrqw7m" path="res://themes/twm_theme/twm_theme.tres" id="1_xtp28"]
 [ext_resource type="Script" uid="uid://m6hjiig1mkmj" path="res://scripts/window_controller.gd" id="2_in0ps"]
 [ext_resource type="Texture2D" uid="uid://c8a2o0ruiwceh" path="res://ui_sprites/place_holder.png" id="3_cp0xp"]
 [ext_resource type="Texture2D" uid="uid://bo3x8yy4g81xb" path="res://ui_sprites/close_button.tres" id="4_73js7"]
+[ext_resource type="Texture2D" uid="uid://bvbx7qccj2uks" path="res://ui_sprites/hide_button.tres" id="4_in0ps"]
 
-[node name="BaseWindow" type="Window" node_paths=PackedStringArray("topbar", "CloseButton")]
+[node name="BaseWindow" type="Window" node_paths=PackedStringArray("topbar", "CloseButton", "HideButton")]
 auto_translate_mode = 1
 disable_3d = true
 title = "Base Window"
@@ -20,6 +21,7 @@ theme = ExtResource("1_xtp28")
 script = ExtResource("2_in0ps")
 topbar = NodePath("Control/WindowContainer/Topbar")
 CloseButton = NodePath("Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/CloseButtonContainer/CloseButton")
+HideButton = NodePath("Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/HideButtonContainer/HideButton")
 
 [node name="Control" type="Control" parent="."]
 texture_filter = 1
@@ -76,6 +78,24 @@ expand_icon = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Base Window"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="HideButtonContainer" type="MarginContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 4
+
+[node name="HideButton" type="Button" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/HideButtonContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("4_in0ps")
+flat = true
+expand_icon = true
 
 [node name="CloseButtonContainer" type="MarginContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer"]
 layout_mode = 2

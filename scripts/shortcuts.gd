@@ -9,9 +9,12 @@ func _ready():
 		if button: 
 			if button.has_meta("TargetWindow"):
 				var meta = button.get_meta("TargetWindow")
+				var window = button.get_node(meta)
 				button.gui_input.connect(func (event: InputEvent):
 					if event is InputEventMouseButton and event.double_click:
-						button.get_node(meta).visible = true
+						window.visible = false
+						window.mode = Window.MODE_WINDOWED
+						window.visible = true
 				)
 	
 	shutdown_accept_button.pressed.connect(func ():

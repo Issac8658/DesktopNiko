@@ -1,4 +1,4 @@
-[gd_scene load_steps=160 format=4 uid="uid://cj66sb2a5oolj"]
+[gd_scene load_steps=161 format=4 uid="uid://cj66sb2a5oolj"]
 
 [ext_resource type="Script" uid="uid://b8e5fhar3jgaj" path="res://scripts/niko_controls.gd" id="1_2c62f"]
 [ext_resource type="AudioStream" uid="uid://5tnvrblu5h4j" path="res://niko/niko_meows/meow1.wav" id="2_ghshe"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dupq4qhtqbvbt" path="res://niko/niko_surprised.png" id="9_wr18j"]
 [ext_resource type="Texture2D" uid="uid://qsweuhlblj1" path="res://icon.png" id="10_wr18j"]
 [ext_resource type="Script" uid="uid://cqdig7ltehghd" path="res://scripts/status_icon_controller.gd" id="11_qwutr"]
+[ext_resource type="Script" uid="uid://c1bfujmhhygax" path="res://scripts/WindowsMousePassthrough.cs" id="11_ym5p0"]
 [ext_resource type="AudioStream" uid="uid://dhwgvb6t1ulx" path="res://sounds/twm_notif2.wav" id="13_1n88h"]
 [ext_resource type="Texture2D" uid="uid://b55s8l68phsqe" path="res://niko/niko_default.png" id="16_7th4q"]
 [ext_resource type="Texture2D" uid="uid://cmck41qjd7h12" path="res://ui_sprites/customize.png" id="16_kv3aw"]
@@ -718,6 +719,9 @@ volume_db = -5.0
 stream = ExtResource("44_euc68")
 volume_db = -5.0
 
+[node name="WindowsMousePassthrough" type="Node" parent="."]
+script = ExtResource("11_ym5p0")
+
 [node name="NikoLayer" type="CanvasLayer" parent="."]
 
 [node name="NikoBase" type="Control" parent="NikoLayer"]
@@ -798,6 +802,12 @@ interpolate = false
 visibility_rect = Rect2(0, 0, 124, 152)
 draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_s2ody")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(120, 120)
+render_target_update_mode = 4
 
 [node name="MeowSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ghshe")
@@ -1253,6 +1263,8 @@ icon = ExtResource("25_opjno")
 
 [node name="Title" parent="ShutdownPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
 visible = false
+clip_text = false
+text_overrun_behavior = 0
 
 [node name="Quest" parent="ShutdownPopup/Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="0"]
 text = "SHUTDOWN_QUEST"
@@ -1272,6 +1284,8 @@ icon = ExtResource("17_ijoax")
 
 [node name="Title" parent="ThemesWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
 text = "THEMES"
+clip_text = false
+text_overrun_behavior = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="ThemesWindow/Control/WindowContainer/Content" index="0"]
 layout_mode = 1
@@ -2083,7 +2097,7 @@ size_flags_horizontal = 3
 [node name="GamingMode" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-text = "GAMING_MODE_N"
+text = "GAMING_MODE"
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/GamingMode" instance=ExtResource("42_sp30j")]
 layout_mode = 1
@@ -2158,7 +2172,6 @@ theme_override_constants/separation = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_7th4q")
 
 [node name="Button" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/Language2"]
-visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 mouse_filter = 2

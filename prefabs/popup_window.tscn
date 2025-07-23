@@ -26,7 +26,10 @@ volume_db = -10.0
 [node name="Title" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
 text = "Popup Window"
 
-[node name="CloseButtonContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="2"]
+[node name="HideButtonContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="2"]
+visible = false
+
+[node name="CloseButtonContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="3"]
 visible = false
 
 [node name="PopupMargin" type="MarginContainer" parent="Control/WindowContainer/Content" index="0"]

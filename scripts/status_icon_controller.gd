@@ -5,8 +5,8 @@ extends Window
 @export var shutdown_button : Button
 
 func _ready() -> void:
-	GlobalControlls.gaming_mode_changed.connect(func (state):
-		gaming_mode_checkbox.button_pressed = state
+	GlobalControlls.gaming_mode_changed.connect(func ():
+		gaming_mode_checkbox.button_pressed = GlobalControlls.gaming_mode_enabled
 	)
 	shutdown_button.pressed.connect(func ():
 		GlobalControlls.quit_request.emit()
