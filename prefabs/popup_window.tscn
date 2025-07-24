@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bnv7o6bmlo6ic" path="res://sounds/twm_notif3.wav" id="4_w1na8"]
 [ext_resource type="AudioStream" uid="uid://54f4ilgm2r3g" path="res://sounds/twm_notif4.wav" id="5_vfins"]
 
-[node name="PopupWindow" node_paths=PackedStringArray("cancel_button", "PopupStreamPlayer") instance=ExtResource("1_7xd75")]
+[node name="PopupWindow" node_paths=PackedStringArray("cancel_button", "accept_button", "PopupStreamPlayer") instance=ExtResource("1_7xd75")]
 initial_position = 4
 size = Vector2i(328, 184)
 transient = true
@@ -16,6 +16,7 @@ always_on_top = false
 popup_window = true
 script = ExtResource("2_p1j5h")
 cancel_button = NodePath("Control/WindowContainer/Content/PopupMargin/VBoxContainer/Actions/No")
+accept_button = NodePath("Control/WindowContainer/Content/PopupMargin/VBoxContainer/Actions/Yes")
 PopupStreamPlayer = NodePath("PopupSound")
 Sounds = Array[AudioStream]([ExtResource("2_tokai"), ExtResource("4_w1na8"), ExtResource("5_vfins")])
 

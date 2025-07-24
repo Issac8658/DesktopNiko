@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://clo633qc1pd8w"]
 
 [ext_resource type="Texture2D" uid="uid://c8a2o0ruiwceh" path="res://ui_sprites/place_holder.png" id="1_j06oa"]
-[ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://pancake_clicker/pancake_clicker.png" id="2_33qed"]
+[ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://ui_sprites/pancake_clicker.png" id="2_33qed"]
 [ext_resource type="Texture2D" uid="uid://bhkcmk72oktdr" path="res://ui_sprites/click.png" id="3_cdfg7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwncm"]

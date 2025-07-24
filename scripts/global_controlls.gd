@@ -29,6 +29,8 @@ var peaceful_mode = false
 var show_saving_icon = true
 var is_niko_hovered = false
 var gaming_mode_enabled = false
+var force_facepick = false
+var forced_facepick_id : String
 
 var config_file = ConfigFile.new()
 var clicks : int = 0
@@ -120,8 +122,9 @@ func save():
 	
 	config_file.save("user://NikoMemories.cfg")
 	
-	for script in scripts_to_save:
-		script.save()
+	for script : Node in scripts_to_save:
+		if script.has_method("save"):
+			script.save()
 	
 	saved.emit()
 
@@ -135,6 +138,7 @@ func try_quit(): # saving all parameters and exit
 func set_gaming_mode(state: bool): # setting gaming mode window state
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_NO_FOCUS, state, DisplayServer.MAIN_WINDOW_ID)
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_MOUSE_PASSTHROUGH, state, DisplayServer.MAIN_WINDOW_ID)
+	PassthroughModule.UpdateWindowsExStyles(get_window(), true)
 	gaming_mode_enabled = state
 	gaming_mode_changed.emit()
 
@@ -144,6 +148,15 @@ func set_theme(color_palette : ColorPalette, theme_id : int):
 	global_color_palette_id = theme_id
 	theme_update.emit()
 
+func set_forced_facepick(facepick_id):
+	if NikoSpritesModule.has_sprite(facepick_id):
+		forced_facepick_id = facepick_id
+		force_facepick = true
+		facepick_update.emit()
+
+func unforce_facepick():
+	force_facepick = false
+	facepick_update.emit()
 
 func get_default_pos(): # calculatig center of main screen
 	var screen_pos = DisplayServer.screen_get_position(DisplayServer.get_primary_screen())

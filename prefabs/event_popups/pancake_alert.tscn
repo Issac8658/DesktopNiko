@@ -1,0 +1,171 @@
+[gd_scene load_steps=11 format=3 uid="uid://4baxjml3wpgo"]
+
+[ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/event.gd" id="1_nodym"]
+[ext_resource type="AudioStream" uid="uid://fwhbmmo7fr0n" path="res://sounds/rb_cry.mp3" id="2_kivn3"]
+[ext_resource type="AudioStream" uid="uid://dq1jrk427a2q3" path="res://sounds/glitch2.wav" id="3_4vcw5"]
+[ext_resource type="PackedScene" uid="uid://8hficp4dbvqs" path="res://prefabs/popup_window.tscn" id="4_mhhk1"]
+[ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://ui_sprites/pancake_clicker.png" id="5_nm1hw"]
+[ext_resource type="Texture2D" uid="uid://cxfqu8xs5tg7u" path="res://pancake_clicker/pancake.png" id="6_3kxgl"]
+[ext_resource type="Shader" uid="uid://b26rgmbytj282" path="res://shaders/offset_shader.gdshader" id="7_c7ay0"]
+
+[sub_resource type="GDScript" id="GDScript_le437"]
+resource_name = "event_controller"
+script/source = "extends Node
+
+@export var popup : Window
+@export var glitch : Window
+@export var cry_sound : AudioStreamPlayer
+@export var glitch_sound : AudioStreamPlayer
+@onready var event : Event = get_parent()
+
+var eventing = false
+
+# Called when the node enters the scene tree for the first time.
+func do_event() -> void:
+	if not eventing:
+		eventing = true
+		var niko_pos = DisplayServer.window_get_position(DisplayServer.MAIN_WINDOW_ID)
+		popup.no_button_pressed.connect(func ():
+			print(\"pressed no\")
+			GlobalControlls.set_forced_facepick(\"niko_cry\")
+			cry_sound.finished.connect(func ():
+				Dialog.show_dialog(\"[Ты растроил Нико.]\", null, 0.05, true)
+				Dialog.dialog_skiped.connect(func ():
+					#glitch.visible = true
+					#glitch.visibility_changed.connect(func ():
+					#	if glitch.visible == false:
+					#revert() #^
+					#@warning_ignore(\"narrowing_conversion\")
+					#GlobalControlls.clicks *= 0.75
+					#GlobalControlls.try_quit()
+					#)
+					Dialog.show_dialog(\"[Нет, так не пойдёт.]\", null, 0.05, true)
+					Dialog.dialog_skiped.connect(func ():
+						glitch.visible = true
+						glitch_sound.finished.connect(func ():
+							glitch.visible = false
+							DisplayServer.window_set_position(niko_pos, DisplayServer.MAIN_WINDOW_ID)
+							popup.popup()
+							GlobalControlls.set_forced_facepick(\"niko_pancakes\"), CONNECT_ONE_SHOT
+						)
+						glitch_sound.play(), CONNECT_ONE_SHOT
+					), CONNECT_ONE_SHOT
+				), CONNECT_ONE_SHOT
+			)
+			cry_sound.play()
+		)
+		popup.yes_button_pressed.connect(func ():
+			print(\"pressed yes\")
+			revert()
+		)
+		popup.popup()
+		GlobalControlls.set_forced_facepick(\"niko_pancakes\")
+
+func revert():
+	eventing = false
+	GlobalControlls.unforce_facepick()
+"
+
+[sub_resource type="GDScript" id="GDScript_4vcw5"]
+resource_name = "scary_effect_window"
+script/source = "extends Window
+
+@export var texture_rect : TextureRect
+
+func _ready() -> void:
+	visible = false
+	visibility_changed.connect(func ():
+		if visible:
+			var main_window_screen = DisplayServer.window_get_current_screen(DisplayServer.MAIN_WINDOW_ID)
+			position = DisplayServer.screen_get_position(main_window_screen)
+			size = DisplayServer.screen_get_size(main_window_screen) + Vector2i(1,1)
+			texture_rect.texture = ImageTexture.create_from_image(DisplayServer.screen_get_image(main_window_screen))
+			texture_rect.material.set_shader_parameter(\"offset_power\", 0)
+			PassthroughModule.UpdateWindowsExStyles(self, true)
+	)
+
+func _process(delta: float) -> void:
+	if visible:
+		texture_rect.material.set_shader_parameter(\"offset_power\", texture_rect.material.get_shader_parameter(\"offset_power\") - delta * 0.5)
+#		if texture_rect.material.get_shader_parameter(\"offset_power\") <= -0.03:
+#			visible = false
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o5iab"]
+shader = ExtResource("7_c7ay0")
+shader_parameter/offset_power = 0.0
+
+[node name="PancakeAlert" type="Node" node_paths=PackedStringArray("event_controller")]
+script = ExtResource("1_nodym")
+event_controller = NodePath("EventController")
+metadata/_custom_type_script = "uid://73yfcqn4tt7s"
+
+[node name="EventController" type="Node" parent="." node_paths=PackedStringArray("popup", "glitch", "cry_sound", "glitch_sound")]
+script = SubResource("GDScript_le437")
+popup = NodePath("../PancakeQuest")
+glitch = NodePath("../GlitchW")
+cry_sound = NodePath("../Cry")
+glitch_sound = NodePath("../Glitch")
+
+[node name="Cry" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_kivn3")
+volume_db = -10.0
+
+[node name="Glitch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4vcw5")
+
+[node name="PancakeQuest" parent="." instance=ExtResource("4_mhhk1")]
+size = Vector2i(328, 320)
+visible = false
+
+[node name="Icon" parent="PancakeQuest/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
+icon = ExtResource("5_nm1hw")
+
+[node name="Title" parent="PancakeQuest/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
+text = "PANCAKE_ALERT"
+
+[node name="Control" type="Control" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 168)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -67.0
+offset_right = 68.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_3kxgl")
+
+[node name="Quest" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="1"]
+text = "GIVE_PANCAKES_TO_NIKO_QUEST"
+
+[node name="Control2" type="Control" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="3"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="GlitchW" type="Window" parent="." node_paths=PackedStringArray("texture_rect")]
+auto_translate_mode = 1
+transparent_bg = true
+visible = false
+wrap_controls = true
+borderless = true
+always_on_top = true
+transparent = true
+unfocusable = true
+script = SubResource("GDScript_4vcw5")
+texture_rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="GlitchW"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_o5iab")
+offset_right = 40.0
+offset_bottom = 40.0
+
+[editable path="PancakeQuest"]

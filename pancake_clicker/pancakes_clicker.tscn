@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ds31khwukmrr8" path="res://pancake_clicker/shop_items/resources/item_syrup_maple.atlastex" id="4_683df"]
 [ext_resource type="FontVariation" uid="uid://xejvk4sbddea" path="res://fonts/SuperText.tres" id="4_tkjt1"]
 [ext_resource type="StyleBox" uid="uid://crl4yywird4qv" path="res://themes/twm_theme/window_left_panel_grabber.stylebox" id="4_yd10f"]
-[ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://pancake_clicker/pancake_clicker.png" id="5_1w58l"]
+[ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://ui_sprites/pancake_clicker.png" id="5_1w58l"]
 [ext_resource type="Script" uid="uid://dagblxl7ulofl" path="res://pancake_clicker/syrup_select.gd" id="5_2pldd"]
 [ext_resource type="Script" uid="uid://b3wdforqspr2t" path="res://pancake_clicker/additional_ingredient.gd" id="5_71nsd"]
 [ext_resource type="Script" uid="uid://jp2jihaawwmf" path="res://pancake_clicker/pancakes_shop.gd" id="5_dal33"]
