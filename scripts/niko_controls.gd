@@ -51,12 +51,12 @@ func _ready() -> void: # applying saved parameters
 	meow_sound_option_button.selected = GlobalControlls.current_meow_sound_id
 	click_count_label.text = str(GlobalControlls.clicks)
 	update_facepick()
-	get_window()
+	PassthroughModule.UpdateWindowsExStyles(get_window(), true)
 
-func _process(_delta: float) -> void: # show again if niko minimized(hidden)
+#func _process(_delta: float) -> void: # show again if niko minimized(hidden)
 	#if main_window.mode == Window.MODE_MINIMIZED:
 	#	main_window.mode = Window.MODE_WINDOWED
-	pass
+	#pass
 
 # Niko functions
 func _on_animation_finished(_anim_name: StringName) -> void: #afk animation stop
@@ -73,16 +73,16 @@ func _on_niko_input(event: InputEvent) -> void: # main Niko operations
 	save_afk_time = 0
 	if animator.is_playing():
 		_on_animation_finished("") # cancel afk animation on any input
-		
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.is_pressed():
-			click()
-			is_dragging = true
-			mouse_offset = event.position
-		else:
-			is_dragging = false
-	if event is InputEventMouseMotion and is_dragging: # dragging
-		move_window(event.position - mouse_offset);
+	if not GlobalControlls.force_facepick:
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+			if event.is_pressed():
+				click()
+				is_dragging = true
+				mouse_offset = event.position
+			else:
+				is_dragging = false
+		if event is InputEventMouseMotion and is_dragging: # dragging
+			move_window(event.position - mouse_offset);
 
 
 func _input(event) -> void: # Niko flip
@@ -122,7 +122,9 @@ func click():
 func update_facepick():
 	sleeping_particles.emitting = false
 	if not animator.is_playing():
-		if GlobalControlls.is_shutdown_popup_shown:
+		if GlobalControlls.force_facepick:
+			niko_rect.texture = NikoSpritesModule.get_sprite(GlobalControlls.forced_facepick_id)
+		elif GlobalControlls.is_shutdown_popup_shown:
 			niko_rect.texture = NikoSpritesModule.get_sprite("niko_cry")
 			save_afk_time = 0
 			current_sleep_afk_time = 0
@@ -191,17 +193,18 @@ func _on_timer_tick() -> void: # CPS Counter
 		if cps >= 100:
 			if not AchievementsGlobalConroller.is_achievement_taked("what_you_do"):
 				AchievementsGlobalConroller.take_achievement("what_you_do")
-	if current_sleep_afk_time < sleepy_afk_time:
-		save_afk_time += 1
-	current_sleep_afk_time += 1
-	update_facepick()
-	
-	GlobalControlls.total_time += 1
-	
-	if save_afk_time >= afk_time: # looking around if don't do anything for too long
-		save_afk_time = 0
-		animator.play("niko_look_around")
-		GlobalControlls.save()
+	if GlobalControlls.force_facepick:
+		if current_sleep_afk_time < sleepy_afk_time:
+			save_afk_time += 1
+		current_sleep_afk_time += 1
+		update_facepick()
+		
+		GlobalControlls.total_time += 1
+		
+		if save_afk_time >= afk_time: # looking around if don't do anything for too long
+			save_afk_time = 0
+			animator.play("niko_look_around")
+			GlobalControlls.save()
 
 func _on_close_button_mouse_entered() -> void: # Niko sad facepick on exit button hover
 	GlobalControlls.is_exit_button_hovered = true

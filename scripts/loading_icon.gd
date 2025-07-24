@@ -8,6 +8,7 @@ func _ready() -> void:
 			position = get_target_position()
 			visible = true
 			animator.play("RESET")
+			
 	)
 	GlobalControlls.saved.connect(func ():
 		if GlobalControlls.show_saving_icon:

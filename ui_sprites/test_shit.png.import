@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dnwbeed7hrv83"
-path="res://.godot/imported/achievements_test_shit.png-28f71df15c82b2be41de7db290a3713b.ctex"
+path="res://.godot/imported/test_shit.png-5aba78a2490e8a5ada1aac926b5ca3b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui_sprites/achievements_test_shit.png"
-dest_files=["res://.godot/imported/achievements_test_shit.png-28f71df15c82b2be41de7db290a3713b.ctex"]
+source_file="res://ui_sprites/test_shit.png"
+dest_files=["res://.godot/imported/test_shit.png-5aba78a2490e8a5ada1aac926b5ca3b5.ctex"]
 
 [params]
 

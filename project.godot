@@ -11,10 +11,7 @@ config_version=5
 [application]
 
 config/name="Desktop Niko"
-config/name_localized={
-"ru": "Нико на твоём экране"
-}
-config/version="1.1.3"
+config/version="1.1.4"
 config/tags=PackedStringArray("niko", "non_com", "one_shot", "software")
 run/main_scene="uid://cj66sb2a5oolj"
 config/use_custom_user_dir=true
@@ -35,6 +32,8 @@ driver/enable_input=true
 
 GlobalControlls="*res://scripts/global_controlls.gd"
 NikoSpritesModule="*res://scripts/niko_sprites_module.gd"
+PassthroughModule="*res://scripts/WindowMousePassthroughModule.cs"
+Dialog="*res://prefabs/dialog_window.tscn"
 AchievementsGlobalConroller="*res://scripts/achievements_global_conroller.gd"
 PancakeClickerGlobalController="*res://pancake_clicker/pancake_clicker_global_controller.gd"
 
@@ -73,6 +72,13 @@ mouse_down={
 , Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
+dialog_skip={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":32,"physical_keycode":0,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194309,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":90,"physical_keycode":0,"key_label":0,"unicode":122,"location":0,"echo":false,"script":null)
+]
+}
 
 [internationalization]
 
@@ -106,4 +112,8 @@ renderer/positional_shadow/atlas_quadrant_2_subdiv=0
 wm_overlay_color={
 "type": "color",
 "value": Color(1, 0.6, 1, 1)
+}
+offset_shader_offset={
+"type": "float",
+"value": 0.0
 }

@@ -49,3 +49,10 @@ func get_sprite(sprite_id : String) -> Resource:
 		else:
 			print("sprite " + sprite_id + " is does not exist")
 			return niko_sprites["niko"]
+
+
+func has_sprite(sprite_id : String) -> bool:
+	if GlobalControlls.use_legacy_sprites:
+		return sprite_id in niko_legacy_sprites.keys()
+	else:
+		return sprite_id in niko_sprites.keys()

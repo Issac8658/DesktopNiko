@@ -1,31 +1,41 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6x3pchks2f73"]
+[gd_scene load_steps=8 format=3 uid="uid://c6x3pchks2f73"]
 
-[ext_resource type="Theme" uid="uid://bll84jclxrjw1" path="res://themes/theme.tres" id="1_cjtxb"]
-[ext_resource type="Script" uid="uid://hmewgd3lbmoo" path="res://scripts/dialog.gd" id="2_lmnfy"]
-[ext_resource type="Texture2D" uid="uid://c8a2o0ruiwceh" path="res://ui_sprites/place_holder.png" id="2_mms0k"]
-[ext_resource type="AudioStream" uid="uid://b6rgfk26heet7" path="res://sounds/text.wav" id="3_ioiif"]
-[ext_resource type="Texture2D" uid="uid://bw465n3hiy0mk" path="res://ui_sprites/ui_shit.png" id="3_lmnfy"]
+[ext_resource type="Theme" uid="uid://bll84jclxrjw1" path="res://themes/theme.tres" id="1_86o57"]
+[ext_resource type="Script" uid="uid://hmewgd3lbmoo" path="res://scripts/dialog.gd" id="2_v4kmj"]
+[ext_resource type="AudioStream" uid="uid://b6rgfk26heet7" path="res://sounds/text.wav" id="3_yq0c4"]
+[ext_resource type="AudioStream" uid="uid://co1vjkygk5wqc" path="res://sounds/text_robot.wav" id="4_v4kmj"]
+[ext_resource type="Texture2D" uid="uid://c8a2o0ruiwceh" path="res://ui_sprites/place_holder.png" id="4_ynht5"]
+[ext_resource type="Texture2D" uid="uid://bw465n3hiy0mk" path="res://ui_sprites/ui_shit.png" id="5_6666u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cjtxb"]
 bg_color = Color(0.0823529, 0.027451, 0.0823529, 0.701961)
 
-[node name="BaseDialogWindow" type="Window" node_paths=PackedStringArray("stream_player", "timer", "text_label", "rect")]
+[node name="DialogWindow" type="Window" node_paths=PackedStringArray("text_sound", "wm_sound", "timer", "text_label", "rect")]
 auto_translate_mode = 1
 transparent_bg = true
+title = "DialogWindow"
 size = Vector2i(664, 128)
+visible = false
 transient = true
+transient_to_focused = true
+exclusive = true
 unresizable = true
 borderless = true
 transparent = true
-theme = ExtResource("1_cjtxb")
-script = ExtResource("2_lmnfy")
-stream_player = NodePath("AudioStreamPlayer")
+theme = ExtResource("1_86o57")
+script = ExtResource("2_v4kmj")
+text_sound = NodePath("Text")
+wm_sound = NodePath("WMText")
 timer = NodePath("Timer")
 text_label = NodePath("Content/MarginContainer/HBoxContainer/VBoxContainer/RichTextLabel")
 rect = NodePath("Content/MarginContainer/HBoxContainer/TextureRect")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_ioiif")
+[node name="Text" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yq0c4")
+volume_db = -15.0
+
+[node name="WMText" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_v4kmj")
 volume_db = -15.0
 
 [node name="Timer" type="Timer" parent="."]
@@ -66,7 +76,7 @@ text = "Text here [color=red]asg[/color] gege"
 texture_filter = 1
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
-texture = ExtResource("2_mms0k")
+texture = ExtResource("4_ynht5")
 
 [node name="Outline" type="NinePatchRect" parent="."]
 texture_filter = 1
@@ -76,7 +86,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
-texture = ExtResource("3_lmnfy")
+texture = ExtResource("5_6666u")
 region_rect = Rect2(0, 9, 12, 12)
 patch_margin_left = 6
 patch_margin_top = 6
