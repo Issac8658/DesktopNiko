@@ -34,8 +34,9 @@ var PositionBeforeMove : Vector2i;
 var in_anim : bool = false
 
 var current_sleep_afk_time : int = 0
-var save_afk_time : int = 0
-var timed_clicks : int = 0
+var save_afk_time : int          = 0
+var last_save_timestamp : int    = 0
+var timed_clicks : int           = 0
 var cps : int = 0
 
 
@@ -197,9 +198,10 @@ func _on_timer_tick() -> void: # CPS Counter
 	update_facepick()
 	
 	GlobalControlls.total_time += 1
-	
-	if save_afk_time >= afk_time: # looking around if don't do anything for too long
+	var now: int = int(Time.get_unix_time_from_system())
+	if save_afk_time >= afk_time and now - last_save_timestamp >= afk_time: # looking around if don't do anything for too long
 		save_afk_time = 0
+		last_save_timestamp = now
 		animator.play("niko_look_around")
 		GlobalControlls.save()
 
