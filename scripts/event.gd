@@ -9,5 +9,6 @@ class_name Event
 @export var max_cps : int = 100
 
 func event():
-	if event_controller.has_method("do_event"):
-		event_controller.do_event()
+	if event_controller:
+		if event_controller.has_method("do_event"):
+			event_controller.do_event()

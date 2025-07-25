@@ -30,6 +30,7 @@ driver/enable_input=true
 
 [autoload]
 
+ShutdownHandler="*res://scripts/ShutdownHandler.cs"
 GlobalControlls="*res://scripts/global_controlls.gd"
 NikoSpritesModule="*res://scripts/niko_sprites_module.gd"
 PassthroughModule="*res://scripts/WindowMousePassthroughModule.cs"

@@ -95,5 +95,9 @@ ACHIEVEMENT_SWEET_DREAMS_NAME,Sweet dreams!,Сладких снов!,Träum sü�
 ACHIEVEMENT_SWEET_DREAMS_DESC,"Isn't it time for us to sleep?",Не пора ли нам поспать?,Ist es nicht Zeit für uns zu schlafen?,Чи не час нам поспати?
 ACHIEVEMENT_HELLO_NAME,"Hello, Secret!","Привет, Секрет!","Hallo, das Geheimnis!","Привіт, Секрет!"
 ACHIEVEMENT_HELLO_DESC,What was that?,Что это было?,Was war das?,Що це було?
+SHUTDOWN_BLOCK_MESSAGE,,[Что ты делаешь?! Ты так можешь навредить Нико!],,
 GIVE_PANCAKES_TO_NIKO_QUEST,,Вы хотите дать Нико блинчики?,,
 PANCAKE_ALERT,Pancake Alert,Предупреждение: Блинчики,,
+PANCAKE_ALERT_DIALOG_A,,[Ты растроил Нико.],,
+PANCAKE_ALERT_DIALOG_B,,[Чего ты хотел этим добиться?]\n[Ты думаешь тебе это что то даст?],,
+PANCAKE_ALERT_DIALOG_C,,"[В любом случае, я тебе не позволю обижать Нико.]",,

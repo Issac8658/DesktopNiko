@@ -37,7 +37,6 @@ public partial class WindowMousePassthroughModule : Node
 				style |= WS_EX_LAYERED | WS_EX_TRANSPARENT;
 			}
 			SetWindowLong(hWnd, GWL_EXSTYLE, style);
-			GD.Print(window, " a");
 		}
 	}
 }

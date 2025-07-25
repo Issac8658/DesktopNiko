@@ -20,16 +20,15 @@ script/source = "extends Node
 
 var eventing = false
 
-# Called when the node enters the scene tree for the first time.
 func do_event() -> void:
 	if not eventing:
 		eventing = true
 		var niko_pos = DisplayServer.window_get_position(DisplayServer.MAIN_WINDOW_ID)
 		popup.no_button_pressed.connect(func ():
 			print(\"pressed no\")
-			GlobalControlls.set_forced_facepick(\"niko_cry\")
+			GlobalControlls.set_forced_facepick(\"niko_super_cry\")
 			cry_sound.finished.connect(func ():
-				Dialog.show_dialog(\"[Ты растроил Нико.]\", null, 0.05, true)
+				Dialog.show_dialog(\"PANCAKE_ALERT_DIALOG_A\", null, 0.05, true)
 				Dialog.dialog_skiped.connect(func ():
 					#glitch.visible = true
 					#glitch.visibility_changed.connect(func ():
@@ -39,19 +38,22 @@ func do_event() -> void:
 					#GlobalControlls.clicks *= 0.75
 					#GlobalControlls.try_quit()
 					#)
-					Dialog.show_dialog(\"[Нет, так не пойдёт.]\", null, 0.05, true)
+					Dialog.show_dialog(\"PANCAKE_ALERT_DIALOG_B\", null, 0.05, true)
 					Dialog.dialog_skiped.connect(func ():
-						glitch.visible = true
-						glitch_sound.finished.connect(func ():
-							glitch.visible = false
-							DisplayServer.window_set_position(niko_pos, DisplayServer.MAIN_WINDOW_ID)
-							popup.popup()
-							GlobalControlls.set_forced_facepick(\"niko_pancakes\"), CONNECT_ONE_SHOT
-						)
-						glitch_sound.play(), CONNECT_ONE_SHOT
-					), CONNECT_ONE_SHOT
-				), CONNECT_ONE_SHOT
-			)
+						Dialog.show_dialog(\"PANCAKE_ALERT_DIALOG_C\", null, 0.05, true)
+						Dialog.dialog_skiped.connect(func ():
+							glitch.visible = true
+							glitch_sound.finished.connect(func ():
+								glitch.visible = false
+								DisplayServer.window_set_position(niko_pos, DisplayServer.MAIN_WINDOW_ID)
+								popup.popup()
+								GlobalControlls.set_forced_facepick(\"niko_pancakes\")
+							, CONNECT_ONE_SHOT)
+							glitch_sound.play()
+						, CONNECT_ONE_SHOT)
+					, CONNECT_ONE_SHOT)
+				, CONNECT_ONE_SHOT)
+			, CONNECT_ONE_SHOT)
 			cry_sound.play()
 		)
 		popup.yes_button_pressed.connect(func ():
@@ -64,6 +66,9 @@ func do_event() -> void:
 func revert():
 	eventing = false
 	GlobalControlls.unforce_facepick()
+
+func play_eating_anim():
+	
 "
 
 [sub_resource type="GDScript" id="GDScript_4vcw5"]
@@ -106,6 +111,9 @@ popup = NodePath("../PancakeQuest")
 glitch = NodePath("../GlitchW")
 cry_sound = NodePath("../Cry")
 glitch_sound = NodePath("../Glitch")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
 
 [node name="Cry" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_kivn3")

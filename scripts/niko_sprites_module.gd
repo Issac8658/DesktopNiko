@@ -3,6 +3,7 @@ extends Node
 var niko_sprites = {
 	"niko" = load("res://niko/niko.png"),
 	"niko_cry" = load("res://niko/niko_cry.png"),
+	"niko_super_cry" = load("res://niko/niko_super_cry.png"),
 	"niko_default" = load("res://niko/niko_default.png"),
 	"niko_gasmask" = load("res://niko/niko_gasmask.png"),
 	"niko_look_left" = load("res://niko/niko_look_left.png"),
@@ -21,6 +22,7 @@ var niko_sprites = {
 var niko_legacy_sprites = {
 	"niko" = load("res://niko/niko_legacy/niko.png"),
 	"niko_cry" = load("res://niko/niko_legacy/niko_cry.png"),
+	"niko_super_cry" = load("res://niko/niko_legacy/niko_super_cry.png"),
 	"niko_default" = load("res://niko/niko_legacy/niko_default.png"),
 	"niko_gasmask" = load("res://niko/niko_legacy/niko_gasmask.png"),
 	"niko_look_left" = load("res://niko/niko_legacy/niko_look_left.png"),

@@ -193,7 +193,7 @@ func _on_timer_tick() -> void: # CPS Counter
 		if cps >= 100:
 			if not AchievementsGlobalConroller.is_achievement_taked("what_you_do"):
 				AchievementsGlobalConroller.take_achievement("what_you_do")
-	if GlobalControlls.force_facepick:
+	if not GlobalControlls.force_facepick:
 		if current_sleep_afk_time < sleepy_afk_time:
 			save_afk_time += 1
 		current_sleep_afk_time += 1
@@ -205,6 +205,7 @@ func _on_timer_tick() -> void: # CPS Counter
 			save_afk_time = 0
 			animator.play("niko_look_around")
 			GlobalControlls.save()
+	else: is_dragging = false
 
 func _on_close_button_mouse_entered() -> void: # Niko sad facepick on exit button hover
 	GlobalControlls.is_exit_button_hovered = true
