@@ -1,5 +1,5 @@
 extends Node
-
+# some signals
 signal gaming_mode_changed()
 signal facepick_update()
 signal theme_update()
@@ -10,35 +10,38 @@ signal saved()
 signal clicked()
 @warning_ignore("unused_signal")
 signal niko_scale_changed()
-
+# niko controller, idk
 @onready var niko_controller = $/root/TheWorldMachine
+# some themes shit
 var global_color_palette : ColorPalette = load("res://themes/twm_theme/purple_color_palette.tres")
 var global_color_palette_id = 0
-
+# scripts list with .save() func
 var scripts_to_save = []
-
+# current facepicks
 var idle_facepick : String = "niko_smile"
 var speak_facepick : String = "niko_speak"
 var scare_facepick : String = "niko_shock"
 var scare_speak_facepick : String = "niko_surprised"
-
-var is_mouse_sound_enabled = true
-var is_shutdown_popup_shown = false
-var is_exit_button_hovered = false
-var peaceful_mode = false
-var show_saving_icon = true
-var is_niko_hovered = false
-var gaming_mode_enabled = false
-var force_facepick = false
+# some system vars
+var is_shutdown_popup_shown : bool = false
+var is_exit_button_hovered : bool = false
+var peaceful_mode : bool = false
+var is_niko_hovered : bool = false
+var gaming_mode_enabled : bool = false
+var force_facepick : bool = false
 var forced_facepick_id : String
 
 var config_file = ConfigFile.new()
+# vars to save 
 var clicks : int = 0
 var current_meow_sound_id : int = 0
-var language : int = 0
-var total_time : int = 0
-var niko_scale : int = 1
-var sleep_time : int = 900
+var language : int = 0 # 0 - eng, 1 - rus, 2 - deu, 3 - ukr
+var total_time : int = 0 # all work time in seconds
+var niko_scale : int = 1 # 0 - 0.5x, 1 - 1x, 2 - 2x, 3 - 3x, 4 - 4x
+var sleep_time : int = 900 # in seconds
+var doned_events : int = 0 # events that the player has successfully completed
+var is_mouse_sound_enabled : bool = true
+var show_saving_icon : bool = true
 var use_legacy_sprites : bool = false
 var show_achievements : bool = true
 
@@ -51,6 +54,7 @@ func _ready() -> void: # loading all parameters
 	AchievementsGlobalConroller.taked_achievements = config_file.get_value("Main", "Achievements", [])
 	if AchievementsGlobalConroller.is_achievement_taked("sweet_dreams"):
 		sleep_time = config_file.get_value("Main", "SleepTime", 900)
+	doned_events = config_file.get_value("Main", "DonedEvents", 0)
 	
 	language = config_file.get_value("Settings", "Language", 0)
 	if not config_file.get_value("Settings", "IdleFacepick", "niko_smile") is int:
@@ -70,7 +74,7 @@ func _ready() -> void: # loading all parameters
 	DisplayServer.window_set_position(config_file.get_value("Main", "NikoPosition", get_default_pos()), DisplayServer.MAIN_WINDOW_ID)
 	
 	facepick_update.emit()
-	
+	# freezing hidden windows
 	for child in $/root/TheWorldMachine.get_children():
 		if child is Window:
 			if not child.process_mode == Node.PROCESS_MODE_ALWAYS:
@@ -82,8 +86,7 @@ func _ready() -> void: # loading all parameters
 						false: child.process_mode = Node.PROCESS_MODE_DISABLED
 						true: child.process_mode = Node.PROCESS_MODE_INHERIT
 		)
-	print("Hello, Niko!")
-	
+	print("Hello, Niko!") # Hello!! :З
 
 
 func _notification(what): # exit request capture
@@ -94,7 +97,7 @@ func _notification(what): # exit request capture
 func save():
 	saving.emit()
 	
-	config_file.set_value("Main", "SaveVersion", "1.1.3")
+	config_file.set_value("Main", "SaveVersion", ProjectSettings.get_setting("application/config/version"))
 	config_file.set_value("Main", "Clicks", clicks)
 	config_file.set_value("Main", "MeowSoundId", current_meow_sound_id)
 	config_file.set_value("Main", "TotalTime", total_time)
@@ -102,6 +105,7 @@ func save():
 	config_file.set_value("Main", "Achievements", AchievementsGlobalConroller.taked_achievements)
 	if AchievementsGlobalConroller.is_achievement_taked("sweet_dreams"):
 		config_file.set_value("Main", "SleepTime", sleep_time)
+	config_file.set_value("Main", "DonedEvents", doned_events)
 	
 	config_file.set_value("Settings", "Language", language)
 	config_file.set_value("Settings", "IdleFacepick", idle_facepick)
@@ -148,7 +152,7 @@ func set_theme(color_palette : ColorPalette, theme_id : int):
 	global_color_palette_id = theme_id
 	theme_update.emit()
 
-func set_forced_facepick(facepick_id):
+func set_forced_facepick(facepick_id : String):
 	if NikoSpritesModule.has_sprite(facepick_id):
 		forced_facepick_id = facepick_id
 		force_facepick = true

@@ -6,10 +6,6 @@ using System.Runtime.InteropServices;
 
 public sealed partial class ShutdownHandler : Node
 {
-	// exported stuff
-	[Export]
-	public bool ShouldPreventShutdown = true;
-	
 	// some signals
 	[Signal]
 	public delegate void OnShutdownSignalEventHandler();
@@ -51,27 +47,24 @@ public sealed partial class ShutdownHandler : Node
 	
 	private IntPtr _WndProc(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam)
 	{
-		if (ShouldPreventShutdown)
+		switch (uMsg)
 		{
-			switch (uMsg)
-			{
-				case WM_QUERYENDSESSION:
-					_isWindowsShuttingDown = true;
-					
-					NativeMethods.ShutdownBlockReasonCreate(_hWnd, TranslationServer.Translate("SHUTDOWN_BLOCK_MESSAGE"));
-					
-					CallDeferred(nameof(_HandleShutdown));
-					return IntPtr.Zero; // FALSE
-				case WM_ENDSESSION:
-					_isWindowsShuttingDown = wParam != IntPtr.Zero;
-					
-					if (_isWindowsShuttingDown)
-					{
-						CallDeferred(nameof(_HandleShutdownAbort));
-						NativeMethods.ShutdownBlockReasonDestroy(_hWnd);
-					}
-					break;
-			}
+			case WM_QUERYENDSESSION:
+				_isWindowsShuttingDown = true;
+				
+				NativeMethods.ShutdownBlockReasonCreate(_hWnd, TranslationServer.Translate("SHUTDOWN_BLOCK_MESSAGE"));
+				
+				CallDeferred(nameof(_HandleShutdown));
+				return IntPtr.Zero; // FALSE
+			case WM_ENDSESSION:
+				_isWindowsShuttingDown = wParam != IntPtr.Zero;
+				
+				if (!_isWindowsShuttingDown)
+				{
+					CallDeferred(nameof(_HandleShutdownAbort));
+					NativeMethods.ShutdownBlockReasonDestroy(_hWnd);
+				}
+				break;
 		}
 
 		return NativeMethods.CallWindowProc(_originalWndProc, hWnd, uMsg, wParam, lParam);
