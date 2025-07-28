@@ -42,5 +42,14 @@ func update_colors():
 	set_color("default_color", "RichTextLabel", GlobalControlls.global_color_palette.colors[0])
 	set_color("font_selected_color", "RichTextLabel", GlobalControlls.global_color_palette.colors[6])
 	set_color("selection_color", "RichTextLabel", GlobalControlls.global_color_palette.colors[0])
+	# SpinBox
+	set_color("down_disabled_icon_modulate", "SpinBox", GlobalControlls.global_color_palette.colors[4])
+	set_color("down_hover_icon_modulate", "SpinBox", GlobalControlls.global_color_palette.colors[1])
+	set_color("down_icon_modulate", "SpinBox", GlobalControlls.global_color_palette.colors[0])
+	set_color("down_pressed_icon_modulate", "SpinBox", GlobalControlls.global_color_palette.colors[0])
+	set_color("up_disabled_icon_modulate", "SpinBox", GlobalControlls.global_color_palette.colors[4])
+	set_color("up_hover_icon_modulate", "SpinBox", GlobalControlls.global_color_palette.colors[1])
+	set_color("up_icon_modulate", "SpinBox", GlobalControlls.global_color_palette.colors[0])
+	set_color("up_pressed_icon_modulate", "SpinBox", GlobalControlls.global_color_palette.colors[0])
 	# Other
 	set_color("icon_normal_color", "AlwaysActivatedButton", GlobalControlls.global_color_palette.colors[1])

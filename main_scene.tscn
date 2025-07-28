@@ -20,8 +20,8 @@
 [ext_resource type="Script" uid="uid://cqdig7ltehghd" path="res://scripts/status_icon_controller.gd" id="11_qwutr"]
 [ext_resource type="Script" uid="uid://chdf6qgvok3dk" path="res://scripts/random_events.gd" id="12_82rj2"]
 [ext_resource type="AudioStream" uid="uid://dhwgvb6t1ulx" path="res://sounds/twm_notif2.wav" id="13_1n88h"]
-[ext_resource type="PackedScene" uid="uid://4baxjml3wpgo" path="res://prefabs/event_popups/pancake_alert.tscn" id="13_76in0"]
-[ext_resource type="PackedScene" uid="uid://bamb7oq8lwi6f" path="res://prefabs/event_popups/pancake_machine.tscn" id="13_82rj2"]
+[ext_resource type="PackedScene" uid="uid://4baxjml3wpgo" path="res://prefabs/events/pancake_alert.tscn" id="13_76in0"]
+[ext_resource type="PackedScene" uid="uid://bamb7oq8lwi6f" path="res://prefabs/events/pancake_machine.tscn" id="13_82rj2"]
 [ext_resource type="Texture2D" uid="uid://b55s8l68phsqe" path="res://niko/niko_default.png" id="16_7th4q"]
 [ext_resource type="Texture2D" uid="uid://cmck41qjd7h12" path="res://ui_sprites/customize.png" id="16_kv3aw"]
 [ext_resource type="Texture2D" uid="uid://bb6rkjf8ar6ty" path="res://ui_sprites/sleepz.png" id="16_vafvb"]
@@ -3241,7 +3241,6 @@ styled_menu = NodePath("../IndicatorPopup")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
-ignore_time_scale = true
 
 [connection signal="mouse_entered" from="NikoLayer/NikoBase" to="." method="_on_window_mouse_entered"]
 [connection signal="mouse_exited" from="NikoLayer/NikoBase" to="." method="_on_window_mouse_exited"]
