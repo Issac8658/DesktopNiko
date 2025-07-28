@@ -1,0 +1,731 @@
+[gd_scene load_steps=20 format=3 uid="uid://bamb7oq8lwi6f"]
+
+[ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/event.gd" id="1_le8pu"]
+[ext_resource type="AudioStream" uid="uid://bumcwrlk1covl" path="res://sounds/machine_drop.wav" id="2_qnufv"]
+[ext_resource type="AudioStream" uid="uid://bmaqut0akruy7" path="res://sounds/machine_hide.wav" id="3_4ujhy"]
+[ext_resource type="ArrayMesh" uid="uid://423hrjncruup" path="res://models/pancake_machine.obj" id="3_ufmvg"]
+[ext_resource type="AudioStream" uid="uid://dixvjtj84pifi" path="res://sounds/menu_decision.wav" id="3_un16k"]
+[ext_resource type="Material" uid="uid://toqokucuop37" path="res://models/black.tres" id="4_o8h2p"]
+[ext_resource type="Material" uid="uid://dlf53nu0vfhcn" path="res://models/theme_color_material.tres" id="5_o8h2p"]
+[ext_resource type="AudioStream" uid="uid://cw1tov6mght2a" path="res://sounds/major_puzzle_solved.ogg" id="5_r0fcy"]
+[ext_resource type="Theme" uid="uid://cxsdp1anrqw7m" path="res://themes/twm_theme/twm_theme.tres" id="6_canse"]
+[ext_resource type="Script" uid="uid://05w6e57vrsyx" path="res://prefabs/event_popups/pass_code_part.gd" id="7_jmh5g"]
+[ext_resource type="Texture2D" uid="uid://k3j8qcm4l4wu" path="res://pancake_clicker/little_pancake.png" id="11_is2ju"]
+
+[sub_resource type="GDScript" id="GDScript_qnufv"]
+resource_name = "event_controller"
+script/source = "extends Node
+
+const PASSCODE = \"2FC\"
+
+@export var animator : AnimationPlayer
+@export var container : Control
+@export var viewport_container : Control
+@export var window : Window
+
+@export var enter_sound : AudioStreamPlayer
+@export var passcode_show_button : Button
+@export var passcode_container : Control
+@export var passcode_parts_contrainers : Array[Label]
+@export var cancel_button : Button
+
+func _ready() -> void:
+	animator.animation_finished.connect(func (anim):
+		if anim == \"drop\":
+			GlobalControlls.set_forced_facepick(\"niko_pancakes\")
+			passcode_show_button.pressed.connect(func ():
+				GlobalControlls.set_forced_facepick(\"niko_huh\")
+				enter_sound.play()
+				passcode_show_button.text = \"EVENT_PM_SOMETHING_WRONG\"
+				passcode_show_button.pressed.connect(func ():
+					enter_sound.play()
+					passcode_show_button.visible = false
+					passcode_container.visible = true
+					cancel_button.pressed.connect(func ():
+						if passcode_parts_contrainers[0].text + passcode_parts_contrainers[1].text + passcode_parts_contrainers[2].text == PASSCODE:
+							GlobalControlls.doned_events += 1
+							GlobalControlls.set_forced_facepick(\"niko_pancakes\")
+							animator.play(\"true\")
+						else:
+							animator.play(\"hide\")
+					,CONNECT_ONE_SHOT)
+					print(\"waiting password\")
+				, CONNECT_ONE_SHOT)
+			, CONNECT_ONE_SHOT)
+		elif not anim == \"RESET\":
+			revert()
+	)
+
+func _process(_delta: float) -> void:
+	if window.visible:
+		update_mouse_passthrough_polygon()
+
+func do_event():
+	var main_window_screen = DisplayServer.window_get_current_screen(DisplayServer.MAIN_WINDOW_ID)
+	var usable_rect = DisplayServer.screen_get_usable_rect(main_window_screen)
+	window.size.y = usable_rect.size.y
+	window.position.y = usable_rect.position.y
+	@warning_ignore(\"integer_division\")
+	window.position.x = usable_rect.position.x + usable_rect.size.x / 2 - window.size.x / 2
+	container.position.y = -(1040 - window.size.y)
+	window.visible = true
+	GlobalControlls.set_forced_facepick(\"niko_huh\")
+	animator.play(\"drop\")
+
+func revert():
+	window.visible = false
+	animator.play(\"RESET\")
+	passcode_show_button.visible = true
+	passcode_container.visible = false
+	passcode_show_button.text = \"EVENT_PM_FREE_PANCAKES\"
+	GlobalControlls.unforce_facepick()
+
+func update_mouse_passthrough_polygon():
+	window.mouse_passthrough_polygon[0].x = 35
+	window.mouse_passthrough_polygon[0].y = viewport_container.position.y
+	window.mouse_passthrough_polygon[1].x = 365
+	window.mouse_passthrough_polygon[1].y = viewport_container.position.y
+	window.mouse_passthrough_polygon[2].x = 365
+	window.mouse_passthrough_polygon[2].y = viewport_container.position.y + viewport_container.size.y
+	window.mouse_passthrough_polygon[3].x = 35
+	window.mouse_passthrough_polygon[3].y = viewport_container.position.y + viewport_container.size.y
+"
+
+[sub_resource type="Animation" id="Animation_qnufv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/SubViewportContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -426)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../MachineDrop:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/SubViewportContainer/SubViewport/Node3D/MeshInstance3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0785398, -1.78024, 0.0523599)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/Control:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/SubViewportContainer/SubViewport/Node3D/MeshInstance3D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.682692, 0.682692, 0.682692)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/SubViewportContainer/SubViewport/Node3D/MeshInstance3D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.19445, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../MachineHide:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../TrueSound:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Control/SubViewportContainer:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Control/GPUParticles2D:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_le8pu"]
+resource_name = "drop"
+length = 1.5
+step = 0.0338
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/SubViewportContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(2, 0.5, 2, 0.5),
+"update": 0,
+"values": [Vector2(0, -426), Vector2(0, 629), Vector2(0, 592.125), Vector2(0, 629)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../MachineDrop:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/SubViewportContainer/SubViewport/Node3D/MeshInstance3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.5, 0.733333, 0.966667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0785398, -1.78024, 0.0523599), Vector3(0.0785398, -1.78024, 0.0523599), Vector3(0, -1.78024, 0), Vector3(-0.0349066, -1.67552, -0.0593412), Vector3(-0.0349066, -1.57429, -0.0593412), Vector3(0, -1.5708, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/Control:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.06667, 1.13333, 1.16667, 1.26667, 1.3, 1.36667, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false, true, false, true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/SubViewportContainer/SubViewport/Node3D/MeshInstance3D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.682692, 0.682692, 0.682692)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/SubViewportContainer/SubViewport/Node3D/MeshInstance3D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.19445, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_un16k"]
+resource_name = "hide"
+length = 1.5
+step = 0.0338
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/SubViewportContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5),
+"update": 0,
+"values": [Vector2(0, 629)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/SubViewportContainer/SubViewport/Node3D/MeshInstance3D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.48804, 0.500241, 0.994382, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 0.732044, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0), Vector3(0, -1.5708, 0), Vector3(0, -1.5708, 0), Vector3(0.357792, 0.148353, 0.1309), Vector3(1.67552, -0.890118, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Control:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.133333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/SubViewportContainer/SubViewport/Node3D/MeshInstance3D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 2.14355, 1),
+"update": 0,
+"values": [Vector3(0.682692, 0.682692, 0.682692), Vector3(0.682692, 0.682692, 0.682692), Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/SubViewportContainer/SubViewport/Node3D/MeshInstance3D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1.68179, 1),
+"update": 0,
+"values": [Vector3(0, -1.19445, 0), Vector3(0, -1.19445, 0), Vector3(0, -0.274, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../MachineHide:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_k4qsb"]
+resource_name = "true"
+length = 10.0
+step = 0.0338
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/SubViewportContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5),
+"update": 0,
+"values": [Vector2(0, 629)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/SubViewportContainer/SubViewport/Node3D/MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Control:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/SubViewportContainer/SubViewport/Node3D/MeshInstance3D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.682692, 0.682692, 0.682692)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/SubViewportContainer/SubViewport/Node3D/MeshInstance3D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.19445, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../TrueSound:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/SubViewportContainer:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control/GPUParticles2D:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 8.04979),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_67uga"]
+_data = {
+&"RESET": SubResource("Animation_qnufv"),
+&"drop": SubResource("Animation_le8pu"),
+&"hide": SubResource("Animation_un16k"),
+&"true": SubResource("Animation_k4qsb")
+}
+
+[sub_resource type="Environment" id="Environment_jmh5g"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vtp31"]
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape_offset = Vector3(0, 46.755, 0)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 373.89
+initial_velocity_max = 373.89
+gravity = Vector3(0, 0, 0)
+damping_min = 0.499
+damping_max = 0.501
+scale_min = 2.0
+scale_max = 2.0
+
+[node name="PancakeMachine" type="Node" node_paths=PackedStringArray("event_controller")]
+script = ExtResource("1_le8pu")
+event_controller = NodePath("EventController")
+spawn_chance = 0.05
+max_cps = 10
+metadata/_custom_type_script = "uid://73yfcqn4tt7s"
+
+[node name="EventController" type="Node" parent="." node_paths=PackedStringArray("animator", "container", "viewport_container", "window", "enter_sound", "passcode_show_button", "passcode_container", "passcode_parts_contrainers", "cancel_button")]
+script = SubResource("GDScript_qnufv")
+animator = NodePath("../AnimationPlayer")
+container = NodePath("../Window/Control")
+viewport_container = NodePath("../Window/Control/SubViewportContainer")
+window = NodePath("../Window")
+enter_sound = NodePath("../EnterSound")
+passcode_show_button = NodePath("../Window/Control/Control/Button")
+passcode_container = NodePath("../Window/Control/Control/PassCode")
+passcode_parts_contrainers = [NodePath("../Window/Control/Control/PassCode/VBoxContainer/VBoxContainer/Label"), NodePath("../Window/Control/Control/PassCode/VBoxContainer/VBoxContainer2/Label"), NodePath("../Window/Control/Control/PassCode/VBoxContainer/VBoxContainer3/Label")]
+cancel_button = NodePath("../Window/Control/Control/PassCode/Cancel")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Window")
+libraries = {
+&"": SubResource("AnimationLibrary_67uga")
+}
+
+[node name="MachineDrop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qnufv")
+
+[node name="MachineHide" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4ujhy")
+volume_db = -10.0
+
+[node name="EnterSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_un16k")
+volume_db = -5.0
+max_polyphony = 2
+
+[node name="TrueSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_r0fcy")
+volume_db = -5.0
+
+[node name="Window" type="Window" parent="."]
+transparent_bg = true
+size = Vector2i(400, 1040)
+mouse_passthrough_polygon = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)
+visible = false
+unresizable = true
+borderless = true
+always_on_top = true
+transparent = true
+theme = ExtResource("6_canse")
+
+[node name="Control" type="Control" parent="Window"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Window/Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -426.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(0, 400)
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Window/Control/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+msaa_3d = 1
+size = Vector2i(400, 426)
+render_target_update_mode = 0
+
+[node name="Node3D" type="Node3D" parent="Window/Control/SubViewportContainer/SubViewport"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Window/Control/SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(-0.14449, -0.0448924, -0.665714, 0.0356192, 0.679655, -0.0535634, 0.666275, -0.04607, -0.141505, 0, -1.19445, 0)
+mesh = ExtResource("3_ufmvg")
+surface_material_override/0 = ExtResource("4_o8h2p")
+surface_material_override/1 = ExtResource("5_o8h2p")
+
+[node name="Camera3D" type="Camera3D" parent="Window/Control/SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+keep_aspect = 0
+environment = SubResource("Environment_jmh5g")
+projection = 1
+current = true
+size = 2.409
+near = 0.1
+
+[node name="Control" type="Control" parent="Window/Control"]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+offset_left = 108.0
+offset_top = 665.0
+offset_right = 258.0
+offset_bottom = 920.0
+
+[node name="Button" type="Button" parent="Window/Control/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"IconButton"
+text = "EVENT_PM_FREE_PANCAKES"
+autowrap_mode = 2
+
+[node name="PassCode" type="VBoxContainer" parent="Window/Control/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="Window/Control/Control/PassCode"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Window/Control/Control/PassCode"]
+layout_mode = 2
+text = "Enter passcode"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Window/Control/Control/PassCode"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/Control/Control/PassCode/VBoxContainer" node_paths=PackedStringArray("up_button", "label", "down_button")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("7_jmh5g")
+symbols_list = Array[String](["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"])
+up_button = NodePath("Up")
+label = NodePath("Label")
+down_button = NodePath("Down")
+
+[node name="Up" type="Button" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 40
+text = "↑"
+
+[node name="Label" type="Label" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Down" type="Button" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 40
+text = "↓"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Window/Control/Control/PassCode/VBoxContainer" node_paths=PackedStringArray("up_button", "label", "down_button")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("7_jmh5g")
+symbols_list = Array[String](["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"])
+up_button = NodePath("Up")
+label = NodePath("Label")
+down_button = NodePath("Down")
+
+[node name="Up" type="Button" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 40
+text = "↑"
+
+[node name="Label" type="Label" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Down" type="Button" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 40
+text = "↓"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Window/Control/Control/PassCode/VBoxContainer" node_paths=PackedStringArray("up_button", "label", "down_button")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("7_jmh5g")
+symbols_list = Array[String](["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"])
+up_button = NodePath("Up")
+label = NodePath("Label")
+down_button = NodePath("Down")
+
+[node name="Up" type="Button" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 40
+text = "↑"
+
+[node name="Label" type="Label" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Down" type="Button" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 40
+text = "↓"
+
+[node name="Cancel" type="Button" parent="Window/Control/Control/PassCode"]
+layout_mode = 2
+text = "CANCEL"
+
+[node name="Control" type="Control" parent="Window/Control/Control/PassCode"]
+layout_mode = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Window/Control"]
+texture_filter = 1
+position = Vector2(204, 947)
+emitting = false
+texture = ExtResource("11_is2ju")
+process_material = SubResource("ParticleProcessMaterial_vtp31")

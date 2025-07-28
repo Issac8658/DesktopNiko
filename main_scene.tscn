@@ -1,4 +1,4 @@
-[gd_scene load_steps=163 format=4 uid="uid://cj66sb2a5oolj"]
+[gd_scene load_steps=164 format=4 uid="uid://cj66sb2a5oolj"]
 
 [ext_resource type="Script" uid="uid://b8e5fhar3jgaj" path="res://scripts/niko_controls.gd" id="1_2c62f"]
 [ext_resource type="AudioStream" uid="uid://5tnvrblu5h4j" path="res://niko/niko_meows/meow1.wav" id="2_ghshe"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://chdf6qgvok3dk" path="res://scripts/random_events.gd" id="12_82rj2"]
 [ext_resource type="AudioStream" uid="uid://dhwgvb6t1ulx" path="res://sounds/twm_notif2.wav" id="13_1n88h"]
 [ext_resource type="PackedScene" uid="uid://4baxjml3wpgo" path="res://prefabs/event_popups/pancake_alert.tscn" id="13_76in0"]
+[ext_resource type="PackedScene" uid="uid://bamb7oq8lwi6f" path="res://prefabs/event_popups/pancake_machine.tscn" id="13_82rj2"]
 [ext_resource type="Texture2D" uid="uid://b55s8l68phsqe" path="res://niko/niko_default.png" id="16_7th4q"]
 [ext_resource type="Texture2D" uid="uid://cmck41qjd7h12" path="res://ui_sprites/customize.png" id="16_kv3aw"]
 [ext_resource type="Texture2D" uid="uid://bb6rkjf8ar6ty" path="res://ui_sprites/sleepz.png" id="16_vafvb"]
@@ -447,7 +448,7 @@ func _ready() -> void:
 
 
 func update():
-	text = str(GlobalControlls.clicks)
+	text = str(GlobalControlls.doned_events)
 "
 
 [sub_resource type="GDScript" id="GDScript_o48om"]
@@ -731,11 +732,12 @@ volume_db = -5.0
 stream = ExtResource("44_euc68")
 volume_db = -5.0
 
-[node name="Events" type="Node" parent="." node_paths=PackedStringArray("events")]
+[node name="Events" type="Node" parent="."]
 script = ExtResource("12_82rj2")
-events = [NodePath("PancakeAlert")]
 
 [node name="PancakeAlert" parent="Events" instance=ExtResource("13_76in0")]
+
+[node name="PancakeMachine" parent="Events" instance=ExtResource("13_82rj2")]
 
 [node name="NikoLayer" type="CanvasLayer" parent="."]
 
@@ -2280,6 +2282,26 @@ layout_mode = 2
 text = ":"
 
 [node name="Count" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Clicks"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxEmpty_82rj2")
+text = "0"
+horizontal_alignment = 2
+script = SubResource("GDScript_ubkm4")
+
+[node name="Events" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Events"]
+layout_mode = 2
+text = "EVENTS_PASSED"
+
+[node name="Dots" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Events"]
+layout_mode = 2
+text = ":"
+
+[node name="Count" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Events"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxEmpty_82rj2")

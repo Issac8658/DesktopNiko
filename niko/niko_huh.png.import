@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3s1xqfrucpby"
-path="res://.godot/imported/niko_smug.png-a9c6b1b3097befcd833e630870ae044e.ctex"
+uid="uid://boll4yhwbfn2t"
+path="res://.godot/imported/niko_huh.png-8ea34348577293cb5b12d66cb587b82b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://niko/niko_smug.png"
-dest_files=["res://.godot/imported/niko_smug.png-a9c6b1b3097befcd833e630870ae044e.ctex"]
+source_file="res://niko/niko_huh.png"
+dest_files=["res://.godot/imported/niko_huh.png-8ea34348577293cb5b12d66cb587b82b.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

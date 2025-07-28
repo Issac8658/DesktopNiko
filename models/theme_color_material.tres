@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dlf53nu0vfhcn"]
+
+[ext_resource type="Script" uid="uid://bi623hdae2xv1" path="res://scripts/material_color_applier.gd" id="1_124at"]
+
+[resource]
+shading_mode = 0
+albedo_color = Color(0.588235, 0.392157, 1, 1)
+script = ExtResource("1_124at")
+_base_color = 0

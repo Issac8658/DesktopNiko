@@ -18,7 +18,8 @@ var niko_sprites = {
 	"niko_speak" = load("res://niko/niko_speak.png"),
 	"niko_surprised" = load("res://niko/niko_surprised.png"),
 	"niko_eat1" = load("res://niko/niko_eat1.png"),
-	"niko_eat2" = load("res://niko/niko_eat2.png")
+	"niko_eat2" = load("res://niko/niko_eat2.png"),
+	"niko_huh" = load("res://niko/niko_huh.png")
 }
 
 var niko_legacy_sprites = {
@@ -39,7 +40,8 @@ var niko_legacy_sprites = {
 	"niko_speak" = load("res://niko/niko_legacy/niko_speak.png"),
 	"niko_surprised" = load("res://niko/niko_legacy/niko_surprised.png"),
 	"niko_eat1" = load("res://niko/niko_legacy/niko_eat1.png"),
-	"niko_eat2" = load("res://niko/niko_legacy/niko_eat2.png")
+	"niko_eat2" = load("res://niko/niko_legacy/niko_eat2.png"),
+	"niko_huh" = load("res://niko/niko_legacy/niko_huh.png")
 }
 
 func get_sprite(sprite_id : String) -> Resource:

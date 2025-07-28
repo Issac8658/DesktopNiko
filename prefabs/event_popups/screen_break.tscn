@@ -1,0 +1,130 @@
+[gd_scene load_steps=6 format=3 uid="uid://26xnfokg4q28"]
+
+[ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/event.gd" id="1_gio5k"]
+[ext_resource type="AudioStream" uid="uid://0a17a7bk3og3" path="res://sounds/bass_metal.wav" id="2_njfk7"]
+[ext_resource type="Texture2D" uid="uid://bv45dqge8biu6" path="res://ui_sprites/shadow.tres" id="2_wdcdh"]
+[ext_resource type="Texture2D" uid="uid://dnwbeed7hrv83" path="res://ui_sprites/test_shit.png" id="3_njfk7"]
+
+[sub_resource type="GDScript" id="GDScript_wdcdh"]
+resource_name = "screen_break_controller"
+script/source = "extends Node
+
+@export var window : Window
+@export var screen_window : Window
+@export var screen_texture_rect : TextureRect
+@export var bg_control : Control
+@export var break_sound : AudioStreamPlayer
+
+var velocity : float = -10
+
+func do_event() -> void:
+	bg_control.visible = false
+	screen_window.visible = false
+	window.visible = false
+	var main_window_screen = DisplayServer.window_get_current_screen(DisplayServer.MAIN_WINDOW_ID)
+	var screen_pos = DisplayServer.screen_get_position(main_window_screen)
+	var screen_size = DisplayServer.screen_get_size(main_window_screen)
+	window.size = Vector2i(randi_range(512, 1024), randi_range(128, 512))
+	window.position = Vector2i(randi_range(10, screen_size.x - window.size.x - 10), randi_range(10, screen_size.y - window.size.y - 10)) + screen_pos
+	
+	screen_window.position = window.position + Vector2i(32,32)
+	screen_window.size = window.size - Vector2i(64,64)
+	
+	screen_texture_rect.texture = ImageTexture.create_from_image(DisplayServer.screen_get_image_rect(Rect2i(screen_window.position, screen_window.size)))
+	
+	velocity = -10
+	window.visible = true
+	screen_window.visible = true
+	bg_control.visible = true
+	break_sound.play()
+
+func _process(_delta: float) -> void:
+	if screen_window.visible:
+		velocity += 0.5
+		@warning_ignore(\"narrowing_conversion\")
+		screen_window.position.y += velocity
+"
+
+[node name="ScreenBreak" type="Node" node_paths=PackedStringArray("event_controller")]
+script = ExtResource("1_gio5k")
+event_controller = NodePath("EventController")
+metadata/_custom_type_script = "uid://73yfcqn4tt7s"
+
+[node name="EventController" type="Node" parent="." node_paths=PackedStringArray("window", "screen_window", "screen_texture_rect", "bg_control", "break_sound")]
+script = SubResource("GDScript_wdcdh")
+window = NodePath("../Window")
+screen_window = NodePath("../Window/Window2")
+screen_texture_rect = NodePath("../Window/Window2/TextureRect")
+bg_control = NodePath("../Window/Control")
+break_sound = NodePath("../AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_njfk7")
+
+[node name="Window" type="Window" parent="."]
+transparent_bg = true
+size = Vector2i(605, 290)
+visible = false
+unresizable = true
+borderless = true
+always_on_top = true
+transparent = true
+exclude_from_capture = true
+
+[node name="Control" type="Control" parent="Window"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow" type="NinePatchRect" parent="Window/Control"]
+visible = false
+self_modulate = Color(0, 0, 0, 0.262745)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wdcdh")
+draw_center = false
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="MarginContainer" type="MarginContainer" parent="Window/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="TextureRect" type="TextureRect" parent="Window/Control/MarginContainer"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("3_njfk7")
+expand_mode = 1
+
+[node name="Window2" type="Window" parent="Window"]
+transparent_bg = true
+visible = false
+transient = true
+unresizable = true
+borderless = true
+always_on_top = true
+transparent = true
+exclude_from_capture = true
+
+[node name="TextureRect" type="TextureRect" parent="Window/Window2"]
+offset_right = 40.0
+offset_bottom = 40.0

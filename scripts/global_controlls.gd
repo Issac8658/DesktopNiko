@@ -10,6 +10,10 @@ signal saved()
 signal clicked()
 @warning_ignore("unused_signal")
 signal niko_scale_changed()
+@warning_ignore("unused_signal")
+signal event_started(event_name : String)
+#@warning_ignore("unused_signal")
+#signal event_ended(event_name : String)
 # niko controller, idk
 @onready var niko_controller = $/root/TheWorldMachine
 # some themes shit

@@ -71,6 +71,8 @@ TIME_TO_SLEEP,Time to sleep,Время до сна,Zeit zum Schlafen,Час до
 H,h,ч,h,г
 M,m,м,m,х
 S,s,с,s,с
+CANCEL,Cancel,Отмена,,
+EVENTS_PASSED,Events passed,,
 SHOW_ACHIEVEMENTS,Show achievements,Отображать достижения,Erfolge anzeigen,Показувати досягнення
 SHOW_ACHIEVEMENTS_HINT,Determines whether to show achievement animation in corner of screen. Sound will still be played.,"Определяет, показывать ли анимацию получения достижения в углу экрана. Звук по-прежнему будет воспроизводиться.","Legt fest, ob die Animation des Erfolgs in der Ecke des Bildschirms angezeigt wird. Der Ton wird weiterhin abgespielt.","Визначає, чи показувати анімацію отримання досягнення в кутку екрана. Звук все ще буде відтворюватися."
 ACHIEVEMENTS,Achivements,Достижения,Erreichung,"Досягнення"
@@ -101,3 +103,5 @@ PANCAKE_ALERT,Pancake Alert,Предупреждение: Блинчики,,
 PANCAKE_ALERT_DIALOG_A,,[Ты растроил Нико.],,
 PANCAKE_ALERT_DIALOG_B,,[Чего ты хотел этим добиться?]\n[Ты думаешь тебе это что то даст?],,
 PANCAKE_ALERT_DIALOG_C,,"[В любом случае, я тебе не позволю обижать Нико.]",,
+EVENT_PM_FREE_PANCAKES,Click here to get free pancakes,"Нажми сюда, что бы получить бесплатные блины",,
+EVENT_PM_SOMETHING_WRONG,,"Что то не так, пожаулуйста введите пароль (нажмите)",,
