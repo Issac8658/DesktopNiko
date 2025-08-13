@@ -6,7 +6,7 @@ const AUTORUN_PATH = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"
 func _ready() -> void:
 	if not OS.get_name() == "Windows":
 		disabled = true
-		text = "WINDOWS_ONLY"
+		text = "AUTORUN_WINDOWS_ONLY"
 	else:
 		if check():
 			text = "REMOVE_FROM_AUTO_RUN"

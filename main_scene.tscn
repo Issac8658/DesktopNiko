@@ -1,4 +1,4 @@
-[gd_scene load_steps=164 format=4 uid="uid://cj66sb2a5oolj"]
+[gd_scene load_steps=169 format=4 uid="uid://cj66sb2a5oolj"]
 
 [ext_resource type="Script" uid="uid://b8e5fhar3jgaj" path="res://scripts/niko_controls.gd" id="1_2c62f"]
 [ext_resource type="AudioStream" uid="uid://5tnvrblu5h4j" path="res://niko/niko_meows/meow1.wav" id="2_ghshe"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://dhwgvb6t1ulx" path="res://sounds/twm_notif2.wav" id="13_1n88h"]
 [ext_resource type="PackedScene" uid="uid://4baxjml3wpgo" path="res://prefabs/events/pancake_alert.tscn" id="13_76in0"]
 [ext_resource type="PackedScene" uid="uid://bamb7oq8lwi6f" path="res://prefabs/events/pancake_machine.tscn" id="13_82rj2"]
+[ext_resource type="PackedScene" uid="uid://cykd86boymkkf" path="res://prefabs/events/tennis.tscn" id="14_76in0"]
 [ext_resource type="Texture2D" uid="uid://b55s8l68phsqe" path="res://niko/niko_default.png" id="16_7th4q"]
 [ext_resource type="Texture2D" uid="uid://cmck41qjd7h12" path="res://ui_sprites/customize.png" id="16_kv3aw"]
 [ext_resource type="Texture2D" uid="uid://bb6rkjf8ar6ty" path="res://ui_sprites/sleepz.png" id="16_vafvb"]
@@ -90,6 +91,8 @@
 [ext_resource type="Material" uid="uid://beloub2o0etmy" path="res://shaders/light_blub_anim_shader.tres" id="81_30vx0"]
 [ext_resource type="Texture2D" uid="uid://dxo8m8apw6ajl" path="res://ui_sprites/bulb_anim_24.png" id="81_id8vy"]
 [ext_resource type="Script" uid="uid://c45ltmpprf6rs" path="res://scripts/loading_icon.gd" id="81_ubkm4"]
+[ext_resource type="Texture2D" uid="uid://cqicl8sy06ti5" path="res://ui_sprites/error.png" id="82_l76vu"]
+[ext_resource type="Texture2D" uid="uid://o648cd5rcwja" path="res://ui_sprites/magpie_shop1.png" id="87_1b22m"]
 [ext_resource type="Texture2D" uid="uid://onqy26td0pr4" path="res://ui_sprites/achievements.png" id="87_s2ody"]
 [ext_resource type="PackedScene" uid="uid://bi5pu8hc54t3d" path="res://prefabs/achievement.tscn" id="88_05sqr"]
 [ext_resource type="Script" uid="uid://cb6ghe82gh3g7" path="res://scripts/styled_menu.gd" id="88_7y85w"]
@@ -448,6 +451,21 @@ func _ready() -> void:
 
 
 func update():
+	text = str(GlobalControlls.clicks)
+"
+
+[sub_resource type="GDScript" id="GDScript_l76vu"]
+resource_name = "EventsCount"
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	update()
+	GlobalControlls.clicked.connect(update)
+
+
+func update():
 	text = str(GlobalControlls.doned_events)
 "
 
@@ -494,6 +512,8 @@ func _ready() -> void:
 "
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k2ony"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1b22m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gfmxp"]
 atlas = ExtResource("4_hq1ik")
@@ -736,8 +756,12 @@ volume_db = -5.0
 script = ExtResource("12_82rj2")
 
 [node name="PancakeAlert" parent="Events" instance=ExtResource("13_76in0")]
+spawn_chance = 0.1
 
 [node name="PancakeMachine" parent="Events" instance=ExtResource("13_82rj2")]
+
+[node name="Tennis" parent="Events" instance=ExtResource("14_76in0")]
+spawn_chance = 0.25
 
 [node name="NikoLayer" type="CanvasLayer" parent="."]
 
@@ -832,6 +856,7 @@ volume_db = -10.0
 title = "SHORTCUTS"
 size = Vector2i(358, 348)
 visible = false
+unresizable = false
 min_size = Vector2i(193, 270)
 max_size = Vector2i(1920, 1040)
 
@@ -1284,6 +1309,7 @@ text = "SHUTDOWN_QUEST"
 title = "THEMES"
 size = Vector2i(358, 380)
 visible = false
+unresizable = false
 min_size = Vector2i(193, 270)
 max_size = Vector2i(1920, 1040)
 
@@ -1847,7 +1873,6 @@ title = "THEME_EDITOR"
 position = Vector2i(418, 0)
 size = Vector2i(486, 366)
 visible = false
-unresizable = true
 
 [node name="Icon" parent="ThemesWindow/ThemeEditorWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
 icon = ExtResource("17_ijoax")
@@ -2073,7 +2098,7 @@ theme_type_variation = &"IconButton"
 icon = ExtResource("66_76in0")
 expand_icon = true
 
-[node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/Control/WindowContainer/Content" index="2" node_paths=PackedStringArray("gaming_mod_checkbox", "peaceful_check_box", "click_sound_checkbox", "saving_icon_checkbox", "show_achievements_checkbox", "language_option_button", "niko_scale_option_button", "legacy_facepicks_checkbox", "niko_facepicks_select")]
+[node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/Control/WindowContainer/Content" index="2" node_paths=PackedStringArray("gaming_mod_checkbox", "peaceful_check_box", "click_sound_checkbox", "saving_icon_checkbox", "show_achievements_checkbox", "language_option_button", "legacy_facepicks_checkbox", "niko_scale_option_button", "niko_facepicks_select", "snap_to_bottom_button", "reset_all_data_button", "do_events_checkbox", "niko_always_on_top_checkbox", "windows_always_on_top_checkbox", "taskbar_icon_checkbox", "data_reset_popup", "save_button")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2093,11 +2118,20 @@ click_sound_checkbox = NodePath("General/SettingsPanel/ClickSound")
 saving_icon_checkbox = NodePath("General/SettingsPanel/SavingIcon")
 show_achievements_checkbox = NodePath("General/SettingsPanel/ShowAchievements")
 language_option_button = NodePath("General/SettingsPanel/Language2/LanguageSelectionOptionButton")
-niko_scale_option_button = NodePath("Niko/VBoxContainer/NikoScaleSelectionContainer/NikoScaleSelectionOptionButton")
 legacy_facepicks_checkbox = NodePath("Niko/VBoxContainer/LegacyFacepicks")
+niko_scale_option_button = NodePath("Niko/VBoxContainer/NikoScaleSelectionContainer/NikoScaleSelectionOptionButton")
 niko_facepicks_select = NodePath("Niko/FacepicksSelect/MarginContainer/GridContainer")
+snap_to_bottom_button = NodePath("Niko/VBoxContainer/SnapToBottom")
+reset_all_data_button = NodePath("Other/VBoxContainer/ResetAllData")
+do_events_checkbox = NodePath("Other/ScrollContainer/VBoxContainer2/DoEvents")
+niko_always_on_top_checkbox = NodePath("Other/ScrollContainer/VBoxContainer2/NikoAlwaysOnTop")
+windows_always_on_top_checkbox = NodePath("Other/ScrollContainer/VBoxContainer2/WindowsAlwaysOnTop")
+taskbar_icon_checkbox = NodePath("Other/ScrollContainer/VBoxContainer2/TaskBarIcon")
+data_reset_popup = NodePath("../../../../ResetDataPopup")
+save_button = NodePath("Other/VBoxContainer/Save")
 
 [node name="General" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 8
 
@@ -2307,7 +2341,7 @@ size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxEmpty_82rj2")
 text = "0"
 horizontal_alignment = 2
-script = SubResource("GDScript_ubkm4")
+script = SubResource("GDScript_l76vu")
 
 [node name="TotalTime" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics"]
 layout_mode = 2
@@ -2347,7 +2381,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="HintsText" type="RichTextLabel" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics" node_paths=PackedStringArray("nodes")]
-custom_minimum_size = Vector2(0, 170)
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 bbcode_enabled = true
 script = SubResource("GDScript_k2ony")
@@ -2355,7 +2389,6 @@ nodes = [NodePath("../../SettingsPanel/Peaceful"), NodePath("../../SettingsPanel
 texts = Array[String](["PEACEFUL_MODE_HINT", "SAVING_ICON_HINT", "GAMING_MODE_HINT", "CLICK_SOUND_HINT", "SHOW_ACHIEVEMENTS_HINT"])
 
 [node name="Niko" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 
@@ -2669,8 +2702,18 @@ layout_mode = 1
 offset_top = -12.0
 offset_bottom = 12.0
 
+[node name="SnapToBottom" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+button_pressed = true
+text = "SNAP_TO_BOTTOM"
+
+[node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SnapToBottom" instance=ExtResource("42_sp30j")]
+layout_mode = 1
+offset_top = -12.0
+offset_bottom = 12.0
+
 [node name="SleepControls" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer" node_paths=PackedStringArray("toggle_checkbox", "hours_spinbox", "minutes_spinbox", "seconds_spinbox")]
-visible = false
 layout_mode = 2
 script = ExtResource("74_j53bq")
 toggle_checkbox = NodePath("HBoxContainer3/SleepCheckbox")
@@ -2723,7 +2766,23 @@ layout_mode = 2
 size_flags_horizontal = 3
 max_value = 24.0
 alignment = 3
-suffix = "H"
+
+[node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo/Hours"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -10.5
+offset_right = -28.0
+offset_bottom = 10.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1b22m")
+text = "TIME_H"
+horizontal_alignment = 2
 
 [node name="Minutes" type="SpinBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo"]
 layout_mode = 2
@@ -2731,14 +2790,50 @@ size_flags_horizontal = 3
 max_value = 59.0
 value = 15.0
 alignment = 3
-suffix = "M"
+
+[node name="Label2" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo/Minutes"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -10.5
+offset_right = -28.0
+offset_bottom = 10.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1b22m")
+text = "TIME_M"
+horizontal_alignment = 2
 
 [node name="Seconds" type="SpinBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo"]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 59.0
 alignment = 3
-suffix = "S"
+
+[node name="Label3" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo/Seconds"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -10.5
+offset_right = -28.0
+offset_bottom = 10.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1b22m")
+text = "TIME_S"
+horizontal_alignment = 2
+
+[node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls"]
+layout_mode = 2
+text = "PRESS_F_TO_FLIP_NIKO"
 
 [node name="Other" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer"]
 visible = false
@@ -2747,21 +2842,6 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other"]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
-
-[node name="CheckBox" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer"]
-layout_mode = 2
-text = "DO_EVENTS"
-
-[node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/CheckBox" instance=ExtResource("42_sp30j")]
-layout_mode = 0
-anchors_preset = 0
-anchor_top = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 16.0
-offset_bottom = 24.0
-grow_vertical = 1
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer"]
 layout_mode = 2
@@ -2861,41 +2941,126 @@ text = "ACTIONS"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer"]
+[node name="Save" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer"]
+layout_mode = 2
+text = "SAVE"
+
+[node name="ResetAllData" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "RESET_ALL_DATA"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other"]
+[node name="VSeparator" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Title2" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer2"]
+[node name="Title2" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2"]
 visible = false
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer2/Title2"]
+[node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/Title2"]
 custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer2/Title2"]
+[node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/Title2"]
 layout_mode = 2
 text = "ABOUT_PROGRAMM"
 
-[node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer2/Title2"]
+[node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/Title2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 text = "DESKTOP_NIKO_INFO"
 
-[node name="Control" type="Control" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer2"]
+[node name="Control" type="Control" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2"]
 visible = false
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+
+[node name="DoEvents" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+button_pressed = true
+text = "DO_EVENTS"
+
+[node name="StateIcon4" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/DoEvents" instance=ExtResource("42_sp30j")]
+layout_mode = 1
+
+[node name="NikoAlwaysOnTop" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+button_pressed = true
+text = "NIKO_ALWAYS_ON_TOP"
+
+[node name="StateIcon3" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/NikoAlwaysOnTop" instance=ExtResource("42_sp30j")]
+layout_mode = 1
+
+[node name="WindowsAlwaysOnTop" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+button_pressed = true
+text = "WINDOWS_ALWAYS_ON_TOP"
+
+[node name="StateIcon2" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/WindowsAlwaysOnTop" instance=ExtResource("42_sp30j")]
+layout_mode = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/HBoxContainer5"]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/HBoxContainer5"]
+layout_mode = 2
+text = "WINDOWS_ONLY"
+
+[node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TaskBarIcon" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+button_pressed = true
+text = "TASKBAR_ICON"
+
+[node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/TaskBarIcon" instance=ExtResource("42_sp30j")]
+layout_mode = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/HBoxContainer4"]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/HBoxContainer4"]
+layout_mode = 2
+text = "HINT"
+
+[node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HintsText2" type="RichTextLabel" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" node_paths=PackedStringArray("nodes")]
+custom_minimum_size = Vector2(0, 104)
+layout_mode = 2
+bbcode_enabled = true
+script = SubResource("GDScript_k2ony")
+nodes = [NodePath("../DoEvents"), NodePath("../NikoAlwaysOnTop"), NodePath("../WindowsAlwaysOnTop"), NodePath("../TaskBarIcon")]
+texts = Array[String](["DO_EVENTS_HINT", "NIKO_ALWAYS_ON_TOP_HINT", "WINDOWS_ALWAYS_ON_TOP_HINT", "TAKSBAR_ICON_HINT"])
 
 [node name="LampEasteregg" type="Button" parent="SettingsWindow/Control/WindowContainer/Content" index="3"]
 layout_mode = 1
@@ -2947,6 +3112,18 @@ grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_76in0")
 text = "v0.0.0"
 script = SubResource("GDScript_1b22m")
+
+[node name="ResetDataPopup" parent="SettingsWindow" instance=ExtResource("33_id8vy")]
+visible = false
+
+[node name="Icon" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
+icon = ExtResource("82_l76vu")
+
+[node name="Title" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
+text = "DATA_RESET_POPUP"
+
+[node name="Quest" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="0"]
+text = "DATA_RESET_POPUP_MESSAGE"
 
 [node name="ShopWindow" parent="." instance=ExtResource("38_q4750")]
 position = Vector2i(82, 0)
@@ -3038,6 +3215,15 @@ visibility_rect = Rect2(-400, -300, 800, 600)
 local_coords = true
 draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_o48om")
+
+[node name="TextureRect" type="TextureRect" parent="ShopWindow/Control/WindowContainer/Content/ShopMargin/ShopImagesContent"]
+visible = false
+layout_mode = 0
+offset_left = 562.0
+offset_top = 185.0
+offset_right = 786.0
+offset_bottom = 425.0
+texture = ExtResource("87_1b22m")
 
 [node name="LoadingIcon" type="Window" parent="." node_paths=PackedStringArray("animator")]
 transparent_bg = true
@@ -3263,5 +3449,6 @@ autostart = true
 [editable path="ThemesWindow"]
 [editable path="ThemesWindow/ThemeEditorWindow"]
 [editable path="SettingsWindow"]
+[editable path="SettingsWindow/ResetDataPopup"]
 [editable path="ShopWindow"]
 [editable path="AchievementsWindow"]

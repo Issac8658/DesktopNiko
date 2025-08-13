@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cu7ok1qa4ne2f"]
+
+[ext_resource type="Shader" uid="uid://tky8ph3l3sbx" path="res://shaders/oneshot_glitch.gdshader" id="1_3bdmy"]
+
+[resource]
+shader = ExtResource("1_3bdmy")
+shader_parameter/scale = 1.0
+shader_parameter/pixelate = 15.0
+shader_parameter/glich_speed = 2.0
+shader_parameter/glich_color = Vector3(0, 0, 0.6)

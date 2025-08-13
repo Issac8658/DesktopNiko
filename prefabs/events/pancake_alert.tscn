@@ -24,6 +24,9 @@ script/source = "extends Node
 var eventing = false
 var _anim_state = 0;
 
+func _ready() -> void:
+	pass # press no and press yes to here from do_event()
+
 func do_event() -> void:
 	if not eventing:
 		eventing = true
@@ -32,6 +35,8 @@ func do_event() -> void:
 			print(\"pressed yes\")
 			play_eating_anim()
 			GlobalControlls.doned_events += 1
+			if not AchievementsGlobalConroller.is_achievement_taked(\"time_to_dinner\"):
+				AchievementsGlobalConroller.take_achievement(\"time_to_dinner\")
 		, CONNECT_ONE_SHOT)
 		popup.popup()
 		GlobalControlls.set_forced_facepick(\"niko_pancakes\")
@@ -74,8 +79,9 @@ func press_no():
 					glitch.visible = true
 					glitch_sound.finished.connect(func ():
 						glitch.visible = false
-						popup.no_button_pressed.connect(press_no, CONNECT_ONE_SHOT)
 						GlobalControlls.set_forced_facepick(\"niko_pancakes\")
+						if not AchievementsGlobalConroller.is_achievement_taked(\"worst_friend\"):
+							AchievementsGlobalConroller.take_achievement(\"worst_friend\")
 						popup.popup()
 					, CONNECT_ONE_SHOT)
 					glitch_sound.play()
@@ -106,7 +112,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if visible:
-		texture_rect.material.set_shader_parameter(\"offset_power\", texture_rect.material.get_shader_parameter(\"offset_power\") - delta * 0.5)
+		texture_rect.material.set_shader_parameter(\"offset_power\", texture_rect.material.get_shader_parameter(\"offset_power\") - delta * 0.05)
 #		if texture_rect.material.get_shader_parameter(\"offset_power\") <= -0.03:
 #			visible = false
 "
@@ -118,7 +124,7 @@ shader_parameter/offset_power = 0.0
 [node name="PancakeAlert" type="Node" node_paths=PackedStringArray("event_controller")]
 script = ExtResource("1_nodym")
 event_controller = NodePath("EventController")
-spawn_chance = 0.05
+spawn_chance = 0.04
 max_cps = 10
 metadata/_custom_type_script = "uid://73yfcqn4tt7s"
 

@@ -46,6 +46,8 @@ func _ready() -> void:
 							GlobalControlls.doned_events += 1
 							GlobalControlls.set_forced_facepick(\"niko_pancakes\")
 							animator.play(\"true\")
+							if not AchievementsGlobalConroller.is_achievement_taked(\"hacked_a_machine\"):
+								AchievementsGlobalConroller.take_achievement(\"hacked_a_machine\")
 						else:
 							animator.play(\"hide\")
 					,CONNECT_ONE_SHOT)
@@ -624,7 +626,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Window/Control/Control/PassCode"]
 layout_mode = 2
-text = "Enter passcode"
+text = "ENTER_PASSCODE"
 horizontal_alignment = 1
 vertical_alignment = 1
 

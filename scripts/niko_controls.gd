@@ -32,6 +32,7 @@ var mouse_offset : Vector2;
 var is_dragging : bool = false;
 var PositionBeforeMove : Vector2i;
 var in_anim : bool = false
+var latest_timestamp = Time.get_unix_time_from_system()
 
 var current_sleep_afk_time : int = 0
 var save_afk_time : int = 0
@@ -51,7 +52,11 @@ func _ready() -> void: # applying saved parameters
 	meow_sound_option_button.selected = GlobalControlls.current_meow_sound_id
 	click_count_label.text = str(GlobalControlls.clicks)
 	update_facepick()
-	PassthroughModule.UpdateWindowsExStyles(get_window(), true)
+	
+	GlobalControlls.niko_visibility_changed.connect(func (visible):
+		niko_layer.visible = visible
+	)
+	#PassthroughModule.UpdateWindowsExStyles(get_window(), true)
 
 #func _process(_delta: float) -> void: # show again if niko minimized(hidden)
 	#if main_window.mode == Window.MODE_MINIMIZED:
@@ -65,7 +70,7 @@ func _on_animation_finished(_anim_name: StringName) -> void: #afk animation stop
 
 
 func update_scale():
-	DisplayServer.window_set_size(original_size * scales[GlobalControlls.niko_scale])
+	main_window.size = original_size * scales[GlobalControlls.niko_scale]
 	niko_layer.scale = Vector2(scales[GlobalControlls.niko_scale],scales[GlobalControlls.niko_scale])
 
 
@@ -81,6 +86,11 @@ func _on_niko_input(event: InputEvent) -> void: # main Niko operations
 				mouse_offset = event.position
 			else:
 				is_dragging = false
+				if GlobalControlls.snap_to_bottom:
+					var pos = 122 * scales[GlobalControlls.niko_scale]
+					var usable_rect = DisplayServer.screen_get_usable_rect(DisplayServer.window_get_current_screen(main_window_id))
+					if abs(main_window.position.y + pos - usable_rect.end.y) <= 30 * scales[GlobalControlls.niko_scale]:
+						main_window.position.y = usable_rect.end.y - pos
 		if event is InputEventMouseMotion and is_dragging: # dragging
 			move_window(event.position - mouse_offset);
 
@@ -124,6 +134,7 @@ func update_facepick():
 	if not animator.is_playing():
 		if GlobalControlls.force_facepick:
 			niko_rect.texture = NikoSpritesModule.get_sprite(GlobalControlls.forced_facepick_id)
+			is_dragging = false
 		elif GlobalControlls.is_shutdown_popup_shown:
 			niko_rect.texture = NikoSpritesModule.get_sprite("niko_cry")
 			save_afk_time = 0
@@ -175,7 +186,7 @@ func _on_menu_button_pressed() -> void: # Menu toggle
 
 
 func move_window(Offset:Vector2i) -> void: # Move Niko
-	DisplayServer.window_set_position(DisplayServer.window_get_position(main_window_id) + Vector2i(Offset), main_window_id);
+	main_window.position += Vector2i(Offset);
 
 
 
@@ -201,10 +212,11 @@ func _on_timer_tick() -> void: # CPS Counter
 		
 		GlobalControlls.total_time += 1
 		
-		if save_afk_time >= afk_time: # looking around if don't do anything for too long
+		if save_afk_time >= afk_time and Time.get_unix_time_from_system() - latest_timestamp >= 60: # looking around if don't do anything for too long
 			save_afk_time = 0
 			animator.play("niko_look_around")
 			GlobalControlls.save()
+			latest_timestamp = Time.get_unix_time_from_system()
 	else: is_dragging = false
 
 func _on_close_button_mouse_entered() -> void: # Niko sad facepick on exit button hover

@@ -1,3 +1,5 @@
+# t.me/Kobachek228 ты заебал
+
 extends Node
 # some signals
 signal gaming_mode_changed()
@@ -12,6 +14,7 @@ signal clicked()
 signal niko_scale_changed()
 @warning_ignore("unused_signal")
 signal event_started(event_name : String)
+signal niko_visibility_changed(visible : bool)
 #@warning_ignore("unused_signal")
 #signal event_ended(event_name : String)
 # niko controller, idk
@@ -43,11 +46,31 @@ var language : int = 0 # 0 - eng, 1 - rus, 2 - deu, 3 - ukr
 var total_time : int = 0 # all work time in seconds
 var niko_scale : int = 1 # 0 - 0.5x, 1 - 1x, 2 - 2x, 3 - 3x, 4 - 4x
 var sleep_time : int = 900 # in seconds
+var snap_to_bottom : bool = true
 var doned_events : int = 0 # events that the player has successfully completed
 var is_mouse_sound_enabled : bool = true
 var show_saving_icon : bool = true
 var use_legacy_sprites : bool = false
 var show_achievements : bool = true
+var do_events : bool = true
+var niko_always_on_top : bool = true:
+	set(value):
+		niko_always_on_top = value
+		get_window().always_on_top = value
+var windows_always_on_top : bool = true:
+	set(value):
+		windows_always_on_top = value
+		for child in $/root/TheWorldMachine.get_children():
+			if child is Window:
+				if not child.transient:
+					child.always_on_top = value
+					if child.visible:
+						child.visible = not child.visible
+						child.visible = not child.visible
+var taskbar_icon : bool = true:
+	set(value):
+		taskbar_icon = value
+		PassthroughModule.UpdateWindowsExStyles(get_window(), not taskbar_icon)
 
 func _ready() -> void: # loading all parameters
 	config_file.load("user://NikoMemories.cfg")
@@ -74,6 +97,10 @@ func _ready() -> void: # loading all parameters
 	AudioServer.set_bus_volume_linear(1, config_file.get_value("Settings", "MeowVolume", 1))
 	use_legacy_sprites = config_file.get_value("Settings", "LegacySprites", false)
 	show_achievements = config_file.get_value("Settings", "ShowAchievements", true)
+	doned_events = config_file.get_value("Settings", "DoEvents", true)
+	niko_always_on_top = config_file.get_value("Settings", "NikoAlwaysOnTop", true)
+	windows_always_on_top = config_file.get_value("Settings", "WindowsAlwaysOnTop", true)
+	taskbar_icon = config_file.get_value("Settings", "TaskbarIcon", true)
 	
 	DisplayServer.window_set_position(config_file.get_value("Main", "NikoPosition", get_default_pos()), DisplayServer.MAIN_WINDOW_ID)
 	
@@ -124,6 +151,10 @@ func save():
 	config_file.set_value("Settings", "MeowVolume", AudioServer.get_bus_volume_linear(1))
 	config_file.set_value("Settings", "LegacySprites", use_legacy_sprites)
 	config_file.set_value("Settings", "ShowAchievements", show_achievements)
+	config_file.set_value("Settings", "DoEvents", do_events)
+	config_file.set_value("Settings", "NikoAlwaysOnTop", niko_always_on_top)
+	config_file.set_value("Settings", "WindowsAlwaysOnTop", windows_always_on_top)
+	config_file.set_value("Settings", "TaskbarIcon", taskbar_icon)
 	
 	config_file.set_value("Main", "NikoPosition",
 	DisplayServer.window_get_position(DisplayServer.MAIN_WINDOW_ID))
@@ -146,7 +177,7 @@ func try_quit(): # saving all parameters and exit
 func set_gaming_mode(state: bool): # setting gaming mode window state
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_NO_FOCUS, state, DisplayServer.MAIN_WINDOW_ID)
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_MOUSE_PASSTHROUGH, state, DisplayServer.MAIN_WINDOW_ID)
-	PassthroughModule.UpdateWindowsExStyles(get_window(), true)
+	PassthroughModule.UpdateWindowsExStyles(get_window(), taskbar_icon)
 	gaming_mode_enabled = state
 	gaming_mode_changed.emit()
 
@@ -161,6 +192,9 @@ func set_forced_facepick(facepick_id : String):
 		forced_facepick_id = facepick_id
 		force_facepick = true
 		facepick_update.emit()
+
+func set_niko_visibility(visible : bool):
+	niko_visibility_changed.emit(visible)
 
 func unforce_facepick():
 	force_facepick = false

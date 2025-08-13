@@ -1,5 +1,7 @@
 extends Window
 
+signal close_button_pressed();
+
 @export var topbar : Control
 @export var CloseButton : BaseButton
 @export var HideButton : BaseButton
@@ -21,6 +23,7 @@ func _ready() -> void:
 	)
 	
 	CloseButton.pressed.connect(func ():
+		close_button_pressed.emit()
 		visible = false
 	)
 	if HideButton:

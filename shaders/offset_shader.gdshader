@@ -2,9 +2,9 @@ shader_type canvas_item;
 
 uniform float offset_power = 0.1;
 void fragment() {
-	vec4 randomcolor = texture(TEXTURE, UV * 10.0);
-	vec2 offset = (COLOR.yx + randomcolor.xy + vec2(0.01)) * offset_power;
-	COLOR = texture(TEXTURE, UV + offset);
+	//vec4 randomcolor = texture(TEXTURE, UV * 10.0);
+	//vec2 offset = (COLOR.yx + randomcolor.xy + vec2(0.01)) * offset_power;
+	COLOR = texture(TEXTURE, UV + COLOR.xy * offset_power);
 }
 
 //void light() {

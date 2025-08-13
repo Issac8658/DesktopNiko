@@ -12,6 +12,11 @@ const achievements : Dictionary = {
 	"im_scared" = ["ACHIEVEMENT_IM_SCARED_NAME","ACHIEVEMENT_IM_SCARED_DESC","res://ui_sprites/achievements/im_scared.png", false],
 	"what_you_do" = ["ACHIEVEMENT_WHAT_YOU_DO_NAME","ACHIEVEMENT_WHAT_YOU_DO_DESC","res://ui_sprites/achievements/what_you_doing.png", false],
 	"sweet_dreams" = ["ACHIEVEMENT_SWEET_DREAMS_NAME","ACHIEVEMENT_SWEET_DREAMS_DESC","res://ui_sprites/achievements/sweet_dreams.png", false],
+	"little_win" = ["ACHIEVEMENT_LITTLE_WIN_NAME","ACHIEVEMENT_LITTLE_WIN_DESC", "res://ui_sprites/achievements/little_win.png", false],
+	"master_of_tennis" = ["ACHIEVEMENT_MASTER_OF_TENNIS_NAME","ACHIEVEMENT_MASTER_OF_TENNIS_DESC", "res://ui_sprites/achievements/master_of_tennis.png", false],
+	"hacked_a_machine" = ["ACHIEVEMENT_HACKED_A_MACHINE_NAME","ACHIEVEMENT_HACKED_A_MACHINE_DESC", "res://ui_sprites/achievements/hacked_a_machine.png", false],
+	"time_to_dinner" = ["ACHIEVEMENT_TIME_TO_DINNER_NAME","ACHIEVEMENT_TIME_TO_DINNER_DESC", "res://ui_sprites/achievements/time_to_dinner.png", false],
+	"worst_friend" = ["ACHIEVEMENT_WORST_FRIEND_NAME","ACHIEVEMENT_WORST_FRIEND_DESC", "res://ui_sprites/achievements/glitched.png", true],
 	"hello_secret" = ["ACHIEVEMENT_HELLO_NAME","ACHIEVEMENT_HELLO_DESC","res://ui_sprites/achievements/unknown.png", true]
 }
 

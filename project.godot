@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Desktop Niko"
-config/version="1.1.4"
+config/version="1.1.4p"
 config/tags=PackedStringArray("niko", "non_com", "one_shot", "software")
 run/main_scene="uid://cj66sb2a5oolj"
 config/use_custom_user_dir=true
@@ -25,12 +25,11 @@ config/icon="uid://qsweuhlblj1"
 
 [audio]
 
-buses/default_bus_layout="res://meow_sound_bus.tres"
+buses/default_bus_layout="res://buses.tres"
 driver/enable_input=true
 
 [autoload]
 
-ShutdownHandler="*res://scripts/ShutdownHandler.cs"
 GlobalControlls="*res://scripts/global_controlls.gd"
 NikoSpritesModule="*res://scripts/niko_sprites_module.gd"
 PassthroughModule="*res://scripts/WindowMousePassthroughModule.cs"

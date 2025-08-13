@@ -11,6 +11,9 @@ public partial class WindowMousePassthroughModule : Node
 	private const uint WS_EX_TOOLWINDOW = 0x00000080;
 	private const uint WS_EX_TOPMOST = 0x00000008;
 	private const uint DEFAULT_WS_STYLE = 0x20000810;
+	
+	private const int SW_SHOW = 5;
+	private const int SW_HIDE = 0;
 
 	public void UpdateWindowsExStyles(Window window, bool NoPanelIcon)
 	{
@@ -18,6 +21,8 @@ public partial class WindowMousePassthroughModule : Node
 		{
 			[DllImport("user32.dll")]
 			static extern int SetWindowLong(IntPtr hWnd, int nIndex, uint dwNewLong);
+			[DllImport("user32.dll")]
+			static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 			//[DllImport("user32.dll")]
 			//static extern int GetWindowLong(IntPtr hWnd, int nIndex);
 
@@ -28,15 +33,17 @@ public partial class WindowMousePassthroughModule : Node
 			{
 				style |= WS_EX_TOPMOST;
 			}
-			if (NoPanelIcon)
-			{
-				style = (style & ~WS_EX_APPWINDOW) | WS_EX_TOOLWINDOW;
-			}
 			if ((bool)window.Get("mouse_passthrough"))
 			{
 				style |= WS_EX_LAYERED | WS_EX_TRANSPARENT;
 			}
+			if (NoPanelIcon)
+			{
+				style = (style & ~WS_EX_APPWINDOW) | WS_EX_TOOLWINDOW;
+			}
+			ShowWindow(hWnd, SW_HIDE);
 			SetWindowLong(hWnd, GWL_EXSTYLE, style);
+			ShowWindow(hWnd, SW_SHOW);
 		}
 	}
 }

@@ -7,11 +7,12 @@ var events : Array[Node]
 func _ready() -> void:
 	events = get_children()
 	GlobalControlls.clicked.connect(func ():
-		for event in events:
-			var rand = randf() * 100
-			if rand <= event.spawn_chance and GlobalControlls.clicks >= event.min_clicks and niko_conroller.cps <= event.max_cps:
-					print("Event " + str(events.find(event)) + ":" + event.name + " c" + str(rand))
-					event.event()
-					GlobalControlls.event_started.emit(event.name)
-					break
+		if GlobalControlls.do_events:
+			for event in events:
+				var rand = randf() * 100
+				if rand <= event.spawn_chance and GlobalControlls.clicks >= event.min_clicks and niko_conroller.cps <= event.max_cps:
+						print("Event " + str(events.find(event)) + ":" + event.name + " c" + str(rand))
+						event.event()
+						GlobalControlls.event_started.emit(event.name)
+						break
 	)

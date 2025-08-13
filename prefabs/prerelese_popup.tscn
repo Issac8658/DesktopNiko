@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://fnqnwb4uwdkx"]
+
+[ext_resource type="PackedScene" uid="uid://8hficp4dbvqs" path="res://prefabs/popup_window.tscn" id="1_yhq35"]
+[ext_resource type="Texture2D" uid="uid://dpwa8q6tb8w5o" path="res://ui_sprites/donate_heart.png" id="2_326pi"]
+[ext_resource type="Texture2D" uid="uid://gfqymydag805" path="res://ui_sprites/zero_sprite.tres" id="2_vlwem"]
+[ext_resource type="Texture2D" uid="uid://cj74xwnjydvk6" path="res://ui_sprites/info.png" id="4_83j85"]
+
+[sub_resource type="GDScript" id="GDScript_yhq35"]
+resource_name = "prerelese_popup_controller"
+script/source = "extends Node
+
+@export var accept_button : Button
+@export var thanks_control : Control
+@export var use_relese_control : Control
+@export var end_timestamp : int
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	if Time.get_unix_time_from_system() > end_timestamp:
+		thanks_control.visible = false
+		use_relese_control.visible = true
+		accept_button.text = \"EXIT\"
+		accept_button.pressed.connect(get_tree().quit)
+"
+
+[node name="PrerelesePopup" instance=ExtResource("1_yhq35")]
+size = Vector2i(328, 220)
+
+[node name="Icon" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
+icon = ExtResource("2_vlwem")
+
+[node name="Title" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
+text = ""
+
+[node name="VBoxContainer" parent="Control/WindowContainer/Content/PopupMargin" index="0" node_paths=PackedStringArray("accept_button", "thanks_control", "use_relese_control")]
+script = SubResource("GDScript_yhq35")
+accept_button = NodePath("Actions/No")
+thanks_control = NodePath("HBoxContainer")
+use_relese_control = NodePath("HBoxContainer2")
+end_timestamp = 1755388800
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="0"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="Button" parent="Control/WindowContainer/Content/PopupMargin/VBoxContainer/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("2_326pi")
+expand_icon = true
+
+[node name="Text" type="Label" parent="Control/WindowContainer/Content/PopupMargin/VBoxContainer/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "PRERELESE_DOTATE_THANKS"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="1"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="Button" parent="Control/WindowContainer/Content/PopupMargin/VBoxContainer/HBoxContainer2" index="0"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("4_83j85")
+expand_icon = true
+
+[node name="Text" type="Label" parent="Control/WindowContainer/Content/PopupMargin/VBoxContainer/HBoxContainer2" index="1"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "PRERELESE_TIME_IS_UP"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Quest" parent="Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="2"]
+visible = false
+text = "PRERELESE_DOTATE_THANKS"
+
+[node name="Yes" parent="Control/WindowContainer/Content/PopupMargin/VBoxContainer/Actions" index="0"]
+visible = false
+
+[node name="No" parent="Control/WindowContainer/Content/PopupMargin/VBoxContainer/Actions" index="1"]
+text = "CONTINUE"

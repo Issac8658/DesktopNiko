@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bmg1ixf1jmpp8"]
+
+[ext_resource type="Shader" uid="uid://dpxtp50bf3l85" path="res://shaders/glitch_shader.gdshader" id="1_k07ly"]
+
+[resource]
+shader = ExtResource("1_k07ly")
+shader_parameter/glitch_offset = 0.0
+shader_parameter/color_glitch_power = 0.0
+shader_parameter/invert_color = 0.0
+shader_parameter/sin_distortion = 0.0
+shader_parameter/cos_distortion = 0.0
+shader_parameter/color_distortion = 0.0
+shader_parameter/uv_offset = Vector2(0, -1)
+shader_parameter/sin_offset = Vector2(0, 0)
+shader_parameter/sin_offset_power = 0.2

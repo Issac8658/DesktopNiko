@@ -2,16 +2,26 @@ extends Node
 
 const locales = ["en-US", "ru-RU", "de-DE", "ua-UA"]
 
+@export_group("General")
 @export var gaming_mod_checkbox : CheckBox
 @export var peaceful_check_box : CheckBox
 @export var click_sound_checkbox : CheckBox
 @export var saving_icon_checkbox : CheckBox
 @export var show_achievements_checkbox : CheckBox
 @export var language_option_button : OptionButton
-@export var niko_scale_option_button : OptionButton
-
+@export_group("Niko")
 @export var legacy_facepicks_checkbox : CheckBox
+@export var niko_scale_option_button : OptionButton
 @export var niko_facepicks_select : Node
+@export var snap_to_bottom_button : Button
+@export_group("Other")
+@export var reset_all_data_button : Button
+@export var do_events_checkbox : CheckBox
+@export var niko_always_on_top_checkbox : CheckBox
+@export var windows_always_on_top_checkbox : CheckBox
+@export var taskbar_icon_checkbox : CheckBox
+@export var data_reset_popup : Window
+@export var save_button : Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -59,4 +69,32 @@ func _ready() -> void:
 	legacy_facepicks_checkbox.toggled.connect(func (toggled):
 		GlobalControlls.use_legacy_sprites = toggled
 		niko_facepicks_select.update_facepicks_preview()
+	)
+	
+	do_events_checkbox.toggled.connect(func (toggled):
+		GlobalControlls.do_events = toggled
+	)
+	
+	niko_always_on_top_checkbox.toggled.connect(func (toggled):
+		GlobalControlls.niko_always_on_top = toggled
+	)
+	windows_always_on_top_checkbox.toggled.connect(func (toggled):
+		GlobalControlls.windows_always_on_top = toggled
+	)
+	taskbar_icon_checkbox.toggled.connect(func (toggled):
+		GlobalControlls.taskbar_icon = toggled
+	)
+	
+	reset_all_data_button.pressed.connect(func ():
+		data_reset_popup.popup()
+	)
+	data_reset_popup.yes_button_pressed.connect(func ():
+		print(DirAccess.remove_absolute(ProjectSettings.globalize_path("user://")))
+		get_tree().quit()
+	)
+	save_button.pressed.connect(func ():
+		GlobalControlls.save()
+	)
+	snap_to_bottom_button.toggled.connect(func (toggled):
+		GlobalControlls.snap_to_bottom = toggled
 	)
