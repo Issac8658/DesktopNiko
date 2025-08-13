@@ -71,7 +71,7 @@ TIME_TO_SLEEP,Time to sleep,Время до сна,Zeit zum Schlafen,Час до
 TIME_H,h,ч,h,г
 TIME_M,m,м,m,х
 TIME_S,s,с,s,с
-EVENTS_PASSED,Events passed,Событий пройдено,,
+EVENTS_PASSED,Events passed,Событий пройдено,,Подій пройдено
 SHOW_ACHIEVEMENTS,Show achievements,Отображать достижения,Erfolge anzeigen,Показувати досягнення
 SHOW_ACHIEVEMENTS_HINT,Determines whether to show achievement animation in corner of screen. Sound will still be played.,"Определяет, показывать ли анимацию получения достижения в углу экрана. Звук по-прежнему будет воспроизводиться.","Legt fest, ob die Animation des Erfolgs in der Ecke des Bildschirms angezeigt wird. Der Ton wird weiterhin abgespielt.","Визначає, чи показувати анімацію отримання досягнення в кутку екрана. Звук все ще буде відтворюватися."
 ACHIEVEMENTS,Achivements,Достижения,Erreichung,"Досягнення"
@@ -96,53 +96,53 @@ ACHIEVEMENT_SWEET_DREAMS_NAME,Sweet dreams!,Сладких снов!,Träum sü�
 ACHIEVEMENT_SWEET_DREAMS_DESC,"Isn't it time for us to sleep?",Не пора ли нам поспать?,Ist es nicht Zeit für uns zu schlafen?,Чи не час нам поспати?
 ACHIEVEMENT_HELLO_NAME,"Hello, Secret!","Привет, Секрет!","Hallo, das Geheimnis!","Привіт, Секрет!"
 ACHIEVEMENT_HELLO_DESC,What was that?,Что это было?,Was war das?,Що це було?
-CANCEL,Cancel,Отмена,,
-SHUTDOWN_BLOCK_MESSAGE,,[Что ты делаешь?! Ты так можешь навредить Нико!],,
-GIVE_PANCAKES_TO_NIKO_QUEST,,Вы хотите дать Нико блинчики?,,
-PANCAKE_ALERT,Pancake Alert,Предупреждение: Блинчики,,
-PANCAKE_ALERT_DIALOG_A,"[ You've upset Niko. ]",[ Ты растроил Нико. ],,
-PANCAKE_ALERT_DIALOG_B,,[ Чего ты хотел этим добиться? ]\n[ Ты думаешь тебе это что то даст? ],,
-PANCAKE_ALERT_DIALOG_C,,"[ В любом случае, я тебе не позволю обижать Нико. ]",,
-EVENT_PM_FREE_PANCAKES,Click here to get free pancakes,"Нажми сюда, что бы получить бесплатные блины",,
-EVENT_PM_SOMETHING_WRONG,"Something wrong (click), please, enter passcode","Что то не так, пожаулуйста, введите код (нажмите)",,
-ENTER_PASSCODE,ENTER PASSCODE,ВВЕДИТЕ КОД,,
-TENNIS,Tennis,Теннис,,
-PLAY,Play,Играть,,
-HOW_TO_PLAY,How to play?,Как играть?,,
+CANCEL,Cancel,Отмена,,Скасування
+SHUTDOWN_BLOCK_MESSAGE,,[Что ты делаешь?! Ты так можешь навредить Нико!],,[Що ти робиш?! Ти так можеш нашкодити Ніко!]
+GIVE_PANCAKES_TO_NIKO_QUEST,,Вы хотите дать Нико блинчики?,,Ви хочете дати Ніко млинці?
+PANCAKE_ALERT,Pancake Alert,Предупреждение: Блинчики,,Попередження: Млинці
+PANCAKE_ALERT_DIALOG_A,"[ You've upset Niko. ]",[ Ты растроил Нико. ],,[ Ти засмутив Ніко. ]
+PANCAKE_ALERT_DIALOG_B,,[ Чего ты хотел этим добиться? ]\n[ Ты думаешь тебе это что то даст? ],,[ Чого ти хотів цим досягти? ]\n[ Ти думаєш тобі це щось дасть? ]
+PANCAKE_ALERT_DIALOG_C,,"[ В любом случае, я тебе не позволю обижать Нико. ]",,"[ В будь-якому випадку, я тобі не дозволю ображати Ніко. ]"
+EVENT_PM_FREE_PANCAKES,Click here to get free pancakes,"Нажми сюда, что бы получить бесплатные блины",,"Натисни сюди, щоб отримати безкоштовні млинці"
+EVENT_PM_SOMETHING_WRONG,"Something wrong (click), please, enter passcode","Что то не так, пожаулуйста, введите код (нажмите)",,"Щось не так, будь ласка, введіть код (натисніть)"
+ENTER_PASSCODE,ENTER PASSCODE,ВВЕДИТЕ КОД,,ВВЕДІТЬ КОД
+TENNIS,Tennis,Теннис,,Теніс
+PLAY,Play,Играть,,Іграти
+HOW_TO_PLAY,How to play?,Как играть?,,Як грати?
 EXIT,Exit,Выход,Ausgang,Вихід
-TENNIS_HTP_TEXT,"Your task is to beat Niko in tennis. [fgcolor=#000c][font size=16]Just like in that video, huh?[/font][/fgcolor]\n\nEvery time you successfully hit the ball, you get one point, the more points, the cooler you are.\n\nThe speed of the ball after impact directly depends on the speed of the cursor during impact. If the ball is too fast, Niko will not be able to hit it and you will win!","Твоя задача - пебедить Нико в теннисе. [fgcolor=#000c][font size=16]Прям как в том видео, а?[/font][/fgcolor]\n\nКаждый раз, когда ты успешно отбиваешь мяч, ты получаешь одно очко, чем больше очков - тем ты круче.\n\nСкорость мяча после удара напрямую зависит от скорости курсора во время удара. Если мяч будет слишком быстр то Нико не сможет его отбить и ты победишь!",,
-YOU_LOSE,You lose!,Ты проиграл!,,
-WM_TENNIS_HAHA,"[ Are you serious? Tennis is easy... ]","[ Ты серьезно? Теннис же легкий... ]",,
-YOU_WIN,You win!,Ты победил!,,
-WM_TENNIS_WIN,"[ Well, it looks like it was easy. ]\n[ Anyway, does 2FC mean anything to you? ]","[ Что ж, похоже, это было просто. ]\n[ В любом случае, тебе 2FC о чём то говорит? ]",,
-YAY,Yay!,Ура!,,
-RETRY_LATER,Retry later,Попробовать снова позже,,
-VOLUME,Volume,Громкость,,
-WINDOWS_ONLY,Windows Only,Только для Windows,,
-DO_EVENTS,Do events,Делать события,,
-NIKO_ALWAYS_ON_TOP,Niko always on top,Нико поверх всего,,
-WINDOWS_ALWAYS_ON_TOP,Windows always on top,Окна поверх всего,,
-TASKBAR_ICON,Taskbar icon,Иконка в панели задач,,
-RESET_ALL_DATA,Reset all data,Сбросить всё,,
-DATA_RESET_POPUP_MESSAGE,"Are you sure you want to completely reset all data?\nThis will completely delete save folder, including all files in it.","Вы уверены что хотите полностью сбросить все данные?\nЭто полностью удалит папку сохранения включая все файлы в ней.",,
-SAVE,Save,Сохранить,,
-PRESS_F_TO_FLIP_NIKO,Press [F] to flip Niko!,Нажми [F] что повернуть Нико!,,
-DO_EVENTS_HINT,Determines whether to show events during clicks.,"Определяет, показывать ли события во время кликов.",,
-NIKO_ALWAYS_ON_TOP_HINT,"Niko will always be on top of windows. If he/she will not be visible in a game, then set FRAMELESS fullscreen mode.","Нико будет всегда поверх окон. Если в игре его(её) не будет видно, то поставьте БЕЗРАМОЧНЫЙ полноэкранный режим.",,
-WINDOWS_ALWAYS_ON_TOP_HINT,"Program's windows will always be on top of other windows.",Окна программы будут всегда поверх других окон.,,
-TAKSBAR_ICON_HINT,"Determines whether to show application icon in taskbar. Does not apply to other program's windows","Определяет, показывать иконку приложения в панели задач. Не распространяется на другие окна программы",,
-SNAP_TO_BOTTOM,Snap to bottom,Крепить к низу,,
-CONTINUE,Continue,Продолжить,Weiterhin,Продовживши
-PRERELESE_DOTATE_THANKS,,Спасибо за вашу подписку на Boosty!,,
+TENNIS_HTP_TEXT,"Your task is to beat Niko in tennis. [fgcolor=#000c][font size=16]Just like in that video, huh?[/font][/fgcolor]\n\nEvery time you successfully hit the ball, you get one point, the more points, the cooler you are.\n\nThe speed of the ball after impact directly depends on the speed of the cursor during impact. If the ball is too fast, Niko will not be able to hit it and you will win!","Твоя задача - пебедить Нико в теннисе. [fgcolor=#000c][font size=16]Прям как в том видео, а?[/font][/fgcolor]\n\nКаждый раз, когда ты успешно отбиваешь мяч, ты получаешь одно очко, чем больше очков - тем ты круче.\n\nСкорость мяча после удара напрямую зависит от скорости курсора во время удара. Если мяч будет слишком быстр то Нико не сможет его отбить и ты победишь!",,"Твоя задача - перемогти Ніко в тенісі. [fgcolor=#000c][font size=16]Прям як у тому відео, а?[/font][/fgcolor]\n\nКожного разу, коли ти успішно відбиваєш м'яч, ти отримуєш одне очко, чим більше очок - тим ти крутіший.\n\nШвидкість м'яча після удару безпосередньо залежить від швидкості курсора під час удару. Якщо м'яч буде занадто швидким, то Ніко не зможе його відбити і ти переможеш!"
+YOU_LOSE,You lose!,Ты проиграл!,,Ти програв!
+WM_TENNIS_HAHA,"[ Are you serious? Tennis is easy... ]","[ Ты серьезно? Теннис же легкий... ]",,"[ Ти серйозно? Теніс же легкий... ]"
+YOU_WIN,You win!,Ты победил!,,Ти переміг!
+WM_TENNIS_WIN,"[ Well, it looks like it was easy. ]\n[ Anyway, does 2FC mean anything to you? ]","[ Что ж, похоже, это было просто. ]\n[ В любом случае, тебе 2FC о чём то говорит? ]",,"[ Що ж, схоже, це було просто. ]\n[ В будь-якому випадку, тобі 2FC про щось говорить? ]"
+YAY,Yay!,Ура!,,Ура!
+RETRY_LATER,Retry later,Попробовать снова позже,,Повторити пізніше
+VOLUME,Volume,Громкость,,Гучність
+WINDOWS_ONLY,Windows Only,Только для Windows,,Тільки для Windows
+DO_EVENTS,Do events,Делать события,,Робити події
+NIKO_ALWAYS_ON_TOP,Niko always on top,Нико поверх всего,,Ніко поверх всього
+WINDOWS_ALWAYS_ON_TOP,Windows always on top,Окна поверх всего,,Вікна поверх всього
+TASKBAR_ICON,Taskbar icon,Иконка в панели задач,,Іконка в панелі задач
+RESET_ALL_DATA,Reset all data,Сбросить всё,,Скинути все
+DATA_RESET_POPUP_MESSAGE,"Are you sure you want to completely reset all data?\nThis will completely delete save folder, including all files in it.","Вы уверены что хотите полностью сбросить все данные?\nЭто полностью удалит папку сохранения включая все файлы в ней.",,"Ви впевнені, що хочете повністю скинути всі дані?\nЦе повністю видалить папку збереження, включаючи всі файли в ній."
+SAVE,Save,Сохранить,,Зберегти
+PRESS_F_TO_FLIP_NIKO,Press [F] to flip Niko!,Нажми [F] что повернуть Нико!,,"Натисни [F], щоб повернути Ніко!"
+DO_EVENTS_HINT,Determines whether to show events during clicks.,"Определяет, показывать ли события во время кликов.",,"Визначає, чи показувати події під час кліків."
+NIKO_ALWAYS_ON_TOP_HINT,"Niko will always be on top of windows. If he/she will not be visible in a game, then set FRAMELESS fullscreen mode.","Нико будет всегда поверх окон. Если в игре его(её) не будет видно, то поставьте БЕЗРАМОЧНЫЙ полноэкранный режим.",,"Ніко буде завжди поверх вікон. Якщо в грі його(її) не буде видно, то поставте БЕЗРАМОЧНИЙ повноекранний режим."
+WINDOWS_ALWAYS_ON_TOP_HINT,"Program's windows will always be on top of other windows.",Окна программы будут всегда поверх других окон.,,Вікна програми будуть завжди поверх інших вікон.
+TAKSBAR_ICON_HINT,"Determines whether to show application icon in taskbar. Does not apply to other program's windows","Определяет, показывать иконку приложения в панели задач. Не распространяется на другие окна программы",,"Визначає, чи показувати іконку програми в панелі задач. Не поширюється на інші вікна програми"
+SNAP_TO_BOTTOM,Snap to bottom,Крепить к низу,,Прикріпити до низу
+CONTINUE,Continue,Продолжить,Weiterhin,Продовжити
+PRERELESE_DOTATE_THANKS,,Спасибо за вашу подписку на Boosty!,,Дякуємо за вашу підписку на Boosty!
 PRERELESE_TIME_IS_UP,Testing time is up! Please use release version!,"Время тестирования истекло! Пожалуйста, используйте релизную версию!",Die Testzeit ist abgelaufen! Bitte verwenden Sie die Release-Version!,"Час тестування закінчився! Будь ласка, використовуйте релізну версію!"
-POINTS,Points,Очки,,
-ACHIEVEMENT_LITTLE_WIN_NAME,Little win,Маленькая победа,,
-ACHIEVEMENT_LITTLE_WIN_DESC,Win Niko in tennis,Победите Нико в теннисе,,
-ACHIEVEMENT_MASTER_OF_TENNIS_NAME,Master of tennis,Мастер тенниса.,,
-ACHIEVEMENT_MASTER_OF_TENNIS_DESC,Score only 100 points.,Наберите всего лишь 100 очков.,,
-ACHIEVEMENT_HACKED_A_MACHINE_NAME,Hacked a machine,Взломал автомат,,
-ACHIEVEMENT_HACKED_A_MACHINE_DESC,You hacked it... a pancake machine??,Ты взломал... автомат с блинчиками??,,
-ACHIEVEMENT_TIME_TO_DINNER_NAME,Time to dinner!,Время ужинать!,,
-ACHIEVEMENT_TIME_TO_DINNER_DESC,Feed Niko pancakes (the main thing is not to overdo it),Накормите Нико блинчиками (главное не переборщи),,
-ACHIEVEMENT_WORST_FRIEND_NAME,WORST friend,ХУДШИЙ друг,,
-ACHIEVEMENT_WORST_FRIEND_DESC,"[ Of course, I understand everything, experiments are all that, but are you SERIOUSLY ready to sacrifice pancakes for Niko for some damn experiments?! ]","[ Я, конечно, всё понимаю, эксперименты всё такое, но ты СЕРЬЕЗНО готов пожертвовать блинчиками для Нико ради каких то эксперементов?! ]",,
+POINTS,Points,Очки,,Бали
+ACHIEVEMENT_LITTLE_WIN_NAME,Little win,Маленькая победа,,Маленька перемога
+ACHIEVEMENT_LITTLE_WIN_DESC,Win Niko in tennis,Победите Нико в теннисе,,Переможіть Ніко в тенісі
+ACHIEVEMENT_MASTER_OF_TENNIS_NAME,Master of tennis,Мастер тенниса.,,Майстер тенісу.
+ACHIEVEMENT_MASTER_OF_TENNIS_DESC,Score only 100 points.,Наберите всего лишь 100 очков.,,Наберіть лише 100 балів.
+ACHIEVEMENT_HACKED_A_MACHINE_NAME,Hacked a machine,Взломал автомат,,Взламав автомат
+ACHIEVEMENT_HACKED_A_MACHINE_DESC,You hacked it... a pancake machine??,Ты взломал... автомат с блинчиками??,,Ти взламав... автомат з млинцями??
+ACHIEVEMENT_TIME_TO_DINNER_NAME,Time to dinner!,Время ужинать!,,Час вечеряти!
+ACHIEVEMENT_TIME_TO_DINNER_DESC,Feed Niko pancakes (the main thing is not to overdo it),Накормите Нико блинчиками (главное не переборщи),,Нагодуйте Ніко млинцями (головне не переборщити)
+ACHIEVEMENT_WORST_FRIEND_NAME,WORST friend,ХУДШИЙ друг,,ГІРШИЙ друг
+ACHIEVEMENT_WORST_FRIEND_DESC,"[ Of course, I understand everything, experiments are all that, but are you SERIOUSLY ready to sacrifice pancakes for Niko for some damn experiments?! ]","[ Я, конечно, всё понимаю, эксперименты всё такое, но ты СЕРЬЕЗНО готов пожертвовать блинчиками для Нико ради каких то эксперементов?! ]",,"[ Звичайно, я все розумію, експерименти все таке, але ти СЕРЙОЗНО готовий пожертвувати млинцями для Ніко заради якихось експериментів?! ]"
