@@ -11,57 +11,59 @@ public sealed partial class ShutdownHandler : Node
 	public delegate void OnShutdownSignalEventHandler();
 	[Signal]
 	public delegate void OnShutdownAbortSignalEventHandler();
-	
+
+	// public stuff
+	public bool IsShuttingDown { get; private set; } = false;
+
 	// private stuff
 	private IntPtr _hWnd = IntPtr.Zero;
 	private IntPtr _originalWndProc = IntPtr.Zero;
-	private bool _isWindowsShuttingDown = false;
-	
+
+	/*
+	 * i put this stuff there, so garbage collector wont clean it accidentally,
+	 * so program wont crash again. whatever, im calling GC.KeepAlive, so i don't
+	 * think it would crash again, i hope.
+	 */
+	private WindowProcedure _wndProcDelegate = null;
+
 	public override void _Ready()
 	{
 		if (OS.GetName() != "Windows")
 			return;
-		
+
+		_wndProcDelegate = new WindowProcedure(_WndProc);
+
 		_hWnd = (IntPtr)DisplayServer.WindowGetNativeHandle(DisplayServer.HandleType.WindowHandle, 0);
-		IntPtr newWndProc = Marshal.GetFunctionPointerForDelegate(new WindowProcedure(_WndProc));
+		IntPtr newWndProc = Marshal.GetFunctionPointerForDelegate(_wndProcDelegate);
 
 		_originalWndProc = NativeMethods.SetWindowLong(_hWnd, GWLP_WNDPROC, newWndProc);
 		if (_originalWndProc == IntPtr.Zero)
 			throw new Win32Exception(Marshal.GetLastWin32Error());
+			
+		GC.KeepAlive(_wndProcDelegate); // forcing garbage collector to not clean it again, as it did previously.
 	}
-	
+
+	[Obsolete("Use IsShuttingDown property instead.")]
 	public bool IsWindowsShuttingDown()
-	{
-		if (OS.GetName() != "Windows")
-			return false;
-		
-		return _isWindowsShuttingDown;
-	}
-	
-	
-	private void _HandleShutdown(){
-		EmitSignal(SignalName.OnShutdownSignal);}
-	
-	private void _HandleShutdownAbort()
-		=> EmitSignal(SignalName.OnShutdownAbortSignal);
-	
+		=> IsShuttingDown;
+
 	private IntPtr _WndProc(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam)
 	{
 		switch (uMsg)
 		{
 			case WM_QUERYENDSESSION:
-				_isWindowsShuttingDown = true;
-				
+				IsShuttingDown = true;
+
 				NativeMethods.ShutdownBlockReasonCreate(_hWnd, TranslationServer.Translate("SHUTDOWN_BLOCK_MESSAGE"));
-				
-				CallDeferred(nameof(_HandleShutdown));
+
+				EmitSignal(SignalName.OnShutdownSignal);
 				return IntPtr.Zero; // FALSE
 			case WM_ENDSESSION:
-				_isWindowsShuttingDown = wParam != IntPtr.Zero;
-				
-				if (!_isWindowsShuttingDown)
+				IsShuttingDown = wParam != IntPtr.Zero;
+
+				if (!IsShuttingDown)
 				{
-					CallDeferred(nameof(_HandleShutdownAbort));
+					EmitSignal(SignalName.OnShutdownAbortSignal);
 					NativeMethods.ShutdownBlockReasonDestroy(_hWnd);
 				}
 				break;
@@ -69,11 +71,11 @@ public sealed partial class ShutdownHandler : Node
 
 		return NativeMethods.CallWindowProc(_originalWndProc, hWnd, uMsg, wParam, lParam);
 	}
-	
+
 	// some winapi consts.
 	private const uint WM_QUERYENDSESSION = 0x0011;
 	private const uint WM_ENDSESSION = 0x0016;
-		
+
 	private const int GWLP_WNDPROC = -4;
 
 	// some dll imports
@@ -84,7 +86,7 @@ public sealed partial class ShutdownHandler : Node
 
 		[DllImport("user32.dll")]
 		public static extern bool ShutdownBlockReasonDestroy(IntPtr hWnd);
-		
+
 		[DllImport("user32.dll", EntryPoint = "SetWindowLongPtr", SetLastError = true)]
 		private static extern IntPtr _SetWindowLong64(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
 
@@ -107,7 +109,7 @@ public sealed partial class ShutdownHandler : Node
 			return _SetWindowLong64(hWnd, nIndex, dwNewLong);
 		}
 	}
-	
+
 	// just a delegate for wndproc
 	private delegate IntPtr WindowProcedure(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam);
 }
