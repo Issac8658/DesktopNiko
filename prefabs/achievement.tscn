@@ -13,6 +13,7 @@ texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("1_w05dq")
+stretch_mode = 4
 
 [node name="TextInfo" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -37,5 +38,3 @@ theme_override_fonts/font = ExtResource("2_yrdct")
 theme_override_font_sizes/font_size = 16
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 autowrap_mode = 3
-clip_text = true
-text_overrun_behavior = 3

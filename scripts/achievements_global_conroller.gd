@@ -23,7 +23,7 @@ const achievements : Dictionary = {
 var taked_achievements : Array = []
 
 
-func take_achievement(achievement_id : String) -> bool: # returns succsess or not
+func take_achievement(achievement_id : String) -> bool: # returns has or not
 	if achievement_id in taked_achievements:
 		print("Achivement \"" + achievement_id + "\" has already been obtained before! (take_achievement)")
 		return false

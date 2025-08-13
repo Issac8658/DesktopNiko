@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cykd86boymkkf"]
+[gd_scene load_steps=16 format=3 uid="uid://cykd86boymkkf"]
 
 [ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/event.gd" id="1_4neqe"]
 [ext_resource type="AudioStream" uid="uid://pf6m77hcecy8" path="res://sounds/tennis_shot.mp3" id="2_4kq60"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://bb45mnqcvfo5p" path="res://sounds/pc_logon.wav" id="5_a0qhp"]
 [ext_resource type="Texture2D" uid="uid://ccryp414lksku" path="res://prefabs/events/logo_tennis_ball.png" id="6_ao3bx"]
 [ext_resource type="Texture2D" uid="uid://c3s1xqfrucpby" path="res://niko/niko_smug.png" id="7_i1fqx"]
+[ext_resource type="Texture2D" uid="uid://bjfdcbs4wdh0k" path="res://prefabs/events/tennis_icon.png" id="8_a5d04"]
 [ext_resource type="Texture2D" uid="uid://coooblyht2ib3" path="res://prefabs/events/racket.png" id="8_wh27w"]
 [ext_resource type="Texture2D" uid="uid://0485aj6864rb" path="res://prefabs/events/tennis_ball.png" id="9_d2fhx"]
 
@@ -76,14 +77,15 @@ func _ready() -> void:
 	)
 
 func do_event():
-	GlobalControlls.set_niko_visibility(false)
-	window.visible = true
-	sound_tennis_music.play()
+	if not window.visible:
+		GlobalControlls.set_niko_visibility(false)
+		window.visible = true
+		sound_tennis_music.play()
 
 
 func revert():
 	gaming = false
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	window.visible = false
 	sound_tennis_music.stop()
 	player_raket_pos = Vector2i(0,0)
@@ -111,7 +113,7 @@ func win():
 	sound_tennis_music.stop()
 	sound_win.play()
 	GlobalControlls.doned_events += 1
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 func lose():
@@ -120,7 +122,7 @@ func lose():
 	screen_lose.visible = true
 	sound_lose.play()
 	sound_tennis_music.stop()
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 func start_game():
@@ -128,7 +130,7 @@ func start_game():
 	screen_main_menu.visible = false
 	screen_game.visible = true
 	gaming = true
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 
 func _process(delta: float) -> void:
 	if gaming:
@@ -251,6 +253,9 @@ volume_db = -5.0
 initial_position = 4
 size = Vector2i(800, 600)
 visible = false
+
+[node name="Icon" parent="TennisWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
+icon = ExtResource("8_a5d04")
 
 [node name="Title" parent="TennisWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
 text = "TENNIS"

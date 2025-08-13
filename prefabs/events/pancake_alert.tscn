@@ -25,19 +25,49 @@ var eventing = false
 var _anim_state = 0;
 
 func _ready() -> void:
-	pass # press no and press yes to here from do_event()
+	popup.no_button_pressed.connect(press_no)
+	popup.yes_button_pressed.connect(func ():
+		print(\"pressed yes\")
+		play_eating_anim()
+		GlobalControlls.doned_events += 1
+		if not AchievementsGlobalConroller.is_achievement_taked(\"time_to_dinner\"):
+			AchievementsGlobalConroller.take_achievement(\"time_to_dinner\")
+	)
+	cry_sound.finished.connect(func ():
+		if not AchievementsGlobalConroller.is_achievement_taked(\"worst_friend\"):
+			Dialog.show_dialog(\"PANCAKE_ALERT_DIALOG_A\", null, 0.05, true)
+			Dialog.dialog_skiped.connect(func ():
+				Dialog.show_dialog(\"PANCAKE_ALERT_DIALOG_B\", null, 0.05, true)
+				Dialog.dialog_skiped.connect(func ():
+					Dialog.show_dialog(\"PANCAKE_ALERT_DIALOG_C\", null, 0.05, true)
+					Dialog.dialog_skiped.connect(func ():
+						glitch.visible = true
+						glitch_sound.finished.connect(func ():
+							glitch.visible = false
+							GlobalControlls.set_forced_facepick(\"niko_pancakes\")
+							AchievementsGlobalConroller.take_achievement(\"worst_friend\")
+							popup.popup()
+						, CONNECT_ONE_SHOT)
+						glitch_sound.play()
+					, CONNECT_ONE_SHOT)
+				, CONNECT_ONE_SHOT)
+			, CONNECT_ONE_SHOT)
+		else:
+			Dialog.show_dialog(\"[ ... ]\", null, 0.05, true)
+			Dialog.dialog_skiped.connect(func ():
+				glitch.visible = true
+				glitch_sound.finished.connect(func ():
+					glitch.visible = false
+					GlobalControlls.set_forced_facepick(\"niko_pancakes\")
+					popup.popup()
+				, CONNECT_ONE_SHOT)
+				glitch_sound.play()
+			, CONNECT_ONE_SHOT)
+	)
 
 func do_event() -> void:
 	if not eventing:
 		eventing = true
-		popup.no_button_pressed.connect(press_no, CONNECT_ONE_SHOT)
-		popup.yes_button_pressed.connect(func ():
-			print(\"pressed yes\")
-			play_eating_anim()
-			GlobalControlls.doned_events += 1
-			if not AchievementsGlobalConroller.is_achievement_taked(\"time_to_dinner\"):
-				AchievementsGlobalConroller.take_achievement(\"time_to_dinner\")
-		, CONNECT_ONE_SHOT)
 		popup.popup()
 		GlobalControlls.set_forced_facepick(\"niko_pancakes\")
 
@@ -69,26 +99,6 @@ func anim_step():
 func press_no():
 	print(\"pressed no\")
 	GlobalControlls.set_forced_facepick(\"niko_super_cry\")
-	cry_sound.finished.connect(func ():
-		Dialog.show_dialog(\"PANCAKE_ALERT_DIALOG_A\", null, 0.05, true)
-		Dialog.dialog_skiped.connect(func ():
-			Dialog.show_dialog(\"PANCAKE_ALERT_DIALOG_B\", null, 0.05, true)
-			Dialog.dialog_skiped.connect(func ():
-				Dialog.show_dialog(\"PANCAKE_ALERT_DIALOG_C\", null, 0.05, true)
-				Dialog.dialog_skiped.connect(func ():
-					glitch.visible = true
-					glitch_sound.finished.connect(func ():
-						glitch.visible = false
-						GlobalControlls.set_forced_facepick(\"niko_pancakes\")
-						if not AchievementsGlobalConroller.is_achievement_taked(\"worst_friend\"):
-							AchievementsGlobalConroller.take_achievement(\"worst_friend\")
-						popup.popup()
-					, CONNECT_ONE_SHOT)
-					glitch_sound.play()
-				, CONNECT_ONE_SHOT)
-			, CONNECT_ONE_SHOT)
-		, CONNECT_ONE_SHOT)
-	, CONNECT_ONE_SHOT)
 	cry_sound.play()
 "
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=169 format=4 uid="uid://cj66sb2a5oolj"]
+[gd_scene load_steps=172 format=4 uid="uid://cj66sb2a5oolj"]
 
 [ext_resource type="Script" uid="uid://b8e5fhar3jgaj" path="res://scripts/niko_controls.gd" id="1_2c62f"]
 [ext_resource type="AudioStream" uid="uid://5tnvrblu5h4j" path="res://niko/niko_meows/meow1.wav" id="2_ghshe"]
@@ -38,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://crlrkmttey356" path="res://ui_sprites/unreal.png" id="29_rkakh"]
 [ext_resource type="AudioStream" uid="uid://dw73t7aavxakx" path="res://sounds/HELLO_big.wav" id="30_id8vy"]
 [ext_resource type="Script" uid="uid://m4raxivypvem" path="res://scripts/settings.gd" id="32_euc68"]
+[ext_resource type="Texture2D" uid="uid://bjfdcbs4wdh0k" path="res://prefabs/events/tennis_icon.png" id="32_mmq7y"]
 [ext_resource type="PackedScene" uid="uid://8hficp4dbvqs" path="res://prefabs/popup_window.tscn" id="33_id8vy"]
 [ext_resource type="Script" uid="uid://duqfgxmwf1mkr" path="res://scripts/theme_changer.gd" id="34_84x1k"]
 [ext_resource type="StyleBox" uid="uid://doojaqhvw2o0d" path="res://themes/themed/blue_file_focus.stylebox" id="34_c5xsv"]
@@ -91,6 +92,7 @@
 [ext_resource type="Material" uid="uid://beloub2o0etmy" path="res://shaders/light_blub_anim_shader.tres" id="81_30vx0"]
 [ext_resource type="Texture2D" uid="uid://dxo8m8apw6ajl" path="res://ui_sprites/bulb_anim_24.png" id="81_id8vy"]
 [ext_resource type="Script" uid="uid://c45ltmpprf6rs" path="res://scripts/loading_icon.gd" id="81_ubkm4"]
+[ext_resource type="Script" uid="uid://dh8nb5jo0naai" path="res://scripts/windows_only_checkbox.gd" id="82_36qg2"]
 [ext_resource type="Texture2D" uid="uid://cqicl8sy06ti5" path="res://ui_sprites/error.png" id="82_l76vu"]
 [ext_resource type="Texture2D" uid="uid://o648cd5rcwja" path="res://ui_sprites/magpie_shop1.png" id="87_1b22m"]
 [ext_resource type="Texture2D" uid="uid://onqy26td0pr4" path="res://ui_sprites/achievements.png" id="87_s2ody"]
@@ -397,6 +399,26 @@ attractor_interaction_enabled = false
 scale_curve = SubResource("CurveTexture_ym5p0")
 color = Color(0.282353, 0.286275, 0.784314, 1)
 alpha_curve = SubResource("CurveTexture_05sqr")
+
+[sub_resource type="GDScript" id="GDScript_mmq7y"]
+resource_name = "tennis_shortcut"
+script/source = "extends MarginContainer
+
+@export var event : Event
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	if not AchievementsGlobalConroller.is_achievement_taked(\"little_win\"):
+		visible = false
+	($Button as Button).gui_input.connect(func (input):
+		if input is InputEventMouseButton and input.double_click:
+			event.event()
+	)
+	AchievementsGlobalConroller.achievement_taked.connect(func (achievement_id):
+		if achievement_id == \"little_win\":
+			visible = true
+	)
+"
 
 [sub_resource type="GDScript" id="GDScript_xtheg"]
 resource_name = "HELLO"
@@ -761,7 +783,7 @@ spawn_chance = 0.1
 [node name="PancakeMachine" parent="Events" instance=ExtResource("13_82rj2")]
 
 [node name="Tennis" parent="Events" instance=ExtResource("14_76in0")]
-spawn_chance = 0.25
+spawn_chance = 10.0
 
 [node name="NikoLayer" type="CanvasLayer" parent="."]
 
@@ -855,7 +877,6 @@ volume_db = -10.0
 [node name="ShortcutsWindow" parent="." instance=ExtResource("19_rkakh")]
 title = "SHORTCUTS"
 size = Vector2i(358, 348)
-visible = false
 unresizable = false
 min_size = Vector2i(193, 270)
 max_size = Vector2i(1920, 1040)
@@ -1212,6 +1233,70 @@ expand_icon = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 text = "Github"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Tennis" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" node_paths=PackedStringArray("event")]
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+script = SubResource("GDScript_mmq7y")
+event = NodePath("../../../../../../../../../Events/Tennis")
+
+[node name="Button" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis"]
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"FlatButton"
+autowrap_mode = 2
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="ButtonMargin" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ButtonContent" type="VBoxContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis/ButtonMargin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Icon" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis/ButtonMargin/ButtonContent"]
+material = ExtResource("41_iylel")
+custom_minimum_size = Vector2(64, 66)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("32_mmq7y")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ShortcutIcon" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis/ButtonMargin/ButtonContent/Icon"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("23_30vx0")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis/ButtonMargin/ButtonContent"]
+custom_minimum_size = Vector2(16, 24)
+layout_mode = 2
+text = "TENNIS"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -2023,6 +2108,8 @@ icon = ExtResource("16_kv3aw")
 [node name="Title" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
 size_flags_horizontal = 1
 text = "SETTINGS"
+clip_text = false
+text_overrun_behavior = 0
 
 [node name="HSeparator" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="2"]
 layout_mode = 2
@@ -2389,6 +2476,7 @@ nodes = [NodePath("../../SettingsPanel/Peaceful"), NodePath("../../SettingsPanel
 texts = Array[String](["PEACEFUL_MODE_HINT", "SAVING_ICON_HINT", "GAMING_MODE_HINT", "CLICK_SOUND_HINT", "SHOW_ACHIEVEMENTS_HINT"])
 
 [node name="Niko" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 
@@ -2836,7 +2924,6 @@ layout_mode = 2
 text = "PRESS_F_TO_FLIP_NIKO"
 
 [node name="Other" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer"]
-visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other"]
@@ -3034,6 +3121,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 button_pressed = true
 text = "TASKBAR_ICON"
+script = ExtResource("82_36qg2")
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/TaskBarIcon" instance=ExtResource("42_sp30j")]
 layout_mode = 1
