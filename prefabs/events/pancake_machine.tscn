@@ -8,7 +8,7 @@
 [ext_resource type="Material" uid="uid://toqokucuop37" path="res://models/black.tres" id="4_o8h2p"]
 [ext_resource type="Material" uid="uid://dlf53nu0vfhcn" path="res://models/theme_color_material.tres" id="5_o8h2p"]
 [ext_resource type="AudioStream" uid="uid://cw1tov6mght2a" path="res://sounds/major_puzzle_solved.ogg" id="5_r0fcy"]
-[ext_resource type="Theme" uid="uid://cxsdp1anrqw7m" path="res://themes/twm_theme/twm_theme.tres" id="6_canse"]
+[ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="6_jm0jf"]
 [ext_resource type="Script" uid="uid://05w6e57vrsyx" path="res://prefabs/events/pass_code_part.gd" id="7_jmh5g"]
 [ext_resource type="Texture2D" uid="uid://k3j8qcm4l4wu" path="res://pancake_clicker/little_pancake.png" id="11_is2ju"]
 
@@ -69,7 +69,7 @@ func do_event():
 	window.position.y = usable_rect.position.y
 	@warning_ignore(\"integer_division\")
 	window.position.x = usable_rect.position.x + usable_rect.size.x / 2 - window.size.x / 2
-	container.position.y = -(1040 - window.size.y)
+	#container.position.y = -(1040 - window.size.y)
 	window.visible = true
 	GlobalControlls.set_forced_facepick(\"niko_huh\")
 	animator.play(\"drop\")
@@ -84,13 +84,13 @@ func revert():
 
 func update_mouse_passthrough_polygon():
 	window.mouse_passthrough_polygon[0].x = 35
-	window.mouse_passthrough_polygon[0].y = viewport_container.position.y
+	window.mouse_passthrough_polygon[0].y = viewport_container.position.y + container.position.y
 	window.mouse_passthrough_polygon[1].x = 365
-	window.mouse_passthrough_polygon[1].y = viewport_container.position.y
+	window.mouse_passthrough_polygon[1].y = viewport_container.position.y + container.position.y
 	window.mouse_passthrough_polygon[2].x = 365
-	window.mouse_passthrough_polygon[2].y = viewport_container.position.y + viewport_container.size.y
+	window.mouse_passthrough_polygon[2].y = viewport_container.position.y + viewport_container.size.y + container.position.y
 	window.mouse_passthrough_polygon[3].x = 35
-	window.mouse_passthrough_polygon[3].y = viewport_container.position.y + viewport_container.size.y
+	window.mouse_passthrough_polygon[3].y = viewport_container.position.y + viewport_container.size.y + container.position.y
 "
 
 [sub_resource type="Animation" id="Animation_qnufv"]
@@ -105,7 +105,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -426)]
+"values": [Vector2(0, -1000)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -218,7 +218,7 @@ tracks/9/keys = {
 
 [sub_resource type="Animation" id="Animation_le8pu"]
 resource_name = "drop"
-length = 1.5
+length = 1.77
 step = 0.0338
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -227,10 +227,10 @@ tracks/0/path = NodePath("Control/SubViewportContainer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.733333, 1),
+"times": PackedFloat32Array(0, 0.766667, 1, 1.26667),
 "transitions": PackedFloat32Array(2, 0.5, 2, 0.5),
 "update": 0,
-"values": [Vector2(0, -426), Vector2(0, 629), Vector2(0, 592.125), Vector2(0, 629)]
+"values": [Vector2(0, -1000), Vector2(0, 629), Vector2(0, 592.125), Vector2(0, 629)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -239,7 +239,7 @@ tracks/1/path = NodePath("../MachineDrop:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.766667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -251,7 +251,7 @@ tracks/2/path = NodePath("Control/SubViewportContainer/SubViewport/Node3D/MeshIn
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.466667, 0.5, 0.733333, 0.966667, 1),
+"times": PackedFloat32Array(0, 0.733334, 0.766667, 1, 1.23333, 1.26667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.0785398, -1.78024, 0.0523599), Vector3(0.0785398, -1.78024, 0.0523599), Vector3(0, -1.78024, 0), Vector3(-0.0349066, -1.67552, -0.0593412), Vector3(-0.0349066, -1.57429, -0.0593412), Vector3(0, -1.5708, 0)]
@@ -263,7 +263,7 @@ tracks/3/path = NodePath("Control/Control:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.06667, 1.13333, 1.16667, 1.26667, 1.3, 1.36667, 1.4, 1.5),
+"times": PackedFloat32Array(0, 1.33334, 1.4, 1.43334, 1.53334, 1.56667, 1.63334, 1.66667, 1.76667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [false, false, true, false, true, false, true, false, true]
@@ -544,13 +544,18 @@ unresizable = true
 borderless = true
 always_on_top = true
 transparent = true
-theme = ExtResource("6_canse")
+theme = ExtResource("6_jm0jf")
 
 [node name="Control" type="Control" parent="Window"]
 layout_mode = 3
-anchors_preset = 10
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1040.0
+offset_bottom = -1040.0
 grow_horizontal = 2
+grow_vertical = 0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Window/Control"]
 texture_filter = 1
@@ -559,7 +564,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -426.0
+offset_top = -1000.0
+offset_bottom = -574.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(0, 400)

@@ -30,6 +30,7 @@ driver/enable_input=true
 
 [autoload]
 
+ShutdownHandler="*res://scripts/ShutdownHandler.cs"
 GlobalControlls="*res://scripts/global_controlls.gd"
 NikoSpritesModule="*res://scripts/niko_sprites_module.gd"
 PassthroughModule="*res://scripts/WindowMousePassthroughModule.cs"
@@ -86,7 +87,6 @@ locale/translations=PackedStringArray("res://translations.en.translation", "res:
 
 [physics]
 
-common/physics_ticks_per_second=24
 2d/physics_engine="Dummy"
 3d/physics_engine="Dummy"
 

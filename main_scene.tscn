@@ -1,4 +1,4 @@
-[gd_scene load_steps=172 format=4 uid="uid://cj66sb2a5oolj"]
+[gd_scene load_steps=174 format=4 uid="uid://cj66sb2a5oolj"]
 
 [ext_resource type="Script" uid="uid://b8e5fhar3jgaj" path="res://scripts/niko_controls.gd" id="1_2c62f"]
 [ext_resource type="AudioStream" uid="uid://5tnvrblu5h4j" path="res://niko/niko_meows/meow1.wav" id="2_ghshe"]
@@ -11,9 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://ddlwgsremuqfv" path="res://niko/niko_look_right.png" id="5_7th4q"]
 [ext_resource type="Texture2D" uid="uid://d03uavcp7ruhb" path="res://niko/niko_look_left.png" id="6_6jybn"]
 [ext_resource type="AudioStream" uid="uid://bf8uls61sctkd" path="res://niko/niko_meows/meow5.wav" id="6_y5ved"]
-[ext_resource type="Theme" uid="uid://cxsdp1anrqw7m" path="res://themes/twm_theme/twm_theme.tres" id="7_nfk4m"]
+[ext_resource type="AudioStream" uid="uid://cl7uwn85u6yh7" path="res://niko/niko_meows/meow6.wav" id="7_gv8l5"]
 [ext_resource type="Script" uid="uid://c07kbh8vp2klh" path="res://scripts/facepicks_select_controller.gd" id="8_2jcla"]
 [ext_resource type="Texture2D" uid="uid://d1otdr07j46jh" path="res://niko/niko_shock.png" id="8_7ycvg"]
+[ext_resource type="AudioStream" uid="uid://du34a885d0pvg" path="res://niko/niko_meows/meow7.wav" id="8_8jixl"]
 [ext_resource type="AudioStream" uid="uid://y5wudf67lir6" path="res://niko/niko_meows/omori_meow.ogg" id="9_30vx0"]
 [ext_resource type="Texture2D" uid="uid://dupq4qhtqbvbt" path="res://niko/niko_surprised.png" id="9_wr18j"]
 [ext_resource type="Texture2D" uid="uid://qsweuhlblj1" path="res://icon.png" id="10_wr18j"]
@@ -44,26 +45,26 @@
 [ext_resource type="StyleBox" uid="uid://doojaqhvw2o0d" path="res://themes/themed/blue_file_focus.stylebox" id="34_c5xsv"]
 [ext_resource type="StyleBox" uid="uid://bg8rwg0agm3i1" path="res://themes/themed/purple_file_focus.stylebox" id="34_uacds"]
 [ext_resource type="StyleBox" uid="uid://mldy0j3o25oq" path="res://themes/themed/blue_file_hover.stylebox" id="35_84x1k"]
-[ext_resource type="ColorPalette" uid="uid://drsd5tiuhu4u1" path="res://themes/twm_theme/purple_color_palette.tres" id="35_si2mt"]
 [ext_resource type="StyleBox" uid="uid://cmgo2xhfrn3e3" path="res://themes/themed/purple_file_hover.stylebox" id="35_y0lqw"]
-[ext_resource type="ColorPalette" uid="uid://kjuhi60rb6ip" path="res://themes/twm_theme/blue_color_palette.tres" id="36_sp30j"]
-[ext_resource type="ColorPalette" uid="uid://dcwi11gqweq8b" path="res://themes/twm_theme/yellow_color_palette.tres" id="37_3wiol"]
-[ext_resource type="ColorPalette" uid="uid://beghg0oj5jc3" path="res://themes/twm_theme/red_color_palette.tres" id="38_fxe4o"]
 [ext_resource type="PackedScene" uid="uid://o3kl3g87pn3q" path="res://prefabs/base_window.tscn" id="38_q4750"]
-[ext_resource type="ColorPalette" uid="uid://bd2ulhb7vthfq" path="res://themes/twm_theme/pink_color_palette.tres" id="39_bqoel"]
-[ext_resource type="ColorPalette" uid="uid://3sstnvg6e56a" path="res://themes/twm_theme/white_color_palette.tres" id="40_id12a"]
-[ext_resource type="ColorPalette" uid="uid://biqcrctnsr5be" path="res://themes/twm_theme/orange_color_palette.tres" id="41_gs8nl"]
+[ext_resource type="ColorPalette" uid="uid://drsd5tiuhu4u1" path="res://themes/twm_theme/purple_color_palette.tres" id="39_l3hih"]
+[ext_resource type="ColorPalette" uid="uid://kjuhi60rb6ip" path="res://themes/twm_theme/blue_color_palette.tres" id="40_xevt3"]
+[ext_resource type="ColorPalette" uid="uid://dcwi11gqweq8b" path="res://themes/twm_theme/yellow_color_palette.tres" id="41_im3ns"]
 [ext_resource type="Material" uid="uid://db230eaasl2pl" path="res://shaders/shadow_material.tres" id="41_iylel"]
 [ext_resource type="StyleBox" uid="uid://cf7fl76law1mr" path="res://themes/themed/yellow_file_focus.stylebox" id="41_ya33n"]
+[ext_resource type="ColorPalette" uid="uid://beghg0oj5jc3" path="res://themes/twm_theme/red_color_palette.tres" id="42_2jqx2"]
 [ext_resource type="StyleBox" uid="uid://elx3eo2ima3" path="res://themes/themed/yellow_file_hover.stylebox" id="42_3wiol"]
 [ext_resource type="Script" uid="uid://8rlra1llxmsn" path="res://scripts/mouse_sound_player.gd" id="42_ek5vw"]
-[ext_resource type="ColorPalette" uid="uid://c0mo737ff2x2u" path="res://themes/twm_theme/teal_color_palette.tres" id="42_jl0ou"]
 [ext_resource type="PackedScene" uid="uid://b1ypbdeyjoksp" path="res://prefabs/state_icon.tscn" id="42_sp30j"]
-[ext_resource type="ColorPalette" uid="uid://b8irobpfjfk46" path="res://themes/twm_theme/green_color_palette.tres" id="43_iiypn"]
+[ext_resource type="ColorPalette" uid="uid://bd2ulhb7vthfq" path="res://themes/twm_theme/pink_color_palette.tres" id="43_gv8l5"]
 [ext_resource type="AudioStream" uid="uid://c4ctukqwa2omc" path="res://sounds/twm_mouse_click.wav" id="43_jip8q"]
+[ext_resource type="ColorPalette" uid="uid://3sstnvg6e56a" path="res://themes/twm_theme/white_color_palette.tres" id="44_8jixl"]
 [ext_resource type="AudioStream" uid="uid://cib02grlrlcd0" path="res://sounds/twm_mouse_unclick.wav" id="44_euc68"]
 [ext_resource type="StyleBox" uid="uid://bxcb1cxo17xnf" path="res://themes/themed/red_file_focus.stylebox" id="45_8quq7"]
+[ext_resource type="ColorPalette" uid="uid://biqcrctnsr5be" path="res://themes/twm_theme/orange_color_palette.tres" id="45_wmw63"]
+[ext_resource type="ColorPalette" uid="uid://c0mo737ff2x2u" path="res://themes/twm_theme/teal_color_palette.tres" id="46_uush8"]
 [ext_resource type="StyleBox" uid="uid://bjaphqxio33wx" path="res://themes/themed/red_file_hover.stylebox" id="46_vhc7d"]
+[ext_resource type="ColorPalette" uid="uid://b8irobpfjfk46" path="res://themes/twm_theme/green_color_palette.tres" id="47_dftep"]
 [ext_resource type="StyleBox" uid="uid://bxf5drqp01x8u" path="res://themes/themed/pink_file_focus.stylebox" id="48_id12a"]
 [ext_resource type="StyleBox" uid="uid://b73lgomym6yhn" path="res://themes/themed/pink_file_hover.stylebox" id="49_rs42p"]
 [ext_resource type="StyleBox" uid="uid://c5vwe2cko5f38" path="res://themes/themed/white_file_focus.stylebox" id="51_0mwxc"]
@@ -74,11 +75,11 @@
 [ext_resource type="StyleBox" uid="uid://b2iwdd0005o3h" path="res://themes/themed/teal_file_hover.stylebox" id="58_iiypn"]
 [ext_resource type="StyleBox" uid="uid://bfxcdu2fwodgt" path="res://themes/themed/green_file_focus.stylebox" id="60_jl6hu"]
 [ext_resource type="StyleBox" uid="uid://d1ts0vt0gn68j" path="res://themes/themed/green_file_hover.stylebox" id="61_uwk5n"]
-[ext_resource type="StyleBox" uid="uid://nyb3y3mcmw8e" path="res://themes/twm_theme/window_tab_selected.stylebox" id="62_id8vy"]
-[ext_resource type="StyleBox" uid="uid://7knach8205vl" path="res://themes/twm_theme/window_tab.stylebox" id="62_xtheg"]
 [ext_resource type="Script" uid="uid://cmxrv553jpw78" path="res://scripts/tab_bar.gd" id="64_ubkm4"]
 [ext_resource type="Texture2D" uid="uid://b8wvy50nn8t5c" path="res://ui_sprites/screens_corner.png" id="65_82rj2"]
 [ext_resource type="Texture2D" uid="uid://cx7etih63abrx" path="res://ui_sprites/window_border_right2.tres" id="66_76in0"]
+[ext_resource type="StyleBox" uid="uid://7knach8205vl" path="res://themes/twm_theme/window_tab.stylebox" id="67_im3ns"]
+[ext_resource type="StyleBox" uid="uid://nyb3y3mcmw8e" path="res://themes/twm_theme/window_tab_selected.stylebox" id="67_xevt3"]
 [ext_resource type="Texture2D" uid="uid://bq0l8gsn8md3e" path="res://ui_sprites/language.png" id="69_05sqr"]
 [ext_resource type="Script" uid="uid://lowrqksp45hd" path="res://scripts/sleep_controls.gd" id="74_j53bq"]
 [ext_resource type="Texture2D" uid="uid://4fifkt7n1ua4" path="res://ui_sprites/shop_base.tres" id="74_v118d"]
@@ -106,7 +107,7 @@
 [ext_resource type="Texture2D" uid="uid://dnwbeed7hrv83" path="res://ui_sprites/test_shit.png" id="92_ixb38"]
 [ext_resource type="Script" uid="uid://dbaokjrp7ef13" path="res://scripts/achievement_show.gd" id="92_l8no8"]
 [ext_resource type="Material" uid="uid://cmlk3yixxx4u4" path="res://shaders/world_machine_glitch_material.tres" id="92_ldlqy"]
-[ext_resource type="StyleBox" uid="uid://denfelpk5qb15" path="res://themes/twm_theme/panel.stylebox" id="99_j53bq"]
+[ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="100_ix15y"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3dpcr"]
 
@@ -746,9 +747,17 @@ _data = {
 &"showing": SubResource("Animation_3s6xx")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2umrp"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.588235, 0.392157, 1, 1)
+
 [node name="TheWorldMachine" type="Node" node_paths=PackedStringArray("window_to_open", "niko_sound", "animator", "niko_layer", "niko_rect", "facepicks_container", "meow_sound_option_button", "click_count_label", "cps_counter", "menu_label", "sleeping_particles")]
 script = ExtResource("1_2c62f")
-meow_sounds = Array[AudioStream]([ExtResource("2_ghshe"), ExtResource("3_fv2he"), ExtResource("4_5smuj"), ExtResource("5_5smuj"), ExtResource("6_y5ved"), ExtResource("9_30vx0")])
+meow_sounds = Array[AudioStream]([ExtResource("2_ghshe"), ExtResource("3_fv2he"), ExtResource("4_5smuj"), ExtResource("5_5smuj"), ExtResource("6_y5ved"), ExtResource("9_30vx0"), ExtResource("7_gv8l5"), ExtResource("8_8jixl")])
 window_to_open = NodePath("ShortcutsWindow")
 niko_sound = NodePath("MeowSound")
 animator = NodePath("NikoLayer/NikoBase/Niko/AnimationPlayer")
@@ -777,13 +786,12 @@ volume_db = -5.0
 [node name="Events" type="Node" parent="."]
 script = ExtResource("12_82rj2")
 
+[node name="PancakeMachine" parent="Events" instance=ExtResource("13_82rj2")]
+
 [node name="PancakeAlert" parent="Events" instance=ExtResource("13_76in0")]
 spawn_chance = 0.1
 
-[node name="PancakeMachine" parent="Events" instance=ExtResource("13_82rj2")]
-
 [node name="Tennis" parent="Events" instance=ExtResource("14_76in0")]
-spawn_chance = 10.0
 
 [node name="NikoLayer" type="CanvasLayer" parent="."]
 
@@ -877,6 +885,7 @@ volume_db = -10.0
 [node name="ShortcutsWindow" parent="." instance=ExtResource("19_rkakh")]
 title = "SHORTCUTS"
 size = Vector2i(358, 348)
+visible = false
 unresizable = false
 min_size = Vector2i(193, 270)
 max_size = Vector2i(1920, 1040)
@@ -1438,7 +1447,7 @@ theme_override_constants/margin_bottom = 4
 [node name="GridContainer" type="HFlowContainer" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
 script = ExtResource("34_84x1k")
-Palettes = Array[ColorPalette]([ExtResource("35_si2mt"), ExtResource("36_sp30j"), ExtResource("37_3wiol"), ExtResource("38_fxe4o"), ExtResource("39_bqoel"), ExtResource("40_id12a"), ExtResource("41_gs8nl"), ExtResource("42_jl0ou"), ExtResource("43_iiypn")])
+Palettes = Array[ColorPalette]([ExtResource("39_l3hih"), ExtResource("40_xevt3"), ExtResource("41_im3ns"), ExtResource("42_2jqx2"), ExtResource("43_gv8l5"), ExtResource("44_8jixl"), ExtResource("45_wmw63"), ExtResource("46_uush8"), ExtResource("47_dftep")])
 
 [node name="Purple" type="MarginContainer" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(160, 108)
@@ -2129,9 +2138,9 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_ubkm4")
 
 [node name="TabBar" type="TabBar" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("pages")]
 layout_mode = 2
-theme_override_styles/tab_unselected = ExtResource("62_xtheg")
-theme_override_styles/tab_hovered = ExtResource("62_xtheg")
-theme_override_styles/tab_selected = ExtResource("62_id8vy")
+theme_override_styles/tab_unselected = ExtResource("67_im3ns")
+theme_override_styles/tab_hovered = ExtResource("67_im3ns")
+theme_override_styles/tab_selected = ExtResource("67_xevt3")
 current_tab = 0
 clip_tabs = false
 tab_count = 3
@@ -2218,7 +2227,6 @@ data_reset_popup = NodePath("../../../../ResetDataPopup")
 save_button = NodePath("Other/VBoxContainer/Save")
 
 [node name="General" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 8
 
@@ -2323,6 +2331,7 @@ popup/item_1/text = "Русский"
 popup/item_1/id = 1
 popup/item_2/text = "Deutsch"
 popup/item_2/id = 2
+popup/item_2/disabled = true
 popup/item_3/text = "Українська"
 popup/item_3/id = 3
 
@@ -2734,7 +2743,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 selected = 0
-item_count = 6
+item_count = 8
 popup/item_0/text = "MEOW1"
 popup/item_0/id = 0
 popup/item_1/text = "MEOW2"
@@ -2745,8 +2754,12 @@ popup/item_3/text = "MEOW4"
 popup/item_3/id = 3
 popup/item_4/text = "MEOW5"
 popup/item_4/id = 4
-popup/item_5/text = "OMORI_MEOW"
-popup/item_5/id = 5
+popup/item_5/text = "MEOW6"
+popup/item_5/id = 6
+popup/item_6/text = "MEOW7"
+popup/item_6/id = 7
+popup/item_7/text = "OMORI_MEOW"
+popup/item_7/id = 5
 
 [node name="NikoScaleSelectionContainer" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer"]
 layout_mode = 2
@@ -2924,6 +2937,7 @@ layout_mode = 2
 text = "PRESS_F_TO_FLIP_NIKO"
 
 [node name="Other" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer"]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other"]
@@ -3392,7 +3406,7 @@ transparent = true
 unfocusable = true
 mouse_passthrough = true
 exclude_from_capture = true
-theme = ExtResource("7_nfk4m")
+theme = ExtResource("100_ix15y")
 script = ExtResource("92_l8no8")
 image_rect = NodePath("Screen")
 animator = NodePath("AnimationPlayer")
@@ -3470,7 +3484,7 @@ transient_to_focused = true
 unresizable = true
 borderless = true
 popup_window = true
-theme = ExtResource("7_nfk4m")
+theme = ExtResource("100_ix15y")
 script = ExtResource("11_qwutr")
 gaming_mode_checkbox = NodePath("Panel/MarginContainer/VBoxContainer/GamingMode")
 reset_pos_button = NodePath("Panel/MarginContainer/VBoxContainer/ResetPos")
@@ -3482,7 +3496,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("99_j53bq")
+theme_override_styles/panel = SubResource("StyleBoxFlat_2umrp")
 
 [node name="MarginContainer" type="MarginContainer" parent="IndicatorPopup/Panel"]
 layout_mode = 2
