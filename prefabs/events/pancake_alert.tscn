@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://4baxjml3wpgo"]
 
-[ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/event.gd" id="1_nodym"]
+[ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/events/event.gd" id="1_nodym"]
 [ext_resource type="AudioStream" uid="uid://fwhbmmo7fr0n" path="res://sounds/rb_cry.mp3" id="2_kivn3"]
 [ext_resource type="AudioStream" uid="uid://dq1jrk427a2q3" path="res://sounds/glitch2.wav" id="3_4vcw5"]
 [ext_resource type="AudioStream" uid="uid://r3rwi76obhmu" path="res://sounds/rb_eat.mp3" id="3_o5iab"]
@@ -12,6 +12,8 @@
 [sub_resource type="GDScript" id="GDScript_le437"]
 resource_name = "event_controller"
 script/source = "extends Node
+
+signal called_to_clear()
 
 @export var popup : Window
 @export var glitch : Window
@@ -72,12 +74,8 @@ func do_event() -> void:
 		GlobalControlls.set_forced_facepick(\"niko_pancakes\")
 
 func revert():
-	eventing = false
-	_anim_state = 0
-	timer.stop()
-	timer.timeout.disconnect(anim_step)
 	GlobalControlls.unforce_facepick()
-	
+	called_to_clear.emit()
 
 func play_eating_anim():
 	eat_sound.play()
@@ -134,8 +132,6 @@ shader_parameter/offset_power = 0.0
 [node name="PancakeAlert" type="Node" node_paths=PackedStringArray("event_controller")]
 script = ExtResource("1_nodym")
 event_controller = NodePath("EventController")
-spawn_chance = 0.04
-max_cps = 10
 metadata/_custom_type_script = "uid://73yfcqn4tt7s"
 
 [node name="EventController" type="Node" parent="." node_paths=PackedStringArray("popup", "glitch", "cry_sound", "glitch_sound", "eat_sound", "timer")]

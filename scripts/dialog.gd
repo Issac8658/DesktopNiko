@@ -16,11 +16,7 @@ var showed_symbols : int = 0
 var _use_wm_sound : bool = false
 
 func _ready() -> void:
-	var main_window_screen = DisplayServer.window_get_current_screen(DisplayServer.MAIN_WINDOW_ID)
-	var screen_rect = DisplayServer.screen_get_usable_rect(main_window_screen)
-	@warning_ignore("integer_division")
-	position = screen_rect.end - Vector2i(screen_rect.size.x / 2 + size.x / 2, size.y + 8)
-	
+	update_pos()
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("dialog_skip"):
@@ -37,7 +33,15 @@ func skip_dialog():
 		dialog_skiped.emit()
 
 
+func update_pos():
+	var main_window_screen = DisplayServer.window_get_current_screen(DisplayServer.MAIN_WINDOW_ID)
+	var screen_rect = DisplayServer.screen_get_usable_rect(main_window_screen)
+	@warning_ignore("integer_division")
+	position = screen_rect.end - Vector2i(screen_rect.size.x / 2 + size.x / 2, size.y + 8)
+
+
 func show_dialog(text : String, icon: Texture2D, show_time : float = 0.05, use_wm_sound : bool = false):
+	update_pos()
 	if timer.is_connected("timeout", show_next_symbol):
 		timer.disconnect("timeout", show_next_symbol)
 		timer.stop()

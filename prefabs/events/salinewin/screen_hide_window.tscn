@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://3f1ftg4bnjej"]
+
+[ext_resource type="Texture2D" uid="uid://b2qgi4wautued" path="res://prefabs/events/salinewin/smile_face.png" id="1_gkjgc"]
+[ext_resource type="FontFile" uid="uid://ckcoy708n8osl" path="res://fonts/TerminusTTF-Bold.ttf" id="2_lxrpf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lp4p1"]
+font = ExtResource("2_lxrpf")
+font_size = 40
+
+[node name="ScreenHideWindow" type="Window"]
+auto_translate_mode = 1
+size = Vector2i(400, 400)
+transient = true
+transient_to_focused = true
+unresizable = true
+borderless = true
+unfocusable = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+texture_filter = 2
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+texture = ExtResource("1_gkjgc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "SALINEWIN_I_TAKE"
+label_settings = SubResource("LabelSettings_lp4p1")

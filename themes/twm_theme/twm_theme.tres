@@ -18,7 +18,7 @@
 [ext_resource type="FontFile" uid="uid://ckcoy708n8osl" path="res://fonts/TerminusTTF-Bold.ttf" id="10_0dyn4"]
 [ext_resource type="StyleBox" uid="uid://gskc7o2oj7e2" path="res://themes/twm_theme/tab_selected.stylebox" id="11_jq0fa"]
 [ext_resource type="StyleBox" uid="uid://44fcasdfg8t4" path="res://themes/twm_theme/button_focus.stylebox" id="11_pa4av"]
-[ext_resource type="Script" uid="uid://cm26f3vhmimf4" path="res://scripts/theme_colors_applier.gd" id="11_u5xpi"]
+[ext_resource type="Script" uid="uid://cm26f3vhmimf4" path="res://scripts/themes/theme_colors_applier.gd" id="11_u5xpi"]
 [ext_resource type="StyleBox" uid="uid://bd2g4ws0gk1b6" path="res://themes/twm_theme/vertical_line.stylebox" id="11_xdasf"]
 [ext_resource type="StyleBox" uid="uid://dg1twp8kt2bvx" path="res://themes/twm_theme/tab.stylebox" id="12_d6ho4"]
 [ext_resource type="Texture2D" uid="uid://b67r5bffv66ql" path="res://ui_sprites/spinbox_down.tres" id="16_85n5b"]

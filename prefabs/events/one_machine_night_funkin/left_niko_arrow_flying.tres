@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bmp2xucyojjg"]
+
+[ext_resource type="Texture2D" uid="uid://cipffie6n16mh" path="res://prefabs/events/one_machine_night_funkin/niko_arrows.png" id="1_p3hyn"]
+
+[resource]
+atlas = ExtResource("1_p3hyn")
+region = Rect2(256, 128, 128, 128)

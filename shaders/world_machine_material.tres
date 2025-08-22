@@ -4,4 +4,4 @@
 
 [resource]
 shader = ExtResource("1_qeh5n")
-shader_parameter/time_scale = 4.0
+shader_parameter/time_scale = 8.0

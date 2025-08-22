@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PackedEvent" load_steps=3 format=3 uid="uid://0jpmuyj06155"]
+
+[ext_resource type="PackedScene" uid="uid://cykd86boymkkf" path="res://prefabs/events/tennis/tennis.tscn" id="1_y5slg"]
+[ext_resource type="Script" uid="uid://b1axu2q55ml5w" path="res://scripts/events/event_resource.gd" id="2_dm1eb"]
+
+[resource]
+script = ExtResource("2_dm1eb")
+spawn_chance = 0.15
+min_clicks = 100
+max_cps = 10
+display_name = "Tennis with Niko"
+linked_scene = ExtResource("1_y5slg")
+metadata/_custom_type_script = "uid://b1axu2q55ml5w"

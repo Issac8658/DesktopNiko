@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://bamb7oq8lwi6f"]
 
-[ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/event.gd" id="1_le8pu"]
+[ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/events/event.gd" id="1_le8pu"]
 [ext_resource type="AudioStream" uid="uid://bumcwrlk1covl" path="res://sounds/machine_drop.wav" id="2_qnufv"]
 [ext_resource type="AudioStream" uid="uid://bmaqut0akruy7" path="res://sounds/machine_hide.wav" id="3_4ujhy"]
 [ext_resource type="ArrayMesh" uid="uid://423hrjncruup" path="res://models/pancake_machine.obj" id="3_ufmvg"]
@@ -17,6 +17,8 @@ resource_name = "event_controller"
 script/source = "extends Node
 
 const PASSCODE = \"2FC\"
+
+signal called_to_clear()
 
 @export var animator : AnimationPlayer
 @export var container : Control
@@ -75,12 +77,8 @@ func do_event():
 	animator.play(\"drop\")
 
 func revert():
-	window.visible = false
-	animator.play(\"RESET\")
-	passcode_show_button.visible = true
-	passcode_container.visible = false
-	passcode_show_button.text = \"EVENT_PM_FREE_PANCAKES\"
 	GlobalControlls.unforce_facepick()
+	called_to_clear.emit()
 
 func update_mouse_passthrough_polygon():
 	window.mouse_passthrough_polygon[0].x = 35
@@ -497,8 +495,6 @@ scale_max = 2.0
 [node name="PancakeMachine" type="Node" node_paths=PackedStringArray("event_controller")]
 script = ExtResource("1_le8pu")
 event_controller = NodePath("EventController")
-spawn_chance = 0.05
-max_cps = 10
 metadata/_custom_type_script = "uid://73yfcqn4tt7s"
 
 [node name="EventController" type="Node" parent="." node_paths=PackedStringArray("animator", "container", "viewport_container", "window", "enter_sound", "passcode_show_button", "passcode_container", "passcode_parts_contrainers", "cancel_button")]

@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwxm4cixn280c"]
+
+[ext_resource type="Texture2D" uid="uid://bmp2xucyojjg" path="res://prefabs/events/one_machine_night_funkin/left_niko_arrow_flying.tres" id="1_vwp65"]
+[ext_resource type="Texture2D" uid="uid://jabeieosar7y" path="res://prefabs/events/one_machine_night_funkin/down_niko_arrow_flying.tres" id="2_3f2v1"]
+[ext_resource type="Texture2D" uid="uid://ckenfkqeiao6k" path="res://prefabs/events/one_machine_night_funkin/up_niko_arrow_flying.tres" id="3_dtp2g"]
+[ext_resource type="Texture2D" uid="uid://crmum52e0spd5" path="res://prefabs/events/one_machine_night_funkin/right_niko_arrow_flying.tres" id="4_5bn1h"]
+
+[node name="WMArrowPack" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 524.0
+offset_bottom = 128.0
+
+[node name="left" type="Button" parent="."]
+modulate = Color(1, 0.120101, 0, 1)
+texture_filter = 2
+layout_mode = 2
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("1_vwp65")
+
+[node name="down" type="Button" parent="."]
+modulate = Color(1, 0.920735, 0, 1)
+texture_filter = 2
+layout_mode = 2
+offset_left = 132.0
+offset_right = 260.0
+offset_bottom = 128.0
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("2_3f2v1")
+
+[node name="up" type="Button" parent="."]
+modulate = Color(0.520071, 0, 1, 1)
+texture_filter = 2
+layout_mode = 2
+offset_left = 264.0
+offset_right = 392.0
+offset_bottom = 128.0
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("3_dtp2g")
+
+[node name="right" type="Button" parent="."]
+texture_filter = 2
+layout_mode = 2
+offset_left = 396.0
+offset_right = 524.0
+offset_bottom = 128.0
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("4_5bn1h")

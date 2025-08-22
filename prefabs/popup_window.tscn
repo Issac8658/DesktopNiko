@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://o3kl3g87pn3q" path="res://prefabs/base_window.tscn" id="1_7xd75"]
 [ext_resource type="Shortcut" uid="uid://belx0egi5ts8h" path="res://shortcuts/escape_shortcut.tres" id="2_5ddub"]
-[ext_resource type="Script" uid="uid://dcvs8vpx8vpdq" path="res://scripts/popup_controller.gd" id="2_p1j5h"]
+[ext_resource type="Script" uid="uid://dcvs8vpx8vpdq" path="res://scripts/windows/functional_windows/settings/popup_controller.gd" id="2_p1j5h"]
 [ext_resource type="AudioStream" uid="uid://dhwgvb6t1ulx" path="res://sounds/twm_notif2.wav" id="2_tokai"]
 [ext_resource type="AudioStream" uid="uid://bnv7o6bmlo6ic" path="res://sounds/twm_notif3.wav" id="4_w1na8"]
 [ext_resource type="AudioStream" uid="uid://54f4ilgm2r3g" path="res://sounds/twm_notif4.wav" id="5_vfins"]
