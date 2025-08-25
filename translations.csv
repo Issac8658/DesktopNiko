@@ -130,7 +130,7 @@ DATA_RESET_POPUP_MESSAGE,"Are you sure you want to completely reset all data?\nT
 SAVE,Save,Сохранить,Зберігши,
 PRESS_F_TO_FLIP_NIKO,Press [F] to flip Niko!,Нажми [F] что повернуть Нико!,,"Натисніть [F] що повернути Ніко!"
 DO_EVENTS_HINT,Determines whether to show events during clicks.,"Определяет, показывать ли события во время кликов.",,"Визначає, чи показувати події під час кліків."
-NIKO_ALWAYS_ON_TOP_HINT,"Niko will always be on top of windows. If he/she will not be visible in a game, then set FRAMELESS fullscreen mode.","Нико будет всегда поверх окон. Если в игре его(её) не будет видно, то поставьте БЕЗРАМОЧНЫЙ полноэкранный режим.",,"Ніко буде завжди поверх вікон. Якщо в грі його(її) не буде видно, то поставте БЕЗРАМКОВИЙ повноекранний режим."
+NIKO_ALWAYS_ON_TOP_HINT,"Niko will always be on top of windows. If they will not be visible in a game, then set FRAMELESS fullscreen mode.","Нико будет всегда поверх окон. Если в игре его(её) не будет видно, то поставьте БЕЗРАМОЧНЫЙ полноэкранный режим.",,"Ніко буде завжди поверх вікон. Якщо в грі його(її) не буде видно, то поставте БЕЗРАМКОВИЙ повноекранний режим."
 WINDOWS_ALWAYS_ON_TOP_HINT,"Program's windows will always be on top of other windows.",Окна программы будут всегда поверх других окон.,,
 TAKSBAR_ICON_HINT,"Determines whether to show application icon in taskbar. Does not apply to other program's windows","Определяет, показывать иконку приложения в панели задач. Не распространяется на другие окна программы",,"Визначає, показувати іконку програми в панелі завдань. Не поширюється на інші вікна програми"
 SNAP_TO_BOTTOM,Snap to bottom,Крепить к низу,,Кріпити до низу
