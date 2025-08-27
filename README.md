@@ -1,5 +1,5 @@
 # Desktop Niko
-Niko is a playable character from the game OneShot, but now he will be right on your screen!
+Niko is a playable character from the game OneShot, but now they will be right on your screen!
 The Steam version of the 2024 "The World Machine Edition" was used as the basis, as can be seen in the application settings.
 
 ## Features
@@ -15,7 +15,7 @@ The Steam version of the 2024 "The World Machine Edition" was used as the basis,
 ## Plans for futere
 - Make more facepicks variants, maybe accesories support
 - Maybe some idle animations
-- I'd like to make some games related to Niko and his love of pancakes, but I'm not sure if it's necessary.
+- I'd like to make some games related to Niko and their love of pancakes, but I'm not sure if it's necessary.
 
 # Editing and Compiling
 To create and export the project, I used Godot Engine Mono 4.4.1 to simplify creation and expansion, I did not use any additional plugins, so in theory it should be easy to compile.
