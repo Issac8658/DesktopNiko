@@ -1,4 +1,4 @@
-<img width="1822" height="472" alt="desktop niko logo" src="https://github.com/user-attachments/assets/357772d5-455b-4690-b3c2-ee75c2c66652" />
+<img width="1822" height="472" alt="desktop niko logo" src="https://github.com/user-attachments/assets/d8300d42-061a-4633-ad2d-28c236c3445f" />
 <h1>Desktop Niko</h1>
 Niko is a playable character from the game OneShot, but now they will be right on your screen!
 The Steam version of the 2024 "The World Machine Edition" was used as the basis, as can be seen in the application settings.
