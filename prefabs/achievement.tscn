@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bi5pu8hc54t3d"]
 
-[ext_resource type="Texture2D" uid="uid://widgkfxwlx5" path="res://ui_sprites/achievements/unknown_gray.png" id="1_w05dq"]
+[ext_resource type="Texture2D" uid="uid://widgkfxwlx5" path="res://sprites/achievements/unknown_gray.png" id="1_w05dq"]
 [ext_resource type="FontVariation" uid="uid://c2ecs2kfpewaq" path="res://fonts/TightTerminus.tres" id="2_yrdct"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yrdct"]

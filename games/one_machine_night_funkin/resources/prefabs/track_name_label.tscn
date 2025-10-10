@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw3qf8j2ftp2o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mdd26"]
+
+[node name="TrackNameLabel" type="Label"]
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.505882)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 9
+theme_override_constants/shadow_outline_size = 9
+theme_override_font_sizes/font_size = 52
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mdd26")
+text = "Unknown Place"

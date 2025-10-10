@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://80ig68nlev4s"]
+
+[ext_resource type="PackedScene" uid="uid://b1sta4cfu2vd4" path="res://games/pancake_clicker/shop_items/info_panels/base_info_panel.tscn" id="1_5m4k1"]
+[ext_resource type="Texture2D" uid="uid://dh8pems3cw83o" path="res://games/pancake_clicker/shop_items/resources/item_syrup_strawberry.atlastex" id="2_5m4k1"]
+
+[node name="SyrupStrawberryInfoPanel" instance=ExtResource("1_5m4k1")]
+
+[node name="Icon" parent="BaseInfo" index="0"]
+texture = ExtResource("2_5m4k1")
+
+[node name="Name" parent="BaseInfo/TextInfo" index="0"]
+text = "SYRUP_STRAWBERRY"
+
+[node name="Multipliers" parent="BaseInfo/TextInfo" index="2"]
+text = "SYRUP_BUFFS_STRAWBERRY"
+
+[node name="RichTextLabel" parent="." index="2"]
+text = "SYRUP_DESC_STRAWBERRY"

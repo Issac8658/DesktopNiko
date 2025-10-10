@@ -5,8 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://dq1jrk427a2q3" path="res://sounds/glitch2.wav" id="3_4vcw5"]
 [ext_resource type="AudioStream" uid="uid://r3rwi76obhmu" path="res://sounds/rb_eat.mp3" id="3_o5iab"]
 [ext_resource type="PackedScene" uid="uid://8hficp4dbvqs" path="res://prefabs/popup_window.tscn" id="4_mhhk1"]
-[ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://ui_sprites/pancake_clicker.png" id="5_nm1hw"]
-[ext_resource type="Texture2D" uid="uid://cxfqu8xs5tg7u" path="res://pancake_clicker/pancake.png" id="6_3kxgl"]
+[ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://sprites/icons/pancake_clicker.png" id="5_nm1hw"]
+[ext_resource type="Texture2D" uid="uid://cxfqu8xs5tg7u" path="res://games/pancake_clicker/pancake.png" id="6_3kxgl"]
 [ext_resource type="Shader" uid="uid://b26rgmbytj282" path="res://shaders/offset_shader.gdshader" id="7_c7ay0"]
 
 [sub_resource type="GDScript" id="GDScript_le437"]

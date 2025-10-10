@@ -73,7 +73,7 @@ TIME_TO_SLEEP,Time to sleep,Время до сна,Zeit zum Schlafen,Час до
 TIME_H,h,ч,h,г
 TIME_M,m,м,m,х
 TIME_S,s,с,s,с
-EVENTS_PASSED,Events passed,Событий пройдено,,
+EVENTS_PASSED,Events passed,Событий пройдено,,Подій пройдено
 SHOW_ACHIEVEMENTS,Show achievements,Отображать достижения,Erfolge anzeigen,Показувати досягнення
 SHOW_ACHIEVEMENTS_HINT,Determines whether to show achievement animation in corner of screen. Sound will still be played.,"Определяет, показывать ли анимацию получения достижения в углу экрана. Звук по-прежнему будет воспроизводиться.","Legt fest, ob die Animation des Erfolgs in der Ecke des Bildschirms angezeigt wird. Der Ton wird weiterhin abgespielt.","Визначає, чи показувати анімацію отримання досягнення в кутку екрана. Звук все ще буде відтворюватися."
 ACHIEVEMENTS,Achivements,Достижения,Erreichung,"Досягнення"
@@ -101,7 +101,7 @@ ACHIEVEMENT_HELLO_DESC,What was that?,Что это было?,Was war das?,Що 
 CANCEL,Cancel,Отмена,,Скасування
 SHUTDOWN_BLOCK_MESSAGE,[ What are you doing?! You can hurt Niko so much! ],[Что ты делаешь?! Ты так можешь навредить Нико!],,[ Що ти робиш?! Ти так можеш нашкодити Ніко! ]
 GIVE_PANCAKES_TO_NIKO_QUEST,Do you want to give Niko pancakes?,Вы хотите дать Нико блинчики?,,Ви хочете дати Ніко млинці?
-PANCAKE_ALERT,Pancake Alert,Предупреждение: Блинчики,,
+PANCAKE_ALERT,Pancake Alert,Предупреждение: Блинчики,,Попередження: Млинці
 PANCAKE_ALERT_DIALOG_A,"[ You've upset Niko. ]",[ Ты растроил Нико. ],,"[ Ти розчулив Ніко. ]"
 PANCAKE_ALERT_DIALOG_B,[ What did you want to achieve with this? ]\n[ Do you think it will give you something? ],[ Чего ты хотел этим добиться? ]\n[ Ты думаешь тебе это что то даст? ],,[ Чого ти хотів цим досягти? ]\n[ Ти думаєш тобі це щось дасть? ]
 PANCAKE_ALERT_DIALOG_C,"[ Anyway, I won't let you hurt Niko. ]","[ В любом случае, я тебе не позволю обижать Нико. ]",,"[ У будь-якому випадку, Я тобі не дозволю ображати Ніко. ]"
@@ -127,7 +127,7 @@ WINDOWS_ALWAYS_ON_TOP,Windows always on top,Окна поверх всего,,В
 TASKBAR_ICON,Taskbar icon,Иконка в панели задач,,Іконка в панелі завдань
 RESET_ALL_DATA,Reset all data,Сбросить всё,,
 DATA_RESET_POPUP_MESSAGE,"Are you sure you want to completely reset all data?\nThis will completely delete save folder, including all files in it.","Вы уверены что хотите полностью сбросить все данные?\nЭто полностью удалит папку сохранения включая все файлы в ней.",,
-SAVE,Save,Сохранить,Зберігши,
+SAVE,Save,Сохранить,,Зберігши
 PRESS_F_TO_FLIP_NIKO,Press [F] to flip Niko!,Нажми [F] что повернуть Нико!,,"Натисніть [F] що повернути Ніко!"
 DO_EVENTS_HINT,Determines whether to show events during clicks.,"Определяет, показывать ли события во время кликов.",,"Визначає, чи показувати події під час кліків."
 NIKO_ALWAYS_ON_TOP_HINT,"Niko will always be on top of windows. If they will not be visible in a game, then set FRAMELESS fullscreen mode.","Нико будет всегда поверх окон. Если в игре его(её) не будет видно, то поставьте БЕЗРАМОЧНЫЙ полноэкранный режим.",,"Ніко буде завжди поверх вікон. Якщо в грі його(її) не буде видно, то поставте БЕЗРАМКОВИЙ повноекранний режим."

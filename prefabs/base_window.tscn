@@ -2,13 +2,14 @@
 
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="1_xtp28"]
 [ext_resource type="Script" uid="uid://m6hjiig1mkmj" path="res://scripts/windows/window_controller.gd" id="2_in0ps"]
-[ext_resource type="Texture2D" uid="uid://c8a2o0ruiwceh" path="res://ui_sprites/place_holder.png" id="3_cp0xp"]
-[ext_resource type="Texture2D" uid="uid://bo3x8yy4g81xb" path="res://ui_sprites/close_button.tres" id="4_73js7"]
-[ext_resource type="Texture2D" uid="uid://bvbx7qccj2uks" path="res://ui_sprites/hide_button.tres" id="4_in0ps"]
+[ext_resource type="Texture2D" uid="uid://c8a2o0ruiwceh" path="res://sprites/icons/place_holder.png" id="3_cp0xp"]
+[ext_resource type="Texture2D" uid="uid://bo3x8yy4g81xb" path="res://sprites/ui/close_button.tres" id="4_73js7"]
+[ext_resource type="Texture2D" uid="uid://bvbx7qccj2uks" path="res://sprites/ui/hide_button.tres" id="4_in0ps"]
 
 [node name="BaseWindow" type="Window" node_paths=PackedStringArray("topbar", "CloseButton", "HideButton")]
 auto_translate_mode = 1
 disable_3d = true
+oversampling_override = 1.0
 title = "Base Window"
 position = Vector2i(175, 0)
 size = Vector2i(400, 400)
@@ -84,7 +85,7 @@ text_overrun_behavior = 3
 
 [node name="HideButtonContainer" type="MarginContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 4
+theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 4
@@ -100,7 +101,7 @@ expand_icon = true
 
 [node name="CloseButtonContainer" type="MarginContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 4
+theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4

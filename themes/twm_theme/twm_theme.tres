@@ -3,8 +3,8 @@
 [ext_resource type="StyleBox" uid="uid://cmgrg6b15xr45" path="res://themes/twm_theme/button_hover.stylebox" id="1_h7d4g"]
 [ext_resource type="StyleBox" uid="uid://c0ibms6t7cd4b" path="res://themes/twm_theme/disabled_button.stylebox" id="1_r20nx"]
 [ext_resource type="StyleBox" uid="uid://hpucsc84lw31" path="res://themes/twm_theme/button_normal.stylebox" id="2_u5xpi"]
-[ext_resource type="Texture2D" uid="uid://bw465n3hiy0mk" path="res://ui_sprites/ui_shit.png" id="3_5peh5"]
-[ext_resource type="Texture2D" uid="uid://gfqymydag805" path="res://ui_sprites/zero_sprite.tres" id="3_xdasf"]
+[ext_resource type="Texture2D" uid="uid://bw465n3hiy0mk" path="res://sprites/ui/ui_shit.png" id="3_5peh5"]
+[ext_resource type="Texture2D" uid="uid://gfqymydag805" path="res://sprites/zero_sprite.tres" id="3_xdasf"]
 [ext_resource type="StyleBox" uid="uid://dpsqaja5oq0jg" path="res://themes/twm_theme/file_focus.stylebox" id="4_iqjnb"]
 [ext_resource type="StyleBox" uid="uid://bvomfsarijup3" path="res://themes/twm_theme/color_picker_normal.stylebox" id="5_c7vi0"]
 [ext_resource type="StyleBox" uid="uid://dqanrhkr00v08" path="res://themes/twm_theme/file_hover.stylebox" id="5_xdasf"]
@@ -21,8 +21,8 @@
 [ext_resource type="Script" uid="uid://cm26f3vhmimf4" path="res://scripts/themes/theme_colors_applier.gd" id="11_u5xpi"]
 [ext_resource type="StyleBox" uid="uid://bd2g4ws0gk1b6" path="res://themes/twm_theme/vertical_line.stylebox" id="11_xdasf"]
 [ext_resource type="StyleBox" uid="uid://dg1twp8kt2bvx" path="res://themes/twm_theme/tab.stylebox" id="12_d6ho4"]
-[ext_resource type="Texture2D" uid="uid://b67r5bffv66ql" path="res://ui_sprites/spinbox_down.tres" id="16_85n5b"]
-[ext_resource type="Texture2D" uid="uid://cw32ceii5133" path="res://ui_sprites/spinbox_up.tres" id="16_hcquw"]
+[ext_resource type="Texture2D" uid="uid://b67r5bffv66ql" path="res://sprites/ui/spinbox_down.tres" id="16_85n5b"]
+[ext_resource type="Texture2D" uid="uid://cw32ceii5133" path="res://sprites/ui/spinbox_up.tres" id="16_hcquw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8odgm"]
 

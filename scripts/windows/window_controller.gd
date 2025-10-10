@@ -26,6 +26,10 @@ func _ready() -> void:
 		close_button_pressed.emit()
 		visible = false
 	)
+	close_requested.connect(func ():
+		close_button_pressed.emit()
+		visible = false
+	)
 	if HideButton:
 		HideButton.pressed.connect(func ():
 			mode = MODE_MINIMIZED

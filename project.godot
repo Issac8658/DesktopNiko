@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="Desktop Niko"
-config/version="1.1.4"
+config/version="1.1.5a"
 config/tags=PackedStringArray("niko", "non_com", "one_shot", "software")
 run/main_scene="uid://cj66sb2a5oolj"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="DesktopNiko"
 config/auto_accept_quit=false
-config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
+config/features=PackedStringArray("4.5", "C#", "GL Compatibility")
 run/low_processor_mode=true
 run/low_processor_mode_sleep_usec=13800
 boot_splash/show_image=false
@@ -35,7 +35,7 @@ NikoSpritesModule="*res://scripts/main/niko_sprites_module.gd"
 PassthroughModule="*res://scripts/WindowMousePassthroughModule.cs"
 Dialog="*res://prefabs/dialog_window.tscn"
 AchievementsGlobalConroller="*res://scripts/achievements/achievements_global_conroller.gd"
-PancakeClickerGlobalController="*res://pancake_clicker/pancake_clicker_global_controller.gd"
+NikoDialog="*res://prefabs/niko_dialog.tscn"
 
 [display]
 
@@ -52,6 +52,23 @@ window/per_pixel_transparency/allowed=true
 [dotnet]
 
 project/assembly_name="Desktop Niko"
+
+[file_customization]
+
+folder_colors={
+"res://games/": "gray",
+"res://games/one_machine_night_funkin/data/": "orange",
+"res://games/one_machine_night_funkin/data/songs/": "green",
+"res://games/one_machine_night_funkin/data/weeks/": "red",
+"res://games/one_machine_night_funkin/resources/": "blue",
+"res://niko/": "yellow",
+"res://prefabs/": "pink",
+"res://scripts/": "blue",
+"res://shaders/": "red",
+"res://sounds/": "orange",
+"res://sprites/": "teal",
+"res://themes/": "purple"
+}
 
 [gui]
 
@@ -77,7 +94,6 @@ dialog_skip={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":32,"physical_keycode":0,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194309,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":90,"physical_keycode":0,"key_label":0,"unicode":122,"location":0,"echo":false,"script":null)
-, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
 left={
@@ -104,10 +120,18 @@ down={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194322,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+back={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":88,"physical_keycode":0,"key_label":0,"unicode":120,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194308,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194305,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194312,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://translations.en.translation", "res://translations.ru.translation", "res://pancake_clicker/pancake_clicker_lang.en.translation", "res://pancake_clicker/pancake_clicker_lang.ru.translation", "res://translations.de.translation", "res://translations.ua.translation")
+locale/translations=PackedStringArray("res://translations.en.translation", "res://translations.ru.translation", "res://translations.de.translation", "res://translations.ua.translation")
 
 [physics]
 

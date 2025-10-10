@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0kvc1vcwyj3e"]
+
+[ext_resource type="PackedScene" uid="uid://b1sta4cfu2vd4" path="res://games/pancake_clicker/shop_items/info_panels/base_info_panel.tscn" id="1_uo14a"]
+[ext_resource type="Texture2D" uid="uid://d1l0uthrw52j0" path="res://games/pancake_clicker/shop_items/resources/item_burner.atlastex" id="2_of4at"]
+
+[node name="BurnerInfoPanel" instance=ExtResource("1_uo14a")]
+
+[node name="Icon" parent="BaseInfo" index="0"]
+texture = ExtResource("2_of4at")
+
+[node name="Name" parent="BaseInfo/TextInfo" index="0"]
+text = "BURNER"
+
+[node name="Multipliers" parent="BaseInfo/TextInfo" index="2"]
+text = "BURNER_BUFFS"
+
+[node name="RichTextLabel" parent="." index="2"]
+text = "BURNER_DESC"

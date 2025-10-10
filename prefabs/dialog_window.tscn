@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://c6x3pchks2f73"]
 
-[ext_resource type="Theme" uid="uid://bll84jclxrjw1" path="res://themes/theme.tres" id="1_86o57"]
-[ext_resource type="Script" uid="uid://hmewgd3lbmoo" path="res://scripts/dialog.gd" id="2_v4kmj"]
+[ext_resource type="Theme" uid="uid://bll84jclxrjw1" path="res://themes/Dialogs.tres" id="1_86o57"]
+[ext_resource type="Script" uid="uid://hmewgd3lbmoo" path="res://scripts/windows/functional_windows/dialog.gd" id="2_v4kmj"]
 [ext_resource type="AudioStream" uid="uid://b6rgfk26heet7" path="res://sounds/text.wav" id="3_yq0c4"]
 [ext_resource type="AudioStream" uid="uid://co1vjkygk5wqc" path="res://sounds/text_robot.wav" id="4_v4kmj"]
-[ext_resource type="Texture2D" uid="uid://c8a2o0ruiwceh" path="res://ui_sprites/place_holder.png" id="4_ynht5"]
-[ext_resource type="Texture2D" uid="uid://bw465n3hiy0mk" path="res://ui_sprites/ui_shit.png" id="5_6666u"]
+[ext_resource type="Texture2D" uid="uid://c8a2o0ruiwceh" path="res://sprites/icons/place_holder.png" id="4_ynht5"]
+[ext_resource type="Texture2D" uid="uid://bw465n3hiy0mk" path="res://sprites/ui/ui_shit.png" id="5_6666u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cjtxb"]
 bg_color = Color(0.0823529, 0.027451, 0.0823529, 0.701961)
@@ -13,6 +13,7 @@ bg_color = Color(0.0823529, 0.027451, 0.0823529, 0.701961)
 [node name="DialogWindow" type="Window" node_paths=PackedStringArray("text_sound", "wm_sound", "timer", "text_label", "rect")]
 auto_translate_mode = 1
 transparent_bg = true
+oversampling_override = 1.0
 title = "DialogWindow"
 size = Vector2i(664, 128)
 visible = false

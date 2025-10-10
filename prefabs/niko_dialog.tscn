@@ -1,0 +1,213 @@
+[gd_scene load_steps=13 format=3 uid="uid://cf2qlt8bonsn4"]
+
+[ext_resource type="Theme" uid="uid://bll84jclxrjw1" path="res://themes/Dialogs.tres" id="1_sw7ix"]
+[ext_resource type="Script" uid="uid://bm53myk86cr7a" path="res://scripts/main/NikoDialog.cs" id="2_au3cr"]
+[ext_resource type="Texture2D" uid="uid://vds1yy2yvw08" path="res://sprites/ui/niko_dialog_arrow1.tres" id="3_a7g5i"]
+[ext_resource type="Texture2D" uid="uid://bnuj5apv1gqjr" path="res://sprites/ui/niko_dialog_arrow2.tres" id="4_g2241"]
+[ext_resource type="Texture2D" uid="uid://bljd3g45eir64" path="res://sprites/ui/niko_dialog_arrow3.tres" id="5_uaybs"]
+[ext_resource type="Texture2D" uid="uid://c0ciev2e0t3ou" path="res://sprites/ui/niko_dialog_arrow4.tres" id="6_f5fne"]
+[ext_resource type="Texture2D" uid="uid://cso4q6k2dvfji" path="res://sprites/ui/niko_dialog_arrow5.tres" id="7_2stj2"]
+[ext_resource type="Texture2D" uid="uid://bovs01y72hjae" path="res://sprites/ui/niko_dialog_arrow6.tres" id="8_4cvwt"]
+[ext_resource type="Texture2D" uid="uid://c2ah1ro4y5xat" path="res://sprites/ui/niko_dialog.png" id="9_e3gk4"]
+[ext_resource type="AudioStream" uid="uid://b6rgfk26heet7" path="res://sounds/text.wav" id="9_yghdn"]
+[ext_resource type="Texture2D" uid="uid://c2st75455i4ij" path="res://sprites/ui/niko_dialog_hint_arrow.tres" id="11_8mp6a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gv8l5"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.1996901, 0.10259999, 0.38, 0.67058825)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 0)
+corner_detail = 1
+
+[node name="NikoDialog" type="Window" node_paths=PackedStringArray("DialogLabel", "TextShowTimer", "TextSound", "ClickControl", "ButtonsContainer", "Hint", "UpperArrow", "UpperArrowControl", "UpperFramePart1", "UpperFramePart2", "LowerArrow", "LowerArrowControl", "LowerFramePart1", "LowerFramePart2")]
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+oversampling_override = 1.0
+title = "Dialog"
+position = Vector2i(246, 33)
+size = Vector2i(300, 140)
+wrap_controls = true
+unresizable = true
+borderless = true
+always_on_top = true
+transparent = true
+popup_wm_hint = true
+minimize_disabled = true
+maximize_disabled = true
+min_size = Vector2i(60, 40)
+theme = ExtResource("1_sw7ix")
+script = ExtResource("2_au3cr")
+DialogLabel = NodePath("MarginContainer/Bg/Content/DialogText")
+TextShowTimer = NodePath("Timer")
+TextSound = NodePath("Text")
+ClickControl = NodePath("MarginContainer")
+ButtonsContainer = NodePath("MarginContainer/Bg/Content/Buttons")
+Hint = NodePath("Hint")
+ArrowsVariants = Array[Texture2D]([ExtResource("3_a7g5i"), ExtResource("4_g2241"), ExtResource("5_uaybs"), ExtResource("6_f5fne"), ExtResource("7_2stj2"), ExtResource("8_4cvwt")])
+UpperArrow = NodePath("Frame/VBoxContainer/HBoxContainer/Control/NinePatchRect")
+UpperArrowControl = NodePath("Frame/VBoxContainer/HBoxContainer/Control")
+UpperFramePart1 = NodePath("Frame/VBoxContainer/HBoxContainer/TextureRect")
+UpperFramePart2 = NodePath("Frame/VBoxContainer/HBoxContainer/TextureRect2")
+LowerArrow = NodePath("Frame/VBoxContainer/HBoxContainer2/Control/NinePatchRect2")
+LowerArrowControl = NodePath("Frame/VBoxContainer/HBoxContainer2/Control")
+LowerFramePart1 = NodePath("Frame/VBoxContainer/HBoxContainer2/TextureRect")
+LowerFramePart2 = NodePath("Frame/VBoxContainer/HBoxContainer2/TextureRect2")
+PositionTopLeft = Vector2i(40, 0)
+PositionTopRight = Vector2i(110, 0)
+PositionBottomLeft = Vector2i(40, 160)
+PositionBottomRight = Vector2i(110, 160)
+
+[node name="Text" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_yghdn")
+volume_db = -15.0
+max_polyphony = 3
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 18
+
+[node name="Bg" type="PanelContainer" parent="MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gv8l5")
+
+[node name="Content" type="VBoxContainer" parent="MarginContainer/Bg"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="DialogText" type="RichTextLabel" parent="MarginContainer/Bg/Content"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="Buttons" type="HFlowContainer" parent="MarginContainer/Bg/Content"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+last_wrap_alignment = 1
+
+[node name="Frame" type="PanelContainer" parent="."]
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+mouse_filter = 2
+theme = ExtResource("1_sw7ix")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Frame"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Frame/VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="NinePatchRect" parent="Frame/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("9_e3gk4")
+region_rect = Rect2(15, 11, 3, 4)
+
+[node name="Control" type="Control" parent="Frame/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(11, 0)
+layout_mode = 2
+
+[node name="NinePatchRect" type="TextureRect" parent="Frame/VBoxContainer/HBoxContainer/Control"]
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_a7g5i")
+flip_h = true
+flip_v = true
+
+[node name="TextureRect2" type="NinePatchRect" parent="Frame/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("9_e3gk4")
+region_rect = Rect2(15, 11, 3, 4)
+
+[node name="Control" type="Control" parent="Frame/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Frame/VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="NinePatchRect" parent="Frame/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("9_e3gk4")
+region_rect = Rect2(15, 19, 3, 4)
+
+[node name="Control" type="Control" parent="Frame/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(11, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NinePatchRect2" type="TextureRect" parent="Frame/VBoxContainer/HBoxContainer2/Control"]
+custom_minimum_size = Vector2(11, 11)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 11.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("3_a7g5i")
+flip_h = true
+
+[node name="TextureRect2" type="NinePatchRect" parent="Frame/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("9_e3gk4")
+region_rect = Rect2(15, 19, 3, 4)
+
+[node name="Hint" type="TextureRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -32.0
+offset_right = 6.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("11_8mp6a")

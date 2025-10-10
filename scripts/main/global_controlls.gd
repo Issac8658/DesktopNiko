@@ -57,7 +57,8 @@ var niko_always_on_top : bool = true:
 	set(value):
 		niko_always_on_top = value
 		get_window().always_on_top = value
-var windows_always_on_top : bool = true:
+		PassthroughModule.UpdateWindowsExStyles(get_window(), not taskbar_icon)
+var windows_always_on_top : bool = false:
 	set(value):
 		windows_always_on_top = value
 		for child in $/root/TheWorldMachine.get_children():

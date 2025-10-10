@@ -1,0 +1,4 @@
+OMNF_WEEK_MESSIAH_TITLE
+OMNF_WEEK_MESSIAH_DESC
+UnknownPlace; StandingOnStars; ChessMetal; CatchingDrops
+Prophetbot; NikoLamp

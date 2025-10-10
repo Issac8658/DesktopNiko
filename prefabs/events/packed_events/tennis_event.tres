@@ -6,7 +6,6 @@
 [resource]
 script = ExtResource("2_dm1eb")
 spawn_chance = 0.15
-min_clicks = 100
 max_cps = 10
 display_name = "Tennis with Niko"
 linked_scene = ExtResource("1_y5slg")

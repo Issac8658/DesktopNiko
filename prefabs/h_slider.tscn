@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://bh426a06uwkf0"]
 
 [ext_resource type="Script" uid="uid://bnv3db8ai16vj" path="res://scripts/windows/components/h_slider.gd" id="1_5ht0c"]
-[ext_resource type="Texture2D" uid="uid://csr7soelb8dws" path="res://ui_sprites/left_arrow_button.tres" id="2_aybxp"]
+[ext_resource type="Texture2D" uid="uid://csr7soelb8dws" path="res://sprites/ui/left_arrow_button.tres" id="2_aybxp"]
 [ext_resource type="StyleBox" uid="uid://seh5m867naoa" path="res://themes/twm_theme/thin_panel.stylebox" id="3_rhojm"]
-[ext_resource type="Texture2D" uid="uid://b4mqvkkqui8s6" path="res://ui_sprites/grabber.tres" id="4_7oqf0"]
-[ext_resource type="Texture2D" uid="uid://wy5m4kn1mxkt" path="res://ui_sprites/right_arrow_button.tres" id="5_k3bu1"]
+[ext_resource type="Texture2D" uid="uid://b4mqvkkqui8s6" path="res://sprites/ui/grabber.tres" id="4_7oqf0"]
+[ext_resource type="Texture2D" uid="uid://wy5m4kn1mxkt" path="res://sprites/ui/right_arrow_button.tres" id="5_k3bu1"]
 
 [node name="HSlider" type="HSlider"]
 custom_minimum_size = Vector2(124, 32)

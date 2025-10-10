@@ -5,12 +5,12 @@
 [ext_resource type="AudioStream" uid="uid://bmaqut0akruy7" path="res://sounds/machine_hide.wav" id="3_4ujhy"]
 [ext_resource type="ArrayMesh" uid="uid://423hrjncruup" path="res://models/pancake_machine.obj" id="3_ufmvg"]
 [ext_resource type="AudioStream" uid="uid://dixvjtj84pifi" path="res://sounds/menu_decision.wav" id="3_un16k"]
-[ext_resource type="Material" uid="uid://toqokucuop37" path="res://models/black.tres" id="4_o8h2p"]
-[ext_resource type="Material" uid="uid://dlf53nu0vfhcn" path="res://models/theme_color_material.tres" id="5_o8h2p"]
+[ext_resource type="Material" uid="uid://toqokucuop37" path="res://materials/black.tres" id="4_o8h2p"]
+[ext_resource type="Material" uid="uid://dlf53nu0vfhcn" path="res://materials/theme_color_material.tres" id="5_o8h2p"]
 [ext_resource type="AudioStream" uid="uid://cw1tov6mght2a" path="res://sounds/major_puzzle_solved.ogg" id="5_r0fcy"]
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="6_jm0jf"]
 [ext_resource type="Script" uid="uid://05w6e57vrsyx" path="res://prefabs/events/pass_code_part.gd" id="7_jmh5g"]
-[ext_resource type="Texture2D" uid="uid://k3j8qcm4l4wu" path="res://pancake_clicker/little_pancake.png" id="11_is2ju"]
+[ext_resource type="Texture2D" uid="uid://k3j8qcm4l4wu" path="res://games/pancake_clicker/little_pancake.png" id="11_is2ju"]
 
 [sub_resource type="GDScript" id="GDScript_qnufv"]
 resource_name = "event_controller"

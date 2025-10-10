@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b2vj4xaxc8xub"
+
+[deps]
+
+files=["res://games/pancake_clicker/pancake_clicker_lang.en.translation", "res://games/pancake_clicker/pancake_clicker_lang.ru.translation"]
+
+source_file="res://games/pancake_clicker/pancake_clicker_lang.csv"
+dest_files=["res://games/pancake_clicker/pancake_clicker_lang.en.translation", "res://games/pancake_clicker/pancake_clicker_lang.ru.translation"]
+
+[params]
+
+compress=true
+delimiter=0

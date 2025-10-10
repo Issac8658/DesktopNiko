@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dl8543lp0qwyv"]
 
 [ext_resource type="StyleBox" uid="uid://c47lb30cio4to" path="res://themes/twm_theme/horizontal_line_wide.stylebox" id="1_gnj1r"]
-[ext_resource type="Texture2D" uid="uid://8tnj3kv357ky" path="res://ui_sprites/achievement_separator.tres" id="2_oxbdd"]
+[ext_resource type="Texture2D" uid="uid://8tnj3kv357ky" path="res://sprites/achievements/achievement_separator.tres" id="2_oxbdd"]
 
 [node name="MarginContainer" type="MarginContainer"]
 theme_override_constants/margin_left = 12

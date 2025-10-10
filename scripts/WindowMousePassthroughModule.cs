@@ -10,12 +10,13 @@ public partial class WindowMousePassthroughModule : Node
 	private const uint WS_EX_TRANSPARENT = 0x00000020;
 	private const uint WS_EX_TOOLWINDOW = 0x00000080;
 	private const uint WS_EX_TOPMOST = 0x00000008;
-	private const uint DEFAULT_WS_STYLE = 0x20000810;
+	private const uint DEFAULT_WS_STYLE = 0x20000900;
+	private const uint LWA_ALPHA = 0x2;
 	
 	private const int SW_SHOW = 5;
 	private const int SW_HIDE = 0;
 
-	public void UpdateWindowsExStyles(Window window, bool NoPanelIcon)
+	public void UpdateWindowsExStyles(Window window, bool HideTaskbarIcon)
 	{
 		if (OS.GetName() == "Windows")
 		{
@@ -23,26 +24,30 @@ public partial class WindowMousePassthroughModule : Node
 			static extern int SetWindowLong(IntPtr hWnd, int nIndex, uint dwNewLong);
 			[DllImport("user32.dll")]
 			static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+    		[DllImport("user32.dll")]
+    		static extern bool SetLayeredWindowAttributes(IntPtr hwnd, uint crKey, byte bAlpha, uint dwFlags);
 			//[DllImport("user32.dll")]
 			//static extern int GetWindowLong(IntPtr hWnd, int nIndex);
 
 			IntPtr hWnd = (nint)DisplayServer.WindowGetNativeHandle(DisplayServer.HandleType.WindowHandle, window.GetWindowId());
 
 			uint style = DEFAULT_WS_STYLE;
-			if ((bool)window.Get("always_on_top"))
+			if (window.MousePassthrough)
+			{
+				style |= WS_EX_LAYERED; //проподает из-за этого
+				style |= WS_EX_TRANSPARENT;
+			}
+			if (window.AlwaysOnTop)
 			{
 				style |= WS_EX_TOPMOST;
 			}
-			if ((bool)window.Get("mouse_passthrough"))
-			{
-				style |= WS_EX_LAYERED | WS_EX_TRANSPARENT;
-			}
-			if (NoPanelIcon)
+			if (HideTaskbarIcon)
 			{
 				style = (style & ~WS_EX_APPWINDOW) | WS_EX_TOOLWINDOW;
 			}
-			ShowWindow(hWnd, SW_HIDE);
-			SetWindowLong(hWnd, GWL_EXSTYLE, style);
+            ShowWindow(hWnd, SW_HIDE);
+            _ = SetWindowLong(hWnd, GWL_EXSTYLE, style);
+        	SetLayeredWindowAttributes(hWnd, 0, 255, LWA_ALPHA);
 			ShowWindow(hWnd, SW_SHOW);
 		}
 	}

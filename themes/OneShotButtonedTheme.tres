@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=16 format=3 uid="uid://depgndu5hyrlf"]
 
-[ext_resource type="Texture2D" uid="uid://bw465n3hiy0mk" path="res://ui_sprites/ui_shit.png" id="1_wkjk3"]
+[ext_resource type="Texture2D" uid="uid://bw465n3hiy0mk" path="res://sprites/ui/ui_shit.png" id="1_wkjk3"]
 [ext_resource type="FontFile" uid="uid://ckcoy708n8osl" path="res://fonts/TerminusTTF-Bold.ttf" id="2_wkjk3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3dpcr"]
@@ -77,3 +77,4 @@ CheckBox/styles/hover_pressed = SubResource("StyleBoxEmpty_w3fh6")
 CheckBox/styles/normal = SubResource("StyleBoxEmpty_upyio")
 CheckBox/styles/pressed = SubResource("StyleBoxEmpty_h4j26")
 Panel/styles/panel = SubResource("StyleBoxTexture_17k7a")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_17k7a")

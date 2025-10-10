@@ -56,6 +56,9 @@ func _ready() -> void: # applying saved parameters
 	GlobalControlls.niko_visibility_changed.connect(func (visible):
 		niko_layer.visible = visible
 	)
+	GlobalControlls.event_started.connect(func (_event):
+		is_dragging = false
+	)
 	#PassthroughModule.UpdateWindowsExStyles(get_window(), true)
 
 #func _process(_delta: float) -> void: # show again if niko minimized(hidden)
@@ -81,8 +84,8 @@ func _on_niko_input(event: InputEvent) -> void: # main Niko operations
 	if not GlobalControlls.force_facepick:
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
-				click()
 				is_dragging = true
+				click()
 				mouse_offset = event.position
 			else:
 				is_dragging = false

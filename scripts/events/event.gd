@@ -1,4 +1,4 @@
-@icon("res://ui_sprites/error.png")
+@icon("res://sprites/icons/error.png")
 extends Node
 class_name Event
 

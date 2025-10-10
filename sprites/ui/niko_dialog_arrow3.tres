@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bljd3g45eir64"]
+
+[ext_resource type="Texture2D" uid="uid://c2ah1ro4y5xat" path="res://sprites/ui/niko_dialog.png" id="1_mhx0l"]
+
+[resource]
+atlas = ExtResource("1_mhx0l")
+region = Rect2(22, 0, 11, 11)

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://jf3fe5rn6ijb" path="res://prefabs/resize_zone.tscn" id="2_i83l6"]
 
 [node name="ResizableWindow" instance=ExtResource("1_xq1hx")]
+oversampling_override = 1.0
 
 [node name="Title" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
 text = "Resizable Window"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=176 format=4 uid="uid://cj66sb2a5oolj"]
+[gd_scene load_steps=178 format=4 uid="uid://cj66sb2a5oolj"]
 
 [ext_resource type="Script" uid="uid://b8e5fhar3jgaj" path="res://scripts/main/niko_controls.gd" id="1_2c62f"]
 [ext_resource type="AudioStream" uid="uid://5tnvrblu5h4j" path="res://niko/niko_meows/meow1.wav" id="2_ghshe"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bcbjubsxc3h5k" path="res://niko/niko_speak.png" id="3_d5x1h"]
 [ext_resource type="AudioStream" uid="uid://dsp2j0xdbikv7" path="res://niko/niko_meows/meow2.wav" id="3_fv2he"]
 [ext_resource type="AudioStream" uid="uid://b7fs1kpyhma66" path="res://niko/niko_meows/meow3.wav" id="4_5smuj"]
-[ext_resource type="Texture2D" uid="uid://bw465n3hiy0mk" path="res://ui_sprites/ui_shit.png" id="4_hq1ik"]
+[ext_resource type="Texture2D" uid="uid://bw465n3hiy0mk" path="res://sprites/ui/ui_shit.png" id="4_hq1ik"]
 [ext_resource type="AudioStream" uid="uid://c05el6h3gl1gk" path="res://niko/niko_meows/meow4.wav" id="5_5smuj"]
 [ext_resource type="Texture2D" uid="uid://ddlwgsremuqfv" path="res://niko/niko_look_right.png" id="5_7th4q"]
 [ext_resource type="Texture2D" uid="uid://d03uavcp7ruhb" path="res://niko/niko_look_left.png" id="6_6jybn"]
@@ -24,35 +24,37 @@
 [ext_resource type="Script" uid="uid://b1axu2q55ml5w" path="res://scripts/events/event_resource.gd" id="14_xevt3"]
 [ext_resource type="Resource" uid="uid://xa5i42fm2p37" path="res://prefabs/events/packed_events/pancake_machine_event.tres" id="15_ix15y"]
 [ext_resource type="Texture2D" uid="uid://b55s8l68phsqe" path="res://niko/niko_default.png" id="16_7th4q"]
-[ext_resource type="Texture2D" uid="uid://cmck41qjd7h12" path="res://ui_sprites/customize.png" id="16_kv3aw"]
+[ext_resource type="Texture2D" uid="uid://cmck41qjd7h12" path="res://sprites/icons/customize.png" id="16_kv3aw"]
 [ext_resource type="Resource" uid="uid://brffaerkti5xg" path="res://prefabs/events/packed_events/pancake_alert_event.tres" id="16_l3hih"]
-[ext_resource type="Texture2D" uid="uid://bb6rkjf8ar6ty" path="res://ui_sprites/sleepz.png" id="16_vafvb"]
-[ext_resource type="Texture2D" uid="uid://dbx1hieli27qp" path="res://ui_sprites/theme.png" id="17_ijoax"]
+[ext_resource type="Texture2D" uid="uid://bb6rkjf8ar6ty" path="res://sprites/ui/sleepz.png" id="16_vafvb"]
+[ext_resource type="Texture2D" uid="uid://dbx1hieli27qp" path="res://sprites/icons/theme.png" id="17_ijoax"]
 [ext_resource type="Resource" uid="uid://0jpmuyj06155" path="res://prefabs/events/packed_events/tennis_event.tres" id="17_xevt3"]
-[ext_resource type="Resource" uid="uid://c4wpr05jp6jmk" path="res://prefabs/events/packed_events/omnf_event.tres" id="18_im3ns"]
 [ext_resource type="PackedScene" uid="uid://bdipf040tg1gp" path="res://prefabs/resizable_window.tscn" id="19_rkakh"]
-[ext_resource type="Texture2D" uid="uid://bextf2un1mfx4" path="res://ui_sprites/shortcuts.png" id="20_o63de"]
+[ext_resource type="Texture2D" uid="uid://bextf2un1mfx4" path="res://sprites/icons/shortcuts.png" id="20_o63de"]
 [ext_resource type="Script" uid="uid://hlcidpic34kr" path="res://scripts/windows/functional_windows/shortcuts.gd" id="20_q4750"]
-[ext_resource type="Texture2D" uid="uid://dl8ue5tnsufb7" path="res://ui_sprites/shortcut.tres" id="23_30vx0"]
-[ext_resource type="Texture2D" uid="uid://ddaoov7lp1dhu" path="res://ui_sprites/question.png" id="25_opjno"]
-[ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://ui_sprites/pancake_clicker.png" id="26_rkakh"]
-[ext_resource type="Texture2D" uid="uid://cr3ixq7u1lyrk" path="res://ui_sprites/github.png" id="27_id8vy"]
-[ext_resource type="Texture2D" uid="uid://bk87tkulx74jb" path="res://ui_sprites/exit.png" id="28_xtheg"]
-[ext_resource type="Texture2D" uid="uid://crlrkmttey356" path="res://ui_sprites/unreal.png" id="29_rkakh"]
+[ext_resource type="Texture2D" uid="uid://dl8ue5tnsufb7" path="res://sprites/icons/shortcut.tres" id="23_30vx0"]
+[ext_resource type="Texture2D" uid="uid://ddaoov7lp1dhu" path="res://sprites/icons/question.png" id="25_opjno"]
+[ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://sprites/icons/pancake_clicker.png" id="26_rkakh"]
+[ext_resource type="Texture2D" uid="uid://cr3ixq7u1lyrk" path="res://sprites/icons/github.png" id="27_id8vy"]
+[ext_resource type="Script" uid="uid://boigyc7vtdgxg" path="res://scripts/windows/functional_windows/games_shorcuts.gd" id="27_im3ns"]
+[ext_resource type="Texture2D" uid="uid://bk87tkulx74jb" path="res://sprites/icons/exit.png" id="28_xtheg"]
+[ext_resource type="Texture2D" uid="uid://crlrkmttey356" path="res://sprites/unreal.png" id="29_rkakh"]
 [ext_resource type="AudioStream" uid="uid://dw73t7aavxakx" path="res://sounds/HELLO_big.wav" id="30_id8vy"]
 [ext_resource type="Script" uid="uid://m4raxivypvem" path="res://scripts/windows/functional_windows/settings/settings.gd" id="32_euc68"]
 [ext_resource type="Texture2D" uid="uid://bjfdcbs4wdh0k" path="res://prefabs/events/tennis/tennis_icon.png" id="32_mmq7y"]
 [ext_resource type="PackedScene" uid="uid://8hficp4dbvqs" path="res://prefabs/popup_window.tscn" id="33_id8vy"]
 [ext_resource type="Script" uid="uid://duqfgxmwf1mkr" path="res://scripts/themes/theme_changer.gd" id="34_84x1k"]
 [ext_resource type="StyleBox" uid="uid://doojaqhvw2o0d" path="res://themes/themed/blue_file_focus.stylebox" id="34_c5xsv"]
+[ext_resource type="Texture2D" uid="uid://c2peytyd0ce3i" path="res://sprites/icons/games.png" id="34_im3ns"]
 [ext_resource type="StyleBox" uid="uid://bg8rwg0agm3i1" path="res://themes/themed/purple_file_focus.stylebox" id="34_uacds"]
 [ext_resource type="StyleBox" uid="uid://mldy0j3o25oq" path="res://themes/themed/blue_file_hover.stylebox" id="35_84x1k"]
 [ext_resource type="StyleBox" uid="uid://cmgo2xhfrn3e3" path="res://themes/themed/purple_file_hover.stylebox" id="35_y0lqw"]
 [ext_resource type="PackedScene" uid="uid://o3kl3g87pn3q" path="res://prefabs/base_window.tscn" id="38_q4750"]
 [ext_resource type="ColorPalette" uid="uid://drsd5tiuhu4u1" path="res://themes/twm_theme/purple_color_palette.tres" id="39_l3hih"]
+[ext_resource type="PackedScene" uid="uid://06vemu4dsjuh" path="res://games/one_machine_night_funkin/one_machine_night_funkin.tscn" id="40_gv8l5"]
 [ext_resource type="ColorPalette" uid="uid://kjuhi60rb6ip" path="res://themes/twm_theme/blue_color_palette.tres" id="40_xevt3"]
 [ext_resource type="ColorPalette" uid="uid://dcwi11gqweq8b" path="res://themes/twm_theme/yellow_color_palette.tres" id="41_im3ns"]
-[ext_resource type="Material" uid="uid://db230eaasl2pl" path="res://shaders/shadow_material.tres" id="41_iylel"]
+[ext_resource type="Material" uid="uid://db230eaasl2pl" path="res://materials/shadow_material.tres" id="41_iylel"]
 [ext_resource type="StyleBox" uid="uid://cf7fl76law1mr" path="res://themes/themed/yellow_file_focus.stylebox" id="41_ya33n"]
 [ext_resource type="ColorPalette" uid="uid://beghg0oj5jc3" path="res://themes/twm_theme/red_color_palette.tres" id="42_2jqx2"]
 [ext_resource type="StyleBox" uid="uid://elx3eo2ima3" path="res://themes/themed/yellow_file_hover.stylebox" id="42_3wiol"]
@@ -78,37 +80,37 @@
 [ext_resource type="StyleBox" uid="uid://bfxcdu2fwodgt" path="res://themes/themed/green_file_focus.stylebox" id="60_jl6hu"]
 [ext_resource type="StyleBox" uid="uid://d1ts0vt0gn68j" path="res://themes/themed/green_file_hover.stylebox" id="61_uwk5n"]
 [ext_resource type="Script" uid="uid://cmxrv553jpw78" path="res://scripts/windows/components/tab_bar.gd" id="64_ubkm4"]
-[ext_resource type="Texture2D" uid="uid://b8wvy50nn8t5c" path="res://ui_sprites/screens_corner.png" id="65_82rj2"]
-[ext_resource type="Texture2D" uid="uid://cx7etih63abrx" path="res://ui_sprites/window_border_right2.tres" id="66_76in0"]
+[ext_resource type="Texture2D" uid="uid://b8wvy50nn8t5c" path="res://sprites/ui/screens_corner.png" id="65_82rj2"]
+[ext_resource type="Texture2D" uid="uid://cx7etih63abrx" path="res://sprites/ui/window_border_right2.tres" id="66_76in0"]
 [ext_resource type="StyleBox" uid="uid://7knach8205vl" path="res://themes/twm_theme/window_tab.stylebox" id="67_im3ns"]
 [ext_resource type="StyleBox" uid="uid://nyb3y3mcmw8e" path="res://themes/twm_theme/window_tab_selected.stylebox" id="67_xevt3"]
-[ext_resource type="Texture2D" uid="uid://bq0l8gsn8md3e" path="res://ui_sprites/language.png" id="69_05sqr"]
+[ext_resource type="Texture2D" uid="uid://bq0l8gsn8md3e" path="res://sprites/icons/language.png" id="69_05sqr"]
 [ext_resource type="Script" uid="uid://lowrqksp45hd" path="res://scripts/windows/functional_windows/settings/sleep_controls.gd" id="74_j53bq"]
-[ext_resource type="Texture2D" uid="uid://4fifkt7n1ua4" path="res://ui_sprites/shop_base.tres" id="74_v118d"]
-[ext_resource type="Texture2D" uid="uid://gsgodind7qoq" path="res://ui_sprites/shop_front.tres" id="75_lwncm"]
-[ext_resource type="Texture2D" uid="uid://doq31fc3w01dr" path="res://ui_sprites/shop_back.tres" id="75_o63de"]
+[ext_resource type="Texture2D" uid="uid://4fifkt7n1ua4" path="res://sprites/shop_base.tres" id="74_v118d"]
+[ext_resource type="Texture2D" uid="uid://gsgodind7qoq" path="res://sprites/shop_front.tres" id="75_lwncm"]
+[ext_resource type="Texture2D" uid="uid://doq31fc3w01dr" path="res://sprites/shop_back.tres" id="75_o63de"]
 [ext_resource type="PackedScene" uid="uid://bh426a06uwkf0" path="res://prefabs/h_slider.tscn" id="76_o48om"]
 [ext_resource type="PackedScene" uid="uid://clo633qc1pd8w" path="res://prefabs/magpie_shop_item.tscn" id="77_30vx0"]
 [ext_resource type="Script" uid="uid://d3qjqffumftkk" path="res://scripts/windows/functional_windows/settings/volume.gd" id="77_k2ony"]
 [ext_resource type="Script" uid="uid://0dbjehngsr5f" path="res://scripts/windows/functional_windows/settings/add_to_autorun.gd" id="77_q4750"]
-[ext_resource type="Texture2D" uid="uid://d4ep8v3mrg276" path="res://ui_sprites/shop_particle.tres" id="78_30vx0"]
-[ext_resource type="Material" uid="uid://beloub2o0etmy" path="res://shaders/light_blub_anim_shader.tres" id="81_30vx0"]
-[ext_resource type="Texture2D" uid="uid://dxo8m8apw6ajl" path="res://ui_sprites/bulb_anim_24.png" id="81_id8vy"]
+[ext_resource type="Texture2D" uid="uid://d4ep8v3mrg276" path="res://sprites/shop_particle.tres" id="78_30vx0"]
+[ext_resource type="Material" uid="uid://beloub2o0etmy" path="res://materials/light_blub_anim_shader.tres" id="81_30vx0"]
+[ext_resource type="Texture2D" uid="uid://dxo8m8apw6ajl" path="res://sprites/ui/bulb_anim_24.png" id="81_id8vy"]
 [ext_resource type="Script" uid="uid://c45ltmpprf6rs" path="res://scripts/loading_icon.gd" id="81_ubkm4"]
 [ext_resource type="Script" uid="uid://dh8nb5jo0naai" path="res://scripts/windows/functional_windows/settings/windows_only_checkbox.gd" id="82_36qg2"]
-[ext_resource type="Texture2D" uid="uid://cqicl8sy06ti5" path="res://ui_sprites/error.png" id="82_l76vu"]
-[ext_resource type="Texture2D" uid="uid://o648cd5rcwja" path="res://ui_sprites/magpie_shop1.png" id="87_1b22m"]
-[ext_resource type="Texture2D" uid="uid://onqy26td0pr4" path="res://ui_sprites/achievements.png" id="87_s2ody"]
+[ext_resource type="Texture2D" uid="uid://cqicl8sy06ti5" path="res://sprites/icons/error.png" id="82_l76vu"]
+[ext_resource type="Texture2D" uid="uid://o648cd5rcwja" path="res://sprites/magpie_shop1.png" id="87_1b22m"]
+[ext_resource type="Texture2D" uid="uid://onqy26td0pr4" path="res://sprites/icons/achievements.png" id="87_s2ody"]
 [ext_resource type="PackedScene" uid="uid://bi5pu8hc54t3d" path="res://prefabs/achievement.tscn" id="88_05sqr"]
 [ext_resource type="Script" uid="uid://cb6ghe82gh3g7" path="res://scripts/windows/functional_windows/styled_indicator_menu.gd" id="88_7y85w"]
 [ext_resource type="Script" uid="uid://cyi2ub3b3g3l8" path="res://scripts/achievements/achievements_list.gd" id="88_ym5p0"]
 [ext_resource type="AudioStream" uid="uid://8vbdh38fqgnf" path="res://sounds/get_item.ogg" id="89_bkdqi"]
-[ext_resource type="Texture2D" uid="uid://widgkfxwlx5" path="res://ui_sprites/achievements/unknown_gray.png" id="89_ym5p0"]
+[ext_resource type="Texture2D" uid="uid://widgkfxwlx5" path="res://sprites/achievements/unknown_gray.png" id="89_ym5p0"]
 [ext_resource type="PackedScene" uid="uid://dl8543lp0qwyv" path="res://prefabs/achievement_separator.tscn" id="90_05sqr"]
-[ext_resource type="Texture2D" uid="uid://dlavpw6yhbnab" path="res://ui_sprites/achievements/unknown.png" id="91_3s6xx"]
-[ext_resource type="Texture2D" uid="uid://dnwbeed7hrv83" path="res://ui_sprites/test_shit.png" id="92_ixb38"]
+[ext_resource type="Texture2D" uid="uid://dlavpw6yhbnab" path="res://sprites/achievements/unknown.png" id="91_3s6xx"]
+[ext_resource type="Texture2D" uid="uid://dnwbeed7hrv83" path="res://sprites/ui/test_shit.png" id="92_ixb38"]
 [ext_resource type="Script" uid="uid://dbaokjrp7ef13" path="res://scripts/achievements/achievement_show.gd" id="92_l8no8"]
-[ext_resource type="Material" uid="uid://cmlk3yixxx4u4" path="res://shaders/world_machine_glitch_material.tres" id="92_ldlqy"]
+[ext_resource type="Material" uid="uid://cmlk3yixxx4u4" path="res://materials/world_machine_glitch_material.tres" id="92_ldlqy"]
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="100_ix15y"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3dpcr"]
@@ -212,6 +214,11 @@ cache/0/16/0/glyphs/19/offset = Vector2(-1, -11)
 cache/0/16/0/glyphs/19/size = Vector2(9, 12)
 cache/0/16/0/glyphs/19/uv_rect = Rect2(1, 1, 9, 12)
 cache/0/16/0/glyphs/19/texture_idx = 0
+cache/0/16/0/glyphs/3/advance = Vector2(9, 16)
+cache/0/16/0/glyphs/3/offset = Vector2(0, 0)
+cache/0/16/0/glyphs/3/size = Vector2(0, 0)
+cache/0/16/0/glyphs/3/uv_rect = Rect2(0, 0, 0, 0)
+cache/0/16/0/glyphs/3/texture_idx = -1
 cache/0/50/0/ascent = 38.0
 cache/0/50/0/descent = 13.0
 cache/0/50/0/underline_position = 7.46875
@@ -338,7 +345,7 @@ _data = {
 &"niko_look_around": SubResource("Animation_m35m6")
 }
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ycvg"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qwutr"]
 texture = ExtResource("4_hq1ik")
 texture_margin_left = 6.0
 texture_margin_top = 6.0
@@ -354,7 +361,7 @@ texture_margin_right = 6.0
 texture_margin_bottom = 6.0
 region_rect = Rect2(4, 22, 12, 12)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qwutr"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ycvg"]
 texture = ExtResource("4_hq1ik")
 texture_margin_left = 6.0
 texture_margin_top = 6.0
@@ -403,26 +410,6 @@ scale_curve = SubResource("CurveTexture_ym5p0")
 color = Color(0.282353, 0.286275, 0.784314, 1)
 alpha_curve = SubResource("CurveTexture_05sqr")
 
-[sub_resource type="GDScript" id="GDScript_mmq7y"]
-resource_name = "tennis_shortcut"
-script/source = "extends MarginContainer
-
-@export var event : Event
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	if not AchievementsGlobalConroller.is_achievement_taked(\"little_win\"):
-		visible = false
-	($Button as Button).gui_input.connect(func (input):
-		if input is InputEventMouseButton and input.double_click:
-			event.event()
-	)
-	AchievementsGlobalConroller.achievement_taked.connect(func (achievement_id):
-		if achievement_id == \"little_win\":
-			visible = true
-	)
-"
-
 [sub_resource type="GDScript" id="GDScript_xtheg"]
 resource_name = "HELLO"
 script/source = "extends TextureRect
@@ -440,6 +427,34 @@ func _ready() -> void:
 			AchievementsGlobalConroller.take_achievement(\"hello_secret\")
 		)
 	else: visible = false
+"
+
+[sub_resource type="GDScript" id="GDScript_mmq7y"]
+resource_name = "tennis_shortcut"
+script/source = "extends MarginContainer
+
+@export var event : PackedEvent
+@export var games : Node
+var loaded_event : Node = null
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	if not AchievementsGlobalConroller.is_achievement_taked(\"little_win\"):
+		visible = false
+	($Button as Button).gui_input.connect(func (input):
+		if input is InputEventMouseButton and input.double_click and not loaded_event:
+			loaded_event = event.linked_scene.instantiate() as Event
+			games.add_child(loaded_event)
+			loaded_event.event()
+			loaded_event.event_ended.connect(func ():
+				loaded_event.queue_free()
+				loaded_event = null
+			, CONNECT_ONE_SHOT)
+	)
+	AchievementsGlobalConroller.achievement_taked.connect(func (achievement_id):
+		if achievement_id == \"little_win\":
+			visible = true
+	)
 "
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xtheg"]
@@ -787,7 +802,9 @@ volume_db = -5.0
 
 [node name="Events" type="Node" parent="."]
 script = ExtResource("12_82rj2")
-events = Array[ExtResource("14_xevt3")]([ExtResource("15_ix15y"), ExtResource("16_l3hih"), ExtResource("17_xevt3"), ExtResource("18_im3ns")])
+events = Array[ExtResource("14_xevt3")]([ExtResource("15_ix15y"), ExtResource("16_l3hih"), ExtResource("17_xevt3")])
+
+[node name="Games" type="Node" parent="."]
 
 [node name="NikoLayer" type="CanvasLayer" parent="."]
 
@@ -855,9 +872,9 @@ offset_right = 29.0
 offset_bottom = 30.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
-theme_override_styles/hover = SubResource("StyleBoxTexture_7ycvg")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_wr18j")
 theme_override_styles/normal = SubResource("StyleBoxTexture_qwutr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wr18j")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7ycvg")
 icon = SubResource("AtlasTexture_671wp")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="NikoLayer/NikoBase"]
@@ -880,7 +897,7 @@ volume_db = -10.0
 
 [node name="ShortcutsWindow" parent="." instance=ExtResource("19_rkakh")]
 title = "SHORTCUTS"
-size = Vector2i(358, 348)
+size = Vector2i(358, 394)
 visible = false
 unresizable = false
 min_size = Vector2i(193, 270)
@@ -1179,6 +1196,69 @@ text = "PANCAKECLICKER"
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="Games" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Button" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Games"]
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"FlatButton"
+autowrap_mode = 2
+icon_alignment = 1
+vertical_icon_alignment = 0
+metadata/TargetWindow = NodePath("../../../../../../../../../../GamesWindow")
+
+[node name="ButtonMargin" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Games"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ButtonContent" type="VBoxContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Games/ButtonMargin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Icon" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Games/ButtonMargin/ButtonContent"]
+material = ExtResource("41_iylel")
+custom_minimum_size = Vector2(64, 66)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("34_im3ns")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ShortcutIcon" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Games/ButtonMargin/ButtonContent/Icon"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("23_30vx0")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Games/ButtonMargin/ButtonContent"]
+custom_minimum_size = Vector2(16, 24)
+layout_mode = 2
+text = "GAMES"
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="Github" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
@@ -1238,69 +1318,6 @@ expand_icon = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 text = "Github"
-horizontal_alignment = 1
-autowrap_mode = 3
-
-[node name="Tennis" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(160, 108)
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
-script = SubResource("GDScript_mmq7y")
-
-[node name="Button" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis"]
-custom_minimum_size = Vector2(160, 108)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_type_variation = &"FlatButton"
-autowrap_mode = 2
-icon_alignment = 1
-vertical_icon_alignment = 0
-
-[node name="ButtonMargin" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="ButtonContent" type="VBoxContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis/ButtonMargin"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 2
-
-[node name="Icon" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis/ButtonMargin/ButtonContent"]
-material = ExtResource("41_iylel")
-custom_minimum_size = Vector2(64, 66)
-layout_mode = 2
-mouse_filter = 2
-theme_type_variation = &"IconButton"
-icon = ExtResource("32_mmq7y")
-icon_alignment = 1
-expand_icon = true
-
-[node name="ShortcutIcon" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis/ButtonMargin/ButtonContent/Icon"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_type_variation = &"IconButton"
-icon = ExtResource("23_30vx0")
-icon_alignment = 1
-expand_icon = true
-
-[node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis/ButtonMargin/ButtonContent"]
-custom_minimum_size = Vector2(16, 24)
-layout_mode = 2
-text = "TENNIS"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -1377,6 +1394,259 @@ script = SubResource("GDScript_xtheg")
 sound = NodePath("HELLO")
 
 [node name="HELLO" type="AudioStreamPlayer" parent="ShortcutsWindow/Control/WindowContainer/Content/CornerIcon"]
+stream = ExtResource("30_id8vy")
+
+[node name="GamesWindow" parent="." instance=ExtResource("19_rkakh")]
+title = "SHORTCUTS"
+size = Vector2i(358, 394)
+visible = false
+unresizable = false
+min_size = Vector2i(193, 270)
+max_size = Vector2i(1920, 1040)
+
+[node name="Topbar" parent="GamesWindow/Control/WindowContainer" index="0"]
+z_index = 0
+
+[node name="Icon" parent="GamesWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
+icon = ExtResource("34_im3ns")
+
+[node name="Title" parent="GamesWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
+text = "GAMES_TITLE"
+
+[node name="MarginContainer" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="GridContainer" type="HFlowContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer" node_paths=PackedStringArray("games_node")]
+layout_mode = 2
+script = ExtResource("27_im3ns")
+games = Array[PackedScene]([null, null, ExtResource("40_gv8l5")])
+games_node = NodePath("../../../../../../../../Games")
+
+[node name="Pancake" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Button" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Pancake"]
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"FlatButton"
+autowrap_mode = 2
+icon_alignment = 1
+vertical_icon_alignment = 0
+metadata/TargetWindow = NodePath("")
+
+[node name="ButtonMargin" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Pancake"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ButtonContent" type="VBoxContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Pancake/ButtonMargin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Icon" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Pancake/ButtonMargin/ButtonContent"]
+material = ExtResource("41_iylel")
+custom_minimum_size = Vector2(64, 66)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("26_rkakh")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ShortcutIcon" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Pancake/ButtonMargin/ButtonContent/Icon"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("23_30vx0")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Pancake/ButtonMargin/ButtonContent"]
+custom_minimum_size = Vector2(16, 24)
+layout_mode = 2
+text = "PANCAKECLICKER"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Tennis" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" node_paths=PackedStringArray("games")]
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+script = SubResource("GDScript_mmq7y")
+event = ExtResource("17_xevt3")
+games = NodePath("../../../../../../../../../Games")
+
+[node name="Button" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis"]
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"FlatButton"
+autowrap_mode = 2
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="ButtonMargin" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ButtonContent" type="VBoxContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis/ButtonMargin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Icon" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis/ButtonMargin/ButtonContent"]
+material = ExtResource("41_iylel")
+custom_minimum_size = Vector2(64, 66)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("32_mmq7y")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ShortcutIcon" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis/ButtonMargin/ButtonContent/Icon"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("23_30vx0")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis/ButtonMargin/ButtonContent"]
+custom_minimum_size = Vector2(16, 24)
+layout_mode = 2
+text = "TENNIS"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="OneShotFunkin" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Button" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/OneShotFunkin"]
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"FlatButton"
+autowrap_mode = 2
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="ButtonMargin" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/OneShotFunkin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ButtonContent" type="VBoxContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/OneShotFunkin/ButtonMargin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Icon" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/OneShotFunkin/ButtonMargin/ButtonContent"]
+material = ExtResource("41_iylel")
+custom_minimum_size = Vector2(64, 66)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("32_mmq7y")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ShortcutIcon" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/OneShotFunkin/ButtonMargin/ButtonContent/Icon"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("23_30vx0")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/OneShotFunkin/ButtonMargin/ButtonContent"]
+custom_minimum_size = Vector2(16, 24)
+layout_mode = 2
+text = "OneShot Funkin'"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CornerIcon" type="TextureRect" parent="GamesWindow/Control/WindowContainer/Content" index="1" node_paths=PackedStringArray("sound")]
+layout_mode = 0
+offset_left = 1842.0
+offset_top = 875.0
+offset_right = 1913.0
+offset_bottom = 937.0
+texture = ExtResource("29_rkakh")
+script = SubResource("GDScript_xtheg")
+sound = NodePath("HELLO")
+
+[node name="HELLO" type="AudioStreamPlayer" parent="GamesWindow/Control/WindowContainer/Content/CornerIcon"]
 stream = ExtResource("30_id8vy")
 
 [node name="ShutdownPopup" parent="." instance=ExtResource("33_id8vy")]
@@ -1458,8 +1728,8 @@ custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_type_variation = &"FlatButton"
-theme_override_styles/focus = ExtResource("34_uacds")
 theme_override_styles/hover = ExtResource("35_y0lqw")
+theme_override_styles/focus = ExtResource("34_uacds")
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -1484,11 +1754,11 @@ custom_minimum_size = Vector2(64, 66)
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
-theme_override_colors/icon_hover_pressed_color = Color(0.588235, 0.392157, 1, 1)
-theme_override_colors/icon_hover_color = Color(0.588235, 0.392157, 1, 1)
-theme_override_colors/icon_pressed_color = Color(0.588235, 0.392157, 1, 1)
-theme_override_colors/icon_focus_color = Color(0.588235, 0.392157, 1, 1)
 theme_override_colors/icon_normal_color = Color(0.588235, 0.392157, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.588235, 0.392157, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.588235, 0.392157, 1, 1)
+theme_override_colors/icon_hover_color = Color(0.588235, 0.392157, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.588235, 0.392157, 1, 1)
 icon = ExtResource("17_ijoax")
 icon_alignment = 1
 expand_icon = true
@@ -1515,8 +1785,8 @@ custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_type_variation = &"FlatButton"
-theme_override_styles/focus = ExtResource("34_c5xsv")
 theme_override_styles/hover = ExtResource("35_84x1k")
+theme_override_styles/focus = ExtResource("34_c5xsv")
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -1541,11 +1811,11 @@ custom_minimum_size = Vector2(64, 66)
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
-theme_override_colors/icon_hover_pressed_color = Color(0.454902, 0.419608, 0.901961, 1)
-theme_override_colors/icon_hover_color = Color(0.454902, 0.419608, 0.901961, 1)
-theme_override_colors/icon_pressed_color = Color(0.454902, 0.419608, 0.901961, 1)
-theme_override_colors/icon_focus_color = Color(0.454902, 0.419608, 0.901961, 1)
 theme_override_colors/icon_normal_color = Color(0.454902, 0.419608, 0.901961, 1)
+theme_override_colors/icon_focus_color = Color(0.454902, 0.419608, 0.901961, 1)
+theme_override_colors/icon_pressed_color = Color(0.454902, 0.419608, 0.901961, 1)
+theme_override_colors/icon_hover_color = Color(0.454902, 0.419608, 0.901961, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.454902, 0.419608, 0.901961, 1)
 icon = ExtResource("17_ijoax")
 icon_alignment = 1
 expand_icon = true
@@ -1572,8 +1842,8 @@ custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_type_variation = &"FlatButton"
-theme_override_styles/focus = ExtResource("41_ya33n")
 theme_override_styles/hover = ExtResource("42_3wiol")
+theme_override_styles/focus = ExtResource("41_ya33n")
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -1598,11 +1868,11 @@ custom_minimum_size = Vector2(64, 66)
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
-theme_override_colors/icon_hover_pressed_color = Color(1, 0.823529, 0.415686, 1)
-theme_override_colors/icon_hover_color = Color(1, 0.823529, 0.415686, 1)
-theme_override_colors/icon_pressed_color = Color(1, 0.823529, 0.415686, 1)
-theme_override_colors/icon_focus_color = Color(1, 0.823529, 0.415686, 1)
 theme_override_colors/icon_normal_color = Color(1, 0.823529, 0.415686, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.823529, 0.415686, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.823529, 0.415686, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.823529, 0.415686, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.823529, 0.415686, 1)
 icon = ExtResource("17_ijoax")
 icon_alignment = 1
 expand_icon = true
@@ -1629,8 +1899,8 @@ custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_type_variation = &"FlatButton"
-theme_override_styles/focus = ExtResource("45_8quq7")
 theme_override_styles/hover = ExtResource("46_vhc7d")
+theme_override_styles/focus = ExtResource("45_8quq7")
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -1655,11 +1925,11 @@ custom_minimum_size = Vector2(64, 66)
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
-theme_override_colors/icon_hover_pressed_color = Color(0.835294, 0.129412, 0.415686, 1)
-theme_override_colors/icon_hover_color = Color(0.835294, 0.129412, 0.415686, 1)
-theme_override_colors/icon_pressed_color = Color(0.835294, 0.129412, 0.415686, 1)
-theme_override_colors/icon_focus_color = Color(0.835294, 0.129412, 0.415686, 1)
 theme_override_colors/icon_normal_color = Color(0.835294, 0.129412, 0.415686, 1)
+theme_override_colors/icon_focus_color = Color(0.835294, 0.129412, 0.415686, 1)
+theme_override_colors/icon_pressed_color = Color(0.835294, 0.129412, 0.415686, 1)
+theme_override_colors/icon_hover_color = Color(0.835294, 0.129412, 0.415686, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.835294, 0.129412, 0.415686, 1)
 icon = ExtResource("17_ijoax")
 icon_alignment = 1
 expand_icon = true
@@ -1686,8 +1956,8 @@ custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_type_variation = &"FlatButton"
-theme_override_styles/focus = ExtResource("48_id12a")
 theme_override_styles/hover = ExtResource("49_rs42p")
+theme_override_styles/focus = ExtResource("48_id12a")
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -1712,11 +1982,11 @@ custom_minimum_size = Vector2(64, 66)
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
-theme_override_colors/icon_hover_pressed_color = Color(0.996078, 0.333333, 0.74902, 1)
-theme_override_colors/icon_hover_color = Color(0.996078, 0.333333, 0.74902, 1)
-theme_override_colors/icon_pressed_color = Color(0.996078, 0.333333, 0.74902, 1)
-theme_override_colors/icon_focus_color = Color(0.996078, 0.333333, 0.74902, 1)
 theme_override_colors/icon_normal_color = Color(0.996078, 0.333333, 0.74902, 1)
+theme_override_colors/icon_focus_color = Color(0.996078, 0.333333, 0.74902, 1)
+theme_override_colors/icon_pressed_color = Color(0.996078, 0.333333, 0.74902, 1)
+theme_override_colors/icon_hover_color = Color(0.996078, 0.333333, 0.74902, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.996078, 0.333333, 0.74902, 1)
 icon = ExtResource("17_ijoax")
 icon_alignment = 1
 expand_icon = true
@@ -1743,8 +2013,8 @@ custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_type_variation = &"FlatButton"
-theme_override_styles/focus = ExtResource("51_0mwxc")
 theme_override_styles/hover = ExtResource("52_vuht8")
+theme_override_styles/focus = ExtResource("51_0mwxc")
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -1769,11 +2039,11 @@ custom_minimum_size = Vector2(64, 66)
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
-theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
 icon = ExtResource("17_ijoax")
 icon_alignment = 1
 expand_icon = true
@@ -1800,8 +2070,8 @@ custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_type_variation = &"FlatButton"
-theme_override_styles/focus = ExtResource("53_pw1oq")
 theme_override_styles/hover = ExtResource("54_gs8nl")
+theme_override_styles/focus = ExtResource("53_pw1oq")
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -1826,11 +2096,11 @@ custom_minimum_size = Vector2(64, 66)
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
-theme_override_colors/icon_hover_pressed_color = Color(0.992157, 0.560784, 0.301961, 1)
-theme_override_colors/icon_hover_color = Color(0.992157, 0.560784, 0.301961, 1)
-theme_override_colors/icon_pressed_color = Color(0.992157, 0.560784, 0.301961, 1)
-theme_override_colors/icon_focus_color = Color(0.992157, 0.560784, 0.301961, 1)
 theme_override_colors/icon_normal_color = Color(0.992157, 0.560784, 0.301961, 1)
+theme_override_colors/icon_focus_color = Color(0.992157, 0.560784, 0.301961, 1)
+theme_override_colors/icon_pressed_color = Color(0.992157, 0.560784, 0.301961, 1)
+theme_override_colors/icon_hover_color = Color(0.992157, 0.560784, 0.301961, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.992157, 0.560784, 0.301961, 1)
 icon = ExtResource("17_ijoax")
 icon_alignment = 1
 expand_icon = true
@@ -1857,8 +2127,8 @@ custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_type_variation = &"FlatButton"
-theme_override_styles/focus = ExtResource("57_v63vh")
 theme_override_styles/hover = ExtResource("58_iiypn")
+theme_override_styles/focus = ExtResource("57_v63vh")
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -1883,11 +2153,11 @@ custom_minimum_size = Vector2(64, 66)
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
-theme_override_colors/icon_hover_pressed_color = Color(0.207843, 0.803922, 0.823529, 1)
-theme_override_colors/icon_hover_color = Color(0.207843, 0.803922, 0.823529, 1)
-theme_override_colors/icon_pressed_color = Color(0.207843, 0.803922, 0.823529, 1)
-theme_override_colors/icon_focus_color = Color(0.207843, 0.803922, 0.823529, 1)
 theme_override_colors/icon_normal_color = Color(0.207843, 0.803922, 0.823529, 1)
+theme_override_colors/icon_focus_color = Color(0.207843, 0.803922, 0.823529, 1)
+theme_override_colors/icon_pressed_color = Color(0.207843, 0.803922, 0.823529, 1)
+theme_override_colors/icon_hover_color = Color(0.207843, 0.803922, 0.823529, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.207843, 0.803922, 0.823529, 1)
 icon = ExtResource("17_ijoax")
 icon_alignment = 1
 expand_icon = true
@@ -1914,8 +2184,8 @@ custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_type_variation = &"FlatButton"
-theme_override_styles/focus = ExtResource("60_jl6hu")
 theme_override_styles/hover = ExtResource("61_uwk5n")
+theme_override_styles/focus = ExtResource("60_jl6hu")
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -1940,11 +2210,11 @@ custom_minimum_size = Vector2(64, 66)
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
-theme_override_colors/icon_hover_pressed_color = Color(0.247059, 0.835294, 0.392157, 1)
-theme_override_colors/icon_hover_color = Color(0.247059, 0.835294, 0.392157, 1)
-theme_override_colors/icon_pressed_color = Color(0.247059, 0.835294, 0.392157, 1)
-theme_override_colors/icon_focus_color = Color(0.247059, 0.835294, 0.392157, 1)
 theme_override_colors/icon_normal_color = Color(0.247059, 0.835294, 0.392157, 1)
+theme_override_colors/icon_focus_color = Color(0.247059, 0.835294, 0.392157, 1)
+theme_override_colors/icon_pressed_color = Color(0.247059, 0.835294, 0.392157, 1)
+theme_override_colors/icon_hover_color = Color(0.247059, 0.835294, 0.392157, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.247059, 0.835294, 0.392157, 1)
 icon = ExtResource("17_ijoax")
 icon_alignment = 1
 expand_icon = true
@@ -2320,14 +2590,13 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 selected = 0
 item_count = 4
-popup/item_0/text = "English"
+popup/item_0/text = "English (100%)"
 popup/item_0/id = 0
-popup/item_1/text = "Русский"
+popup/item_1/text = "Русский (100%)"
 popup/item_1/id = 1
-popup/item_2/text = "Deutsch"
+popup/item_2/text = "Deutsch (~60%)"
 popup/item_2/id = 2
-popup/item_2/disabled = true
-popup/item_3/text = "Українська"
+popup/item_3/text = "Українська (~99%)"
 popup/item_3/id = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel"]
@@ -3245,7 +3514,7 @@ layout_mode = 2
 
 [node name="BackgroundShopImage" type="TextureRect" parent="ShopWindow/Control/WindowContainer/Content/ShopMargin/ShopImagesContent"]
 custom_minimum_size = Vector2(800, 600)
-layout_mode = 2
+layout_mode = 0
 offset_right = 800.0
 offset_bottom = 600.0
 texture = ExtResource("74_v118d")
@@ -3263,7 +3532,7 @@ process_material = SubResource("ParticleProcessMaterial_o48om")
 
 [node name="MiddleShopImage" type="TextureRect" parent="ShopWindow/Control/WindowContainer/Content/ShopMargin/ShopImagesContent"]
 custom_minimum_size = Vector2(800, 600)
-layout_mode = 2
+layout_mode = 0
 offset_right = 800.0
 offset_bottom = 600.0
 texture = ExtResource("75_o63de")
@@ -3271,7 +3540,7 @@ texture = ExtResource("75_o63de")
 [node name="ShopContent" type="MarginContainer" parent="ShopWindow/Control/WindowContainer/Content/ShopMargin/ShopImagesContent"]
 clip_contents = true
 custom_minimum_size = Vector2(414, 248)
-layout_mode = 2
+layout_mode = 0
 offset_left = 54.0
 offset_top = 132.0
 offset_right = 468.0
@@ -3296,7 +3565,7 @@ layout_mode = 2
 
 [node name="FrontShopImage" type="TextureRect" parent="ShopWindow/Control/WindowContainer/Content/ShopMargin/ShopImagesContent"]
 custom_minimum_size = Vector2(800, 600)
-layout_mode = 2
+layout_mode = 0
 offset_right = 800.0
 offset_bottom = 600.0
 mouse_filter = 2
@@ -3542,6 +3811,7 @@ autostart = true
 [connection signal="timeout" from="Timer" to="." method="_on_timer_tick"]
 
 [editable path="ShortcutsWindow"]
+[editable path="GamesWindow"]
 [editable path="ShutdownPopup"]
 [editable path="ThemesWindow"]
 [editable path="ThemesWindow/ThemeEditorWindow"]

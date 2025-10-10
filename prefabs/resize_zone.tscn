@@ -1,12 +1,12 @@
 [gd_scene load_steps=57 format=3 uid="uid://jf3fe5rn6ijb"]
 
 [ext_resource type="Script" uid="uid://dupfag105mf6t" path="res://scripts/windows/window_resize_controller.gd" id="1_3vdsj"]
-[ext_resource type="Texture2D" uid="uid://gfqymydag805" path="res://ui_sprites/zero_sprite.tres" id="2_aco5r"]
-[ext_resource type="Texture2D" uid="uid://j2lw1hsnhwk" path="res://ui_sprites/resize_hint.tres" id="2_m1nqu"]
+[ext_resource type="Texture2D" uid="uid://gfqymydag805" path="res://sprites/zero_sprite.tres" id="2_aco5r"]
+[ext_resource type="Texture2D" uid="uid://j2lw1hsnhwk" path="res://sprites/ui/resize_hint.tres" id="2_m1nqu"]
 [ext_resource type="StyleBox" uid="uid://cq3xfsa5jvu4m" path="res://themes/black.stylebox" id="3_3dyud"]
-[ext_resource type="Texture2D" uid="uid://bw465n3hiy0mk" path="res://ui_sprites/ui_shit.png" id="4_0n1pi"]
-[ext_resource type="Texture2D" uid="uid://b67r5bffv66ql" path="res://ui_sprites/spinbox_down.tres" id="5_stx46"]
-[ext_resource type="Texture2D" uid="uid://cw32ceii5133" path="res://ui_sprites/spinbox_up.tres" id="6_kkmsc"]
+[ext_resource type="Texture2D" uid="uid://bw465n3hiy0mk" path="res://sprites/ui/ui_shit.png" id="4_0n1pi"]
+[ext_resource type="Texture2D" uid="uid://b67r5bffv66ql" path="res://sprites/ui/spinbox_down.tres" id="5_stx46"]
+[ext_resource type="Texture2D" uid="uid://cw32ceii5133" path="res://sprites/ui/spinbox_up.tres" id="6_kkmsc"]
 [ext_resource type="FontFile" uid="uid://ckcoy708n8osl" path="res://fonts/TerminusTTF-Bold.ttf" id="7_k10fs"]
 [ext_resource type="Script" uid="uid://cm26f3vhmimf4" path="res://scripts/themes/theme_colors_applier.gd" id="8_2e1y6"]
 

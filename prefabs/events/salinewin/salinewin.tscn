@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/events/event.gd" id="1_phn8v"]
 [ext_resource type="PackedScene" uid="uid://3f1ftg4bnjej" path="res://prefabs/events/salinewin/screen_hide_window.tscn" id="2_hsged"]
 [ext_resource type="AudioStream" uid="uid://bvq65akwrmdqd" path="res://sounds/salinewin_other_rem_plus.ogg" id="3_lp4p1"]
-[ext_resource type="Texture2D" uid="uid://dnwbeed7hrv83" path="res://ui_sprites/test_shit.png" id="4_15gn4"]
-[ext_resource type="Material" uid="uid://bmg1ixf1jmpp8" path="res://shaders/glitch_material.tres" id="4_70wn8"]
-[ext_resource type="Material" uid="uid://cu7ok1qa4ne2f" path="res://shaders/oneshot_glitch_material.tres" id="6_64hsx"]
+[ext_resource type="Texture2D" uid="uid://dnwbeed7hrv83" path="res://sprites/ui/test_shit.png" id="4_15gn4"]
+[ext_resource type="Material" uid="uid://bmg1ixf1jmpp8" path="res://materials/glitch_material.tres" id="4_70wn8"]
+[ext_resource type="Material" uid="uid://cu7ok1qa4ne2f" path="res://materials/oneshot_glitch_material.tres" id="6_64hsx"]
 
 [sub_resource type="GDScript" id="GDScript_phn8v"]
 resource_name = "event_controller"

@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://fnqnwb4uwdkx"]
 
 [ext_resource type="PackedScene" uid="uid://8hficp4dbvqs" path="res://prefabs/popup_window.tscn" id="1_yhq35"]
-[ext_resource type="Texture2D" uid="uid://dpwa8q6tb8w5o" path="res://ui_sprites/donate_heart.png" id="2_326pi"]
-[ext_resource type="Texture2D" uid="uid://gfqymydag805" path="res://ui_sprites/zero_sprite.tres" id="2_vlwem"]
-[ext_resource type="Texture2D" uid="uid://cj74xwnjydvk6" path="res://ui_sprites/info.png" id="4_83j85"]
+[ext_resource type="Texture2D" uid="uid://dpwa8q6tb8w5o" path="res://sprites/icons/donate_heart.png" id="2_326pi"]
+[ext_resource type="Texture2D" uid="uid://gfqymydag805" path="res://sprites/zero_sprite.tres" id="2_vlwem"]
+[ext_resource type="Texture2D" uid="uid://cj74xwnjydvk6" path="res://sprites/icons/info.png" id="4_83j85"]
 
 [sub_resource type="GDScript" id="GDScript_yhq35"]
 resource_name = "prerelese_popup_controller"
