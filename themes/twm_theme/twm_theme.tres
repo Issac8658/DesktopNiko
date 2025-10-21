@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=54 format=3 uid="uid://bunttssun0swb"]
+[gd_resource type="Theme" load_steps=56 format=3 uid="uid://bunttssun0swb"]
 
 [ext_resource type="StyleBox" uid="uid://cmgrg6b15xr45" path="res://themes/twm_theme/button_hover.stylebox" id="1_h7d4g"]
 [ext_resource type="StyleBox" uid="uid://c0ibms6t7cd4b" path="res://themes/twm_theme/disabled_button.stylebox" id="1_r20nx"]
@@ -22,7 +22,9 @@
 [ext_resource type="StyleBox" uid="uid://bd2g4ws0gk1b6" path="res://themes/twm_theme/vertical_line.stylebox" id="11_xdasf"]
 [ext_resource type="StyleBox" uid="uid://dg1twp8kt2bvx" path="res://themes/twm_theme/tab.stylebox" id="12_d6ho4"]
 [ext_resource type="Texture2D" uid="uid://b67r5bffv66ql" path="res://sprites/ui/spinbox_down.tres" id="16_85n5b"]
+[ext_resource type="StyleBox" uid="uid://b821x8hwjmnyo" path="res://themes/twm_theme/frame_no_bg.tres" id="16_f1ivg"]
 [ext_resource type="Texture2D" uid="uid://cw32ceii5133" path="res://sprites/ui/spinbox_up.tres" id="16_hcquw"]
+[ext_resource type="StyleBox" uid="uid://cnomj40gsn02c" path="res://themes/twm_theme/filled_panel.stylebox" id="16_y63lx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8odgm"]
 
@@ -212,6 +214,10 @@ PopupMenu/styles/labeled_separator_right = SubResource("StyleBoxLine_h0ux4")
 PopupMenu/styles/panel = ExtResource("8_r20nx")
 PopupMenu/styles/separator = SubResource("StyleBoxLine_owxno")
 PopupPanel/styles/panel = ExtResource("9_1ext6")
+ProgressBar/colors/font_color = Color(0.588235, 0.392157, 1, 1)
+ProgressBar/constants/outline_size = 8
+ProgressBar/styles/background = ExtResource("16_f1ivg")
+ProgressBar/styles/fill = ExtResource("16_y63lx")
 RichTextLabel/colors/default_color = Color(0.588235, 0.392157, 1, 1)
 RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 1)
 RichTextLabel/colors/selection_color = Color(0.588235, 0.392157, 1, 1)

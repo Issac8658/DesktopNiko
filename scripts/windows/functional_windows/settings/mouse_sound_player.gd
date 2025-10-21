@@ -8,7 +8,7 @@ var is_pressed_old = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if GlobalControlls.is_mouse_sound_enabled and not GlobalControlls.is_niko_hovered:
+	if ValuesContainer.MouseSoundEnabled and not ValuesContainer.NikoHovered:
 		is_pressed = Input.is_action_pressed("mouse_down")
 		if is_pressed != is_pressed_old:
 			if is_pressed == true:

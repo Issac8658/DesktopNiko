@@ -33,7 +33,7 @@ func start_buffer_play():
 	if len(achievements_buffer) > 0:
 		buffer_playing = true
 		var achievement_id = achievements_buffer.pop_front()
-		if GlobalControlls.show_achievements:
+		if ValuesContainer.ShowAchievements:
 			var data = AchievementsGlobalConroller.get_achievement_data(achievement_id)
 			name_label.text = data[0]
 			desc_label.text = data[1]

@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dux4rouippbfo" path="res://sounds/lose.wav" id="4_hkh58"]
 [ext_resource type="AudioStream" uid="uid://bb45mnqcvfo5p" path="res://sounds/pc_logon.wav" id="5_a0qhp"]
 [ext_resource type="Texture2D" uid="uid://ccryp414lksku" path="res://prefabs/events/tennis/logo_tennis_ball.png" id="6_ao3bx"]
-[ext_resource type="Texture2D" uid="uid://c3s1xqfrucpby" path="res://niko/niko_smug.png" id="7_i1fqx"]
+[ext_resource type="Texture2D" uid="uid://c3s1xqfrucpby" path="res://niko/niko_default/smug.png" id="7_i1fqx"]
 [ext_resource type="Texture2D" uid="uid://bjfdcbs4wdh0k" path="res://prefabs/events/tennis/tennis_icon.png" id="8_a5d04"]
 [ext_resource type="Texture2D" uid="uid://coooblyht2ib3" path="res://prefabs/events/tennis/racket.png" id="8_wh27w"]
 [ext_resource type="Texture2D" uid="uid://0485aj6864rb" path="res://prefabs/events/tennis/tennis_ball.png" id="9_d2fhx"]
@@ -84,13 +84,13 @@ func _ready() -> void:
 
 func do_event():
 	if not window.visible:
-		GlobalControlls.set_niko_visibility(false)
+		ValuesContainer.NikoVisible = false
 		window.visible = true
 		sound_tennis_music.play()
 
 
 func revert():
-	GlobalControlls.set_niko_visibility(true)
+	ValuesContainer.NikoVisible = true
 	called_to_clear.emit()
 
 
@@ -100,7 +100,7 @@ func win():
 	screen_win.visible = true
 	sound_tennis_music.stop()
 	sound_win.play()
-	GlobalControlls.doned_events += 1
+	#GlobalControlls.doned_events += 1
 	#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
@@ -114,7 +114,7 @@ func lose():
 
 
 func start_game():
-	playing_niko_rect.texture = NikoSpritesModule.get_sprite(GlobalControlls.idle_facepick)
+	playing_niko_rect.texture = NikoSpritesModule.get_sprite(ValuesContainer.IdleFacepick)
 	screen_main_menu.visible = false
 	screen_game.visible = true
 	gaming = true
@@ -146,7 +146,7 @@ func _physics_process(delta: float) -> void:
 				win()
 			else:
 				sound_niko_shot.play()
-				playing_niko_rect.texture = NikoSpritesModule.get_sprite(GlobalControlls.idle_facepick)
+				playing_niko_rect.texture = NikoSpritesModule.get_sprite(ValuesContainer.IdleFacepick)
 			await get_tree().create_timer(.5).timeout
 			#print(\"return\")
 			niko_raket_pos = Vector2i(450,250)
@@ -271,7 +271,6 @@ volume_db = -5.0
 title = "Tennis"
 initial_position = 4
 size = Vector2i(800, 600)
-visible = false
 
 [node name="Icon" parent="TennisWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
 icon = ExtResource("8_a5d04")

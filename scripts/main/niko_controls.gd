@@ -5,8 +5,6 @@ const main_window_id = DisplayServer.MAIN_WINDOW_ID
 const anim_duration = .2
 const scare_threshold = 6
 const afk_time : int = 180
-const original_size = Vector2i(124, 152)
-const scales = [0.5, 1.0, 2.0, 3.0, 4.0]
 const sleepy_afk_time : int = 900
 
 @onready var main_window = get_window()
@@ -18,7 +16,7 @@ const sleepy_afk_time : int = 900
 @export var window_to_open : Window # window to open when you click on the menu button
 @export var niko_sound : AudioStreamPlayer
 @export var animator : AnimationPlayer
-@export var niko_layer : CanvasLayer
+@export var niko_layer : Control
 @export var niko_rect : TextureRect
 @export var facepicks_container : Control
 @export var meow_sound_option_button : OptionButton
@@ -28,9 +26,6 @@ const sleepy_afk_time : int = 900
 @export var sleeping_particles : GPUParticles2D
 
 var is_scared : bool = false
-var mouse_offset : Vector2;
-var is_dragging : bool = false;
-var PositionBeforeMove : Vector2i;
 var in_anim : bool = false
 var latest_timestamp = Time.get_unix_time_from_system()
 
@@ -45,9 +40,6 @@ func _ready() -> void: # applying saved parameters
 		update_facepick()
 	)
 	
-	GlobalControlls.niko_scale_changed.connect(update_scale)
-	update_scale()
-	
 	niko_sound.stream = meow_sounds[GlobalControlls.current_meow_sound_id]
 	meow_sound_option_button.selected = GlobalControlls.current_meow_sound_id
 	click_count_label.text = str(GlobalControlls.clicks)
@@ -55,9 +47,6 @@ func _ready() -> void: # applying saved parameters
 	
 	GlobalControlls.niko_visibility_changed.connect(func (visible):
 		niko_layer.visible = visible
-	)
-	GlobalControlls.event_started.connect(func (_event):
-		is_dragging = false
 	)
 	#PassthroughModule.UpdateWindowsExStyles(get_window(), true)
 
@@ -72,10 +61,6 @@ func _on_animation_finished(_anim_name: StringName) -> void: #afk animation stop
 	update_facepick()
 
 
-func update_scale():
-	main_window.size = original_size * scales[GlobalControlls.niko_scale]
-	niko_layer.scale = Vector2(scales[GlobalControlls.niko_scale],scales[GlobalControlls.niko_scale])
-
 
 func _on_niko_input(event: InputEvent) -> void: # main Niko operations
 	save_afk_time = 0
@@ -84,18 +69,7 @@ func _on_niko_input(event: InputEvent) -> void: # main Niko operations
 	if not GlobalControlls.force_facepick:
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
-				is_dragging = true
 				click()
-				mouse_offset = event.position
-			else:
-				is_dragging = false
-				if GlobalControlls.snap_to_bottom:
-					var pos = 122 * scales[GlobalControlls.niko_scale]
-					var usable_rect = DisplayServer.screen_get_usable_rect(DisplayServer.window_get_current_screen(main_window_id))
-					if abs(main_window.position.y + pos - usable_rect.end.y) <= 30 * scales[GlobalControlls.niko_scale]:
-						main_window.position.y = usable_rect.end.y - pos
-		if event is InputEventMouseMotion and is_dragging: # dragging
-			move_window(event.position - mouse_offset);
 
 
 func _input(event) -> void: # Niko flip
@@ -137,7 +111,6 @@ func update_facepick():
 	if not animator.is_playing():
 		if GlobalControlls.force_facepick:
 			niko_rect.texture = NikoSpritesModule.get_sprite(GlobalControlls.forced_facepick_id)
-			is_dragging = false
 		elif GlobalControlls.is_shutdown_popup_shown:
 			niko_rect.texture = NikoSpritesModule.get_sprite("niko_cry")
 			save_afk_time = 0
@@ -169,12 +142,12 @@ func _on_meow_sound_selected(index: int) -> void: # meow sound changing
 
 # Window functions
 func _on_window_mouse_entered() -> void: # Niko menu show
-	menu_label.visible = true
+	menu_label.modulate = Color.WHITE
 	GlobalControlls.is_niko_hovered = true
 
 
 func _on_window_mouse_exited() -> void: # Niko menu hide
-	menu_label.visible = false
+	menu_label.modulate = Color.TRANSPARENT
 	GlobalControlls.is_niko_hovered = false
 
 
@@ -220,7 +193,6 @@ func _on_timer_tick() -> void: # CPS Counter
 			animator.play("niko_look_around")
 			GlobalControlls.save()
 			latest_timestamp = Time.get_unix_time_from_system()
-	else: is_dragging = false
 
 func _on_close_button_mouse_entered() -> void: # Niko sad facepick on exit button hover
 	GlobalControlls.is_exit_button_hovered = true

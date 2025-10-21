@@ -6,7 +6,6 @@
 [resource]
 script = ExtResource("2_j65ff")
 spawn_chance = 0.1
-min_clicks = 100
 max_cps = 10
 display_name = "Alert: Pancake"
 linked_scene = ExtResource("1_knbah")

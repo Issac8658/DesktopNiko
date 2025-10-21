@@ -30,9 +30,12 @@ buses/default_bus_layout="res://buses.tres"
 [autoload]
 
 ShutdownHandler="*res://scripts/ShutdownHandler.cs"
-GlobalControlls="*res://scripts/main/global_controlls.gd"
-NikoSpritesModule="*res://scripts/main/niko_sprites_module.gd"
 PassthroughModule="*res://scripts/WindowMousePassthroughModule.cs"
+ValuesContainer="*res://scripts/main/ValuesContainer.cs"
+NikoSkinManager="*res://scripts/main/NikoSkinManager.cs"
+SaveLoad="*res://scripts/main/SaveLoad.cs"
+GlobalController="*res://scripts/main/GlobalController.cs"
+NikoSpritesModule="*res://scripts/main/niko_sprites_module.gd"
 Dialog="*res://prefabs/dialog_window.tscn"
 AchievementsGlobalConroller="*res://scripts/achievements/achievements_global_conroller.gd"
 NikoDialog="*res://prefabs/niko_dialog.tscn"
@@ -45,6 +48,8 @@ window/size/resizable=false
 window/size/borderless=true
 window/size/always_on_top=true
 window/size/transparent=true
+window/size/minimize_disabled=true
+window/size/maximize_disabled=true
 window/energy_saving/keep_screen_on=false
 window/subwindows/embed_subwindows=false
 window/per_pixel_transparency/allowed=true
@@ -136,9 +141,8 @@ locale/translations=PackedStringArray("res://translations.en.translation", "res:
 [physics]
 
 2d/run_on_separate_thread=true
-common/physics_ticks_per_second=30
-2d/physics_engine="Dummy"
 3d/physics_engine="Dummy"
+2d/solver/solver_iterations=20
 
 [rendering]
 

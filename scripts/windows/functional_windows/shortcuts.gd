@@ -19,22 +19,24 @@ func _ready():
 					)
 	
 	shutdown_accept_button.pressed.connect(func ():
-		GlobalControlls.try_quit()
+		#GlobalControlls.try_quit()
+		pass
 	)
 	
 	shutdown_popup.visibility_changed.connect(func ():
-		GlobalControlls.is_shutdown_popup_shown = shutdown_popup.visible
+		ValuesContainer.IsShutdownPupupShowed = shutdown_popup.visible
 	)
 	
-	GlobalControlls.quit_request.connect(func ():
-		shutdown_popup.popup()
-		GlobalControlls.facepick_update.emit()
-	)
+	#GlobalController.SaveRequest.connect(func ():
+	#	shutdown_popup.popup()
+		#GlobalControlls.facepick_update.emit()
+	#)
 
 
 func _on_close_button_input(event) -> void: # Close button work
 	if event is InputEventMouseButton and event.double_click:
-		GlobalControlls.quit_request.emit()
+		pass
+		#GlobalControlls.quit_request.emit()
 
 
 func _on_github_gui_input(event: InputEvent) -> void:

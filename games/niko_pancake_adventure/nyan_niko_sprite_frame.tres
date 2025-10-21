@@ -1,0 +1,34 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://cncmfemd8y0q1"]
+
+[ext_resource type="Texture2D" uid="uid://7nnsadshvovh" path="res://games/niko_pancake_adventure/nyan_niko1.png" id="1_c7kid"]
+[ext_resource type="Texture2D" uid="uid://dqnayl7oq2wgg" path="res://games/niko_pancake_adventure/nyan_niko2.png" id="2_hro0x"]
+[ext_resource type="Texture2D" uid="uid://cwgo8pq16w4i7" path="res://games/niko_pancake_adventure/nyan_niko3.png" id="3_v70qf"]
+[ext_resource type="Texture2D" uid="uid://biv0tcifq5fis" path="res://games/niko_pancake_adventure/nyan_niko4.png" id="4_xhkby"]
+[ext_resource type="Texture2D" uid="uid://bgnh65va8bmoh" path="res://games/niko_pancake_adventure/nyan_niko5.png" id="5_nq5mq"]
+[ext_resource type="Texture2D" uid="uid://d0s2ix57386wn" path="res://games/niko_pancake_adventure/nyan_niko6.png" id="6_ex73x"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c7kid")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hro0x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v70qf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xhkby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nq5mq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ex73x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]

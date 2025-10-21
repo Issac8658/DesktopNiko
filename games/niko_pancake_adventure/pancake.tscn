@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfsoa1dt76741"]
+
+[ext_resource type="Script" uid="uid://btqqghbw8rph4" path="res://games/niko_pancake_adventure/scripts/NPAPancake.cs" id="1_c7pc2"]
+[ext_resource type="Texture2D" uid="uid://k3j8qcm4l4wu" path="res://games/pancake_clicker/little_pancake.png" id="2_88pso"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lmrhu"]
+radius = 24.020824
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lmrhu"]
+blend_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lmrhu"]
+particle_flag_disable_z = true
+particle_flag_damping_as_friction = true
+emission_shape = 1
+emission_sphere_radius = 15.91
+radial_accel_min = 456.8
+radial_accel_max = 456.8
+
+[node name="Pancake" type="Area2D" node_paths=PackedStringArray("VisualNode")]
+monitorable = false
+script = ExtResource("1_c7pc2")
+VisualNode = NodePath("Visual")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lmrhu")
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Visual"]
+material = SubResource("CanvasItemMaterial_lmrhu")
+amount = 60
+texture = ExtResource("2_88pso")
+lifetime = 0.32
+process_material = SubResource("ParticleProcessMaterial_lmrhu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual"]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("2_88pso")

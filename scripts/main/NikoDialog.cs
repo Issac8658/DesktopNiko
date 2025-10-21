@@ -37,7 +37,7 @@ public partial class NikoDialog : Window
 		Size = new(300, 140);
 		TextShowTimer.Connect("timeout", ShowSymbolCallable);
 		
-		ClickControl.Connect("gui_input", Callable.From((InputEvent Event) =>
+		ClickControl.GuiInput += Event =>
 		{
 			if (Event.IsPressed())
 			{
@@ -45,7 +45,7 @@ public partial class NikoDialog : Window
 
 				GD.Print("Dialog Pressed");
 			}
-		}));
+		};
 	}
 
 	public void ShowDialog(Vector2I TargetDialogSize, string Text = "Nothing beats a jet2holidays and right now you can save fifty pounds per person", string[] Buttons = null, float SymbolShowTime = 0.05f)
@@ -148,10 +148,10 @@ public partial class NikoDialog : Window
 	{
 		Button DialogButton = new() { Text = Text, SizeFlagsHorizontal = Control.SizeFlags.ExpandFill };
 		ButtonsContainer.AddChild(DialogButton);
-		DialogButton.Connect("pressed", Callable.From(() =>
+		DialogButton.Pressed += () =>
 		{
 			EmitSignal("ButtonPressed", (short)ButtonId);
-		}));
+		};
 	}
 	private void RemoveButtons()
 	{

@@ -20,11 +20,11 @@ func _ready() -> void:
 
 func update(_value):
 	if toggle_checkbox.button_pressed:
-		GlobalControlls.sleep_time = int(seconds_spinbox.value + minutes_spinbox.value * 60 + hours_spinbox.value * 3600)
+		ValuesContainer.NikoTimeToSleep = int(seconds_spinbox.value + minutes_spinbox.value * 60 + hours_spinbox.value * 3600)
 		#print(GlobalControlls.sleep_time)
 		if hours_spinbox.value <= 0 and minutes_spinbox.value <= 0:
 			seconds_spinbox.min_value = 2
 		else:
 			seconds_spinbox.min_value = 0
 	else:
-		GlobalControlls.sleep_time = 2147483628
+		ValuesContainer.NikoTimeToSleep = 2147483628

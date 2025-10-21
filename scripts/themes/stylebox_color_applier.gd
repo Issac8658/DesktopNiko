@@ -15,10 +15,11 @@ func _init(s_base_color = PaletteColor.default, s_border_color = PaletteColor.de
 	_base_color = s_base_color
 	_border_color = s_border_color
 	update_colors()
-	GlobalControlls.theme_update.connect(func():
-		update_colors()
-	)
+	#GlobalControlls.theme_update.connect(func():
+	#	update_colors()
+	#)
 
 func update_colors():
-	bg_color = GlobalControlls.global_color_palette.colors[_base_color]
-	border_color = GlobalControlls.global_color_palette.colors[_border_color]
+	#bg_color = GlobalControlls.global_color_palette.colors[_base_color]
+	#border_color = GlobalControlls.global_color_palette.colors[_border_color]
+	pass

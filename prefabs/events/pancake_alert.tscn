@@ -31,7 +31,7 @@ func _ready() -> void:
 	popup.yes_button_pressed.connect(func ():
 		print(\"pressed yes\")
 		play_eating_anim()
-		GlobalControlls.doned_events += 1
+		#GlobalControlls.doned_events += 1
 		if not AchievementsGlobalConroller.is_achievement_taked(\"time_to_dinner\"):
 			AchievementsGlobalConroller.take_achievement(\"time_to_dinner\")
 	)
@@ -46,7 +46,7 @@ func _ready() -> void:
 						glitch.visible = true
 						glitch_sound.finished.connect(func ():
 							glitch.visible = false
-							GlobalControlls.set_forced_facepick(\"niko_pancakes\")
+							ValuesContainer.ForceFacepick(\"niko_pancakes\")
 							AchievementsGlobalConroller.take_achievement(\"worst_friend\")
 							popup.popup()
 						, CONNECT_ONE_SHOT)
@@ -60,7 +60,7 @@ func _ready() -> void:
 				glitch.visible = true
 				glitch_sound.finished.connect(func ():
 					glitch.visible = false
-					GlobalControlls.set_forced_facepick(\"niko_pancakes\")
+					ValuesContainer.ForceFacepick(\"niko_pancakes\")
 					popup.popup()
 				, CONNECT_ONE_SHOT)
 				glitch_sound.play()
@@ -71,10 +71,10 @@ func do_event() -> void:
 	if not eventing:
 		eventing = true
 		popup.popup()
-		GlobalControlls.set_forced_facepick(\"niko_pancakes\")
+		ValuesContainer.ForceFacepick(\"niko_pancakes\")
 
 func revert():
-	GlobalControlls.unforce_facepick()
+	ValuesContainer.UnforceFacepick()
 	called_to_clear.emit()
 
 func play_eating_anim():
@@ -84,19 +84,19 @@ func play_eating_anim():
 
 func anim_step():
 	match _anim_state:
-		0: GlobalControlls.set_forced_facepick(\"niko_eat1\")
-		1: GlobalControlls.set_forced_facepick(\"niko_eat2\")
-		2: GlobalControlls.set_forced_facepick(\"niko_eat1\")
-		3: GlobalControlls.set_forced_facepick(\"niko_eat2\")
-		4: GlobalControlls.set_forced_facepick(\"niko_eat1\")
-		5: GlobalControlls.set_forced_facepick(\"niko_eat2\")
-		6: GlobalControlls.set_forced_facepick(\"niko_eat1\")
+		0: ValuesContainer.ForceFacepick(\"niko_eat1\")
+		1: ValuesContainer.ForceFacepick(\"niko_eat2\")
+		2: ValuesContainer.ForceFacepick(\"niko_eat1\")
+		3: ValuesContainer.ForceFacepick(\"niko_eat2\")
+		4: ValuesContainer.ForceFacepick(\"niko_eat1\")
+		5: ValuesContainer.ForceFacepick(\"niko_eat2\")
+		6: ValuesContainer.ForceFacepick(\"niko_eat1\")
 		7: revert()
 	_anim_state += 1
 
 func press_no():
 	print(\"pressed no\")
-	GlobalControlls.set_forced_facepick(\"niko_super_cry\")
+	ValuesContainer.ForceFacepick(\"niko_super_cry\")
 	cry_sound.play()
 "
 

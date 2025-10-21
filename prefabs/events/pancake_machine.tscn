@@ -34,9 +34,9 @@ signal called_to_clear()
 func _ready() -> void:
 	animator.animation_finished.connect(func (anim):
 		if anim == \"drop\":
-			GlobalControlls.set_forced_facepick(\"niko_pancakes\")
+			ValuesContainer.ForceFacepick(\"niko_pancakes\")
 			passcode_show_button.pressed.connect(func ():
-				GlobalControlls.set_forced_facepick(\"niko_huh\")
+				ValuesContainer.ForceFacepick(\"niko_huh\")
 				enter_sound.play()
 				passcode_show_button.text = \"EVENT_PM_SOMETHING_WRONG\"
 				passcode_show_button.pressed.connect(func ():
@@ -45,8 +45,8 @@ func _ready() -> void:
 					passcode_container.visible = true
 					cancel_button.pressed.connect(func ():
 						if passcode_parts_contrainers[0].text + passcode_parts_contrainers[1].text + passcode_parts_contrainers[2].text == PASSCODE:
-							GlobalControlls.doned_events += 1
-							GlobalControlls.set_forced_facepick(\"niko_pancakes\")
+							#GlobalControlls.doned_events += 1
+							ValuesContainer.ForceFacepick(\"niko_pancakes\")
 							animator.play(\"true\")
 							if not AchievementsGlobalConroller.is_achievement_taked(\"hacked_a_machine\"):
 								AchievementsGlobalConroller.take_achievement(\"hacked_a_machine\")
@@ -73,11 +73,11 @@ func do_event():
 	window.position.x = usable_rect.position.x + usable_rect.size.x / 2 - window.size.x / 2
 	#container.position.y = -(1040 - window.size.y)
 	window.visible = true
-	GlobalControlls.set_forced_facepick(\"niko_huh\")
+	ValuesContainer.ForceFacepick(\"niko_huh\")
 	animator.play(\"drop\")
 
 func revert():
-	GlobalControlls.unforce_facepick()
+	ValuesContainer.UnforceFacepick()
 	called_to_clear.emit()
 
 func update_mouse_passthrough_polygon():
@@ -577,7 +577,7 @@ render_target_update_mode = 0
 [node name="Node3D" type="Node3D" parent="Window/Control/SubViewportContainer/SubViewport"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Window/Control/SubViewportContainer/SubViewport/Node3D"]
-transform = Transform3D(-0.14449, -0.0448924, -0.665714, 0.0356192, 0.679655, -0.0535634, 0.666275, -0.04607, -0.141505, 0, -1.19445, 0)
+transform = Transform3D(-0.14448997, -0.044892352, -0.6657144, 0.035619214, 0.6796547, -0.05356339, 0.6662749, -0.046069965, -0.1415049, 0, -1.19445, 0)
 mesh = ExtResource("3_ufmvg")
 surface_material_override/0 = ExtResource("4_o8h2p")
 surface_material_override/1 = ExtResource("5_o8h2p")
@@ -593,7 +593,6 @@ near = 0.1
 
 [node name="Control" type="Control" parent="Window/Control"]
 visible = false
-layout_mode = 2
 anchors_preset = 0
 offset_left = 108.0
 offset_top = 665.0

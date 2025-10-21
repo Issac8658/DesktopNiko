@@ -19,31 +19,30 @@ func _ready() -> void: # appling saved facepicks
 		for facepick in facepicks:
 			option_button.add_icon_item(NikoSpritesModule.get_sprite(facepick), facepicks[facepick])
 	
-	OptionButtons[0].selected = facepicks.keys().find(GlobalControlls.idle_facepick)
-	OptionButtons[1].selected = facepicks.keys().find(GlobalControlls.speak_facepick)
-	OptionButtons[2].selected = facepicks.keys().find(GlobalControlls.scare_facepick)
-	OptionButtons[3].selected = facepicks.keys().find(GlobalControlls.scare_speak_facepick)
+	OptionButtons[0].selected = facepicks.keys().find(ValuesContainer.IdleFacepick)
+	OptionButtons[1].selected = facepicks.keys().find(ValuesContainer.SpeakFacepick)
+	OptionButtons[2].selected = facepicks.keys().find(ValuesContainer.ScareFacepick)
+	OptionButtons[3].selected = facepicks.keys().find(ValuesContainer.ScareSpeakFacepick)
 	update_facepicks_preview()
 
 func update_facepicks_preview(): # update facepicks preview in settings
-	$Idle/TextureRect.texture = NikoSpritesModule.get_sprite(GlobalControlls.idle_facepick)
-	$Speak/TextureRect.texture = NikoSpritesModule.get_sprite(GlobalControlls.speak_facepick)
-	$Scare/TextureRect.texture = NikoSpritesModule.get_sprite(GlobalControlls.scare_facepick)
-	$ScareSpeak/TextureRect.texture = NikoSpritesModule.get_sprite(GlobalControlls.scare_speak_facepick)
+	$Idle/TextureRect.texture = NikoSpritesModule.get_sprite(ValuesContainer.IdleFacepick)
+	$Speak/TextureRect.texture = NikoSpritesModule.get_sprite(ValuesContainer.SpeakFacepick)
+	$Scare/TextureRect.texture = NikoSpritesModule.get_sprite(ValuesContainer.ScareFacepick)
+	$ScareSpeak/TextureRect.texture = NikoSpritesModule.get_sprite(ValuesContainer.ScareSpeakFacepick)
 
 func _on_idle_item_selected(index: int) -> void: # on changing idle facepick
-	GlobalControlls.idle_facepick = facepicks.keys()[index]
+	ValuesContainer.IdleFacepick = facepicks.keys()[index]
 	update_facepicks_preview()
-	GlobalControlls.facepick_update.emit()
 
 func _on_speak_item_selected(index: int) -> void: # on changing speak facepick
-	GlobalControlls.speak_facepick = facepicks.keys()[index]
+	ValuesContainer.SpeakFacepick = facepicks.keys()[index]
 	update_facepicks_preview()
 
 func _on_scare_item_selected(index: int) -> void: # on changing scared facepick
-	GlobalControlls.scare_facepick = facepicks.keys()[index]
+	ValuesContainer.ScareFacepick = facepicks.keys()[index]
 	update_facepicks_preview()
 
 func _on_scare_speak_item_selected(index: int) -> void: # on changing scared speak facepick
-	GlobalControlls.scare_speak_facepick = facepicks.keys()[index]
+	ValuesContainer.ScareSpeakFacepick = facepicks.keys()[index]
 	update_facepicks_preview()

@@ -3,15 +3,15 @@ extends Window
 @export var animator : AnimationPlayer
 
 func _ready() -> void:
-	GlobalControlls.saving.connect(func ():
-		if GlobalControlls.show_saving_icon:
+	GlobalController.SaveStarted.connect(func ():
+		if ValuesContainer.ShowSavingIcon:
 			position = get_target_position()
 			visible = true
 			animator.play("RESET")
 			
 	)
-	GlobalControlls.saved.connect(func ():
-		if GlobalControlls.show_saving_icon:
+	GlobalController.SaveEnded.connect(func ():
+		if ValuesContainer.ShowSavingIcon:
 			animator.play("fade_out")
 	)
 	animator.animation_finished.connect(func (anim):

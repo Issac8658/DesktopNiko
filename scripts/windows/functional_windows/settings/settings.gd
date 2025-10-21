@@ -26,63 +26,62 @@ const locales = ["en-US", "ru-RU", "de-DE", "ua-UA"]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	gaming_mod_checkbox.toggled.connect(func(toggled):
-		GlobalControlls.set_gaming_mode(toggled)
+		ValuesContainer.GamingModeEnabled = toggled
 	)
 	
 	peaceful_check_box.toggled.connect(func(toggled):
-		GlobalControlls.peaceful_mode = toggled
-		GlobalControlls.facepick_update.emit()
+		ValuesContainer.PeacfulMode = toggled
+		#GlobalControlls.facepick_update.emit()
 	)
 	
-	GlobalControlls.gaming_mode_changed.connect(func ():
-		gaming_mod_checkbox.button_pressed = GlobalControlls.gaming_mode_enabled
+	ValuesContainer.GamingModeToggled.connect(func (Toggled):
+		gaming_mod_checkbox.button_pressed = Toggled
 	)
 	
-	click_sound_checkbox.button_pressed = GlobalControlls.is_mouse_sound_enabled
+	click_sound_checkbox.button_pressed = ValuesContainer.MouseSoundEnabled
 	click_sound_checkbox.toggled.connect(func (toggled):
-		GlobalControlls.is_mouse_sound_enabled = toggled
+		ValuesContainer.MouseSoundEnabled = toggled
 	)
 	
-	saving_icon_checkbox.button_pressed = GlobalControlls.show_saving_icon
+	saving_icon_checkbox.button_pressed = ValuesContainer.ShowSavingIcon
 	saving_icon_checkbox.toggled.connect(func (toggled):
-		GlobalControlls.show_saving_icon = toggled
+		ValuesContainer.ShowSavingIcon = toggled
 	)
 	
-	show_achievements_checkbox.button_pressed = GlobalControlls.show_achievements
+	show_achievements_checkbox.button_pressed = ValuesContainer.ShowAchievements
 	show_achievements_checkbox.toggled.connect(func (toggled):
-		GlobalControlls.show_achievements = toggled
+		ValuesContainer.ShowAchievements = toggled
 	)
 	
-	TranslationServer.set_locale(locales[GlobalControlls.language])
-	language_option_button.selected = GlobalControlls.language
+	TranslationServer.set_locale(locales[ValuesContainer.Language])
+	language_option_button.selected = ValuesContainer.Language
 	language_option_button.item_selected.connect(func (id):
-		GlobalControlls.language = id
+		ValuesContainer.Language = id
 		TranslationServer.set_locale(locales[id])
 	)
 	
-	niko_scale_option_button.selected = GlobalControlls.niko_scale
+	niko_scale_option_button.selected = ValuesContainer.NikoScale
 	niko_scale_option_button.item_selected.connect(func (id):
-		GlobalControlls.niko_scale = id
-		GlobalControlls.niko_scale_changed.emit()
+		ValuesContainer.NikoScale = id
 	)
 	
-	legacy_facepicks_checkbox.toggled.connect(func (toggled):
-		GlobalControlls.use_legacy_sprites = toggled
-		niko_facepicks_select.update_facepicks_preview()
-	)
+	#legacy_facepicks_checkbox.toggled.connect(func (toggled):
+	#	GlobalControlls.use_legacy_sprites = toggled
+	#	niko_facepicks_select.update_facepicks_preview()
+	#)
 	
 	do_events_checkbox.toggled.connect(func (toggled):
-		GlobalControlls.do_events = toggled
+		ValuesContainer.DoEvents = toggled
 	)
 	
 	niko_always_on_top_checkbox.toggled.connect(func (toggled):
-		GlobalControlls.niko_always_on_top = toggled
+		ValuesContainer.NikoAlwaysOnTop = toggled
 	)
 	windows_always_on_top_checkbox.toggled.connect(func (toggled):
-		GlobalControlls.windows_always_on_top = toggled
+		ValuesContainer.WindowsAlwaysOnTop = toggled
 	)
 	taskbar_icon_checkbox.toggled.connect(func (toggled):
-		GlobalControlls.taskbar_icon = toggled
+		ValuesContainer.ShowTaskbarIcon = toggled
 	)
 	
 	reset_all_data_button.pressed.connect(func ():
@@ -93,8 +92,8 @@ func _ready() -> void:
 		get_tree().quit()
 	)
 	save_button.pressed.connect(func ():
-		GlobalControlls.save()
+		GlobalController.Save()
 	)
 	snap_to_bottom_button.toggled.connect(func (toggled):
-		GlobalControlls.snap_to_bottom = toggled
+		ValuesContainer.SnapToBottom = toggled
 	)

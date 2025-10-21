@@ -16,7 +16,7 @@ public partial class WindowMousePassthroughModule : Node
 	private const int SW_SHOW = 5;
 	private const int SW_HIDE = 0;
 
-	public void UpdateWindowsExStyles(Window window, bool HideTaskbarIcon)
+	public void UpdateWindowsExStyles(Window window, bool HideTaskbarIcon, bool ForceWindowUpdate = true)
 	{
 		if (OS.GetName() == "Windows")
 		{
@@ -24,8 +24,8 @@ public partial class WindowMousePassthroughModule : Node
 			static extern int SetWindowLong(IntPtr hWnd, int nIndex, uint dwNewLong);
 			[DllImport("user32.dll")]
 			static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-    		[DllImport("user32.dll")]
-    		static extern bool SetLayeredWindowAttributes(IntPtr hwnd, uint crKey, byte bAlpha, uint dwFlags);
+			[DllImport("user32.dll")]
+			static extern bool SetLayeredWindowAttributes(IntPtr hwnd, uint crKey, byte bAlpha, uint dwFlags);
 			//[DllImport("user32.dll")]
 			//static extern int GetWindowLong(IntPtr hWnd, int nIndex);
 
@@ -45,9 +45,10 @@ public partial class WindowMousePassthroughModule : Node
 			{
 				style = (style & ~WS_EX_APPWINDOW) | WS_EX_TOOLWINDOW;
 			}
-            ShowWindow(hWnd, SW_HIDE);
-            _ = SetWindowLong(hWnd, GWL_EXSTYLE, style);
-        	SetLayeredWindowAttributes(hWnd, 0, 255, LWA_ALPHA);
+			if (ForceWindowUpdate)
+			_ = SetWindowLong(hWnd, GWL_EXSTYLE, style);
+			SetLayeredWindowAttributes(hWnd, 0, 255, LWA_ALPHA);
+			if (ForceWindowUpdate)
 			ShowWindow(hWnd, SW_SHOW);
 		}
 	}

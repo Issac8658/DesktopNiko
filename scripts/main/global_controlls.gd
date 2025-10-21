@@ -57,7 +57,7 @@ var niko_always_on_top : bool = true:
 	set(value):
 		niko_always_on_top = value
 		get_window().always_on_top = value
-		PassthroughModule.UpdateWindowsExStyles(get_window(), not taskbar_icon)
+		PassthroughModule.UpdateWindowsExStyles(get_window(), not taskbar_icon, true)
 var windows_always_on_top : bool = false:
 	set(value):
 		windows_always_on_top = value
@@ -71,7 +71,7 @@ var windows_always_on_top : bool = false:
 var taskbar_icon : bool = true:
 	set(value):
 		taskbar_icon = value
-		PassthroughModule.UpdateWindowsExStyles(get_window(), not taskbar_icon)
+		PassthroughModule.UpdateWindowsExStyles(get_window(), not taskbar_icon, true)
 
 func _ready() -> void: # loading all parameters
 	config_file.load("user://NikoMemories.cfg")

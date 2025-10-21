@@ -1,0 +1,276 @@
+[gd_scene load_steps=22 format=3 uid="uid://dlurkbybsf21c"]
+
+[ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="1_hmqtk"]
+[ext_resource type="SpriteFrames" uid="uid://cncmfemd8y0q1" path="res://games/niko_pancake_adventure/nyan_niko_sprite_frame.tres" id="2_a3e8k"]
+[ext_resource type="Script" uid="uid://m6hjiig1mkmj" path="res://scripts/windows/window_controller.gd" id="2_cyfwr"]
+[ext_resource type="AudioStream" uid="uid://dwe3a2glybfyd" path="res://games/niko_pancake_adventure/game.ogg" id="3_fn71e"]
+[ext_resource type="Texture2D" uid="uid://c8a2o0ruiwceh" path="res://sprites/icons/place_holder.png" id="3_oh7bs"]
+[ext_resource type="Texture2D" uid="uid://bvbx7qccj2uks" path="res://sprites/ui/hide_button.tres" id="4_xwvnc"]
+[ext_resource type="Texture2D" uid="uid://bo3x8yy4g81xb" path="res://sprites/ui/close_button.tres" id="5_fn71e"]
+[ext_resource type="Script" uid="uid://cfnwlfwlphlbq" path="res://games/niko_pancake_adventure/scripts/NPAController.cs" id="7_cyfwr"]
+[ext_resource type="StyleBox" uid="uid://b821x8hwjmnyo" path="res://themes/twm_theme/frame_no_bg.tres" id="7_lmrhu"]
+[ext_resource type="Texture2D" uid="uid://k3j8qcm4l4wu" path="res://games/pancake_clicker/little_pancake.png" id="8_lmrhu"]
+[ext_resource type="Texture2D" uid="uid://ki8m4gw0mjf8" path="res://games/niko_pancake_adventure/blue.png" id="8_oh7bs"]
+[ext_resource type="Script" uid="uid://lexp2ghn2dgy" path="res://games/niko_pancake_adventure/scripts/NPAMiniMap.cs" id="9_j4cw1"]
+[ext_resource type="Script" uid="uid://b8tnwl1cwve1t" path="res://games/niko_pancake_adventure/scripts/NPATerrainGenrator.cs" id="9_uy58a"]
+[ext_resource type="Texture2D" uid="uid://ewfa0gxs4yku" path="res://games/niko_pancake_adventure/NikoTrail.png" id="10_xwvnc"]
+[ext_resource type="PackedScene" uid="uid://cfsoa1dt76741" path="res://games/niko_pancake_adventure/pancake.tscn" id="14_0cbnc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0cbnc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lmrhu"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uy58a"]
+frequency = 0.0002
+fractal_octaves = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0cbnc"]
+frequency = 0.0006
+fractal_octaves = 3
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hmqtk"]
+friction = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vxuq5"]
+radius = 37.0
+
+[node name="BaseWindow" type="Window" node_paths=PackedStringArray("topbar", "CloseButton", "HideButton")]
+auto_translate_mode = 1
+disable_3d = true
+oversampling_override = 1.0
+title = "Base Window"
+initial_position = 4
+size = Vector2i(1400, 940)
+unresizable = true
+borderless = true
+always_on_top = true
+sharp_corners = true
+min_size = Vector2i(200, 100)
+keep_title_visible = true
+theme = ExtResource("1_hmqtk")
+script = ExtResource("2_cyfwr")
+topbar = NodePath("CanvasLayer/Control/WindowContainer/Topbar")
+CloseButton = NodePath("CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/CloseButtonContainer/CloseButton")
+HideButton = NodePath("CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/HideButtonContainer/HideButton")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fn71e")
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_scale = 0.51
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hmqtk")
+
+[node name="WindowContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Topbar" type="Panel" parent="CanvasLayer/Control/WindowContainer"]
+z_index = 1
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/WindowContainer/Topbar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="IconContainer" type="MarginContainer" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Icon" type="Button" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("3_oh7bs")
+flat = true
+expand_icon = true
+
+[node name="Title" type="Label" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Nyan Niko :3"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="HideButtonContainer" type="MarginContainer" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 4
+
+[node name="HideButton" type="Button" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/HideButtonContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("4_xwvnc")
+flat = true
+expand_icon = true
+
+[node name="CloseButtonContainer" type="MarginContainer" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/CloseButtonContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("5_fn71e")
+flat = true
+expand_icon = true
+
+[node name="Content" type="Panel" parent="CanvasLayer/Control/WindowContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("7_lmrhu")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control/WindowContainer/Content"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 376.0
+offset_bottom = 64.0
+value = 27.0
+show_percentage = false
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/WindowContainer/Content/ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 8
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0cbnc")
+text = "Niko's powers"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/WindowContainer/Content"]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 8.0
+offset_right = 444.0
+offset_bottom = 72.0
+texture = ExtResource("8_lmrhu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/WindowContainer/Content"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 226.0
+offset_bottom = 93.0
+theme_override_constants/separation = 0
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/WindowContainer/Content/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lmrhu")
+text = "0"
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/WindowContainer/Content/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lmrhu")
+text = " Pancakes collected"
+
+[node name="MiniMap" type="MarginContainer" parent="CanvasLayer/Control/WindowContainer/Content"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Control" type="Control" parent="CanvasLayer/Control/WindowContainer/Content/MiniMap" node_paths=PackedStringArray("TerrainGenrator", "Niko")]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+script = ExtResource("9_j4cw1")
+TerrainGenrator = NodePath("../../../../../../Node2D/Terrain")
+Niko = NodePath("../../../../../../Node2D/RigidBody2D")
+
+[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("NikoPowerRange", "NikoBody", "NikoSprite", "Camera", "NikoTrail", "PancakeCountLabel")]
+script = ExtResource("7_cyfwr")
+NikoPowerRange = NodePath("../CanvasLayer/Control/WindowContainer/Content/ProgressBar")
+NikoBody = NodePath("RigidBody2D")
+NikoSprite = NodePath("RigidBody2D/AnimatedSprite2D")
+Camera = NodePath("RigidBody2D/Camera2D")
+NikoTrail = NodePath("Line2D")
+PancakeCountLabel = NodePath("../CanvasLayer/Control/WindowContainer/Content/HBoxContainer/Label2")
+
+[node name="Terrain" type="Node2D" parent="Node2D" node_paths=PackedStringArray("Controller")]
+script = ExtResource("9_uy58a")
+TerrainTexture = ExtResource("8_oh7bs")
+Noise = SubResource("FastNoiseLite_uy58a")
+PancakeNoise = SubResource("FastNoiseLite_0cbnc")
+PancakePrefab = ExtResource("14_0cbnc")
+Controller = NodePath("..")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Node2D"]
+z_index = 2
+position = Vector2(1359, -452)
+physics_material_override = SubResource("PhysicsMaterial_hmqtk")
+can_sleep = false
+lock_rotation = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D/RigidBody2D"]
+texture_filter = 1
+position = Vector2(25, 1)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("2_a3e8k")
+frame_progress = 0.92616534
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/RigidBody2D"]
+shape = SubResource("CircleShape2D_vxuq5")
+
+[node name="Camera2D" type="Camera2D" parent="Node2D/RigidBody2D"]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="Line2D" type="Line2D" parent="Node2D"]
+z_index = 1
+texture_filter = 1
+texture_repeat = 2
+width = 54.0
+texture = ExtResource("10_xwvnc")
+texture_mode = 1

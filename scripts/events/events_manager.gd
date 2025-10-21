@@ -12,15 +12,15 @@ func events_sort(a : PackedEvent, b : PackedEvent):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	events.sort_custom(events_sort) # to cancel the "overlap" of rare events by frequent ones
-	GlobalControlls.clicked.connect(func ():
-		if GlobalControlls.do_events:
+	ValuesContainer.Clicked.connect(func (_difference):
+		if ValuesContainer.DoEvents:
 			for event : PackedEvent in events:
 				var rand = randf() * 100
-				if rand <= event.spawn_chance and GlobalControlls.clicks >= event.min_clicks and niko_controller.cps <= event.max_cps:
+				if rand <= event.spawn_chance and ValuesContainer.Clicks >= event.min_clicks and niko_controller.cps <= event.max_cps:
 						var event_node : Event = event.linked_scene.instantiate()
 						add_child(event_node)
 						event_node.event()
-						GlobalControlls.event_started.emit(event_node.name)
+						#GlobalControlls.event_started.emit(event_node.name)
 						print("Event " + str(events.find(event)) + ":" + event_node.name + " c" + str(rand))
 						event_node.event_ended.connect(event_node.queue_free)
 						break

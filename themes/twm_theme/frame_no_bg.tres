@@ -1,0 +1,14 @@
+[gd_resource type="StyleBoxFlat" load_steps=2 format=3 uid="uid://b821x8hwjmnyo"]
+
+[ext_resource type="Script" uid="uid://cl16644rl3lsd" path="res://scripts/themes/stylebox_color_applier.gd" id="1_qoic8"]
+
+[resource]
+bg_color = Color(0, 0, 0, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.588235, 0.392157, 1, 1)
+script = ExtResource("1_qoic8")
+_base_color = 6
