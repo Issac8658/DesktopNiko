@@ -1,4 +1,4 @@
-# Desktop Niko
+<img width="1822" height="472" alt="desktop niko logo" src="https://github.com/user-attachments/assets/d8300d42-061a-4633-ad2d-28c236c3445f" />
 Niko is a playable character from the game OneShot, but now they will be right on your screen!
 The Steam version of the 2024 "The World Machine Edition" was used as the basis, as can be seen in the application settings.
 
@@ -8,6 +8,7 @@ The Steam version of the 2024 "The World Machine Edition" was used as the basis,
 - Events
 - Achievements
 - Don't click too often! It will scare Niko! (This can be disabled by turning on the "peaceful" mode.)
+
 - Setting up facepicks for each state (default, speak, scared, scared speak)
 - "Gaming" mode that forces Niko to passthrough clicks
 - Icon in the system tray
