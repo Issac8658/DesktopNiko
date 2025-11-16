@@ -21,9 +21,9 @@
 [ext_resource type="Script" uid="uid://cm26f3vhmimf4" path="res://scripts/themes/theme_colors_applier.gd" id="11_u5xpi"]
 [ext_resource type="StyleBox" uid="uid://bd2g4ws0gk1b6" path="res://themes/twm_theme/vertical_line.stylebox" id="11_xdasf"]
 [ext_resource type="StyleBox" uid="uid://dg1twp8kt2bvx" path="res://themes/twm_theme/tab.stylebox" id="12_d6ho4"]
-[ext_resource type="Texture2D" uid="uid://b67r5bffv66ql" path="res://sprites/ui/spinbox_down.tres" id="16_85n5b"]
+[ext_resource type="Texture2D" uid="uid://b67r5bffv66ql" path="res://sprites/ui/world_machine/spinbox_down.tres" id="16_85n5b"]
 [ext_resource type="StyleBox" uid="uid://b821x8hwjmnyo" path="res://themes/twm_theme/frame_no_bg.tres" id="16_f1ivg"]
-[ext_resource type="Texture2D" uid="uid://cw32ceii5133" path="res://sprites/ui/spinbox_up.tres" id="16_hcquw"]
+[ext_resource type="Texture2D" uid="uid://cw32ceii5133" path="res://sprites/ui/world_machine/spinbox_up.tres" id="16_hcquw"]
 [ext_resource type="StyleBox" uid="uid://cnomj40gsn02c" path="res://themes/twm_theme/filled_panel.stylebox" id="16_y63lx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8odgm"]

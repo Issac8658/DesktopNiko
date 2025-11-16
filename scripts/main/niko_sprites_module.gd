@@ -1,49 +1,49 @@
 extends Node
 
 var niko_sprites = {
-	"niko" = load("res://niko/niko_default/niko.png"),
-	"niko_cry" = load("res://niko/niko_default/niko_cry.png"),
-	"niko_super_cry" = load("res://niko/niko_default/niko_super_cry.png"),
-	"niko_default" = load("res://niko/niko_default/niko_default.png"),
-	"niko_gasmask" = load("res://niko/niko_default/niko_gasmask.png"),
-	"niko_look_left" = load("res://niko/niko_default/niko_look_left.png"),
-	"niko_look_right" = load("res://niko/niko_default/niko_look_right.png"),
-	"niko_pancakes" = load("res://niko/niko_default/niko_pancakes.png"),
-	"niko_sad" = load("res://niko/niko_default/niko_sad.png"),
-	"niko_shock" = load("res://niko/niko_default/niko_shock.png"),
-	"niko_sleepy" = load("res://niko/niko_default/niko_sleepy.png"),
-	"niko_sleep" = load("res://niko/niko_default/niko_sleep.png"),
-	"niko_smile" = load("res://niko/niko_default/niko_smile.png"),
-	"niko_smug" = load("res://niko/niko_default/niko_smug.png"),
-	"niko_speak" = load("res://niko/niko_default/niko_speak.png"),
-	"niko_surprised" = load("res://niko/niko_default/niko_surprised.png"),
-	"niko_eat1" = load("res://niko/niko_default/niko_eat1.png"),
-	"niko_eat2" = load("res://niko/niko_default/niko_eat2.png"),
-	"niko_huh" = load("res://niko/niko_default/niko_huh.png"),
-	"niko_cool" = load("res://niko/niko_default/niko_cool.png")
+#	"niko" = load("res://niko/niko_default/niko.png"),
+#	"niko_cry" = load("res://niko/niko_default/niko_cry.png"),
+#	"niko_super_cry" = load("res://niko/niko_default/niko_super_cry.png"),
+#	"niko_default" = load("res://niko/niko_default/niko_default.png"),
+#	"niko_gasmask" = load("res://niko/niko_default/niko_gasmask.png"),
+#	"niko_look_left" = load("res://niko/niko_default/niko_look_left.png"),
+#	"niko_look_right" = load("res://niko/niko_default/niko_look_right.png"),
+#	"niko_pancakes" = load("res://niko/niko_default/niko_pancakes.png"),
+#	"niko_sad" = load("res://niko/niko_default/niko_sad.png"),
+#	"niko_shock" = load("res://niko/niko_default/niko_shock.png"),
+#	"niko_sleepy" = load("res://niko/niko_default/niko_sleepy.png"),
+#	"niko_sleep" = load("res://niko/niko_default/niko_sleep.png"),
+#	"niko_smile" = load("res://niko/niko_default/niko_smile.png"),
+#	"niko_smug" = load("res://niko/niko_default/niko_smug.png"),
+#	"niko_speak" = load("res://niko/niko_default/niko_speak.png"),
+#	"niko_surprised" = load("res://niko/niko_default/niko_surprised.png"),
+#	"niko_eat1" = load("res://niko/niko_default/niko_eat1.png"),
+#	"niko_eat2" = load("res://niko/niko_default/niko_eat2.png"),
+#	"niko_huh" = load("res://niko/niko_default/niko_huh.png"),
+#	"niko_cool" = load("res://niko/niko_default/niko_cool.png")
 }
 
 var niko_legacy_sprites = {
-	"niko" = load("res://niko/niko_legacy/niko.png"),
-	"niko_cry" = load("res://niko/niko_legacy/niko_cry.png"),
-	"niko_super_cry" = load("res://niko/niko_legacy/niko_super_cry.png"),
-	"niko_default" = load("res://niko/niko_legacy/niko_default.png"),
-	"niko_gasmask" = load("res://niko/niko_legacy/niko_gasmask.png"),
-	"niko_look_left" = load("res://niko/niko_legacy/niko_look_left.png"),
-	"niko_look_right" = load("res://niko/niko_legacy/niko_look_right.png"),
-	"niko_pancakes" = load("res://niko/niko_legacy/niko_pancakes.png"),
-	"niko_sad" = load("res://niko/niko_legacy/niko_sad.png"),
-	"niko_shock" = load("res://niko/niko_legacy/niko_shock.png"),
-	"niko_sleepy" = load("res://niko/niko_legacy/niko_sleepy.png"),
-	"niko_sleep" = load("res://niko/niko_legacy/niko_sleep.png"),
-	"niko_smile" = load("res://niko/niko_legacy/niko_smile.png"),
-	"niko_smug" = load("res://niko/niko_legacy/niko_smug.png"),
-	"niko_speak" = load("res://niko/niko_legacy/niko_speak.png"),
-	"niko_surprised" = load("res://niko/niko_legacy/niko_surprised.png"),
-	"niko_eat1" = load("res://niko/niko_legacy/niko_eat1.png"),
-	"niko_eat2" = load("res://niko/niko_legacy/niko_eat2.png"),
-	"niko_huh" = load("res://niko/niko_legacy/niko_huh.png"),
-	"niko_cool" = load("res://niko/niko_legacy/niko_cool.png")
+#	"niko" = load("res://niko/niko_legacy/niko.png"),
+#	"niko_cry" = load("res://niko/niko_legacy/niko_cry.png"),
+#	"niko_super_cry" = load("res://niko/niko_legacy/niko_super_cry.png"),
+#	"niko_default" = load("res://niko/niko_legacy/niko_default.png"),
+#	"niko_gasmask" = load("res://niko/niko_legacy/niko_gasmask.png"),
+#	"niko_look_left" = load("res://niko/niko_legacy/niko_look_left.png"),
+#	"niko_look_right" = load("res://niko/niko_legacy/niko_look_right.png"),
+#	"niko_pancakes" = load("res://niko/niko_legacy/niko_pancakes.png"),
+#	"niko_sad" = load("res://niko/niko_legacy/niko_sad.png"),
+#	"niko_shock" = load("res://niko/niko_legacy/niko_shock.png"),
+#	"niko_sleepy" = load("res://niko/niko_legacy/niko_sleepy.png"),
+#	"niko_sleep" = load("res://niko/niko_legacy/niko_sleep.png"),
+#	"niko_smile" = load("res://niko/niko_legacy/niko_smile.png"),
+#	"niko_smug" = load("res://niko/niko_legacy/niko_smug.png"),
+#	"niko_speak" = load("res://niko/niko_legacy/niko_speak.png"),
+#	"niko_surprised" = load("res://niko/niko_legacy/niko_surprised.png"),
+#	"niko_eat1" = load("res://niko/niko_legacy/niko_eat1.png"),
+#	"niko_eat2" = load("res://niko/niko_legacy/niko_eat2.png"),
+#	"niko_huh" = load("res://niko/niko_legacy/niko_huh.png"),
+#	"niko_cool" = load("res://niko/niko_legacy/niko_cool.png")
 }
 
 func get_sprite(sprite_id : String) -> Resource:
@@ -58,7 +58,7 @@ func get_sprite(sprite_id : String) -> Resource:
 			return niko_sprites[sprite_id]
 		else:
 			print("sprite " + sprite_id + " is does not exist")
-			return niko_sprites["niko"]
+			return null
 
 
 func has_sprite(sprite_id : String) -> bool:

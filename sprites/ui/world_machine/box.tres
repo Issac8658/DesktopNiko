@@ -1,0 +1,12 @@
+[gd_resource type="GradientTexture2D" load_steps=2 format=3 uid="uid://cifb5gdsocaxu"]
+
+[sub_resource type="Gradient" id="Gradient_g2a1b"]
+interpolation_mode = 1
+
+[resource]
+gradient = SubResource("Gradient_g2a1b")
+width = 32
+height = 32
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)

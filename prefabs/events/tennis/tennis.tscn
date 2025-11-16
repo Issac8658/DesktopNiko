@@ -114,7 +114,7 @@ func lose():
 
 
 func start_game():
-	playing_niko_rect.texture = NikoSpritesModule.get_sprite(ValuesContainer.IdleFacepick)
+	playing_niko_rect.texture = NikoSkinManager.GetCurrentSkinSprite(ValuesContainer.IdleFacepic)
 	screen_main_menu.visible = false
 	screen_game.visible = true
 	gaming = true
@@ -142,11 +142,11 @@ func _physics_process(delta: float) -> void:
 				print(\"win\")
 				if not AchievementsGlobalConroller.is_achievement_taked(\"little_win\"):
 					AchievementsGlobalConroller.take_achievement(\"little_win\")
-				playing_niko_rect.texture = NikoSpritesModule.get_sprite(\"niko_sleepy\")
+				playing_niko_rect.texture = NikoSkinManager.GetCurrentSkinSprite(\"niko_sleepy\")
 				win()
 			else:
 				sound_niko_shot.play()
-				playing_niko_rect.texture = NikoSpritesModule.get_sprite(ValuesContainer.IdleFacepick)
+				playing_niko_rect.texture = NikoSkinManager.GetCurrentSkinSprite(ValuesContainer.IdleFacepick)
 			await get_tree().create_timer(.5).timeout
 			#print(\"return\")
 			niko_raket_pos = Vector2i(450,250)
@@ -158,13 +158,13 @@ func _physics_process(delta: float) -> void:
 			#print(player_raket_pos + window.position - Vector2i(5,30))
 			#print(Vector2(tennis_ball_pos[0], tennis_ball_pos[1]))
 			if Vector2(player_raket_pos + window.position - Vector2i(5,30)).distance_to(Vector2(tennis_ball_pos[0], tennis_ball_pos[1])) >= 75:
-				playing_niko_rect.texture = NikoSpritesModule.get_sprite(\"niko_cool\")
+				playing_niko_rect.texture = NikoSkinManager.GetCurrentSkinSprite(\"niko_cool\")
 				lose()
 			else:
 				sound_player_shot.play()
 			tennis_ball_speed = tennis_ball_current_speed
 			if tennis_ball_speed >= 16 and gaming:
-				playing_niko_rect.texture = NikoSpritesModule.get_sprite(\"niko_shock\")
+				playing_niko_rect.texture = NikoSkinManager.GetCurrentSkinSprite(\"niko_shock\")
 			await get_tree().create_timer(1 / clamp(tennis_ball_current_speed, 1.0, 1000.0)).timeout
 			#print(\"ready\")
 			niko_raket_pos = Vector2(tennis_ball_pos[2], tennis_ball_pos[3])

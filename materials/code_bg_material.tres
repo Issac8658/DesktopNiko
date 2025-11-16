@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bvlknhbry3w24"]
+
+[ext_resource type="Shader" uid="uid://wdd564y0liio" path="res://shaders/code_bg_shader.gdshader" id="1_0ssis"]
+[ext_resource type="Texture2D" uid="uid://bcotckawyl5bk" path="res://sprites/ui/world_machine/codebg.png" id="2_ppbsh"]
+
+[resource]
+shader = ExtResource("1_0ssis")
+shader_parameter/codebgTexture = ExtResource("2_ppbsh")

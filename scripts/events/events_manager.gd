@@ -16,7 +16,7 @@ func _ready() -> void:
 		if ValuesContainer.DoEvents:
 			for event : PackedEvent in events:
 				var rand = randf() * 100
-				if rand <= event.spawn_chance and ValuesContainer.Clicks >= event.min_clicks and niko_controller.cps <= event.max_cps:
+				if rand <= event.spawn_chance and ValuesContainer.Clicks >= event.min_clicks:# and niko_controller.cps <= event.max_cps:
 						var event_node : Event = event.linked_scene.instantiate()
 						add_child(event_node)
 						event_node.event()

@@ -33,9 +33,8 @@ ShutdownHandler="*res://scripts/ShutdownHandler.cs"
 PassthroughModule="*res://scripts/WindowMousePassthroughModule.cs"
 ValuesContainer="*res://scripts/main/ValuesContainer.cs"
 NikoSkinManager="*res://scripts/main/NikoSkinManager.cs"
-SaveLoad="*res://scripts/main/SaveLoad.cs"
 GlobalController="*res://scripts/main/GlobalController.cs"
-NikoSpritesModule="*res://scripts/main/niko_sprites_module.gd"
+SaveLoad="*res://scripts/main/SaveLoad.cs"
 Dialog="*res://prefabs/dialog_window.tscn"
 AchievementsGlobalConroller="*res://scripts/achievements/achievements_global_conroller.gd"
 NikoDialog="*res://prefabs/niko_dialog.tscn"
@@ -147,7 +146,6 @@ locale/translations=PackedStringArray("res://translations.en.translation", "res:
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-gl_compatibility/fallback_to_angle=false
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0

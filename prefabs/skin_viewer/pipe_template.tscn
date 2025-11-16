@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bihaq5sq4yuxk"]
+
+[ext_resource type="Texture2D" uid="uid://bip0eerfucj2q" path="res://sprites/ui/world_machine/pipe.png" id="1_ynbrx"]
+
+[node name="Line2D" type="Line2D"]
+modulate = Color(0.196078, 0.129412, 0.321569, 1)
+points = PackedVector2Array(0, 0, 0, 0, 0, 0)
+width = 8.0
+texture = ExtResource("1_ynbrx")
+texture_mode = 2

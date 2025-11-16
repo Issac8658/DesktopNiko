@@ -1,4 +1,4 @@
-[gd_scene load_steps=165 format=3 uid="uid://cj66sb2a5oolj"]
+[gd_scene load_steps=166 format=3 uid="uid://cj66sb2a5oolj"]
 
 [ext_resource type="Script" uid="uid://cbm43j4hj02f5" path="res://scripts/main/NikoController.cs" id="1_wmw63"]
 [ext_resource type="AudioStream" uid="uid://5tnvrblu5h4j" path="res://sounds/niko_meows/meow1.wav" id="2_ghshe"]
@@ -8,8 +8,6 @@
 [ext_resource type="AudioStream" uid="uid://b7fs1kpyhma66" path="res://sounds/niko_meows/meow3.wav" id="4_5smuj"]
 [ext_resource type="Texture2D" uid="uid://bw465n3hiy0mk" path="res://sprites/ui/ui_shit.png" id="4_hq1ik"]
 [ext_resource type="AudioStream" uid="uid://c05el6h3gl1gk" path="res://sounds/niko_meows/meow4.wav" id="5_5smuj"]
-[ext_resource type="Texture2D" uid="uid://ddlwgsremuqfv" path="res://niko/niko_default/look_right.png" id="5_7th4q"]
-[ext_resource type="Texture2D" uid="uid://d03uavcp7ruhb" path="res://niko/niko_default/look_left.png" id="6_6jybn"]
 [ext_resource type="AudioStream" uid="uid://bf8uls61sctkd" path="res://sounds/niko_meows/meow5.wav" id="6_y5ved"]
 [ext_resource type="AudioStream" uid="uid://cl7uwn85u6yh7" path="res://sounds/niko_meows/meow6.wav" id="7_gv8l5"]
 [ext_resource type="Script" uid="uid://c07kbh8vp2klh" path="res://scripts/windows/functional_windows/settings/facepicks_select_controller.gd" id="8_2jcla"]
@@ -17,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://du34a885d0pvg" path="res://sounds/niko_meows/meow7.wav" id="8_8jixl"]
 [ext_resource type="AudioStream" uid="uid://y5wudf67lir6" path="res://sounds/niko_meows/omori_meow.ogg" id="9_30vx0"]
 [ext_resource type="Texture2D" uid="uid://dupq4qhtqbvbt" path="res://niko/niko_default/surprised.png" id="9_wr18j"]
+[ext_resource type="PackedScene" uid="uid://biwmud5wjovh4" path="res://prefabs/skin_viewer/skin_viewer.tscn" id="10_uush8"]
 [ext_resource type="Texture2D" uid="uid://qsweuhlblj1" path="res://icon.png" id="10_wr18j"]
 [ext_resource type="Script" uid="uid://cqdig7ltehghd" path="res://scripts/windows/components/status_icon_controller.gd" id="11_qwutr"]
 [ext_resource type="Script" uid="uid://chdf6qgvok3dk" path="res://scripts/events/events_manager.gd" id="12_82rj2"]
@@ -81,8 +80,8 @@
 [ext_resource type="StyleBox" uid="uid://bfxcdu2fwodgt" path="res://themes/themed/green_file_focus.stylebox" id="60_jl6hu"]
 [ext_resource type="StyleBox" uid="uid://d1ts0vt0gn68j" path="res://themes/themed/green_file_hover.stylebox" id="61_uwk5n"]
 [ext_resource type="Script" uid="uid://cmxrv553jpw78" path="res://scripts/windows/components/tab_bar.gd" id="64_ubkm4"]
-[ext_resource type="Texture2D" uid="uid://b8wvy50nn8t5c" path="res://sprites/ui/screens_corner.png" id="65_82rj2"]
-[ext_resource type="Texture2D" uid="uid://cx7etih63abrx" path="res://sprites/ui/window_border_right2.tres" id="66_76in0"]
+[ext_resource type="Texture2D" uid="uid://b8wvy50nn8t5c" path="res://sprites/ui/world_machine/screens_corner.png" id="65_82rj2"]
+[ext_resource type="Texture2D" uid="uid://cx7etih63abrx" path="res://sprites/ui/world_machine/window_border_right2.tres" id="66_76in0"]
 [ext_resource type="StyleBox" uid="uid://7knach8205vl" path="res://themes/twm_theme/window_tab.stylebox" id="67_im3ns"]
 [ext_resource type="StyleBox" uid="uid://nyb3y3mcmw8e" path="res://themes/twm_theme/window_tab_selected.stylebox" id="67_xevt3"]
 [ext_resource type="Texture2D" uid="uid://bq0l8gsn8md3e" path="res://sprites/icons/language.png" id="69_05sqr"]
@@ -96,7 +95,7 @@
 [ext_resource type="Script" uid="uid://0dbjehngsr5f" path="res://scripts/windows/functional_windows/settings/add_to_autorun.gd" id="77_q4750"]
 [ext_resource type="Texture2D" uid="uid://d4ep8v3mrg276" path="res://sprites/shop_particle.tres" id="78_30vx0"]
 [ext_resource type="Material" uid="uid://beloub2o0etmy" path="res://materials/light_blub_anim_shader.tres" id="81_30vx0"]
-[ext_resource type="Texture2D" uid="uid://dxo8m8apw6ajl" path="res://sprites/ui/bulb_anim_24.png" id="81_id8vy"]
+[ext_resource type="Texture2D" uid="uid://dxo8m8apw6ajl" path="res://sprites/ui/world_machine/bulb_anim_24.png" id="81_id8vy"]
 [ext_resource type="Script" uid="uid://c45ltmpprf6rs" path="res://scripts/loading_icon.gd" id="81_ubkm4"]
 [ext_resource type="Script" uid="uid://dh8nb5jo0naai" path="res://scripts/windows/functional_windows/settings/windows_only_checkbox.gd" id="82_36qg2"]
 [ext_resource type="Texture2D" uid="uid://cqicl8sy06ti5" path="res://sprites/icons/error.png" id="82_l76vu"]
@@ -115,6 +114,7 @@
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="100_ix15y"]
 [ext_resource type="Theme" uid="uid://depgndu5hyrlf" path="res://themes/OneShotButtonedTheme.tres" id="112_uush8"]
 [ext_resource type="Script" uid="uid://hwog55yrrr11" path="res://scripts/main/NikoClickablePolygon.cs" id="114_8jixl"]
+[ext_resource type="Script" uid="uid://cwe0iho0cgqye" path="res://scripts/ClicksLabel.cs" id="116_dftep"]
 
 [sub_resource type="GDScript" id="GDScript_xtheg"]
 resource_name = "HELLO"
@@ -491,22 +491,61 @@ length = 2.0
 resource_name = "niko_look_around"
 length = 2.6
 step = 0.0333
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
+tracks/0/path = NodePath("../..")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 1.2, 1.4, 2.4, 2.6),
+"times": PackedFloat32Array(0, 0.20000002, 1.2, 1.4, 2.4, 2.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("16_7th4q"), ExtResource("5_7th4q"), ExtResource("16_7th4q"), ExtResource("6_6jybn"), ExtResource("16_7th4q"), ExtResource("16_7th4q")]
+"values": [{
+"args": ["normal"],
+"method": &"SetSprite"
+}, {
+"args": ["look_right"],
+"method": &"SetSprite"
+}, {
+"args": ["normal"],
+"method": &"SetSprite"
+}, {
+"args": ["look_left"],
+"method": &"SetSprite"
+}, {
+"args": ["normal"],
+"method": &"SetSprite"
+}, {
+"args": [],
+"method": &"SetIdleFacepic"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_dftep"]
+resource_name = "click"
+length = 0.2
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"SetScaredSpeakFacepic"
+}, {
+"args": [],
+"method": &"SetIdleFacepic"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7th4q"]
 _data = {
 &"RESET": SubResource("Animation_u0ygc"),
+&"click": SubResource("Animation_dftep"),
 &"niko_look_around": SubResource("Animation_m35m6")
 }
 
@@ -575,14 +614,19 @@ scale_curve = SubResource("CurveTexture_ym5p0")
 color = Color(0.282353, 0.286275, 0.784314, 1)
 alpha_curve = SubResource("CurveTexture_05sqr")
 
-[node name="TheWorldMachine" type="Node" node_paths=PackedStringArray("MenuPanel", "MenuButton", "WindowToOpen", "NikoPanel", "MeowSoundPlayer")]
+[node name="TheWorldMachine" type="Node" node_paths=PackedStringArray("MenuPanel", "MenuButton", "WindowToOpen", "NikoSpriteNode", "NikoAnimationPlayer", "MeowSoundPlayer", "SleepParticles")]
 script = ExtResource("1_wmw63")
 Meows = [ExtResource("2_ghshe"), ExtResource("3_fv2he"), ExtResource("4_5smuj"), ExtResource("5_5smuj"), ExtResource("6_y5ved"), ExtResource("7_gv8l5"), ExtResource("8_8jixl"), ExtResource("9_30vx0")]
 MenuPanel = NodePath("NikoBase/MenuPanel")
 MenuButton = NodePath("NikoBase/MenuPanel/MenuButton")
 WindowToOpen = NodePath("ShortcutsWindow")
-NikoPanel = NodePath("NikoBase/Niko")
+NikoSpriteNode = NodePath("NikoBase/Niko")
+NikoAnimationPlayer = NodePath("NikoBase/Niko/AnimationPlayer")
 MeowSoundPlayer = NodePath("MeowSound")
+SleepParticles = NodePath("NikoBase/GPUParticles2D")
+
+[node name="SkinViewer" parent="." instance=ExtResource("10_uush8")]
+visible = false
 
 [node name="MouseSoundPlayer" type="Node" parent="." node_paths=PackedStringArray("mouse_down_sound", "mouse_up_sound")]
 script = ExtResource("42_ek5vw")
@@ -3547,7 +3591,7 @@ texture_filter = 1
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-texture = ExtResource("2_gyfs4")
+texture = ExtResource("16_7th4q")
 stretch_mode = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NikoBase/Niko"]
@@ -3580,6 +3624,7 @@ mouse_filter = 1
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
+script = ExtResource("116_dftep")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="NikoBase"]
 emitting = false

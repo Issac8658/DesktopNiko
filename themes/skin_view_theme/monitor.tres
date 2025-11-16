@@ -1,0 +1,14 @@
+[gd_resource type="StyleBoxTexture" load_steps=3 format=3 uid="uid://wufirio3g8db"]
+
+[ext_resource type="Script" uid="uid://c28h70vfovqy8" path="res://scripts/themes/stylebox_texture_color_applier.gd" id="1_nplji"]
+[ext_resource type="Texture2D" uid="uid://c6v7gx0jqdyn2" path="res://sprites/ui/world_machine/skin_viewer_ui.png" id="2_0c7b7"]
+
+[resource]
+texture = ExtResource("2_0c7b7")
+texture_margin_left = 26.0
+texture_margin_top = 48.0
+texture_margin_right = 26.0
+texture_margin_bottom = 22.0
+region_rect = Rect2(0, 0, 52, 70)
+modulate_color = Color(0.588235, 0.392157, 1, 1)
+script = ExtResource("1_nplji")

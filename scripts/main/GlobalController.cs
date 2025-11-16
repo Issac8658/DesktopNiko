@@ -10,7 +10,7 @@ public partial class GlobalController : Node
 
     public override void _Ready()
     {
-        GD.Print("Hello, Niko! :3"); // Hello!!1
+        GD.Print("Hello, Niko! :3"); // Hello!!1 :3
     }
 
     public override void _Notification(int what)

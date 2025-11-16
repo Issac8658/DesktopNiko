@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://dsxv8e5388ckq" path="res://games/pancake_clicker/shop_items/resources/item_syrup_caramel.atlastex" id="7_p55uh"]
 [ext_resource type="Texture2D" uid="uid://b51o0eua03r0l" path="res://games/pancake_clicker/chocolate_additional_ingredient.atlastex" id="7_q6lm5"]
 [ext_resource type="Texture2D" uid="uid://c2nhe4mbgmomk" path="res://games/pancake_clicker/shop_items/resources/item_syrup_apple.atlastex" id="8_gkrte"]
-[ext_resource type="Texture2D" uid="uid://bo3x8yy4g81xb" path="res://sprites/ui/close_button.tres" id="8_iaa12"]
+[ext_resource type="Texture2D" uid="uid://bo3x8yy4g81xb" path="res://sprites/ui/world_machine/close_button.tres" id="8_iaa12"]
 [ext_resource type="FastNoiseLite" uid="uid://31vk8tb6esyx" path="res://games/pancake_clicker/seller2_noise.res" id="8_n7vm1"]
 [ext_resource type="PackedScene" uid="uid://bxdpj1me31rfq" path="res://games/pancake_clicker/shop_items/syrup_strawberry_shop_item.res" id="8_u3gf7"]
 [ext_resource type="Script" uid="uid://cl16644rl3lsd" path="res://scripts/themes/stylebox_color_applier.gd" id="9_3hslv"]

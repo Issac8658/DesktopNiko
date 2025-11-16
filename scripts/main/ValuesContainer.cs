@@ -4,6 +4,7 @@ using System.ComponentModel;
 
 public partial class ValuesContainer : Node
 {
+	private Timer GlobalTimer = new();
 	// Signals
 	// Main
 	[Signal] public delegate void ClickedEventHandler(int Difference);
@@ -11,45 +12,57 @@ public partial class ValuesContainer : Node
 	[Signal] public delegate void LanguageChangedEventHandler(byte Language);
 	[Signal] public delegate void NikoAsWindowStateChangedEventHandler(bool ShowTaskbarIcon, bool NikoAlwaysOnTop);
 	[Signal] public delegate void WindowsStateChangedEventHandler(bool AlwaysOnTop);
-	[Signal] public delegate void ShutdownButtonHoveredEventHandler(bool Hovered);
-	[Signal] public delegate void ShutdownPopupShowedEventHandler(bool Showed);
+	//[Signal] public delegate void ShutdownButtonHoveredEventHandler(bool Hovered);
+	//[Signal] public delegate void ShutdownPopupShowedEventHandler(bool Showed);
 	[Signal] public delegate void ThemeChangedEventHandler(byte Theme);
 	// Niko States
 	[Signal] public delegate void NikoScaleChangedEventHandler(byte CurrentScale);
-	[Signal] public delegate void FacepickChangedEventHandler(byte FacepickType, string Facepick);
+	[Signal] public delegate void FacepicChangedEventHandler(byte FacepickType, string Facepick);
 	[Signal] public delegate void NikoHoverEventHandler(bool IsHovered);
 	[Signal] public delegate void FacepickForcedEventHandler(string FacepickId);
 	[Signal] public delegate void FacepickUnforcedEventHandler();
 	[Signal] public delegate void NikoTimeToSleepChangedEventHandler(int TimeToSleep);
 	[Signal] public delegate void GamingModeToggledEventHandler(bool GamingMode);
 	[Signal] public delegate void NikoVisibilityChangedEventHandler(bool Visibility);
+	[Signal] public delegate void NikoSkinChangedEventHandler(string SkinId);
+	[Signal] public delegate void GlobalTimerTickedEventHandler();
 
 	// Duplicates
 	// Main
 	private ulong _clicks = 0;
+	public uint _totalTime = 0; // Time for all sessions
+	private uint _globalTime = 0; // Time for current session
 	// TWM values
 	private byte _language = 0; // 0 - eng, 1 - rus, 2 - deu, 3 - ukr
-	private bool _niko_always_on_top = true;
-	private bool _show_taskbar_icon = true;
-	private bool _windows_on_top = true;
-	private bool _shutdown_button_hovered = false;
-	private bool _shutdown_popup_showed = false;
-	private byte _current_theme = 0;
+	private bool _nikoAlwaysOnTop = true;
+	private bool _showTaskbarIcon = true;
+	private bool _windowsOnTop = true;
+	//private bool _shutdownButtonHovered = false;
+	//private bool _shutdownPopupShowed = false;
+	private byte _currentTheme = 0;
 	// Niko States
-	private byte _niko_scale = 1; // 0 - 0.5x, 1 - 1x, 2 - 2x, 3 - 3x, 4 - 4x
-	private string _idle_facepick = "niko_smile";
-	private string _speak_facepick = "niko_speak";
-	private string _scare_facepick = "niko_shock";
-	private string _scare_speak_facepick = "niko_surprised";
-	private bool _niko_hovered = false;
-	private bool _is_facepick_forced = false;
-	private string _forced_facepick_id;
-	private int _niko_time_to_sleep = 900; // in seconds
-	private bool _gaming_mode_enabled = false;
-	private bool _niko_visible = true;
+	private byte _nikoScale = 1; // 0 - 0.5x, 1 - 1x, 2 - 2x, 3 - 3x, 4 - 4x
+	private string _idleFacepic = "smile";
+	private string _speakFacepic = "speak";
+	private string _scareFacepic = "shock";
+	private string _scareSpeakFacepic = "surprised";
+	private bool _nikoHovered = false;
+	private bool _isFacepickForced = false;
+	private string _forcedFacepickId;
+	private int _nikoTimeToSleep = 900; // in seconds
+	private bool _gamingModeEnabled = false;
+	private bool _nikoVisible = true;
+	private string _currentSkin = "";
 
 	// Main
-	public int TotalTime = 0;
+	public uint TotalTime{ // Time for all sessions
+		set {}
+		get => _totalTime;
+	}
+	public uint GlobalTime{ // Time for current session
+		set {}
+		get => _globalTime;
+	}
 	public ulong Clicks
 	{
 		get => _clicks;
@@ -75,55 +88,55 @@ public partial class ValuesContainer : Node
 	}
 	public bool NikoAlwaysOnTop
 	{
-		get => _niko_always_on_top;
+		get => _nikoAlwaysOnTop;
 		set
 		{
-			_niko_always_on_top = value;
+			_nikoAlwaysOnTop = value;
 			EmitSignal("NikoAsWindowStateChanged", ShowTaskbarIcon, value);
 		}
 	}
 	public bool ShowTaskbarIcon
 	{
-		get => _show_taskbar_icon;
+		get => _showTaskbarIcon;
 		set
 		{
-			_show_taskbar_icon = value;
+			_showTaskbarIcon = value;
 			EmitSignal("NikoAsWindowStateChanged", value, NikoAlwaysOnTop);
 		}
 	}
 	public bool WindowsOnTop
 	{
-		get => _windows_on_top;
+		get => _windowsOnTop;
 		set
 		{
-			_windows_on_top = value;
+			_windowsOnTop = value;
 			EmitSignal("WindowsStateChanged", value);
 		}
 	}
-	public bool IsShutdownButtonHovered
-	{
-		get => _shutdown_button_hovered;
-		set
-		{
-			_shutdown_button_hovered = value;
-			EmitSignal("ShutdownButtonHovered", value);
-		}
-	}
-	public bool IsShutdownPupupShowed
-	{
-		get => _shutdown_popup_showed;
-		set
-		{
-			_shutdown_popup_showed = value;
-			EmitSignal("ShutdownPupupShowed", value);
-		}
-	}
+	//public bool IsShutdownButtonHovered
+	//{
+	//	get => _shutdownButtonHovered;
+	//	set
+	//	{
+	//		_shutdownButtonHovered = value;
+	//		EmitSignal("ShutdownButtonHovered", value);
+	//	}
+	//}
+	//public bool IsShutdownPupupShowed
+	//{
+	//	get => _shutdownPopupShowed;
+	//	set
+	//	{
+	//		_shutdownPopupShowed = value;
+	//		EmitSignal("ShutdownPupupShowed", value);
+	//	}
+	//}
 	public byte CurrentTheme
 	{
-		get => _current_theme;
+		get => _currentTheme;
 		set
 		{
-			_current_theme = value;
+			_currentTheme = value;
 			EmitSignal("ThemeChanged", value);
 		}
 	}
@@ -133,111 +146,137 @@ public partial class ValuesContainer : Node
 	public byte CurrentMeowSoundId = 0;
 	public bool SnapToBottom = true;
 	public bool PeacfulMode = false;
+	public bool NikoScared = false;
 
 	//		Facepicks [
-	public string IdleFacepick
+	public string IdleFacepic
 	{
 		set
 		{
-			_idle_facepick = value;
-			EmitSignal("FacepickChanged", 0, value);
+			_idleFacepic = value;
+			EmitSignal("FacepicChanged", 0, value);
 		}
-		get => _idle_facepick;
+		get => _idleFacepic;
 	}
-	public string SpeakFacepick
+	public string SpeakFacepic
 	{
 		set
 		{
-			_speak_facepick = value;
-			EmitSignal("FacepickChanged", 1, value);
+			_speakFacepic = value;
+			EmitSignal("FacepicChanged", 1, value);
 		}
-		get => _speak_facepick;
+		get => _speakFacepic;
 	}
-	public string ScareFacepick
+	public string ScareFacepic
 	{
 		set
 		{
-			_scare_facepick = value;
-			EmitSignal("FacepickChanged", 2, value);
+			_scareFacepic = value;
+			EmitSignal("FacepicChanged", 2, value);
 		}
-		get => _scare_facepick;
+		get => _scareFacepic;
 	}
-	public string ScareSpeakFacepick
+	public string ScareSpeakFacepic
 	{
 		set
 		{
-			_scare_speak_facepick = value;
-			EmitSignal("FacepickChanged", 3, value);
+			_scareSpeakFacepic = value;
+			EmitSignal("FacepicChanged", 3, value);
 		}
-		get => _scare_speak_facepick;
+		get => _scareSpeakFacepic;
 	}
 	// 		] Facepicks
 	public byte NikoScale // 0 - 0.5x, 1 - 1x, 2 - 2x, 3 - 3x, 4 - 4x
 	{
 		set
 		{
-			_niko_scale = value;
+			_nikoScale = value;
 			EmitSignal("ScaleChanged", value);
 		}
-		get => _niko_scale;
+		get => _nikoScale;
 	}
 	public bool NikoHovered
 	{
 		set
 		{
-			_niko_hovered = value;
+			_nikoHovered = value;
 			EmitSignal("NikoHover", value);
 		}
-		get => _niko_hovered;
+		get => _nikoHovered;
 	}
-	public bool IsFacepickForced
+	public bool IsFacepicForced
 	{
-		get => _is_facepick_forced;
+		get => _isFacepickForced;
 		set{}
 	}
-	public string ForcedFacepickId
+	public string ForcedFacepicId
 	{
-		get => _forced_facepick_id;
+		get => _forcedFacepickId;
 		set{}
 	}
 	public int NikoTimeToSleep
 	{
-		get => _niko_time_to_sleep;
+		get => _nikoTimeToSleep;
 		set
 		{
-			_niko_time_to_sleep = value;
+			_nikoTimeToSleep = value;
 			EmitSignal("NikoTimeToSleepChanged", value);
 		}
 	}
 	public bool GamingModeEnabled
 	{
-		get => _gaming_mode_enabled;
+		get => _gamingModeEnabled;
 		set
 		{
-			_gaming_mode_enabled = value;
+			_gamingModeEnabled = value;
 			EmitSignal("GamingModeToggled", value);
 		}
 	}
 	public bool NikoVisible
 	{
-		get => _niko_visible;
+		get => _nikoVisible;
 		set
 		{
-			_niko_visible = value;
+			_nikoVisible = value;
 			EmitSignal("NikoVisibilityChanged", value);
 		}
+	}
+	public string CurrentSkin
+	{
+		set
+		{
+			_currentSkin = value;
+			EmitSignal("NikoSkinChanged", value);
+		}
+		get => _currentSkin;
 	}
 
 	//Public functions
 	public void ForceFacepick(string FacepickId)
 	{
-		_is_facepick_forced = true;
-		_forced_facepick_id = FacepickId;
+		_isFacepickForced = true;
+		_forcedFacepickId = FacepickId;
 		EmitSignal("FacepickForced", FacepickId);
 	}
 	public void UnforceFacepick()
 	{
-		_is_facepick_forced = false;
+		_isFacepickForced = false;
 		EmitSignal("FacepickUnforced");
+	}
+
+	public override void _Ready()
+	{
+		GlobalTimer.WaitTime = 1;
+		GlobalTimer.OneShot = false;
+
+		GlobalTimer.Timeout += () =>
+		{
+			_globalTime += 1;
+			_totalTime += 1;
+			EmitSignal("GlobalTimerTicked");
+		};
+		
+		AddChild(GlobalTimer);
+		GlobalTimer.Start();
 	}
 }
