@@ -14,5 +14,10 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# Other trash
+.vscode/
+*.csproj.old
+*.csproj.old.1
 *.tmp
 *.blend1
