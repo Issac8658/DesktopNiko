@@ -1,0 +1,50 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://cqpfo8p0wgo1h"]
+
+[ext_resource type="Texture2D" uid="uid://cakkeb365kl6a" path="res://sprites/characters/dancing_niko1.png" id="1_vxm2q"]
+[ext_resource type="Texture2D" uid="uid://caahibmx1cjau" path="res://sprites/characters/dancing_niko2.png" id="2_3owsl"]
+[ext_resource type="Texture2D" uid="uid://daoo0u2fqwg2v" path="res://sprites/characters/dancing_niko3.png" id="3_lsh21"]
+[ext_resource type="Texture2D" uid="uid://cxg6sgw4745e8" path="res://sprites/characters/dancing_niko4.png" id="4_tf6uw"]
+[ext_resource type="Texture2D" uid="uid://dlemoe4ovbexc" path="res://sprites/characters/dancing_niko5.png" id="5_yo56e"]
+[ext_resource type="Texture2D" uid="uid://b36eg4be4p0s" path="res://sprites/characters/dancing_niko6.png" id="6_uss5u"]
+[ext_resource type="Texture2D" uid="uid://dgj04nyfhv5tm" path="res://sprites/characters/dancing_niko7.png" id="7_md4tc"]
+[ext_resource type="Texture2D" uid="uid://bsc0arqbuo3wq" path="res://sprites/characters/dancing_niko8.png" id="8_hcsdv"]
+[ext_resource type="Texture2D" uid="uid://dvasowbnwpxf7" path="res://sprites/characters/dancing_niko9.png" id="9_ajq31"]
+[ext_resource type="Texture2D" uid="uid://e1qvcnb2tajr" path="res://sprites/characters/dancing_niko10.png" id="10_itlwu"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vxm2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3owsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lsh21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tf6uw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yo56e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uss5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_md4tc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hcsdv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ajq31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_itlwu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

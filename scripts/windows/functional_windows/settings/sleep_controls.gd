@@ -17,6 +17,19 @@ func _ready() -> void:
 			if achievement_id == "sweet_dreams":
 				visible = true
 		)
+	update_spinboxes()
+
+func update_spinboxes():
+	var time : int = ValuesContainer.NikoTimeToSleep
+	@warning_ignore("integer_division")
+	var hours : int = time / 3600
+	hours_spinbox.value = hours
+	time -= hours
+	@warning_ignore("integer_division")
+	var minutes = time / 60
+	minutes_spinbox.value = minutes
+	time -= minutes
+	seconds_spinbox.value = time
 
 func update(_value):
 	if toggle_checkbox.button_pressed:

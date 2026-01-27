@@ -1,0 +1,521 @@
+[gd_scene load_steps=14 format=3 uid="uid://lxitxpdxspwl"]
+
+[ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/events/event.gd" id="1_phn8v"]
+[ext_resource type="PackedScene" uid="uid://3f1ftg4bnjej" path="res://events/salinewin/screen_hide_window.tscn" id="2_hsged"]
+[ext_resource type="AudioStream" uid="uid://bvq65akwrmdqd" path="res://sounds/salinewin_other_rem_plus.ogg" id="3_lp4p1"]
+[ext_resource type="Texture2D" uid="uid://dnwbeed7hrv83" path="res://sprites/ui/test_shit.png" id="4_15gn4"]
+[ext_resource type="Material" uid="uid://bmg1ixf1jmpp8" path="res://materials/glitch_material.tres" id="4_70wn8"]
+[ext_resource type="Material" uid="uid://cu7ok1qa4ne2f" path="res://materials/oneshot_glitch_material.tres" id="6_64hsx"]
+
+[sub_resource type="GDScript" id="GDScript_phn8v"]
+resource_name = "event_controller"
+script/source = "extends Node
+
+@export var screen_hide_window_template : PackedScene
+@export var game_animator : AnimationPlayer
+@export var screen_texture_rect : TextureRect
+var main_screen_shot : ImageTexture
+
+#func _process(_delta: float) -> void:
+#	Input.warp_mouse(Vector2i(get_viewport().get_mouse_position()) + Vector2i(randi_range(-2,2),randi_range(-2,2)))
+
+func do_event():
+	for i in DisplayServer.get_screen_count():
+		if not i == DisplayServer.get_primary_screen():
+			var h_window = screen_hide_window_template.instantiate()
+			h_window.position = DisplayServer.screen_get_position(i)
+			h_window.size = DisplayServer.screen_get_size(i)
+			add_child.call_deferred(h_window)
+	screen_texture_rect.texture = ImageTexture.create_from_image(DisplayServer.screen_get_image(DisplayServer.get_primary_screen()))
+	game_animator.play(\"game\")
+"
+
+[sub_resource type="Animation" id="Animation_64hsx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Window/TextureRect:material:shader_parameter/glitch_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Window/TextureRect:material:shader_parameter/color_glitch_power")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Window/TextureRect:material:shader_parameter/sin_distortion")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Window/TextureRect:material:shader_parameter/cos_distortion")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Window/TextureRect:material:shader_parameter/color_distortion")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Window/TextureRect:material:shader_parameter/sin_offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Window/TextureRect:material:shader_parameter/sin_offset_power")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.2]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Window/TextureRect:material:shader_parameter/uv_offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Window:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Window/TextureRect:material:shader_parameter/invert_color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Window/Control/CenterGlitch:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Window/Control/CenterGlitch:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_70wn8"]
+resource_name = "game"
+length = 106.67
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Window/TextureRect:material:shader_parameter/glitch_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 9.39331, 15.8833, 15.9, 16.1314, 16.3648, 24.1, 24.3667, 24.6, 31.1, 32.2667, 32.7245),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 13.4543, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 0.0, 50.0, 0.0, 0.0, 100.0, 0.0, 0.0, 100.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Window/TextureRect:material:shader_parameter/color_glitch_power")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.537699, 9.33333, 15.8833, 15.9),
+"transitions": PackedFloat32Array(1, 1, 0.392292, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0555153, 0.15, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Window/TextureRect:material:shader_parameter/sin_distortion")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 9.30921, 15.8833, 15.9),
+"transitions": PackedFloat32Array(1, 0.420448, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -3.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Window/TextureRect:material:shader_parameter/cos_distortion")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 9.30921, 15.8833, 15.9),
+"transitions": PackedFloat32Array(1, 0.420448, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 3.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Window/TextureRect:material:shader_parameter/color_distortion")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.557333, 15.8833, 15.9001, 16.3605, 24.1003, 24.1057),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 100.0, 0.0, 0.0, -100.0, 0.0]
+}
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_lp4p1")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Window/TextureRect:material:shader_parameter/sin_offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 16.3644, 16.3651, 24.0984, 24.1003),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 1.571), Vector2(90, 91.571), Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Window/TextureRect:material:shader_parameter/sin_offset_power")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(16.3683, 24.1),
+"transitions": PackedFloat32Array(2.63901, 1),
+"update": 0,
+"values": [0.0, 0.2]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Window/TextureRect:material:shader_parameter/uv_offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(24.6023, 25.1333, 25.6667, 26.2333, 26.7, 27.2, 27.735, 28.2036, 28.4753, 28.7333, 29.2333, 29.7667, 30.3122, 30.8333, 31.3748),
+"transitions": PackedFloat32Array(6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1), Vector2(0, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 2), Vector2(1, 2), Vector2(0, 2), Vector2(0, 1), Vector2(1, 1), Vector2(1, 0), Vector2(1, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, -1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Window:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2, 35.3667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Window/TextureRect:material:shader_parameter/invert_color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(24.1, 31.4059, 32.2672),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.1, 0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Window/Control/CenterGlitch:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 16.1, 24.1, 24.1632),
+"transitions": PackedFloat32Array(1, 4, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(900, 900), Vector2(0, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Window/Control/CenterGlitch:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.5, 24.1393),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1punt"]
+_data = {
+&"RESET": SubResource("Animation_64hsx"),
+&"game": SubResource("Animation_70wn8")
+}
+
+[sub_resource type="Gradient" id="Gradient_64hsx"]
+offsets = PackedFloat32Array(0, 0.093199, 0.156171, 0.324937, 0.75063, 0.962217, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.755668, 0.755668, 0.755668, 1, 0.762506, 0.762506, 0.762506, 1, 0.310361, 0.310361, 0.310361, 1, 0.728949, 0.728949, 0.728949, 1, 0.265505, 0.265505, 0.265505, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_64hsx"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_70wn8"]
+seamless = true
+color_ramp = SubResource("Gradient_64hsx")
+noise = SubResource("FastNoiseLite_64hsx")
+
+[node name="Salinewin" type="Node" node_paths=PackedStringArray("event_controller")]
+script = ExtResource("1_phn8v")
+event_controller = NodePath("EventController")
+spawn_chance = 10.0
+metadata/_custom_type_script = "uid://73yfcqn4tt7s"
+
+[node name="EventController" type="Node" parent="." node_paths=PackedStringArray("game_animator", "screen_texture_rect")]
+script = SubResource("GDScript_phn8v")
+screen_hide_window_template = ExtResource("2_hsged")
+game_animator = NodePath("../SalinewinGamePlayer")
+screen_texture_rect = NodePath("../Window/TextureRect")
+
+[node name="SalinewinGamePlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1punt")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+
+[node name="Window" type="Window" parent="."]
+transparent_bg = true
+mode = 3
+initial_position = 1
+size = Vector2i(1920, 1080)
+visible = false
+transient = true
+transient_to_focused = true
+unresizable = true
+borderless = true
+transparent = true
+
+[node name="TextureRect" type="TextureRect" parent="Window"]
+texture_filter = 1
+texture_repeat = 2
+material = ExtResource("4_70wn8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_15gn4")
+
+[node name="Control" type="Control" parent="Window"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="CenterGlitch" type="TextureRect" parent="Window/Control"]
+texture_filter = 1
+texture_repeat = 2
+material = ExtResource("6_64hsx")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1.91998
+offset_bottom = 1.08002
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(1, 0.5)
+texture = SubResource("NoiseTexture2D_70wn8")
+expand_mode = 1
+
+[node name="CoridorsGlitch" type="Control" parent="Window/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NahImMeow" type="TextureRect" parent="Window/Control/CoridorsGlitch"]
+texture_filter = 1
+texture_repeat = 2
+material = ExtResource("6_64hsx")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1777.0
+offset_top = -1203.0
+offset_right = -93.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(8, 4.5)
+texture = SubResource("NoiseTexture2D_70wn8")
+expand_mode = 1
+
+[node name="NahImMeow2" type="TextureRect" parent="Window/Control/CoridorsGlitch"]
+texture_filter = 1
+texture_repeat = 2
+material = ExtResource("6_64hsx")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 80.0
+offset_top = -1211.0
+offset_right = 1764.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(8, 4.5)
+texture = SubResource("NoiseTexture2D_70wn8")
+expand_mode = 1
+
+[node name="NahImMeow3" type="TextureRect" parent="Window/Control/CoridorsGlitch"]
+texture_filter = 1
+texture_repeat = 2
+material = ExtResource("6_64hsx")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1773.0
+offset_top = 85.0
+offset_right = -89.0
+offset_bottom = 1220.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(8, 4.5)
+texture = SubResource("NoiseTexture2D_70wn8")
+expand_mode = 1
+
+[node name="NahImMeow4" type="TextureRect" parent="Window/Control/CoridorsGlitch"]
+texture_filter = 1
+texture_repeat = 2
+material = ExtResource("6_64hsx")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 84.0
+offset_top = 77.0
+offset_right = 1768.0
+offset_bottom = 1212.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(8, 4.5)
+texture = SubResource("NoiseTexture2D_70wn8")
+expand_mode = 1

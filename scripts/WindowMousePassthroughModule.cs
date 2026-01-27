@@ -32,11 +32,6 @@ public partial class WindowMousePassthroughModule : Node
 			IntPtr hWnd = (nint)DisplayServer.WindowGetNativeHandle(DisplayServer.HandleType.WindowHandle, window.GetWindowId());
 
 			uint style = DEFAULT_WS_STYLE;
-			if (window.MousePassthrough)
-			{
-				style |= WS_EX_LAYERED; //проподает из-за этого
-				style |= WS_EX_TRANSPARENT;
-			}
 			if (window.AlwaysOnTop)
 			{
 				style |= WS_EX_TOPMOST;
@@ -44,6 +39,11 @@ public partial class WindowMousePassthroughModule : Node
 			if (HideTaskbarIcon)
 			{
 				style = (style & ~WS_EX_APPWINDOW) | WS_EX_TOOLWINDOW;
+			}
+			if (window.MousePassthrough)
+			{
+				style |= WS_EX_LAYERED;
+				style |= WS_EX_TRANSPARENT;
 			}
 			if (ForceWindowUpdate)
 			_ = SetWindowLong(hWnd, GWL_EXSTYLE, style);

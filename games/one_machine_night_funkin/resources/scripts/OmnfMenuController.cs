@@ -37,7 +37,7 @@ public partial class OmnfMenuController : Node
 		using var file = FileAccess.Open(PathToIntroText, FileAccess.ModeFlags.Read);
 		IntroTexts = file.GetAsText().Split("\n");
 
-		GetNode("/root/GlobalControlls").Call("set_niko_visibility", false);
+		//GetNode("/root/GlobalControlls").Call("set_niko_visibility", false);
 		SongPlayer.Beat += Beat;
 		SongPlayer.PlaySong("FreakyMachine");
 		TitleScreenAnimator.SpeedScale = SongPlayer.CurrentSong.Tempo / 60f / 2.0f;

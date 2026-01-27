@@ -1,0 +1,492 @@
+[gd_scene load_steps=14 format=3 uid="uid://c1v2ix460ao6r"]
+
+[ext_resource type="PackedScene" uid="uid://o3kl3g87pn3q" path="res://prefabs/base_window.tscn" id="1_hqbv3"]
+[ext_resource type="Texture2D" uid="uid://cj74xwnjydvk6" path="res://sprites/icons/info.png" id="2_tlw08"]
+[ext_resource type="Texture2D" uid="uid://cgv32itt6tnjb" path="res://sprites/bulb_bg.png" id="3_wxsyl"]
+[ext_resource type="Texture2D" uid="uid://dgmfa7kusbs5v" path="res://niko/skin_sources/niko_gasmask.png" id="4_jeqoc"]
+[ext_resource type="AudioStream" uid="uid://bygfng2teuf0p" path="res://sounds/skin_drop.ogg" id="5_3ux7i"]
+[ext_resource type="Texture2D" uid="uid://ck26j0ebmp7va" path="res://sprites/particle.png" id="5_tlw08"]
+[ext_resource type="SpriteFrames" uid="uid://cqpfo8p0wgo1h" path="res://sprites/characters/dancing_niko.tres" id="6_wxsyl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_06rtt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hqbv3"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hqbv3"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 133.915, 0)
+angle_min = -179.99998
+angle_max = 180.00002
+direction = Vector3(1, -1.11, 0)
+spread = 35.157
+initial_velocity_min = 475.15
+initial_velocity_max = 565.1
+gravity = Vector3(0, 207.52, 0)
+color = Color(1, 0.060288906, 0, 1)
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.99999994
+turbulence_enabled = true
+turbulence_noise_scale = 4.075
+
+[sub_resource type="Animation" id="Animation_elmf4"]
+resource_name = "Intro"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/WindowContainer/Content/InnerContent/Skin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8314774, 1.0666667, 3.833333, 4.233333, 4.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 0.75785893, 5.4641604, 1, 1),
+"update": 0,
+"values": [Vector2(-100, 86), Vector2(-100, 86), Vector2(80, 86), Vector2(80, 86), Vector2(157.467, 92.038), Vector2(192, 123), Vector2(192, 123)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/WindowContainer/Content/InnerContent/Skin:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.8333333, 4.0244775, 4.3415723, 4.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.35779249665883756, 0.577703982410123, 0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/WindowContainer/Content/InnerContent/Skin:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.833333, 3.9333334, 4.0333333, 4.133333, 4.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 0.4352754, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(-2, 2), Vector2(2, 2), Vector2(-2, 2), Vector2(2, 2), Vector2(2, 2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/WindowContainer/Content/InnerContent/CatOfTheDayText:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.1, 0.13333334, 0.2, 0.23333333, 0.3, 0.53333336, 0.8333333, 1.0666667, 10),
+"transitions": PackedFloat32Array(1, 0.2, 1, 0.2, 1, 0.2, 1, 0.044194248, 1.3195077, 1, 1),
+"update": 0,
+"values": [Vector2(256, 30), Vector2(256, 30), Vector2(160, 30), Vector2(160, 30), Vector2(240, -20), Vector2(240, -20), Vector2(116, -42), Vector2(116, -42), Vector2(140, 30), Vector2(168, 0), Vector2(168, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/WindowContainer/Content/InnerContent/Correct:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 5.733333, 5.766667, 5.8, 5.8333335, 5.866667, 5.9, 5.9333334, 5.9666667, 6, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/WindowContainer/Content/InnerContent/CatOfTheDayText:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5319786, 0.8333333, 1.0666667, 10),
+"transitions": PackedFloat32Array(1, 0.050765887, 1.3660406, 1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(3, 3), Vector2(2, 2), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/WindowContainer/Content/InnerContent/Button:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 9.866667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control/WindowContainer/Content/InnerContent/Skin:self_modulate")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.9666667, 4.5, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Control/WindowContainer/Content/InnerContent/LeftParticles:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 6.933334, 7, 8.233334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Control/WindowContainer/Content/InnerContent/RightParticles:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 6.933334, 7, 8.233334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SkinDrop:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.03333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Control/WindowContainer/Content/InnerContent/AnimatedSprite2D:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 9.866667, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.5686275, 0.5686275, 0.5686275, 0), Color(0.5686275, 0.5686275, 0.5686275, 0), Color(0.5703125, 0.5703125, 0.5703125, 0.42745098)]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Control/WindowContainer/Content/InnerContent/AnimatedSprite2D")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(9.366667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"default", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_dfrw0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/WindowContainer/Content/InnerContent/Skin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(192, 123)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/WindowContainer/Content/InnerContent/Skin:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/WindowContainer/Content/InnerContent/Skin:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/WindowContainer/Content/InnerContent/CatOfTheDayText:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(176, 8)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/WindowContainer/Content/InnerContent/Correct:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/WindowContainer/Content/InnerContent/CatOfTheDayText:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/WindowContainer/Content/InnerContent/Button:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control/WindowContainer/Content/InnerContent/Skin:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Control/WindowContainer/Content/InnerContent/LeftParticles:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Control/WindowContainer/Content/InnerContent/RightParticles:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SkinDrop:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Control/WindowContainer/Content/InnerContent/AnimatedSprite2D:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.5703125, 0.5703125, 0.5703125, 0.42745098)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xqnxt"]
+_data = {
+&"Intro": SubResource("Animation_elmf4"),
+&"RESET": SubResource("Animation_dfrw0")
+}
+
+[node name="SkinTake" instance=ExtResource("1_hqbv3")]
+title = "Cat Of the Day"
+size = Vector2i(280, 250)
+
+[node name="Icon" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
+icon = ExtResource("2_tlw08")
+
+[node name="Title" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
+visible = false
+text = ""
+
+[node name="HideButtonContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="2"]
+visible = false
+
+[node name="CloseButtonContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="3"]
+visible = false
+
+[node name="InnerContent" type="Control" parent="Control/WindowContainer/Content" index="0"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/WindowContainer/Content/InnerContent" index="0"]
+modulate = Color(0.588235, 0.392157, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wxsyl")
+stretch_mode = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/WindowContainer/Content/InnerContent" index="1"]
+modulate = Color(0.5703125, 0.5703125, 0.5703125, 0.42745098)
+position = Vector2(90, 109)
+scale = Vector2(0.4, 0.4)
+sprite_frames = ExtResource("6_wxsyl")
+frame_progress = 0.28137586
+
+[node name="Skin" type="Sprite2D" parent="Control/WindowContainer/Content/InnerContent" index="2"]
+position = Vector2(192, 123)
+scale = Vector2(2, 2)
+texture = ExtResource("4_jeqoc")
+
+[node name="CatOfTheDayText" type="HBoxContainer" parent="Control/WindowContainer/Content/InnerContent" index="3"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_top = 8.0
+offset_right = 0.0005187988
+offset_bottom = 68.00002
+grow_horizontal = 0
+pivot_offset = Vector2(96, 0)
+theme_override_constants/separation = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText" index="0"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = -4
+
+[node name="Label" type="Label" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText/VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_06rtt")
+text = "cat"
+
+[node name="Label2" type="Label" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText/VBoxContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_06rtt")
+text = "the"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText" index="1"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="Control" type="Control" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText/VBoxContainer2" index="0"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText/VBoxContainer2" index="1"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_06rtt")
+text = "of"
+
+[node name="Label4" type="Label" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText/VBoxContainer2" index="2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_06rtt")
+text = "day"
+
+[node name="Correct" type="Label" parent="Control/WindowContainer/Content/InnerContent" index="4"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 41.0
+offset_right = 94.0
+offset_bottom = 153.0
+theme_override_font_sizes/font_size = 110
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hqbv3")
+text = "✓"
+
+[node name="Button" type="Button" parent="Control/WindowContainer/Content/InnerContent" index="5"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 154.0
+offset_right = 109.0
+offset_bottom = 186.0
+text = "Забрать"
+
+[node name="LeftParticles" type="GPUParticles2D" parent="Control/WindowContainer/Content/InnerContent" index="6"]
+emitting = false
+amount = 2000
+texture = ExtResource("5_tlw08")
+lifetime = 10.0
+visibility_rect = Rect2(0, 0, 170, 195)
+process_material = SubResource("ParticleProcessMaterial_hqbv3")
+
+[node name="RightParticles" type="GPUParticles2D" parent="Control/WindowContainer/Content/InnerContent" index="7"]
+position = Vector2(273, 0)
+scale = Vector2(-1, 1)
+emitting = false
+amount = 2000
+texture = ExtResource("5_tlw08")
+lifetime = 10.0
+visibility_rect = Rect2(0, 0, 170, 195)
+process_material = SubResource("ParticleProcessMaterial_hqbv3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_xqnxt")
+}
+
+[node name="SkinDrop" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource("5_3ux7i")

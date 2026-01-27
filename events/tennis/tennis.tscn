@@ -1,0 +1,641 @@
+[gd_scene load_steps=21 format=3 uid="uid://cykd86boymkkf"]
+
+[ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/events/event.gd" id="1_4neqe"]
+[ext_resource type="AudioStream" uid="uid://pf6m77hcecy8" path="res://sounds/tennis_shot.mp3" id="2_4kq60"]
+[ext_resource type="AudioStream" uid="uid://yx8u66qbbw5e" path="res://sounds/tennis_shot_2.mp3" id="3_64cqo"]
+[ext_resource type="AudioStream" uid="uid://bryfuuvpcrhl0" path="res://sounds/tennis_result_song.ogg" id="4_52hgy"]
+[ext_resource type="PackedScene" uid="uid://o3kl3g87pn3q" path="res://prefabs/base_window.tscn" id="4_64cqo"]
+[ext_resource type="AudioStream" uid="uid://dux4rouippbfo" path="res://sounds/lose.wav" id="4_hkh58"]
+[ext_resource type="AudioStream" uid="uid://bb45mnqcvfo5p" path="res://sounds/pc_logon.wav" id="5_a0qhp"]
+[ext_resource type="Texture2D" uid="uid://ccryp414lksku" path="res://events/tennis/logo_tennis_ball.png" id="6_ao3bx"]
+[ext_resource type="Texture2D" uid="uid://c3s1xqfrucpby" path="res://niko/niko_default/smug.png" id="7_i1fqx"]
+[ext_resource type="Texture2D" uid="uid://bjfdcbs4wdh0k" path="res://events/tennis/tennis_icon.png" id="8_a5d04"]
+[ext_resource type="Texture2D" uid="uid://coooblyht2ib3" path="res://events/tennis/racket.png" id="8_wh27w"]
+[ext_resource type="Texture2D" uid="uid://0485aj6864rb" path="res://events/tennis/tennis_ball.png" id="9_d2fhx"]
+
+[sub_resource type="GDScript" id="GDScript_ao3bx"]
+resource_name = "EventController"
+script/source = "extends Node
+# 😭
+
+signal called_to_clear()
+
+@export var window : Window
+@export_group(\"sounds\", \"sound\")
+@export var sound_player_shot : AudioStreamPlayer
+@export var sound_niko_shot : AudioStreamPlayer
+@export var sound_tennis_music : AudioStreamPlayer
+@export var sound_lose : AudioStreamPlayer
+@export var sound_win : AudioStreamPlayer
+@export_group(\"screens\", \"screen\")
+@export var screen_main_menu : CanvasItem
+@export var screen_game : CanvasItem
+@export var screen_lose : CanvasItem
+@export var screen_win : CanvasItem
+@export var tennis_text : CanvasItem
+@export var htp_text : CanvasItem
+
+@export var points_label : Label
+@export var play_button : Button
+@export var htp_button : Button
+@export var exit_button : Button
+
+@export var win_button : Button
+@export var lose_button : Button
+
+@export var player_raket : Control
+@export var niko_raket : Control
+@export var tennis_ball : Control
+
+@export var playing_niko_rect : TextureRect
+
+@export var niko_debug : Control
+@export var player_debug : Control
+
+var player_raket_pos = Vector2i(0,0)
+var niko_raket_pos = Vector2(450,250)
+var niko_raket_fake_pos = Vector2(450,250)
+var tennis_ball_pos : Array[float] = [300,300,300,200,0.99]
+var tennis_ball_fly_to_niko = false
+var tennis_ball_current_speed : float = 0
+var tennis_ball_speed : float = 0
+var points : int = 0
+var gaming = false
+
+func _ready() -> void:
+	window.window_input.connect(func (event : InputEvent):
+		if event is InputEventMouseMotion:
+			player_raket_pos = Vector2i(event.position) - window.position
+			tennis_ball_current_speed = event.relative.length()
+	)
+	play_button.pressed.connect(start_game)
+	exit_button.pressed.connect(revert)
+	window.close_button_pressed.connect(revert)
+	lose_button.pressed.connect(revert)
+	win_button.pressed.connect(revert)
+	htp_button.mouse_entered.connect(func ():
+		tennis_text.visible = false
+		htp_text.visible = true
+	)
+	htp_button.mouse_exited.connect(func ():
+		tennis_text.visible = true
+		htp_text.visible = false
+	)
+
+func do_event():
+	if not window.visible:
+		ValuesContainer.NikoVisible = false
+		window.visible = true
+		sound_tennis_music.play()
+
+
+func revert():
+	ValuesContainer.NikoVisible = true
+	called_to_clear.emit()
+
+
+func win():
+	gaming = false
+	tennis_ball.visible = false
+	screen_win.visible = true
+	sound_tennis_music.stop()
+	sound_win.play()
+	#GlobalControlls.doned_events += 1
+	#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+func lose():
+	gaming = false
+	tennis_ball.visible = false
+	screen_lose.visible = true
+	sound_lose.play()
+	sound_tennis_music.stop()
+	#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+func start_game():
+	playing_niko_rect.texture = NikoSkinManager.GetCurrentSkinSprite(ValuesContainer.IdleFacepic)
+	screen_main_menu.visible = false
+	screen_game.visible = true
+	gaming = true
+	#Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+
+func _physics_process(delta: float) -> void:
+	if gaming:
+		update_all()
+		if tennis_ball_fly_to_niko:
+			tennis_ball_pos[4] += delta * 0.5 + tennis_ball_speed / 1000.0
+		else:
+			tennis_ball_pos[4] -= delta * 0.5
+		
+		if tennis_ball_pos[4] >= 1:
+			tennis_ball_pos[4] = 0.99
+			tennis_ball_fly_to_niko = false
+			tennis_ball_pos[0] = randf_range(200,600)
+			tennis_ball_pos[1] = randf_range(150,300)
+			points += 1
+			if points >= 100:
+				if not AchievementsGlobalConroller.is_achievement_taked(\"master_of_tennis\"):
+					AchievementsGlobalConroller.take_achievement(\"master_of_tennis\")
+			points_label.text = str(points)
+			if niko_raket_fake_pos.distance_to(Vector2(tennis_ball_pos[2], tennis_ball_pos[3])) >= 40:
+				print(\"win\")
+				if not AchievementsGlobalConroller.is_achievement_taked(\"little_win\"):
+					AchievementsGlobalConroller.take_achievement(\"little_win\")
+				playing_niko_rect.texture = NikoSkinManager.GetCurrentSkinSprite(\"niko_sleepy\")
+				win()
+			else:
+				sound_niko_shot.play()
+				playing_niko_rect.texture = NikoSkinManager.GetCurrentSkinSprite(ValuesContainer.IdleFacepic)
+			await get_tree().create_timer(.5).timeout
+			#print(\"return\")
+			niko_raket_pos = Vector2i(450,250)
+		elif tennis_ball_pos[4] <= 0:
+			tennis_ball_pos[4] = 0.01
+			tennis_ball_fly_to_niko = true
+			tennis_ball_pos[2] = randf_range(200,600)
+			tennis_ball_pos[3] = randf_range(150,300)
+			#print(player_raket_pos + window.position - Vector2i(5,30))
+			#print(Vector2(tennis_ball_pos[0], tennis_ball_pos[1]))
+			if Vector2(player_raket_pos + window.position - Vector2i(5,30)).distance_to(Vector2(tennis_ball_pos[0], tennis_ball_pos[1])) >= 75:
+				playing_niko_rect.texture = NikoSkinManager.GetCurrentSkinSprite(\"niko_cool\")
+				lose()
+			else:
+				sound_player_shot.play()
+			tennis_ball_speed = tennis_ball_current_speed
+			if tennis_ball_speed >= 16 and gaming:
+				playing_niko_rect.texture = NikoSkinManager.GetCurrentSkinSprite(\"niko_shock\")
+			await get_tree().create_timer(1 / clamp(tennis_ball_current_speed, 1.0, 1000.0)).timeout
+			#print(\"ready\")
+			niko_raket_pos = Vector2(tennis_ball_pos[2], tennis_ball_pos[3])
+
+func update_all():
+	player_raket.position = player_raket_pos + window.position - Vector2i(80,120)
+	var p_center = player_raket.position - Vector2(400, 600)
+	player_raket.rotation = -atan2(p_center.x, p_center.y) + PI
+	player_debug.position = player_raket_pos + window.position - Vector2i(5,30)
+
+	var ball_scale = 1 - tennis_ball_pos[4] * 0.5
+	tennis_ball.scale = Vector2(ball_scale, ball_scale)
+	tennis_ball.position = mix(Vector2(tennis_ball_pos[0] - 25, tennis_ball_pos[1] - 25), Vector2(tennis_ball_pos[2] - 25, tennis_ball_pos[3] - 25), pow(clamp(tennis_ball_pos[4], 0,1), 0.75))
+	tennis_ball.position.y -= sin(tennis_ball_pos[4] * PI) * 100
+	tennis_ball.rotation = tennis_ball_pos[4] * PI
+	
+	niko_raket_fake_pos = mix(niko_raket_fake_pos, niko_raket_pos, .034)
+	niko_raket.position = niko_raket_fake_pos - Vector2(41,51)
+	var n_center = niko_raket.position - Vector2(370, 280)
+	niko_raket.rotation = -atan2(n_center.x, n_center.y) + PI
+	niko_debug.position = niko_raket_fake_pos
+
+func mix(a : Vector2, b : Vector2, alpha : float) -> Vector2:
+	return (b - a) * alpha + a
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64cqo"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_a5d04"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_a5d04"]
+offsets = PackedFloat32Array(0, 0.979508, 1)
+colors = PackedColorArray(0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_56hwv"]
+gradient = SubResource("Gradient_a5d04")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_56hwv"]
+offsets = PackedFloat32Array(0, 0.979508, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qret7"]
+gradient = SubResource("Gradient_56hwv")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d2fhx"]
+
+[node name="Tennis" type="Node" node_paths=PackedStringArray("event_controller")]
+script = ExtResource("1_4neqe")
+event_controller = NodePath("EventController")
+metadata/_custom_type_script = "uid://73yfcqn4tt7s"
+
+[node name="EventController" type="Node" parent="." node_paths=PackedStringArray("window", "sound_player_shot", "sound_niko_shot", "sound_tennis_music", "sound_lose", "sound_win", "screen_main_menu", "screen_game", "screen_lose", "screen_win", "tennis_text", "htp_text", "points_label", "play_button", "htp_button", "exit_button", "win_button", "lose_button", "player_raket", "niko_raket", "tennis_ball", "playing_niko_rect", "niko_debug", "player_debug")]
+script = SubResource("GDScript_ao3bx")
+window = NodePath("../TennisWindow")
+sound_player_shot = NodePath("../TennisShot2")
+sound_niko_shot = NodePath("../TennisShot")
+sound_tennis_music = NodePath("../TennisResultSong")
+sound_lose = NodePath("../Lose")
+sound_win = NodePath("../win")
+screen_main_menu = NodePath("../TennisWindow/Control/WindowContainer/Content/MainMenu")
+screen_game = NodePath("../TennisWindow/Control/WindowContainer/Content/Game")
+screen_lose = NodePath("../TennisWindow/Control/WindowContainer/Content/Lose")
+screen_win = NodePath("../TennisWindow/Control/WindowContainer/Content/Win")
+tennis_text = NodePath("../TennisWindow/Control/WindowContainer/Content/MainMenu/TennisText")
+htp_text = NodePath("../TennisWindow/Control/WindowContainer/Content/MainMenu/HTPText")
+points_label = NodePath("../TennisWindow/Control/WindowContainer/Content/Game/HBoxContainer/Label3")
+play_button = NodePath("../TennisWindow/Control/WindowContainer/Content/MainMenu/Buttons/ButtonContainer/PlayButton")
+htp_button = NodePath("../TennisWindow/Control/WindowContainer/Content/MainMenu/Buttons/ButtonContainer/HTPButton")
+exit_button = NodePath("../TennisWindow/Control/WindowContainer/Content/MainMenu/Buttons/ButtonContainer/ExitButton")
+win_button = NodePath("../TennisWindow/Control/WindowContainer/Content/Win/MarginContainer/VBoxContainer/Button")
+lose_button = NodePath("../TennisWindow/Control/WindowContainer/Content/Lose/MarginContainer/VBoxContainer/Button")
+player_raket = NodePath("../TennisWindow/Control/WindowContainer/Content/Game/PlayerRaket")
+niko_raket = NodePath("../TennisWindow/Control/WindowContainer/Content/Game/NikoRaket")
+tennis_ball = NodePath("../TennisWindow/Control/WindowContainer/Content/Game/TennisBall")
+playing_niko_rect = NodePath("../TennisWindow/Control/WindowContainer/Content/Game/Nikochko")
+niko_debug = NodePath("../TennisWindow/Control/WindowContainer/Content/Game/NikoDebug")
+player_debug = NodePath("../TennisWindow/Control/WindowContainer/Content/Game/PlayerDebug")
+
+[node name="TennisShot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4kq60")
+
+[node name="TennisShot2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_64cqo")
+
+[node name="Lose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hkh58")
+
+[node name="win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_a0qhp")
+volume_db = -10.0
+
+[node name="TennisResultSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_52hgy")
+volume_db = -5.0
+
+[node name="TennisWindow" parent="." instance=ExtResource("4_64cqo")]
+title = "Tennis"
+initial_position = 4
+size = Vector2i(800, 600)
+
+[node name="Icon" parent="TennisWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
+icon = ExtResource("8_a5d04")
+
+[node name="Title" parent="TennisWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
+text = "TENNIS"
+
+[node name="HideButtonContainer" parent="TennisWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="2"]
+visible = false
+
+[node name="MainMenu" type="Control" parent="TennisWindow/Control/WindowContainer/Content" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttons" type="MarginContainer" parent="TennisWindow/Control/WindowContainer/Content/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_right = 300
+
+[node name="ButtonContainer" type="VBoxContainer" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/Buttons"]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/Buttons/ButtonContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="HTPButton" type="Button" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/Buttons/ButtonContainer"]
+layout_mode = 2
+text = "HOW_TO_PLAY"
+
+[node name="ExitButton" type="Button" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/Buttons/ButtonContainer"]
+layout_mode = 2
+text = "EXIT"
+
+[node name="TennisText" type="Control" parent="TennisWindow/Control/WindowContainer/Content/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="T" type="Label" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/TennisText"]
+layout_mode = 0
+offset_left = 157.0
+offset_top = 77.0
+offset_right = 237.0
+offset_bottom = 238.0
+localize_numeral_system = false
+theme_override_font_sizes/font_size = 160
+theme_override_styles/normal = SubResource("StyleBoxEmpty_64cqo")
+text = "T"
+
+[node name="E" type="Label" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/TennisText"]
+layout_mode = 0
+offset_left = 211.0
+offset_top = 148.0
+offset_right = 261.0
+offset_bottom = 249.0
+rotation = -0.451329
+localize_numeral_system = false
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxEmpty_64cqo")
+text = "E"
+
+[node name="N" type="Label" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/TennisText"]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 119.0
+offset_right = 330.0
+offset_bottom = 240.0
+rotation = -0.315061
+localize_numeral_system = false
+theme_override_font_sizes/font_size = 120
+theme_override_styles/normal = SubResource("StyleBoxEmpty_64cqo")
+text = "N"
+
+[node name="N2" type="Label" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/TennisText"]
+layout_mode = 0
+offset_left = 335.0
+offset_top = 86.0
+offset_right = 405.0
+offset_bottom = 227.0
+rotation = -0.222153
+localize_numeral_system = false
+theme_override_font_sizes/font_size = 140
+theme_override_styles/normal = SubResource("StyleBoxEmpty_64cqo")
+text = "N"
+
+[node name="I" type="Label" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/TennisText"]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 64.0
+offset_right = 483.0
+offset_bottom = 225.0
+rotation = -0.117219
+localize_numeral_system = false
+theme_override_font_sizes/font_size = 160
+theme_override_styles/normal = SubResource("StyleBoxEmpty_64cqo")
+text = "I"
+
+[node name="S" type="Label" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/TennisText"]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 54.0
+offset_right = 562.0
+offset_bottom = 215.0
+localize_numeral_system = false
+theme_override_font_sizes/font_size = 160
+theme_override_styles/normal = SubResource("StyleBoxEmpty_64cqo")
+text = "S"
+
+[node name="!" type="Label" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/TennisText"]
+layout_mode = 0
+offset_left = 571.0
+offset_top = 51.0
+offset_right = 651.0
+offset_bottom = 212.0
+rotation = 0.141495
+localize_numeral_system = false
+theme_override_font_sizes/font_size = 160
+theme_override_styles/normal = SubResource("StyleBoxEmpty_64cqo")
+text = "!"
+
+[node name="Label2" type="Label" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/TennisText"]
+layout_mode = 0
+offset_left = 507.0
+offset_top = 204.0
+offset_right = 588.0
+offset_bottom = 222.0
+localize_numeral_system = false
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_64cqo")
+text = "With Niko"
+
+[node name="Button" type="Button" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/TennisText"]
+custom_minimum_size = Vector2(124, 60)
+layout_mode = 0
+offset_left = 237.0
+offset_top = 75.0
+offset_right = 361.0
+offset_bottom = 135.0
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("6_ao3bx")
+expand_icon = true
+
+[node name="HTPText" type="RichTextLabel" parent="TennisWindow/Control/WindowContainer/Content/MainMenu"]
+visible = false
+layout_mode = 0
+offset_left = 90.0
+offset_top = 67.0
+offset_right = 737.0
+offset_bottom = 254.0
+bbcode_enabled = true
+text = "TENNIS_HTP_TEXT"
+
+[node name="Game" type="Control" parent="TennisWindow/Control/WindowContainer/Content" index="1"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Nikochko" type="TextureRect" parent="TennisWindow/Control/WindowContainer/Content/Game"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 0
+offset_left = 338.0
+offset_top = 198.0
+offset_right = 458.0
+offset_bottom = 318.0
+texture = ExtResource("7_i1fqx")
+
+[node name="NikoRaket" type="Button" parent="TennisWindow/Control/WindowContainer/Content/Game"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 423.0
+offset_top = 168.0
+offset_right = 505.0
+offset_bottom = 334.0
+rotation = 0.423601
+pivot_offset = Vector2(41, 51.315)
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("8_wh27w")
+
+[node name="TennisBall" type="TextureRect" parent="TennisWindow/Control/WindowContainer/Content/Game"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 351.0
+offset_top = 286.0
+offset_right = 401.0
+offset_bottom = 336.0
+pivot_offset = Vector2(25, 25)
+texture = ExtResource("9_d2fhx")
+expand_mode = 1
+
+[node name="PlayerRaket" type="Button" parent="TennisWindow/Control/WindowContainer/Content/Game"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 178.0
+offset_top = 238.0
+offset_right = 323.0
+offset_bottom = 532.0
+rotation = -0.39619
+pivot_offset = Vector2(72.5, 90)
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("8_wh27w")
+expand_icon = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TennisWindow/Control/WindowContainer/Content/Game"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 12.0
+offset_right = 111.0
+offset_bottom = 33.0
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="TennisWindow/Control/WindowContainer/Content/Game/HBoxContainer"]
+layout_mode = 2
+text = "POINTS"
+
+[node name="Label2" type="Label" parent="TennisWindow/Control/WindowContainer/Content/Game/HBoxContainer"]
+layout_mode = 2
+text = ": "
+
+[node name="Label3" type="Label" parent="TennisWindow/Control/WindowContainer/Content/Game/HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="NikoDebug" type="TextureRect" parent="TennisWindow/Control/WindowContainer/Content/Game"]
+visible = false
+material = SubResource("CanvasItemMaterial_a5d04")
+layout_mode = 0
+offset_right = 2.0
+offset_bottom = 2.0
+scale = Vector2(40, 40)
+pivot_offset = Vector2(1, 1)
+texture = SubResource("GradientTexture2D_56hwv")
+expand_mode = 1
+
+[node name="PlayerDebug" type="TextureRect" parent="TennisWindow/Control/WindowContainer/Content/Game"]
+visible = false
+material = SubResource("CanvasItemMaterial_a5d04")
+layout_mode = 0
+offset_right = 2.0
+offset_bottom = 2.0
+scale = Vector2(75, 75)
+pivot_offset = Vector2(1, 1)
+texture = SubResource("GradientTexture2D_qret7")
+expand_mode = 1
+
+[node name="Lose" type="Panel" parent="TennisWindow/Control/WindowContainer/Content" index="2"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.67451)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TennisWindow/Control/WindowContainer/Content/Lose"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TennisWindow/Control/WindowContainer/Content/Lose/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="TennisWindow/Control/WindowContainer/Content/Lose/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 120
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d2fhx")
+text = "YOU_LOSE"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="TennisWindow/Control/WindowContainer/Content/Lose/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d2fhx")
+text = "WM_TENNIS_HAHA"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="TennisWindow/Control/WindowContainer/Content/Lose/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="TennisWindow/Control/WindowContainer/Content/Lose/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "RETRY_LATER"
+
+[node name="Control2" type="Control" parent="TennisWindow/Control/WindowContainer/Content/Lose/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 84)
+layout_mode = 2
+
+[node name="Win" type="Panel" parent="TennisWindow/Control/WindowContainer/Content" index="3"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.67451)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TennisWindow/Control/WindowContainer/Content/Win"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TennisWindow/Control/WindowContainer/Content/Win/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="TennisWindow/Control/WindowContainer/Content/Win/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 120
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d2fhx")
+text = "YOU_WIN"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="TennisWindow/Control/WindowContainer/Content/Win/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d2fhx")
+text = "WM_TENNIS_WIN"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="TennisWindow/Control/WindowContainer/Content/Win/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="TennisWindow/Control/WindowContainer/Content/Win/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "YAY"
+
+[node name="Control2" type="Control" parent="TennisWindow/Control/WindowContainer/Content/Win/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 84)
+layout_mode = 2
+
+[editable path="TennisWindow"]

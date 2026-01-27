@@ -4,6 +4,7 @@ public enum NikoState {Idle, Clicking, Sleepy, Sleeping, ForcedFacepic, InAnimat
 
 public partial class NikoController : Node
 {
+	public readonly float[] NikoScales = [0.5f, 1f, 2f, 3f, 4f];
 	const double MEOW_TIME = 0.2;
 	const double TIME_BEFORE_SLEEP = 0.5;
 
@@ -35,8 +36,8 @@ public partial class NikoController : Node
 
 	public override void _Ready()
 	{
-		_valuesContainer = GetNode("/root/ValuesContainer") as ValuesContainer;
-		_skinManager = GetNode("/root/NikoSkinManager") as NikoSkinManager;
+		_valuesContainer = GetNode<ValuesContainer>("/root/ValuesContainer");
+		_skinManager = GetNode<NikoSkinManager>("/root/NikoSkinManager");
 		_mainWindow = GetWindow();
 
 		_mainWindow.MouseEntered += () =>
@@ -152,7 +153,10 @@ public partial class NikoController : Node
 	
 	public void SetSprite(string spriteId)
 	{
-		NikoSpriteNode.Texture = _skinManager.GetCurrentSkinSprite(spriteId);
+		float scale = NikoScales[_valuesContainer.NikoScale];
+		Texture2D sprite = _skinManager.GetCurrentSkinSprite(spriteId);
+		NikoSpriteNode.Texture = sprite;
+		NikoSpriteNode.CustomMinimumSize = sprite.GetSize() * scale * _skinManager.GetCurrentSkinBaseScale();
 	}
 
 	// for animations

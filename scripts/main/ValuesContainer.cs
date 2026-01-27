@@ -1,13 +1,10 @@
 using Godot;
-using System;
-using System.ComponentModel;
 
 public partial class ValuesContainer : Node
 {
+// idk what this :3
 	private Timer GlobalTimer = new();
-	// Signals
-	// Main
-	[Signal] public delegate void ClickedEventHandler(int Difference);
+// Signals
 	// TWM
 	[Signal] public delegate void LanguageChangedEventHandler(byte Language);
 	[Signal] public delegate void NikoAsWindowStateChangedEventHandler(bool ShowTaskbarIcon, bool NikoAlwaysOnTop);
@@ -18,59 +15,51 @@ public partial class ValuesContainer : Node
 	// Niko States
 	[Signal] public delegate void NikoScaleChangedEventHandler(byte CurrentScale);
 	[Signal] public delegate void FacepicChangedEventHandler(byte FacepickType, string Facepick);
-	[Signal] public delegate void NikoHoverEventHandler(bool IsHovered);
-	[Signal] public delegate void FacepickForcedEventHandler(string FacepickId);
-	[Signal] public delegate void FacepickUnforcedEventHandler();
 	[Signal] public delegate void NikoTimeToSleepChangedEventHandler(int TimeToSleep);
 	[Signal] public delegate void GamingModeToggledEventHandler(bool GamingMode);
-	[Signal] public delegate void NikoVisibilityChangedEventHandler(bool Visibility);
 	[Signal] public delegate void NikoSkinChangedEventHandler(string SkinId);
-	[Signal] public delegate void GlobalTimerTickedEventHandler();
 
-	// Duplicates
+// Duplicates
 	// Main
 	private ulong _clicks = 0;
-	public uint _totalTime = 0; // Time for all sessions
-	private uint _globalTime = 0; // Time for current session
+	private string _verison;
+
 	// TWM values
 	private byte _language = 0; // 0 - eng, 1 - rus, 2 - deu, 3 - ukr
 	private bool _nikoAlwaysOnTop = true;
 	private bool _showTaskbarIcon = true;
-	private bool _windowsOnTop = true;
+	private bool _windowsAlwaysOnTop = true;
+	private int _donedEvents = 0;
 	//private bool _shutdownButtonHovered = false;
 	//private bool _shutdownPopupShowed = false;
 	private byte _currentTheme = 0;
+
 	// Niko States
 	private byte _nikoScale = 1; // 0 - 0.5x, 1 - 1x, 2 - 2x, 3 - 3x, 4 - 4x
 	private string _idleFacepic = "smile";
 	private string _speakFacepic = "speak";
 	private string _scareFacepic = "shock";
 	private string _scareSpeakFacepic = "surprised";
-	private bool _nikoHovered = false;
-	private bool _isFacepickForced = false;
-	private string _forcedFacepickId;
 	private int _nikoTimeToSleep = 900; // in seconds
 	private bool _gamingModeEnabled = false;
-	private bool _nikoVisible = true;
 	private string _currentSkin = "";
 
+// Publics
 	// Main
-	public uint TotalTime{ // Time for all sessions
-		set {}
-		get => _totalTime;
-	}
-	public uint GlobalTime{ // Time for current session
-		set {}
-		get => _globalTime;
-	}
+	public uint TotalTime = 0;
 	public ulong Clicks
 	{
 		get => _clicks;
 		set
 		{
-			EmitSignal("Clicked", _clicks - value);
+			EmitSignal("Clicked", value - _clicks);
 			_clicks = value;
 		}
+	}
+	public string Version
+	{
+		get => _verison;
+		set {}
 	}
 	// TWM values
 	public bool MouseSoundEnabled = true;
@@ -104,13 +93,21 @@ public partial class ValuesContainer : Node
 			EmitSignal("NikoAsWindowStateChanged", value, NikoAlwaysOnTop);
 		}
 	}
-	public bool WindowsOnTop
+	public bool WindowsAlwaysOnTop
 	{
-		get => _windowsOnTop;
+		get => _windowsAlwaysOnTop;
 		set
 		{
-			_windowsOnTop = value;
+			_windowsAlwaysOnTop = value;
 			EmitSignal("WindowsStateChanged", value);
+		}
+	}
+	public int DonedEvents
+	{
+		get => _donedEvents;
+		set
+		{
+			_donedEvents = value;
 		}
 	}
 	//public bool IsShutdownButtonHovered
@@ -146,7 +143,6 @@ public partial class ValuesContainer : Node
 	public byte CurrentMeowSoundId = 0;
 	public bool SnapToBottom = true;
 	public bool PeacfulMode = false;
-	public bool NikoScared = false;
 
 	//		Facepicks [
 	public string IdleFacepic
@@ -191,28 +187,9 @@ public partial class ValuesContainer : Node
 		set
 		{
 			_nikoScale = value;
-			EmitSignal("ScaleChanged", value);
+			EmitSignal("NikoScaleChanged", value);
 		}
 		get => _nikoScale;
-	}
-	public bool NikoHovered
-	{
-		set
-		{
-			_nikoHovered = value;
-			EmitSignal("NikoHover", value);
-		}
-		get => _nikoHovered;
-	}
-	public bool IsFacepicForced
-	{
-		get => _isFacepickForced;
-		set{}
-	}
-	public string ForcedFacepicId
-	{
-		get => _forcedFacepickId;
-		set{}
 	}
 	public int NikoTimeToSleep
 	{
@@ -222,6 +199,61 @@ public partial class ValuesContainer : Node
 			_nikoTimeToSleep = value;
 			EmitSignal("NikoTimeToSleepChanged", value);
 		}
+	}
+	[Export]
+	public string CurrentSkin
+	{
+		set
+		{
+			_currentSkin = value;
+			//EmitSignal("NikoSkinChanged", value);
+		}
+		get => _currentSkin;
+	}
+
+
+
+
+
+
+
+	//variables that do not need to be saved
+// Signals
+	// Main
+	[Signal] public delegate void ClickedEventHandler(int Difference);
+	[Signal] public delegate void GlobalTimerTickedEventHandler();
+	// Niko States
+	[Signal] public delegate void NikoHoverEventHandler(bool IsHovered);
+	[Signal] public delegate void FacepickForcedEventHandler(string FacepickId);
+	[Signal] public delegate void FacepickUnforcedEventHandler();
+	[Signal] public delegate void NikoVisibilityChangedEventHandler(bool Visibility);
+
+// Duplicates
+	// Main
+	private uint _globalTime = 0; // Time for current session
+	// Niko States
+	private bool _nikoHovered = false;
+	private bool _nikoVisible = true;
+	private bool _isFacepickForced = false;
+	private string _forcedFacepickId;
+
+// Publics
+	// Main
+	public uint GlobalTime{ // Time for current session
+		set {}
+		get => _globalTime;
+	}
+
+	// Niko States
+	public bool NikoScared = false;
+	public bool NikoHovered
+	{
+		set
+		{
+			_nikoHovered = value;
+			EmitSignal("NikoHover", value);
+		}
+		get => _nikoHovered;
 	}
 	public bool GamingModeEnabled
 	{
@@ -241,17 +273,20 @@ public partial class ValuesContainer : Node
 			EmitSignal("NikoVisibilityChanged", value);
 		}
 	}
-	public string CurrentSkin
+	public bool IsFacepicForced
 	{
+		get => _isFacepickForced;
+		set{}
+	}
+	public string ForcedFacepicId
+	{
+		get => _forcedFacepickId;
 		set
 		{
-			_currentSkin = value;
-			EmitSignal("NikoSkinChanged", value);
+			ForceFacepick(value);
 		}
-		get => _currentSkin;
 	}
-
-	//Public functions
+//Public functions
 	public void ForceFacepick(string FacepickId)
 	{
 		_isFacepickForced = true;
@@ -266,13 +301,14 @@ public partial class ValuesContainer : Node
 
 	public override void _Ready()
 	{
+		_verison = (string)ProjectSettings.GetSetting("application/config/version");
 		GlobalTimer.WaitTime = 1;
 		GlobalTimer.OneShot = false;
 
 		GlobalTimer.Timeout += () =>
 		{
 			_globalTime += 1;
-			_totalTime += 1;
+			TotalTime += 1;
 			EmitSignal("GlobalTimerTicked");
 		};
 		

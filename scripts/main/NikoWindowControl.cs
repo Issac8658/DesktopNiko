@@ -14,7 +14,7 @@ public partial class NikoWindowControl : Control
 
 	private Window MainWindow;
 	private GlobalController GlobalController;
-	private ValuesContainer ValuesContainer;
+	private ValuesContainer _valuesContainer;
 
 	//Window drag vars
 	private bool IsDragging = false;
@@ -23,10 +23,10 @@ public partial class NikoWindowControl : Control
 	public override void _Ready()
 	{
 		MainWindow = GetWindow();
-		ValuesContainer = GetNode("/root/ValuesContainer") as ValuesContainer;
+		_valuesContainer = GetNode("/root/ValuesContainer") as ValuesContainer;
 		//MainWindow.WrapControls = true;
 
-		ValuesContainer.NikoScaleChanged += (NikoScale) => UpdateScale();
+		_valuesContainer.NikoScaleChanged += (NikoScale) => UpdateScale();
 
 		ItemRectChanged += () => MainWindow.Size = (Vector2I)Size;
 
@@ -45,6 +45,7 @@ public partial class NikoWindowControl : Control
 		};
 
 		UpdateScale();
+		MainWindow.WrapControls = true;
 	}
 
 	public override void _Process(double delta)
@@ -58,10 +59,10 @@ public partial class NikoWindowControl : Control
 
 	public void UpdateScale()
 	{
-		float scale = NikoScales[ValuesContainer.NikoScale];
+		float scale = NikoScales[_valuesContainer.NikoScale];
 		SetDeferred("size", Vector2I.Zero);
 		SetDeferred("position", Vector2I.Zero);
-		NikoClickControl.CustomMinimumSize = (Vector2I)(DefaultNikoSize * scale);
+		//NikoClickControl.CustomMinimumSize = (Vector2I)(DefaultNikoSize * scale);
 		SleepParticles.Scale = AreasNode.Scale = new(scale, scale);
 	}
 }

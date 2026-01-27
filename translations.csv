@@ -10,7 +10,7 @@ FACEPICK_SPEAK,Speak,Мяуканье,Miauen,Мяукання
 FACEPICK_SCARED,Scared,Напуган,Erschreckt,Наляканий
 FACEPICK_SCARED_SPEAK,Scared speak,Удивлён,Berrascht,Здивований
 MEOW_SOUND,Meow Sound: ,Звук мява: ,Miau-Geräusch: ,Звук мяву:
-NIKO_SCALE,Niko's scale: ,Масштаб нико: ,Skala von Niko: ,Масштаб Ніко:
+NIKO_SCALE,Niko's scale: ,Масштаб нико: ,Skala von Nico: ,Масштаб Ніко:
 MEOW_VOLUME,Meow volume,Громкость мява,Miau-Lautstärke,Гучність мяву
 MASTER_VOLUME,Master volume,Общая громкость,Gesamtlautstärke,Загальна гучність
 SHUTDOWN,Shutdown,Завершение работы,Shutdown,Завершення роботи
@@ -22,7 +22,7 @@ GASMASK,Gasmask,Газовая маска,Gasmaske,Протигаз
 HAPPY,Happy,Радостный,Fröhlich,Щасливий
 PANCAKES,Pancakes,Блинчики,Pancakes,Млинці
 SIMPLE,Simple,Простой,Einfach,Простий
-NIKO,Niko,Нико,Niko,Ніко
+NIKO,Niko,Нико,Nico,Ніко
 SMUG,Smug,Довольный,Selbstgefällig,Щасливий
 MEOW1,Meow 1,Мяу 1,Miau 1,Мяу 1
 MEOW2,Meow 2,Мяу 2,Miau 2,Мяу 2
@@ -148,3 +148,8 @@ ACHIEVEMENT_TIME_TO_DINNER_NAME,Time to dinner!,Время ужинать!,,Ча
 ACHIEVEMENT_TIME_TO_DINNER_DESC,Feed Niko pancakes (the main thing is not to overdo it),Накормите Нико блинчиками (главное не переборщи),,Нагодуйте Ніко млинцями (головне не переборщи)
 ACHIEVEMENT_WORST_FRIEND_NAME,WORST friend.,ХУДШИЙ друг.,,НАЙГІРШИЙ друг.
 ACHIEVEMENT_WORST_FRIEND_DESC,"[ Of course, I understand everything, experiments are all that, but are you SERIOUSLY ready to sacrifice pancakes for Niko for some damn experiments?! ]","[ Я, конечно, всё понимаю, эксперименты всё такое, но ты СЕРЬЕЗНО готов пожертвовать блинчиками для Нико ради каких то эксперементов?! ]",,"[ Я, звичайно, все розумію, експерименти все таке, але ти СЕРЙОЗНО готовий пожертвувати млинцями для Ніко заради якихось експериментів?! ]"
+GAMES,Games,Игры,,
+MUSIC,Music,Музыка,,
+RESTART,Restart,Заного,,
+SCORE,Score,Очков,,
+LINES,Lines,Линий,,

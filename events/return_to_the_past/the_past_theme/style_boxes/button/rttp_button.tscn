@@ -1,0 +1,380 @@
+[gd_scene load_steps=17 format=3 uid="uid://c5fdw8sq0uh7u"]
+
+[ext_resource type="StyleBox" uid="uid://cs2pe7ochvxo1" path="res://events/return_to_the_past/the_past_theme/style_boxes/button/button_normal.tres" id="1_xl6mu"]
+[ext_resource type="StyleBox" uid="uid://dw7euru4ndecb" path="res://events/return_to_the_past/the_past_theme/style_boxes/button/button_hover.tres" id="2_0l3b6"]
+[ext_resource type="StyleBox" uid="uid://ccswymrxgakw2" path="res://events/return_to_the_past/the_past_theme/style_boxes/button/button_disabled.tres" id="2_3v35o"]
+[ext_resource type="StyleBox" uid="uid://bkf5bccm77kks" path="res://events/return_to_the_past/the_past_theme/style_boxes/button/button_pressed.tres" id="3_rxjbf"]
+[ext_resource type="StyleBox" uid="uid://b8iqcr1x30ee3" path="res://events/return_to_the_past/the_past_theme/style_boxes/button/button_focused.tres" id="4_88mvx"]
+[ext_resource type="StyleBox" uid="uid://bc3tjep4plk8q" path="res://events/return_to_the_past/the_past_theme/style_boxes/button/button_focused2.tres" id="5_3v35o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0l3b6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rxjbf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3v1nh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_88mvx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3v35o"]
+
+[sub_resource type="Animation" id="Animation_3v35o"]
+resource_name = "Hover"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Disabled:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hover:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pressed:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Focused:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Focused2:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b2hog"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Disabled:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hover:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pressed:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Focused:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Focused2:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w8ktc"]
+resource_name = "Press"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Disabled:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hover:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pressed:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Focused:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Focused2:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1bu73"]
+resource_name = "Focus"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Disabled:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hover:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pressed:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Focused:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.99),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Focused2:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b2hog"]
+_data = {
+&"Focus": SubResource("Animation_1bu73"),
+&"Hover": SubResource("Animation_3v35o"),
+&"Press": SubResource("Animation_w8ktc"),
+&"RESET": SubResource("Animation_b2hog")
+}
+
+[node name="RttpButton" type="Button"]
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0l3b6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rxjbf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3v1nh")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_88mvx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3v35o")
+text = "Button"
+
+[node name="Base" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("1_xl6mu")
+
+[node name="Disabled" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("2_3v35o")
+
+[node name="Hover" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("2_0l3b6")
+
+[node name="Pressed" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("3_rxjbf")
+
+[node name="Focused" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("4_88mvx")
+
+[node name="Focused2" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("5_3v35o")
+
+[node name="ButtonAnimator" type="AnimationPlayer" parent="."]
+deterministic = true
+libraries = {
+&"": SubResource("AnimationLibrary_b2hog")
+}
+
+[connection signal="button_down" from="." to="ButtonAnimator" method="play" binds= ["Press", 0.5]]
+[connection signal="button_up" from="." to="ButtonAnimator" method="play" binds= ["RESET", 0.5]]
+[connection signal="focus_entered" from="." to="ButtonAnimator" method="play" binds= ["Focus", 0.5]]
+[connection signal="focus_exited" from="." to="ButtonAnimator" method="play" binds= ["RESET", 0.5]]
+[connection signal="mouse_entered" from="." to="ButtonAnimator" method="play" binds= ["Hover", 0.5]]
+[connection signal="mouse_exited" from="." to="ButtonAnimator" method="play" binds= ["RESET", 0.5]]

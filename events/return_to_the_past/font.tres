@@ -1,0 +1,6 @@
+[gd_resource type="SystemFont" format=3 uid="uid://d4csf1s8dn075"]
+
+[resource]
+font_names = PackedStringArray("Segoe UI", "Sans-Serif", "Serif")
+disable_embedded_bitmaps = false
+hinting = 2

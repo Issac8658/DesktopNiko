@@ -22,6 +22,7 @@ run/low_processor_mode=true
 run/low_processor_mode_sleep_usec=13800
 boot_splash/show_image=false
 config/icon="uid://qsweuhlblj1"
+config/save_version=1
 
 [audio]
 
@@ -32,9 +33,9 @@ buses/default_bus_layout="res://buses.tres"
 ShutdownHandler="*res://scripts/ShutdownHandler.cs"
 PassthroughModule="*res://scripts/WindowMousePassthroughModule.cs"
 ValuesContainer="*res://scripts/main/ValuesContainer.cs"
+SaveLoad="*res://scripts/main/SaveLoad.cs"
 NikoSkinManager="*res://scripts/main/NikoSkinManager.cs"
 GlobalController="*res://scripts/main/GlobalController.cs"
-SaveLoad="*res://scripts/main/SaveLoad.cs"
 Dialog="*res://prefabs/dialog_window.tscn"
 AchievementsGlobalConroller="*res://scripts/achievements/achievements_global_conroller.gd"
 NikoDialog="*res://prefabs/niko_dialog.tscn"
@@ -150,6 +151,8 @@ renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
 lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
+textures/decals/filter=0
+textures/light_projectors/filter=0
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 viewport/transparent_background=true
 lights_and_shadows/positional_shadow/atlas_quadrant_0_subdiv=0

@@ -21,3 +21,4 @@ mono_crash.*.json
 *.csproj.old.1
 *.tmp
 *.blend1
+.vscode/settings.json

@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=3 uid="uid://cj66sb2a5oolj"]
+[gd_scene load_steps=169 format=3 uid="uid://cj66sb2a5oolj"]
 
 [ext_resource type="Script" uid="uid://cbm43j4hj02f5" path="res://scripts/main/NikoController.cs" id="1_wmw63"]
 [ext_resource type="AudioStream" uid="uid://5tnvrblu5h4j" path="res://sounds/niko_meows/meow1.wav" id="2_ghshe"]
@@ -21,13 +21,13 @@
 [ext_resource type="Script" uid="uid://chdf6qgvok3dk" path="res://scripts/events/events_manager.gd" id="12_82rj2"]
 [ext_resource type="AudioStream" uid="uid://dhwgvb6t1ulx" path="res://sounds/twm_notif2.wav" id="13_1n88h"]
 [ext_resource type="Script" uid="uid://b1axu2q55ml5w" path="res://scripts/events/event_resource.gd" id="14_xevt3"]
-[ext_resource type="Resource" uid="uid://xa5i42fm2p37" path="res://prefabs/events/packed_events/pancake_machine_event.tres" id="15_ix15y"]
+[ext_resource type="Resource" uid="uid://xa5i42fm2p37" path="res://events/packed_events/pancake_machine_event.tres" id="15_ix15y"]
 [ext_resource type="Texture2D" uid="uid://b55s8l68phsqe" path="res://niko/niko_default/normal.png" id="16_7th4q"]
 [ext_resource type="Texture2D" uid="uid://cmck41qjd7h12" path="res://sprites/icons/customize.png" id="16_kv3aw"]
-[ext_resource type="Resource" uid="uid://brffaerkti5xg" path="res://prefabs/events/packed_events/pancake_alert_event.tres" id="16_l3hih"]
+[ext_resource type="Resource" uid="uid://brffaerkti5xg" path="res://events/packed_events/pancake_alert_event.tres" id="16_l3hih"]
 [ext_resource type="Texture2D" uid="uid://bb6rkjf8ar6ty" path="res://sprites/ui/sleepz.png" id="16_vafvb"]
 [ext_resource type="Texture2D" uid="uid://dbx1hieli27qp" path="res://sprites/icons/theme.png" id="17_ijoax"]
-[ext_resource type="Resource" uid="uid://0jpmuyj06155" path="res://prefabs/events/packed_events/tennis_event.tres" id="17_xevt3"]
+[ext_resource type="Resource" uid="uid://0jpmuyj06155" path="res://events/packed_events/tennis_event.tres" id="17_xevt3"]
 [ext_resource type="Script" uid="uid://beofedlggjnkj" path="res://scripts/main/NikoWindowControl.cs" id="18_wmw63"]
 [ext_resource type="PackedScene" uid="uid://bdipf040tg1gp" path="res://prefabs/resizable_window.tscn" id="19_rkakh"]
 [ext_resource type="Texture2D" uid="uid://bextf2un1mfx4" path="res://sprites/icons/shortcuts.png" id="20_o63de"]
@@ -38,10 +38,11 @@
 [ext_resource type="Texture2D" uid="uid://cr3ixq7u1lyrk" path="res://sprites/icons/github.png" id="27_id8vy"]
 [ext_resource type="Script" uid="uid://boigyc7vtdgxg" path="res://scripts/windows/functional_windows/games_shorcuts.gd" id="27_im3ns"]
 [ext_resource type="Texture2D" uid="uid://bk87tkulx74jb" path="res://sprites/icons/exit.png" id="28_xtheg"]
-[ext_resource type="Texture2D" uid="uid://crlrkmttey356" path="res://sprites/unreal.png" id="29_rkakh"]
+[ext_resource type="Texture2D" uid="uid://crlrkmttey356" path="res://sprites/characters/unreal.png" id="29_rkakh"]
 [ext_resource type="AudioStream" uid="uid://dw73t7aavxakx" path="res://sounds/HELLO_big.wav" id="30_id8vy"]
+[ext_resource type="Texture2D" uid="uid://dbd54jv3tcs30" path="res://sprites/icons/telegram.png" id="31_dftep"]
 [ext_resource type="Script" uid="uid://m4raxivypvem" path="res://scripts/windows/functional_windows/settings/settings.gd" id="32_euc68"]
-[ext_resource type="Texture2D" uid="uid://bjfdcbs4wdh0k" path="res://prefabs/events/tennis/tennis_icon.png" id="32_mmq7y"]
+[ext_resource type="Texture2D" uid="uid://bjfdcbs4wdh0k" path="res://events/tennis/tennis_icon.png" id="32_mmq7y"]
 [ext_resource type="PackedScene" uid="uid://8hficp4dbvqs" path="res://prefabs/popup_window.tscn" id="33_id8vy"]
 [ext_resource type="Script" uid="uid://duqfgxmwf1mkr" path="res://scripts/themes/theme_changer.gd" id="34_84x1k"]
 [ext_resource type="StyleBox" uid="uid://doojaqhvw2o0d" path="res://themes/themed/blue_file_focus.stylebox" id="34_c5xsv"]
@@ -93,13 +94,14 @@
 [ext_resource type="PackedScene" uid="uid://clo633qc1pd8w" path="res://prefabs/magpie_shop_item.tscn" id="77_30vx0"]
 [ext_resource type="Script" uid="uid://d3qjqffumftkk" path="res://scripts/windows/functional_windows/settings/volume.gd" id="77_k2ony"]
 [ext_resource type="Script" uid="uid://0dbjehngsr5f" path="res://scripts/windows/functional_windows/settings/add_to_autorun.gd" id="77_q4750"]
+[ext_resource type="Script" uid="uid://c32b02j7n0hx2" path="res://scripts/CpsCounter.cs" id="77_uush8"]
 [ext_resource type="Texture2D" uid="uid://d4ep8v3mrg276" path="res://sprites/shop_particle.tres" id="78_30vx0"]
 [ext_resource type="Material" uid="uid://beloub2o0etmy" path="res://materials/light_blub_anim_shader.tres" id="81_30vx0"]
 [ext_resource type="Texture2D" uid="uid://dxo8m8apw6ajl" path="res://sprites/ui/world_machine/bulb_anim_24.png" id="81_id8vy"]
 [ext_resource type="Script" uid="uid://c45ltmpprf6rs" path="res://scripts/loading_icon.gd" id="81_ubkm4"]
 [ext_resource type="Script" uid="uid://dh8nb5jo0naai" path="res://scripts/windows/functional_windows/settings/windows_only_checkbox.gd" id="82_36qg2"]
 [ext_resource type="Texture2D" uid="uid://cqicl8sy06ti5" path="res://sprites/icons/error.png" id="82_l76vu"]
-[ext_resource type="Texture2D" uid="uid://o648cd5rcwja" path="res://sprites/magpie_shop1.png" id="87_1b22m"]
+[ext_resource type="Texture2D" uid="uid://o648cd5rcwja" path="res://sprites/characters/magpie_shop1.png" id="87_1b22m"]
 [ext_resource type="Texture2D" uid="uid://onqy26td0pr4" path="res://sprites/icons/achievements.png" id="87_s2ody"]
 [ext_resource type="PackedScene" uid="uid://bi5pu8hc54t3d" path="res://prefabs/achievement.tscn" id="88_05sqr"]
 [ext_resource type="Script" uid="uid://cb6ghe82gh3g7" path="res://scripts/windows/functional_windows/styled_indicator_menu.gd" id="88_7y85w"]
@@ -115,6 +117,19 @@
 [ext_resource type="Theme" uid="uid://depgndu5hyrlf" path="res://themes/OneShotButtonedTheme.tres" id="112_uush8"]
 [ext_resource type="Script" uid="uid://hwog55yrrr11" path="res://scripts/main/NikoClickablePolygon.cs" id="114_8jixl"]
 [ext_resource type="Script" uid="uid://cwe0iho0cgqye" path="res://scripts/ClicksLabel.cs" id="116_dftep"]
+
+[sub_resource type="GDScript" id="GDScript_dftep"]
+resource_name = "Telegram"
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	gui_input.connect(func (event):
+		if event is InputEventMouseButton and event.double_click:
+			OS.shell_open(\"https://worldrefuge.t.me\")
+	)
+"
 
 [sub_resource type="GDScript" id="GDScript_xtheg"]
 resource_name = "HELLO"
@@ -224,7 +239,7 @@ script/source = "extends Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	timer.timeout.connect(func ():
+	ValuesContainer.GlobalTimerTicked.connect(func ():
 		var time = ValuesContainer.TotalTime
 		@warning_ignore(\"integer_division\")
 		var minutes = time / 60
@@ -487,6 +502,27 @@ radius = 1.4142135
 [sub_resource type="Animation" id="Animation_u0ygc"]
 length = 2.0
 
+[sub_resource type="Animation" id="Animation_dftep"]
+resource_name = "click"
+length = 0.2
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"SetScaredSpeakFacepic"
+}, {
+"args": [],
+"method": &"SetIdleFacepic"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_m35m6"]
 resource_name = "niko_look_around"
 length = 2.6
@@ -515,27 +551,6 @@ tracks/0/keys = {
 }, {
 "args": ["normal"],
 "method": &"SetSprite"
-}, {
-"args": [],
-"method": &"SetIdleFacepic"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_dftep"]
-resource_name = "click"
-length = 0.2
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../..")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"SetScaredSpeakFacepic"
 }, {
 "args": [],
 "method": &"SetIdleFacepic"
@@ -1081,6 +1096,69 @@ text = "Github"
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="Telegram" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Button" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Telegram"]
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"FlatButton"
+autowrap_mode = 2
+icon_alignment = 1
+vertical_icon_alignment = 0
+script = SubResource("GDScript_dftep")
+
+[node name="ButtonMargin" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Telegram"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ButtonContent" type="VBoxContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Telegram/ButtonMargin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Icon" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Telegram/ButtonMargin/ButtonContent"]
+material = ExtResource("41_iylel")
+custom_minimum_size = Vector2(64, 66)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("31_dftep")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ShortcutIcon" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Telegram/ButtonMargin/ButtonContent/Icon"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("23_30vx0")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Telegram/ButtonMargin/ButtonContent"]
+custom_minimum_size = Vector2(16, 24)
+layout_mode = 2
+text = "Telegram Channel (rus)"
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="Shutdown" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
@@ -1157,7 +1235,7 @@ sound = NodePath("HELLO")
 stream = ExtResource("30_id8vy")
 
 [node name="GamesWindow" parent="." instance=ExtResource("19_rkakh")]
-title = "SHORTCUTS"
+title = "GAMES"
 size = Vector2i(358, 394)
 visible = false
 unresizable = false
@@ -1171,7 +1249,7 @@ z_index = 0
 icon = ExtResource("34_im3ns")
 
 [node name="Title" parent="GamesWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
-text = "GAMES_TITLE"
+text = "GAMES"
 
 [node name="MarginContainer" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content" index="0"]
 layout_mode = 1
@@ -1205,7 +1283,6 @@ games = Array[PackedScene]([null, null, ExtResource("40_gv8l5")])
 games_node = NodePath("../../../../../../../../Games")
 
 [node name="Pancake" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
-visible = false
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_filter = 2
@@ -1334,7 +1411,6 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="OneShotFunkin" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer"]
-visible = false
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_filter = 2
@@ -2422,6 +2498,7 @@ size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxEmpty_82rj2")
 text = "0"
 horizontal_alignment = 2
+script = ExtResource("77_uush8")
 
 [node name="Clicks" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics"]
 layout_mode = 2
@@ -2475,14 +2552,13 @@ text = "TOTAL_TIME"
 layout_mode = 2
 text = ":"
 
-[node name="Count" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/TotalTime" node_paths=PackedStringArray("timer")]
+[node name="Count" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/TotalTime"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxEmpty_82rj2")
 text = "000:00:00"
 horizontal_alignment = 2
 script = SubResource("GDScript_o48om")
-timer = NodePath("../../../../../../../../../Timer")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics"]
 layout_mode = 2
@@ -3552,9 +3628,6 @@ icon = ExtResource("10_wr18j")
 script = ExtResource("88_7y85w")
 styled_menu = NodePath("../IndicatorPopup")
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
 [node name="Area" type="Node2D" parent="." node_paths=PackedStringArray("ClickablePolygon", "MousePolygon")]
 script = ExtResource("114_8jixl")
 ClickablePolygon = NodePath("ClickableArea")
@@ -3637,18 +3710,10 @@ draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_s2ody")
 
 [connection signal="gui_input" from="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Github/Button" to="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" method="_on_github_gui_input"]
-[connection signal="gui_input" from="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Shutdown/Button" to="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" method="_on_close_button_input"]
-[connection signal="mouse_entered" from="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Shutdown/Button" to="." method="_on_close_button_mouse_entered"]
-[connection signal="mouse_exited" from="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Shutdown/Button" to="." method="_on_close_button_mouse_exited"]
 [connection signal="item_selected" from="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer/Idle/OptionButton" to="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" method="_on_idle_item_selected"]
 [connection signal="item_selected" from="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer/Speak/OptionButton" to="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" method="_on_speak_item_selected"]
 [connection signal="item_selected" from="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer/Scare/OptionButton" to="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" method="_on_scare_item_selected"]
 [connection signal="item_selected" from="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer/ScareSpeak/OptionButton" to="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" method="_on_scare_speak_item_selected"]
-[connection signal="item_selected" from="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SoundSelectionContainer/MeowSoundSelectionOptionButton" to="." method="_on_meow_sound_selected"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_tick"]
-[connection signal="gui_input" from="NikoBase/Niko" to="." method="_on_niko_input"]
-[connection signal="animation_finished" from="NikoBase/Niko/AnimationPlayer" to="." method="_on_animation_finished"]
-[connection signal="pressed" from="NikoBase/MenuPanel/MenuButton" to="." method="_on_menu_button_pressed"]
 
 [editable path="ShortcutsWindow"]
 [editable path="GamesWindow"]

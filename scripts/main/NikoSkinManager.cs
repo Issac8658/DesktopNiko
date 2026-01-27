@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
-using Godot.NativeInterop;
-using Microsoft.VisualBasic;
 
 public partial class NikoSkinManager : Node
 {
@@ -41,7 +39,7 @@ public partial class NikoSkinManager : Node
 
 	public override void _Ready()
 	{
-		_valuesContainer = GetNode("/root/ValuesContainer") as ValuesContainer;
+		_valuesContainer = GetNode<ValuesContainer>("/root/ValuesContainer");
 
 		RegisterSkins(SKINS_FOLDER_PATH);
 		DirAccess UserFolder = DirAccess.Open("user://");
@@ -57,11 +55,16 @@ public partial class NikoSkinManager : Node
 	{
 		Skin? MaybeSkinToLoad = GetSkinFromId(SkinId);
 		if (MaybeSkinToLoad is Skin)
-		{
 			_valuesContainer.CurrentSkin = SkinId;
-		}
+		else
+			GD.Print($"Unknown skin \"{SkinId}\"!");
 	}
 	
+	public float GetCurrentSkinBaseScale()
+	{
+		return ((Skin)GetSkinFromId(_valuesContainer.CurrentSkin)).Scale;
+	}
+
 	public Texture2D GetCurrentSkinSprite(string SpriteId)
 	{
 		return LoadSkinSpriteFromId(_valuesContainer.CurrentSkin, SpriteId);
@@ -88,19 +91,18 @@ public partial class NikoSkinManager : Node
 	public Texture2D LoadSkinSpriteFromId(string skinId, string spriteId)
 	{
 		Texture2D sprite;
+		Skin skin = (Skin)GetSkinFromId(skinId);
 		if (_loadedSprites.ContainsKey(skinId))
 		{
 			if (_loadedSprites[skinId].TryGetValue(spriteId, out Texture2D loadedSprite))
 				return loadedSprite;
 			else
 			{
-				Skin skin = (Skin)GetSkinFromId(skinId);
-
 				if (skin.Sprites.TryGetValue(spriteId, out string SpritePath))
 					sprite = LoadTexture(SpritePath);
 				else
 					sprite = LoadTexture(skin.Sprites[DEFAULT_SPRITE_ID]);
-					GD.Print("Skin sprite \"" + spriteId + "\" isn't exist in skin \"" + skinId + "\"");
+					GD.Print($"Skin sprite \"{spriteId}\" isn't exist in skin \"{skinId}\"");
 
 				_loadedSprites[skinId][spriteId] = sprite;
 			}
@@ -108,13 +110,12 @@ public partial class NikoSkinManager : Node
 		else
 		{
 			Dictionary<string, Texture2D> SkinTextures = [];
-			Skin skin = (Skin)GetSkinFromId(skinId);
 
 			if (skin.Sprites.TryGetValue(spriteId, out string SpritePath))
 				sprite = LoadTexture(SpritePath);
 			else
 				sprite = LoadTexture(skin.Sprites[DEFAULT_SPRITE_ID]);
-				GD.Print("Skin sprite \"" + spriteId + "\" isn't exist in skin \"" + skinId + "\"");
+				GD.Print($"Skin sprite \"{spriteId}\" isn't exist in skin \"{skinId}\"");
 
 			SkinTextures[spriteId] = sprite;
 			_loadedSprites[skinId] = SkinTextures;

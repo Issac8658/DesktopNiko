@@ -1,0 +1,59 @@
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://cgqdgmx60c41n"]
+
+[ext_resource type="StyleBox" uid="uid://ccswymrxgakw2" path="res://events/return_to_the_past/the_past_theme/style_boxes/button/button_disabled.tres" id="1_3wyxr"]
+[ext_resource type="StyleBox" uid="uid://cs2pe7ochvxo1" path="res://events/return_to_the_past/the_past_theme/style_boxes/button/button_normal.tres" id="1_6jrx5"]
+[ext_resource type="StyleBox" uid="uid://dw7euru4ndecb" path="res://events/return_to_the_past/the_past_theme/style_boxes/button/button_hover.tres" id="1_tuwxs"]
+[ext_resource type="StyleBox" uid="uid://bkf5bccm77kks" path="res://events/return_to_the_past/the_past_theme/style_boxes/button/button_pressed.tres" id="3_3wyxr"]
+[ext_resource type="SystemFont" uid="uid://d4csf1s8dn075" path="res://events/return_to_the_past/font.tres" id="4_pikm2"]
+[ext_resource type="Texture2D" uid="uid://gfqymydag805" path="res://sprites/zero_sprite.tres" id="5_pfn0v"]
+[ext_resource type="StyleBox" uid="uid://hgqu3hdxrpi0" path="res://events/return_to_the_past/the_past_theme/style_boxes/style_box_empty.tres" id="5_pikm2"]
+[ext_resource type="StyleBox" uid="uid://bouxkoc67bhn7" path="res://events/return_to_the_past/the_past_theme/style_boxes/text_edit/text_edit_focus.tres" id="7_g1rrk"]
+[ext_resource type="StyleBox" uid="uid://ed835orpnky0" path="res://events/return_to_the_past/the_past_theme/style_boxes/text_edit/text_edit.tres" id="8_rj1wy"]
+[ext_resource type="StyleBox" uid="uid://ymlp41fig4l7" path="res://events/return_to_the_past/the_past_theme/style_boxes/text_edit/text_edit_read_only.tres" id="9_rj1wy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pikm2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuwxs"]
+bg_color = Color(1, 1, 1, 1)
+
+[resource]
+default_font = ExtResource("4_pikm2")
+default_font_size = 12
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0, 0, 0, 0.5019608)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/styles/disabled = ExtResource("1_3wyxr")
+Button/styles/focus = SubResource("StyleBoxEmpty_pikm2")
+Button/styles/hover = ExtResource("1_tuwxs")
+Button/styles/normal = ExtResource("1_6jrx5")
+Button/styles/pressed = ExtResource("3_3wyxr")
+CheckBox/icons/checked = ExtResource("5_pfn0v")
+CheckBox/icons/checked_disabled = ExtResource("5_pfn0v")
+CheckBox/icons/unchecked = ExtResource("5_pfn0v")
+CheckBox/icons/unchecked_disabled = ExtResource("5_pfn0v")
+CheckBox/styles/disabled = ExtResource("5_pikm2")
+CheckBox/styles/focus = ExtResource("5_pikm2")
+CheckBox/styles/hover = ExtResource("5_pikm2")
+CheckBox/styles/hover_pressed = ExtResource("5_pikm2")
+CheckBox/styles/normal = ExtResource("5_pikm2")
+CheckBox/styles/pressed = ExtResource("5_pikm2")
+CheckButton/styles/disabled = ExtResource("5_pikm2")
+CheckButton/styles/focus = ExtResource("5_pikm2")
+CheckButton/styles/hover = ExtResource("5_pikm2")
+CheckButton/styles/hover_pressed = ExtResource("5_pikm2")
+CheckButton/styles/normal = ExtResource("5_pikm2")
+CheckButton/styles/pressed = ExtResource("5_pikm2")
+Label/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/colors/caret_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.6)
+LineEdit/colors/font_selected_color = Color(1, 1, 1, 1)
+LineEdit/colors/font_uneditable_color = Color(0, 0, 0, 0.5019608)
+LineEdit/colors/selection_color = Color(0.2, 0.6, 1, 1)
+LineEdit/styles/focus = ExtResource("7_g1rrk")
+LineEdit/styles/normal = ExtResource("8_rj1wy")
+LineEdit/styles/read_only = ExtResource("9_rj1wy")
+Panel/styles/panel = SubResource("StyleBoxFlat_tuwxs")

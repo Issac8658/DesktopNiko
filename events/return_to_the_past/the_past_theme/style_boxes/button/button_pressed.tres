@@ -1,0 +1,15 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://bkf5bccm77kks"]
+
+[ext_resource type="Texture2D" uid="uid://pctkjf67656m" path="res://events/return_to_the_past/return_to_the_past.png" id="1_2fh07"]
+
+[resource]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 4.0
+content_margin_bottom = 2.0
+texture = ExtResource("1_2fh07")
+texture_margin_left = 5.0
+texture_margin_top = 12.0
+texture_margin_right = 5.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(1, 179, 11, 21)
