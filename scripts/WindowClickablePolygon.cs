@@ -24,7 +24,7 @@ public partial class WindowClickablePolygon : Node2D
 
 	public override void _Process(double delta)
 	{
-		MousePolygon.Position = DisplayServer.MouseGetPosition() - _window.Position;
+		MousePolygon.GlobalPosition = DisplayServer.MouseGetPosition() - _window.Position;
 
 
 		bool m_new = !MouseInClickableArea();

@@ -179,6 +179,11 @@ public partial class TetrisGameController : Window
 		// init redraw
 		ReDraw();
 		UpdateRulers();
+
+		int CurrentScreen = DisplayServer.WindowGetCurrentScreen(GetWindowId());
+		
+		Size = DisplayServer.ScreenGetSize(CurrentScreen) - new Vector2I(20,0);
+		Position = DisplayServer.ScreenGetPosition(CurrentScreen) + new Vector2I(10,0);
 	}
 
 	public override void _Process(double delta)

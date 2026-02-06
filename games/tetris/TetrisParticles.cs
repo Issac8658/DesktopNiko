@@ -11,7 +11,6 @@ public partial class TetrisParticles : Node2D
 
 	public override void _Ready()
 	{
-		Position = GetWindow().Size / 2; // Move Particles Container to center
 		GameController.LineDestroyed += Line =>
 		{
 			GpuParticles2D DestructionParticles = DestructionParticlesPrefab.Instantiate<GpuParticles2D>();

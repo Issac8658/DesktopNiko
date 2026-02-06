@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=18 format=3 uid="uid://bll84jclxrjw1"]
+[gd_resource type="Theme" format=3 uid="uid://bll84jclxrjw1"]
 
 [ext_resource type="Texture2D" uid="uid://bw465n3hiy0mk" path="res://sprites/ui/ui_shit.png" id="1_d1kbr"]
 [ext_resource type="Texture2D" uid="uid://c2ah1ro4y5xat" path="res://sprites/ui/niko_dialog.png" id="2_d1kbr"]

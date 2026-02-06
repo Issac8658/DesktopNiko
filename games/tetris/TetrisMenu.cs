@@ -17,7 +17,7 @@ public partial class TetrisMenu : Node
 	[Export]
 	public Button ExitButton;
 	[Export]
-	public AnimationPlayer ProgressionPlayer;
+	public AnimationPlayer StatisticBumpAnimator;
 	[Export]
 	public Timer GameTimer;
 
@@ -32,7 +32,6 @@ public partial class TetrisMenu : Node
 				GameController.CurrentState = TetrisGameController.GameStates.Restart;
 			if (MusicCheckbox.ButtonPressed)
 			{
-				ProgressionPlayer.Play("Progression");
 				MusicPlayer.Play();
 			}
 		};
@@ -46,21 +45,20 @@ public partial class TetrisMenu : Node
 			{
 				MenuWindow.Visible = true;
 				PlayButton.Text = "RESTART";
-				ProgressionPlayer.Stop();
 				MusicPlayer.Stop();
 			}
 			if (GameController.CurrentState == TetrisGameController.GameStates.Menu)
 			{
 				MenuWindow.Visible = true;
 				PlayButton.Text = "PLAY";
-				ProgressionPlayer.Pause();
 				MusicPlayer.StreamPaused = true;
 			}
 		};
 
 		GameTimer.Timeout += () =>
 		{
-			MusicPlayer.Play((float)ProgressionPlayer.CurrentAnimationPosition);
+			//ProgressionPlayer.PlaySection("Progression", MusicPlayer.GetPlaybackPosition());
+			StatisticBumpAnimator.Play("Bump2");
 		};
 	}
 }
