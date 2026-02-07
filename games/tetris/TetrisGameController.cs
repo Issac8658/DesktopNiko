@@ -445,10 +445,10 @@ public partial class TetrisGameController : Window
 	{
 		List<bool[]> RotatedFigure = [];
 
-		for (int X = 0; X < _currentFigure[0].Length; X++)
+		for (int X = _currentFigure[0].Length - 1; X >= 0; X--)
 		{
 			List<bool> NewRow = [];
-			for (int Y = _currentFigure.Length - 1; Y >= 0; Y--)
+			for (int Y = 0; Y < _currentFigure.Length; Y++)
 			{
 				NewRow.Add(_currentFigure[Y][X]);
 			}

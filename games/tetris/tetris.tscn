@@ -1,213 +1,26 @@
 [gd_scene format=3 uid="uid://d1vx0y4r6i37o"]
 
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="1_kusv6"]
-[ext_resource type="StyleBox" uid="uid://b821x8hwjmnyo" path="res://themes/twm_theme/frame_no_bg.tres" id="2_e6asw"]
 [ext_resource type="Script" uid="uid://dg1q0tio7xgdj" path="res://games/tetris/TetrisGameController.cs" id="2_jbl8a"]
-[ext_resource type="Script" uid="uid://cue462yaulkpl" path="res://games/tetris/TetrisTileMap.cs" id="4_jbl8a"]
-[ext_resource type="StyleBox" uid="uid://seh5m867naoa" path="res://themes/twm_theme/thin_panel.stylebox" id="4_lplub"]
-[ext_resource type="TileSet" uid="uid://d35jpcju6we27" path="res://games/tetris/tiles/tetris_more.tres" id="5_cnhj0"]
+[ext_resource type="PackedScene" uid="uid://hotb3k0j3v61" path="res://games/tetris/tetris_game.tscn" id="3_6mx11"]
 [ext_resource type="AudioStream" uid="uid://cnges3gq54ajb" path="res://games/tetris/NikoProcessing.mp3" id="7_2166b"]
-[ext_resource type="Texture2D" uid="uid://dxttgd6e0px18" path="res://sprites/icons/quit.png" id="7_i1uen"]
-[ext_resource type="Script" uid="uid://citvei7uwa516" path="res://games/tetris/TetrisCombo.cs" id="7_q6p23"]
-[ext_resource type="Texture2D" uid="uid://bmkfjsjqgrlxn" path="res://sprites/icons/restart.png" id="8_bc3vh"]
-[ext_resource type="Texture2D" uid="uid://barnq7jddv7a2" path="res://sprites/icons/pause.png" id="9_bh2wt"]
 [ext_resource type="AudioStream" uid="uid://c4rp6m7evcn11" path="res://games/tetris/sounds/drop_light.ogg" id="9_kkf6g"]
-[ext_resource type="Script" uid="uid://cfuueo35hfjg8" path="res://scripts/WindowClickablePolygon.cs" id="10_bc4hr"]
-[ext_resource type="Script" uid="uid://dgx5rydb7a45o" path="res://games/tetris/NextFigureDrawer.cs" id="10_f2ao3"]
 [ext_resource type="AudioStream" uid="uid://brljmdrmc8f5s" path="res://games/tetris/sounds/drop_normal.ogg" id="10_il17r"]
-[ext_resource type="SpriteFrames" uid="uid://cqpfo8p0wgo1h" path="res://sprites/characters/dancing_niko.tres" id="10_ixxwh"]
 [ext_resource type="AudioStream" uid="uid://dn5mbakemduix" path="res://games/tetris/sounds/height_place.ogg" id="10_lplub"]
 [ext_resource type="AudioStream" uid="uid://nhg41mam7lpf" path="res://games/tetris/sounds/place.ogg" id="11_6mx11"]
 [ext_resource type="AudioStream" uid="uid://x2klbwvgekl6" path="res://games/tetris/sounds/drop_mega.ogg" id="11_lplub"]
 [ext_resource type="PackedScene" uid="uid://o3kl3g87pn3q" path="res://prefabs/base_window.tscn" id="14_6mx11"]
-[ext_resource type="Script" uid="uid://caatgl2i6364d" path="res://games/tetris/TetrisParticles.cs" id="14_n3222"]
-[ext_resource type="PackedScene" uid="uid://dtkyq6kw6tgfq" path="res://games/tetris/distruction_particles.tscn" id="15_3s1wb"]
 [ext_resource type="PackedScene" uid="uid://b1ypbdeyjoksp" path="res://prefabs/state_icon.tscn" id="15_6mj4e"]
 [ext_resource type="Script" uid="uid://dfwf2y7b0yloy" path="res://games/tetris/TetrisMenu.cs" id="15_o08yc"]
 [ext_resource type="Script" uid="uid://dx72gvtweybk5" path="res://games/tetris/midi/JsonMidiPlayer.cs" id="16_5ecpt"]
 [ext_resource type="Script" uid="uid://i1vgqb61238n" path="res://games/tetris/TetrisShake.cs" id="23_bh2wt"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cnhj0"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6n4u4"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bc3vh"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bh2wt"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ixxwh"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6p23"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ecpt"]
-
-[sub_resource type="Animation" id="Animation_5ecpt"]
-resource_name = "Bump"
-length = 0.87
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.015962284, 0.43562943, 0.4515917, 0.8666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.125, 1.125), Vector2(1, 1), Vector2(1.125, 1.125), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.016666668, 0.43637735, 0.45499998, 0.8666667),
-"transitions": PackedFloat32Array(1, 0.36602148, 1, 0.36602148, 1),
-"update": 0,
-"values": [0.0, -0.17453292519943295, 0.0, 0.17453292519943295, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.30221924, 0.45, 0.59166664, 0.725, 0.8666667),
-"transitions": PackedFloat32Array(6.498002, 6.498002, 6.498002, 6.498002, 6.498002, 6.498002, 6.498002),
-"update": 0,
-"values": [Color(1, 0.005488038, 0, 1), Color(1, 0.9938727, 0, 1), Color(0.023159027, 1, 0, 1), Color(0, 1, 0.97642636, 1), Color(0, 0.010309935, 1, 1), Color(1, 0, 0.94736814, 1), Color(1, 0.054820716, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_4olen"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_q6p23"]
-_data = {
-&"Bump": SubResource("Animation_5ecpt"),
-&"RESET": SubResource("Animation_4olen")
-}
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q6p23"]
-
-[sub_resource type="Animation" id="Animation_udpbf"]
-resource_name = "Bump"
-length = 3.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.021610769, 1.7783892, 1.8, 3.5),
-"transitions": PackedFloat32Array(1, 0.46651664, 1, 0.46651664, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.02, 1.02), Vector2(1, 1), Vector2(1.01, 1.01), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_25s1u"]
-resource_name = "Bump2"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.021610769, 0.5),
-"transitions": PackedFloat32Array(1, 0.46651664, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.02, 1.02), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_xv0fu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_25s1u"]
-_data = {
-&"Bump": SubResource("Animation_udpbf"),
-&"Bump2": SubResource("Animation_25s1u"),
-&"RESET": SubResource("Animation_xv0fu")
-}
-
-[sub_resource type="Gradient" id="Gradient_kdrr8"]
-interpolation_mode = 1
-colors = PackedColorArray(0, 0, 0, 0.8627451, 1, 1, 1, 0.49803922)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_3s1wb"]
-gradient = SubResource("Gradient_kdrr8")
-width = 40
-height = 40
-fill = 2
-fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bc4hr"]
-size = Vector2(408, 808)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bc3vh"]
-size = Vector2(180, 40)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_6n4u4"]
-radius = 1.4142135
 
 [node name="Tetris" type="Window" unique_id=631506823 node_paths=PackedStringArray("GameTimer", "FpsCounter", "ScoreCounter", "LinesCounter", "LeftRuler", "RightRuler", "PauseButton", "RestartButton", "ExitButton", "PlaceLightSound", "PlaceNormalSound", "PlaceMegaSound", "PlaceSound", "HeightPlaceSound")]
 transparent_bg = true
 oversampling = false
 oversampling_override = 1.0
 initial_position = 4
-size = Vector2i(1900, 2123)
+size = Vector2i(1900, 1080)
 borderless = true
 always_on_top = true
 transparent = true
@@ -215,7 +28,7 @@ minimize_disabled = true
 maximize_disabled = true
 content_scale_size = Vector2i(1400, 1080)
 content_scale_mode = 2
-content_scale_aspect = 3
+content_scale_aspect = 4
 theme = ExtResource("1_kusv6")
 script = ExtResource("2_jbl8a")
 GameTimer = NodePath("Timer")
@@ -233,485 +46,33 @@ PlaceMegaSound = NodePath("DropMega")
 PlaceSound = NodePath("Place")
 HeightPlaceSound = NodePath("HeightPlace")
 
-[node name="GlobalAnchor" type="Control" parent="." unique_id=1300936364]
-layout_mode = 3
-anchors_preset = 0
+[node name="Camera2D" type="Camera2D" parent="." unique_id=901100193]
 
-[node name="Statistics" type="HBoxContainer" parent="GlobalAnchor" unique_id=1202698354]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -420.0
-offset_top = -400.0
-offset_right = 420.0
-offset_bottom = 400.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(420, 400)
-theme_override_constants/separation = 0
+[node name="GlobalAnchor" parent="." unique_id=144354466 instance=ExtResource("3_6mx11")]
 
-[node name="Control2" type="MarginContainer" parent="GlobalAnchor/Statistics" unique_id=744367787]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GlobalAnchor/Statistics/Control2" unique_id=2058277693]
-layout_mode = 2
-
-[node name="Panel6" type="PanelContainer" parent="GlobalAnchor/Statistics/Control2/VBoxContainer" unique_id=1984606405]
-self_modulate = Color(1, 1, 1, 0.6745098)
-custom_minimum_size = Vector2(180, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Panel6" unique_id=1492766636]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Panel6/VBoxContainer" unique_id=377386127]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Control" type="Control" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer" unique_id=1592559291]
-custom_minimum_size = Vector2(3, 0)
-layout_mode = 2
-
-[node name="ScoreText" type="Label" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer" unique_id=866142414]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = SubResource("StyleBoxEmpty_cnhj0")
-text = "SCORE"
-
-[node name="Dots" type="Label" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer" unique_id=660838369]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = SubResource("StyleBoxEmpty_cnhj0")
-text = ": "
-
-[node name="Score" type="Label" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer" unique_id=1630661122]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = SubResource("StyleBoxEmpty_cnhj0")
-text = "0"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Panel6/VBoxContainer" unique_id=1188421650]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Control2" type="Control" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer2" unique_id=412998729]
-custom_minimum_size = Vector2(3, 0)
-layout_mode = 2
-
-[node name="LinesText" type="Label" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer2" unique_id=1100448165]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = SubResource("StyleBoxEmpty_cnhj0")
-text = "LINES"
-
-[node name="Dots" type="Label" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer2" unique_id=579134962]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = SubResource("StyleBoxEmpty_cnhj0")
-text = ": "
-
-[node name="Lines" type="Label" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer2" unique_id=867212481]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = SubResource("StyleBoxEmpty_cnhj0")
-text = "0"
-
-[node name="Panel5" type="Panel" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Panel6/VBoxContainer" unique_id=2109778690]
-visible = false
-custom_minimum_size = Vector2(140, 140)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GlobalAnchor/Statistics/Control2/VBoxContainer" unique_id=1733254526]
-custom_minimum_size = Vector2(180, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Exit" type="Button" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/HBoxContainer" unique_id=1444609354]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-
-[node name="Button" type="Button" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/HBoxContainer/Exit" unique_id=946845725]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_6n4u4")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_bc3vh")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_bh2wt")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ixxwh")
-icon = ExtResource("7_i1uen")
-expand_icon = true
-
-[node name="Restart" type="Button" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/HBoxContainer" unique_id=603656149]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-
-[node name="Button" type="Button" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/HBoxContainer/Restart" unique_id=1892126706]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_6n4u4")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_bc3vh")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_bh2wt")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ixxwh")
-icon = ExtResource("8_bc3vh")
-expand_icon = true
-
-[node name="Pause" type="Button" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/HBoxContainer" unique_id=1501093476]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-
-[node name="Button" type="Button" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/HBoxContainer/Pause" unique_id=1982752894]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_6n4u4")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_bc3vh")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_bh2wt")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ixxwh")
-icon = ExtResource("9_bh2wt")
-expand_icon = true
-
-[node name="Control" type="Control" parent="GlobalAnchor/Statistics/Control2/VBoxContainer" unique_id=22894764]
-custom_minimum_size = Vector2(180, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-
-[node name="Panel7" type="PanelContainer" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Control" unique_id=1294581825]
-self_modulate = Color(1, 1, 1, 0.6745098)
-custom_minimum_size = Vector2(180, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-
-[node name="Control" type="Panel" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Control/Panel7" unique_id=2080645342]
-clip_children = 1
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_q6p23")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Control/Panel7/Control" unique_id=247983908]
-visible = false
-position = Vector2(86, 618)
-scale = Vector2(0.5, 0.5)
-sprite_frames = ExtResource("10_ixxwh")
-autoplay = "default"
-frame = 9
-frame_progress = 0.48422167
-speed_scale = 1.125
-
-[node name="Panel" type="Panel" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Control" unique_id=1676136137]
-clip_children = 1
-layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 176.0
-offset_bottom = 694.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_5ecpt")
-
-[node name="Combo" type="Control" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Control/Panel" unique_id=1158142568 node_paths=PackedStringArray("GameController", "ComboLabel", "ComboControl")]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_top = -68.0
-offset_bottom = -68.0
-grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("7_q6p23")
+[node name="Combo" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Control/Panel" parent_id_path=PackedInt32Array(144354466, 718399785) index="0" unique_id=2065137089 node_paths=PackedStringArray("GameController")]
 GameController = NodePath("../../../../../../..")
-ComboLabel = NodePath("HBoxContainer2/Label2")
-ComboControl = NodePath("HBoxContainer2")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Control/Panel/Combo" unique_id=1406224135]
-deterministic = true
-libraries/ = SubResource("AnimationLibrary_q6p23")
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Control/Panel/Combo" unique_id=2075580466]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -45.0
-offset_top = -10.5
-offset_right = 45.0
-offset_bottom = 10.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 0
-
-[node name="Label" type="Label" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Control/Panel/Combo/HBoxContainer2" unique_id=1078128308]
-texture_filter = 1
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 8
-theme_override_styles/normal = SubResource("StyleBoxEmpty_q6p23")
-text = "ComBo: x"
-
-[node name="Label2" type="Label" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Control/Panel/Combo/HBoxContainer2" unique_id=1905195632]
-texture_filter = 1
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 8
-theme_override_styles/normal = SubResource("StyleBoxEmpty_q6p23")
-text = "0"
-
-[node name="Control" type="Control" parent="GlobalAnchor/Statistics" unique_id=1755531877]
-custom_minimum_size = Vector2(408, 0)
-layout_mode = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="GlobalAnchor/Statistics" unique_id=1259594479]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 10
-
-[node name="Panel5" type="PanelContainer" parent="GlobalAnchor/Statistics/VBoxContainer2" unique_id=1165973284]
-self_modulate = Color(1, 1, 1, 0.6745098)
-custom_minimum_size = Vector2(180, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-
-[node name="Next" type="Label" parent="GlobalAnchor/Statistics/VBoxContainer2/Panel5" unique_id=748963254]
-layout_mode = 2
-theme_override_font_sizes/font_size = 28
-theme_override_styles/normal = SubResource("StyleBoxEmpty_cnhj0")
-text = "NEXT"
-horizontal_alignment = 1
-
-[node name="Panel" type="PanelContainer" parent="GlobalAnchor/Statistics/VBoxContainer2" unique_id=1031303261]
-self_modulate = Color(1, 1, 1, 0.6745098)
-custom_minimum_size = Vector2(180, 180)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Control" type="Control" parent="GlobalAnchor/Statistics/VBoxContainer2/Panel" unique_id=214170753 node_paths=PackedStringArray("GameController")]
-modulate = Color(0.588235, 0.392157, 1, 1)
-texture_filter = 1
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("10_f2ao3")
-TetrisTileSet = ExtResource("5_cnhj0")
+[node name="Control" parent="GlobalAnchor/Statistics/VBoxContainer2/Panel" parent_id_path=PackedInt32Array(144354466, 1830775220) index="0" unique_id=948313049 node_paths=PackedStringArray("GameController")]
 GameController = NodePath("../../../../..")
 
-[node name="Panel2" type="PanelContainer" parent="GlobalAnchor/Statistics/VBoxContainer2" unique_id=1181629320]
-self_modulate = Color(1, 1, 1, 0.6745098)
-custom_minimum_size = Vector2(180, 180)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Control2" type="Control" parent="GlobalAnchor/Statistics/VBoxContainer2/Panel2" unique_id=5245688 node_paths=PackedStringArray("GameController")]
-modulate = Color(0.588235, 0.392157, 1, 1)
-texture_filter = 1
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("10_f2ao3")
-TetrisTileSet = ExtResource("5_cnhj0")
+[node name="Control2" parent="GlobalAnchor/Statistics/VBoxContainer2/Panel2" parent_id_path=PackedInt32Array(144354466, 1812937741) index="0" unique_id=1260035810 node_paths=PackedStringArray("GameController")]
 GameController = NodePath("../../../../..")
-NextFigureId = 1
 
-[node name="Panel3" type="PanelContainer" parent="GlobalAnchor/Statistics/VBoxContainer2" unique_id=325440377]
-self_modulate = Color(1, 1, 1, 0.6745098)
-custom_minimum_size = Vector2(180, 180)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Control3" type="Control" parent="GlobalAnchor/Statistics/VBoxContainer2/Panel3" unique_id=1323889211 node_paths=PackedStringArray("GameController")]
-modulate = Color(0.588235, 0.392157, 1, 1)
-texture_filter = 1
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("10_f2ao3")
-TetrisTileSet = ExtResource("5_cnhj0")
+[node name="Control3" parent="GlobalAnchor/Statistics/VBoxContainer2/Panel3" parent_id_path=PackedInt32Array(144354466, 407190473) index="0" unique_id=987087713 node_paths=PackedStringArray("GameController")]
 GameController = NodePath("../../../../..")
-NextFigureId = 2
 
-[node name="Panel4" type="PanelContainer" parent="GlobalAnchor/Statistics/VBoxContainer2" unique_id=1171527696]
-self_modulate = Color(1, 1, 1, 0.6745098)
-custom_minimum_size = Vector2(180, 180)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Control4" type="Control" parent="GlobalAnchor/Statistics/VBoxContainer2/Panel4" unique_id=1217687737 node_paths=PackedStringArray("GameController")]
-modulate = Color(0.588235, 0.392157, 1, 1)
-texture_filter = 1
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("10_f2ao3")
-TetrisTileSet = ExtResource("5_cnhj0")
+[node name="Control4" parent="GlobalAnchor/Statistics/VBoxContainer2/Panel4" parent_id_path=PackedInt32Array(144354466, 466819356) index="0" unique_id=602183092 node_paths=PackedStringArray("GameController")]
 GameController = NodePath("../../../../..")
-NextFigureId = 3
 
-[node name="StatisticsAnimator" type="AnimationPlayer" parent="GlobalAnchor/Statistics" unique_id=1463688837]
-libraries/ = SubResource("AnimationLibrary_25s1u")
-
-[node name="TetrisAnchor" type="Control" parent="GlobalAnchor" unique_id=1792100400]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="GlobalAnchor/TetrisAnchor" unique_id=1760958894]
-custom_minimum_size = Vector2(408, 808)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -204.0
-offset_top = -404.0
-offset_right = 204.0
-offset_bottom = 404.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = ExtResource("2_e6asw")
-
-[node name="BG" type="TextureRect" parent="GlobalAnchor/TetrisAnchor/PanelContainer" unique_id=1678709941]
-self_modulate = Color(0.5882353, 0.39215687, 1, 1)
-layout_mode = 2
-texture = SubResource("GradientTexture2D_3s1wb")
-stretch_mode = 1
-
-[node name="LeftRuler" type="Panel" parent="GlobalAnchor/TetrisAnchor/PanelContainer/BG" unique_id=1675667648]
-self_modulate = Color(1, 1, 1, 0.7372549)
-layout_mode = 0
-offset_left = -4.0
-offset_right = 2.0
-offset_bottom = 800.0
-theme_override_styles/panel = ExtResource("4_lplub")
-
-[node name="RightRuler" type="Panel" parent="GlobalAnchor/TetrisAnchor/PanelContainer/BG" unique_id=264481941]
-self_modulate = Color(1, 1, 1, 0.7372549)
-layout_mode = 0
-offset_left = 398.0
-offset_right = 404.0
-offset_bottom = 800.0
-theme_override_styles/panel = ExtResource("4_lplub")
-
-[node name="GameOverRuler" type="Panel" parent="GlobalAnchor/TetrisAnchor/PanelContainer/BG" unique_id=466653460]
-self_modulate = Color(1, 1, 1, 0.7372549)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 117.0
-offset_bottom = 123.0
-grow_horizontal = 2
-theme_override_styles/panel = ExtResource("4_lplub")
-
-[node name="Fps" type="Label" parent="GlobalAnchor/TetrisAnchor/PanelContainer/BG" unique_id=1961304273]
-visible = false
-layout_mode = 0
-offset_right = 30.0
-offset_bottom = 21.0
-text = "fps"
-
-[node name="TetrisTileMap" type="Control" parent="GlobalAnchor/TetrisAnchor/PanelContainer" unique_id=45005879 node_paths=PackedStringArray("GameController")]
-self_modulate = Color(0.588235, 0.392157, 1, 1)
-texture_filter = 1
-layout_mode = 2
-script = ExtResource("4_jbl8a")
-TetrisTileSet = ExtResource("5_cnhj0")
+[node name="TetrisTileMap" parent="GlobalAnchor/TetrisAnchor/PanelContainer" parent_id_path=PackedInt32Array(144354466, 772644358) index="1" unique_id=1198170412 node_paths=PackedStringArray("GameController")]
 GameController = NodePath("../../../..")
 
-[node name="Particles" type="Node2D" parent="GlobalAnchor/TetrisAnchor" unique_id=1310874413 node_paths=PackedStringArray("GameController")]
-position = Vector2(20, 20)
-script = ExtResource("14_n3222")
+[node name="Particles" parent="GlobalAnchor/TetrisAnchor" parent_id_path=PackedInt32Array(144354466, 1300014302) index="1" unique_id=1915332978 node_paths=PackedStringArray("GameController")]
 GameController = NodePath("../../..")
-DestructionParticlesPrefab = ExtResource("15_3s1wb")
 
-[node name="Area" type="Node2D" parent="GlobalAnchor" unique_id=1227377239 node_paths=PackedStringArray("ClickablePolygon", "MousePolygon")]
-script = ExtResource("10_bc4hr")
-ClickablePolygon = NodePath("ClickableArea")
-MousePolygon = NodePath("MouseArea")
-
-[node name="ClickableArea" type="Area2D" parent="GlobalAnchor/Area" unique_id=2134043434]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GlobalAnchor/Area/ClickableArea" unique_id=724856102]
-shape = SubResource("RectangleShape2D_bc4hr")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="GlobalAnchor/Area/ClickableArea" unique_id=1374606094]
-position = Vector2(-312, -322)
-shape = SubResource("RectangleShape2D_bc3vh")
-
-[node name="MouseArea" type="Area2D" parent="GlobalAnchor/Area" unique_id=1803919831]
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GlobalAnchor/Area/MouseArea" unique_id=1917278091]
-shape = SubResource("CircleShape2D_6n4u4")
+[node name="Area" parent="GlobalAnchor" index="2" unique_id=538390412]
+ShowTaskbarIcon = true
 
 [node name="Timer" type="Timer" parent="." unique_id=67181535]
 wait_time = 0.444
@@ -817,9 +178,5 @@ script = ExtResource("16_5ecpt")
 AttachedPlayer = NodePath("../NikoProcessing")
 MidiPath = "res://games/tetris/midi/NikoProcessing.json"
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=901100193]
-
-[connection signal="animation_looped" from="GlobalAnchor/Statistics/Control2/VBoxContainer/Control/Panel7/Control/AnimatedSprite2D" to="GlobalAnchor/Statistics/Control2/VBoxContainer/Control/Panel/Combo/AnimationPlayer" method="stop"]
-[connection signal="animation_looped" from="GlobalAnchor/Statistics/Control2/VBoxContainer/Control/Panel7/Control/AnimatedSprite2D" to="GlobalAnchor/Statistics/Control2/VBoxContainer/Control/Panel/Combo/AnimationPlayer" method="play" binds= ["Bump"]]
-
+[editable path="GlobalAnchor"]
 [editable path="Menu"]
