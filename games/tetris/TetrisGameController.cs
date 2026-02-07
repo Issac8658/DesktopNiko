@@ -20,7 +20,7 @@ public partial class TetrisGameController : Window
 	[Signal]
 	public delegate void LineDestroyedEventHandler(short Line);
 	[Signal]
-	public delegate void BlockDroppedEventHandler(bool LineDestroyed);
+	public delegate void BlockDroppedEventHandler(int DestroyedLinesCount);
 	[Signal]
 	public delegate void ComboChangedEventHandler(uint Combo);
 
@@ -57,7 +57,7 @@ public partial class TetrisGameController : Window
 
 	private GameStates _currentState = GameStates.Menu;
 	
-	private uint Combo
+	public uint Combo
 	{
 		get => _combo;
 		set
@@ -368,7 +368,7 @@ public partial class TetrisGameController : Window
 				_score += 1500 * Combo;
 				break;
 		}
-		EmitSignal("BlockDropped", DestroyedLines > 0);
+		EmitSignal("BlockDropped", DestroyedLines);
 
 
 		_lines += DestroyedLines;

@@ -50,6 +50,9 @@ HeightPlaceSound = NodePath("HeightPlace")
 
 [node name="GlobalAnchor" parent="." unique_id=144354466 instance=ExtResource("3_6mx11")]
 
+[node name="Style" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Control/Panel7" parent_id_path=PackedInt32Array(144354466, 523724886) index="0" unique_id=797637398 node_paths=PackedStringArray("Controller")]
+Controller = NodePath("../../../../../../..")
+
 [node name="Combo" parent="GlobalAnchor/Statistics/Control2/VBoxContainer/Control/Panel" parent_id_path=PackedInt32Array(144354466, 718399785) index="0" unique_id=2065137089 node_paths=PackedStringArray("GameController")]
 GameController = NodePath("../../../../../../..")
 

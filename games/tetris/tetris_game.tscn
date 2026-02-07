@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://barnq7jddv7a2" path="res://sprites/icons/pause.png" id="3_32x37"]
 [ext_resource type="SpriteFrames" uid="uid://cqpfo8p0wgo1h" path="res://sprites/characters/dancing_niko.tres" id="4_uqggt"]
 [ext_resource type="Script" uid="uid://citvei7uwa516" path="res://games/tetris/TetrisCombo.cs" id="5_8lmhe"]
+[ext_resource type="Script" uid="uid://i1grkoicei1g" path="res://games/tetris/TetrisStyle.cs" id="5_32x37"]
 [ext_resource type="Script" uid="uid://dgx5rydb7a45o" path="res://games/tetris/NextFigureDrawer.cs" id="6_basdr"]
 [ext_resource type="TileSet" uid="uid://d35jpcju6we27" path="res://games/tetris/tiles/tetris_more.tres" id="7_8lq6y"]
 [ext_resource type="StyleBox" uid="uid://b821x8hwjmnyo" path="res://themes/twm_theme/frame_no_bg.tres" id="8_l7fpa"]
@@ -409,8 +410,11 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 
-[node name="Style" type="VBoxContainer" parent="Statistics/Control2/VBoxContainer/Control/Panel7" unique_id=797637398]
+[node name="Style" type="VBoxContainer" parent="Statistics/Control2/VBoxContainer/Control/Panel7" unique_id=797637398 node_paths=PackedStringArray("StyleLabel", "StyleTimeOutFiller")]
 layout_mode = 2
+script = ExtResource("5_32x37")
+StyleLabel = NodePath("StyleTextContainer/StyleText")
+StyleTimeOutFiller = NodePath("StyleTimeOut/StyleTimeOutFiller")
 
 [node name="StyleHint" type="Label" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style" unique_id=1979414707]
 layout_mode = 2
@@ -419,13 +423,18 @@ text = "Style"
 [node name="StyleTextContainer" type="PanelContainer" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style" unique_id=837912184]
 layout_mode = 2
 
-[node name="StyleText" type="Label" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style/StyleTextContainer" unique_id=1524041719]
-modulate = Color(1, 0.83438724, 0.5278121, 1)
+[node name="StyleText" type="RichTextLabel" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style/StyleTextContainer" unique_id=1570248816]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 32
-text = "PANCAKES"
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = ":3c"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StyleTimeOut" type="Panel" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style" unique_id=544977895]
 self_modulate = Color(0.375, 0.375, 0.375, 1)
