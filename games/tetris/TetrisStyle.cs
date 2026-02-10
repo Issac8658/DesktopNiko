@@ -4,16 +4,17 @@ using System.Collections.Generic;
 
 public partial class TetrisStyle : Control
 {
-	private readonly string[] StylesTexts = [ // styles themselves are a bit inappropriate, but I couldn't think of anything better
+	// styles themselves are a bit inappropriate, but I couldn't think of anything better
+	private readonly string[] StylesTexts = [
 		" ", // no style
-		"[color=dodger_blue]FLICKER[/color]", // D
-		"[color=dodger_blue]DIM LIGHT[/color]", // C
-		"[color=dodger_blue][left]STEADY\n[right]GLOW[/color]", // B
-		"[color=dodger_blue][left]BRIGHT\n[right]PATH[/color]", // A
-		"[color=dodger_blue][left]GUIDING\n[right]LIGHT[/color]", // S
-		"[color=dodger_blue][left]THE SUN\n[right]MUST RISE[/color]", // SS
-		"[color=dodger_blue][left]CARRY\n[right]THE SUN[/color]", // SSS
-		"[color=dodger_blue]ONESHOT[/color]", // ONESHOT
+		"[center][color=#AB8346]FLICKER[/color][/center]", // D FLICKER
+		"[center][color=#CEA261]DIM LIGHT[/color][/center]", // C DIM LIGHT
+		"[color=#FFF9CC][left]STEADY[/left]\n[right]GLOW[/right][/color]", // B STEADY GLOW
+		"[color=#FFFFFF][left]BRIGHT[/left]\n[right]PATH[/right][/color]", // A BRIGHT PATH
+		"[color=#AAE2FF][left]GUIDING[/left]\n[right]LIGHT[/right][/color]", // S GUIDING LIGHT
+		"[color=#FFFF66][left]THE SUN[/left]\n[right]MUST RISE[/right][/color]", // SS THE SUN MUST RISE
+		"[color=#FFCC00][left]CARRY[/left]\n[right]THE SUN[/right][/color]", // SSS CARRY THE SUN
+		"[center][color=#FFD800][outline_size=4][outline_color=#FFFFFF]ONESHOT[/outline_color][/outline_size][/color][/center]", // ONESHOT
 	];
 	private readonly double[] TimeoutSpeedMultipliers = [0.5, 1, 1.25, 1.5, 2, 3, 4, 6, 8];
 	private readonly double[] TimeoutCounters = [
@@ -24,8 +25,8 @@ public partial class TetrisStyle : Control
 		3.0 // 4 lines
 	];
 
-	private int _currentStyle = -1;
-	private double _styleTimeOut = 0.05;
+	private int _currentStyle = 0;
+	private double _styleTimeOut = 0;
 
 	public int CurrentStyle
 	{
@@ -58,6 +59,7 @@ public partial class TetrisStyle : Control
 			}
 		};
 		CurrentStyle = 0;
+		StyleTimeOutFiller.AnchorRight = (float)_styleTimeOut;
 	}
 
 	public override void _Process(double delta)

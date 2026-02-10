@@ -428,12 +428,11 @@ layout_mode = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = ":3c"
+text = "[center][color=#AB8346]FLICKER[/color][/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 shortcut_keys_enabled = false
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="StyleTimeOut" type="Panel" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style" unique_id=544977895]
