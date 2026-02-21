@@ -206,7 +206,7 @@ public partial class ValuesContainer : Node
 		set
 		{
 			_currentSkin = value;
-			//EmitSignal("NikoSkinChanged", value);
+			EmitSignal("NikoSkinChanged", value);
 		}
 		get => _currentSkin;
 	}

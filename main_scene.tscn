@@ -520,8 +520,8 @@ _data = [Vector2(0, 0.0674158), 0.0, 0.0, 0, 0, Vector2(0.429167, 0.337079), 0.0
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_2umrp"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Curve" id="Curve_cqe75"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -601,6 +601,7 @@ initial_position = 4
 size = Vector2i(358, 394)
 visible = false
 unresizable = false
+maximize_disabled = true
 min_size = Vector2i(193, 270)
 max_size = Vector2i(1920, 1040)
 
@@ -1166,6 +1167,7 @@ initial_position = 4
 size = Vector2i(358, 394)
 visible = false
 unresizable = false
+maximize_disabled = true
 min_size = Vector2i(193, 270)
 max_size = Vector2i(1920, 1040)
 
@@ -1415,6 +1417,8 @@ stream = ExtResource("30_id8vy")
 [node name="ShutdownPopup" parent="." unique_id=1496860589 instance=ExtResource("33_id8vy")]
 title = "SHUTDOWN"
 visible = false
+minimize_disabled = true
+maximize_disabled = true
 
 [node name="Icon" parent="ShutdownPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
 icon = ExtResource("25_opjno")
@@ -1433,6 +1437,7 @@ initial_position = 4
 size = Vector2i(358, 380)
 visible = false
 unresizable = false
+maximize_disabled = true
 min_size = Vector2i(193, 270)
 max_size = Vector2i(1920, 1040)
 
@@ -2138,6 +2143,8 @@ text = "APPLY"
 title = "SETTINGS"
 initial_position = 4
 size = Vector2i(704, 404)
+visible = false
+maximize_disabled = true
 
 [node name="Icon" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
 icon = ExtResource("16_kv3aw")
@@ -3231,6 +3238,8 @@ text = "DATA_RESET_POPUP_MESSAGE"
 initial_position = 4
 size = Vector2i(808, 656)
 visible = false
+minimize_disabled = true
+maximize_disabled = true
 
 [node name="Title" parent="ShopWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
 text = "SHOP"
@@ -3339,6 +3348,8 @@ always_on_top = true
 transparent = true
 unfocusable = true
 mouse_passthrough = true
+minimize_disabled = true
+maximize_disabled = true
 script = ExtResource("81_ubkm4")
 animator = NodePath("AnimationPlayer")
 
@@ -3348,6 +3359,7 @@ libraries/ = SubResource("AnimationLibrary_k2ony")
 [node name="AchievementsWindow" parent="." unique_id=1722617301 instance=ExtResource("38_q4750")]
 initial_position = 4
 visible = false
+maximize_disabled = true
 
 [node name="Icon" parent="AchievementsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
 icon = ExtResource("87_s2ody")
@@ -3400,6 +3412,8 @@ transparent = true
 unfocusable = true
 mouse_passthrough = true
 exclude_from_capture = true
+minimize_disabled = true
+maximize_disabled = true
 theme = ExtResource("100_ix15y")
 script = ExtResource("92_l8no8")
 image_rect = NodePath("Screen")
@@ -3542,14 +3556,14 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area/MouseArea" unique_id=748962583]
 shape = SubResource("CircleShape2D_gv8l5")
 
-[node name="NikoBase" type="VBoxContainer" parent="." unique_id=738868689 node_paths=PackedStringArray("NikoClickControl", "AreasNode", "SleepParticles")]
+[node name="NikoBase" type="VBoxContainer" parent="." unique_id=738868689 node_paths=PackedStringArray("NikoClickControl", "NikoSpriteNode", "AreasNode", "SleepParticles")]
 offset_right = 124.0
 offset_bottom = 150.0
 theme = ExtResource("112_uush8")
 theme_override_constants/separation = 0
-alignment = 1
 script = ExtResource("18_wmw63")
 NikoClickControl = NodePath("Niko")
+NikoSpriteNode = NodePath("Niko")
 AreasNode = NodePath("../Area/ClickableArea")
 SleepParticles = NodePath("GPUParticles2D")
 
@@ -3599,6 +3613,7 @@ texture = ExtResource("16_vafvb")
 lifetime = 2.95
 interpolate = false
 visibility_rect = Rect2(0, 0, 124, 152)
+local_coords = true
 draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_s2ody")
 

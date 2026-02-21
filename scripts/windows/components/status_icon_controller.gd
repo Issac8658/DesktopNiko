@@ -14,7 +14,7 @@ func _ready() -> void:
 	)
 	reset_pos_button.pressed.connect(func ():
 		visible = false
-		DisplayServer.window_set_position(GlobalController.GetDefaultPosition(get_window().size, DisplayServer.MAIN_WINDOW_ID))
+		DisplayServer.window_set_position(GlobalController.GetDefaultPosition(DisplayServer.window_get_size(DisplayServer.MAIN_WINDOW_ID)))
 	)
 	gaming_mode_checkbox.toggled.connect(func (toggled):
 		ValuesContainer.GamingModeEnabled = toggled

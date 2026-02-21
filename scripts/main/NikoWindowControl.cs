@@ -3,18 +3,20 @@ using Godot;
 public partial class NikoWindowControl : Control
 {
 	public readonly float[] NikoScales = [0.5f, 1f, 2f, 3f, 4f];
-	public readonly Vector2 DefaultNikoSize = new(120, 120); // Will Replaced with skin system
+	
+	private Window _mainWindow;
+	private GlobalController _globalController;
+	private ValuesContainer _valuesContainer;
+	private NikoSkinManager _skinManager;
 
 	[Export]
 	public Control NikoClickControl;
 	[Export]
+	public TextureRect NikoSpriteNode;
+	[Export]
 	public Node2D AreasNode;
 	[Export]
 	public Node2D SleepParticles;
-
-	private Window MainWindow;
-	private GlobalController GlobalController;
-	private ValuesContainer _valuesContainer;
 
 	//Window drag vars
 	private bool IsDragging = false;
@@ -22,13 +24,14 @@ public partial class NikoWindowControl : Control
 
 	public override void _Ready()
 	{
-		MainWindow = GetWindow();
+		_mainWindow = GetWindow();
 		_valuesContainer = GetNode("/root/ValuesContainer") as ValuesContainer;
+		_skinManager = GetNode<NikoSkinManager>("/root/NikoSkinManager");
 		//MainWindow.WrapControls = true;
 
 		_valuesContainer.NikoScaleChanged += (NikoScale) => UpdateScale();
 
-		ItemRectChanged += () => MainWindow.Size = (Vector2I)Size;
+		ItemRectChanged += () => _mainWindow.Size = (Vector2I)Size;
 
 		NikoClickControl.GuiInput += Event =>
 		{
@@ -36,23 +39,19 @@ public partial class NikoWindowControl : Control
 				if ((Event as InputEventMouseButton).ButtonIndex == MouseButton.Left)
 					if (Event.IsPressed())
 					{
-						MouseOffset = DisplayServer.MouseGetPosition() - MainWindow.Position;
+						MouseOffset = DisplayServer.MouseGetPosition() - _mainWindow.Position;
 						IsDragging = true;
-						UpdateScale();
 					}
 					else
 						IsDragging = false;
 		};
-
-		UpdateScale();
-		MainWindow.WrapControls = true;
 	}
 
 	public override void _Process(double delta)
 	{
 		if (IsDragging)
 		{
-			MainWindow.Position = DisplayServer.MouseGetPosition() - MouseOffset;
+			_mainWindow.Position = DisplayServer.MouseGetPosition() - MouseOffset;
 		}
 	}
 
@@ -60,9 +59,9 @@ public partial class NikoWindowControl : Control
 	public void UpdateScale()
 	{
 		float scale = NikoScales[_valuesContainer.NikoScale];
-		SetDeferred("size", Vector2I.Zero);
-		SetDeferred("position", Vector2I.Zero);
-		//NikoClickControl.CustomMinimumSize = (Vector2I)(DefaultNikoSize * scale);
 		SleepParticles.Scale = AreasNode.Scale = new(scale, scale);
+		_mainWindow.Size = new((int)Size.X, (int)Size.Y);
+		NikoSpriteNode.CustomMinimumSize = NikoSpriteNode.Texture.GetSize() * scale * _skinManager.GetCurrentSkinBaseScale();
 	}
+
 }
