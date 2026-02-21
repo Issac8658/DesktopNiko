@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Desktop Niko"
-config/version="1.1.5a"
+config/version="1.1.5b"
 config/tags=PackedStringArray("niko", "non_com", "one_shot", "software")
 run/main_scene="uid://cj66sb2a5oolj"
 config/use_custom_user_dir=true

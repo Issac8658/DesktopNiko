@@ -17,6 +17,7 @@ func _ready() -> void:
 	animator.play("RESET")
 	animator.animation_finished.connect(func (anim):
 		if anim == "showing":
+			visible = false
 			start_buffer_play()
 	)
 	
@@ -29,8 +30,10 @@ func _ready() -> void:
 func _process(_delta) -> void:
 	if visible and image_rect.is_visible_in_tree():
 		image_rect.texture = ImageTexture.create_from_image(DisplayServer.screen_get_image_rect(Rect2i(position,size)))
+
 func start_buffer_play():
 	if len(achievements_buffer) > 0:
+		visible = true
 		buffer_playing = true
 		var achievement_id = achievements_buffer.pop_front()
 		if ValuesContainer.ShowAchievements:
@@ -40,8 +43,7 @@ func start_buffer_play():
 			icon.texture = load(data[2])
 			update_pos()
 			animator.play("showing")
-		else:
-			sound.play()
+		sound.play()
 	else:
 		buffer_playing = false
 
