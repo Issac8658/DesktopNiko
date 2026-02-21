@@ -48,7 +48,10 @@ public partial class NikoSkinManager : Node
 		else
 			RegisterSkins("user://skins/");
 
-		SetSkin(DEFAULT_SKIN_ID);
+		if(_valuesContainer.CurrentSkin != "")
+			SetSkin(_valuesContainer.CurrentSkin);
+		else
+			SetSkin(DEFAULT_SKIN_ID);
 	}
 
 	public void SetSkin(string SkinId)
@@ -57,6 +60,7 @@ public partial class NikoSkinManager : Node
 		if (MaybeSkinToLoad is Skin)
 			_valuesContainer.CurrentSkin = SkinId;
 		else
+			_valuesContainer.CurrentSkin = DEFAULT_SKIN_ID;
 			GD.Print($"Unknown skin \"{SkinId}\"!");
 	}
 	
@@ -101,8 +105,10 @@ public partial class NikoSkinManager : Node
 				if (skin.Sprites.TryGetValue(spriteId, out string SpritePath))
 					sprite = LoadTexture(SpritePath);
 				else
+				{
 					sprite = LoadTexture(skin.Sprites[DEFAULT_SPRITE_ID]);
-					GD.Print($"Skin sprite \"{spriteId}\" isn't exist in skin \"{skinId}\"");
+					GD.Print($"Skin sprite \"{spriteId}\" isn't exist in skin \"{skinId}\" (_loadedSprites.ContainsKey(skinId) == true)");
+				}
 
 				_loadedSprites[skinId][spriteId] = sprite;
 			}
@@ -114,8 +120,10 @@ public partial class NikoSkinManager : Node
 			if (skin.Sprites.TryGetValue(spriteId, out string SpritePath))
 				sprite = LoadTexture(SpritePath);
 			else
+			{
 				sprite = LoadTexture(skin.Sprites[DEFAULT_SPRITE_ID]);
-				GD.Print($"Skin sprite \"{spriteId}\" isn't exist in skin \"{skinId}\"");
+				GD.Print($"Skin sprite \"{spriteId}\" isn't exist in skin \"{skinId}\" (_loadedSprites.ContainsKey(skinId) == false)");
+			}
 
 			SkinTextures[spriteId] = sprite;
 			_loadedSprites[skinId] = SkinTextures;

@@ -98,7 +98,8 @@
 [ext_resource type="Script" uid="uid://c45ltmpprf6rs" path="res://scripts/loading_icon.gd" id="81_ubkm4"]
 [ext_resource type="Script" uid="uid://dh8nb5jo0naai" path="res://scripts/windows/functional_windows/settings/windows_only_checkbox.gd" id="82_36qg2"]
 [ext_resource type="Texture2D" uid="uid://cqicl8sy06ti5" path="res://sprites/icons/error.png" id="82_l76vu"]
-[ext_resource type="Script" uid="uid://ugkxsuk4wjt" path="res://scripts/windows/functional_windows/settings/scale_settings.gd" id="83_dftep"]
+[ext_resource type="Script" uid="uid://c5ttb0307rqhr" path="res://scripts/windows/functional_windows/settings/meow_sound_selector.gd" id="83_77al4"]
+[ext_resource type="Script" uid="uid://ugkxsuk4wjt" path="res://scripts/windows/functional_windows/settings/scale_selector.gd" id="83_dftep"]
 [ext_resource type="Texture2D" uid="uid://o648cd5rcwja" path="res://sprites/characters/magpie_shop1.png" id="87_1b22m"]
 [ext_resource type="Texture2D" uid="uid://onqy26td0pr4" path="res://sprites/icons/achievements.png" id="87_s2ody"]
 [ext_resource type="PackedScene" uid="uid://bi5pu8hc54t3d" path="res://prefabs/achievement.tscn" id="88_05sqr"]
@@ -556,7 +557,7 @@ alpha_curve = SubResource("CurveTexture_05sqr")
 
 [node name="TheWorldMachine" type="Node" unique_id=1533983871 node_paths=PackedStringArray("MenuPanel", "MenuButton", "WindowToOpen", "NikoSpriteNode", "NikoAnimationPlayer", "MeowSoundPlayer", "SleepParticles")]
 script = ExtResource("1_wmw63")
-Meows = [ExtResource("2_ghshe"), ExtResource("3_fv2he"), ExtResource("4_5smuj"), ExtResource("5_5smuj"), ExtResource("6_y5ved"), ExtResource("7_gv8l5"), ExtResource("8_8jixl"), ExtResource("9_30vx0")]
+Meows = [ExtResource("2_ghshe"), ExtResource("3_fv2he"), ExtResource("4_5smuj"), ExtResource("5_5smuj"), ExtResource("6_y5ved"), ExtResource("9_30vx0"), ExtResource("7_gv8l5"), ExtResource("8_8jixl")]
 MenuPanel = NodePath("NikoBase/MenuPanel")
 MenuButton = NodePath("NikoBase/MenuPanel/MenuButton")
 WindowToOpen = NodePath("ShortcutsWindow")
@@ -2143,7 +2144,6 @@ text = "APPLY"
 title = "SETTINGS"
 initial_position = 4
 size = Vector2i(704, 404)
-visible = false
 maximize_disabled = true
 
 [node name="Icon" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
@@ -2776,6 +2776,7 @@ popup/item_6/text = "MEOW6"
 popup/item_6/id = 6
 popup/item_7/text = "MEOW7"
 popup/item_7/id = 7
+script = ExtResource("83_77al4")
 
 [node name="NikoScaleSelectionContainer" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer" unique_id=965174835]
 layout_mode = 2
@@ -3398,7 +3399,7 @@ locked_icon = ExtResource("89_ym5p0")
 achievement_template = ExtResource("88_05sqr")
 achievement_sepatator_template = ExtResource("90_05sqr")
 
-[node name="AchievementOverlay" type="Window" parent="." unique_id=436032910 node_paths=PackedStringArray("image_rect", "animator", "icon", "name_label", "desc_label")]
+[node name="AchievementOverlay" type="Window" parent="." unique_id=436032910 node_paths=PackedStringArray("image_rect", "animator", "icon", "name_label", "desc_label", "sound")]
 process_mode = 3
 transparent_bg = true
 oversampling_override = 1.0
@@ -3421,6 +3422,7 @@ animator = NodePath("AnimationPlayer")
 icon = NodePath("PanelContainer/HBoxContainer/TextureRect")
 name_label = NodePath("PanelContainer/HBoxContainer/VBoxContainer/AchivementName")
 desc_label = NodePath("PanelContainer/HBoxContainer/VBoxContainer/AchivementDesc")
+sound = NodePath("AudioStreamPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AchievementOverlay" unique_id=2105533533]
 libraries/ = SubResource("AnimationLibrary_s2ody")

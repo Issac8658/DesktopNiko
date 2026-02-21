@@ -102,7 +102,6 @@ public partial class SaveLoad : Node
         }
         // uncommon vars saving
         saveFile.SetValue("NikoStates", "NikoPosition", GetWindow().Position);
-        saveFile.SetValue("Main", "SaveVersion", ProjectSettings.GetSetting("application/config/save_version"));
         // achievements saving here
 
         saveFile.Save(SAVE_FILE_PATH);

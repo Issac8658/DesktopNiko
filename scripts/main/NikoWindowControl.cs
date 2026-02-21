@@ -63,5 +63,4 @@ public partial class NikoWindowControl : Control
 		_mainWindow.Size = new((int)Size.X, (int)Size.Y);
 		NikoSpriteNode.CustomMinimumSize = NikoSpriteNode.Texture.GetSize() * scale * _skinManager.GetCurrentSkinBaseScale();
 	}
-
 }

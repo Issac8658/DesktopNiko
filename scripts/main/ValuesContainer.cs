@@ -42,7 +42,7 @@ public partial class ValuesContainer : Node
 	private string _scareSpeakFacepic = "surprised";
 	private int _nikoTimeToSleep = 900; // in seconds
 	private bool _gamingModeEnabled = false;
-	private string _currentSkin = "";
+	private string _currentSkin = ""; // sets by SaveLoad.cs
 
 // Publics
 	// Main
