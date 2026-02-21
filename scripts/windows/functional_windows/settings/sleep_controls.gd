@@ -24,11 +24,11 @@ func update_spinboxes():
 	@warning_ignore("integer_division")
 	var hours : int = time / 3600
 	hours_spinbox.value = hours
-	time -= hours
+	time -= hours * 3600
 	@warning_ignore("integer_division")
 	var minutes = time / 60
 	minutes_spinbox.value = minutes
-	time -= minutes
+	time -= minutes * 60
 	seconds_spinbox.value = time
 
 func update(_value):
