@@ -100,6 +100,7 @@
 [ext_resource type="Texture2D" uid="uid://cqicl8sy06ti5" path="res://sprites/icons/error.png" id="82_l76vu"]
 [ext_resource type="Script" uid="uid://c5ttb0307rqhr" path="res://scripts/windows/functional_windows/settings/meow_sound_selector.gd" id="83_77al4"]
 [ext_resource type="Script" uid="uid://ugkxsuk4wjt" path="res://scripts/windows/functional_windows/settings/scale_selector.gd" id="83_dftep"]
+[ext_resource type="Script" uid="uid://b1r5wxkisfk4r" path="res://scripts/windows/functional_windows/settings/snap_to_bottom_setting.gd" id="85_8g87k"]
 [ext_resource type="Texture2D" uid="uid://o648cd5rcwja" path="res://sprites/characters/magpie_shop1.png" id="87_1b22m"]
 [ext_resource type="Texture2D" uid="uid://onqy26td0pr4" path="res://sprites/icons/achievements.png" id="87_s2ody"]
 [ext_resource type="PackedScene" uid="uid://bi5pu8hc54t3d" path="res://prefabs/achievement.tscn" id="88_05sqr"]
@@ -2144,6 +2145,7 @@ text = "APPLY"
 title = "SETTINGS"
 initial_position = 4
 size = Vector2i(704, 404)
+visible = false
 maximize_disabled = true
 
 [node name="Icon" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
@@ -2816,6 +2818,7 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 button_pressed = true
 text = "SNAP_TO_BOTTOM"
+script = ExtResource("85_8g87k")
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SnapToBottom" unique_id=100780105 instance=ExtResource("42_sp30j")]
 layout_mode = 1

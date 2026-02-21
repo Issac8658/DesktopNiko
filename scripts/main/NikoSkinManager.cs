@@ -60,8 +60,10 @@ public partial class NikoSkinManager : Node
 		if (MaybeSkinToLoad is Skin)
 			_valuesContainer.CurrentSkin = SkinId;
 		else
+		{
 			_valuesContainer.CurrentSkin = DEFAULT_SKIN_ID;
-			GD.Print($"Unknown skin \"{SkinId}\"!");
+			GD.PushWarning($"Unknown skin \"{SkinId}\"!");
+		}
 	}
 	
 	public float GetCurrentSkinBaseScale()
@@ -107,7 +109,7 @@ public partial class NikoSkinManager : Node
 				else
 				{
 					sprite = LoadTexture(skin.Sprites[DEFAULT_SPRITE_ID]);
-					GD.Print($"Skin sprite \"{spriteId}\" isn't exist in skin \"{skinId}\" (_loadedSprites.ContainsKey(skinId) == true)");
+					GD.PushWarning($"Skin sprite \"{spriteId}\" isn't exist in skin \"{skinId}\"");
 				}
 
 				_loadedSprites[skinId][spriteId] = sprite;
@@ -122,7 +124,7 @@ public partial class NikoSkinManager : Node
 			else
 			{
 				sprite = LoadTexture(skin.Sprites[DEFAULT_SPRITE_ID]);
-				GD.Print($"Skin sprite \"{spriteId}\" isn't exist in skin \"{skinId}\" (_loadedSprites.ContainsKey(skinId) == false)");
+				GD.PushWarning($"Skin sprite \"{spriteId}\" isn't exist in skin \"{skinId}\"");
 			}
 
 			SkinTextures[spriteId] = sprite;
@@ -144,7 +146,7 @@ public partial class NikoSkinManager : Node
 			if (skin.Id == SkinId)
 				return skin;
 		
-		GD.Print($"Skin \"{SkinId}\" is invalid or does not exist");
+		GD.PushWarning($"Skin \"{SkinId}\" is invalid or does not exist");
 		return null;
 	}
 
@@ -211,7 +213,7 @@ public partial class NikoSkinManager : Node
 					float SkinScale = (float)SkinConfig.GetValue("Data", "Scale", 1.0);
 					Vector2[] SkinCollisionPolygon = (Vector2[])SkinConfig.GetValue("Data", "CollisionPolygon", "[0,0, 100,0 ,100,100, 0,100]");
 					if (!SkinConfig.HasSectionKey("Data", "CollisionPolygon"))
-						GD.Print($"Collision polygon in \"{SkinId}\" doesn't exist! Using skin is not recommended");
+						GD.PushWarning($"Collision polygon in \"{SkinId}\" doesn't exist! Using skin is not recommended");
 
 					Dictionary<string, string> SkinExtraSprites = [];
 					if (SkinConfig.HasSection("ExtraSprites"))
@@ -227,10 +229,10 @@ public partial class NikoSkinManager : Node
 					GD.Print($"Skin \"{SkinId}\" registered");
 				}
 				else
-					GD.Print($"Skin \"{SkinId}\" doesn't have \"default\" sprite!(in config)");
+					GD.PushWarning($"Skin \"{SkinId}\" doesn't have \"default\" sprite!(in config)");
 			}
 			else
-				GD.Print($"Skin \"{SkinId}\" config file is invalid!");
+				GD.PushWarning($"Skin \"{SkinId}\" config file is invalid!");
 		}
 	}
 
