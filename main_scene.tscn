@@ -108,6 +108,7 @@
 [ext_resource type="Script" uid="uid://cyi2ub3b3g3l8" path="res://scripts/achievements/achievements_list.gd" id="88_ym5p0"]
 [ext_resource type="AudioStream" uid="uid://8vbdh38fqgnf" path="res://sounds/get_item.ogg" id="89_bkdqi"]
 [ext_resource type="Texture2D" uid="uid://widgkfxwlx5" path="res://sprites/achievements/unknown_gray.png" id="89_ym5p0"]
+[ext_resource type="Texture2D" uid="uid://c37kquhg5mklo" path="res://sprites/ui/world_machine/bulb.tres" id="90_2umrp"]
 [ext_resource type="PackedScene" uid="uid://dl8543lp0qwyv" path="res://prefabs/achievement_separator.tscn" id="90_05sqr"]
 [ext_resource type="Texture2D" uid="uid://dlavpw6yhbnab" path="res://sprites/achievements/unknown.png" id="91_3s6xx"]
 [ext_resource type="Texture2D" uid="uid://dnwbeed7hrv83" path="res://sprites/ui/test_shit.png" id="92_ixb38"]
@@ -278,10 +279,6 @@ func _ready() -> void:
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k2ony"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1b22m"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gfmxp"]
-atlas = ExtResource("4_hq1ik")
-region = Rect2(101, 100, 27, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j8kkg"]
 atlas = ExtResource("4_hq1ik")
@@ -3190,7 +3187,7 @@ grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
 theme_type_variation = &"IconButton"
-icon = SubResource("AtlasTexture_gfmxp")
+icon = ExtResource("90_2umrp")
 
 [node name="LampEasteregg2" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content" index="4" unique_id=1107665669]
 visible = false

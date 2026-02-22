@@ -24,7 +24,9 @@ config/auto_accept_quit=false
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 run/low_processor_mode=true
 run/low_processor_mode_sleep_usec=13800
-boot_splash/show_image=false
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/stretch_mode=0
+boot_splash/image="uid://dt7pimjf1fitk"
 config/icon="uid://qsweuhlblj1"
 config/save_version=1
 
