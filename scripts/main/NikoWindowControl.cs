@@ -53,6 +53,7 @@ public partial class NikoWindowControl : Control
 						}
 					}
 		};
+		UpdateScale();
 	}
 
 	public override void _Process(double delta)

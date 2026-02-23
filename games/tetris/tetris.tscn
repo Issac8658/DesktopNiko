@@ -118,7 +118,7 @@ always_on_top = false
 minimize_disabled = true
 maximize_disabled = true
 
-[node name="Control" parent="Menu" index="0" node_paths=PackedStringArray("GameController", "MenuWindow", "MusicPlayer", "PlayButton", "MusicCheckbox", "ExitButton", "StatisticBumpAnimator", "GameTimer")]
+[node name="Control" parent="Menu" index="0" node_paths=PackedStringArray("GameController", "MenuWindow", "MusicPlayer", "PlayButton", "MusicCheckbox", "ExitButton", "GameTimer")]
 script = ExtResource("15_o08yc")
 GameController = NodePath("../..")
 MenuWindow = NodePath("..")
@@ -126,7 +126,6 @@ MusicPlayer = NodePath("../../NikoProcessing")
 PlayButton = NodePath("WindowContainer/Content/VBoxContainer/Start")
 MusicCheckbox = NodePath("WindowContainer/Content/VBoxContainer/CheckBox")
 ExitButton = NodePath("WindowContainer/Content/VBoxContainer/Exit")
-StatisticBumpAnimator = NodePath("../../GlobalAnchor/Statistics/StatisticsAnimator")
 GameTimer = NodePath("../../Timer")
 
 [node name="Title" parent="Menu/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
