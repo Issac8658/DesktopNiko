@@ -85,6 +85,7 @@
 [ext_resource type="StyleBox" uid="uid://7knach8205vl" path="res://themes/twm_theme/window_tab.stylebox" id="67_im3ns"]
 [ext_resource type="StyleBox" uid="uid://nyb3y3mcmw8e" path="res://themes/twm_theme/window_tab_selected.stylebox" id="67_xevt3"]
 [ext_resource type="Texture2D" uid="uid://bq0l8gsn8md3e" path="res://sprites/icons/language.png" id="69_05sqr"]
+[ext_resource type="Script" uid="uid://cgjvtemq32u7a" path="res://scripts/windows/functional_windows/settings/gaming_mode_checkbox.gd" id="74_2umrp"]
 [ext_resource type="Script" uid="uid://lowrqksp45hd" path="res://scripts/windows/functional_windows/settings/sleep_controls.gd" id="74_j53bq"]
 [ext_resource type="Texture2D" uid="uid://4fifkt7n1ua4" path="res://sprites/shop_base.tres" id="74_v118d"]
 [ext_resource type="Texture2D" uid="uid://gsgodind7qoq" path="res://sprites/shop_front.tres" id="75_lwncm"]
@@ -2145,7 +2146,6 @@ text = "APPLY"
 title = "SETTINGS"
 initial_position = 4
 size = Vector2i(704, 404)
-visible = false
 maximize_disabled = true
 
 [node name="Icon" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
@@ -2246,7 +2246,6 @@ theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
 [node name="General" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=796068923]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 8
 
@@ -2258,6 +2257,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "GAMING_MODE"
+script = ExtResource("74_2umrp")
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/GamingMode" unique_id=973865222 instance=ExtResource("42_sp30j")]
 layout_mode = 1
@@ -2504,6 +2504,7 @@ nodes = [NodePath("../../SettingsPanel/Peaceful"), NodePath("../../SettingsPanel
 texts = Array[String](["PEACEFUL_MODE_HINT", "SAVING_ICON_HINT", "GAMING_MODE_HINT", "CLICK_SOUND_HINT", "SHOW_ACHIEVEMENTS_HINT"])
 
 [node name="Niko" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=320743199]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 
