@@ -18,9 +18,9 @@ public partial class NikoWindowControl : Control
 	[Export]
 	public Node2D SleepParticles;
 
-	//Window drag vars
-	private bool IsDragging = false;
-	private Vector2I MouseOffset = new();
+	// Window drag vars
+	//private bool IsDragging = false;
+	//private Vector2I MouseOffset = new();
 
 	public override void _Ready()
 	{
@@ -39,28 +39,29 @@ public partial class NikoWindowControl : Control
 				if ((Event as InputEventMouseButton).ButtonIndex == MouseButton.Left)
 					if (Event.IsPressed())
 					{
-						MouseOffset = DisplayServer.MouseGetPosition() - _mainWindow.Position;
-						IsDragging = true;
+						DisplayServer.WindowStartDrag(_mainWindow.GetWindowId());
+						//MouseOffset = DisplayServer.MouseGetPosition() - _mainWindow.Position;
+						//IsDragging = true;
 					}
-					else
-					{
-						IsDragging = false;
-						if (_valuesContainer.SnapToBottom)
-						{
-							Rect2I UsableRect = DisplayServer.ScreenGetUsableRect(DisplayServer.WindowGetCurrentScreen((int)DisplayServer.MainWindowId));
-							if (Mathf.Abs(_mainWindow.Position.Y + NikoSpriteNode.Size.Y - (UsableRect.Position.Y + UsableRect.Size.Y)) <= 20)
-								_mainWindow.Position = new(_mainWindow.Position.X, UsableRect.Position.Y + UsableRect.Size.Y - (int)NikoSpriteNode.Size.Y);
-						}
-					}
+					//else
+					//{
+					//	IsDragging = false;
+					//	if (_valuesContainer.SnapToBottom)
+					//	{
+					//		Rect2I UsableRect = DisplayServer.ScreenGetUsableRect(DisplayServer.WindowGetCurrentScreen((int)DisplayServer.MainWindowId));
+					//		if (Mathf.Abs(_mainWindow.Position.Y + NikoSpriteNode.Size.Y - (UsableRect.Position.Y + UsableRect.Size.Y)) <= 20)
+					//			_mainWindow.Position = new(_mainWindow.Position.X, UsableRect.Position.Y + UsableRect.Size.Y - (int)NikoSpriteNode.Size.Y);
+					//	}
+					//}
 		};
 		UpdateScale();
 	}
 
-	public override void _Process(double delta)
-	{
-		if (IsDragging)
-			_mainWindow.Position = DisplayServer.MouseGetPosition() - MouseOffset;
-	}
+	//public override void _Process(double delta)
+	//{
+	//	if (IsDragging)
+	//		_mainWindow.Position = DisplayServer.MouseGetPosition() - MouseOffset;
+	//}
 
 
 	public void UpdateScale()
