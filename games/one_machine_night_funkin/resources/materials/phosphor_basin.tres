@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://but4w5rqhd16n"]
+
+[ext_resource type="Texture2D" uid="uid://imqoy207a825" path="res://textures/phosphor_basin.png" id="1_kkeuw"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_kkeuw")
+texture_filter = 2

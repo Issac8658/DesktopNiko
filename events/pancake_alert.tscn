@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://4baxjml3wpgo"]
+[gd_scene format=3 uid="uid://4baxjml3wpgo"]
 
 [ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/events/event.gd" id="1_nodym"]
 [ext_resource type="AudioStream" uid="uid://fwhbmmo7fr0n" path="res://sounds/rb_cry.mp3" id="2_kivn3"]
@@ -46,7 +46,7 @@ func _ready() -> void:
 						glitch.visible = true
 						glitch_sound.finished.connect(func ():
 							glitch.visible = false
-							ValuesContainer.ForceFacepick(\"niko_pancakes\")
+							ValuesContainer.ForceFacepick(\"pancakes\")
 							AchievementsGlobalConroller.take_achievement(\"worst_friend\")
 							popup.popup()
 						, CONNECT_ONE_SHOT)
@@ -60,7 +60,7 @@ func _ready() -> void:
 				glitch.visible = true
 				glitch_sound.finished.connect(func ():
 					glitch.visible = false
-					ValuesContainer.ForceFacepick(\"niko_pancakes\")
+					ValuesContainer.ForceFacepick(\"pancakes\")
 					popup.popup()
 				, CONNECT_ONE_SHOT)
 				glitch_sound.play()
@@ -71,7 +71,7 @@ func do_event() -> void:
 	if not eventing:
 		eventing = true
 		popup.popup()
-		ValuesContainer.ForceFacepick(\"niko_pancakes\")
+		ValuesContainer.ForceFacepick(\"pancakes\")
 
 func revert():
 	ValuesContainer.UnforceFacepick()
@@ -84,19 +84,19 @@ func play_eating_anim():
 
 func anim_step():
 	match _anim_state:
-		0: ValuesContainer.ForceFacepick(\"niko_eat1\")
-		1: ValuesContainer.ForceFacepick(\"niko_eat2\")
-		2: ValuesContainer.ForceFacepick(\"niko_eat1\")
-		3: ValuesContainer.ForceFacepick(\"niko_eat2\")
-		4: ValuesContainer.ForceFacepick(\"niko_eat1\")
-		5: ValuesContainer.ForceFacepick(\"niko_eat2\")
-		6: ValuesContainer.ForceFacepick(\"niko_eat1\")
+		0: ValuesContainer.ForceFacepick(\"eat1\")
+		1: ValuesContainer.ForceFacepick(\"eat2\")
+		2: ValuesContainer.ForceFacepick(\"eat1\")
+		3: ValuesContainer.ForceFacepick(\"eat2\")
+		4: ValuesContainer.ForceFacepick(\"eat1\")
+		5: ValuesContainer.ForceFacepick(\"eat2\")
+		6: ValuesContainer.ForceFacepick(\"eat1\")
 		7: revert()
 	_anim_state += 1
 
 func press_no():
 	print(\"pressed no\")
-	ValuesContainer.ForceFacepick(\"niko_super_cry\")
+	ValuesContainer.ForceFacepick(\"super_cry\")
 	cry_sound.play()
 "
 
@@ -115,7 +115,7 @@ func _ready() -> void:
 			size = DisplayServer.screen_get_size(main_window_screen) + Vector2i(1,1)
 			texture_rect.texture = ImageTexture.create_from_image(DisplayServer.screen_get_image(main_window_screen))
 			texture_rect.material.set_shader_parameter(\"offset_power\", 0)
-			PassthroughModule.UpdateWindowsExStyles(self, true)
+			PassthroughModule.UpdateWindowsExStyles(self, true, true)
 	)
 
 func _process(delta: float) -> void:
@@ -129,12 +129,12 @@ func _process(delta: float) -> void:
 shader = ExtResource("7_c7ay0")
 shader_parameter/offset_power = 0.0
 
-[node name="PancakeAlert" type="Node" node_paths=PackedStringArray("event_controller")]
+[node name="PancakeAlert" type="Node" unique_id=313695715 node_paths=PackedStringArray("event_controller")]
 script = ExtResource("1_nodym")
 event_controller = NodePath("EventController")
 metadata/_custom_type_script = "uid://73yfcqn4tt7s"
 
-[node name="EventController" type="Node" parent="." node_paths=PackedStringArray("popup", "glitch", "cry_sound", "glitch_sound", "eat_sound", "timer")]
+[node name="EventController" type="Node" parent="." unique_id=611419158 node_paths=PackedStringArray("popup", "glitch", "cry_sound", "glitch_sound", "eat_sound", "timer")]
 script = SubResource("GDScript_le437")
 popup = NodePath("../PancakeQuest")
 glitch = NodePath("../GlitchW")
@@ -143,22 +143,22 @@ glitch_sound = NodePath("../Glitch")
 eat_sound = NodePath("../Eat")
 timer = NodePath("../Timer")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=497065297]
 wait_time = 0.25
 ignore_time_scale = true
 
-[node name="Cry" type="AudioStreamPlayer" parent="."]
+[node name="Cry" type="AudioStreamPlayer" parent="." unique_id=1678085048]
 stream = ExtResource("2_kivn3")
 volume_db = -10.0
 
-[node name="Eat" type="AudioStreamPlayer" parent="."]
+[node name="Eat" type="AudioStreamPlayer" parent="." unique_id=583407315]
 stream = ExtResource("3_o5iab")
 volume_db = -10.0
 
-[node name="Glitch" type="AudioStreamPlayer" parent="."]
+[node name="Glitch" type="AudioStreamPlayer" parent="." unique_id=461145608]
 stream = ExtResource("3_4vcw5")
 
-[node name="PancakeQuest" parent="." instance=ExtResource("4_mhhk1")]
+[node name="PancakeQuest" parent="." unique_id=76261233 instance=ExtResource("4_mhhk1")]
 size = Vector2i(328, 320)
 visible = false
 exclusive = true
@@ -170,11 +170,11 @@ icon = ExtResource("5_nm1hw")
 [node name="Title" parent="PancakeQuest/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
 text = "PANCAKE_ALERT"
 
-[node name="Control" type="Control" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="0"]
+[node name="Control" type="Control" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="0" unique_id=1855135970]
 custom_minimum_size = Vector2(0, 168)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer/Control"]
+[node name="TextureRect" type="TextureRect" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer/Control" unique_id=858753168]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -192,11 +192,11 @@ texture = ExtResource("6_3kxgl")
 [node name="Quest" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="1"]
 text = "GIVE_PANCAKES_TO_NIKO_QUEST"
 
-[node name="Control2" type="Control" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="3"]
+[node name="Control2" type="Control" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="3" unique_id=1731252218]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
-[node name="GlitchW" type="Window" parent="." node_paths=PackedStringArray("texture_rect")]
+[node name="GlitchW" type="Window" parent="." unique_id=882526535 node_paths=PackedStringArray("texture_rect")]
 auto_translate_mode = 1
 transparent_bg = true
 visible = false
@@ -208,7 +208,7 @@ unfocusable = true
 script = SubResource("GDScript_4vcw5")
 texture_rect = NodePath("TextureRect")
 
-[node name="TextureRect" type="TextureRect" parent="GlitchW"]
+[node name="TextureRect" type="TextureRect" parent="GlitchW" unique_id=915785309]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_o5iab")
 offset_right = 40.0

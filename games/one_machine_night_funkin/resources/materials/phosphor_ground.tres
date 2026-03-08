@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d0pnm74giv4ow"]
+
+[ext_resource type="Shader" uid="uid://xi87a20im5ex" path="res://games/one_machine_night_funkin/resources/shaders/phosphor_ground.gdshader" id="1_mvr32"]
+[ext_resource type="Texture2D" uid="uid://5cdx2o4sxvkr" path="res://games/one_machine_night_funkin/resources/sprites/noise.tres" id="2_c31eo"]
+[ext_resource type="Texture2D" uid="uid://b8qav7ygbeymk" path="res://games/one_machine_night_funkin/resources/sprites/phosphor.png" id="2_xsjfq"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_mvr32")
+shader_parameter/phosphor_texture = ExtResource("2_xsjfq")
+shader_parameter/noise_texture = ExtResource("2_c31eo")

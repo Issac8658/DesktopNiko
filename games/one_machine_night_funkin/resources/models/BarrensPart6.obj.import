@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bhte53wihlp3s"
+path="res://.godot/imported/BarrensPart6.obj-0d76115fef4d80ddb9f3df8e9c2c5656.mesh"
+
+[deps]
+
+files=["res://.godot/imported/BarrensPart6.obj-0d76115fef4d80ddb9f3df8e9c2c5656.mesh"]
+
+source_file="res://games/one_machine_night_funkin/resources/models/BarrensPart6.obj"
+dest_files=["res://.godot/imported/BarrensPart6.obj-0d76115fef4d80ddb9f3df8e9c2c5656.mesh", "res://.godot/imported/BarrensPart6.obj-0d76115fef4d80ddb9f3df8e9c2c5656.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,19 +1,22 @@
 using System;
 using System.Collections.Generic;
+using Achievements;
 using Godot;
 
 public partial class AchievementsController : Node
 {
+	[Signal] public delegate void AchievementTakedEventHandler(string AchievementId);
 
-	private List<Achievements.Achievement> AchievementsList = [];
+	private List<Achievement> AchievementsList = [];
+	private List<bool> AchievementTakedList = [];
 
 	public bool IsAchievementExist(string AchievementId)
 	{
-		bool achievementExist(Achievements.Achievement achievement) { return achievement.Id == AchievementId; }
+		bool achievementExist(Achievement achievement) { return achievement.Id == AchievementId; }
 		return AchievementsList.Exists(achievementExist);
 	}
 
-	public Achievements.Achievement? GetAchievementById(string AchievementId)
+	public Achievement? GetAchievementById(string AchievementId)
 	{
 		foreach (var achievement in AchievementsList)
 		{
@@ -24,13 +27,25 @@ public partial class AchievementsController : Node
 		}
 		return null;
 	}
+	public int? GetAchievementIndexById(string AchievementId)
+	{
+		for (int i = 0; i < AchievementsList.Count; i++)
+		{
+			Achievement achievement = AchievementsList[i];
+			if (achievement.Id == AchievementId)
+			{
+				return i;
+			}
+		}
+		return null;
+	}
 
 	public bool IsAchievementTaked(string AchievementId)
 	{
-		var achievement = GetAchievementById(AchievementId);
-		if (achievement is not null)
+		int? achievement = GetAchievementIndexById(AchievementId);
+		if (achievement is int achievementId)
 		{
-			return achievement.Value.Taked;
+			return AchievementTakedList[achievementId];
 		}
 		return false;
 	}
@@ -41,12 +56,21 @@ public partial class AchievementsController : Node
 		{
 			if (AchievementsList[i].Id == AchievementId)
 			{
-				var achievement = AchievementsList[i];
-				achievement.Taked = true;
-				AchievementsList[i] = achievement;
+				AchievementTakedList[i] = true;
 				break;
 			}
 		}
+	}
+
+	public void RegisterAchievement(Achievement achievement)
+	{
+		if (!IsAchievementExist(achievement.Id))
+		{
+			AchievementsList.Add(achievement);
+			AchievementTakedList.Add(false);
+		}
+		else
+			GD.PushWarning($"Achievement with id {achievement.Id} already registered!");
 	}
 }
 
@@ -54,8 +78,6 @@ namespace Achievements
 {
 	public struct Achievement(string AchievementId, Texture2D AchievementIcon, string AchievementTitle = "NO_TITLE", string AchievementDesc = "")
 	{
-		public bool Taked = false;
-
 		public string Id = AchievementId;
 		public Texture2D Icon = AchievementIcon;
 		public string Title = AchievementTitle;

@@ -14,12 +14,13 @@ func _ready() -> void:
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
 				if get_visible_rect().has_point(event.position):
-					is_dragging = true
-					mouse_offset = event.position
-			else:
-				is_dragging = false
-		if event is InputEventMouseMotion and is_dragging:
-			MoveWindow(event.position - mouse_offset)
+					DisplayServer.window_start_drag(get_window_id())
+	#				is_dragging = true
+	#				mouse_offset = event.position
+	#		else:
+	#			is_dragging = false
+	#	if event is InputEventMouseMotion and is_dragging:
+	#		MoveWindow(event.position - mouse_offset)
 	)
 	
 	CloseButton.pressed.connect(func ():

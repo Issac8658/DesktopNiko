@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public partial class OmnfMenuController : Node
 {
+	private ValuesContainer _valuesContainer;
+
 	public enum MenuState { IntroText, TitleScreen, Menu, StoryMode, FreePlay, Settings, About }
 	[Export]
 	public AnimationPlayer TitleScreenAnimator;
@@ -35,7 +37,7 @@ public partial class OmnfMenuController : Node
 	public override void _Ready()
 	{
 		using var file = FileAccess.Open(PathToIntroText, FileAccess.ModeFlags.Read);
-		IntroTexts = file.GetAsText().Split("\n");
+		IntroTexts = file.GetAsText().Replace("\r", "").Split("\n");
 
 		//GetNode("/root/GlobalControlls").Call("set_niko_visibility", false);
 		SongPlayer.Beat += Beat;
@@ -79,7 +81,7 @@ public partial class OmnfMenuController : Node
 			switch (CurrentMenuState)
 			{
 				case MenuState.TitleScreen:
-					GetNode("/root/GlobalControlls").Call("set_niko_visibility", true);
+					//_valuesContainer.NikoVisible = true;
 					GameNode.QueueFree();
 					break;
 				case MenuState.Menu:

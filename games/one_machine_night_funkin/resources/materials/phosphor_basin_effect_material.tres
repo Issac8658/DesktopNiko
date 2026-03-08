@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cuxafsnal65xn"]
+
+[ext_resource type="Shader" uid="uid://cxboicmk7uoej" path="res://games/one_machine_night_funkin/resources/shaders/phosphor_basin_effect.gdshader" id="1_rsqkl"]
+[ext_resource type="Texture2D" uid="uid://b8qav7ygbeymk" path="res://games/one_machine_night_funkin/resources/sprites/phosphor.png" id="2_l2mqu"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_rsqkl")
+shader_parameter/phosphor_texture = ExtResource("2_l2mqu")
+shader_parameter/effect_scale = 16.0
+shader_parameter/effect_depth = 0.05

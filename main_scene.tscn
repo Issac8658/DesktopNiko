@@ -85,17 +85,21 @@
 [ext_resource type="StyleBox" uid="uid://7knach8205vl" path="res://themes/twm_theme/window_tab.stylebox" id="67_im3ns"]
 [ext_resource type="StyleBox" uid="uid://nyb3y3mcmw8e" path="res://themes/twm_theme/window_tab_selected.stylebox" id="67_xevt3"]
 [ext_resource type="Texture2D" uid="uid://bq0l8gsn8md3e" path="res://sprites/icons/language.png" id="69_05sqr"]
-[ext_resource type="Script" uid="uid://cgjvtemq32u7a" path="res://scripts/windows/functional_windows/settings/gaming_mode_checkbox.gd" id="74_2umrp"]
+[ext_resource type="Script" uid="uid://cgjvtemq32u7a" path="res://scripts/windows/functional_windows/settings/gaming_mode_setting.gd" id="74_2umrp"]
 [ext_resource type="Script" uid="uid://lowrqksp45hd" path="res://scripts/windows/functional_windows/settings/sleep_controls.gd" id="74_j53bq"]
 [ext_resource type="Texture2D" uid="uid://4fifkt7n1ua4" path="res://sprites/shop_base.tres" id="74_v118d"]
 [ext_resource type="Texture2D" uid="uid://gsgodind7qoq" path="res://sprites/shop_front.tres" id="75_lwncm"]
 [ext_resource type="Texture2D" uid="uid://doq31fc3w01dr" path="res://sprites/shop_back.tres" id="75_o63de"]
+[ext_resource type="Script" uid="uid://o3cp724b7gks" path="res://scripts/windows/functional_windows/settings/peaceful_mode_setting.gd" id="76_evxhs"]
 [ext_resource type="PackedScene" uid="uid://bh426a06uwkf0" path="res://prefabs/h_slider.tscn" id="76_o48om"]
 [ext_resource type="PackedScene" uid="uid://clo633qc1pd8w" path="res://prefabs/magpie_shop_item.tscn" id="77_30vx0"]
+[ext_resource type="Script" uid="uid://dxeonhi35aw2y" path="res://scripts/windows/functional_windows/settings/mouse_click_sound_setting.gd" id="77_gmgvx"]
 [ext_resource type="Script" uid="uid://d3qjqffumftkk" path="res://scripts/windows/functional_windows/settings/volume.gd" id="77_k2ony"]
-[ext_resource type="Script" uid="uid://0dbjehngsr5f" path="res://scripts/windows/functional_windows/settings/add_to_autorun.gd" id="77_q4750"]
+[ext_resource type="Script" uid="uid://0dbjehngsr5f" path="res://scripts/windows/functional_windows/settings/add_to_autorun_button.gd" id="77_q4750"]
 [ext_resource type="Script" uid="uid://c32b02j7n0hx2" path="res://scripts/CpsCounter.cs" id="77_uush8"]
 [ext_resource type="Texture2D" uid="uid://d4ep8v3mrg276" path="res://sprites/shop_particle.tres" id="78_30vx0"]
+[ext_resource type="Script" uid="uid://fo02x77r4ikl" path="res://scripts/windows/functional_windows/settings/saving_icon_setting.gd" id="78_ly7qr"]
+[ext_resource type="Script" uid="uid://bin6f610l1ycj" path="res://scripts/windows/functional_windows/settings/show_achievements_setting.gd" id="79_7ggmy"]
 [ext_resource type="Script" uid="uid://c45ltmpprf6rs" path="res://scripts/loading_icon.gd" id="81_ubkm4"]
 [ext_resource type="Script" uid="uid://dh8nb5jo0naai" path="res://scripts/windows/functional_windows/settings/windows_only_checkbox.gd" id="82_36qg2"]
 [ext_resource type="Texture2D" uid="uid://cqicl8sy06ti5" path="res://sprites/icons/error.png" id="82_l76vu"]
@@ -2143,6 +2147,7 @@ text = "APPLY"
 title = "SETTINGS"
 initial_position = 4
 size = Vector2i(704, 404)
+visible = false
 maximize_disabled = true
 
 [node name="Icon" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
@@ -2265,6 +2270,7 @@ offset_bottom = 12.0
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "PEACEFUL_MODE"
+script = ExtResource("76_evxhs")
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/Peaceful" unique_id=468408949 instance=ExtResource("42_sp30j")]
 layout_mode = 1
@@ -2277,6 +2283,7 @@ tooltip_auto_translate_mode = 1
 mouse_default_cursor_shape = 2
 button_pressed = true
 text = "CLICK_SOUND"
+script = ExtResource("77_gmgvx")
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/ClickSound" unique_id=1773301873 instance=ExtResource("42_sp30j")]
 layout_mode = 1
@@ -2288,6 +2295,7 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 button_pressed = true
 text = "SHOW_SAVING_ICON"
+script = ExtResource("78_ly7qr")
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/SavingIcon" unique_id=708670483 instance=ExtResource("42_sp30j")]
 layout_mode = 1
@@ -2299,6 +2307,7 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 button_pressed = true
 text = "SHOW_ACHIEVEMENTS"
+script = ExtResource("79_7ggmy")
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/ShowAchievements" unique_id=1850794502 instance=ExtResource("42_sp30j")]
 layout_mode = 1
@@ -3486,7 +3495,7 @@ autowrap_mode = 3
 clip_text = true
 text_overrun_behavior = 3
 
-[node name="IndicatorPopup" type="Window" parent="." unique_id=1733409413 node_paths=PackedStringArray("gaming_mode_checkbox", "reset_pos_button", "shutdown_button")]
+[node name="IndicatorPopup" type="Window" parent="." unique_id=1733409413 node_paths=PackedStringArray("reset_pos_button", "shutdown_button")]
 oversampling_override = 1.0
 initial_position = 4
 size = Vector2i(240, 120)
@@ -3498,7 +3507,6 @@ borderless = true
 popup_window = true
 theme = ExtResource("100_ix15y")
 script = ExtResource("11_qwutr")
-gaming_mode_checkbox = NodePath("Panel/MarginContainer/VBoxContainer/GamingMode")
 reset_pos_button = NodePath("Panel/MarginContainer/VBoxContainer/ResetPos")
 shutdown_button = NodePath("Panel/MarginContainer/VBoxContainer/Shutdown")
 
@@ -3519,6 +3527,7 @@ layout_mode = 2
 [node name="GamingMode" type="CheckBox" parent="IndicatorPopup/Panel/MarginContainer/VBoxContainer" unique_id=1458295662]
 layout_mode = 2
 text = "GAMING_MODE"
+script = ExtResource("74_2umrp")
 
 [node name="StateIcon" parent="IndicatorPopup/Panel/MarginContainer/VBoxContainer/GamingMode" unique_id=832056286 instance=ExtResource("42_sp30j")]
 layout_mode = 1

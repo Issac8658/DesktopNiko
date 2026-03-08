@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dnqpnbdxg2qo4"]
+
+[ext_resource type="Texture2D" uid="uid://cexujue3qydwt" path="res://games/one_machine_night_funkin/resources/sprites/weeks/barrens/outpost.png" id="1_0j3wo"]
+
+[resource]
+shading_mode = 0
+albedo_texture = ExtResource("1_0j3wo")
+texture_filter = 2

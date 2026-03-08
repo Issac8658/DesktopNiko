@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cd2tqqpo3hn8t"]
+
+[ext_resource type="Shader" uid="uid://bi1mcpblhjhce" path="res://games/one_machine_night_funkin/resources/shaders/water_shader.gdshader" id="1_hvrkk"]
+[ext_resource type="Texture2D" uid="uid://5cdx2o4sxvkr" path="res://games/one_machine_night_funkin/resources/sprites/noise.tres" id="2_xxh04"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_hvrkk")
+shader_parameter/noise = ExtResource("2_xxh04")
+shader_parameter/wave_speed = 1.0
+shader_parameter/edge_size = 1.0

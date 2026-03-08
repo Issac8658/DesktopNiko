@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://06vemu4dsjuh"]
+[gd_scene format=3 uid="uid://06vemu4dsjuh"]
 
 [ext_resource type="Script" uid="uid://h4ps66iboxuo" path="res://games/one_machine_night_funkin/resources/scripts/OmnfSongPlayer.cs" id="2_3e5nm"]
 [ext_resource type="PackedScene" uid="uid://cuh31je8wskvy" path="res://models/wm_location.blend" id="2_lcoj5"]
@@ -24,13 +24,26 @@
 [ext_resource type="Texture2D" uid="uid://bopjsdp0ehenl" path="res://niko/niko_default/sleepy.png" id="16_jklxq"]
 [ext_resource type="Texture2D" uid="uid://ccgdnrtxgny84" path="res://niko/niko_default/default.png" id="17_uu4jc"]
 [ext_resource type="Texture2D" uid="uid://b3jho3s7vv5h0" path="res://games/one_machine_night_funkin/resources/sprites/BottomText.png" id="24_oyh13"]
-[ext_resource type="Texture2D" uid="uid://c5padeaxll264" path="res://games/one_machine_night_funkin/resources/sprites/TopText.png" id="25_mdwxf"]
+[ext_resource type="Texture2D" uid="uid://82p4ptonmx55" path="res://games/one_machine_night_funkin/resources/sprites/image.png" id="25_ua5q3"]
 [ext_resource type="Script" uid="uid://wjs6cre30deb" path="res://scripts/label_parent_extender.gd" id="26_mdwxf"]
 [ext_resource type="Script" uid="uid://dolqqn2mif5qn" path="res://games/one_machine_night_funkin/resources/scripts/OmnfMenuButtonsController.cs" id="29_24xcr"]
-[ext_resource type="Texture2D" uid="uid://c3q3qanuqn1j2" path="res://games/one_machine_night_funkin/data/weeks/messiah/week_list_bg.png" id="30_wyq7x"]
+[ext_resource type="ArrayMesh" uid="uid://c7r3gpmcmdnlk" path="res://games/one_machine_night_funkin/resources/models/BarrensPart1.obj" id="31_ua5q3"]
 [ext_resource type="Script" uid="uid://dujckrr4urwcu" path="res://games/one_machine_night_funkin/resources/scripts/StoryModeMenuSelector.cs" id="32_ec3s1"]
+[ext_resource type="Material" uid="uid://d0pnm74giv4ow" path="res://games/one_machine_night_funkin/resources/materials/phosphor_ground.tres" id="32_pctg0"]
+[ext_resource type="ArrayMesh" uid="uid://bbnl08hy3gy7g" path="res://games/one_machine_night_funkin/resources/models/BarrensPart2.obj" id="33_2lpvn"]
 [ext_resource type="PackedScene" uid="uid://35mx5nfl4vvu" path="res://games/one_machine_night_funkin/resources/prefabs/week_label.tscn" id="34_cnyna"]
+[ext_resource type="ArrayMesh" uid="uid://c8tknoxa2c5iw" path="res://games/one_machine_night_funkin/resources/models/BarrensPart7.obj" id="34_dofsl"]
 [ext_resource type="PackedScene" uid="uid://dw3qf8j2ftp2o" path="res://games/one_machine_night_funkin/resources/prefabs/track_name_label.tscn" id="34_k07lr"]
+[ext_resource type="ArrayMesh" uid="uid://bhte53wihlp3s" path="res://games/one_machine_night_funkin/resources/models/BarrensPart6.obj" id="35_vha3p"]
+[ext_resource type="ArrayMesh" uid="uid://bpbikklwgeidd" path="res://games/one_machine_night_funkin/resources/models/BarrensWater.obj" id="36_tkl75"]
+[ext_resource type="Material" uid="uid://cd2tqqpo3hn8t" path="res://games/one_machine_night_funkin/resources/materials/water_material.tres" id="37_ckkcy"]
+[ext_resource type="ArrayMesh" uid="uid://b63hfp02vjqd1" path="res://games/one_machine_night_funkin/resources/models/BarrensPart5.obj" id="38_i7vop"]
+[ext_resource type="ArrayMesh" uid="uid://bpqrhpn0wddma" path="res://games/one_machine_night_funkin/resources/models/BarrensPart4.obj" id="39_lswlk"]
+[ext_resource type="ArrayMesh" uid="uid://co81jj5lp48nt" path="res://games/one_machine_night_funkin/resources/models/BarrensPart3.obj" id="40_u3eq4"]
+[ext_resource type="ArrayMesh" uid="uid://cad34v1mrflst" path="res://games/one_machine_night_funkin/resources/models/Outpost.obj" id="41_2lpvn"]
+[ext_resource type="Shader" path="res://games/one_machine_night_funkin/resources/shaders/neon_sky.gdshader" id="41_qfqh5"]
+[ext_resource type="Material" uid="uid://dnqpnbdxg2qo4" path="res://games/one_machine_night_funkin/resources/materials/outpost.tres" id="42_dofsl"]
+[ext_resource type="Material" uid="uid://dwnd6gaj7msik" path="res://games/one_machine_night_funkin/resources/materials/shadow.tres" id="43_vha3p"]
 
 [sub_resource type="Animation" id="Animation_gl0xe"]
 resource_name = "CameraToGame"
@@ -1384,6 +1397,16 @@ bg_color = Color(0.828125, 0.063711, 0.100796, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wyq7x"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v1gwa"]
+shader = ExtResource("41_qfqh5")
+
+[sub_resource type="Sky" id="Sky_jfwys"]
+sky_material = SubResource("ShaderMaterial_v1gwa")
+
+[sub_resource type="Environment" id="Environment_gxdyf"]
+background_mode = 2
+sky = SubResource("Sky_jfwys")
+
 [sub_resource type="Gradient" id="Gradient_mdd26"]
 offsets = PackedFloat32Array(0, 0.0512048, 0.123494, 0.560241, 0.816265, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.643137, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.784314, 0, 0, 0, 1)
@@ -1399,34 +1422,34 @@ fill_to = Vector2(0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyq7x"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="OneMachineNightFunkin" type="Node"]
+[node name="OneMachineNightFunkin" type="Node" unique_id=1898833261]
 editor_description = "Sorry for weird name"
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1473840836]
 volume_db = -5.0
 bus = &"Music"
 script = ExtResource("2_3e5nm")
 PathToSongList = "res://games/one_machine_night_funkin/resources/music/MusicList.txt"
 
-[node name="Miss" type="AudioStreamPlayer" parent="."]
+[node name="Miss" type="AudioStreamPlayer" parent="." unique_id=1895419245]
 stream = ExtResource("3_ynly3")
 volume_db = -5.0
 
-[node name="Show" type="AudioStreamPlayer" parent="."]
+[node name="Show" type="AudioStreamPlayer" parent="." unique_id=1853714140]
 
-[node name="MenuDecision" type="AudioStreamPlayer" parent="."]
+[node name="MenuDecision" type="AudioStreamPlayer" parent="." unique_id=338570089]
 stream = ExtResource("6_ec3s1")
 max_polyphony = 5
 
-[node name="MenuCancel" type="AudioStreamPlayer" parent="."]
+[node name="MenuCancel" type="AudioStreamPlayer" parent="." unique_id=746956375]
 stream = ExtResource("5_72x2w")
 max_polyphony = 5
 
-[node name="MenuCursor" type="AudioStreamPlayer" parent="."]
+[node name="MenuCursor" type="AudioStreamPlayer" parent="." unique_id=1175304100]
 stream = ExtResource("4_mdd26")
 max_polyphony = 5
 
-[node name="Window" type="Window" parent="."]
+[node name="Window" type="Window" parent="." unique_id=1040609173]
 msaa_3d = 1
 use_debanding = true
 anisotropic_filtering_level = 0
@@ -1441,24 +1464,18 @@ content_scale_mode = 2
 content_scale_aspect = 4
 theme = ExtResource("2_pv44d")
 
-[node name="UIAnimator" type="AnimationPlayer" parent="Window"]
+[node name="UIAnimator" type="AnimationPlayer" parent="Window" unique_id=595625447]
 deterministic = true
-libraries = {
-&"": SubResource("AnimationLibrary_ff44s")
-}
+libraries/ = SubResource("AnimationLibrary_ff44s")
 
-[node name="IntroTextAnimator" type="AnimationPlayer" parent="Window"]
-libraries = {
-&"": SubResource("AnimationLibrary_24xcr")
-}
+[node name="IntroTextAnimator" type="AnimationPlayer" parent="Window" unique_id=906763359]
+libraries/ = SubResource("AnimationLibrary_24xcr")
 
-[node name="TitleScreenAnimator" type="AnimationPlayer" parent="Window"]
-libraries = {
-&"": SubResource("AnimationLibrary_n51mw")
-}
+[node name="TitleScreenAnimator" type="AnimationPlayer" parent="Window" unique_id=115582058]
+libraries/ = SubResource("AnimationLibrary_n51mw")
 speed_scale = 0.851
 
-[node name="MenuController" type="Node" parent="Window" node_paths=PackedStringArray("TitleScreenAnimator", "UIAnimator", "IntroTextAnimator", "SongPlayer", "MenuButtonsController", "MenuDecision", "MenuCancel", "MenuCursor", "GameNode", "IntroTextLabels")]
+[node name="MenuController" type="Node" parent="Window" unique_id=1953541293 node_paths=PackedStringArray("TitleScreenAnimator", "UIAnimator", "IntroTextAnimator", "SongPlayer", "MenuButtonsController", "MenuDecision", "MenuCancel", "MenuCursor", "GameNode", "IntroTextLabels")]
 script = ExtResource("4_4j780")
 TitleScreenAnimator = NodePath("../TitleScreenAnimator")
 UIAnimator = NodePath("../UIAnimator")
@@ -1472,26 +1489,26 @@ GameNode = NodePath("../..")
 PathToIntroText = "res://games/one_machine_night_funkin/data/intro_text.txt"
 IntroTextLabels = [NodePath("../IntroText/VBoxContainer/Label"), NodePath("../IntroText/VBoxContainer/Label2"), NodePath("../IntroText/VBoxContainer/Label3"), NodePath("../IntroText/VBoxContainer/Label4")]
 
-[node name="Background" type="Node3D" parent="Window"]
+[node name="Background" type="Node3D" parent="Window" unique_id=1212319095]
 
-[node name="Layer1" type="MeshInstance3D" parent="Window/Background"]
+[node name="Layer1" type="MeshInstance3D" parent="Window/Background" unique_id=1686856310]
 mesh = SubResource("PlaneMesh_wyq7x")
 surface_material_override/0 = SubResource("StandardMaterial3D_mdd26")
 
-[node name="Layer2" type="MeshInstance3D" parent="Window/Background"]
+[node name="Layer2" type="MeshInstance3D" parent="Window/Background" unique_id=1771247392]
 mesh = SubResource("PlaneMesh_wyq7x")
 surface_material_override/0 = SubResource("StandardMaterial3D_72x2w")
 
-[node name="Layer3" type="MeshInstance3D" parent="Window/Background"]
+[node name="Layer3" type="MeshInstance3D" parent="Window/Background" unique_id=1134244497]
 mesh = SubResource("PlaneMesh_wyq7x")
 surface_material_override/0 = SubResource("StandardMaterial3D_cnyna")
 
-[node name="Layer4" type="MeshInstance3D" parent="Window/Background"]
+[node name="Layer4" type="MeshInstance3D" parent="Window/Background" unique_id=596338219]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0983487)
 mesh = SubResource("PlaneMesh_wyq7x")
 surface_material_override/0 = SubResource("StandardMaterial3D_ec3s1")
 
-[node name="some_niko_art" parent="Window" instance=ExtResource("13_ff44s")]
+[node name="some_niko_art" parent="Window" unique_id=418165075 instance=ExtResource("13_ff44s")]
 
 [node name="Skeleton3D" parent="Window/some_niko_art/WorldMachineArmature" index="0"]
 bones/0/position = Vector3(0.24774, 0.00120325, -0.122845)
@@ -1521,17 +1538,17 @@ bones/17/position = Vector3(-0.324597, -0.533024, -1.58047e-07)
 [node name="AnimationPlayer" parent="Window/some_niko_art" index="2"]
 speed_scale = 0.851
 
-[node name="MainCamera" type="Camera3D" parent="Window"]
+[node name="MainCamera" type="Camera3D" parent="Window" unique_id=889279661]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2929, -0.211086, 17.7164)
 current = true
 fov = 11.9181
 near = 1.0
 
-[node name="WMLocation" type="Node3D" parent="Window"]
+[node name="WMLocation" type="Node3D" parent="Window" unique_id=781432439]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -15, 0)
 visible = false
 
-[node name="wm_location" parent="Window/WMLocation" instance=ExtResource("2_lcoj5")]
+[node name="wm_location" parent="Window/WMLocation" unique_id=1586356544 instance=ExtResource("2_lcoj5")]
 
 [node name="Camera" parent="Window/WMLocation/wm_location" index="1"]
 transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 1.83, 8.219)
@@ -1544,41 +1561,37 @@ transform = Transform3D(0.149045, 0.215765, -0.749609, -0.209901, 0.746115, 0.17
 layers = 2
 surface_material_override/1 = ExtResource("11_gvh5a")
 
-[node name="Niko" type="Node3D" parent="Window/WMLocation"]
+[node name="Niko" type="Node3D" parent="Window/WMLocation" unique_id=136294550]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.22681, 0, 0.0134542)
 
-[node name="Sprite" type="Sprite3D" parent="Window/WMLocation/Niko"]
+[node name="Sprite" type="Sprite3D" parent="Window/WMLocation/Niko" unique_id=1160408480]
 transform = Transform3D(-1.62606e-07, 0, 3.72, 0, 3.72, 0, -3.72, 0, -1.62606e-07, 0, 0, 0)
 double_sided = false
 texture_filter = 0
 texture = ExtResource("5_4obe4")
 
-[node name="NikoAnimationPlayer" type="AnimationPlayer" parent="Window/WMLocation/Niko"]
-libraries = {
-&"": SubResource("AnimationLibrary_4obe4")
-}
+[node name="NikoAnimationPlayer" type="AnimationPlayer" parent="Window/WMLocation/Niko" unique_id=1171394667]
+libraries/ = SubResource("AnimationLibrary_4obe4")
 
-[node name="WM" type="Node3D" parent="Window/WMLocation"]
+[node name="WM" type="Node3D" parent="Window/WMLocation" unique_id=463817728]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.33877, 0, 0.0134544)
 
-[node name="Sprite" type="Sprite3D" parent="Window/WMLocation/WM"]
+[node name="Sprite" type="Sprite3D" parent="Window/WMLocation/WM" unique_id=684809072]
 transform = Transform3D(-1.62606e-07, 0, 3.72, 0, 3.72, 0, -3.72, 0, -1.62606e-07, 0, 0, 0)
 double_sided = false
 texture_filter = 0
 texture = ExtResource("5_4obe4")
 
-[node name="WMAnimationPlayer" type="AnimationPlayer" parent="Window/WMLocation/WM"]
-libraries = {
-&"": SubResource("AnimationLibrary_pv44d")
-}
+[node name="WMAnimationPlayer" type="AnimationPlayer" parent="Window/WMLocation/WM" unique_id=823935566]
+libraries/ = SubResource("AnimationLibrary_pv44d")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Window"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Window" unique_id=1000501591]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
 visible = false
 mesh = SubResource("BoxMesh_mdwxf")
 surface_material_override/0 = ExtResource("13_oyh13")
 
-[node name="BGTilt" type="Panel" parent="Window"]
+[node name="BGTilt" type="Panel" parent="Window" unique_id=1293620637]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -1587,7 +1600,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_24xcr")
 
-[node name="Vignette" type="TextureRect" parent="Window"]
+[node name="Vignette" type="TextureRect" parent="Window" unique_id=1952486505]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -1596,7 +1609,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("11_uu4jc")
 
-[node name="Game" type="Control" parent="Window"]
+[node name="Game" type="Control" parent="Window" unique_id=1164884583]
 visible = false
 texture_filter = 2
 layout_mode = 3
@@ -1607,7 +1620,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(960, 540)
 
-[node name="NikoArrows" type="HBoxContainer" parent="Window/Game"]
+[node name="NikoArrows" type="HBoxContainer" parent="Window/Game" unique_id=172953531]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -1618,70 +1631,70 @@ offset_right = -100.0
 offset_bottom = 228.0
 grow_horizontal = 0
 
-[node name="left" type="Button" parent="Window/Game/NikoArrows"]
+[node name="left" type="Button" parent="Window/Game/NikoArrows" unique_id=206966571]
 texture_filter = 2
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
 icon = ExtResource("4_njr7y")
 
-[node name="down" type="Button" parent="Window/Game/NikoArrows"]
+[node name="down" type="Button" parent="Window/Game/NikoArrows" unique_id=792588428]
 texture_filter = 2
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
 icon = ExtResource("6_f5cdb")
 
-[node name="up" type="Button" parent="Window/Game/NikoArrows"]
+[node name="up" type="Button" parent="Window/Game/NikoArrows" unique_id=326266337]
 texture_filter = 2
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
 icon = ExtResource("7_opkc3")
 
-[node name="right" type="Button" parent="Window/Game/NikoArrows"]
+[node name="right" type="Button" parent="Window/Game/NikoArrows" unique_id=1639330874]
 texture_filter = 2
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
 icon = ExtResource("8_ynly3")
 
-[node name="WMArrows" type="HBoxContainer" parent="Window/Game"]
+[node name="WMArrows" type="HBoxContainer" parent="Window/Game" unique_id=154630969]
 layout_mode = 0
 offset_left = 100.0
 offset_top = 100.0
 offset_right = 624.0
 offset_bottom = 228.0
 
-[node name="left" type="Button" parent="Window/Game/WMArrows"]
+[node name="left" type="Button" parent="Window/Game/WMArrows" unique_id=766991230]
 texture_filter = 2
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
 icon = ExtResource("4_njr7y")
 
-[node name="down" type="Button" parent="Window/Game/WMArrows"]
+[node name="down" type="Button" parent="Window/Game/WMArrows" unique_id=653193964]
 texture_filter = 2
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
 icon = ExtResource("6_f5cdb")
 
-[node name="up" type="Button" parent="Window/Game/WMArrows"]
+[node name="up" type="Button" parent="Window/Game/WMArrows" unique_id=1176896596]
 texture_filter = 2
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
 icon = ExtResource("7_opkc3")
 
-[node name="right" type="Button" parent="Window/Game/WMArrows"]
+[node name="right" type="Button" parent="Window/Game/WMArrows" unique_id=1764295961]
 texture_filter = 2
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
 icon = ExtResource("8_ynly3")
 
-[node name="FlyingArrowContainer" type="Control" parent="Window/Game"]
+[node name="FlyingArrowContainer" type="Control" parent="Window/Game" unique_id=1997402125]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1690,7 +1703,7 @@ offset_bottom = -1080.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NikoFlyingArrows" type="Control" parent="Window/Game/FlyingArrowContainer"]
+[node name="NikoFlyingArrows" type="Control" parent="Window/Game/FlyingArrowContainer" unique_id=1501804532]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -1701,7 +1714,7 @@ offset_right = -100.0
 offset_bottom = 100.0
 grow_horizontal = 0
 
-[node name="WMFlyingArrows" type="Control" parent="Window/Game/FlyingArrowContainer"]
+[node name="WMFlyingArrows" type="Control" parent="Window/Game/FlyingArrowContainer" unique_id=11947678]
 layout_mode = 1
 anchors_preset = 0
 offset_left = 100.0
@@ -1709,7 +1722,7 @@ offset_top = 100.0
 offset_right = 624.0
 offset_bottom = 100.0
 
-[node name="HPContainer" type="PanelContainer" parent="Window/Game"]
+[node name="HPContainer" type="PanelContainer" parent="Window/Game" unique_id=847371176]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1724,11 +1737,11 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_gvh5a")
 
-[node name="Fill" type="Panel" parent="Window/Game/HPContainer"]
+[node name="Fill" type="Panel" parent="Window/Game/HPContainer" unique_id=1165110566]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ff44s")
 
-[node name="Damage" type="Panel" parent="Window/Game/HPContainer/Fill"]
+[node name="Damage" type="Panel" parent="Window/Game/HPContainer/Fill" unique_id=314392061]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -1736,7 +1749,7 @@ offset_right = 322.0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gl0xe")
 
-[node name="CharIcons" type="Control" parent="Window/Game/HPContainer/Fill/Damage"]
+[node name="CharIcons" type="Control" parent="Window/Game/HPContainer/Fill/Damage" unique_id=1709525787]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -1746,7 +1759,7 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="WM" type="TextureRect" parent="Window/Game/HPContainer/Fill/Damage/CharIcons"]
+[node name="WM" type="TextureRect" parent="Window/Game/HPContainer/Fill/Damage/CharIcons" unique_id=291242559]
 material = ExtResource("15_srfix")
 layout_mode = 0
 offset_left = -105.0
@@ -1756,7 +1769,7 @@ offset_bottom = 38.0
 texture = ExtResource("16_jklxq")
 flip_h = true
 
-[node name="Niko" type="TextureRect" parent="Window/Game/HPContainer/Fill/Damage/CharIcons"]
+[node name="Niko" type="TextureRect" parent="Window/Game/HPContainer/Fill/Damage/CharIcons" unique_id=471270919]
 layout_mode = 0
 offset_left = 5.0
 offset_top = -62.0
@@ -1764,7 +1777,7 @@ offset_right = 105.0
 offset_bottom = 38.0
 texture = ExtResource("17_uu4jc")
 
-[node name="InfoContainer" type="HBoxContainer" parent="Window/Game"]
+[node name="InfoContainer" type="HBoxContainer" parent="Window/Game" unique_id=885888202]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1777,84 +1790,84 @@ grow_vertical = 0
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Accurancy" type="HBoxContainer" parent="Window/Game/InfoContainer"]
+[node name="Accurancy" type="HBoxContainer" parent="Window/Game/InfoContainer" unique_id=50539046]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Window/Game/InfoContainer/Accurancy"]
+[node name="Label" type="Label" parent="Window/Game/InfoContainer/Accurancy" unique_id=495055611]
 layout_mode = 2
 text = "ACCURANCY"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Window/Game/InfoContainer/Accurancy"]
+[node name="Label2" type="Label" parent="Window/Game/InfoContainer/Accurancy" unique_id=763907024]
 layout_mode = 2
 text = ": "
 horizontal_alignment = 1
 
-[node name="AccurancyCount" type="Label" parent="Window/Game/InfoContainer/Accurancy"]
+[node name="AccurancyCount" type="Label" parent="Window/Game/InfoContainer/Accurancy" unique_id=1141799526]
 layout_mode = 2
 text = "100.0"
 horizontal_alignment = 1
 
-[node name="Percent" type="Label" parent="Window/Game/InfoContainer/Accurancy"]
+[node name="Percent" type="Label" parent="Window/Game/InfoContainer/Accurancy" unique_id=535213304]
 layout_mode = 2
 text = "%"
 horizontal_alignment = 1
 
-[node name="Separator" type="Label" parent="Window/Game/InfoContainer"]
+[node name="Separator" type="Label" parent="Window/Game/InfoContainer" unique_id=1324326255]
 layout_mode = 2
 text = "  |  "
 horizontal_alignment = 1
 
-[node name="Misses" type="HBoxContainer" parent="Window/Game/InfoContainer"]
+[node name="Misses" type="HBoxContainer" parent="Window/Game/InfoContainer" unique_id=1503387392]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Window/Game/InfoContainer/Misses"]
+[node name="Label" type="Label" parent="Window/Game/InfoContainer/Misses" unique_id=766784468]
 layout_mode = 2
 text = "MISSES"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Window/Game/InfoContainer/Misses"]
+[node name="Label2" type="Label" parent="Window/Game/InfoContainer/Misses" unique_id=787548985]
 layout_mode = 2
 text = ": "
 horizontal_alignment = 1
 
-[node name="MissesCount" type="Label" parent="Window/Game/InfoContainer/Misses"]
+[node name="MissesCount" type="Label" parent="Window/Game/InfoContainer/Misses" unique_id=2000399828]
 layout_mode = 2
 text = "0"
 horizontal_alignment = 1
 
-[node name="Separator2" type="Label" parent="Window/Game/InfoContainer"]
+[node name="Separator2" type="Label" parent="Window/Game/InfoContainer" unique_id=88783280]
 layout_mode = 2
 text = "  |  "
 horizontal_alignment = 1
 
-[node name="Health" type="HBoxContainer" parent="Window/Game/InfoContainer"]
+[node name="Health" type="HBoxContainer" parent="Window/Game/InfoContainer" unique_id=1964088349]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Window/Game/InfoContainer/Health"]
+[node name="Label" type="Label" parent="Window/Game/InfoContainer/Health" unique_id=209128017]
 layout_mode = 2
 text = "HEALTH"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Window/Game/InfoContainer/Health"]
+[node name="Label2" type="Label" parent="Window/Game/InfoContainer/Health" unique_id=1465151496]
 layout_mode = 2
 text = ": "
 horizontal_alignment = 1
 
-[node name="HealthCount" type="Label" parent="Window/Game/InfoContainer/Health"]
+[node name="HealthCount" type="Label" parent="Window/Game/InfoContainer/Health" unique_id=26612919]
 layout_mode = 2
 text = "50.0"
 horizontal_alignment = 1
 
-[node name="Percent" type="Label" parent="Window/Game/InfoContainer/Health"]
+[node name="Percent" type="Label" parent="Window/Game/InfoContainer/Health" unique_id=1538565495]
 layout_mode = 2
 text = "%"
 horizontal_alignment = 1
 
-[node name="Menu" type="Control" parent="Window"]
+[node name="Menu" type="Control" parent="Window" unique_id=971984438]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1863,7 +1876,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(960, 540)
 
-[node name="Control" type="Control" parent="Window/Menu"]
+[node name="Control" type="Control" parent="Window/Menu" unique_id=152363850]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1876,7 +1889,7 @@ grow_horizontal = 2
 rotation = -0.0699609
 pivot_offset = Vector2(505, 151)
 
-[node name="TextureRect2" type="TextureRect" parent="Window/Menu/Control"]
+[node name="TextureRect2" type="TextureRect" parent="Window/Menu/Control" unique_id=99162194]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1886,17 +1899,17 @@ grow_vertical = 2
 texture = ExtResource("24_oyh13")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="Window/Menu/Control"]
+[node name="TextureRect" type="TextureRect" parent="Window/Menu/Control" unique_id=1919311641]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("25_mdwxf")
+texture = ExtResource("25_ua5q3")
 expand_mode = 1
 
-[node name="BeginText" type="HBoxContainer" parent="Window/Menu"]
+[node name="BeginText" type="HBoxContainer" parent="Window/Menu" unique_id=460974900]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1909,12 +1922,12 @@ grow_vertical = 0
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="TextPart1" type="Control" parent="Window/Menu/BeginText"]
+[node name="TextPart1" type="Control" parent="Window/Menu/BeginText" unique_id=2077914164]
 custom_minimum_size = Vector2(364, 122)
 layout_mode = 2
 script = ExtResource("26_mdwxf")
 
-[node name="Label" type="Label" parent="Window/Menu/BeginText/TextPart1"]
+[node name="Label" type="Label" parent="Window/Menu/BeginText/TextPart1" unique_id=385014542]
 layout_mode = 0
 offset_right = 364.0
 offset_bottom = 122.0
@@ -1923,12 +1936,12 @@ theme_override_font_sizes/font_size = 121
 theme_override_styles/normal = SubResource("StyleBoxEmpty_oyh13")
 text = "Press "
 
-[node name="TextPart2" type="Control" parent="Window/Menu/BeginText"]
+[node name="TextPart2" type="Control" parent="Window/Menu/BeginText" unique_id=1592785118]
 custom_minimum_size = Vector2(364, 122)
 layout_mode = 2
 script = ExtResource("26_mdwxf")
 
-[node name="Label" type="Label" parent="Window/Menu/BeginText/TextPart2"]
+[node name="Label" type="Label" parent="Window/Menu/BeginText/TextPart2" unique_id=712664809]
 layout_mode = 0
 offset_right = 364.0
 offset_bottom = 122.0
@@ -1937,12 +1950,12 @@ theme_override_font_sizes/font_size = 121
 theme_override_styles/normal = SubResource("StyleBoxEmpty_oyh13")
 text = "ENTER "
 
-[node name="TextPart3" type="Control" parent="Window/Menu/BeginText"]
+[node name="TextPart3" type="Control" parent="Window/Menu/BeginText" unique_id=1188465251]
 custom_minimum_size = Vector2(182, 122)
 layout_mode = 2
 script = ExtResource("26_mdwxf")
 
-[node name="Label" type="Label" parent="Window/Menu/BeginText/TextPart3"]
+[node name="Label" type="Label" parent="Window/Menu/BeginText/TextPart3" unique_id=403425757]
 layout_mode = 0
 offset_right = 182.0
 offset_bottom = 122.0
@@ -1951,12 +1964,12 @@ theme_override_font_sizes/font_size = 121
 theme_override_styles/normal = SubResource("StyleBoxEmpty_oyh13")
 text = "to "
 
-[node name="TextPart4" type="Control" parent="Window/Menu/BeginText"]
+[node name="TextPart4" type="Control" parent="Window/Menu/BeginText" unique_id=1100284952]
 custom_minimum_size = Vector2(303, 122)
 layout_mode = 2
 script = ExtResource("26_mdwxf")
 
-[node name="Label" type="Label" parent="Window/Menu/BeginText/TextPart4"]
+[node name="Label" type="Label" parent="Window/Menu/BeginText/TextPart4" unique_id=1154270497]
 layout_mode = 0
 offset_right = 303.0
 offset_bottom = 122.0
@@ -1965,7 +1978,7 @@ theme_override_font_sizes/font_size = 121
 theme_override_styles/normal = SubResource("StyleBoxEmpty_oyh13")
 text = "begin"
 
-[node name="MenuSelect" type="Control" parent="Window"]
+[node name="MenuSelect" type="Control" parent="Window" unique_id=144295985]
 visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
@@ -1973,12 +1986,12 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_left = 1920.0
 offset_top = 480.0
-offset_right = 1920.0
-offset_bottom = 1004.0
+offset_right = 1919.9998
+offset_bottom = 1004.00037
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Content" type="VBoxContainer" parent="Window/MenuSelect" node_paths=PackedStringArray("SwitchSound", "EnterSound", "MenuButtons")]
+[node name="Content" type="VBoxContainer" parent="Window/MenuSelect" unique_id=448232457 node_paths=PackedStringArray("SwitchSound", "EnterSound", "MenuButtons")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1998,18 +2011,18 @@ SwitchSound = NodePath("../../../MenuCursor")
 EnterSound = NodePath("../../../MenuDecision")
 MenuButtons = [NodePath("StoryMode/StoryModeContainer"), NodePath("FreePlay/FreePlayContainer"), NodePath("Settings/SettingsContainer"), NodePath("About/AboutContainer")]
 
-[node name="StoryMode" type="Control" parent="Window/MenuSelect/Content"]
+[node name="StoryMode" type="Control" parent="Window/MenuSelect/Content" unique_id=101408878]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 
-[node name="StoryModeContainer" type="HBoxContainer" parent="Window/MenuSelect/Content/StoryMode"]
+[node name="StoryModeContainer" type="HBoxContainer" parent="Window/MenuSelect/Content/StoryMode" unique_id=760952495]
 layout_mode = 0
 offset_left = 320.0
 offset_right = 360.0
 offset_bottom = 40.0
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Window/MenuSelect/Content/StoryMode/StoryModeContainer"]
+[node name="Label" type="Label" parent="Window/MenuSelect/Content/StoryMode/StoryModeContainer" unique_id=1060647056]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.909917, 0.343564, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
@@ -2022,18 +2035,18 @@ theme_override_font_sizes/font_size = 126
 theme_override_styles/normal = SubResource("StyleBoxEmpty_wyq7x")
 text = "Story Mode"
 
-[node name="FreePlay" type="Control" parent="Window/MenuSelect/Content"]
+[node name="FreePlay" type="Control" parent="Window/MenuSelect/Content" unique_id=2146331113]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 
-[node name="FreePlayContainer" type="HBoxContainer" parent="Window/MenuSelect/Content/FreePlay"]
+[node name="FreePlayContainer" type="HBoxContainer" parent="Window/MenuSelect/Content/FreePlay" unique_id=1407698315]
 layout_mode = 0
 offset_left = 320.0
 offset_right = 360.0
 offset_bottom = 40.0
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Window/MenuSelect/Content/FreePlay/FreePlayContainer"]
+[node name="Label" type="Label" parent="Window/MenuSelect/Content/FreePlay/FreePlayContainer" unique_id=757601335]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.909917, 0.343564, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
@@ -2046,7 +2059,7 @@ theme_override_font_sizes/font_size = 126
 theme_override_styles/normal = SubResource("StyleBoxEmpty_wyq7x")
 text = "Free Play"
 
-[node name="LockedIcon" type="Label" parent="Window/MenuSelect/Content/FreePlay/FreePlayContainer"]
+[node name="LockedIcon" type="Label" parent="Window/MenuSelect/Content/FreePlay/FreePlayContainer" unique_id=1645510586]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.909917, 0.343564, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
@@ -2059,18 +2072,18 @@ theme_override_font_sizes/font_size = 126
 theme_override_styles/normal = SubResource("StyleBoxEmpty_wyq7x")
 text = "(Locked icon pls)"
 
-[node name="Settings" type="Control" parent="Window/MenuSelect/Content"]
+[node name="Settings" type="Control" parent="Window/MenuSelect/Content" unique_id=1739435609]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 
-[node name="SettingsContainer" type="HBoxContainer" parent="Window/MenuSelect/Content/Settings"]
+[node name="SettingsContainer" type="HBoxContainer" parent="Window/MenuSelect/Content/Settings" unique_id=511818524]
 layout_mode = 0
 offset_left = 320.0
 offset_right = 360.0
 offset_bottom = 40.0
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Window/MenuSelect/Content/Settings/SettingsContainer"]
+[node name="Label" type="Label" parent="Window/MenuSelect/Content/Settings/SettingsContainer" unique_id=1472913197]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.909917, 0.343564, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
@@ -2083,18 +2096,18 @@ theme_override_font_sizes/font_size = 126
 theme_override_styles/normal = SubResource("StyleBoxEmpty_wyq7x")
 text = "Settings"
 
-[node name="About" type="Control" parent="Window/MenuSelect/Content"]
+[node name="About" type="Control" parent="Window/MenuSelect/Content" unique_id=2015979162]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 
-[node name="AboutContainer" type="HBoxContainer" parent="Window/MenuSelect/Content/About"]
+[node name="AboutContainer" type="HBoxContainer" parent="Window/MenuSelect/Content/About" unique_id=1019430207]
 layout_mode = 0
 offset_left = 320.0
 offset_right = 360.0
 offset_bottom = 40.0
 theme_override_constants/separation = 0
 
-[node name="Label" type="Label" parent="Window/MenuSelect/Content/About/AboutContainer"]
+[node name="Label" type="Label" parent="Window/MenuSelect/Content/About/AboutContainer" unique_id=1824897880]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.909917, 0.343564, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
@@ -2107,7 +2120,7 @@ theme_override_font_sizes/font_size = 126
 theme_override_styles/normal = SubResource("StyleBoxEmpty_wyq7x")
 text = "About"
 
-[node name="WeekInfo" type="Control" parent="Window" node_paths=PackedStringArray("WeeksContainer", "TracksContainer", "PointsLabel", "WeekTitleLabel", "WeekBG")]
+[node name="WeekInfo" type="Control" parent="Window" unique_id=1175618694 node_paths=PackedStringArray("WeeksContainer", "TracksContainer", "PointsLabel", "WeekTitleLabel")]
 visible = false
 modulate = Color(0, 0, 0, 1)
 layout_mode = 3
@@ -2123,22 +2136,93 @@ WeeksContainer = NodePath("WeekInfoContainer/WeekInfo/BottomPanel/Weeks/WeeksCon
 TracksContainer = NodePath("WeekInfoContainer/WeekInfo/BottomPanel/Tracks/TrackList")
 PointsLabel = NodePath("WeekInfoContainer/WeekInfo/WeekTopInfo/HBoxContainer/WeekPoints")
 WeekTitleLabel = NodePath("WeekInfoContainer/WeekInfo/WeekTopInfo/WeekTitle")
-WeekBG = NodePath("WeekBG")
 WeekLabelTemplate = ExtResource("34_cnyna")
 TrackLabelTemplate = ExtResource("34_k07lr")
 
-[node name="WeekBG" type="TextureRect" parent="Window/WeekInfo"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Window/WeekInfo" unique_id=734856620]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("30_wyq7x")
-expand_mode = 1
-stretch_mode = 6
+stretch = true
 
-[node name="InfoBg" type="TextureRect" parent="Window/WeekInfo"]
+[node name="SubViewport" type="SubViewport" parent="Window/WeekInfo/SubViewportContainer" unique_id=1530420241]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 0
+
+[node name="Node3D" type="Node3D" parent="Window/WeekInfo/SubViewportContainer/SubViewport" unique_id=593363596]
+
+[node name="BarrensPart1" type="MeshInstance3D" parent="Window/WeekInfo/SubViewportContainer/SubViewport/Node3D" unique_id=817603295]
+visible = false
+layers = 2
+mesh = ExtResource("31_ua5q3")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("32_pctg0")
+
+[node name="BarrensPart2" type="MeshInstance3D" parent="Window/WeekInfo/SubViewportContainer/SubViewport/Node3D" unique_id=579426054]
+visible = false
+layers = 2
+mesh = ExtResource("33_2lpvn")
+surface_material_override/0 = ExtResource("32_pctg0")
+
+[node name="BarrensPart7" type="MeshInstance3D" parent="Window/WeekInfo/SubViewportContainer/SubViewport/Node3D" unique_id=1648727906]
+visible = false
+layers = 2
+mesh = ExtResource("34_dofsl")
+surface_material_override/0 = ExtResource("32_pctg0")
+
+[node name="BarrensPart6" type="MeshInstance3D" parent="Window/WeekInfo/SubViewportContainer/SubViewport/Node3D" unique_id=1519256517]
+layers = 2
+mesh = ExtResource("35_vha3p")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("32_pctg0")
+
+[node name="BarrensWater" type="MeshInstance3D" parent="Window/WeekInfo/SubViewportContainer/SubViewport/Node3D" unique_id=192626141]
+layers = 2
+mesh = ExtResource("36_tkl75")
+surface_material_override/0 = ExtResource("37_ckkcy")
+
+[node name="BarrensPart5" type="MeshInstance3D" parent="Window/WeekInfo/SubViewportContainer/SubViewport/Node3D" unique_id=667977228]
+visible = false
+layers = 2
+mesh = ExtResource("38_i7vop")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("32_pctg0")
+
+[node name="BarrensPart4" type="MeshInstance3D" parent="Window/WeekInfo/SubViewportContainer/SubViewport/Node3D" unique_id=1824798181]
+visible = false
+layers = 2
+mesh = ExtResource("39_lswlk")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("32_pctg0")
+
+[node name="BarrensPart3" type="MeshInstance3D" parent="Window/WeekInfo/SubViewportContainer/SubViewport/Node3D" unique_id=858984550]
+visible = false
+layers = 2
+mesh = ExtResource("40_u3eq4")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("32_pctg0")
+
+[node name="Outpost" type="MeshInstance3D" parent="Window/WeekInfo/SubViewportContainer/SubViewport/Node3D" unique_id=1974001750]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -179.04613, 0.5121875, 292.27426)
+layers = 2
+mesh = ExtResource("41_2lpvn")
+skeleton = NodePath("../../../../../..")
+surface_material_override/0 = ExtResource("42_dofsl")
+surface_material_override/1 = ExtResource("43_vha3p")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Window/WeekInfo/SubViewportContainer/SubViewport" unique_id=505607769]
+environment = SubResource("Environment_gxdyf")
+
+[node name="Camera3D" type="Camera3D" parent="Window/WeekInfo/SubViewportContainer/SubViewport" unique_id=167664797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -181.31883, 2.0562048, 301.1695)
+cull_mask = 2
+fov = 77.4
+
+[node name="InfoBg" type="TextureRect" parent="Window/WeekInfo" unique_id=2068003086]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2148,7 +2232,7 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_72x2w")
 expand_mode = 1
 
-[node name="WeekInfoContainer" type="MarginContainer" parent="Window/WeekInfo"]
+[node name="WeekInfoContainer" type="MarginContainer" parent="Window/WeekInfo" unique_id=673910873]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2160,19 +2244,19 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
 
-[node name="WeekInfo" type="VBoxContainer" parent="Window/WeekInfo/WeekInfoContainer"]
+[node name="WeekInfo" type="VBoxContainer" parent="Window/WeekInfo/WeekInfoContainer" unique_id=1256489696]
 layout_mode = 2
 
-[node name="WeekTopInfo" type="HBoxContainer" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo"]
+[node name="WeekTopInfo" type="HBoxContainer" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo" unique_id=309384326]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/WeekTopInfo"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/WeekTopInfo" unique_id=1890431317]
 custom_minimum_size = Vector2(460, 0)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 0
 
-[node name="PointsText" type="Label" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/WeekTopInfo/HBoxContainer"]
+[node name="PointsText" type="Label" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/WeekTopInfo/HBoxContainer" unique_id=1019158826]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.505882)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -2185,7 +2269,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_mdd26")
 text = "POINTS"
 horizontal_alignment = 1
 
-[node name="TracksLabel4" type="Label" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/WeekTopInfo/HBoxContainer"]
+[node name="TracksLabel4" type="Label" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/WeekTopInfo/HBoxContainer" unique_id=57759874]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.505882)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -2198,7 +2282,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_mdd26")
 text = ": "
 horizontal_alignment = 1
 
-[node name="WeekPoints" type="Label" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/WeekTopInfo/HBoxContainer"]
+[node name="WeekPoints" type="Label" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/WeekTopInfo/HBoxContainer" unique_id=1773846933]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.505882)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -2211,7 +2295,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_mdd26")
 text = "1234567890"
 horizontal_alignment = 1
 
-[node name="WeekTitle" type="Label" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/WeekTopInfo"]
+[node name="WeekTitle" type="Label" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/WeekTopInfo" unique_id=26461300]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.505882)
@@ -2225,21 +2309,21 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_mdd26")
 text = "Week Title4"
 horizontal_alignment = 1
 
-[node name="Separator" type="Control" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo"]
+[node name="Separator" type="Control" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo" unique_id=1348345031]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="BottomPanel" type="HBoxContainer" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo"]
+[node name="BottomPanel" type="HBoxContainer" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo" unique_id=1284951972]
 custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="Tracks" type="VBoxContainer" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/BottomPanel"]
+[node name="Tracks" type="VBoxContainer" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/BottomPanel" unique_id=1999837380]
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 2
 
-[node name="TracksLabel" type="Label" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/BottomPanel/Tracks"]
+[node name="TracksLabel" type="Label" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/BottomPanel/Tracks" unique_id=204507952]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.505882)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -2251,28 +2335,28 @@ theme_override_font_sizes/font_size = 52
 theme_override_styles/normal = SubResource("StyleBoxEmpty_mdd26")
 text = "TRACKS"
 
-[node name="HSeparator" type="HSeparator" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/BottomPanel/Tracks"]
+[node name="HSeparator" type="HSeparator" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/BottomPanel/Tracks" unique_id=1779011081]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="HSeparator2" type="HSeparator" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/BottomPanel/Tracks"]
+[node name="HSeparator2" type="HSeparator" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/BottomPanel/Tracks" unique_id=1865975214]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="HSeparator3" type="HSeparator" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/BottomPanel/Tracks"]
+[node name="HSeparator3" type="HSeparator" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/BottomPanel/Tracks" unique_id=1852564849]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="TrackList" type="VBoxContainer" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/BottomPanel/Tracks"]
+[node name="TrackList" type="VBoxContainer" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/BottomPanel/Tracks" unique_id=106148256]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Weeks" type="Control" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/BottomPanel"]
+[node name="Weeks" type="Control" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/BottomPanel" unique_id=1400130245]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 
-[node name="WeeksContainer" type="VBoxContainer" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/BottomPanel/Weeks"]
+[node name="WeeksContainer" type="VBoxContainer" parent="Window/WeekInfo/WeekInfoContainer/WeekInfo/BottomPanel/Weeks" unique_id=1355347614]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -2283,7 +2367,7 @@ offset_bottom = 336.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 
-[node name="IntroText" type="Panel" parent="Window"]
+[node name="IntroText" type="Panel" parent="Window" unique_id=894384903]
 self_modulate = Color(0, 0, 0, 1)
 anchors_preset = 15
 anchor_right = 1.0
@@ -2292,7 +2376,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wyq7x")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Window/IntroText"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/IntroText" unique_id=316647611]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2301,28 +2385,28 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Window/IntroText/VBoxContainer"]
+[node name="Label" type="Label" parent="Window/IntroText/VBoxContainer" unique_id=866602188]
 layout_mode = 2
 theme_override_font_sizes/font_size = 132
 text = "Label 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="Window/IntroText/VBoxContainer"]
+[node name="Label2" type="Label" parent="Window/IntroText/VBoxContainer" unique_id=345314197]
 layout_mode = 2
 theme_override_font_sizes/font_size = 132
 text = "Label 2 2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="Window/IntroText/VBoxContainer"]
+[node name="Label3" type="Label" parent="Window/IntroText/VBoxContainer" unique_id=1535209036]
 layout_mode = 2
 theme_override_font_sizes/font_size = 132
 text = "Label 3 3 3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="Window/IntroText/VBoxContainer"]
+[node name="Label4" type="Label" parent="Window/IntroText/VBoxContainer" unique_id=1047369160]
 layout_mode = 2
 theme_override_font_sizes/font_size = 132
 text = "Label 4 4 4 4"

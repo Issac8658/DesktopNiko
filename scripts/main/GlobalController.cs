@@ -53,7 +53,7 @@ public partial class GlobalController : Node
 	{
 		int PrimaryScreenId = DisplayServer.GetPrimaryScreen();
 		Vector2I ScreenPos = DisplayServer.ScreenGetPosition(PrimaryScreenId);
-		Vector2I ResultPos = ScreenPos + DisplayServer.ScreenGetSize(PrimaryScreenId) / 2 + NikoSize / 2;
+		Vector2I ResultPos = ScreenPos + DisplayServer.ScreenGetSize(PrimaryScreenId) / 2 - NikoSize / 2;
 		return ResultPos;
 	}
 }

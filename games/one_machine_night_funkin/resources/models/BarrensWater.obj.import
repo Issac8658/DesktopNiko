@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bpbikklwgeidd"
+path="res://.godot/imported/BarrensWater.obj-6c0187fc4c87cff5141fc1dce2a84337.mesh"
+
+[deps]
+
+files=["res://.godot/imported/BarrensWater.obj-6c0187fc4c87cff5141fc1dce2a84337.mesh"]
+
+source_file="res://games/one_machine_night_funkin/resources/models/BarrensWater.obj"
+dest_files=["res://.godot/imported/BarrensWater.obj-6c0187fc4c87cff5141fc1dce2a84337.mesh", "res://.godot/imported/BarrensWater.obj-6c0187fc4c87cff5141fc1dce2a84337.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=false
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

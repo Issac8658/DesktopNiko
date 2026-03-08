@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dwnd6gaj7msik"]
+
+[ext_resource type="Texture2D" uid="uid://omkeswy8gulf" path="res://games/one_machine_night_funkin/resources/sprites/shadow.png" id="1_311c2"]
+
+[resource]
+transparency = 1
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+disable_specular_occlusion = true
+albedo_color = Color(1, 1, 1, 0.39215687)
+albedo_texture = ExtResource("1_311c2")
+texture_filter = 1

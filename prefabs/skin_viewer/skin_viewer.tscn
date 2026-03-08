@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://biwmud5wjovh4"]
+[gd_scene format=3 uid="uid://biwmud5wjovh4"]
 
 [ext_resource type="Theme" uid="uid://dfef00daciy56" path="res://themes/skin_view_theme/skin_view_theme.theme" id="1_siacp"]
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="2_4jyfp"]
@@ -78,10 +78,9 @@ alpha_curve = SubResource("CurveTexture_4uqou")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bd1xs"]
 
-[node name="SkinViewer" type="Window"]
+[node name="SkinViewer" type="Window" unique_id=719478319]
 canvas_item_default_texture_filter = 0
 oversampling_override = 1.0
-mode = 3
 title = "SKIN_VIEWER"
 initial_position = 4
 size = Vector2i(1920, 1080)
@@ -89,11 +88,11 @@ content_scale_mode = 1
 theme = ExtResource("1_siacp")
 script = ExtResource("2_5qhg3")
 
-[node name="BgGrid" type="Parallax2D" parent="."]
+[node name="BgGrid" type="Parallax2D" parent="." unique_id=828938441]
 scroll_scale = Vector2(0.6, 0.6)
 scroll_offset = Vector2(960, 540)
 
-[node name="TextureRect" type="TextureRect" parent="BgGrid"]
+[node name="TextureRect" type="TextureRect" parent="BgGrid" unique_id=409475826]
 modulate = Color(0.588235, 0.392157, 1, 1)
 self_modulate = Color(1, 1, 1, 0.078431375)
 texture_repeat = 2
@@ -112,11 +111,11 @@ grow_vertical = 2
 texture = ExtResource("4_lkdlf")
 stretch_mode = 1
 
-[node name="BgParticles" type="Parallax2D" parent="."]
+[node name="BgParticles" type="Parallax2D" parent="." unique_id=1506357495]
 scroll_scale = Vector2(0.2, 0.2)
 scroll_offset = Vector2(960, 540)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="BgParticles"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BgParticles" unique_id=1293889098]
 modulate = Color(0.588235, 0.392157, 1, 1)
 amount = 400
 texture = SubResource("GradientTexture2D_1r0fe")
@@ -125,19 +124,19 @@ visibility_rect = Rect2(-960, -540, 1920, 1080)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_j3gpn")
 
-[node name="Pipes" type="Node2D" parent="." node_paths=PackedStringArray("From", "MonitorsContainer")]
+[node name="Pipes" type="Node2D" parent="." unique_id=1366780880 node_paths=PackedStringArray("From", "MonitorsContainer")]
 script = ExtResource("3_bd1xs")
 PipeTemplate = ExtResource("5_kaaeg")
 From = NodePath("../MainMonitor")
 MonitorsContainer = NodePath("../Monitors")
 MaxRandomOffset = Vector2(180, 73.5)
 
-[node name="Monitors" type="Node2D" parent="."]
+[node name="Monitors" type="Node2D" parent="." unique_id=2136676360]
 position = Vector2(960, 540)
 script = ExtResource("5_bd1xs")
 SkinPreviewPrefab = ExtResource("5_j3gpn")
 
-[node name="MainMonitor" type="StaticBody2D" parent="." node_paths=PackedStringArray("MonitorsContainer", "SkinPreviewImage", "NameLabel", "DescLabel", "AuthorLabel", "CommentsLabel")]
+[node name="MainMonitor" type="StaticBody2D" parent="." unique_id=2141272195 node_paths=PackedStringArray("MonitorsContainer", "SkinPreviewImage", "NameLabel", "DescLabel", "AuthorLabel", "CommentsLabel")]
 position = Vector2(960, 540)
 physics_material_override = ExtResource("8_bd1xs")
 script = ExtResource("10_d5j35")
@@ -148,7 +147,7 @@ DescLabel = NodePath("MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBox
 AuthorLabel = NodePath("MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Author")
 CommentsLabel = NodePath("MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Comment")
 
-[node name="MainMonitor" type="PanelContainer" parent="MainMonitor"]
+[node name="MainMonitor" type="PanelContainer" parent="MainMonitor" unique_id=1762449007]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -162,63 +161,63 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_siacp")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMonitor/MainMonitor"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMonitor/MainMonitor" unique_id=1382789562]
 layout_mode = 2
 theme = ExtResource("2_4jyfp")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MainMonitor/MainMonitor/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainMonitor/MainMonitor/HBoxContainer" unique_id=1024514184]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer2" unique_id=425413701]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_vertical = 10
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer2"]
+[node name="Button" type="Button" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer2" unique_id=234536148]
 layout_mode = 2
 text = "Apply
 "
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMonitor/MainMonitor/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMonitor/MainMonitor/HBoxContainer" unique_id=946627054]
 layout_mode = 2
 
-[node name="Name" type="Label" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer"]
+[node name="Name" type="Label" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer" unique_id=801693167]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer" unique_id=1544779283]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1242117866]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer" unique_id=351593875]
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer" unique_id=327841913]
 layout_mode = 2
 
-[node name="Description" type="Label" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Description" type="Label" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=2115263568]
 custom_minimum_size = Vector2(264, 0)
 layout_mode = 2
 autowrap_mode = 3
 
-[node name="Author" type="Label" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Author" type="Label" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=1879465669]
 modulate = Color(1, 1, 1, 0.49411765)
 custom_minimum_size = Vector2(264, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 autowrap_mode = 3
 
-[node name="HSeparator" type="HSeparator" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=1109883234]
 modulate = Color(1, 1, 1, 0.2)
 layout_mode = 2
 
-[node name="Comment" type="Label" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Comment" type="Label" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=1219660021]
 modulate = Color(1, 1, 1, 0.49411765)
 custom_minimum_size = Vector2(264, 0)
 layout_mode = 2
@@ -226,11 +225,11 @@ theme_override_font_sizes/font_size = 16
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainMonitor"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainMonitor" unique_id=549411550]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_82vyj")
 
-[node name="Label" type="Label" parent="MainMonitor"]
+[node name="Label" type="Label" parent="MainMonitor" unique_id=560358780]
 modulate = Color(1, 1, 1, 0.38431373)
 anchors_preset = 7
 anchor_left = 0.5
@@ -247,7 +246,7 @@ theme = ExtResource("2_4jyfp")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_05ljl")
 text = "Click on skin to view info"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=443198685]
 position = Vector2(960, 540)
 ignore_rotation = false
 position_smoothing_enabled = true
@@ -255,12 +254,12 @@ position_smoothing_speed = 3.0
 script = ExtResource("12_08ho8")
 CameraMoveScale = 0.0
 
-[node name="FrontParticles" type="Parallax2D" parent="."]
+[node name="FrontParticles" type="Parallax2D" parent="." unique_id=1890711828]
 z_index = 3
 scroll_scale = Vector2(1.75, 1.75)
 scroll_offset = Vector2(960, 540)
 
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="FrontParticles"]
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="FrontParticles" unique_id=1349958235]
 modulate = Color(0.588235, 0.392157, 1, 1)
 z_index = 1
 material = SubResource("CanvasItemMaterial_bd1xs")
@@ -271,17 +270,17 @@ visibility_rect = Rect2(-960, -540, 1920, 1080)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_l6v6j")
 
-[node name="ScreenBounds" type="StaticBody2D" parent="."]
+[node name="ScreenBounds" type="StaticBody2D" parent="." unique_id=1601679422]
 z_index = 2
 position = Vector2(960, 540)
 physics_material_override = ExtResource("8_bd1xs")
 
-[node name="Right" type="CollisionShape2D" parent="ScreenBounds"]
+[node name="Right" type="CollisionShape2D" parent="ScreenBounds" unique_id=121439628]
 position = Vector2(960, 0)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_bd1xs")
 
-[node name="Line2D4" type="Line2D" parent="ScreenBounds/Right"]
+[node name="Line2D4" type="Line2D" parent="ScreenBounds/Right" unique_id=1857373232]
 modulate = Color(0.588235, 0.392157, 1, 1)
 texture_repeat = 2
 position = Vector2(0, 198)
@@ -294,12 +293,12 @@ script = ExtResource("12_qjn3m")
 Sprites = Array[Texture2D]([ExtResource("13_lkdlf"), ExtResource("17_d5j35")])
 WaitTime = 0.1
 
-[node name="Left" type="CollisionShape2D" parent="ScreenBounds"]
+[node name="Left" type="CollisionShape2D" parent="ScreenBounds" unique_id=1383842055]
 position = Vector2(-960, 0)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_bd1xs")
 
-[node name="Line2D3" type="Line2D" parent="ScreenBounds/Left"]
+[node name="Line2D3" type="Line2D" parent="ScreenBounds/Left" unique_id=2105535921]
 modulate = Color(0.588235, 0.392157, 1, 1)
 texture_repeat = 2
 position = Vector2(0, 198)
@@ -312,12 +311,12 @@ script = ExtResource("12_qjn3m")
 Sprites = Array[Texture2D]([ExtResource("14_1s81l"), ExtResource("16_xgbat")])
 WaitTime = 0.1
 
-[node name="Top" type="CollisionShape2D" parent="ScreenBounds"]
+[node name="Top" type="CollisionShape2D" parent="ScreenBounds" unique_id=1483462776]
 position = Vector2(0, -540)
 rotation = 3.1415927
 shape = SubResource("WorldBoundaryShape2D_bd1xs")
 
-[node name="Line2D2" type="Line2D" parent="ScreenBounds/Top"]
+[node name="Line2D2" type="Line2D" parent="ScreenBounds/Top" unique_id=1419613540]
 modulate = Color(0.588235, 0.392157, 1, 1)
 texture_repeat = 2
 position = Vector2(0, 98)
@@ -330,11 +329,11 @@ script = ExtResource("12_qjn3m")
 Sprites = Array[Texture2D]([ExtResource("12_hexfx"), ExtResource("14_08ho8")])
 WaitTime = 0.1
 
-[node name="Bottom" type="CollisionShape2D" parent="ScreenBounds"]
+[node name="Bottom" type="CollisionShape2D" parent="ScreenBounds" unique_id=1303288965]
 position = Vector2(0, 540)
 shape = SubResource("WorldBoundaryShape2D_bd1xs")
 
-[node name="Line2D" type="Line2D" parent="ScreenBounds/Bottom"]
+[node name="Line2D" type="Line2D" parent="ScreenBounds/Bottom" unique_id=1773737072]
 modulate = Color(0.588235, 0.392157, 1, 1)
 texture_repeat = 2
 position = Vector2(0, 98)

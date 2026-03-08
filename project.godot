@@ -32,7 +32,7 @@ config/save_version=1
 
 [audio]
 
-buses/default_bus_layout="res://buses.tres"
+buses/default_bus_layout="uid://bhb1lhs548lii"
 
 [autoload]
 
