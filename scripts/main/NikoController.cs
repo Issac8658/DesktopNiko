@@ -65,8 +65,8 @@ public partial class NikoController : Node
 
 		NikoSpriteNode.GuiInput += Event =>
 		{
-			if (Event is InputEventMouse EventMouse)
-				if (EventMouse.IsPressed() && !_valuesContainer.IsFacepicForced)
+			if (Event is InputEventMouseButton EventMouse)
+				if (EventMouse.IsPressed() && EventMouse.ButtonIndex == MouseButton.Left && !_valuesContainer.IsFacepicForced)
 				{
 					Click();
 				}
