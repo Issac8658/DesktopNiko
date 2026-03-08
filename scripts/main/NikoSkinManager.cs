@@ -6,7 +6,7 @@ using Godot;
 public partial class NikoSkinManager : Node
 {
 	private const string SKINS_FOLDER_PATH = "res://niko/";
-	private const string DEFAULT_SKIN_ID = "shadi";
+	private const string DEFAULT_SKIN_ID = "niko_default";
 	private const string SKIN_PATH_OVERRIDE = "skin://";
 	private const string SKIN_CONF_NAME = "skin.cfg";
 	private const string DEFAULT_SPRITE_ID = "default";
