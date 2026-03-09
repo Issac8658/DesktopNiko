@@ -10,10 +10,10 @@ func _ready() -> void:
 	minutes_spinbox.value_changed.connect(update)
 	hours_spinbox.value_changed.connect(update)
 	toggle_checkbox.toggled.connect(update)
-	if AchievementsGlobalConroller.is_achievement_taked("sweet_dreams"):
+	if AchievementsController.IsAchievementTaked("sweet_dreams"):
 		visible = true
 	else:
-		AchievementsGlobalConroller.achievement_taked.connect(func (achievement_id):
+		AchievementsController.AchievementTaked.connect(func (achievement_id):
 			if achievement_id == "sweet_dreams":
 				visible = true
 		)

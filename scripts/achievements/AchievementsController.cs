@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Achievements;
 using Godot;
 
 public partial class AchievementsController : Node
@@ -16,7 +15,7 @@ public partial class AchievementsController : Node
 		return AchievementsList.Exists(achievementExist);
 	}
 
-	public Achievement? GetAchievementById(string AchievementId)
+	public Achievement GetAchievementById(string AchievementId)
 	{
 		foreach (var achievement in AchievementsList)
 		{
@@ -27,7 +26,7 @@ public partial class AchievementsController : Node
 		}
 		return null;
 	}
-	public int? GetAchievementIndexById(string AchievementId)
+	public int GetAchievementIndexById(string AchievementId)
 	{
 		for (int i = 0; i < AchievementsList.Count; i++)
 		{
@@ -37,7 +36,7 @@ public partial class AchievementsController : Node
 				return i;
 			}
 		}
-		return null;
+		return -1;
 	}
 
 	public bool IsAchievementTaked(string AchievementId)
@@ -50,13 +49,18 @@ public partial class AchievementsController : Node
 		return false;
 	}
 
-	public void TakeAchievement(string AchievementId)
+	public void TakeAchievement(string AchievementId, bool notification = true)
 	{
 		for (int i = 0; i < AchievementsList.Count; i++)
 		{
 			if (AchievementsList[i].Id == AchievementId)
 			{
-				AchievementTakedList[i] = true;
+				if (!AchievementTakedList[i])
+				{
+					AchievementTakedList[i] = true;
+					if (notification)
+						EmitSignal("AchievementTaked", AchievementId);
+				}
 				break;
 			}
 		}
@@ -72,15 +76,9 @@ public partial class AchievementsController : Node
 		else
 			GD.PushWarning($"Achievement with id {achievement.Id} already registered!");
 	}
-}
 
-namespace Achievements
-{
-	public struct Achievement(string AchievementId, Texture2D AchievementIcon, string AchievementTitle = "NO_TITLE", string AchievementDesc = "")
+	public Achievement[] GetAchievementsList()
 	{
-		public string Id = AchievementId;
-		public Texture2D Icon = AchievementIcon;
-		public string Title = AchievementTitle;
-		public string Description = AchievementDesc;
+		return [.. AchievementsList];
 	}
 }

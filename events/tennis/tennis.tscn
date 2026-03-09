@@ -114,7 +114,7 @@ func lose():
 
 
 func start_game():
-	playing_niko_rect.texture = NikoSkinManager.GetCurrentSkinSprite(ValuesContainer.IdleFacepic)
+	update_facepic(NikoSkinManager.GetCurrentSkinSprite(ValuesContainer.IdleFacepic), NikoSkinManager.GetCurrentSkinBaseScale())
 	screen_main_menu.visible = false
 	screen_game.visible = true
 	gaming = true
@@ -135,14 +135,14 @@ func _physics_process(delta: float) -> void:
 			tennis_ball_pos[1] = randf_range(150,300)
 			points += 1
 			if points >= 100:
-				if not AchievementsGlobalConroller.is_achievement_taked(\"master_of_tennis\"):
-					AchievementsGlobalConroller.take_achievement(\"master_of_tennis\")
+				if not AchievementsController.IsAchievementTaked(\"master_of_tennis\"):
+					AchievementsController.TakeAchievement(\"master_of_tennis\", true)
 			points_label.text = str(points)
 			if niko_raket_fake_pos.distance_to(Vector2(tennis_ball_pos[2], tennis_ball_pos[3])) >= 40:
 				print(\"win\")
-				if not AchievementsGlobalConroller.is_achievement_taked(\"little_win\"):
-					AchievementsGlobalConroller.take_achievement(\"little_win\")
-				playing_niko_rect.texture = NikoSkinManager.GetCurrentSkinSprite(\"sleepy\")
+				if not AchievementsController.IsAchievementTaked(\"little_win\"):
+					AchievementsController.TakeAchievement(\"little_win\", true)
+				update_facepic(NikoSkinManager.GetCurrentSkinSprite(\"sleepy\"), NikoSkinManager.GetCurrentSkinBaseScale())
 				win()
 			else:
 				sound_niko_shot.play()
@@ -158,13 +158,13 @@ func _physics_process(delta: float) -> void:
 			#print(player_raket_pos + window.position - Vector2i(5,30))
 			#print(Vector2(tennis_ball_pos[0], tennis_ball_pos[1]))
 			if Vector2(player_raket_pos + window.position - Vector2i(5,30)).distance_to(Vector2(tennis_ball_pos[0], tennis_ball_pos[1])) >= 75:
-				playing_niko_rect.texture = NikoSkinManager.GetCurrentSkinSprite(\"cool\")
+				update_facepic(NikoSkinManager.GetCurrentSkinSprite(\"cool\"), NikoSkinManager.GetCurrentSkinBaseScale())
 				lose()
 			else:
 				sound_player_shot.play()
 			tennis_ball_speed = tennis_ball_current_speed
 			if tennis_ball_speed >= 16 and gaming:
-				playing_niko_rect.texture = NikoSkinManager.GetCurrentSkinSprite(\"shock\")
+				update_facepic(NikoSkinManager.GetCurrentSkinSprite(\"shock\"), NikoSkinManager.GetCurrentSkinBaseScale())
 			await get_tree().create_timer(1 / clamp(tennis_ball_current_speed, 1.0, 1000.0)).timeout
 			#print(\"ready\")
 			niko_raket_pos = Vector2(tennis_ball_pos[2], tennis_ball_pos[3])
@@ -189,6 +189,10 @@ func update_all():
 
 func mix(a : Vector2, b : Vector2, alpha : float) -> Vector2:
 	return (b - a) * alpha + a
+
+func update_facepic(facepic : Texture2D, scale : float):
+	playing_niko_rect.texture = facepic
+	playing_niko_rect.custom_minimum_size = facepic.get_size() * scale
 "
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64cqo"]

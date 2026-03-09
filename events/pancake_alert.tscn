@@ -32,11 +32,11 @@ func _ready() -> void:
 		print(\"pressed yes\")
 		play_eating_anim()
 		#GlobalControlls.doned_events += 1
-		if not AchievementsGlobalConroller.is_achievement_taked(\"time_to_dinner\"):
-			AchievementsGlobalConroller.take_achievement(\"time_to_dinner\")
+		if not AchievementsController.IsAchievementTaked(\"time_to_dinner\"):
+			AchievementsController.TakeAchievement(\"time_to_dinner\", true)
 	)
 	cry_sound.finished.connect(func ():
-		if not AchievementsGlobalConroller.is_achievement_taked(\"worst_friend\"):
+		if not AchievementsController.IsAchievementTaked(\"worst_friend\"):
 			Dialog.show_dialog(\"PANCAKE_ALERT_DIALOG_A\", null, 0.05, true)
 			Dialog.dialog_skiped.connect(func ():
 				Dialog.show_dialog(\"PANCAKE_ALERT_DIALOG_B\", null, 0.05, true)
@@ -47,7 +47,7 @@ func _ready() -> void:
 						glitch_sound.finished.connect(func ():
 							glitch.visible = false
 							ValuesContainer.ForceFacepick(\"pancakes\")
-							AchievementsGlobalConroller.take_achievement(\"worst_friend\")
+							AchievementsController.TakeAchievement(\"worst_friend\", true)
 							popup.popup()
 						, CONNECT_ONE_SHOT)
 						glitch_sound.play()

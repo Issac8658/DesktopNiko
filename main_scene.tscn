@@ -148,13 +148,13 @@ script/source = "extends TextureRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if not AchievementsGlobalConroller.is_achievement_taked(\"hello_secret\"):
+	if not AchievementsController.IsAchievementTaked(\"hello_secret\"):
 		position = Vector2(DisplayServer.screen_get_usable_rect(DisplayServer.SCREEN_PRIMARY).size) - size - Vector2(20,68)
 		mouse_entered.connect(func ():
 			visible = false
 			sound.play()
 			await sound.finished
-			AchievementsGlobalConroller.take_achievement(\"hello_secret\")
+			AchievementsController.TakeAchievement(\"hello_secret\", true)
 		)
 	else: visible = false
 "
@@ -169,7 +169,7 @@ var loaded_event : Node = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if not AchievementsGlobalConroller.is_achievement_taked(\"little_win\"):
+	if not AchievementsController.IsAchievementTaked(\"little_win\"):
 		visible = false
 	($Button as Button).gui_input.connect(func (input):
 		if input is InputEventMouseButton and input.double_click and not loaded_event:
@@ -181,7 +181,7 @@ func _ready() -> void:
 				loaded_event = null
 			, CONNECT_ONE_SHOT)
 	)
-	AchievementsGlobalConroller.achievement_taked.connect(func (achievement_id):
+	AchievementsController.AchievementTaked.connect(func (achievement_id):
 		if achievement_id == \"little_win\":
 			visible = true
 	)

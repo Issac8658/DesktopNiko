@@ -21,7 +21,7 @@ func _ready() -> void:
 			start_buffer_play()
 	)
 	
-	AchievementsGlobalConroller.achievement_taked.connect(func (achievement_id : String):
+	AchievementsController.AchievementTaked.connect(func (achievement_id : String):
 		achievements_buffer.append(achievement_id)
 		if not buffer_playing:
 			start_buffer_play()
@@ -37,10 +37,10 @@ func start_buffer_play():
 		buffer_playing = true
 		var achievement_id = achievements_buffer.pop_front()
 		if ValuesContainer.ShowAchievements:
-			var data = AchievementsGlobalConroller.get_achievement_data(achievement_id)
-			name_label.text = data[0]
-			desc_label.text = data[1]
-			icon.texture = load(data[2])
+			var data : Achievement = AchievementsController.GetAchievementById(achievement_id)
+			name_label.text = data.Title
+			desc_label.text = data.Description
+			icon.texture = data.Icon
 			update_pos()
 			animator.play("showing")
 		sound.play()

@@ -1,4 +1,5 @@
 using Godot;
+using Godot.NativeInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -84,10 +85,12 @@ public partial class SaveLoad : Node
     };
 
     private ValuesContainer _valuesContainer;
+    private AchievementsController _achievementsController;
 
     public override void _Ready()
     {
         _valuesContainer = GetNode<ValuesContainer>("/root/ValuesContainer");
+        _achievementsController = GetNode<AchievementsController>("/root/AchievementsController");
     }
 
     // Dont call Save and Load functions from other scripts directly, use GlobalController functions pls
@@ -105,6 +108,11 @@ public partial class SaveLoad : Node
         }
         // uncommon vars saving
         saveFile.SetValue("NikoStates", "NikoPosition", GetWindow().Position);
+        List<string> TakedAchievements = [];
+        foreach (Achievement achievement in _achievementsController.GetAchievementsList())
+            if (_achievementsController.IsAchievementTaked(achievement.Id))
+                TakedAchievements.Add(achievement.Id);
+        saveFile.SetValue("Main", "TakedAchievements", TakedAchievements.ToArray());
         // achievements saving here
 
         saveFile.Save(SAVE_FILE_PATH);
@@ -121,11 +129,12 @@ public partial class SaveLoad : Node
             return;
         }
 
-
-        GD.Print("Save version: " + saveFile.GetValue("Main", "SaveVersion").AsString());
-        if (legacy_verisons.Contains(saveFile.GetValue("Main", "SaveVersion").AsString()))
+        string version = saveFile.GetValue("Main", "SaveVersion").AsString();
+        GD.Print("Save version: " + version);
+        if (legacy_verisons.Contains(version))
         {
             GD.Print("Trying to load legacy save...");
+            BackupSave($"user://{version}_backup.cfg");
             foreach (var section in LEGACY_VARS_TO_SAVE)
             {
                 foreach (var varPair in section.Value)
@@ -143,7 +152,14 @@ public partial class SaveLoad : Node
             {
                 GetWindow().Position = saveFile.GetValue("Main", "NikoPosition").AsVector2I();
             }
-            // achievements loading here
+            if (saveFile.HasSectionKey("Main", "Achievements"))
+            {
+                string[] TakedAchievementIds = saveFile.GetValue("Main", "Achievements").AsStringArray();
+                foreach (string achievementId in TakedAchievementIds)
+                {
+                    _achievementsController.TakeAchievement(achievementId, false);
+                }
+            }
         }
         else
         {
@@ -165,11 +181,24 @@ public partial class SaveLoad : Node
             {
                 GetWindow().Position = saveFile.GetValue("NikoStates", "NikoPosition").AsVector2I();
             }
-            // achievements loading here
+            if (saveFile.HasSectionKey("Main", "TakedAchievements"))
+            {
+                string[] TakedAchievementIds = saveFile.GetValue("Main", "TakedAchievements").AsStringArray();
+                foreach (string achievementId in TakedAchievementIds)
+                {
+                    _achievementsController.TakeAchievement(achievementId, false);
+                }
+            }
         }
         
     }
 
-    
-    // Save-load script here
+    private void BackupSave(string NewName)
+    {
+        DirAccess UserFolder = DirAccess.Open("user://");
+        if (UserFolder.FileExists(SAVE_FILE_PATH))
+        {
+            UserFolder.Copy(SAVE_FILE_PATH, NewName);
+        }
+    }
 }

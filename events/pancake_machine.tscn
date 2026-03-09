@@ -48,8 +48,8 @@ func _ready() -> void:
 							#GlobalControlls.doned_events += 1
 							ValuesContainer.ForceFacepick(\"pancakes\")
 							animator.play(\"true\")
-							if not AchievementsGlobalConroller.is_achievement_taked(\"hacked_a_machine\"):
-								AchievementsGlobalConroller.take_achievement(\"hacked_a_machine\")
+							if not AchievementsController.IsAchievementTaked(\"hacked_a_machine\"):
+								AchievementsController.TakeAchievement(\"hacked_a_machine\", true)
 						else:
 							animator.play(\"hide\")
 					,CONNECT_ONE_SHOT)
@@ -506,7 +506,7 @@ window = NodePath("../Window")
 enter_sound = NodePath("../EnterSound")
 passcode_show_button = NodePath("../Window/Control/Control/Button")
 passcode_container = NodePath("../Window/Control/Control/PassCode")
-passcode_parts_contrainers = [NodePath("../Window/Control/Control/PassCode/VBoxContainer/VBoxContainer/Label"), NodePath("../Window/Control/Control/PassCode/VBoxContainer/VBoxContainer2/Label"), NodePath("../Window/Control/Control/PassCode/VBoxContainer/VBoxContainer3/Label")]
+passcode_parts_contrainers = [NodePath("../Window/Control/Control/PassCode/VBoxContainer/VBoxContainer/0"), NodePath("../Window/Control/Control/PassCode/VBoxContainer/VBoxContainer2/1"), NodePath("../Window/Control/Control/PassCode/VBoxContainer/VBoxContainer3/2")]
 cancel_button = NodePath("../Window/Control/Control/PassCode/Cancel")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1126408245]
@@ -639,7 +639,7 @@ size_flags_horizontal = 3
 script = ExtResource("7_jmh5g")
 symbols_list = Array[String](["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"])
 up_button = NodePath("Up")
-label = NodePath("Label")
+label = NodePath("0")
 down_button = NodePath("Down")
 
 [node name="Up" type="Button" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer" unique_id=1746515826]
@@ -648,7 +648,7 @@ theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 40
 text = "↑"
 
-[node name="Label" type="Label" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer" unique_id=269267193]
+[node name="0" type="Label" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer" unique_id=269267193]
 layout_mode = 2
 theme_override_font_sizes/font_size = 56
 text = "0"
@@ -667,7 +667,7 @@ size_flags_horizontal = 3
 script = ExtResource("7_jmh5g")
 symbols_list = Array[String](["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"])
 up_button = NodePath("Up")
-label = NodePath("Label")
+label = NodePath("1")
 down_button = NodePath("Down")
 
 [node name="Up" type="Button" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer2" unique_id=2138192373]
@@ -676,7 +676,7 @@ theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 40
 text = "↑"
 
-[node name="Label" type="Label" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer2" unique_id=1710037943]
+[node name="1" type="Label" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer2" unique_id=1710037943]
 layout_mode = 2
 theme_override_font_sizes/font_size = 56
 text = "0"
@@ -695,7 +695,7 @@ size_flags_horizontal = 3
 script = ExtResource("7_jmh5g")
 symbols_list = Array[String](["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"])
 up_button = NodePath("Up")
-label = NodePath("Label")
+label = NodePath("2")
 down_button = NodePath("Down")
 
 [node name="Up" type="Button" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer3" unique_id=902161661]
@@ -704,7 +704,7 @@ theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 40
 text = "↑"
 
-[node name="Label" type="Label" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer3" unique_id=974983588]
+[node name="2" type="Label" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer3" unique_id=974983588]
 layout_mode = 2
 theme_override_font_sizes/font_size = 56
 text = "0"

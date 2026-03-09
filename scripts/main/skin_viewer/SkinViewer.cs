@@ -21,6 +21,6 @@ public partial class SkinViewer : Window
 		RightBorder.Position = new (SFree.Position.X + SFree.Size.X - Size.X / 2, RightBorder.Position.Y);
 
 		ExitButton.Pressed += Hide;
-        CloseRequested += Hide;
+		CloseRequested += Hide;
 	}
 }

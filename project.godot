@@ -36,15 +36,15 @@ buses/default_bus_layout="uid://bhb1lhs548lii"
 
 [autoload]
 
-ShutdownHandler="*res://scripts/ShutdownHandler.cs"
+ShutdownHandler="res://scripts/ShutdownHandler.cs"
 PassthroughModule="*res://scripts/WindowMousePassthroughModule.cs"
 ValuesContainer="*res://scripts/main/ValuesContainer.cs"
-SaveLoad="*res://scripts/main/SaveLoad.cs"
+AchievementsController="*uid://b55a3n8wcs3l"
+AchievementsRegistrar="uid://vog5mdsxiwq5"
 NikoSkinManager="*res://scripts/main/NikoSkinManager.cs"
+SaveLoad="*res://scripts/main/SaveLoad.cs"
 GlobalController="*res://scripts/main/GlobalController.cs"
 Dialog="*res://prefabs/dialog_window.tscn"
-AchievementsGlobalConroller="*res://scripts/achievements/achievements_global_conroller.gd"
-AchievementsRegistrar="*uid://vog5mdsxiwq5"
 NikoDialog="*res://prefabs/niko_dialog.tscn"
 
 [display]
