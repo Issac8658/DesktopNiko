@@ -1,4 +1,4 @@
-[gd_resource type="StyleBoxTexture" load_steps=3 format=3 uid="uid://chrf7jvdnt4m7"]
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://chrf7jvdnt4m7"]
 
 [ext_resource type="Script" uid="uid://c28h70vfovqy8" path="res://scripts/themes/stylebox_texture_color_applier.gd" id="1_lcov3"]
 [ext_resource type="Texture2D" uid="uid://dfps2wq5i7fmj" path="res://sprites/ui/world_machine/monitor_main.png" id="2_lcov3"]

@@ -1,4 +1,4 @@
-[gd_resource type="StyleBoxFlat" load_steps=2 format=3 uid="uid://b821x8hwjmnyo"]
+[gd_resource type="StyleBoxFlat" format=3 uid="uid://b821x8hwjmnyo"]
 
 [ext_resource type="Script" uid="uid://cl16644rl3lsd" path="res://scripts/themes/stylebox_color_applier.gd" id="1_qoic8"]
 

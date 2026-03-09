@@ -2237,6 +2237,7 @@ title = "SETTINGS"
 initial_position = 4
 size = Vector2i(704, 404)
 visible = false
+wrap_controls = true
 maximize_disabled = true
 
 [node name="Icon" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
@@ -3467,6 +3468,7 @@ frame_progress = 0.30546513
 
 [node name="AchievementsWindow" parent="." unique_id=1722617301 instance=ExtResource("38_q4750")]
 initial_position = 4
+size = Vector2i(400, 560)
 visible = false
 maximize_disabled = true
 

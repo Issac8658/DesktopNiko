@@ -73,10 +73,10 @@ public partial class NikoController : Node
 					// GetNode<NikoDialog>("/root/NikoDialog").ShowDialog(new(200, 60), "meow");
 				}
 		};
-		GetNode<NikoDialog>("/root/NikoDialog").ShowNextRequest += () =>
-		{
-			GetNode<NikoDialog>("/root/NikoDialog").EndDialog();
-		};
+		//GetNode<NikoDialog>("/root/NikoDialog").ShowNextRequest += () =>
+		//{
+		//	GetNode<NikoDialog>("/root/NikoDialog").EndDialog();
+		//};
 		DoWhatNikoNeedToDo();
 		
 		_skinManager.SkinChanged += SkinId => UpdateFacepic();

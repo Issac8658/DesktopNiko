@@ -312,10 +312,12 @@ public partial class ValuesContainer : Node
 		{
 			_globalTime += 1;
 			TotalTime += 1;
-			EmitSignal("GlobalTimerTicked");
 
 			_CPS = _CPSCounter;
 			_CPSCounter = 0;
+			
+			EmitSignal("GlobalTimerTicked");
+
 		};
 		Clicked += diff => {
 			_CPSCounter += 1;
