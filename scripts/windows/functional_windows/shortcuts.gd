@@ -16,7 +16,7 @@ func _ready():
 							window.visible = false
 							window.mode = Window.MODE_WINDOWED
 							window.visible = true
-							get_window().hide()
+							#get_window().hide()
 					)
 	
 	shutdown_accept_button.pressed.connect(func ():

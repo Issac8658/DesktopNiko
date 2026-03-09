@@ -96,7 +96,6 @@ public partial class SaveLoad : Node
     // Dont call Save and Load functions from other scripts directly, use GlobalController functions pls
     public void Save()
     {
-        EmitSignal("SaveStarted");
         ConfigFile saveFile = new();
         foreach (var section in VARS_TO_SAVE)
         {
@@ -116,7 +115,6 @@ public partial class SaveLoad : Node
         // achievements saving here
 
         saveFile.Save(SAVE_FILE_PATH);
-        EmitSignal("SaveEnded");
     }
 
     public void Load()

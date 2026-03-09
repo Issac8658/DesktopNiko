@@ -9,8 +9,9 @@ public partial class NikoController : Node
 	const double TIME_BEFORE_SLEEP = 0.5;
 
 	private ValuesContainer _valuesContainer;
-	private Window _mainWindow;
 	private NikoSkinManager _skinManager;
+	private AchievementsController _achievementsController;
+	private Window _mainWindow;
 
 	private double _clickTimer = 0;
 	private bool _pressed = false;
@@ -38,6 +39,7 @@ public partial class NikoController : Node
 	{
 		_valuesContainer = GetNode<ValuesContainer>("/root/ValuesContainer");
 		_skinManager = GetNode<NikoSkinManager>("/root/NikoSkinManager");
+		_achievementsController = GetNode<AchievementsController>("/root/AchievementsController");
 		_mainWindow = GetWindow();
 
 		_mainWindow.MouseEntered += () =>
@@ -69,7 +71,7 @@ public partial class NikoController : Node
 				if (EventMouse.IsPressed() && EventMouse.ButtonIndex == MouseButton.Left && !_valuesContainer.IsFacepicForced)
 				{
 					Click();
-					//GetNode<NikoDialog>("/root/NikoDialog").ShowDialog(new(200, 60), "meow");
+					// GetNode<NikoDialog>("/root/NikoDialog").ShowDialog(new(200, 60), "meow");
 				}
 		};
 		GetNode<NikoDialog>("/root/NikoDialog").ShowNextRequest += () =>
@@ -110,6 +112,10 @@ public partial class NikoController : Node
 			case NikoState.Sleeping:
 				SetSprite("sleep");
 				SleepParticles.Emitting = true;
+				if (!_achievementsController.IsAchievementTaked("sweet_dreams"))
+				{
+					_achievementsController.TakeAchievement("sweet_dreams");
+				}
 				break;
 
 			case NikoState.Idle:
@@ -155,6 +161,19 @@ public partial class NikoController : Node
 			if (MeowSoundPlayer.Stream != Meows[_valuesContainer.CurrentMeowSoundId])
 				MeowSoundPlayer.Stream = Meows[_valuesContainer.CurrentMeowSoundId];
 			MeowSoundPlayer.Play();
+		
+			if (_valuesContainer.Clicks >= 10 && !_achievementsController.IsAchievementTaked("ten_clicks"))
+				_achievementsController.TakeAchievement("ten_clicks");
+			if (_valuesContainer.Clicks >= 100 && !_achievementsController.IsAchievementTaked("one_hundred_clicks"))
+				_achievementsController.TakeAchievement("one_hundred_clicks");
+			if (_valuesContainer.Clicks >= 1000 && !_achievementsController.IsAchievementTaked("one_thousand_clicks"))
+				_achievementsController.TakeAchievement("one_thousand_clicks");
+			if (_valuesContainer.Clicks >= 100000 && !_achievementsController.IsAchievementTaked("one_hundred_thousand_clicks"))
+				_achievementsController.TakeAchievement("one_hundred_thousand_clicks");
+			if (_valuesContainer.Clicks >= 1000000 && !_achievementsController.IsAchievementTaked("one_million_clicks"))
+				_achievementsController.TakeAchievement("one_million_clicks");
+			if (_valuesContainer.Clicks >= 1000000000 && !_achievementsController.IsAchievementTaked("one_billion_clicks"))
+				_achievementsController.TakeAchievement("one_billion_clicks");
 		}
 	}
 	

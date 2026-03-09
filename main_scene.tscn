@@ -121,6 +121,7 @@
 [ext_resource type="Script" uid="uid://dbaokjrp7ef13" path="res://scripts/achievements/achievement_show.gd" id="92_l8no8"]
 [ext_resource type="Material" uid="uid://cmlk3yixxx4u4" path="res://materials/world_machine_glitch_material.tres" id="92_ldlqy"]
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="100_ix15y"]
+[ext_resource type="SpriteFrames" uid="uid://45cacwxydn2f" path="res://sprites/ui/world_machine/bulb_anim.tres" id="106_tnorr"]
 [ext_resource type="Theme" uid="uid://depgndu5hyrlf" path="res://themes/OneShotButtonedTheme.tres" id="112_uush8"]
 [ext_resource type="Script" uid="uid://hwog55yrrr11" path="res://scripts/main/NikoClickablePolygon.cs" id="114_8jixl"]
 [ext_resource type="StyleBox" uid="uid://bt8jrmkhinmn" path="res://themes/twm_theme/dialog_panel.tres" id="114_77al4"]
@@ -348,9 +349,33 @@ turbulence_noise_strength = 20.0
 
 [sub_resource type="Animation" id="Animation_o48om"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ubkm4"]
 resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25881624, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k2ony"]
 _data = {
@@ -604,6 +629,7 @@ visible = false
 title = "SHORTCUTS"
 initial_position = 4
 size = Vector2i(358, 394)
+visible = false
 unresizable = false
 maximize_disabled = true
 min_size = Vector2i(193, 270)
@@ -2896,6 +2922,7 @@ offset_top = -12.0
 offset_bottom = 12.0
 
 [node name="SleepControls" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer" unique_id=73468926 node_paths=PackedStringArray("toggle_checkbox", "hours_spinbox", "minutes_spinbox", "seconds_spinbox")]
+visible = false
 layout_mode = 2
 script = ExtResource("74_j53bq")
 toggle_checkbox = NodePath("HBoxContainer3/SleepCheckbox")
@@ -3413,7 +3440,7 @@ texture = ExtResource("87_1b22m")
 [node name="SavingLamp" type="Window" parent="." unique_id=979095553 node_paths=PackedStringArray("animator")]
 transparent_bg = true
 oversampling_override = 1.0
-initial_position = 4
+position = Vector2i(14, 28)
 size = Vector2i(96, 96)
 visible = false
 unresizable = true
@@ -3429,6 +3456,14 @@ animator = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SavingLamp" unique_id=1985578318]
 libraries/ = SubResource("AnimationLibrary_k2ony")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SavingLamp" unique_id=1128223099]
+texture_filter = 1
+position = Vector2(48, 48)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("106_tnorr")
+autoplay = "default"
+frame_progress = 0.08348904
 
 [node name="AchievementsWindow" parent="." unique_id=1722617301 instance=ExtResource("38_q4750")]
 initial_position = 4
