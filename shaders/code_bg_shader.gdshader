@@ -9,11 +9,11 @@ void vertex() {
 }
 
 void fragment() {
-	vec3 col1 = texture(codebgTexture, (UV.xy - vec2(TIME / time_scale, 0)) / scale).bbb;
+	vec3 col1 = texture(codebgTexture, (UV.xy - vec2(TIME / time_scale, 0.1)) / scale).bbb;
 	vec3 col2 = texture(codebgTexture, (UV.xy - vec2(0, TIME / time_scale)) / scale).bbb;
-	vec3 col3 = texture(codebgTexture, (UV.xy + vec2(TIME / time_scale, 0)) / scale).bbb;
+	vec3 col3 = texture(codebgTexture, (UV.xy + vec2(TIME / time_scale, 0.1)) / scale).bbb;
 	vec3 col4 = texture(codebgTexture, (UV.xy + vec2(0, TIME / time_scale)) / scale).bbb;
-	COLOR.rgb = COLOR.rgb - (col1 + col2 + col3 + col4) * 2.0;
+	COLOR.rgb = COLOR.rgb - (col1 + col2 + col3 + col4);
 }
 
 //void light() {

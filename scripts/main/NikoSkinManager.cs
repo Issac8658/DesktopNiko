@@ -5,6 +5,7 @@ using Godot;
 
 public partial class NikoSkinManager : Node
 {
+	[Signal] public delegate void SkinChangedEventHandler(string SkinId);
 	private const string SKINS_FOLDER_PATH = "res://niko/";
 	private const string DEFAULT_SKIN_ID = "niko_default";
 	private const string SKIN_PATH_OVERRIDE = "skin://";
@@ -64,6 +65,7 @@ public partial class NikoSkinManager : Node
 			_valuesContainer.CurrentSkin = DEFAULT_SKIN_ID;
 			GD.PushWarning($"Unknown skin \"{SkinId}\"!");
 		}
+		EmitSignal("SkinChanged", SkinId);
 	}
 	
 	public float GetCurrentSkinBaseScale()

@@ -5,9 +5,7 @@ extends Node
 @export var events : Array[PackedEvent]
 
 func events_sort(a : PackedEvent, b : PackedEvent):
-	if a.spawn_chance < b.spawn_chance:
-		return true
-	return false
+	return a.spawn_chance < b.spawn_chance
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

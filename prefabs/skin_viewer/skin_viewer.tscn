@@ -12,7 +12,6 @@
 [ext_resource type="PhysicsMaterial" uid="uid://dhjj26w46jyw2" path="res://prefabs/skin_viewer/bump_material.tres" id="8_bd1xs"]
 [ext_resource type="Script" uid="uid://bwe7c2qky5dwl" path="res://scripts/main/skin_viewer/MainScreenController.cs" id="10_d5j35"]
 [ext_resource type="Texture2D" uid="uid://u55jnyjyyf14" path="res://sprites/ui/world_machine/fullscreen_border_down_frame1.png" id="11_4uqou"]
-[ext_resource type="Script" uid="uid://da6yi1y0jm0qs" path="res://scripts/main/skin_viewer/CameraMove.cs" id="12_08ho8"]
 [ext_resource type="Texture2D" uid="uid://bg1d3l2m525pq" path="res://sprites/ui/world_machine/fullscreen_border_up_frame1.png" id="12_hexfx"]
 [ext_resource type="Script" uid="uid://bm4qpq58h02u1" path="res://scripts/main/skin_viewer/Line2DAnimator.cs" id="12_qjn3m"]
 [ext_resource type="Texture2D" uid="uid://bo75qtdw8r5bo" path="res://sprites/ui/world_machine/fullscreen_border_down_frame2.png" id="13_kaaeg"]
@@ -78,15 +77,21 @@ alpha_curve = SubResource("CurveTexture_4uqou")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bd1xs"]
 
-[node name="SkinViewer" type="Window" unique_id=719478319]
+[node name="SkinViewer" type="Window" unique_id=719478319 node_paths=PackedStringArray("ExitButton", "TopBorder", "RightBorder", "BottomBorder", "LeftBorder")]
 canvas_item_default_texture_filter = 0
 oversampling_override = 1.0
 title = "SKIN_VIEWER"
 initial_position = 4
-size = Vector2i(1920, 1080)
+size = Vector2i(1920, 1079)
+borderless = true
 content_scale_mode = 1
 theme = ExtResource("1_siacp")
 script = ExtResource("2_5qhg3")
+ExitButton = NodePath("MainMonitor/MainMonitor/ExitButtonAnchor/Button")
+TopBorder = NodePath("ScreenBounds/Top")
+RightBorder = NodePath("ScreenBounds/Right")
+BottomBorder = NodePath("ScreenBounds/Bottom")
+LeftBorder = NodePath("ScreenBounds/Left")
 
 [node name="BgGrid" type="Parallax2D" parent="." unique_id=828938441]
 scroll_scale = Vector2(0.6, 0.6)
@@ -94,7 +99,7 @@ scroll_offset = Vector2(960, 540)
 
 [node name="TextureRect" type="TextureRect" parent="BgGrid" unique_id=409475826]
 modulate = Color(0.588235, 0.392157, 1, 1)
-self_modulate = Color(1, 1, 1, 0.078431375)
+self_modulate = Color(1, 1, 1, 0.22745098)
 texture_repeat = 2
 material = ExtResource("3_xgbat")
 anchors_preset = 8
@@ -136,7 +141,7 @@ position = Vector2(960, 540)
 script = ExtResource("5_bd1xs")
 SkinPreviewPrefab = ExtResource("5_j3gpn")
 
-[node name="MainMonitor" type="StaticBody2D" parent="." unique_id=2141272195 node_paths=PackedStringArray("MonitorsContainer", "SkinPreviewImage", "NameLabel", "DescLabel", "AuthorLabel", "CommentsLabel")]
+[node name="MainMonitor" type="StaticBody2D" parent="." unique_id=2141272195 node_paths=PackedStringArray("MonitorsContainer", "SkinPreviewImage", "NameLabel", "DescLabel", "AuthorLabel", "CommentsLabel", "ApplySkinButton")]
 position = Vector2(960, 540)
 physics_material_override = ExtResource("8_bd1xs")
 script = ExtResource("10_d5j35")
@@ -146,6 +151,7 @@ NameLabel = NodePath("MainMonitor/HBoxContainer/VBoxContainer/Name")
 DescLabel = NodePath("MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Description")
 AuthorLabel = NodePath("MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Author")
 CommentsLabel = NodePath("MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Comment")
+ApplySkinButton = NodePath("MainMonitor/HBoxContainer/VBoxContainer2/Button")
 
 [node name="MainMonitor" type="PanelContainer" parent="MainMonitor" unique_id=1762449007]
 anchors_preset = 8
@@ -225,6 +231,21 @@ theme_override_font_sizes/font_size = 16
 horizontal_alignment = 2
 autowrap_mode = 3
 
+[node name="ExitButtonAnchor" type="Control" parent="MainMonitor/MainMonitor" unique_id=758620247]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="Button" type="Button" parent="MainMonitor/MainMonitor/ExitButtonAnchor" unique_id=2003815982]
+z_index = 1
+layout_mode = 0
+offset_left = 34.0
+offset_top = -22.0
+offset_right = 90.0
+offset_bottom = 10.0
+theme = ExtResource("2_4jyfp")
+text = "Exit"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainMonitor" unique_id=549411550]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_82vyj")
@@ -251,8 +272,6 @@ position = Vector2(960, 540)
 ignore_rotation = false
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
-script = ExtResource("12_08ho8")
-CameraMoveScale = 0.0
 
 [node name="FrontParticles" type="Parallax2D" parent="." unique_id=1890711828]
 z_index = 3

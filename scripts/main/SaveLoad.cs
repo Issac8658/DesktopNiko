@@ -1,10 +1,13 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class SaveLoad : Node
 {
     const string SAVE_FILE_PATH = "user://NikoMemories.cfg";
+
+    public readonly string[] legacy_verisons = ["1.1.4"];
 
     private readonly Dictionary<string, Dictionary<string, string>> VARS_TO_SAVE = new() { // var from ValuesContainer.cs, name in save file
         // vars from ValuesContainer.cs to save
@@ -120,7 +123,7 @@ public partial class SaveLoad : Node
 
 
         GD.Print("Save version: " + saveFile.GetValue("Main", "SaveVersion").AsString());
-        if (saveFile.GetValue("Main", "SaveVersion").AsString().Contains('.'))
+        if (legacy_verisons.Contains(saveFile.GetValue("Main", "SaveVersion").AsString()))
         {
             GD.Print("Trying to load legacy save...");
             foreach (var section in LEGACY_VARS_TO_SAVE)

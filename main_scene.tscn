@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://dl8ue5tnsufb7" path="res://sprites/icons/shortcut.tres" id="23_30vx0"]
 [ext_resource type="Texture2D" uid="uid://ddaoov7lp1dhu" path="res://sprites/icons/question.png" id="25_opjno"]
 [ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://sprites/icons/pancake_clicker.png" id="26_rkakh"]
+[ext_resource type="Texture2D" uid="uid://baeok1rdljmfl" path="res://sprites/icons/skins.png" id="27_7ggmy"]
 [ext_resource type="Texture2D" uid="uid://cr3ixq7u1lyrk" path="res://sprites/icons/github.png" id="27_id8vy"]
 [ext_resource type="Script" uid="uid://boigyc7vtdgxg" path="res://scripts/windows/functional_windows/games_shorcuts.gd" id="27_im3ns"]
 [ext_resource type="Texture2D" uid="uid://bk87tkulx74jb" path="res://sprites/icons/exit.png" id="28_xtheg"]
@@ -603,7 +604,6 @@ visible = false
 title = "SHORTCUTS"
 initial_position = 4
 size = Vector2i(358, 394)
-visible = false
 unresizable = false
 maximize_disabled = true
 min_size = Vector2i(193, 270)
@@ -772,6 +772,69 @@ expand_icon = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 text = "THEMES"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Skins" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=541156003]
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Button" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Skins" unique_id=26382282]
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"FlatButton"
+autowrap_mode = 2
+icon_alignment = 1
+vertical_icon_alignment = 0
+metadata/TargetWindow = NodePath("../../../../../../../../../../SkinViewer")
+
+[node name="ButtonMargin" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Skins" unique_id=806130299]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ButtonContent" type="VBoxContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Skins/ButtonMargin" unique_id=1460934274]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Icon" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Skins/ButtonMargin/ButtonContent" unique_id=1614750769]
+material = ExtResource("41_iylel")
+custom_minimum_size = Vector2(64, 66)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("27_7ggmy")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ShortcutIcon" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Skins/ButtonMargin/ButtonContent/Icon" unique_id=358943287]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("23_30vx0")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Skins/ButtonMargin/ButtonContent" unique_id=1448436372]
+custom_minimum_size = Vector2(16, 24)
+layout_mode = 2
+text = "SKINS"
 horizontal_alignment = 1
 autowrap_mode = 3
 

@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Desktop Niko"
-config/version="1.1.5b"
+config/version="1.1.5"
 config/tags=PackedStringArray("niko", "non_com", "one_shot", "software")
 run/main_scene="uid://cj66sb2a5oolj"
 config/use_custom_user_dir=true
@@ -44,6 +44,7 @@ NikoSkinManager="*res://scripts/main/NikoSkinManager.cs"
 GlobalController="*res://scripts/main/GlobalController.cs"
 Dialog="*res://prefabs/dialog_window.tscn"
 AchievementsGlobalConroller="*res://scripts/achievements/achievements_global_conroller.gd"
+AchievementsRegistrar="*uid://vog5mdsxiwq5"
 NikoDialog="*res://prefabs/niko_dialog.tscn"
 
 [display]

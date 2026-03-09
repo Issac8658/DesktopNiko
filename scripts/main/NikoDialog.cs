@@ -5,11 +5,11 @@ using Godot;
 public partial class NikoDialog : Window
 {
 	[Signal]
-	delegate void DialogSkippedEventHandler();
+	public delegate void DialogSkippedEventHandler();
 	[Signal]
-	delegate void ShowNextRequestEventHandler();
+	public delegate void ShowNextRequestEventHandler();
 	[Signal]
-	delegate void ButtonPressedEventHandler(short ButtonId);
+	public delegate void ButtonPressedEventHandler(short ButtonId);
 
 	const int MainWindowId = (int)DisplayServer.MainWindowId;
 	[Export]
@@ -50,6 +50,7 @@ public partial class NikoDialog : Window
 
 	public void ShowDialog(Vector2I TargetDialogSize, string Text = "Nothing beats a jet2holidays and right now you can save fifty pounds per person", string[] Buttons = null, float SymbolShowTime = 0.05f)
 	{
+		Size = new (84, 112);
 		RemoveButtons();
 		Hint.Visible = false;
 		if (Buttons == null) {
@@ -201,7 +202,7 @@ public partial class NikoDialog : Window
 	{
 		if (Visible)
 		{
-			Size = Lerp(Size, DialogSize, 0.3f);
+			Size = Lerp(Size, DialogSize, 0.2f);
 
 			Vector2I NikoPos = GetNikoPosition();
 			Position = Lerp(Position, GetFreePos(NikoPos) + NikoPos, 0.1f);

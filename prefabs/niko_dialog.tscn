@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cf2qlt8bonsn4"]
+[gd_scene format=3 uid="uid://cf2qlt8bonsn4"]
 
 [ext_resource type="Theme" uid="uid://bll84jclxrjw1" path="res://themes/Dialogs.tres" id="1_sw7ix"]
 [ext_resource type="Script" uid="uid://bm53myk86cr7a" path="res://scripts/main/NikoDialog.cs" id="2_au3cr"]
@@ -25,13 +25,13 @@ border_width_bottom = 4
 border_color = Color(0, 0, 0, 0)
 corner_detail = 1
 
-[node name="NikoDialog" type="Window" node_paths=PackedStringArray("DialogLabel", "TextShowTimer", "TextSound", "ClickControl", "ButtonsContainer", "Hint", "UpperArrow", "UpperArrowControl", "UpperFramePart1", "UpperFramePart2", "LowerArrow", "LowerArrowControl", "LowerFramePart1", "LowerFramePart2")]
+[node name="NikoDialog" type="Window" unique_id=481453106 node_paths=PackedStringArray("DialogLabel", "TextShowTimer", "TextSound", "ClickControl", "ButtonsContainer", "Hint", "UpperArrow", "UpperArrowControl", "UpperFramePart1", "UpperFramePart2", "LowerArrow", "LowerArrowControl", "LowerFramePart1", "LowerFramePart2")]
 transparent_bg = true
 canvas_item_default_texture_filter = 0
 oversampling_override = 1.0
 title = "Dialog"
-position = Vector2i(246, 33)
-size = Vector2i(300, 140)
+position = Vector2i(246, 31)
+size = Vector2i(84, 112)
 wrap_controls = true
 unresizable = true
 borderless = true
@@ -63,14 +63,14 @@ PositionTopRight = Vector2i(110, 0)
 PositionBottomLeft = Vector2i(40, 160)
 PositionBottomRight = Vector2i(110, 160)
 
-[node name="Text" type="AudioStreamPlayer" parent="."]
+[node name="Text" type="AudioStreamPlayer" parent="." unique_id=62033860]
 stream = ExtResource("9_yghdn")
 volume_db = -15.0
 max_polyphony = 3
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1860338706]
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1511895990]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -81,17 +81,17 @@ theme_override_constants/margin_top = 18
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 18
 
-[node name="Bg" type="PanelContainer" parent="MarginContainer"]
+[node name="Bg" type="PanelContainer" parent="MarginContainer" unique_id=1511876210]
 texture_filter = 1
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gv8l5")
 
-[node name="Content" type="VBoxContainer" parent="MarginContainer/Bg"]
+[node name="Content" type="VBoxContainer" parent="MarginContainer/Bg" unique_id=571068915]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="DialogText" type="RichTextLabel" parent="MarginContainer/Bg/Content"]
+[node name="DialogText" type="RichTextLabel" parent="MarginContainer/Bg/Content" unique_id=2029391525]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -101,13 +101,13 @@ bbcode_enabled = true
 fit_content = true
 scroll_active = false
 
-[node name="Buttons" type="HFlowContainer" parent="MarginContainer/Bg/Content"]
+[node name="Buttons" type="HFlowContainer" parent="MarginContainer/Bg/Content" unique_id=783184976]
 visible = false
 layout_mode = 2
 mouse_filter = 2
 last_wrap_alignment = 1
 
-[node name="Frame" type="PanelContainer" parent="."]
+[node name="Frame" type="PanelContainer" parent="." unique_id=3917631]
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 0.5
@@ -118,28 +118,28 @@ scale = Vector2(2, 2)
 mouse_filter = 2
 theme = ExtResource("1_sw7ix")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Frame"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Frame" unique_id=1142694470]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Frame/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Frame/VBoxContainer" unique_id=1339128555]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="TextureRect" type="NinePatchRect" parent="Frame/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="NinePatchRect" parent="Frame/VBoxContainer/HBoxContainer" unique_id=300012614]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("9_e3gk4")
 region_rect = Rect2(15, 11, 3, 4)
 
-[node name="Control" type="Control" parent="Frame/VBoxContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="Frame/VBoxContainer/HBoxContainer" unique_id=957058406]
 custom_minimum_size = Vector2(11, 0)
 layout_mode = 2
 
-[node name="NinePatchRect" type="TextureRect" parent="Frame/VBoxContainer/HBoxContainer/Control"]
+[node name="NinePatchRect" type="TextureRect" parent="Frame/VBoxContainer/HBoxContainer/Control" unique_id=338127297]
 custom_minimum_size = Vector2(11, 11)
 layout_mode = 1
 anchors_preset = 12
@@ -153,35 +153,35 @@ texture = ExtResource("3_a7g5i")
 flip_h = true
 flip_v = true
 
-[node name="TextureRect2" type="NinePatchRect" parent="Frame/VBoxContainer/HBoxContainer"]
+[node name="TextureRect2" type="NinePatchRect" parent="Frame/VBoxContainer/HBoxContainer" unique_id=16864851]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("9_e3gk4")
 region_rect = Rect2(15, 11, 3, 4)
 
-[node name="Control" type="Control" parent="Frame/VBoxContainer"]
+[node name="Control" type="Control" parent="Frame/VBoxContainer" unique_id=1893168679]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Frame/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Frame/VBoxContainer" unique_id=1500821742]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="TextureRect" type="NinePatchRect" parent="Frame/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect" type="NinePatchRect" parent="Frame/VBoxContainer/HBoxContainer2" unique_id=1000322811]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("9_e3gk4")
 region_rect = Rect2(15, 19, 3, 4)
 
-[node name="Control" type="Control" parent="Frame/VBoxContainer/HBoxContainer2"]
+[node name="Control" type="Control" parent="Frame/VBoxContainer/HBoxContainer2" unique_id=586539783]
 custom_minimum_size = Vector2(11, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="NinePatchRect2" type="TextureRect" parent="Frame/VBoxContainer/HBoxContainer2/Control"]
+[node name="NinePatchRect2" type="TextureRect" parent="Frame/VBoxContainer/HBoxContainer2/Control" unique_id=115567443]
 custom_minimum_size = Vector2(11, 11)
 layout_mode = 1
 anchors_preset = 10
@@ -192,13 +192,13 @@ mouse_filter = 2
 texture = ExtResource("3_a7g5i")
 flip_h = true
 
-[node name="TextureRect2" type="NinePatchRect" parent="Frame/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect2" type="NinePatchRect" parent="Frame/VBoxContainer/HBoxContainer2" unique_id=1941507337]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("9_e3gk4")
 region_rect = Rect2(15, 19, 3, 4)
 
-[node name="Hint" type="TextureRect" parent="."]
+[node name="Hint" type="TextureRect" parent="." unique_id=572121943]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

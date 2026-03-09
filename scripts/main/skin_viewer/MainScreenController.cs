@@ -16,9 +16,12 @@ public partial class MainScreenController : Node2D
 	public Label AuthorLabel;
 	[Export]
 	public Label CommentsLabel;
+	[Export]
+	public Button ApplySkinButton;
 
 	private SkinPreview[] SkinPreviews = [];
 	private NikoSkinManager SkinManager;
+	private string SelectedSkin = "";
 
 	public override void _Ready()
 	{
@@ -34,6 +37,11 @@ public partial class MainScreenController : Node2D
 			if (node is SkinPreview Monitor)
 				ConnectMonitor(Monitor);
 		}
+		ApplySkinButton.Pressed += () =>
+		{
+			if (SelectedSkin != "")
+				SkinManager.SetSkin(SelectedSkin);
+		};
 	}
 	
 
@@ -55,16 +63,19 @@ public partial class MainScreenController : Node2D
 						if (Event is InputEventMouseButton MouseButton)
 						{
 							isMousePressed = Event.IsPressed();
-							GD.Print(isMousePressed);
+							//GD.Print(isMousePressed);
 							if (!isMousePressed)
 							{
 								if (!isDragging)
 								{
+									Texture2D sprite = SkinManager.LoadSkinSprite(trueSkin, "default");
 									NameLabel.Text = trueSkin.Name;
 									DescLabel.Text = trueSkin.Description;
 									AuthorLabel.Text = trueSkin.Author;
 									CommentsLabel.Text = trueSkin.Comment;
-									SkinPreviewImage.Texture = SkinManager.LoadSkinSprite(trueSkin, "default");
+									SkinPreviewImage.Texture = sprite;
+									SkinPreviewImage.CustomMinimumSize = sprite.GetSize() * trueSkin.Scale;
+									SelectedSkin = trueSkin.Id;
 								}
 							}
 							else

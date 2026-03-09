@@ -69,9 +69,16 @@ public partial class NikoController : Node
 				if (EventMouse.IsPressed() && EventMouse.ButtonIndex == MouseButton.Left && !_valuesContainer.IsFacepicForced)
 				{
 					Click();
+					GetNode<NikoDialog>("/root/NikoDialog").ShowDialog(new(200, 60), "meow");
 				}
 		};
+		GetNode<NikoDialog>("/root/NikoDialog").ShowNextRequest += () =>
+		{
+			GetNode<NikoDialog>("/root/NikoDialog").EndDialog();
+		};
 		DoWhatNikoNeedToDo();
+		
+		_skinManager.SkinChanged += SkinId => UpdateFacepic();
 	}
 
 	public override void _Process(double delta)
