@@ -5,8 +5,7 @@ public enum NikoState {Idle, Clicking, Sleepy, Sleeping, ForcedFacepic, InAnimat
 public partial class NikoController : Node
 {
 	public readonly float[] NikoScales = [0.5f, 1f, 2f, 3f, 4f];
-	const double MEOW_TIME = 0.2;
-	const double TIME_BEFORE_SLEEP = 0.5;
+	const int TIME_BEFORE_SLEEP = 6;
 
 	private ValuesContainer _valuesContainer;
 	private NikoSkinManager _skinManager;
@@ -118,6 +117,10 @@ public partial class NikoController : Node
 				}
 				break;
 
+			case NikoState.Sleepy:
+				SetSprite("sleepy");
+				break;
+
 			case NikoState.Idle:
 				if (_valuesContainer.NikoScared)
 					SetSprite(_valuesContainer.ScareFacepic);
@@ -130,6 +133,8 @@ public partial class NikoController : Node
 
 	private void DoWhatNikoNeedToDo()
 	{
+		_valuesContainer.NikoScared = _valuesContainer.CPS > 8;
+
 		if (NikoAnimationPlayer.IsPlaying())
 		{
 			_currentState = NikoState.InAnimation;
@@ -157,6 +162,7 @@ public partial class NikoController : Node
 		{
 			_valuesContainer.Clicks += 1;
 			_idleTime = 0;
+			NikoAnimationPlayer.Stop();
 			NikoAnimationPlayer.Play("click");
 			if (MeowSoundPlayer.Stream != Meows[_valuesContainer.CurrentMeowSoundId])
 				MeowSoundPlayer.Stream = Meows[_valuesContainer.CurrentMeowSoundId];
@@ -186,7 +192,7 @@ public partial class NikoController : Node
 	}
 
 	// for animations
-	public void SetScaredSpeakFacepic()
+	public void SetSpeakFacepic()
 	{
 		if (_valuesContainer.NikoScared)
 			SetSprite(_valuesContainer.ScareSpeakFacepic);

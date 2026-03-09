@@ -97,7 +97,7 @@
 [ext_resource type="Script" uid="uid://dxeonhi35aw2y" path="res://scripts/windows/functional_windows/settings/mouse_click_sound_setting.gd" id="77_gmgvx"]
 [ext_resource type="Script" uid="uid://d3qjqffumftkk" path="res://scripts/windows/functional_windows/settings/volume.gd" id="77_k2ony"]
 [ext_resource type="Script" uid="uid://0dbjehngsr5f" path="res://scripts/windows/functional_windows/settings/add_to_autorun_button.gd" id="77_q4750"]
-[ext_resource type="Script" uid="uid://c32b02j7n0hx2" path="res://scripts/CpsCounter.cs" id="77_uush8"]
+[ext_resource type="Script" uid="uid://c32b02j7n0hx2" path="res://scripts/windows/functional_windows/settings/CpsCounter.cs" id="77_uush8"]
 [ext_resource type="Texture2D" uid="uid://d4ep8v3mrg276" path="res://sprites/shop_particle.tres" id="78_30vx0"]
 [ext_resource type="Script" uid="uid://fo02x77r4ikl" path="res://scripts/windows/functional_windows/settings/saving_icon_setting.gd" id="78_ly7qr"]
 [ext_resource type="Script" uid="uid://bin6f610l1ycj" path="res://scripts/windows/functional_windows/settings/show_achievements_setting.gd" id="79_7ggmy"]
@@ -490,7 +490,7 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
-"method": &"SetScaredSpeakFacepic"
+"method": &"SetSpeakFacepic"
 }, {
 "args": [],
 "method": &"SetIdleFacepic"
@@ -3463,7 +3463,7 @@ position = Vector2(48, 48)
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("106_tnorr")
 autoplay = "default"
-frame_progress = 0.08348904
+frame_progress = 0.30546513
 
 [node name="AchievementsWindow" parent="." unique_id=1722617301 instance=ExtResource("38_q4750")]
 initial_position = 4

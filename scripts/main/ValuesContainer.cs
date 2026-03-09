@@ -217,7 +217,7 @@ public partial class ValuesContainer : Node
 
 
 
-	//variables that do not need to be saved
+	// variables that do not need to be saved
 // Signals
 	// Main
 	[Signal] public delegate void ClickedEventHandler(int Difference);
@@ -228,6 +228,9 @@ public partial class ValuesContainer : Node
 	[Signal] public delegate void FacepickUnforcedEventHandler();
 	[Signal] public delegate void NikoVisibilityChangedEventHandler(bool Visibility);
 
+	private int _CPS = 0;
+	private int _CPSCounter = 0;
+	public int CPS { get => _CPS; }
 // Duplicates
 	// Main
 	private uint _globalTime = 0; // Time for current session
@@ -310,6 +313,12 @@ public partial class ValuesContainer : Node
 			_globalTime += 1;
 			TotalTime += 1;
 			EmitSignal("GlobalTimerTicked");
+
+			_CPS = _CPSCounter;
+			_CPSCounter = 0;
+		};
+		Clicked += diff => {
+			_CPSCounter += 1;
 		};
 		
 		AddChild(GlobalTimer);
