@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://8hficp4dbvqs"]
+[gd_scene format=3 uid="uid://8hficp4dbvqs"]
 
 [ext_resource type="PackedScene" uid="uid://o3kl3g87pn3q" path="res://prefabs/base_window.tscn" id="1_7xd75"]
 [ext_resource type="Shortcut" uid="uid://belx0egi5ts8h" path="res://shortcuts/escape_shortcut.tres" id="2_5ddub"]
@@ -7,11 +7,10 @@
 [ext_resource type="AudioStream" uid="uid://bnv7o6bmlo6ic" path="res://sounds/twm_notif3.wav" id="4_w1na8"]
 [ext_resource type="AudioStream" uid="uid://54f4ilgm2r3g" path="res://sounds/twm_notif4.wav" id="5_vfins"]
 
-[node name="PopupWindow" node_paths=PackedStringArray("cancel_button", "accept_button", "PopupStreamPlayer") instance=ExtResource("1_7xd75")]
+[node name="PopupWindow" unique_id=1265308202 node_paths=PackedStringArray("cancel_button", "accept_button", "PopupStreamPlayer") instance=ExtResource("1_7xd75")]
 initial_position = 4
 size = Vector2i(328, 184)
 transient = true
-unresizable = true
 always_on_top = false
 popup_window = true
 script = ExtResource("2_p1j5h")
@@ -20,35 +19,30 @@ accept_button = NodePath("Control/WindowContainer/Content/PopupMargin/VBoxContai
 PopupStreamPlayer = NodePath("PopupSound")
 Sounds = Array[AudioStream]([ExtResource("2_tokai"), ExtResource("4_w1na8"), ExtResource("5_vfins")])
 
-[node name="PopupSound" type="AudioStreamPlayer" parent="." index="0"]
+[node name="PopupSound" type="AudioStreamPlayer" parent="." index="0" unique_id=813187369]
 stream = ExtResource("2_tokai")
 volume_db = -10.0
 
-[node name="Title" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
+[node name="Title" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(332691484) index="1" unique_id=2015855131]
 text = "Popup Window"
 
-[node name="HideButtonContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="2"]
+[node name="HideButtonContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(332691484) index="2" unique_id=1853849343]
 visible = false
 
-[node name="CloseButtonContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="3"]
+[node name="CloseButtonContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(332691484) index="3" unique_id=347735988]
 visible = false
 
-[node name="PopupMargin" type="MarginContainer" parent="Control/WindowContainer/Content" index="0"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
+[node name="PopupMargin" type="MarginContainer" parent="Control/WindowContainer/Content" parent_id_path=PackedInt32Array(971726425) index="0" unique_id=684682523]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/WindowContainer/Content/PopupMargin" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/WindowContainer/Content/PopupMargin" index="0" unique_id=1750489675]
 layout_mode = 2
 
-[node name="Quest" type="Label" parent="Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="0"]
+[node name="Quest" type="Label" parent="Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="0" unique_id=1354308728]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_vertical = 6
@@ -56,17 +50,17 @@ text = "Do you like pancakes?"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Actions" type="HBoxContainer" parent="Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="1"]
+[node name="Actions" type="HBoxContainer" parent="Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="1" unique_id=800079027]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Yes" type="Button" parent="Control/WindowContainer/Content/PopupMargin/VBoxContainer/Actions" index="0"]
+[node name="Yes" type="Button" parent="Control/WindowContainer/Content/PopupMargin/VBoxContainer/Actions" index="0" unique_id=911117018]
 custom_minimum_size = Vector2(112, 0)
 layout_mode = 2
 text = "YES"
 
-[node name="No" type="Button" parent="Control/WindowContainer/Content/PopupMargin/VBoxContainer/Actions" index="1"]
+[node name="No" type="Button" parent="Control/WindowContainer/Content/PopupMargin/VBoxContainer/Actions" index="1" unique_id=2105503836]
 custom_minimum_size = Vector2(112, 0)
 layout_mode = 2
 shortcut = ExtResource("2_5ddub")

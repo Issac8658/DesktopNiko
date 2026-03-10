@@ -107,6 +107,7 @@
 [ext_resource type="Texture2D" uid="uid://cqicl8sy06ti5" path="res://sprites/icons/error.png" id="82_l76vu"]
 [ext_resource type="Script" uid="uid://c5ttb0307rqhr" path="res://scripts/windows/functional_windows/settings/meow_sound_selector.gd" id="83_77al4"]
 [ext_resource type="Script" uid="uid://ugkxsuk4wjt" path="res://scripts/windows/functional_windows/settings/scale_selector.gd" id="83_dftep"]
+[ext_resource type="Script" uid="uid://b1r5wxkisfk4r" path="res://scripts/windows/functional_windows/settings/snap_to_bottom_setting.gd" id="85_8g87k"]
 [ext_resource type="Texture2D" uid="uid://o648cd5rcwja" path="res://sprites/characters/magpie_shop1.png" id="87_1b22m"]
 [ext_resource type="Texture2D" uid="uid://onqy26td0pr4" path="res://sprites/icons/achievements.png" id="87_s2ody"]
 [ext_resource type="PackedScene" uid="uid://bi5pu8hc54t3d" path="res://prefabs/achievement.tscn" id="88_05sqr"]
@@ -192,6 +193,22 @@ func _ready() -> void:
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xtheg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ubkm4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8kkg"]
+atlas = ExtResource("4_hq1ik")
+region = Rect2(84, 0, 19, 15)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_76in0"]
+
+[sub_resource type="GDScript" id="GDScript_1b22m"]
+resource_name = "version"
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	text = \"v\" + ProjectSettings.get_setting(\"application/config/version\")
+"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o48om"]
 
@@ -287,22 +304,6 @@ func _ready() -> void:
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k2ony"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1b22m"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j8kkg"]
-atlas = ExtResource("4_hq1ik")
-region = Rect2(84, 0, 19, 15)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_76in0"]
-
-[sub_resource type="GDScript" id="GDScript_1b22m"]
-resource_name = "version"
-script/source = "extends Label
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	text = \"v\" + ProjectSettings.get_setting(\"application/config/version\")
-"
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_30vx0"]
 blend_mode = 1
@@ -637,26 +638,21 @@ maximize_disabled = true
 min_size = Vector2i(193, 270)
 max_size = Vector2i(1920, 1040)
 
-[node name="Topbar" parent="ShortcutsWindow/Control/WindowContainer" index="0"]
+[node name="Topbar" parent="ShortcutsWindow/Control/WindowContainer" parent_id_path=PackedInt32Array(765980327, 106878241) index="0" unique_id=763031887]
 z_index = 0
 
-[node name="Icon" parent="ShortcutsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
+[node name="Icon" parent="ShortcutsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(765980327, 1002331087) index="0" unique_id=1518425686]
 icon = ExtResource("20_o63de")
 
-[node name="Title" parent="ShortcutsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
+[node name="Title" parent="ShortcutsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(765980327, 332691484) index="1" unique_id=2015855131]
 text = "SHORTCUTS"
 
-[node name="MarginContainer" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content" index="0" unique_id=475839431]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+[node name="MarginContainer" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(765980327, 971726425) index="0" unique_id=475839431]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=1009032401]
 layout_mode = 2
@@ -1243,17 +1239,19 @@ text = "SHUTDOWN"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="CornerIcon" type="TextureRect" parent="ShortcutsWindow/Control/WindowContainer/Content" index="1" unique_id=1016262799 node_paths=PackedStringArray("sound")]
+[node name="Control" type="Control" parent="ShortcutsWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(765980327, 971726425) index="1" unique_id=217377118]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="CornerIcon" type="TextureRect" parent="ShortcutsWindow/Control/WindowContainer/Content/Control" unique_id=1016262799 node_paths=PackedStringArray("sound")]
 layout_mode = 0
-offset_left = 1842.0
-offset_top = 875.0
-offset_right = 1913.0
-offset_bottom = 937.0
+offset_right = 71.0
+offset_bottom = 62.0
 texture = ExtResource("29_rkakh")
 script = SubResource("GDScript_xtheg")
 sound = NodePath("HELLO")
 
-[node name="HELLO" type="AudioStreamPlayer" parent="ShortcutsWindow/Control/WindowContainer/Content/CornerIcon" unique_id=1781693095]
+[node name="HELLO" type="AudioStreamPlayer" parent="ShortcutsWindow/Control/WindowContainer/Content/Control/CornerIcon" unique_id=1781693095]
 stream = ExtResource("30_id8vy")
 
 [node name="GamesWindow" parent="." unique_id=300262121 instance=ExtResource("19_rkakh")]
@@ -1266,26 +1264,27 @@ maximize_disabled = true
 min_size = Vector2i(193, 270)
 max_size = Vector2i(1920, 1040)
 
-[node name="Topbar" parent="GamesWindow/Control/WindowContainer" index="0"]
+[node name="Control" parent="GamesWindow" index="0" unique_id=579132620]
+mouse_filter = 1
+
+[node name="WindowContainer" parent="GamesWindow/Control" index="0" unique_id=106878241]
+mouse_filter = 1
+
+[node name="Topbar" parent="GamesWindow/Control/WindowContainer" index="0" unique_id=763031887]
 z_index = 0
 
-[node name="Icon" parent="GamesWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
+[node name="Icon" parent="GamesWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(300262121, 1002331087) index="0" unique_id=1518425686]
 icon = ExtResource("34_im3ns")
 
-[node name="Title" parent="GamesWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
+[node name="Title" parent="GamesWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(300262121, 332691484) index="1" unique_id=2015855131]
 text = "GAMES"
 
-[node name="MarginContainer" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content" index="0" unique_id=1217171850]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+[node name="MarginContainer" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(300262121, 971726425) index="0" unique_id=1217171850]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
 [node name="ScrollContainer" type="ScrollContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer" unique_id=629448063]
 layout_mode = 2
@@ -1496,34 +1495,30 @@ text = "OneShot Funkin'"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="CornerIcon" type="TextureRect" parent="GamesWindow/Control/WindowContainer/Content" index="1" unique_id=634679575 node_paths=PackedStringArray("sound")]
-layout_mode = 0
-offset_left = 1842.0
-offset_top = 875.0
-offset_right = 1913.0
-offset_bottom = 937.0
-texture = ExtResource("29_rkakh")
-script = SubResource("GDScript_xtheg")
-sound = NodePath("HELLO")
-
-[node name="HELLO" type="AudioStreamPlayer" parent="GamesWindow/Control/WindowContainer/Content/CornerIcon" unique_id=205516177]
-stream = ExtResource("30_id8vy")
-
 [node name="ShutdownPopup" parent="." unique_id=1496860589 instance=ExtResource("33_id8vy")]
 title = "SHUTDOWN"
 visible = false
 minimize_disabled = true
 maximize_disabled = true
 
-[node name="Icon" parent="ShutdownPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
+[node name="Control" parent="ShutdownPopup" index="1" unique_id=579132620]
+mouse_filter = 1
+
+[node name="WindowContainer" parent="ShutdownPopup/Control" index="0" unique_id=106878241]
+mouse_filter = 1
+
+[node name="Icon" parent="ShutdownPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(1496860589, 1002331087) index="0" unique_id=1518425686]
 icon = ExtResource("25_opjno")
 
-[node name="Title" parent="ShutdownPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
+[node name="Title" parent="ShutdownPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(1496860589, 332691484) index="1" unique_id=2015855131]
 visible = false
 clip_text = false
 text_overrun_behavior = 0
 
-[node name="Quest" parent="ShutdownPopup/Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="0"]
+[node name="Content" parent="ShutdownPopup/Control/WindowContainer" index="1" unique_id=971726425]
+mouse_filter = 0
+
+[node name="Quest" parent="ShutdownPopup/Control/WindowContainer/Content/PopupMargin/VBoxContainer" parent_id_path=PackedInt32Array(1496860589, 1750489675) index="0" unique_id=1354308728]
 text = "SHUTDOWN_QUEST"
 
 [node name="ThemesWindow" parent="." unique_id=995621362 instance=ExtResource("19_rkakh")]
@@ -1536,28 +1531,32 @@ maximize_disabled = true
 min_size = Vector2i(193, 270)
 max_size = Vector2i(1920, 1040)
 
-[node name="Topbar" parent="ThemesWindow/Control/WindowContainer" index="0"]
+[node name="Control" parent="ThemesWindow" index="0" unique_id=579132620]
+mouse_filter = 1
+
+[node name="WindowContainer" parent="ThemesWindow/Control" index="0" unique_id=106878241]
+mouse_filter = 1
+
+[node name="Topbar" parent="ThemesWindow/Control/WindowContainer" index="0" unique_id=763031887]
 z_index = 0
 
-[node name="Icon" parent="ThemesWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
+[node name="Icon" parent="ThemesWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(995621362, 1002331087) index="0" unique_id=1518425686]
 icon = ExtResource("17_ijoax")
 
-[node name="Title" parent="ThemesWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
+[node name="Title" parent="ThemesWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(995621362, 332691484) index="1" unique_id=2015855131]
 text = "THEMES"
 clip_text = false
 text_overrun_behavior = 0
 
+[node name="Content" parent="ThemesWindow/Control/WindowContainer" index="1" unique_id=971726425]
+mouse_filter = 0
+
 [node name="MarginContainer" type="MarginContainer" parent="ThemesWindow/Control/WindowContainer/Content" index="0" unique_id=328062935]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer" unique_id=755679370]
 layout_mode = 2
@@ -2097,19 +2096,14 @@ position = Vector2i(418, 0)
 size = Vector2i(486, 366)
 visible = false
 
-[node name="Icon" parent="ThemesWindow/ThemeEditorWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
+[node name="Icon" parent="ThemesWindow/ThemeEditorWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(1041291773, 1002331087) index="0" unique_id=1518425686]
 icon = ExtResource("17_ijoax")
 
-[node name="Title" parent="ThemesWindow/ThemeEditorWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
+[node name="Title" parent="ThemesWindow/ThemeEditorWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(1041291773, 332691484) index="1" unique_id=2015855131]
 text = "THEME_EDITOR"
 
-[node name="MarginContainer" type="MarginContainer" parent="ThemesWindow/ThemeEditorWindow/Control/WindowContainer/Content" index="0" unique_id=1461992004]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="ThemesWindow/ThemeEditorWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(1041291773, 971726425) index="0" unique_id=1461992004]
+layout_mode = 2
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
@@ -2237,27 +2231,28 @@ text = "APPLY"
 [node name="SettingsWindow" parent="." unique_id=759122465 instance=ExtResource("38_q4750")]
 title = "SETTINGS"
 initial_position = 4
-size = Vector2i(704, 404)
+size = Vector2i(704, 406)
+visible = false
 wrap_controls = true
 maximize_disabled = true
 min_size = Vector2i(704, 404)
 
-[node name="Icon" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
+[node name="Icon" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(759122465, 1002331087) index="0" unique_id=1518425686]
 icon = ExtResource("16_kv3aw")
 
-[node name="Title" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
+[node name="Title" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(759122465, 332691484) index="1" unique_id=2015855131]
 size_flags_horizontal = 1
 text = "SETTINGS"
 clip_text = false
 text_overrun_behavior = 0
 
-[node name="HSeparator" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="2" unique_id=825365711]
+[node name="HSeparator" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(759122465, 332691484) index="2" unique_id=825365711]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 8
 theme_override_styles/separator = SubResource("StyleBoxEmpty_xtheg")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="3" unique_id=312492250]
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(759122465, 332691484) index="3" unique_id=312492250]
 layout_mode = 2
 mouse_filter = 2
 
@@ -2281,14 +2276,17 @@ tab_2/title = "OTHER"
 script = ExtResource("64_ubkm4")
 pages = [NodePath("../../../../../Content/MarginContainer/General"), NodePath("../../../../../Content/MarginContainer/Niko"), NodePath("../../../../../Content/MarginContainer/Other")]
 
-[node name="HSeparator2" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="4" unique_id=260286739]
+[node name="HSeparator2" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(759122465, 332691484) index="4" unique_id=260286739]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_constants/separation = 8
 theme_override_styles/separator = SubResource("StyleBoxEmpty_xtheg")
 
-[node name="Button" type="Button" parent="SettingsWindow/Control/WindowContainer/Content" index="0" unique_id=2143305622]
+[node name="Control" type="Control" parent="SettingsWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(759122465, 971726425) index="0" unique_id=1056996756]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/Control" unique_id=2143305622]
 self_modulate = Color(1, 1, 1, 0.164706)
 custom_minimum_size = Vector2(400, 354)
 layout_mode = 1
@@ -2297,10 +2295,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -404.0
-offset_top = -358.0
-offset_right = -4.0
-offset_bottom = -4.0
+offset_left = -400.0
+offset_top = -354.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
@@ -2308,36 +2304,78 @@ theme_type_variation = &"IconButton"
 icon = ExtResource("65_82rj2")
 expand_icon = true
 
-[node name="Button2" type="Button" parent="SettingsWindow/Control/WindowContainer/Content" index="1" unique_id=1202350171]
+[node name="Button2" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/Control" unique_id=1202350171]
 self_modulate = Color(1, 1, 1, 0.164706)
 custom_minimum_size = Vector2(400, 354)
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = -358.0
-offset_right = 404.0
-offset_bottom = -4.0
-grow_vertical = 0
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -177.0
+offset_right = 400.0
+offset_bottom = 177.0
+grow_vertical = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
 icon = ExtResource("66_76in0")
 expand_icon = true
 
-[node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/Control/WindowContainer/Content" index="2" unique_id=1189183008]
+[node name="LampEasteregg" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/Control" unique_id=609729115]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -0.5
-offset_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
+offset_left = -31.0
+offset_top = -32.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("90_2umrp")
+
+[node name="LampEasteregg2" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/Control" unique_id=1107665669]
+visible = false
+self_modulate = Color(0.588235, 0.392157, 1, 1)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -62.0
+offset_top = -24.0
+offset_right = -43.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_j8kkg")
+
+[node name="Version" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/Control" unique_id=244057053]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -30.0
+offset_right = -36.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_76in0")
+text = "v0.0.0"
+script = SubResource("GDScript_1b22m")
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(759122465, 971726425) index="1" unique_id=1189183008]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="General" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=796068923]
 visible = false
@@ -2843,7 +2881,7 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 button_pressed = true
 text = "SNAP_TO_BOTTOM"
-script = ExtResource("92_0dwp6")
+script = ExtResource("85_8g87k")
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SnapToBottom" unique_id=100780105 instance=ExtResource("42_sp30j")]
 layout_mode = 1
@@ -3213,67 +3251,29 @@ script = SubResource("GDScript_k2ony")
 nodes = [NodePath("../DoEvents"), NodePath("../NikoAlwaysOnTop"), NodePath("../WindowsAlwaysOnTop"), NodePath("../TaskBarIcon")]
 texts = Array[String](["DO_EVENTS_HINT", "NIKO_ALWAYS_ON_TOP_HINT", "WINDOWS_ALWAYS_ON_TOP_HINT", "TAKSBAR_ICON_HINT"])
 
-[node name="LampEasteregg" type="Button" parent="SettingsWindow/Control/WindowContainer/Content" index="3" unique_id=609729115]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -39.0
-offset_top = -39.0
-offset_right = -12.0
-offset_bottom = -11.0
-grow_horizontal = 0
-grow_vertical = 0
-mouse_filter = 2
-theme_type_variation = &"IconButton"
-icon = ExtResource("90_2umrp")
-
-[node name="LampEasteregg2" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content" index="4" unique_id=1107665669]
-visible = false
-self_modulate = Color(0.588235, 0.392157, 1, 1)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -62.0
-offset_top = -24.0
-offset_right = -43.0
-offset_bottom = -9.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = SubResource("AtlasTexture_j8kkg")
-
-[node name="Version" type="Label" parent="SettingsWindow/Control/WindowContainer/Content" index="5" unique_id=244057053]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -106.0
-offset_top = -35.0
-offset_right = -46.0
-offset_bottom = -14.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_76in0")
-text = "v0.0.0"
-script = SubResource("GDScript_1b22m")
-
 [node name="ResetDataPopup" parent="SettingsWindow" unique_id=865820121 instance=ExtResource("33_id8vy")]
 visible = false
 
-[node name="Icon" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
+[node name="Control" parent="SettingsWindow/ResetDataPopup" index="1" unique_id=579132620]
+mouse_filter = 1
+
+[node name="WindowContainer" parent="SettingsWindow/ResetDataPopup/Control" index="0" unique_id=106878241]
+mouse_filter = 1
+
+[node name="Topbar" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer" index="0" unique_id=763031887]
+theme_type_variation = &""
+
+[node name="Icon" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(865820121, 1002331087) index="0" unique_id=1518425686]
 icon = ExtResource("82_l76vu")
 
-[node name="Title" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
+[node name="Title" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(865820121, 332691484) index="1" unique_id=2015855131]
 text = "DATA_RESET_POPUP"
 
-[node name="Quest" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="0"]
+[node name="Content" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer" index="1" unique_id=971726425]
+mouse_filter = 0
+theme_type_variation = &""
+
+[node name="Quest" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Content/PopupMargin/VBoxContainer" parent_id_path=PackedInt32Array(865820121, 1750489675) index="0" unique_id=1354308728]
 text = "DATA_RESET_POPUP_MESSAGE"
 
 [node name="ShopWindow" parent="." unique_id=1900906359 instance=ExtResource("38_q4750")]
@@ -3283,17 +3283,12 @@ visible = false
 minimize_disabled = true
 maximize_disabled = true
 
-[node name="Title" parent="ShopWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
+[node name="Title" parent="ShopWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(1900906359, 332691484) index="1" unique_id=2015855131]
 text = "SHOP"
 
-[node name="ShopMargin" type="MarginContainer" parent="ShopWindow/Control/WindowContainer/Content" index="0" unique_id=85966485]
+[node name="ShopMargin" type="MarginContainer" parent="ShopWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(1900906359, 971726425) index="0" unique_id=85966485]
 clip_contents = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
 [node name="ShopImagesContent" type="Control" parent="ShopWindow/Control/WindowContainer/Content/ShopMargin" unique_id=1378140479]
 clip_contents = true
@@ -3412,23 +3407,18 @@ size = Vector2i(400, 560)
 visible = false
 maximize_disabled = true
 
-[node name="Icon" parent="AchievementsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
+[node name="Icon" parent="AchievementsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(1722617301, 1002331087) index="0" unique_id=1518425686]
 icon = ExtResource("87_s2ody")
 
-[node name="Title" parent="AchievementsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
+[node name="Title" parent="AchievementsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(1722617301, 332691484) index="1" unique_id=2015855131]
 text = "ACHIEVEMENTS"
 
-[node name="MarginContainer" type="MarginContainer" parent="AchievementsWindow/Control/WindowContainer/Content" index="0" unique_id=408602207]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+[node name="MarginContainer" type="MarginContainer" parent="AchievementsWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(1722617301, 971726425) index="0" unique_id=408602207]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
 [node name="ScrollContainer" type="ScrollContainer" parent="AchievementsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=1466575130]
 layout_mode = 2
@@ -3461,7 +3451,6 @@ borderless = true
 always_on_top = true
 transparent = true
 unfocusable = true
-mouse_passthrough = true
 exclude_from_capture = true
 minimize_disabled = true
 maximize_disabled = true
@@ -3521,7 +3510,14 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Achivement text"
 
-[node name="HSeparator" type="HSeparator" parent="AchievementOverlay/PanelContainer/HBoxContainer/VBoxContainer" unique_id=1311995242]
+[node name="MarginContainer" type="MarginContainer" parent="AchievementOverlay/PanelContainer/HBoxContainer/VBoxContainer" unique_id=324718918]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = -1
+theme_override_constants/margin_bottom = 0
+
+[node name="HSeparator" type="HSeparator" parent="AchievementOverlay/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=1311995242]
 layout_mode = 2
 theme_override_constants/separation = 4
 
