@@ -30,7 +30,7 @@ func _ready():
 	
 	#GlobalController.SaveRequest.connect(func ():
 	#	shutdown_popup.popup()
-		#GlobalControlls.facepick_update.emit()
+		#GlobalControlls.facepic_update.emit()
 	#)
 
 

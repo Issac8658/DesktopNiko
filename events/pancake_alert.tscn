@@ -46,7 +46,7 @@ func _ready() -> void:
 						glitch.visible = true
 						glitch_sound.finished.connect(func ():
 							glitch.visible = false
-							ValuesContainer.ForceFacepick(\"pancakes\")
+							ValuesContainer.ForceFacepic(\"pancakes\")
 							AchievementsController.TakeAchievement(\"worst_friend\", true)
 							popup.popup()
 						, CONNECT_ONE_SHOT)
@@ -60,7 +60,7 @@ func _ready() -> void:
 				glitch.visible = true
 				glitch_sound.finished.connect(func ():
 					glitch.visible = false
-					ValuesContainer.ForceFacepick(\"pancakes\")
+					ValuesContainer.ForceFacepic(\"pancakes\")
 					popup.popup()
 				, CONNECT_ONE_SHOT)
 				glitch_sound.play()
@@ -71,10 +71,10 @@ func do_event() -> void:
 	if not eventing:
 		eventing = true
 		popup.popup()
-		ValuesContainer.ForceFacepick(\"pancakes\")
+		ValuesContainer.ForceFacepic(\"pancakes\")
 
 func revert():
-	ValuesContainer.UnforceFacepick()
+	ValuesContainer.UnforceFacepic()
 	called_to_clear.emit()
 
 func play_eating_anim():
@@ -84,19 +84,19 @@ func play_eating_anim():
 
 func anim_step():
 	match _anim_state:
-		0: ValuesContainer.ForceFacepick(\"eat1\")
-		1: ValuesContainer.ForceFacepick(\"eat2\")
-		2: ValuesContainer.ForceFacepick(\"eat1\")
-		3: ValuesContainer.ForceFacepick(\"eat2\")
-		4: ValuesContainer.ForceFacepick(\"eat1\")
-		5: ValuesContainer.ForceFacepick(\"eat2\")
-		6: ValuesContainer.ForceFacepick(\"eat1\")
+		0: ValuesContainer.ForceFacepic(\"eat1\")
+		1: ValuesContainer.ForceFacepic(\"eat2\")
+		2: ValuesContainer.ForceFacepic(\"eat1\")
+		3: ValuesContainer.ForceFacepic(\"eat2\")
+		4: ValuesContainer.ForceFacepic(\"eat1\")
+		5: ValuesContainer.ForceFacepic(\"eat2\")
+		6: ValuesContainer.ForceFacepic(\"eat1\")
 		7: revert()
 	_anim_state += 1
 
 func press_no():
 	print(\"pressed no\")
-	ValuesContainer.ForceFacepick(\"super_cry\")
+	ValuesContainer.ForceFacepic(\"super_cry\")
 	cry_sound.play()
 "
 

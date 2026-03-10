@@ -16,7 +16,7 @@ func _ready() -> void:
 	)
 	
 	cancel_button.pressed.connect(func():
-		#GlobalControlls.facepick_update.emit()
+		#GlobalControlls.facepic_update.emit()
 		no_button_pressed.emit()
 		visible = false
 	)

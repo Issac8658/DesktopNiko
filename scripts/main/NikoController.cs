@@ -61,9 +61,9 @@ public partial class NikoController : Node
 
 		NikoAnimationPlayer.AnimationFinished += animName => DoWhatNikoNeedToDo();
 		NikoAnimationPlayer.AnimationStarted += animName => DoWhatNikoNeedToDo();
-		_valuesContainer.FacepickForced += FacepicId => DoWhatNikoNeedToDo();
+		_valuesContainer.FacepicForced += FacepicId => DoWhatNikoNeedToDo();
 		_valuesContainer.WorldMachineToggled += Toggled => DoWhatNikoNeedToDo();
-		_valuesContainer.FacepickUnforced += DoWhatNikoNeedToDo;
+		_valuesContainer.FacepicUnforced += DoWhatNikoNeedToDo;
 		_valuesContainer.GlobalTimerTicked += GlobalTimerTicked;
 
 		NikoSpriteNode.GuiInput += Event =>

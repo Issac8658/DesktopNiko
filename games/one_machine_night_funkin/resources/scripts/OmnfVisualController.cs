@@ -21,23 +21,23 @@ public partial class OmnfVisualController : Node
 	[Export]
 	public Control DamageFill;
 	[Export]
-	public TextureRect NikoFacepickRect;
+	public TextureRect NikoFacepicRect;
 	[Export]
-	public TextureRect WmFacepickRect;
+	public TextureRect WmFacepicRect;
 
-	[ExportGroup("Facepicks", "Facepick")]
+	[ExportGroup("Facepics", "Facepic")]
 	[Export]
-	public string FacepickNikoDefault;
+	public string FacepicNikoDefault;
 	[Export]
-	public string FacepickNikoHigh;
+	public string FacepicNikoHigh;
 	[Export]
-	public string FacepickNikoLow;
+	public string FacepicNikoLow;
 	[Export]
-	public string FacepickWMDefault;
+	public string FacepicWMDefault;
 	[Export]
-	public string FacepickWMHigh;
+	public string FacepicWMHigh;
 	[Export]
-	public string FacepickWMLow;
+	public string FacepicWMLow;
 	[Export]
 	public Label HealthLabel;
 
@@ -56,8 +56,8 @@ public partial class OmnfVisualController : Node
 	public override void _Ready()
 	{
 		DamageFill.SetDeferred("Size", new Vector2(FillContainer.Size.X * (100f - _health) / 100f, DamageFill.Size.Y));
-		NikoFacepickRect.Texture = (Texture2D)GetNode("/root/NikoSpritesModule").Call("get_sprite", FacepickNikoDefault);
-		WmFacepickRect.Texture = (Texture2D)GetNode("/root/NikoSpritesModule").Call("get_sprite", FacepickWMDefault);
+		NikoFacepicRect.Texture = (Texture2D)GetNode("/root/NikoSpritesModule").Call("get_sprite", FacepicNikoDefault);
+		WmFacepicRect.Texture = (Texture2D)GetNode("/root/NikoSpritesModule").Call("get_sprite", FacepicWMDefault);
 		HealthLabel.Text = Convert.ToString(_health);
 	}
 
@@ -72,18 +72,18 @@ public partial class OmnfVisualController : Node
 
 		if (_health >= 90)
 		{
-			NikoFacepickRect.Texture = (Texture2D)GetNode("/root/NikoSpritesModule").Call("get_sprite", FacepickNikoHigh);
-			WmFacepickRect.Texture = (Texture2D)GetNode("/root/NikoSpritesModule").Call("get_sprite", FacepickWMLow);
+			NikoFacepicRect.Texture = (Texture2D)GetNode("/root/NikoSpritesModule").Call("get_sprite", FacepicNikoHigh);
+			WmFacepicRect.Texture = (Texture2D)GetNode("/root/NikoSpritesModule").Call("get_sprite", FacepicWMLow);
 		}
 		else if (_health <= 10)
 		{
-			NikoFacepickRect.Texture = (Texture2D)GetNode("/root/NikoSpritesModule").Call("get_sprite", FacepickNikoLow);
-			WmFacepickRect.Texture = (Texture2D)GetNode("/root/NikoSpritesModule").Call("get_sprite", FacepickWMHigh);
+			NikoFacepicRect.Texture = (Texture2D)GetNode("/root/NikoSpritesModule").Call("get_sprite", FacepicNikoLow);
+			WmFacepicRect.Texture = (Texture2D)GetNode("/root/NikoSpritesModule").Call("get_sprite", FacepicWMHigh);
 		}
 		else
 		{
-			NikoFacepickRect.Texture = (Texture2D)GetNode("/root/NikoSpritesModule").Call("get_sprite", FacepickNikoDefault);
-			WmFacepickRect.Texture = (Texture2D)GetNode("/root/NikoSpritesModule").Call("get_sprite", FacepickWMDefault);
+			NikoFacepicRect.Texture = (Texture2D)GetNode("/root/NikoSpritesModule").Call("get_sprite", FacepicNikoDefault);
+			WmFacepicRect.Texture = (Texture2D)GetNode("/root/NikoSpritesModule").Call("get_sprite", FacepicWMDefault);
 		}
 		HealthLabel.Text = Convert.ToString(_health);
 	}

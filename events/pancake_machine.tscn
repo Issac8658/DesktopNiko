@@ -34,9 +34,9 @@ signal called_to_clear()
 func _ready() -> void:
 	animator.animation_finished.connect(func (anim):
 		if anim == \"drop\":
-			ValuesContainer.ForceFacepick(\"pancakes\")
+			ValuesContainer.ForceFacepic(\"pancakes\")
 			passcode_show_button.pressed.connect(func ():
-				ValuesContainer.ForceFacepick(\"huh\")
+				ValuesContainer.ForceFacepic(\"huh\")
 				enter_sound.play()
 				passcode_show_button.text = \"EVENT_PM_SOMETHING_WRONG\"
 				passcode_show_button.pressed.connect(func ():
@@ -46,7 +46,7 @@ func _ready() -> void:
 					cancel_button.pressed.connect(func ():
 						if passcode_parts_contrainers[0].text + passcode_parts_contrainers[1].text + passcode_parts_contrainers[2].text == PASSCODE:
 							#GlobalControlls.doned_events += 1
-							ValuesContainer.ForceFacepick(\"pancakes\")
+							ValuesContainer.ForceFacepic(\"pancakes\")
 							animator.play(\"true\")
 							if not AchievementsController.IsAchievementTaked(\"hacked_a_machine\"):
 								AchievementsController.TakeAchievement(\"hacked_a_machine\", true)
@@ -73,11 +73,11 @@ func do_event():
 	window.position.x = usable_rect.position.x + usable_rect.size.x / 2 - window.size.x / 2
 	#container.position.y = -(1040 - window.size.y)
 	window.visible = true
-	ValuesContainer.ForceFacepick(\"huh\")
+	ValuesContainer.ForceFacepic(\"huh\")
 	animator.play(\"drop\")
 
 func revert():
-	ValuesContainer.UnforceFacepick()
+	ValuesContainer.UnforceFacepic()
 	called_to_clear.emit()
 
 func update_mouse_passthrough_polygon():

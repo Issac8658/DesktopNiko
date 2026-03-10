@@ -5,10 +5,10 @@ GAMING_MODE,Gaming mode,Игровой режим,Spielmodus,Ігровий ре
 GAMING_MODE_N,Gaming mode(doesn't fully work),Игровой режим(не закончен),Spielmodus(nicht komplett fertig),Ігровий режим(не закінчений)
 PEACEFUL_MODE,Peaceful mode,Мирный режим,Friedliches Regime,Мирний режим
 SHOW_SAVING_ICON,Saving icon,Значок сохранения,Symbol speichern,Значок збереження
-FACEPICK_DEFAULT,Default,Обычный,Gewöhnlich,Звичайний
-FACEPICK_SPEAK,Speak,Мяуканье,Miauen,Мяукання
-FACEPICK_SCARED,Scared,Напуган,Erschreckt,Наляканий
-FACEPICK_SCARED_SPEAK,Scared speak,Удивлён,Berrascht,Здивований
+FACEPIC_DEFAULT,Default,Обычный,Gewöhnlich,Звичайний
+FACEPIC_SPEAK,Speak,Мяуканье,Miauen,Мяукання
+FACEPIC_SCARED,Scared,Напуган,Erschreckt,Наляканий
+FACEPIC_SCARED_SPEAK,Scared speak,Удивлён,Berrascht,Здивований
 MEOW_SOUND,Meow Sound: ,Звук мява: ,Miau-Geräusch: ,Звук мяву:
 NIKO_SCALE,Niko's scale: ,Масштаб нико: ,Skala von Nico: ,Масштаб Ніко:
 MEOW_VOLUME,Meow volume,Громкость мява,Miau-Lautstärke,Гучність мяву
@@ -66,7 +66,7 @@ CLICKS,Clicks,Клики,Cliquen,Кліки
 TOTAL_TIME,Total time,Время работы,Betriebsdauer,Загальний час
 HINT,Hint,Подсказка,Hinweis,Підказка
 OTHER,Other,Другое,Andere,Інше
-LEGACY_FACEPICKS,Legacy facepicks,Старые спрайты,Alte Sprites,Старі спрайти
+LEGACY_FACEPICS,Legacy facepics,Старые спрайты,Alte Sprites,Старі спрайти
 SLEEPING,Sleeping,Сон,Chlafen,Сон
 CAN_SLEEP,Can sleep,Может спать,Kann schlafen,Може спати
 TIME_TO_SLEEP,Time to sleep,Время до сна,Zeit zum Schlafen,Час до сну

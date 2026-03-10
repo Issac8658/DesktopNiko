@@ -14,7 +14,7 @@ public partial class ValuesContainer : Node
 	[Signal] public delegate void ThemeChangedEventHandler(byte Theme);
 	// Niko States
 	[Signal] public delegate void NikoScaleChangedEventHandler(byte CurrentScale);
-	[Signal] public delegate void FacepicChangedEventHandler(byte FacepickType, string Facepick);
+	[Signal] public delegate void FacepicChangedEventHandler(byte FacepicType, string Facepic);
 	[Signal] public delegate void NikoTimeToSleepChangedEventHandler(int TimeToSleep);
 	[Signal] public delegate void GamingModeToggledEventHandler(bool GamingMode);
 	[Signal] public delegate void NikoSkinChangedEventHandler(string SkinId);
@@ -241,8 +241,8 @@ public partial class ValuesContainer : Node
 	[Signal] public delegate void GlobalTimerTickedEventHandler();
 	// Niko States
 	[Signal] public delegate void NikoHoverEventHandler(bool IsHovered);
-	[Signal] public delegate void FacepickForcedEventHandler(string FacepickId);
-	[Signal] public delegate void FacepickUnforcedEventHandler();
+	[Signal] public delegate void FacepicForcedEventHandler(string FacepicId);
+	[Signal] public delegate void FacepicUnforcedEventHandler();
 	[Signal] public delegate void NikoVisibilityChangedEventHandler(bool Visibility);
 
 	private int _CPS = 0;
@@ -254,8 +254,8 @@ public partial class ValuesContainer : Node
 	// Niko States
 	private bool _nikoHovered = false;
 	private bool _nikoVisible = true;
-	private bool _isFacepickForced = false;
-	private string _forcedFacepickId;
+	private bool _isFacepicForced = false;
+	private string _forcedFacepicId;
 
 // Publics
 	// Main
@@ -295,28 +295,28 @@ public partial class ValuesContainer : Node
 	}
 	public bool IsFacepicForced
 	{
-		get => _isFacepickForced;
+		get => _isFacepicForced;
 		set{}
 	}
 	public string ForcedFacepicId
 	{
-		get => _forcedFacepickId;
+		get => _forcedFacepicId;
 		set
 		{
-			ForceFacepick(value);
+			ForceFacepic(value);
 		}
 	}
 //Public functions
-	public void ForceFacepick(string FacepickId)
+	public void ForceFacepic(string FacepicId)
 	{
-		_isFacepickForced = true;
-		_forcedFacepickId = FacepickId;
-		EmitSignal("FacepickForced", FacepickId);
+		_isFacepicForced = true;
+		_forcedFacepicId = FacepicId;
+		EmitSignal("FacepicForced", FacepicId);
 	}
-	public void UnforceFacepick()
+	public void UnforceFacepic()
 	{
-		_isFacepickForced = false;
-		EmitSignal("FacepickUnforced");
+		_isFacepicForced = false;
+		EmitSignal("FacepicUnforced");
 	}
 
 	public override void _Ready()
