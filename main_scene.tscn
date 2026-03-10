@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://du34a885d0pvg" path="res://sounds/niko_meows/meow7.wav" id="8_8jixl"]
 [ext_resource type="AudioStream" uid="uid://y5wudf67lir6" path="res://sounds/niko_meows/omori_meow.ogg" id="9_30vx0"]
 [ext_resource type="Texture2D" uid="uid://dupq4qhtqbvbt" path="res://niko/niko_default/surprised.png" id="9_wr18j"]
+[ext_resource type="Material" uid="uid://iwvpwtihkrel" path="res://materials/world_machine_material.tres" id="10_0dwp6"]
 [ext_resource type="PackedScene" uid="uid://biwmud5wjovh4" path="res://prefabs/skin_viewer/skin_viewer.tscn" id="10_uush8"]
 [ext_resource type="Texture2D" uid="uid://qsweuhlblj1" path="res://icon.png" id="10_wr18j"]
 [ext_resource type="Script" uid="uid://cqdig7ltehghd" path="res://scripts/windows/components/status_icon_controller.gd" id="11_qwutr"]
@@ -106,7 +107,6 @@
 [ext_resource type="Texture2D" uid="uid://cqicl8sy06ti5" path="res://sprites/icons/error.png" id="82_l76vu"]
 [ext_resource type="Script" uid="uid://c5ttb0307rqhr" path="res://scripts/windows/functional_windows/settings/meow_sound_selector.gd" id="83_77al4"]
 [ext_resource type="Script" uid="uid://ugkxsuk4wjt" path="res://scripts/windows/functional_windows/settings/scale_selector.gd" id="83_dftep"]
-[ext_resource type="Script" uid="uid://b1r5wxkisfk4r" path="res://scripts/windows/functional_windows/settings/snap_to_bottom_setting.gd" id="85_8g87k"]
 [ext_resource type="Texture2D" uid="uid://o648cd5rcwja" path="res://sprites/characters/magpie_shop1.png" id="87_1b22m"]
 [ext_resource type="Texture2D" uid="uid://onqy26td0pr4" path="res://sprites/icons/achievements.png" id="87_s2ody"]
 [ext_resource type="PackedScene" uid="uid://bi5pu8hc54t3d" path="res://prefabs/achievement.tscn" id="88_05sqr"]
@@ -117,6 +117,7 @@
 [ext_resource type="Texture2D" uid="uid://c37kquhg5mklo" path="res://sprites/ui/world_machine/bulb.tres" id="90_2umrp"]
 [ext_resource type="PackedScene" uid="uid://dl8543lp0qwyv" path="res://prefabs/achievement_separator.tscn" id="90_05sqr"]
 [ext_resource type="Texture2D" uid="uid://dlavpw6yhbnab" path="res://sprites/achievements/unknown.png" id="91_3s6xx"]
+[ext_resource type="Script" uid="uid://cek4uuj03m1ws" path="res://scripts/windows/functional_windows/settings/world_machine_setting.gd" id="92_0dwp6"]
 [ext_resource type="Texture2D" uid="uid://dnwbeed7hrv83" path="res://sprites/ui/test_shit.png" id="92_ixb38"]
 [ext_resource type="Script" uid="uid://dbaokjrp7ef13" path="res://scripts/achievements/achievement_show.gd" id="92_l8no8"]
 [ext_resource type="Material" uid="uid://cmlk3yixxx4u4" path="res://materials/world_machine_glitch_material.tres" id="92_ldlqy"]
@@ -594,6 +595,7 @@ NikoSpriteNode = NodePath("NikoBase/Niko")
 NikoAnimationPlayer = NodePath("NikoBase/Niko/AnimationPlayer")
 MeowSoundPlayer = NodePath("MeowSound")
 SleepParticles = NodePath("NikoBase/GPUParticles2D")
+WorldMachineMaterial = ExtResource("10_0dwp6")
 
 [node name="MouseSoundPlayer" type="Node" parent="." unique_id=1573276748 node_paths=PackedStringArray("mouse_down_sound", "mouse_up_sound")]
 script = ExtResource("42_ek5vw")
@@ -2236,9 +2238,9 @@ text = "APPLY"
 title = "SETTINGS"
 initial_position = 4
 size = Vector2i(704, 404)
-visible = false
 wrap_controls = true
 maximize_disabled = true
+min_size = Vector2i(704, 404)
 
 [node name="Icon" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
 icon = ExtResource("16_kv3aw")
@@ -2338,6 +2340,7 @@ theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
 [node name="General" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=796068923]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 8
 
@@ -2600,29 +2603,10 @@ nodes = [NodePath("../../SettingsPanel/Peaceful"), NodePath("../../SettingsPanel
 texts = Array[String](["PEACEFUL_MODE_HINT", "SAVING_ICON_HINT", "GAMING_MODE_HINT", "CLICK_SOUND_HINT", "SHOW_ACHIEVEMENTS_HINT"])
 
 [node name="Niko" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=320743199]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="FacepicksSelect" type="Control" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko" unique_id=346804121]
-custom_minimum_size = Vector2(318, 333)
-layout_mode = 2
-size_flags_vertical = 0
-theme_type_variation = &"ThinPanel"
-
-[node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect" unique_id=62515727]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
-
-[node name="GridContainer" type="GridContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer" unique_id=959886990 node_paths=PackedStringArray("OptionButtons")]
+[node name="GridContainer" type="GridContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko" unique_id=959886990 node_paths=PackedStringArray("OptionButtons")]
 layout_mode = 2
 theme_override_constants/h_separation = 1
 theme_override_constants/v_separation = 2
@@ -2630,175 +2614,119 @@ columns = 3
 script = ExtResource("8_2jcla")
 OptionButtons = [NodePath("Idle/OptionButton"), NodePath("Speak/OptionButton"), NodePath("Scare/OptionButton"), NodePath("ScareSpeak/OptionButton")]
 
-[node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" unique_id=1185377533]
+[node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1185377533]
 layout_mode = 2
 text = "FACEPICK_DEFAULT"
 horizontal_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
 
-[node name="VSeparator2" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" unique_id=1874949543]
+[node name="VSeparator2" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1874949543]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Label2" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" unique_id=1522091716]
+[node name="Label2" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1522091716]
 layout_mode = 2
 text = "FACEPICK_SPEAK"
 horizontal_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
 
-[node name="Idle" type="Control" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" unique_id=2035557298]
-custom_minimum_size = Vector2(120, 140)
+[node name="Idle" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=979954395]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer/Idle" unique_id=1329252268]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -60.0
-offset_top = -12.0
-offset_right = 60.0
-offset_bottom = 108.0
-grow_horizontal = 2
+[node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Idle" unique_id=1329252268]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
 texture = ExtResource("2_gyfs4")
+stretch_mode = 5
 
-[node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer/Idle" unique_id=1656476475]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -20.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Idle" unique_id=1656476475]
+layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
 
-[node name="VSeparator" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" unique_id=1233663303]
+[node name="VSeparator" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1233663303]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Speak" type="Control" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" unique_id=2047669413]
-custom_minimum_size = Vector2(120, 140)
+[node name="Speak" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=241891206]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer/Speak" unique_id=332199103]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -60.0
-offset_top = -12.0
-offset_right = 60.0
-offset_bottom = 108.0
-grow_horizontal = 2
+[node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Speak" unique_id=332199103]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
 texture = ExtResource("3_d5x1h")
+stretch_mode = 5
 
-[node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer/Speak" unique_id=1945537714]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -20.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Speak" unique_id=1945537714]
+layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
 
-[node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" unique_id=1013240464]
+[node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1013240464]
 layout_mode = 2
 
-[node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" unique_id=1781713608]
+[node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1781713608]
 layout_mode = 2
 
-[node name="HSeparator3" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" unique_id=1613854066]
+[node name="HSeparator3" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1613854066]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" unique_id=958129040]
+[node name="Label3" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=958129040]
 layout_mode = 2
 text = "FACEPICK_SCARED"
 horizontal_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
 
-[node name="VSeparator3" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" unique_id=1060096799]
+[node name="VSeparator3" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1060096799]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Label4" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" unique_id=1766029954]
+[node name="Label4" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1766029954]
 layout_mode = 2
 text = "FACEPICK_SCARED_SPEAK"
 horizontal_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
 
-[node name="Scare" type="Control" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" unique_id=1781478232]
-custom_minimum_size = Vector2(120, 140)
+[node name="Scare" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1752587635]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer/Scare" unique_id=624558841]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -60.0
-offset_top = -12.0
-offset_right = 60.0
-offset_bottom = 108.0
-grow_horizontal = 2
+[node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Scare" unique_id=624558841]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
 texture = ExtResource("8_7ycvg")
+stretch_mode = 5
 
-[node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer/Scare" unique_id=1621349757]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -20.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Scare" unique_id=1621349757]
+layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
 
-[node name="VSeparator4" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" unique_id=1012622975]
+[node name="VSeparator4" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1012622975]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="ScareSpeak" type="Control" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" unique_id=1897207192]
-custom_minimum_size = Vector2(120, 140)
+[node name="ScareSpeak" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=186221155]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer/ScareSpeak" unique_id=1184585687]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -60.0
-offset_top = -12.0
-offset_right = 60.0
-offset_bottom = 108.0
-grow_horizontal = 2
+[node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/ScareSpeak" unique_id=1184585687]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
 texture = ExtResource("9_wr18j")
+stretch_mode = 5
 
-[node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer/ScareSpeak" unique_id=297117380]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -20.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/ScareSpeak" unique_id=297117380]
+layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
@@ -2915,9 +2843,21 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 button_pressed = true
 text = "SNAP_TO_BOTTOM"
-script = ExtResource("85_8g87k")
+script = ExtResource("92_0dwp6")
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SnapToBottom" unique_id=100780105 instance=ExtResource("42_sp30j")]
+layout_mode = 1
+offset_top = -12.0
+offset_bottom = 12.0
+
+[node name="WorldMachine" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer" unique_id=849027869]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+button_pressed = true
+text = "WORLD_MACHINE"
+script = ExtResource("92_0dwp6")
+
+[node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/WorldMachine" unique_id=1653320294 instance=ExtResource("42_sp30j")]
 layout_mode = 1
 offset_top = -12.0
 offset_bottom = 12.0
@@ -3730,10 +3670,10 @@ draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_s2ody")
 
 [connection signal="gui_input" from="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Github/Button" to="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" method="_on_github_gui_input"]
-[connection signal="item_selected" from="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer/Idle/OptionButton" to="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" method="_on_idle_item_selected"]
-[connection signal="item_selected" from="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer/Speak/OptionButton" to="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" method="_on_speak_item_selected"]
-[connection signal="item_selected" from="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer/Scare/OptionButton" to="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" method="_on_scare_item_selected"]
-[connection signal="item_selected" from="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer/ScareSpeak/OptionButton" to="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/FacepicksSelect/MarginContainer/GridContainer" method="_on_scare_speak_item_selected"]
+[connection signal="item_selected" from="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Idle/OptionButton" to="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" method="_on_idle_item_selected"]
+[connection signal="item_selected" from="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Speak/OptionButton" to="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" method="_on_speak_item_selected"]
+[connection signal="item_selected" from="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Scare/OptionButton" to="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" method="_on_scare_item_selected"]
+[connection signal="item_selected" from="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/ScareSpeak/OptionButton" to="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" method="_on_scare_speak_item_selected"]
 
 [editable path="ShortcutsWindow"]
 [editable path="GamesWindow"]

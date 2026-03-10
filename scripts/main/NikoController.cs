@@ -33,6 +33,8 @@ public partial class NikoController : Node
 	public AudioStreamPlayer MeowSoundPlayer;
 	[Export]
 	public GpuParticles2D SleepParticles;
+	[Export]
+	public ShaderMaterial WorldMachineMaterial;
 
 	public override void _Ready()
 	{
@@ -57,12 +59,12 @@ public partial class NikoController : Node
 			WindowToOpen.Visible = !WindowToOpen.Visible;
 		};
 
-		_valuesContainer.FacepickForced += FacepicId => DoWhatNikoNeedToDo();
-		_valuesContainer.FacepickUnforced += DoWhatNikoNeedToDo;
-		_valuesContainer.GlobalTimerTicked += GlobalTimerTicked;
-
 		NikoAnimationPlayer.AnimationFinished += animName => DoWhatNikoNeedToDo();
 		NikoAnimationPlayer.AnimationStarted += animName => DoWhatNikoNeedToDo();
+		_valuesContainer.FacepickForced += FacepicId => DoWhatNikoNeedToDo();
+		_valuesContainer.WorldMachineToggled += Toggled => DoWhatNikoNeedToDo();
+		_valuesContainer.FacepickUnforced += DoWhatNikoNeedToDo;
+		_valuesContainer.GlobalTimerTicked += GlobalTimerTicked;
 
 		NikoSpriteNode.GuiInput += Event =>
 		{
@@ -70,7 +72,7 @@ public partial class NikoController : Node
 				if (EventMouse.IsPressed() && EventMouse.ButtonIndex == MouseButton.Left && !_valuesContainer.IsFacepicForced)
 				{
 					Click();
-					// GetNode<NikoDialog>("/root/NikoDialog").ShowDialog(new(200, 60), "meow");
+					//GetNode<NikoDialog>("/root/NikoDialog").ShowDialog(new(200, 60), "meow");
 				}
 		};
 		//GetNode<NikoDialog>("/root/NikoDialog").ShowNextRequest += () =>
@@ -128,6 +130,7 @@ public partial class NikoController : Node
 					SetSprite(_valuesContainer.IdleFacepic);
 				break;
 		}
+		NikoSpriteNode.Material = _valuesContainer.IsWorldMachine ? WorldMachineMaterial : null;
 	}
 
 

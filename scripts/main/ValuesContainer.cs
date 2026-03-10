@@ -18,13 +18,27 @@ public partial class ValuesContainer : Node
 	[Signal] public delegate void NikoTimeToSleepChangedEventHandler(int TimeToSleep);
 	[Signal] public delegate void GamingModeToggledEventHandler(bool GamingMode);
 	[Signal] public delegate void NikoSkinChangedEventHandler(string SkinId);
+	[Signal] public delegate void WorldMachineToggledEventHandler(bool Toggled);
 
-// Duplicates
-	// Main
+	#region Variables to Save
+
+
+
+
+
+    #region >Duplicates
+
+
+
+
+
+    #region >>Main
 	private ulong _clicks = 0;
 	private string _verison;
+	#endregion
 
-	// TWM values
+
+    #region >>TWM
 	private byte _language = 0; // 0 - eng, 1 - rus, 2 - deu, 3 - ukr
 	private bool _nikoAlwaysOnTop = true;
 	private bool _showTaskbarIcon = true;
@@ -33,8 +47,8 @@ public partial class ValuesContainer : Node
 	//private bool _shutdownButtonHovered = false;
 	//private bool _shutdownPopupShowed = false;
 	private byte _currentTheme = 0;
-
-	// Niko States
+	#endregion
+	#region >>Niko States
 	private byte _nikoScale = 1; // 0 - 0.5x, 1 - 1x, 2 - 2x, 3 - 3x, 4 - 4x
 	private string _idleFacepic = "smile";
 	private string _speakFacepic = "speak";
@@ -43,9 +57,11 @@ public partial class ValuesContainer : Node
 	private int _nikoTimeToSleep = 900; // in seconds
 	private bool _gamingModeEnabled = false;
 	private string _currentSkin = ""; // sets by SaveLoad.cs
+	private bool _isWorldMachine;
+	#endregion
+	#endregion
 
-// Publics
-	// Main
+	#region >Main
 	public uint TotalTime = 0;
 	public ulong Clicks
 	{
@@ -61,7 +77,8 @@ public partial class ValuesContainer : Node
 		get => _verison;
 		set {}
 	}
-	// TWM values
+	#endregion
+	#region >TWM
 	public bool MouseSoundEnabled = true;
 	public bool ShowSavingIcon = true;
 	public bool ShowAchievements = true;
@@ -137,14 +154,13 @@ public partial class ValuesContainer : Node
 			EmitSignal("ThemeChanged", value);
 		}
 	}
+	#endregion
 	
-	
-	// Niko States
+	#region >NikoStates
 	public byte CurrentMeowSoundId = 0;
 	public bool SnapToBottom = true;
 	public bool PeacfulMode = false;
 
-	//		Facepicks [
 	public string IdleFacepic
 	{
 		set
@@ -181,7 +197,6 @@ public partial class ValuesContainer : Node
 		}
 		get => _scareSpeakFacepic;
 	}
-	// 		] Facepicks
 	public byte NikoScale // 0 - 0.5x, 1 - 1x, 2 - 2x, 3 - 3x, 4 - 4x
 	{
 		set
@@ -200,7 +215,6 @@ public partial class ValuesContainer : Node
 			EmitSignal("NikoTimeToSleepChanged", value);
 		}
 	}
-	[Export]
 	public string CurrentSkin
 	{
 		set
@@ -210,16 +224,19 @@ public partial class ValuesContainer : Node
 		}
 		get => _currentSkin;
 	}
-
-
-
-
-
-
-
-	// variables that do not need to be saved
+	public bool IsWorldMachine
+	{
+		set
+		{
+			_isWorldMachine = value;
+			EmitSignal("WorldMachineToggled", value);
+		}
+		get => _isWorldMachine;
+	}
+	#endregion
+	#endregion
+	#region Other
 // Signals
-	// Main
 	[Signal] public delegate void ClickedEventHandler(int Difference);
 	[Signal] public delegate void GlobalTimerTickedEventHandler();
 	// Niko States
@@ -326,4 +343,5 @@ public partial class ValuesContainer : Node
 		AddChild(GlobalTimer);
 		GlobalTimer.Start();
 	}
+	#endregion
 }
