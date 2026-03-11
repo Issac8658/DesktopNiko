@@ -631,9 +631,6 @@ visible = false
 title = "SHORTCUTS"
 initial_position = 4
 size = Vector2i(358, 394)
-visible = false
-unresizable = false
-maximize_disabled = true
 min_size = Vector2i(193, 270)
 max_size = Vector2i(1920, 1040)
 
@@ -646,7 +643,10 @@ icon = ExtResource("20_o63de")
 [node name="Title" parent="ShortcutsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(765980327, 332691484) index="1" unique_id=2015855131]
 text = "SHORTCUTS"
 
-[node name="MarginContainer" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(765980327, 971726425) index="0" unique_id=475839431]
+[node name="Content" parent="ShortcutsWindow/Control/WindowContainer" parent_id_path=PackedInt32Array(765980327, 106878241) index="1" unique_id=971726425]
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content" index="0" unique_id=475839431]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
@@ -1238,7 +1238,7 @@ text = "SHUTDOWN"
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Control" type="Control" parent="ShortcutsWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(765980327, 971726425) index="1" unique_id=217377118]
+[node name="Control" type="Control" parent="ShortcutsWindow/Control/WindowContainer/Content" index="1" unique_id=217377118]
 layout_mode = 2
 mouse_filter = 2
 
@@ -1258,8 +1258,7 @@ title = "GAMES"
 initial_position = 4
 size = Vector2i(358, 394)
 visible = false
-unresizable = false
-maximize_disabled = true
+borderless = true
 min_size = Vector2i(193, 270)
 max_size = Vector2i(1920, 1040)
 
@@ -1278,7 +1277,10 @@ icon = ExtResource("34_im3ns")
 [node name="Title" parent="GamesWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(300262121, 332691484) index="1" unique_id=2015855131]
 text = "GAMES"
 
-[node name="MarginContainer" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(300262121, 971726425) index="0" unique_id=1217171850]
+[node name="Content" parent="GamesWindow/Control/WindowContainer" index="1" unique_id=971726425]
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content" index="0" unique_id=1217171850]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
@@ -1497,8 +1499,9 @@ autowrap_mode = 3
 [node name="ShutdownPopup" parent="." unique_id=1496860589 instance=ExtResource("33_id8vy")]
 title = "SHUTDOWN"
 visible = false
+unresizable = true
+borderless = true
 minimize_disabled = true
-maximize_disabled = true
 
 [node name="Control" parent="ShutdownPopup" index="1" unique_id=579132620]
 mouse_filter = 1
@@ -1514,9 +1517,6 @@ visible = false
 clip_text = false
 text_overrun_behavior = 0
 
-[node name="Content" parent="ShutdownPopup/Control/WindowContainer" index="1" unique_id=971726425]
-mouse_filter = 0
-
 [node name="Quest" parent="ShutdownPopup/Control/WindowContainer/Content/PopupMargin/VBoxContainer" parent_id_path=PackedInt32Array(1496860589, 1750489675) index="0" unique_id=1354308728]
 text = "SHUTDOWN_QUEST"
 
@@ -1525,8 +1525,7 @@ title = "THEMES"
 initial_position = 4
 size = Vector2i(358, 380)
 visible = false
-unresizable = false
-maximize_disabled = true
+borderless = true
 min_size = Vector2i(193, 270)
 max_size = Vector2i(1920, 1040)
 
@@ -1547,10 +1546,7 @@ text = "THEMES"
 clip_text = false
 text_overrun_behavior = 0
 
-[node name="Content" parent="ThemesWindow/Control/WindowContainer" index="1" unique_id=971726425]
-mouse_filter = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="ThemesWindow/Control/WindowContainer/Content" index="0" unique_id=328062935]
+[node name="MarginContainer" type="MarginContainer" parent="ThemesWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(995621362, 971726425) index="0" unique_id=328062935]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
@@ -2231,8 +2227,8 @@ text = "APPLY"
 title = "SETTINGS"
 initial_position = 4
 size = Vector2i(704, 406)
+visible = false
 wrap_controls = true
-maximize_disabled = true
 min_size = Vector2i(704, 404)
 
 [node name="Icon" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(759122465, 1002331087) index="0" unique_id=1518425686]
@@ -3249,6 +3245,9 @@ texts = Array[String](["DO_EVENTS_HINT", "NIKO_ALWAYS_ON_TOP_HINT", "WINDOWS_ALW
 
 [node name="ResetDataPopup" parent="SettingsWindow" unique_id=865820121 instance=ExtResource("33_id8vy")]
 visible = false
+unresizable = true
+borderless = true
+maximize_disabled = false
 
 [node name="Control" parent="SettingsWindow/ResetDataPopup" index="1" unique_id=579132620]
 mouse_filter = 1
@@ -3266,7 +3265,6 @@ icon = ExtResource("82_l76vu")
 text = "DATA_RESET_POPUP"
 
 [node name="Content" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer" index="1" unique_id=971726425]
-mouse_filter = 0
 theme_type_variation = &""
 
 [node name="Quest" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Content/PopupMargin/VBoxContainer" parent_id_path=PackedInt32Array(865820121, 1750489675) index="0" unique_id=1354308728]
@@ -3277,7 +3275,6 @@ initial_position = 4
 size = Vector2i(808, 656)
 visible = false
 minimize_disabled = true
-maximize_disabled = true
 
 [node name="Title" parent="ShopWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(1900906359, 332691484) index="1" unique_id=2015855131]
 text = "SHOP"
@@ -3401,7 +3398,6 @@ frame_progress = 0.30546513
 initial_position = 4
 size = Vector2i(400, 560)
 visible = false
-maximize_disabled = true
 
 [node name="Icon" parent="AchievementsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(1722617301, 1002331087) index="0" unique_id=1518425686]
 icon = ExtResource("87_s2ody")

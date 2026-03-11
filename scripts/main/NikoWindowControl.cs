@@ -8,6 +8,7 @@ public partial class NikoWindowControl : Control
 	private GlobalController _globalController;
 	private ValuesContainer _valuesContainer;
 	private NikoSkinManager _skinManager;
+	private WindowExstantions _windowExtantions;
 
 	[Export]
 	public Control NikoClickControl;
@@ -25,8 +26,9 @@ public partial class NikoWindowControl : Control
 	public override void _Ready()
 	{
 		_mainWindow = GetWindow();
-		_valuesContainer = GetNode("/root/ValuesContainer") as ValuesContainer;
+		_valuesContainer = GetNode<ValuesContainer>("/root/ValuesContainer");
 		_skinManager = GetNode<NikoSkinManager>("/root/NikoSkinManager");
+		_windowExtantions = GetNode<WindowExstantions>("/root/WindowExstantions");
 		//MainWindow.WrapControls = true;
 
 		_valuesContainer.NikoScaleChanged += (NikoScale) => UpdateScale();
@@ -54,6 +56,11 @@ public partial class NikoWindowControl : Control
 					//	}
 					//}
 		};
+		_valuesContainer.NikoAsWindowStateChanged += (ShowTaskbarIcon, NikoAlwaysOnTop) =>
+		{
+			_windowExtantions.UpdateWindowsExStyles(_mainWindow, !ShowTaskbarIcon);
+		};
+
 		UpdateScale();
 	}
 

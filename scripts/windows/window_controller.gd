@@ -14,13 +14,13 @@ func _ready() -> void:
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
 				if get_visible_rect().has_point(event.position):
-					DisplayServer.window_start_drag(get_window_id())
-	#				is_dragging = true
-	#				mouse_offset = event.position
-	#		else:
-	#			is_dragging = false
-	#	if event is InputEventMouseMotion and is_dragging:
-	#		MoveWindow(event.position - mouse_offset)
+					#DisplayServer.window_start_drag(get_window_id())
+					is_dragging = true
+					mouse_offset = event.position
+			else:
+				is_dragging = false
+		if event is InputEventMouseMotion and is_dragging:
+			MoveWindow(event.position - mouse_offset)
 	)
 	
 	CloseButton.pressed.connect(func ():
@@ -33,7 +33,7 @@ func _ready() -> void:
 	)
 	if HideButton:
 		HideButton.pressed.connect(func ():
-			mode = MODE_MINIMIZED
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MINIMIZED, get_window_id())
 		)
 	max_size = DisplayServer.screen_get_usable_rect(DisplayServer.SCREEN_PRIMARY).size
 

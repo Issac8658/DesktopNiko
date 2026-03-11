@@ -10,14 +10,14 @@ public partial class WindowClickablePolygon : Node2D
 	[Export]
 	public bool ShowTaskbarIcon;
 
-	private WindowMousePassthroughModule _passthroughModule;
+	private WindowExstantions _windowExstantions;
 	private Window _window;
 
 	private bool m_old = false;
 
 	public override void _Ready()
 	{
-		_passthroughModule = GetNode("/root/PassthroughModule") as WindowMousePassthroughModule;
+		_windowExstantions = GetNode<WindowExstantions>("/root/WindowExstantions");
 		_window = GetWindow();
 	}
 
@@ -35,7 +35,7 @@ public partial class WindowClickablePolygon : Node2D
 		if (m_new != m_old)
 		{
 			_window.MousePassthrough = m_new;
-			_passthroughModule.UpdateWindowsExStyles(_window, !ShowTaskbarIcon, true);
+			_windowExstantions.UpdateWindowsExStyles(_window, !ShowTaskbarIcon);
 			m_old = m_new;
 		}
 	}

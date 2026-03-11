@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Runtime.InteropServices;
 
-public partial class WindowMousePassthroughModule : Node
+public partial class WindowExstantions : Node
 {
 	private const int GWL_EXSTYLE = -20;
 	private const uint WS_EX_APPWINDOW = 0x00040000;
@@ -12,11 +12,16 @@ public partial class WindowMousePassthroughModule : Node
 	private const uint WS_EX_TOPMOST = 0x00000008;
 	private const uint DEFAULT_WS_STYLE = 0x20000900;
 	private const uint LWA_ALPHA = 0x2;
+
+	const uint SWP_FRAMECHANGED = 0x0020;
+	const uint SWP_NOMOVE = 0x0002;
+	const uint SWP_NOSIZE = 0x0001;
+	const uint SWP_NOZORDER = 0x0004;
 	
 	private const int SW_SHOW = 5;
 	private const int SW_HIDE = 0;
 
-	public void UpdateWindowsExStyles(Window window, bool HideTaskbarIcon, bool ForceWindowUpdate = true)
+	public void UpdateWindowsExStyles(Window window, bool HideTaskbarIcon, bool ForceWindowUpdate = false)
 	{
 		if (OS.GetName() == "Windows")
 		{
@@ -26,10 +31,12 @@ public partial class WindowMousePassthroughModule : Node
 			static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 			[DllImport("user32.dll")]
 			static extern bool SetLayeredWindowAttributes(IntPtr hwnd, uint crKey, byte bAlpha, uint dwFlags);
+			[DllImport("user32.dll")]
+			static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
 			//[DllImport("user32.dll")]
 			//static extern int GetWindowLong(IntPtr hWnd, int nIndex);
 
-			IntPtr hWnd = (nint)DisplayServer.WindowGetNativeHandle(DisplayServer.HandleType.WindowHandle, window.GetWindowId());
+			IntPtr hwnd = (nint)DisplayServer.WindowGetNativeHandle(DisplayServer.HandleType.WindowHandle, window.GetWindowId());
 
 			uint style = DEFAULT_WS_STYLE;
 			if (window.AlwaysOnTop)
@@ -46,10 +53,12 @@ public partial class WindowMousePassthroughModule : Node
 				style |= WS_EX_TRANSPARENT;
 			}
 			if (ForceWindowUpdate)
-			_ = SetWindowLong(hWnd, GWL_EXSTYLE, style);
-			SetLayeredWindowAttributes(hWnd, 0, 255, LWA_ALPHA);
+				ShowWindow(hwnd, SW_HIDE);
+			_ = SetWindowLong(hwnd, GWL_EXSTYLE, style);
+			SetLayeredWindowAttributes(hwnd, 0, 255, LWA_ALPHA);
+			SetWindowPos(hwnd, IntPtr.Zero, 0, 0, 0, 0, SWP_FRAMECHANGED | SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER);
 			if (ForceWindowUpdate)
-			ShowWindow(hWnd, SW_SHOW);
+				ShowWindow(hwnd, SW_SHOW);
 		}
 	}
 }

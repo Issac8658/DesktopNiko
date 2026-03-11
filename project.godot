@@ -37,7 +37,7 @@ buses/default_bus_layout="uid://bhb1lhs548lii"
 [autoload]
 
 ShutdownHandler="res://scripts/ShutdownHandler.cs"
-PassthroughModule="*res://scripts/WindowMousePassthroughModule.cs"
+WindowExstantions="*uid://dmmny8ej1eouw"
 ValuesContainer="*res://scripts/main/ValuesContainer.cs"
 AchievementsController="*uid://b55a3n8wcs3l"
 AchievementsRegistrar="uid://vog5mdsxiwq5"

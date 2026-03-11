@@ -115,7 +115,7 @@ func _ready() -> void:
 			size = DisplayServer.screen_get_size(main_window_screen) + Vector2i(1,1)
 			texture_rect.texture = ImageTexture.create_from_image(DisplayServer.screen_get_image(main_window_screen))
 			texture_rect.material.set_shader_parameter(\"offset_power\", 0)
-			PassthroughModule.UpdateWindowsExStyles(self, true, true)
+			WindowExstantions.UpdateWindowsExStyles(self, true, true)
 	)
 
 func _process(delta: float) -> void:
@@ -164,13 +164,13 @@ visible = false
 exclusive = true
 popup_window = false
 
-[node name="Icon" parent="PancakeQuest/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
+[node name="Icon" parent="PancakeQuest/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(76261233, 1002331087) index="0" unique_id=1518425686]
 icon = ExtResource("5_nm1hw")
 
-[node name="Title" parent="PancakeQuest/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
+[node name="Title" parent="PancakeQuest/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(76261233, 332691484) index="1" unique_id=2015855131]
 text = "PANCAKE_ALERT"
 
-[node name="Control" type="Control" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="0" unique_id=1855135970]
+[node name="Control" type="Control" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" parent_id_path=PackedInt32Array(76261233, 1750489675) index="0" unique_id=1855135970]
 custom_minimum_size = Vector2(0, 168)
 layout_mode = 2
 
@@ -189,10 +189,10 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_3kxgl")
 
-[node name="Quest" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="1"]
+[node name="Quest" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" parent_id_path=PackedInt32Array(76261233, 1750489675) index="1" unique_id=1354308728]
 text = "GIVE_PANCAKES_TO_NIKO_QUEST"
 
-[node name="Control2" type="Control" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="3" unique_id=1731252218]
+[node name="Control2" type="Control" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" parent_id_path=PackedInt32Array(76261233, 1750489675) index="3" unique_id=1731252218]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
