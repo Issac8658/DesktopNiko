@@ -22,7 +22,15 @@ func _ready() -> void:
 			if not event.is_pressed():
 				offset = clamp(offset, slider.min_value, slider.max_value)
 	)
-	slider.changed.connect(func ():
+	gui_input.connect(func (event : InputEvent):
+		if event is InputEventMouseButton:
+			if event.is_pressed():
+				if event.button_index == MOUSE_BUTTON_WHEEL_UP or event.button_index == MOUSE_BUTTON_WHEEL_RIGHT:
+					slider.value += slider.step
+				elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN or event.button_index == MOUSE_BUTTON_WHEEL_LEFT:
+					slider.value -= slider.step
+	)
+	slider.value_changed.connect(func (_value):
 		update()
 	)
 	slider.visibility_changed.connect(func ():

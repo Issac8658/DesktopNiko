@@ -112,6 +112,9 @@ public partial class SaveLoad : Node
             if (_achievementsController.IsAchievementTaked(achievement.Id))
                 TakedAchievements.Add(achievement.Id);
         saveFile.SetValue("Main", "TakedAchievements", TakedAchievements.ToArray());
+        saveFile.SetValue("TWM", "MasterVolume", AudioServer.GetBusVolumeLinear(0)); 
+        saveFile.SetValue("TWM", "MeowVolume", AudioServer.GetBusVolumeLinear(1)); 
+        saveFile.SetValue("TWM", "MusicVolume", AudioServer.GetBusVolumeLinear(2)); 
         // achievements saving here
 
         saveFile.Save(SAVE_FILE_PATH);
@@ -158,6 +161,8 @@ public partial class SaveLoad : Node
                     _achievementsController.TakeAchievement(achievementId, false);
                 }
             }
+            AudioServer.SetBusVolumeLinear(0, (float)saveFile.GetValue("Settings", "MasterVolume", 1));
+            AudioServer.SetBusVolumeLinear(1, (float)saveFile.GetValue("Settings", "MeowVolume", 1));
         }
         else
         {
@@ -187,6 +192,9 @@ public partial class SaveLoad : Node
                     _achievementsController.TakeAchievement(achievementId, false);
                 }
             }
+            AudioServer.SetBusVolumeLinear(0, (float)saveFile.GetValue("TWM", "MasterVolume", 1));
+            AudioServer.SetBusVolumeLinear(1, (float)saveFile.GetValue("TWM", "MeowVolume", 1));
+            AudioServer.SetBusVolumeLinear(2, (float)saveFile.GetValue("TWM", "MusicVolume", 1));
         }
         
     }

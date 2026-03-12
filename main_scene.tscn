@@ -102,7 +102,6 @@
 [ext_resource type="Script" uid="uid://fo02x77r4ikl" path="res://scripts/windows/functional_windows/settings/saving_icon_setting.gd" id="78_ly7qr"]
 [ext_resource type="Script" uid="uid://bin6f610l1ycj" path="res://scripts/windows/functional_windows/settings/show_achievements_setting.gd" id="79_7ggmy"]
 [ext_resource type="Script" uid="uid://c45ltmpprf6rs" path="res://scripts/loading_icon.gd" id="81_ubkm4"]
-[ext_resource type="Script" uid="uid://dh8nb5jo0naai" path="res://scripts/windows/functional_windows/settings/windows_only_checkbox.gd" id="82_36qg2"]
 [ext_resource type="Texture2D" uid="uid://cqicl8sy06ti5" path="res://sprites/icons/error.png" id="82_l76vu"]
 [ext_resource type="Script" uid="uid://c5ttb0307rqhr" path="res://scripts/windows/functional_windows/settings/meow_sound_selector.gd" id="83_77al4"]
 [ext_resource type="Script" uid="uid://ugkxsuk4wjt" path="res://scripts/windows/functional_windows/settings/scale_selector.gd" id="83_dftep"]
@@ -121,7 +120,11 @@
 [ext_resource type="Texture2D" uid="uid://dnwbeed7hrv83" path="res://sprites/ui/test_shit.png" id="92_ixb38"]
 [ext_resource type="Script" uid="uid://dbaokjrp7ef13" path="res://scripts/achievements/achievement_show.gd" id="92_l8no8"]
 [ext_resource type="Material" uid="uid://cmlk3yixxx4u4" path="res://materials/world_machine_glitch_material.tres" id="92_ldlqy"]
+[ext_resource type="Script" uid="uid://cxgqoi8ca5cdk" path="res://scripts/windows/functional_windows/settings/do_events_setting.gd" id="98_ude2c"]
+[ext_resource type="Script" uid="uid://biqdchmemfsah" path="res://scripts/windows/functional_windows/settings/niko_always_on_top_setting.gd" id="99_s717c"]
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="100_ix15y"]
+[ext_resource type="Script" uid="uid://ba7gjttxhpopm" path="res://scripts/windows/functional_windows/settings/windows_always_on_top_setting.gd" id="100_wonw5"]
+[ext_resource type="Script" uid="uid://dbdnt7ofhpfhh" path="res://scripts/windows/functional_windows/settings/task_bar_icon_setting.gd" id="101_ude2c"]
 [ext_resource type="SpriteFrames" uid="uid://45cacwxydn2f" path="res://sprites/ui/world_machine/bulb_anim.tres" id="106_tnorr"]
 [ext_resource type="Theme" uid="uid://depgndu5hyrlf" path="res://themes/OneShotButtonedTheme.tres" id="112_uush8"]
 [ext_resource type="Script" uid="uid://hwog55yrrr11" path="res://scripts/main/NikoClickablePolygon.cs" id="114_8jixl"]
@@ -2236,7 +2239,7 @@ text = "APPLY"
 [node name="SettingsWindow" parent="." unique_id=759122465 instance=ExtResource("38_q4750")]
 title = "SETTINGS"
 initial_position = 4
-size = Vector2i(704, 404)
+size = Vector2i(704, 406)
 visible = false
 wrap_controls = true
 min_size = Vector2i(704, 404)
@@ -2385,6 +2388,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="General" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=796068923]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 8
 
@@ -3028,7 +3032,6 @@ layout_mode = 2
 text = "settings.niko.press_f_to_flip"
 
 [node name="Other" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=2021078338]
-visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other" unique_id=688981092]
@@ -3077,11 +3080,11 @@ text = "%"
 [node name="HSlider2" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=2063593018 node_paths=PackedStringArray("label") instance=ExtResource("76_o48om")]
 layout_mode = 2
 max_value = 5.0
-step = 0.025
-value = 1.25
+step = 0.01
+value = 1.0
 script = ExtResource("77_k2ony")
 label = NodePath("../HBoxContainer2/Label3")
-mult = 40.0
+mult = 100.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=2029718582]
 layout_mode = 2
@@ -3107,12 +3110,12 @@ text = "%"
 [node name="HSlider" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=1230770970 node_paths=PackedStringArray("label") instance=ExtResource("76_o48om")]
 layout_mode = 2
 max_value = 5.0
-step = 0.025
-value = 1.25
+step = 0.01
+value = 1.0
 script = ExtResource("77_k2ony")
 label = NodePath("../HBoxContainer/Label3")
 idx = 1
-mult = 40.0
+mult = 100.0
 
 [node name="Control" type="Control" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=1462129201]
 layout_mode = 2
@@ -3127,7 +3130,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer3" unique_id=802889528]
 layout_mode = 2
-text = "ACTIONS"
+text = "settings.sections.actions"
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer3" unique_id=1743991800]
 layout_mode = 2
@@ -3135,7 +3138,7 @@ size_flags_horizontal = 3
 
 [node name="Save" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=1054755687]
 layout_mode = 2
-text = "SAVE"
+text = "settings.other.actions.save"
 
 [node name="ResetAllData" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=626692052]
 visible = false
@@ -3187,6 +3190,7 @@ layout_mode = 2
 layout_mode = 2
 button_pressed = true
 text = "settings.other.do_events"
+script = ExtResource("98_ude2c")
 
 [node name="StateIcon4" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/DoEvents" unique_id=764494011 instance=ExtResource("42_sp30j")]
 layout_mode = 1
@@ -3195,6 +3199,7 @@ layout_mode = 1
 layout_mode = 2
 button_pressed = true
 text = "settings.other.niko_always_on_top"
+script = ExtResource("99_s717c")
 
 [node name="StateIcon3" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/NikoAlwaysOnTop" unique_id=971866925 instance=ExtResource("42_sp30j")]
 layout_mode = 1
@@ -3203,6 +3208,7 @@ layout_mode = 1
 layout_mode = 2
 button_pressed = true
 text = "settings.other.windows_always_on_top"
+script = ExtResource("100_wonw5")
 
 [node name="StateIcon2" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/WindowsAlwaysOnTop" unique_id=1105209984 instance=ExtResource("42_sp30j")]
 layout_mode = 1
@@ -3226,7 +3232,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 button_pressed = true
 text = "settings.other.taskbar_icon"
-script = ExtResource("82_36qg2")
+script = ExtResource("101_ude2c")
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/TaskBarIcon" unique_id=908143607 instance=ExtResource("42_sp30j")]
 layout_mode = 1

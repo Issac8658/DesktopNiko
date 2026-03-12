@@ -45,16 +45,16 @@ public partial class NikoWindowControl : Control
 						//MouseOffset = DisplayServer.MouseGetPosition() - _mainWindow.Position;
 						//IsDragging = true;
 					}
-					//else
-					//{
-					//	IsDragging = false;
-					//	if (_valuesContainer.SnapToBottom)
-					//	{
-					//		Rect2I UsableRect = DisplayServer.ScreenGetUsableRect(DisplayServer.WindowGetCurrentScreen((int)DisplayServer.MainWindowId));
-					//		if (Mathf.Abs(_mainWindow.Position.Y + NikoSpriteNode.Size.Y - (UsableRect.Position.Y + UsableRect.Size.Y)) <= 20)
-					//			_mainWindow.Position = new(_mainWindow.Position.X, UsableRect.Position.Y + UsableRect.Size.Y - (int)NikoSpriteNode.Size.Y);
-					//	}
-					//}
+					else
+					{
+						//IsDragging = false;
+						if (_valuesContainer.SnapToBottom)
+						{
+							Rect2I UsableRect = DisplayServer.ScreenGetUsableRect(DisplayServer.WindowGetCurrentScreen((int)DisplayServer.MainWindowId));
+							if (Mathf.Abs(_mainWindow.Position.Y + NikoSpriteNode.Size.Y - (UsableRect.Position.Y + UsableRect.Size.Y)) <= 20)
+								_mainWindow.Position = new(_mainWindow.Position.X, UsableRect.Position.Y + UsableRect.Size.Y - (int)NikoSpriteNode.Size.Y);
+						}
+					}
 		};
 		_valuesContainer.NikoAsWindowStateChanged += (ShowTaskbarIcon, NikoAlwaysOnTop) =>
 		{
