@@ -37,11 +37,11 @@ func _ready() -> void:
 	)
 	cry_sound.finished.connect(func ():
 		if not AchievementsController.IsAchievementTaked(\"worst_friend\"):
-			Dialog.show_dialog(\"PANCAKE_ALERT_DIALOG_A\", null, 0.05, true)
+			Dialog.show_dialog(\"other.events.pancakes_alert.dialog.a\", null, 0.05, true)
 			Dialog.dialog_skiped.connect(func ():
-				Dialog.show_dialog(\"PANCAKE_ALERT_DIALOG_B\", null, 0.05, true)
+				Dialog.show_dialog(\"other.events.pancakes_alert.dialog.b\", null, 0.05, true)
 				Dialog.dialog_skiped.connect(func ():
-					Dialog.show_dialog(\"PANCAKE_ALERT_DIALOG_C\", null, 0.05, true)
+					Dialog.show_dialog(\"other.events.pancakes_alert.dialog.c\", null, 0.05, true)
 					Dialog.dialog_skiped.connect(func ():
 						glitch.visible = true
 						glitch_sound.finished.connect(func ():
@@ -168,7 +168,7 @@ popup_window = false
 icon = ExtResource("5_nm1hw")
 
 [node name="Title" parent="PancakeQuest/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(76261233, 332691484) index="1" unique_id=2015855131]
-text = "PANCAKE_ALERT"
+text = "other.events.pancakes_alert.title"
 
 [node name="Control" type="Control" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" parent_id_path=PackedInt32Array(76261233, 1750489675) index="0" unique_id=1855135970]
 custom_minimum_size = Vector2(0, 168)
@@ -190,7 +190,7 @@ grow_vertical = 2
 texture = ExtResource("6_3kxgl")
 
 [node name="Quest" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" parent_id_path=PackedInt32Array(76261233, 1750489675) index="1" unique_id=1354308728]
-text = "GIVE_PANCAKES_TO_NIKO_QUEST"
+text = "other.events.pancakes_alert.message"
 
 [node name="Control2" type="Control" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" parent_id_path=PackedInt32Array(76261233, 1750489675) index="3" unique_id=1731252218]
 custom_minimum_size = Vector2(0, 4)
@@ -199,6 +199,7 @@ layout_mode = 2
 [node name="GlitchW" type="Window" parent="." unique_id=882526535 node_paths=PackedStringArray("texture_rect")]
 auto_translate_mode = 1
 transparent_bg = true
+oversampling_override = 1.0
 visible = false
 wrap_controls = true
 borderless = true

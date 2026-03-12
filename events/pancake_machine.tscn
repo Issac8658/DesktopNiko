@@ -38,7 +38,7 @@ func _ready() -> void:
 			passcode_show_button.pressed.connect(func ():
 				ValuesContainer.ForceFacepic(\"huh\")
 				enter_sound.play()
-				passcode_show_button.text = \"EVENT_PM_SOMETHING_WRONG\"
+				passcode_show_button.text = \"other.events.pancake_machine.passcode_message\"
 				passcode_show_button.pressed.connect(func ():
 					enter_sound.play()
 					passcode_show_button.visible = false
@@ -531,6 +531,7 @@ volume_db = -5.0
 
 [node name="Window" type="Window" parent="." unique_id=166508720]
 transparent_bg = true
+oversampling_override = 1.0
 size = Vector2i(400, 1040)
 mouse_passthrough_polygon = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)
 visible = false
@@ -605,7 +606,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"IconButton"
-text = "EVENT_PM_FREE_PANCAKES"
+text = "other.events.pancake_machine.fake"
 autowrap_mode = 2
 
 [node name="PassCode" type="VBoxContainer" parent="Window/Control/Control" unique_id=859775694]
@@ -625,7 +626,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Window/Control/Control/PassCode" unique_id=779102643]
 layout_mode = 2
-text = "ENTER_PASSCODE"
+text = "other.events.pancake_machine.passcode_text"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -719,7 +720,7 @@ text = "↓"
 
 [node name="Cancel" type="Button" parent="Window/Control/Control/PassCode" unique_id=1395768926]
 layout_mode = 2
-text = "CONTINUE"
+text = "shared.continue"
 
 [node name="Control" type="Control" parent="Window/Control/Control/PassCode" unique_id=2026990403]
 layout_mode = 2

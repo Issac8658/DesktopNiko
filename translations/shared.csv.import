@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bkoyo4rs7rqfx"
+
+[deps]
+
+files=["res://translations/shared.en.translation", "res://translations/shared.ru.translation", "res://translations/shared.de.translation", "res://translations/shared.ua.translation"]
+
+source_file="res://translations/shared.csv"
+dest_files=["res://translations/shared.en.translation", "res://translations/shared.ru.translation", "res://translations/shared.de.translation", "res://translations/shared.ua.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

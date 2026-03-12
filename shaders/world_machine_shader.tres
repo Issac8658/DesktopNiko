@@ -24,8 +24,9 @@ void fragment() {
 	float rp = mix(p, p2, ceil(TIME * time_scale - round(TIME * time_scale)));
 	float noise_overlay = round(round(rp) - rp + 0.5);
 
-	vec4 light_overlay = floor(full_bw(base_color * vec4(1, 1, 0, 1)) + vec4(.4, .4, .4, 0)) + noise_overlay * 0.1;
+	vec4 light_overlay = floor(full_bw(base_color * vec4(1, 1, 0, 1)) + vec4(.4, .4, .4, 0));
 
 	COLOR.xyz = pow(black_and_white(base_color, .75) / 1.5 + overlay_color / 5.0, vec4(1.5)).xyz + light_overlay.xyz / 5.0;
+	COLOR.a *= 1.0 - noise_overlay * 0.1;
 }
 "

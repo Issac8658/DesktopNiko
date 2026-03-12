@@ -1,0 +1,71 @@
+,en,ru,de,ua
+settings.tabs.general,General,Главное,Hauptsache,Загальне
+settings.tabs.niko,Niko,Нико,Nico,Ніко
+settings.tabs.other,Other,Другое,Andere,Інше
+settings.sections.actions,Actions,Действия,Handeln,Дії
+settings.sections.statistics,Statistics,Статистика,Statistik,Статистика
+settings.sections.hint,Hint,Подсказка,Hinweis,Підказка
+settings.sections.niko,Niko,Нико,Nico,Ніко
+settings.sections.sleeping,Sleeping,Сон,Chlafen,Сон
+settings.sections.volume,Volume,Громкость,,Гучність
+settings.sections.windows_only,Windows Only,Только для Windows,,Тільки для Windows
+settings.general.gaming_mode,Gaming mode,Игровой режим,Spielmodus,Ігровий режим
+settings.general.peaceful_mode,Peaceful mode,Мирный режим,Friedliches Regime,Мирний режим
+settings.general.language,Language,Язык,Sprache,Мова
+settings.general.click_sound,Click sound,Звук клика,Klickgeräusch,Звук кліка
+settings.general.show_saving_icon,Saving icon,Значок сохранения,Symbol speichern,Значок збереження
+settings.general.show_achievements,Show achievements,Отображать достижения,Erfolge anzeigen,Показувати досягнення
+settings.general.actions.open_logs_folder,Open logs folder,Открыть папку логов,Log-Ordner öffnen,Відкрити папку логів
+settings.general.actions.add_to_autorun,Add to autorun,Добавить в автозагрузку,Zum Autostart hinzufügen,Додати в автозавантаження
+settings.general.actions.remove_from_autorun,Remove from autorun,Удалить из автозагрузки,Aus dem Autostart entfernen,Видалити з автозавантаження
+settings.general.actions.add_to_autorun.windows_only,Autorun only for Windows,Автозагрузка только для Windows,Autostart nur für Windows,Автозавантаження тільки для Windows
+settings.general.statistics.clicks_per_second,CPS,CPS,CPS,CPS
+settings.general.statistics.clicks,Clicks,Клики,Cliquen,Кліки
+settings.general.statistics.events_passed,Events passed,Событий пройдено,,Подій пройдено
+settings.general.statistics.total_time,Total time,Время работы,Betriebsdauer,Загальний час
+settings.general.hint.gaming_mode,"Completely disables interaction with Niko.\n[color=gold]ATTENTION[/color]\nIn order to restore the state back, use system tray icon or, as a last resort, completely restart the application.","Полностью отключает взаимодействие с Нико.\n[color=gold]ВНИМАНИЕ[/color]\nДля того чтобы вернуть состояние обратно используйте значок в системном трее или в крайнем случае полностью перезапустите приложение.","Deaktiviert die Interaktion mit Nico vollständig.\n[color=gold]ACHTUNG[/color]\nUm den Status wiederherzustellen, verwenden Sie das Taskleistensymbol oder starten Sie die Anwendung im Notfall vollständig neu.","Повністю вимикає взаємодію з Ніко.\n[color=gold]УВАГА[/color]\nЩоб відновити стан назад, використовуйте значок в системному лотку або, як крайній випадок, повністю перезапустіть програму."
+settings.general.hint.peaceful_mode,"Niko doesn't get scared when clicks are too fast",Нико не пугается при слишком быстрых кликах,Nico hat keine Angst vor zu schnellen Klicks,Ніко не лякається при занадто швидких кліках
+settings.general.hint.click_sound,"Play a click sound in windows identical to click sounds in OneShot WME","Воспроизводить звук клика в окнах, идентичный звукам клика в OneShot WME","Klickgeräusche in Fenstern wiedergeben, die mit den Klickgeräuschen in OneShot WME identisch sind","Відтворювати звук кліка у вікнах, ідентичний звукам кліка в OneShot WME"
+settings.general.hint.show_saving_icon,"Show save icon, same as in OneShot WME. Saving takes place every three minutes.","Показывать значок сохранения, такой же как в OneShot WME. Сохранение происходит раз в три минуты.","Zeigt das Speichersymbol an, das dem in OneShot WME entspricht. Die Speicherung erfolgt alle drei Minuten.","Показувати значок збереження, такий як в OneShot WME. Збереження відбувається кожні три хвилини."
+settings.general.hint.show_achievements,Determines whether to show achievement animation in corner of screen. Sound will still be played.,"Определяет, показывать ли анимацию получения достижения в углу экрана. Звук по-прежнему будет воспроизводиться.","Legt fest, ob die Animation des Erfolgs in der Ecke des Bildschirms angezeigt wird. Der Ton wird weiterhin abgespielt.","Визначає, чи показувати анімацію отримання досягнення в кутку екрана. Звук все ще буде відтворюватися."
+settings.niko.facepic.default,Default,Обычный,Gewöhnlich,Звичайний
+settings.niko.facepic.speak,Speak,Мяуканье,Miauen,Мяукання
+settings.niko.facepic.scared,Scared,Напуган,Erschreckt,Наляканий
+settings.niko.facepic.scared_speak,Scared speak,Удивлён,Berrascht,Здивований
+settings.niko.meow_sound,Meow Sound: ,Звук мява: ,Miau-Geräusch: ,Звук мяву:
+settings.niko.meow.1,Meow 1,Мяу 1,Miau 1,Мяу 1
+settings.niko.meow.2,Meow 2,Мяу 2,Miau 2,Мяу 2
+settings.niko.meow.3,Meow 3,Мяу 3,Miau 3,Мяу 3
+settings.niko.meow.4,Meow 4,Мяу 4,Miau 4,Мяу 4
+settings.niko.meow.5,Meow 5,Мяу 5,Miau 5,Мяу 5
+settings.niko.meow.6,Mario Meow,Мяу из Mario,Miau 6,Мяу з Mario
+settings.niko.meow.7,Meow 7,Мяу 7,Miau 7,Мяу 7
+settings.niko.meow.omori,OMORI meow,Мяу из OMORI,Miau von OMORI,Мяу з OMORI
+settings.niko.scale,Niko's scale: ,Масштаб нико: ,Skala von Nico: ,Масштаб Ніко:
+settings.niko.snap_to_bottom,Snap to bottom,Крепить к низу,,Кріпити до низу
+settings.niko.world_machine,World Machine,Мировая Машина,,
+settings.niko.time_to_sleep,Time to sleep,Время до сна,Zeit zum Schlafen,Час до сну
+settings.niko.can_sleep,Can sleep,Может спать,Kann schlafen,Може спати
+settings.niko.press_f_to_flip,Press [F] to flip Niko!,Нажми [F] что повернуть Нико!,,"Натисніть [F] що повернути Ніко!"
+settings.niko.facepic.smile,Smile,Улыбка,Lächeln,Усмішка
+settings.niko.facepic.speck,Speak,Мяукает,Miauen,Мяукає
+settings.niko.facepic.shock,Shock,Шок,Schock,Шок
+settings.niko.facepic.surprised,Surprised,Удивлён,Berrascht,Здивований
+settings.niko.facepic.happy,Happy,Радостный,Fröhlich,Щасливий
+settings.niko.facepic.pancakes,Pancakes,Блинчики,Pancakes,Млинці
+settings.niko.facepic.simple,Simple,Простой,Einfach,Простий
+settings.niko.facepic.smug,Smug,Довольный,Selbstgefällig,Щасливий
+settings.other.master_volume,Master volume,Общая громкость,Gesamtlautstärke,Загальна гучність
+settings.other.meow_volume,Meow volume,Громкость мява,Miau-Lautstärke,Гучність мяву
+settings.other.actions.save,Save,Сохранить,,Зберігши
+settings.other.actions.reset_all_data,Reset all data,Сбросить всё,,
+settings.other.actions.reset_all_data.popup_message,"Are you sure you want to completely reset all data?\nThis will completely delete save folder, including all files in it.","Вы уверены что хотите полностью сбросить все данные?\nЭто полностью удалит папку сохранения включая все файлы в ней.",,
+settings.other.do_events,Do events,Делать события,,Робити події
+settings.other.niko_always_on_top,Niko always on top,Нико поверх всего,,Ніко поверх усього
+settings.other.windows_always_on_top,Windows always on top,Окна поверх всего,,Вікна поверх усього
+settings.other.taskbar_icon,Taskbar icon,Иконка в панели задач,,Іконка в панелі завдань
+settings.other.hint.do_events,Determines whether to show events during clicks.,"Определяет, показывать ли события во время кликов.",,"Визначає, чи показувати події під час кліків."
+settings.other.hint.niko_always_on_top,"Niko will always be on top of windows. If they will not be visible in a game, then set FRAMELESS fullscreen mode.","Нико будет всегда поверх окон. Если в игре его(её) не будет видно, то поставьте БЕЗРАМОЧНЫЙ полноэкранный режим.",,"Ніко буде завжди поверх вікон. Якщо в грі його(її) не буде видно, то поставте БЕЗРАМКОВИЙ повноекранний режим."
+settings.other.hint.windows_always_on_top,"Program's windows will always be on top of other windows.",Окна программы будут всегда поверх других окон.,,
+settings.other.hint.taskbar,"Determines whether to show application icon in taskbar. Does not apply to other program's windows","Определяет, показывать иконку приложения в панели задач. Не распространяется на другие окна программы",,"Визначає, показувати іконку програми в панелі завдань. Не поширюється на інші вікна програми"
+settings.taskbar.reset_pos,Reset position,Сбросить положение,Position zurücksetzen,Скинути положення

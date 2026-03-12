@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c0waxgrh6k6up"
+
+[deps]
+
+files=["res://translations/achievements.en.translation", "res://translations/achievements.ru.translation", "res://translations/achievements.de.translation", "res://translations/achievements.ua.translation"]
+
+source_file="res://translations/achievements.csv"
+dest_files=["res://translations/achievements.en.translation", "res://translations/achievements.ru.translation", "res://translations/achievements.de.translation", "res://translations/achievements.ua.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

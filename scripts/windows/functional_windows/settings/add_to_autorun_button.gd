@@ -6,17 +6,17 @@ const AUTORUN_PATH = "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"
 func _ready() -> void:
 	if not OS.get_name() == "Windows":
 		disabled = true
-		text = "AUTORUN_WINDOWS_ONLY"
+		text = "settings.general.actions.add_to_autorun.windows_only"
 	else:
 		if check():
-			text = "REMOVE_FROM_AUTO_RUN"
+			text = "settings.general.actions.remove_from_autorun"
 		pressed.connect(func ():
 			if check():
 				remove_from_autorun()
-				text = "ADD_TO_AUTO_RUN"
+				text = "settings.general.actions.add_to_autorun"
 			else:
 				add_to_autorun()
-				text = "REMOVE_FROM_AUTO_RUN"
+				text = "settings.general.actions.remove_from_autorun"
 		)
 
 

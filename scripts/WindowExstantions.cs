@@ -56,9 +56,11 @@ public partial class WindowExstantions : Node
 				ShowWindow(hwnd, SW_HIDE);
 			_ = SetWindowLong(hwnd, GWL_EXSTYLE, style);
 			SetLayeredWindowAttributes(hwnd, 0, 255, LWA_ALPHA);
-			SetWindowPos(hwnd, IntPtr.Zero, 0, 0, 0, 0, SWP_FRAMECHANGED | SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER);
 			if (ForceWindowUpdate)
+			{
+				SetWindowPos(hwnd, IntPtr.Zero, 0, 0, 0, 0, SWP_FRAMECHANGED | SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER);
 				ShowWindow(hwnd, SW_SHOW);
+			}
 		}
 	}
 }

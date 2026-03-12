@@ -1,0 +1,21 @@
+,en,ru,de,ua
+other.shutdown_quest,"Do you really want to shut down The World Machine?","Вы действительно хотите завершить работу Мировой Машины?","Möchten Sie wirklich die Weltmaschine abschließen?","Ви дійсно хочете завершити роботу Світової Машини?"
+other.shutdown_block_message,[ What are you doing?! You can hurt Niko so much! ],[Что ты делаешь?! Ты так можешь навредить Нико!],,[ Що ти робиш?! Ти так можеш нашкодити Ніко! ]
+other.events.pancakes_alert.title,Pancake Alert,Предупреждение: Блинчики,,Попередження: Млинці
+other.events.pancakes_alert.message,Do you want to give Niko pancakes?,Вы хотите дать Нико блинчики?,,Ви хочете дати Ніко млинці?
+other.events.pancakes_alert.dialog.a,"[ You've upset Niko. ]",[ Ты растроил Нико. ],,"[ Ти розчулив Ніко. ]"
+other.events.pancakes_alert.dialog.b,[ What did you want to achieve with this? ]\n[ Do you think it will give you something? ],[ Чего ты хотел этим добиться? ]\n[ Ты думаешь тебе это что то даст? ],,[ Чого ти хотів цим досягти? ]\n[ Ти думаєш тобі це щось дасть? ]
+other.events.pancakes_alert.dialog.c,"[ Anyway, I won't let you hurt Niko. ]","[ В любом случае, я тебе не позволю обижать Нико. ]",,"[ У будь-якому випадку, Я тобі не дозволю ображати Ніко. ]"
+other.events.pancake_machine.fake,Click here to get free pancakes,"Нажми сюда, что бы получить бесплатные блины",,"Натисни сюди, що б отримати безкоштовні млинці"
+other.events.pancake_machine.passcode_message,"Something wrong, please, enter passcode (click)","Что то не так, пожалуйста, введите код (нажмите)",,"Щось не так, будь ласка, введіть код (натисніть)"
+other.events.pancake_machine.passcode_text,ENTER PASSCODE,ВВЕДИТЕ КОД,,ВВЕДІТЬ КОД
+other.games.tennis.how_to_play,"Your task is to win Niko in tennis. [fgcolor=#000c][font size=16]Just like in that video, huh?[/font][/fgcolor]\n\nEvery time you successfully hit the ball, you get one point, the more points, the cooler you are.\n\nThe speed of the ball after impact directly depends on the speed of the cursor during impact. If the ball is too fast, Niko will not be able to hit it and you will win!","Твоя задача - победить Нико в теннисе. [fgcolor=#000c][font size=16]Прям как в том видео, а?[/font][/fgcolor]\n\nКаждый раз, когда ты успешно отбиваешь мяч, ты получаешь одно очко, чем больше очков - тем ты круче.\n\nСкорость мяча после удара напрямую зависит от скорости курсора во время удара. Если мяч будет слишком быстр то Нико не сможет его отбить и ты победишь!",,"Твоє завдання-пебедіть Ніко в тенісі. [fgcolor=#000c][font size=16]Прям як в тому відео, а?[/font][/fgcolor]\n\nКожен раз, коли ти успішно відбиваєш м'яч, ти отримуєш одне очко, чим більше очок - тим ти крутіше.\n\nШвидкість м'яча після удару безпосередньо залежить від швидкості курсору під час удару. Якщо м'яч буде занадто швидкий то Ніко не зможе його відбити і ти переможеш!"
+other.games.tennis.you_lose,You lose!,Ты проиграл!,,Ти програв!
+other.games.tennis.you_lose.wm_comment,"[ Are you serious? Tennis is easy... ]","[ Ты серьезно? Теннис же легкий... ]",,"[ Ти серйозно? Теніс же легкий... ]"
+other.games.tennis.you_win,You win!,Ты победил!,,Ти переміг!
+other.games.tennis.you_win.wm_comment,"[ Well, it looks like it was easy. ]\n[ Anyway, does 2FC mean anything to you? ]","[ Что ж, похоже, это было просто. ]\n[ В любом случае, тебе 2FC о чём то говорит? ]",,"[Ну, схоже, це було просто. ]\n[у будь-якому випадку, тобі 2FC про що то говорить?]"
+other.games.tennis.retry,Retry later,Попробовать снова позже,,Спробувати знову пізніше
+other.games.tetris.score,Score,Очков,,
+other.games.tetris.lines,Lines,Линий,,
+other.prerelese.thanks_for_subscribtion,Thank you for your subscription on Boosty!,Спасибо за вашу подписку на Boosty!,,Дякуємо за підписку на Boosty!
+other.prerelese.time_is_up,Testing time is up! Please use release version!,"Время тестирования истекло! Пожалуйста, используйте релизную версию!",Die Testzeit ist abgelaufen! Bitte verwenden Sie die Release-Version!,"Час тестування закінчився! Будь ласка, використовуйте релізну версію!"

@@ -143,7 +143,7 @@ back={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://translations.en.translation", "res://translations.ru.translation", "res://translations.de.translation", "res://translations.ua.translation")
+locale/translations=PackedStringArray("res://translations/achievements.de.translation", "res://translations/achievements.en.translation", "res://translations/achievements.ru.translation", "res://translations/achievements.ua.translation", "res://translations/settings.de.translation", "res://translations/settings.en.translation", "res://translations/settings.ru.translation", "res://translations/settings.ua.translation", "res://translations/shared.de.translation", "res://translations/shared.en.translation", "res://translations/shared.ru.translation", "res://translations/shared.ua.translation", "res://translations/titles.de.translation", "res://translations/titles.en.translation", "res://translations/titles.ru.translation", "res://translations/titles.ua.translation", "res://translations/other.de.translation", "res://translations/other.en.translation", "res://translations/other.ru.translation", "res://translations/other.ua.translation")
 
 [physics]
 

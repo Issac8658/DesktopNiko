@@ -55,7 +55,7 @@ signal called_to_clear()
 var player_raket_pos = Vector2i(0,0)
 var niko_raket_pos = Vector2(450,250)
 var niko_raket_fake_pos = Vector2(450,250)
-var tennis_ball_pos : Array[float] = [300,300,300,200,0.99]
+var tennis_ball_pos : Array[float] = [300,300,300,200,0.99] # x,y on player, x,y on niko, z
 var tennis_ball_fly_to_niko = false
 var tennis_ball_current_speed : float = 0
 var tennis_ball_speed : float = 0
@@ -83,10 +83,9 @@ func _ready() -> void:
 	)
 
 func do_event():
-	if not window.visible:
-		ValuesContainer.NikoVisible = false
-		window.visible = true
-		sound_tennis_music.play()
+	ValuesContainer.NikoVisible = false
+	window.visible = true
+	sound_tennis_music.play()
 
 
 func revert():
@@ -153,7 +152,7 @@ func _physics_process(delta: float) -> void:
 		elif tennis_ball_pos[4] <= 0:
 			tennis_ball_pos[4] = 0.01
 			tennis_ball_fly_to_niko = true
-			tennis_ball_pos[2] = randf_range(200,600)
+			tennis_ball_pos[2] = randf_range(250,550)
 			tennis_ball_pos[3] = randf_range(150,300)
 			#print(player_raket_pos + window.position - Vector2i(5,30))
 			#print(Vector2(tennis_ball_pos[0], tennis_ball_pos[1]))
@@ -275,23 +274,16 @@ volume_db = -5.0
 title = "Tennis"
 initial_position = 4
 size = Vector2i(800, 600)
-
-[node name="Icon" parent="TennisWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
-icon = ExtResource("8_a5d04")
-
-[node name="Title" parent="TennisWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
-text = "TENNIS"
-
-[node name="HideButtonContainer" parent="TennisWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="2"]
 visible = false
 
-[node name="MainMenu" type="Control" parent="TennisWindow/Control/WindowContainer/Content" index="0" unique_id=903052183]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Icon" parent="TennisWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(985109894, 1002331087) index="0" unique_id=1518425686]
+icon = ExtResource("8_a5d04")
+
+[node name="Title" parent="TennisWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(985109894, 332691484) index="1" unique_id=2015855131]
+text = "titles.tennis"
+
+[node name="MainMenu" type="Control" parent="TennisWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(985109894, 971726425) index="0" unique_id=903052183]
+layout_mode = 2
 
 [node name="Buttons" type="MarginContainer" parent="TennisWindow/Control/WindowContainer/Content/MainMenu" unique_id=1265756145]
 layout_mode = 1
@@ -310,15 +302,15 @@ alignment = 1
 
 [node name="PlayButton" type="Button" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/Buttons/ButtonContainer" unique_id=739597181]
 layout_mode = 2
-text = "PLAY"
+text = "shared.play"
 
 [node name="HTPButton" type="Button" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/Buttons/ButtonContainer" unique_id=855319061]
 layout_mode = 2
-text = "HOW_TO_PLAY"
+text = "shared.how_to_play"
 
 [node name="ExitButton" type="Button" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/Buttons/ButtonContainer" unique_id=1452760430]
 layout_mode = 2
-text = "EXIT"
+text = "shared.exit"
 
 [node name="TennisText" type="Control" parent="TennisWindow/Control/WindowContainer/Content/MainMenu" unique_id=1786798337]
 layout_mode = 1
@@ -442,16 +434,11 @@ offset_top = 67.0
 offset_right = 737.0
 offset_bottom = 254.0
 bbcode_enabled = true
-text = "TENNIS_HTP_TEXT"
+text = "other.games.tennis.how_to_play"
 
-[node name="Game" type="Control" parent="TennisWindow/Control/WindowContainer/Content" index="1" unique_id=1601390193]
+[node name="Game" type="Control" parent="TennisWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(985109894, 971726425) index="1" unique_id=1601390193]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
 [node name="Nikochko" type="TextureRect" parent="TennisWindow/Control/WindowContainer/Content/Game" unique_id=1915246910]
 custom_minimum_size = Vector2(120, 120)
@@ -510,7 +497,7 @@ theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="TennisWindow/Control/WindowContainer/Content/Game/HBoxContainer" unique_id=1318821225]
 layout_mode = 2
-text = "POINTS"
+text = "shared.points"
 
 [node name="Label2" type="Label" parent="TennisWindow/Control/WindowContainer/Content/Game/HBoxContainer" unique_id=1379449341]
 layout_mode = 2
@@ -542,15 +529,10 @@ pivot_offset = Vector2(1, 1)
 texture = SubResource("GradientTexture2D_qret7")
 expand_mode = 1
 
-[node name="Lose" type="Panel" parent="TennisWindow/Control/WindowContainer/Content" index="2" unique_id=1229319137]
+[node name="Lose" type="Panel" parent="TennisWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(985109894, 971726425) index="2" unique_id=1229319137]
 visible = false
 self_modulate = Color(1, 1, 1, 0.67451)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TennisWindow/Control/WindowContainer/Content/Lose" unique_id=803502017]
 layout_mode = 1
@@ -569,13 +551,13 @@ alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 120
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d2fhx")
-text = "YOU_LOSE"
+text = "other.games.tennis.you_lose"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="TennisWindow/Control/WindowContainer/Content/Lose/MarginContainer/VBoxContainer" unique_id=1684848805]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d2fhx")
-text = "WM_TENNIS_HAHA"
+text = "other.games.tennis.you_lose.wm_comment"
 horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="TennisWindow/Control/WindowContainer/Content/Lose/MarginContainer/VBoxContainer" unique_id=2137320052]
@@ -586,21 +568,16 @@ layout_mode = 2
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "RETRY_LATER"
+text = "other.games.tennis.retry"
 
 [node name="Control2" type="Control" parent="TennisWindow/Control/WindowContainer/Content/Lose/MarginContainer/VBoxContainer" unique_id=1192163010]
 custom_minimum_size = Vector2(0, 84)
 layout_mode = 2
 
-[node name="Win" type="Panel" parent="TennisWindow/Control/WindowContainer/Content" index="3" unique_id=1936847695]
+[node name="Win" type="Panel" parent="TennisWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(985109894, 971726425) index="3" unique_id=1936847695]
 visible = false
 self_modulate = Color(1, 1, 1, 0.67451)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TennisWindow/Control/WindowContainer/Content/Win" unique_id=829143968]
 layout_mode = 1
@@ -619,13 +596,13 @@ alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 120
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d2fhx")
-text = "YOU_WIN"
+text = "other.games.tennis.you_win"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="TennisWindow/Control/WindowContainer/Content/Win/MarginContainer/VBoxContainer" unique_id=1503363792]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d2fhx")
-text = "WM_TENNIS_WIN"
+text = "other.games.tennis.you_win.wm_comment"
 horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="TennisWindow/Control/WindowContainer/Content/Win/MarginContainer/VBoxContainer" unique_id=1524750484]
@@ -636,7 +613,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "YAY"
+text = "shared.yay"
 
 [node name="Control2" type="Control" parent="TennisWindow/Control/WindowContainer/Content/Win/MarginContainer/VBoxContainer" unique_id=1804681285]
 custom_minimum_size = Vector2(0, 84)

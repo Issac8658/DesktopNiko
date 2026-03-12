@@ -189,6 +189,16 @@ func _ready() -> void:
 	)
 "
 
+[sub_resource type="GDScript" id="GDScript_0dwp6"]
+resource_name = "resizer"
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	get_window().size = Vector2i.ZERO
+"
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xtheg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ubkm4"]
@@ -631,6 +641,7 @@ visible = false
 title = "SHORTCUTS"
 initial_position = 4
 size = Vector2i(358, 394)
+visible = false
 min_size = Vector2i(193, 270)
 max_size = Vector2i(1920, 1040)
 
@@ -641,7 +652,7 @@ z_index = 0
 icon = ExtResource("20_o63de")
 
 [node name="Title" parent="ShortcutsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(765980327, 332691484) index="1" unique_id=2015855131]
-text = "SHORTCUTS"
+text = "titles.shortcuts"
 
 [node name="Content" parent="ShortcutsWindow/Control/WindowContainer" parent_id_path=PackedInt32Array(765980327, 106878241) index="1" unique_id=971726425]
 mouse_filter = 2
@@ -731,7 +742,7 @@ expand_icon = true
 [node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Settings/ButtonMargin/ButtonContent" unique_id=508376270]
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
-text = "SETTINGS"
+text = "titles.settings"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -794,7 +805,7 @@ expand_icon = true
 [node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Themes/ButtonMargin/ButtonContent" unique_id=1950378035]
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
-text = "THEMES"
+text = "titles.themes"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -857,7 +868,7 @@ expand_icon = true
 [node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Skins/ButtonMargin/ButtonContent" unique_id=1448436372]
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
-text = "SKINS"
+text = "titles.skins"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -920,7 +931,7 @@ expand_icon = true
 [node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Achievements/ButtonMargin/ButtonContent" unique_id=344829916]
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
-text = "ACHIEVEMENTS"
+text = "titles.achievements"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -1047,7 +1058,7 @@ expand_icon = true
 [node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Games/ButtonMargin/ButtonContent" unique_id=93914008]
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
-text = "GAMES"
+text = "titles.games"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -1234,7 +1245,7 @@ expand_icon = true
 [node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Shutdown/ButtonMargin/ButtonContent" unique_id=1475718911]
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
-text = "SHUTDOWN"
+text = "titles.shutdown"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -1244,8 +1255,10 @@ mouse_filter = 2
 
 [node name="CornerIcon" type="TextureRect" parent="ShortcutsWindow/Control/WindowContainer/Content/Control" unique_id=1016262799 node_paths=PackedStringArray("sound")]
 layout_mode = 0
-offset_right = 71.0
-offset_bottom = 62.0
+offset_left = -96.0
+offset_top = -78.0
+offset_right = -25.0
+offset_bottom = -16.0
 texture = ExtResource("29_rkakh")
 script = SubResource("GDScript_xtheg")
 sound = NodePath("HELLO")
@@ -1258,7 +1271,6 @@ title = "GAMES"
 initial_position = 4
 size = Vector2i(358, 394)
 visible = false
-borderless = true
 min_size = Vector2i(193, 270)
 max_size = Vector2i(1920, 1040)
 
@@ -1275,7 +1287,7 @@ z_index = 0
 icon = ExtResource("34_im3ns")
 
 [node name="Title" parent="GamesWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(300262121, 332691484) index="1" unique_id=2015855131]
-text = "GAMES"
+text = "titles.games"
 
 [node name="Content" parent="GamesWindow/Control/WindowContainer" index="1" unique_id=971726425]
 mouse_filter = 2
@@ -1430,7 +1442,7 @@ expand_icon = true
 [node name="Label" type="Label" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis/ButtonMargin/ButtonContent" unique_id=923480719]
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
-text = "TENNIS"
+text = "titles.tennis"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -1500,7 +1512,6 @@ autowrap_mode = 3
 title = "SHUTDOWN"
 visible = false
 unresizable = true
-borderless = true
 minimize_disabled = true
 
 [node name="Control" parent="ShutdownPopup" index="1" unique_id=579132620]
@@ -1525,7 +1536,6 @@ title = "THEMES"
 initial_position = 4
 size = Vector2i(358, 380)
 visible = false
-borderless = true
 min_size = Vector2i(193, 270)
 max_size = Vector2i(1920, 1040)
 
@@ -1542,7 +1552,7 @@ z_index = 0
 icon = ExtResource("17_ijoax")
 
 [node name="Title" parent="ThemesWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(995621362, 332691484) index="1" unique_id=2015855131]
-text = "THEMES"
+text = "titles.themes"
 clip_text = false
 text_overrun_behavior = 0
 
@@ -1625,7 +1635,7 @@ expand_icon = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.588235, 0.392157, 1, 1)
-text = "PURPLE"
+text = "shared.colors.purple"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -1682,7 +1692,7 @@ expand_icon = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.454902, 0.419608, 0.901961, 1)
-text = "BLUE"
+text = "shared.colors.blue"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -1739,7 +1749,7 @@ expand_icon = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.823529, 0.415686, 1)
-text = "YELLOW"
+text = "shared.colors.yellow"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -1796,7 +1806,7 @@ expand_icon = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.835294, 0.129412, 0.415686, 1)
-text = "RED"
+text = "shared.colors.red"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -1853,7 +1863,7 @@ expand_icon = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.996078, 0.333333, 0.74902, 1)
-text = "PINK"
+text = "shared.colors.pink"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -1910,7 +1920,7 @@ expand_icon = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "WHITE"
+text = "shared.colors.white"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -1967,7 +1977,7 @@ expand_icon = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.992157, 0.560784, 0.301961, 1)
-text = "ORANGE"
+text = "shared.colors.orange"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -2024,7 +2034,7 @@ expand_icon = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.207843, 0.803922, 0.823529, 1)
-text = "TEAL"
+text = "shared.colors.teal"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -2081,7 +2091,7 @@ expand_icon = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.247059, 0.835294, 0.392157, 1)
-text = "GREEN"
+text = "shared.colors.green"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -2226,17 +2236,20 @@ text = "APPLY"
 [node name="SettingsWindow" parent="." unique_id=759122465 instance=ExtResource("38_q4750")]
 title = "SETTINGS"
 initial_position = 4
-size = Vector2i(704, 406)
+size = Vector2i(704, 404)
 visible = false
 wrap_controls = true
 min_size = Vector2i(704, 404)
+
+[node name="Control" parent="SettingsWindow" index="0" unique_id=579132620]
+script = SubResource("GDScript_0dwp6")
 
 [node name="Icon" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(759122465, 1002331087) index="0" unique_id=1518425686]
 icon = ExtResource("16_kv3aw")
 
 [node name="Title" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(759122465, 332691484) index="1" unique_id=2015855131]
 size_flags_horizontal = 1
-text = "SETTINGS"
+text = "titles.settings"
 clip_text = false
 text_overrun_behavior = 0
 
@@ -2264,9 +2277,9 @@ theme_override_styles/tab_selected = ExtResource("67_xevt3")
 current_tab = 0
 clip_tabs = false
 tab_count = 3
-tab_0/title = "GENERAL"
-tab_1/title = "NIKO"
-tab_2/title = "OTHER"
+tab_0/title = "settings.tabs.general"
+tab_1/title = "settings.tabs.niko"
+tab_2/title = "settings.tabs.other"
 script = ExtResource("64_ubkm4")
 pages = [NodePath("../../../../../Content/MarginContainer/General"), NodePath("../../../../../Content/MarginContainer/Niko"), NodePath("../../../../../Content/MarginContainer/Other")]
 
@@ -2372,7 +2385,6 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="General" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=796068923]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 8
 
@@ -2383,7 +2395,7 @@ size_flags_horizontal = 3
 [node name="GamingMode" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel" unique_id=379552911]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-text = "GAMING_MODE"
+text = "settings.general.gaming_mode"
 script = ExtResource("74_2umrp")
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/GamingMode" unique_id=973865222 instance=ExtResource("42_sp30j")]
@@ -2394,7 +2406,7 @@ offset_bottom = 12.0
 [node name="Peaceful" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel" unique_id=235203742]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-text = "PEACEFUL_MODE"
+text = "settings.general.peaceful_mode"
 script = ExtResource("76_evxhs")
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/Peaceful" unique_id=468408949 instance=ExtResource("42_sp30j")]
@@ -2407,7 +2419,7 @@ layout_mode = 2
 tooltip_auto_translate_mode = 1
 mouse_default_cursor_shape = 2
 button_pressed = true
-text = "CLICK_SOUND"
+text = "settings.general.click_sound"
 script = ExtResource("77_gmgvx")
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/ClickSound" unique_id=1773301873 instance=ExtResource("42_sp30j")]
@@ -2419,7 +2431,7 @@ offset_bottom = 12.0
 layout_mode = 2
 mouse_default_cursor_shape = 2
 button_pressed = true
-text = "SHOW_SAVING_ICON"
+text = "settings.general.show_saving_icon"
 script = ExtResource("78_ly7qr")
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/SavingIcon" unique_id=708670483 instance=ExtResource("42_sp30j")]
@@ -2431,7 +2443,7 @@ offset_bottom = 12.0
 layout_mode = 2
 mouse_default_cursor_shape = 2
 button_pressed = true
-text = "SHOW_ACHIEVEMENTS"
+text = "settings.general.show_achievements"
 script = ExtResource("79_7ggmy")
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/ShowAchievements" unique_id=1850794502 instance=ExtResource("42_sp30j")]
@@ -2454,7 +2466,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_7th4q")
 
 [node name="SoundSelectionHint" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/Language2" unique_id=372480204]
 layout_mode = 2
-text = "LANGUAGE"
+text = "settings.general.language"
 
 [node name="Padding2" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/Language2" unique_id=502680125]
 layout_mode = 2
@@ -2494,7 +2506,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/HBoxContainer" unique_id=212880194]
 layout_mode = 2
-text = "ACTIONS"
+text = "settings.sections.actions"
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/HBoxContainer" unique_id=998636605]
 layout_mode = 2
@@ -2502,12 +2514,12 @@ size_flags_horizontal = 3
 
 [node name="LogsFolder" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel" unique_id=1670968315]
 layout_mode = 2
-text = "OPEN_LOGS_FOLDER"
+text = "settings.general.actions.open_logs_folder"
 script = SubResource("GDScript_7y85w")
 
 [node name="AutorunButton" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel" unique_id=1724100836]
 layout_mode = 2
-text = "ADD_TO_AUTO_RUN"
+text = "settings.general.actions.add_to_autorun"
 script = ExtResource("77_q4750")
 
 [node name="Statistics" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General" unique_id=719493708]
@@ -2524,7 +2536,7 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/HBoxContainer3" unique_id=2047718877]
 layout_mode = 2
-text = "STATISTICS"
+text = "settings.sections.statistics"
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/HBoxContainer3" unique_id=2072868216]
 layout_mode = 2
@@ -2536,7 +2548,7 @@ theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Cps" unique_id=749038790]
 layout_mode = 2
-text = "CPS"
+text = "settings.general.statistics.clicks_per_second"
 
 [node name="Dots" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Cps" unique_id=765809239]
 layout_mode = 2
@@ -2556,7 +2568,7 @@ theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Clicks" unique_id=1119573002]
 layout_mode = 2
-text = "CLICKS"
+text = "settings.general.statistics.clicks"
 
 [node name="Dots" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Clicks" unique_id=363847937]
 layout_mode = 2
@@ -2576,7 +2588,7 @@ theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Events" unique_id=2014779570]
 layout_mode = 2
-text = "EVENTS_PASSED"
+text = "settings.general.statistics.events_passed"
 
 [node name="Dots" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Events" unique_id=502750929]
 layout_mode = 2
@@ -2596,7 +2608,7 @@ theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/TotalTime" unique_id=560229603]
 layout_mode = 2
-text = "TOTAL_TIME"
+text = "settings.general.statistics.total_time"
 
 [node name="Dots" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/TotalTime" unique_id=1209689854]
 layout_mode = 2
@@ -2620,7 +2632,7 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/HBoxContainer2" unique_id=713015767]
 layout_mode = 2
-text = "HINT"
+text = "settings.sections.hint"
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/HBoxContainer2" unique_id=981313129]
 layout_mode = 2
@@ -2632,9 +2644,10 @@ layout_mode = 2
 bbcode_enabled = true
 script = SubResource("GDScript_k2ony")
 nodes = [NodePath("../../SettingsPanel/Peaceful"), NodePath("../../SettingsPanel/SavingIcon"), NodePath("../../SettingsPanel/GamingMode"), NodePath("../../SettingsPanel/ClickSound"), NodePath("../../SettingsPanel/ShowAchievements")]
-texts = Array[String](["PEACEFUL_MODE_HINT", "SAVING_ICON_HINT", "GAMING_MODE_HINT", "CLICK_SOUND_HINT", "SHOW_ACHIEVEMENTS_HINT"])
+texts = Array[String](["settings.general.hint.peaceful_mode", "settings.general.hint.show_saving_icon", "settings.general.hint.gaming_mode", "settings.general.hint.click_sound", "settings.general.hint.show_achievements"])
 
 [node name="Niko" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=320743199]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 
@@ -2646,7 +2659,7 @@ columns = 3
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1185377533]
 layout_mode = 2
-text = "FACEPIC_DEFAULT"
+text = "settings.niko.facepic.default"
 horizontal_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
@@ -2657,7 +2670,7 @@ theme_override_constants/separation = 4
 
 [node name="Label2" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1522091716]
 layout_mode = 2
-text = "FACEPIC_SPEAK"
+text = "settings.niko.facepic.speak"
 horizontal_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
@@ -2709,7 +2722,7 @@ layout_mode = 2
 
 [node name="Label3" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=958129040]
 layout_mode = 2
-text = "FACEPIC_SCARED"
+text = "settings.niko.facepic.scared"
 horizontal_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
@@ -2720,7 +2733,7 @@ theme_override_constants/separation = 4
 
 [node name="Label4" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1766029954]
 layout_mode = 2
-text = "FACEPIC_SCARED_SPEAK"
+text = "settings.niko.facepic.scared_speak"
 horizontal_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
@@ -2790,7 +2803,7 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/HBoxContainer5" unique_id=278766466]
 layout_mode = 2
-text = "NIKO"
+text = "settings.sections.niko"
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/HBoxContainer5" unique_id=2055253896]
 layout_mode = 2
@@ -2802,7 +2815,7 @@ layout_mode = 2
 [node name="SoundSelectionHint" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SoundSelectionContainer" unique_id=2121993147]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "MEOW_SOUND"
+text = "settings.niko.meow_sound"
 
 [node name="Padding2" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SoundSelectionContainer" unique_id=634862805]
 layout_mode = 2
@@ -2817,21 +2830,21 @@ size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 selected = 0
 item_count = 8
-popup/item_0/text = "MEOW1"
+popup/item_0/text = "settings.niko.meow.1"
 popup/item_0/id = 0
-popup/item_1/text = "MEOW2"
+popup/item_1/text = "settings.niko.meow.2"
 popup/item_1/id = 1
-popup/item_2/text = "MEOW3"
+popup/item_2/text = "settings.niko.meow.3"
 popup/item_2/id = 2
-popup/item_3/text = "MEOW4"
+popup/item_3/text = "settings.niko.meow.4"
 popup/item_3/id = 3
-popup/item_4/text = "MEOW5"
+popup/item_4/text = "settings.niko.meow.5"
 popup/item_4/id = 4
-popup/item_5/text = "OMORI_MEOW"
+popup/item_5/text = "settings.niko.meow.omori"
 popup/item_5/id = 5
-popup/item_6/text = "MEOW6"
+popup/item_6/text = "settings.niko.meow.6"
 popup/item_6/id = 6
-popup/item_7/text = "MEOW7"
+popup/item_7/text = "settings.niko.meow.7"
 popup/item_7/id = 7
 script = ExtResource("83_77al4")
 
@@ -2841,7 +2854,7 @@ layout_mode = 2
 [node name="SoundSelectionHint" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/NikoScaleSelectionContainer" unique_id=221236894]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "NIKO_SCALE"
+text = "settings.niko.scale"
 
 [node name="Padding2" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/NikoScaleSelectionContainer" unique_id=533848404]
 layout_mode = 2
@@ -2872,7 +2885,7 @@ script = ExtResource("83_dftep")
 layout_mode = 2
 mouse_default_cursor_shape = 2
 button_pressed = true
-text = "SNAP_TO_BOTTOM"
+text = "settings.niko.snap_to_bottom"
 script = ExtResource("85_8g87k")
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SnapToBottom" unique_id=100780105 instance=ExtResource("42_sp30j")]
@@ -2884,7 +2897,7 @@ offset_bottom = 12.0
 layout_mode = 2
 mouse_default_cursor_shape = 2
 button_pressed = true
-text = "WORLD_MACHINE"
+text = "settings.niko.world_machine"
 script = ExtResource("92_0dwp6")
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/WorldMachine" unique_id=1653320294 instance=ExtResource("42_sp30j")]
@@ -2893,7 +2906,6 @@ offset_top = -12.0
 offset_bottom = 12.0
 
 [node name="SleepControls" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer" unique_id=73468926 node_paths=PackedStringArray("toggle_checkbox", "hours_spinbox", "minutes_spinbox", "seconds_spinbox")]
-visible = false
 layout_mode = 2
 script = ExtResource("74_j53bq")
 toggle_checkbox = NodePath("HBoxContainer3/SleepCheckbox")
@@ -2911,7 +2923,7 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/Title" unique_id=911175701]
 layout_mode = 2
-text = "SLEEPING"
+text = "settings.sections.sleeping"
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/Title" unique_id=1336139967]
 layout_mode = 2
@@ -2923,14 +2935,14 @@ layout_mode = 2
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/HBoxContainer3" unique_id=886809322]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "TIME_TO_SLEEP"
+text = "settings.niko.time_to_sleep"
 
 [node name="SleepCheckbox" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/HBoxContainer3" unique_id=1329836324]
 custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 button_pressed = true
-text = "CAN_SLEEP"
+text = "settings.niko.can_sleep"
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/HBoxContainer3/SleepCheckbox" unique_id=1440391922 instance=ExtResource("42_sp30j")]
 layout_mode = 1
@@ -2961,7 +2973,7 @@ offset_bottom = 10.5
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1b22m")
-text = "TIME_H"
+text = "shared.short.time.hours"
 horizontal_alignment = 2
 
 [node name="Minutes" type="SpinBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo" unique_id=906191622]
@@ -2985,7 +2997,7 @@ offset_bottom = 10.5
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1b22m")
-text = "TIME_M"
+text = "shared.short.time.minutes"
 horizontal_alignment = 2
 
 [node name="Seconds" type="SpinBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo" unique_id=1624917844]
@@ -3008,12 +3020,12 @@ offset_bottom = 10.5
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1b22m")
-text = "TIME_S"
+text = "shared.short.time.seconds"
 horizontal_alignment = 2
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls" unique_id=650344873]
 layout_mode = 2
-text = "PRESS_F_TO_FLIP_NIKO"
+text = "settings.niko.press_f_to_flip"
 
 [node name="Other" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=2021078338]
 visible = false
@@ -3032,7 +3044,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer4" unique_id=1538510526]
 layout_mode = 2
-text = "VOLUME"
+text = "settings.sections.volume"
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer4" unique_id=368793808]
 layout_mode = 2
@@ -3041,6 +3053,36 @@ size_flags_horizontal = 3
 [node name="Control2" type="Control" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=897864836]
 layout_mode = 2
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=557507448]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer2" unique_id=582477239]
+layout_mode = 2
+text = "settings.other.master_volume"
+
+[node name="Label2" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer2" unique_id=1459990368]
+layout_mode = 2
+text = ": "
+
+[node name="Label3" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer2" unique_id=1024259658]
+layout_mode = 2
+text = "10"
+
+[node name="Label4" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer2" unique_id=1083685513]
+layout_mode = 2
+text = "%"
+
+[node name="HSlider2" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=2063593018 node_paths=PackedStringArray("label") instance=ExtResource("76_o48om")]
+layout_mode = 2
+max_value = 5.0
+step = 0.025
+value = 1.25
+script = ExtResource("77_k2ony")
+label = NodePath("../HBoxContainer2/Label3")
+mult = 40.0
+
 [node name="HBoxContainer" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=2029718582]
 layout_mode = 2
 theme_override_constants/separation = 0
@@ -3048,7 +3090,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer" unique_id=176998658]
 layout_mode = 2
-text = "MEOW_VOLUME"
+text = "settings.other.meow_volume"
 
 [node name="Label2" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer" unique_id=541717541]
 layout_mode = 2
@@ -3070,36 +3112,6 @@ value = 1.25
 script = ExtResource("77_k2ony")
 label = NodePath("../HBoxContainer/Label3")
 idx = 1
-mult = 40.0
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=557507448]
-layout_mode = 2
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer2" unique_id=582477239]
-layout_mode = 2
-text = "MASTER_VOLUME"
-
-[node name="Label2" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer2" unique_id=1459990368]
-layout_mode = 2
-text = ": "
-
-[node name="Label3" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer2" unique_id=1024259658]
-layout_mode = 2
-text = "10"
-
-[node name="Label4" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer2" unique_id=1083685513]
-layout_mode = 2
-text = "%"
-
-[node name="HSlider2" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=2063593018 node_paths=PackedStringArray("label") instance=ExtResource("76_o48om")]
-layout_mode = 2
-max_value = 5.0
-step = 0.025
-value = 1.25
-script = ExtResource("77_k2ony")
-label = NodePath("../HBoxContainer2/Label3")
 mult = 40.0
 
 [node name="Control" type="Control" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=1462129201]
@@ -3174,7 +3186,7 @@ layout_mode = 2
 [node name="DoEvents" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=205263746]
 layout_mode = 2
 button_pressed = true
-text = "DO_EVENTS"
+text = "settings.other.do_events"
 
 [node name="StateIcon4" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/DoEvents" unique_id=764494011 instance=ExtResource("42_sp30j")]
 layout_mode = 1
@@ -3182,7 +3194,7 @@ layout_mode = 1
 [node name="NikoAlwaysOnTop" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=1709047077]
 layout_mode = 2
 button_pressed = true
-text = "NIKO_ALWAYS_ON_TOP"
+text = "settings.other.niko_always_on_top"
 
 [node name="StateIcon3" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/NikoAlwaysOnTop" unique_id=971866925 instance=ExtResource("42_sp30j")]
 layout_mode = 1
@@ -3190,7 +3202,7 @@ layout_mode = 1
 [node name="WindowsAlwaysOnTop" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=1101211832]
 layout_mode = 2
 button_pressed = true
-text = "WINDOWS_ALWAYS_ON_TOP"
+text = "settings.other.windows_always_on_top"
 
 [node name="StateIcon2" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/WindowsAlwaysOnTop" unique_id=1105209984 instance=ExtResource("42_sp30j")]
 layout_mode = 1
@@ -3204,7 +3216,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/HBoxContainer5" unique_id=655774808]
 layout_mode = 2
-text = "WINDOWS_ONLY"
+text = "settings.sections.windows_only"
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/HBoxContainer5" unique_id=1647823076]
 layout_mode = 2
@@ -3213,7 +3225,7 @@ size_flags_horizontal = 3
 [node name="TaskBarIcon" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=979091871]
 layout_mode = 2
 button_pressed = true
-text = "TASKBAR_ICON"
+text = "settings.other.taskbar_icon"
 script = ExtResource("82_36qg2")
 
 [node name="StateIcon" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/TaskBarIcon" unique_id=908143607 instance=ExtResource("42_sp30j")]
@@ -3229,7 +3241,7 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/HBoxContainer4" unique_id=1632690905]
 layout_mode = 2
-text = "HINT"
+text = "settings.sections.hint"
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/HBoxContainer4" unique_id=1157804246]
 layout_mode = 2
@@ -3241,12 +3253,11 @@ layout_mode = 2
 bbcode_enabled = true
 script = SubResource("GDScript_k2ony")
 nodes = [NodePath("../DoEvents"), NodePath("../NikoAlwaysOnTop"), NodePath("../WindowsAlwaysOnTop"), NodePath("../TaskBarIcon")]
-texts = Array[String](["DO_EVENTS_HINT", "NIKO_ALWAYS_ON_TOP_HINT", "WINDOWS_ALWAYS_ON_TOP_HINT", "TAKSBAR_ICON_HINT"])
+texts = Array[String](["settings.other.hint.do_events", "settings.other.hint.niko_always_on_top", "settings.other.hint.windows_always_on_top", "settings.other.hint.taskbar"])
 
 [node name="ResetDataPopup" parent="SettingsWindow" unique_id=865820121 instance=ExtResource("33_id8vy")]
 visible = false
 unresizable = true
-borderless = true
 maximize_disabled = false
 
 [node name="Control" parent="SettingsWindow/ResetDataPopup" index="1" unique_id=579132620]
@@ -3277,7 +3288,7 @@ visible = false
 minimize_disabled = true
 
 [node name="Title" parent="ShopWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(1900906359, 332691484) index="1" unique_id=2015855131]
-text = "SHOP"
+text = "titles.shop"
 
 [node name="ShopMargin" type="MarginContainer" parent="ShopWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(1900906359, 971726425) index="0" unique_id=85966485]
 clip_contents = true
@@ -3403,7 +3414,7 @@ visible = false
 icon = ExtResource("87_s2ody")
 
 [node name="Title" parent="AchievementsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(1722617301, 332691484) index="1" unique_id=2015855131]
-text = "ACHIEVEMENTS"
+text = "titles.achievements"
 
 [node name="MarginContainer" type="MarginContainer" parent="AchievementsWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(1722617301, 971726425) index="0" unique_id=408602207]
 layout_mode = 2
@@ -3554,7 +3565,7 @@ layout_mode = 2
 
 [node name="GamingMode" type="CheckBox" parent="IndicatorPopup/Panel/MarginContainer/VBoxContainer" unique_id=1458295662]
 layout_mode = 2
-text = "GAMING_MODE"
+text = "settings.general.gaming_mode"
 script = ExtResource("74_2umrp")
 
 [node name="StateIcon" parent="IndicatorPopup/Panel/MarginContainer/VBoxContainer/GamingMode" unique_id=832056286 instance=ExtResource("42_sp30j")]
@@ -3562,12 +3573,12 @@ layout_mode = 1
 
 [node name="ResetPos" type="Button" parent="IndicatorPopup/Panel/MarginContainer/VBoxContainer" unique_id=1628464723]
 layout_mode = 2
-text = "RESET_POS"
+text = "settings.taskbar.reset_pos"
 alignment = 0
 
 [node name="Shutdown" type="Button" parent="IndicatorPopup/Panel/MarginContainer/VBoxContainer" unique_id=1111468738]
 layout_mode = 2
-text = "SHUTDOWN"
+text = "titles.shutdown"
 alignment = 0
 
 [node name="StatusIndicator" type="StatusIndicator" parent="." unique_id=1578129275 node_paths=PackedStringArray("styled_menu")]

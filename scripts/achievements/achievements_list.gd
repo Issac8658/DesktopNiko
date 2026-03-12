@@ -32,7 +32,7 @@ func update_panel(panel : Node, achievement_id : String):
 		panel.get_node("Icon").texture = locked_icon
 		if data.Hidden:
 			panel.get_node("TextInfo/AchievementName").text = "???"
-			panel.get_node("TextInfo/AchievementDesc").text = "ACHIEVEMENT_HIDDEN_TEXT"
+			panel.get_node("TextInfo/AchievementDesc").text = "achievements.hidden.description"
 		else:
 			panel.get_node("TextInfo/AchievementName").text = data.Title
 			panel.get_node("TextInfo/AchievementDesc").text = data.Description
