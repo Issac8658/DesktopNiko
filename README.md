@@ -13,7 +13,7 @@ The Steam version of the 2024 "The World Machine Edition" was used as the basis,
 - Setting up facepics for each state (default, speak, scared, scared speak)
 - "Gaming" mode that forces Niko to passthrough clicks
 - Icon in the system tray
-- 9 Themes from original game(Rainbow theme was not added due to technical reasons.)
+- 10 Themes from original game
 
 ## Plans for future
 - Make more facepics variants, maybe accesories support
