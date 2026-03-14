@@ -3832,6 +3832,7 @@ icon = ExtResource("87_s2ody")
 text = "titles.achievements"
 
 [node name="MarginContainer" type="MarginContainer" parent="AchievementsWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(1722617301, 971726425) index="0" unique_id=408602207]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
@@ -3839,6 +3840,7 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
 [node name="ScrollContainer" type="ScrollContainer" parent="AchievementsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=1466575130]
+use_parent_material = true
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="AchievementsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer" unique_id=1125762922]
