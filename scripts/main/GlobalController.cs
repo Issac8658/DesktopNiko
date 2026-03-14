@@ -10,10 +10,12 @@ public partial class GlobalController : Node
 	private ValuesContainer Values;
 
 	private SaveLoad _saveLoadNode;
+	private ValuesContainer _valuesContainer;
 
 	public override void _Ready()
 	{
 		_saveLoadNode = GetNode<SaveLoad>("/root/SaveLoad");
+		_valuesContainer = GetNode<ValuesContainer>("/root/ValuesContainer");
 
 		_saveLoadNode.Load();
 
@@ -31,6 +33,18 @@ public partial class GlobalController : Node
 				break;
 		}
 	}
+
+    public override void _Input(InputEvent @event)
+    {
+		if (@event is InputEventKey EventKey)
+		{
+			if (EventKey.Keycode == Key.F && EventKey.Pressed)
+			{
+				_valuesContainer.NikoIsFlipped = !_valuesContainer.NikoIsFlipped;
+			}
+		}
+    }
+
 
 	public void Save()
 	{

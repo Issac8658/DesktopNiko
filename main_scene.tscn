@@ -514,9 +514,12 @@ tracks/0/path = NodePath("../..")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.008333334, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
+"args": [],
+"method": &"SetIdleFacepic"
+}, {
 "args": [],
 "method": &"SetSpeakFacepic"
 }, {
@@ -659,7 +662,7 @@ title = "SHORTCUTS"
 initial_position = 4
 size = Vector2i(358, 394)
 visible = false
-min_size = Vector2i(193, 270)
+min_size = Vector2i(202, 270)
 max_size = Vector2i(1920, 1040)
 
 [node name="Topbar" parent="ShortcutsWindow/Control/WindowContainer" parent_id_path=PackedInt32Array(765980327, 106878241) index="0" unique_id=763031887]
@@ -1351,7 +1354,7 @@ title = "GAMES"
 initial_position = 4
 size = Vector2i(358, 394)
 visible = false
-min_size = Vector2i(193, 270)
+min_size = Vector2i(202, 270)
 max_size = Vector2i(1920, 1040)
 
 [node name="Control" parent="GamesWindow" index="0" unique_id=579132620]
@@ -1645,7 +1648,7 @@ title = "THEMES"
 initial_position = 4
 size = Vector2i(358, 380)
 visible = false
-min_size = Vector2i(193, 270)
+min_size = Vector2i(202, 270)
 max_size = Vector2i(1920, 1040)
 
 [node name="Control" parent="ThemesWindow" index="0" unique_id=579132620]
@@ -3824,6 +3827,7 @@ frame_progress = 0.30546513
 initial_position = 4
 size = Vector2i(400, 560)
 visible = false
+min_size = Vector2i(202, 100)
 
 [node name="Icon" parent="AchievementsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(1722617301, 1002331087) index="0" unique_id=1518425686]
 icon = ExtResource("87_s2ody")

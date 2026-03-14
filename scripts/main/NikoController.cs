@@ -65,6 +65,8 @@ public partial class NikoController : Node
 		_valuesContainer.WorldMachineToggled += Toggled => DoWhatNikoNeedToDo();
 		_valuesContainer.FacepicUnforced += DoWhatNikoNeedToDo;
 		_valuesContainer.GlobalTimerTicked += GlobalTimerTicked;
+		_valuesContainer.NikoFlipped += Flipped => NikoSpriteNode.FlipH = Flipped;
+		_skinManager.SkinChanged += SkinId => UpdateFacepic();
 
 		NikoSpriteNode.GuiInput += Event =>
 		{
@@ -72,16 +74,11 @@ public partial class NikoController : Node
 				if (EventMouse.IsPressed() && EventMouse.ButtonIndex == MouseButton.Left && !_valuesContainer.IsFacepicForced)
 				{
 					Click();
-					//GetNode<NikoDialog>("/root/NikoDialog").ShowDialog(new(200, 60), "meow");
 				}
 		};
-		//GetNode<NikoDialog>("/root/NikoDialog").ShowNextRequest += () =>
-		//{
-		//	GetNode<NikoDialog>("/root/NikoDialog").EndDialog();
-		//};
+
+		NikoSpriteNode.FlipH = _valuesContainer.NikoIsFlipped;
 		DoWhatNikoNeedToDo();
-		
-		_skinManager.SkinChanged += SkinId => UpdateFacepic();
 	}
 
 	public override void _Process(double delta)

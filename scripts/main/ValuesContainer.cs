@@ -19,6 +19,7 @@ public partial class ValuesContainer : Node
 	[Signal] public delegate void GamingModeToggledEventHandler(bool GamingMode);
 	[Signal] public delegate void NikoSkinChangedEventHandler(string SkinId);
 	[Signal] public delegate void WorldMachineToggledEventHandler(bool Toggled);
+	[Signal] public delegate void NikoFlippedEventHandler(bool Flipped);
 
 	#region Variables to Save
 
@@ -64,7 +65,8 @@ public partial class ValuesContainer : Node
 	private int _nikoTimeToSleep = 900; // in seconds
 	private bool _gamingModeEnabled = false;
 	private string _currentSkin = ""; // sets by SaveLoad.cs
-	private bool _isWorldMachine;
+	private bool _isWorldMachine = false;
+	private bool _nikoIsFlipped = false;
 	#endregion
 	#endregion
 
@@ -294,6 +296,15 @@ public partial class ValuesContainer : Node
 			EmitSignal("WorldMachineToggled", value);
 		}
 		get => _isWorldMachine;
+	}
+	public bool NikoIsFlipped
+	{
+		set
+		{
+			_nikoIsFlipped = value;
+			EmitSignal("NikoFlipped", value);
+		}
+		get => _nikoIsFlipped;
 	}
 	#endregion
 	#endregion
