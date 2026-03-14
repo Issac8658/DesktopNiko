@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bo3x8yy4g81xb" path="res://sprites/ui/world_machine/close_button.tres" id="4_73js7"]
 [ext_resource type="Texture2D" uid="uid://bvbx7qccj2uks" path="res://sprites/ui/world_machine/hide_button.tres" id="4_in0ps"]
 
-[node name="BaseWindow" type="Window" unique_id=190368190 node_paths=PackedStringArray("topbar", "CloseButton", "HideButton")]
+[node name="BaseWindow" type="Window" unique_id=190368190 node_paths=PackedStringArray("topbar", "close_button", "hide_button")]
 auto_translate_mode = 1
 disable_3d = true
 oversampling_override = 1.0
@@ -23,8 +23,8 @@ keep_title_visible = true
 theme = ExtResource("1_xtp28")
 script = ExtResource("2_in0ps")
 topbar = NodePath("Control/WindowContainer/Topbar")
-CloseButton = NodePath("Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/CloseButtonContainer/CloseButton")
-HideButton = NodePath("Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/HideButtonContainer/HideButton")
+close_button = NodePath("Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/CloseButtonContainer/CloseButton")
+hide_button = NodePath("Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/HideButtonContainer/HideButton")
 
 [node name="Control" type="MarginContainer" parent="." unique_id=579132620]
 texture_filter = 1

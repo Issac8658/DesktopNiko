@@ -24,9 +24,9 @@ func _ready():
 		pass
 	)
 	
-	shutdown_popup.visibility_changed.connect(func ():
-		ValuesContainer.IsShutdownPupupShowed = shutdown_popup.visible
-	)
+	#shutdown_popup.visibility_changed.connect(func ():
+		#ValuesContainer.IsShutdownPupupShowed = shutdown_popup.visible
+	#)
 	
 	#GlobalController.SaveRequest.connect(func ():
 	#	shutdown_popup.popup()
