@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="1_xtp28"]
 [ext_resource type="Script" uid="uid://m6hjiig1mkmj" path="res://scripts/windows/window_controller.gd" id="2_in0ps"]
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="3_73js7"]
 [ext_resource type="Texture2D" uid="uid://c8a2o0ruiwceh" path="res://sprites/icons/place_holder.png" id="3_cp0xp"]
 [ext_resource type="Texture2D" uid="uid://bo3x8yy4g81xb" path="res://sprites/ui/world_machine/close_button.tres" id="4_73js7"]
 [ext_resource type="Texture2D" uid="uid://bvbx7qccj2uks" path="res://sprites/ui/world_machine/hide_button.tres" id="4_in0ps"]
@@ -11,7 +12,7 @@ auto_translate_mode = 1
 disable_3d = true
 oversampling_override = 1.0
 title = "Base Window"
-position = Vector2i(175, 36)
+position = Vector2i(175, 0)
 size = Vector2i(400, 400)
 borderless = true
 always_on_top = true
@@ -27,6 +28,7 @@ HideButton = NodePath("Control/WindowContainer/Topbar/MarginContainer/HBoxContai
 
 [node name="Control" type="MarginContainer" parent="." unique_id=579132620]
 texture_filter = 1
+material = ExtResource("3_73js7")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -39,17 +41,20 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="WindowContainer" type="VBoxContainer" parent="Control" unique_id=106878241]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="Topbar" type="PanelContainer" parent="Control/WindowContainer" unique_id=763031887]
 z_index = 1
+use_parent_material = true
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_type_variation = &"ThickPanelContainer"
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/WindowContainer/Topbar" unique_id=654231062]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
@@ -57,10 +62,12 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/WindowContainer/Topbar/MarginContainer" unique_id=332691484]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
 
 [node name="IconContainer" type="MarginContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" unique_id=1002331087]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
@@ -68,6 +75,7 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
 [node name="Icon" type="Button" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" unique_id=1518425686]
+use_parent_material = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 mouse_filter = 2
@@ -77,6 +85,7 @@ flat = true
 expand_icon = true
 
 [node name="Title" type="Label" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" unique_id=2015855131]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Base Window"
@@ -85,6 +94,7 @@ text_overrun_behavior = 3
 
 [node name="HideButtonContainer" type="MarginContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" unique_id=1853849343]
 visible = false
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 4
@@ -92,6 +102,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 4
 
 [node name="HideButton" type="Button" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/HideButtonContainer" unique_id=397655583]
+use_parent_material = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -101,6 +112,7 @@ flat = true
 expand_icon = true
 
 [node name="CloseButtonContainer" type="MarginContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" unique_id=347735988]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 4
@@ -108,6 +120,7 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
 [node name="CloseButton" type="Button" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/CloseButtonContainer" unique_id=522478686]
+use_parent_material = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -117,6 +130,7 @@ flat = true
 expand_icon = true
 
 [node name="Content" type="PanelContainer" parent="Control/WindowContainer" unique_id=971726425]
+use_parent_material = true
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3

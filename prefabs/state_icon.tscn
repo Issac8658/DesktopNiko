@@ -16,6 +16,7 @@ atlas = ExtResource("1_0kwcu")
 region = Rect2(33, 0, 16, 16)
 
 [node name="StateIcon" type="Button" unique_id=1653320294]
+use_parent_material = true
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5

@@ -1,24 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl8543lp0qwyv"]
+[gd_scene format=3 uid="uid://dl8543lp0qwyv"]
 
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="1_13jik"]
 [ext_resource type="StyleBox" uid="uid://c47lb30cio4to" path="res://themes/twm_theme/horizontal_line_wide.stylebox" id="1_gnj1r"]
 [ext_resource type="Texture2D" uid="uid://8tnj3kv357ky" path="res://sprites/achievements/achievement_separator.tres" id="2_oxbdd"]
 
-[node name="MarginContainer" type="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" unique_id=1478066174]
+material = ExtResource("1_13jik")
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 0
 
-[node name="Separator" type="HBoxContainer" parent="."]
+[node name="Separator" type="HBoxContainer" parent="." unique_id=1328071756]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="HSeparator" type="HSeparator" parent="Separator"]
+[node name="HSeparator" type="HSeparator" parent="Separator" unique_id=2082241632]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = ExtResource("1_gnj1r")
 
-[node name="TextureRect" type="Button" parent="Separator"]
+[node name="TextureRect" type="Button" parent="Separator" unique_id=9705356]
+use_parent_material = true
 custom_minimum_size = Vector2(42, 16)
 layout_mode = 2
 mouse_filter = 2
@@ -26,7 +31,8 @@ theme_type_variation = &"IconButton"
 icon = ExtResource("2_oxbdd")
 expand_icon = true
 
-[node name="HSeparator2" type="HSeparator" parent="Separator"]
+[node name="HSeparator2" type="HSeparator" parent="Separator" unique_id=1727065048]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = ExtResource("1_gnj1r")

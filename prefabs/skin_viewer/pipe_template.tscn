@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bihaq5sq4yuxk"]
+[gd_scene format=3 uid="uid://bihaq5sq4yuxk"]
 
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="1_ueh7f"]
 [ext_resource type="Texture2D" uid="uid://bip0eerfucj2q" path="res://sprites/ui/world_machine/pipe.png" id="1_ynbrx"]
 
-[node name="Line2D" type="Line2D"]
-modulate = Color(0.196078, 0.129412, 0.321569, 1)
+[node name="Line2D" type="Line2D" unique_id=1784287988]
+modulate = Color(0.24705882, 0.24705882, 0.24705882, 1)
+material = ExtResource("1_ueh7f")
 points = PackedVector2Array(0, 0, 0, 0, 0, 0)
 width = 8.0
 texture = ExtResource("1_ynbrx")

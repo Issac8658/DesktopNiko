@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cks35xrbpjdyt"]
 
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="1_i6wn3"]
 [ext_resource type="PhysicsMaterial" uid="uid://dhjj26w46jyw2" path="res://prefabs/skin_viewer/bump_material.tres" id="1_k8vdx"]
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="1_ro3h6"]
 [ext_resource type="Theme" uid="uid://dfef00daciy56" path="res://themes/skin_view_theme/skin_view_theme.theme" id="1_s20vd"]
@@ -11,6 +12,7 @@ resource_local_to_scene = true
 size = Vector2(56, 94)
 
 [node name="SkinPreview" type="RigidBody2D" unique_id=1294756999 node_paths=PackedStringArray("CollisionShape", "MonitorControl", "PreviewImageControl", "NameLabel")]
+material = ExtResource("1_i6wn3")
 physics_material_override = ExtResource("1_k8vdx")
 gravity_scale = 0.0
 lock_rotation = true
@@ -24,6 +26,7 @@ SkinImage = ExtResource("2_hbn6f")
 SkinScale = 1.0
 
 [node name="SkinContainer" type="PanelContainer" parent="." unique_id=2028800067]
+use_parent_material = true
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -38,6 +41,7 @@ grow_vertical = 2
 theme = ExtResource("1_s20vd")
 
 [node name="SkinContent" type="VBoxContainer" parent="SkinContainer" unique_id=863800878]
+use_parent_material = true
 layout_mode = 2
 theme = ExtResource("1_ro3h6")
 theme_override_constants/separation = 0
@@ -46,9 +50,11 @@ theme_override_constants/separation = 0
 layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="SkinContainer/SkinContent" unique_id=1986937852]
+use_parent_material = true
 layout_mode = 2
 
 [node name="Label" type="Label" parent="SkinContainer/SkinContent" unique_id=17922434]
+use_parent_material = true
 layout_mode = 2
 horizontal_alignment = 1
 

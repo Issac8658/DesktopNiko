@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://p1pqqfmmosdh"]
+
+[ext_resource type="Shader" uid="uid://q2oevpvyfp2w" path="res://shaders/ui_theme_painter.gdshader" id="1_nrql5"]
+
+[resource]
+shader = ExtResource("1_nrql5")
+shader_parameter/theme_color_main = Vector4(0, 0, 0, 0)
+shader_parameter/theme_color_hover = Vector4(0, 0, 0, 0)
+shader_parameter/theme_color_button_outline_pressed = Vector4(0, 0, 0, 0)
+shader_parameter/theme_color_button_outline_hover = Vector4(0, 0, 0, 0)
+shader_parameter/theme_color_button_base_pressed = Vector4(0, 0, 0, 0)
+shader_parameter/theme_color_button_base_hover = Vector4(0, 0, 0, 0)
+shader_parameter/theme_color_background = Vector4(0, 0, 0, 0)

@@ -8,6 +8,7 @@ public partial class SaveLoad : Node
 {
     const string SAVE_FILE_PATH = "user://NikoMemories.cfg";
 
+    private ColorPalette DefaultColorPalette;
     public readonly string[] legacy_verisons = ["1.1.4"];
 
     private readonly Dictionary<string, Dictionary<string, string>> VARS_TO_SAVE = new() { // var from ValuesContainer.cs, name in save file
@@ -29,8 +30,15 @@ public partial class SaveLoad : Node
                 {"NikoAlwaysOnTop", "NikoAlwaysOnTop"},
                 {"WindowsAlwaysOnTop", "WindowsAlwaysOnTop"},
                 {"ShowTaskbarIcon", "TaskbarIcon"},
-                {"CurrentTheme", "Theme"},
-                {"DonedEvents", "DonedEvents"}
+                {"DonedEvents", "DonedEvents"},
+                {"ThemeColorMain", "ThemeColorMain"},
+                {"ThemeColorHover", "ThemeColorHover"},
+                {"ThemeColorOutlineHover", "ThemeColorOutlineHover"},
+                {"ThemeColorBaseHover", "ThemeColorBaseHover"},
+                {"ThemeColorOutlinePressed", "ThemeColorOutlinePressed"},
+                {"ThemeColorBasePressed", "ThemeColorBasePressed"},
+                {"ThemeColorBackground", "ThemeColorBackground"},
+                {"ThemeRainbow", "ThemeRainbow"}
             }
         },
         {"NikoStates", new()
@@ -72,7 +80,6 @@ public partial class SaveLoad : Node
                 {"NikoAlwaysOnTop", "NikoAlwaysOnTop"},
                 {"WindowsAlwaysOnTop", "WindowsAlwaysOnTop"},
                 {"ShowTaskbarIcon", "TaskbarIcon"},
-                {"CurrentTheme", "Theme"},
                 {"SnapToBottom", "SnapToBottom"},
                 {"PeacfulMode", "PeacfulMode"},
                 {"IdleFacepic", "IdleFacepic"},
@@ -91,6 +98,7 @@ public partial class SaveLoad : Node
     {
         _valuesContainer = GetNode<ValuesContainer>("/root/ValuesContainer");
         _achievementsController = GetNode<AchievementsController>("/root/AchievementsController");
+        DefaultColorPalette = GD.Load<ColorPalette>("res://themes/twm_theme/purple_color_palette.tres");
     }
 
     // Dont call Save and Load functions from other scripts directly, use GlobalController functions pls
@@ -114,10 +122,10 @@ public partial class SaveLoad : Node
         saveFile.SetValue("Main", "TakedAchievements", TakedAchievements.ToArray());
         saveFile.SetValue("TWM", "MasterVolume", AudioServer.GetBusVolumeLinear(0)); 
         saveFile.SetValue("TWM", "MeowVolume", AudioServer.GetBusVolumeLinear(1)); 
-        saveFile.SetValue("TWM", "MusicVolume", AudioServer.GetBusVolumeLinear(2)); 
-        // achievements saving here
+        saveFile.SetValue("TWM", "MusicVolume", AudioServer.GetBusVolumeLinear(2));
 
         saveFile.Save(SAVE_FILE_PATH);
+        GD.Print("Niko memories saved");
     }
 
     public void Load()
@@ -196,7 +204,6 @@ public partial class SaveLoad : Node
             AudioServer.SetBusVolumeLinear(1, (float)saveFile.GetValue("TWM", "MeowVolume", 1));
             AudioServer.SetBusVolumeLinear(2, (float)saveFile.GetValue("TWM", "MusicVolume", 1));
         }
-        
     }
 
     private void BackupSave(string NewName)

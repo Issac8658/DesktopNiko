@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1v2ix460ao6r"]
+[gd_scene format=3 uid="uid://c1v2ix460ao6r"]
 
 [ext_resource type="PackedScene" uid="uid://o3kl3g87pn3q" path="res://prefabs/base_window.tscn" id="1_hqbv3"]
 [ext_resource type="Texture2D" uid="uid://cj74xwnjydvk6" path="res://sprites/icons/info.png" id="2_tlw08"]
@@ -182,7 +182,7 @@ tracks/12/path = NodePath("Control/WindowContainer/Content/InnerContent/Animated
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(9.366667),
+"times": PackedFloat32Array(9.866667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [&"default", 1.0, false],
@@ -343,38 +343,27 @@ _data = {
 &"RESET": SubResource("Animation_dfrw0")
 }
 
-[node name="SkinTake" instance=ExtResource("1_hqbv3")]
+[node name="SkinTake" unique_id=1325825909 instance=ExtResource("1_hqbv3")]
 title = "Cat Of the Day"
 size = Vector2i(280, 250)
 
-[node name="Icon" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0"]
+[node name="Icon" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(1002331087) index="0" unique_id=1518425686]
 icon = ExtResource("2_tlw08")
 
-[node name="Title" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
+[node name="Title" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(332691484) index="1" unique_id=2015855131]
 visible = false
 text = ""
 
-[node name="HideButtonContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="2"]
+[node name="CloseButtonContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(332691484) index="3" unique_id=347735988]
 visible = false
 
-[node name="CloseButtonContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="3"]
-visible = false
-
-[node name="InnerContent" type="Control" parent="Control/WindowContainer/Content" index="0"]
+[node name="InnerContent" type="Control" parent="Control/WindowContainer/Content" parent_id_path=PackedInt32Array(971726425) index="0" unique_id=1170666424]
 clip_children = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 2
+use_parent_material = true
+layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/WindowContainer/Content/InnerContent" index="0"]
-modulate = Color(0.588235, 0.392157, 1, 1)
+[node name="TextureRect" type="TextureRect" parent="Control/WindowContainer/Content/InnerContent" index="0" unique_id=664694609]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -384,70 +373,81 @@ grow_vertical = 2
 texture = ExtResource("3_wxsyl")
 stretch_mode = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/WindowContainer/Content/InnerContent" index="1"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/WindowContainer/Content/InnerContent" index="1" unique_id=1828825602]
 modulate = Color(0.5703125, 0.5703125, 0.5703125, 0.42745098)
 position = Vector2(90, 109)
 scale = Vector2(0.4, 0.4)
 sprite_frames = ExtResource("6_wxsyl")
-frame_progress = 0.28137586
+autoplay = "default"
+frame_progress = 0.86368495
+speed_scale = 0.833
 
-[node name="Skin" type="Sprite2D" parent="Control/WindowContainer/Content/InnerContent" index="2"]
+[node name="Skin" type="Sprite2D" parent="Control/WindowContainer/Content/InnerContent" index="2" unique_id=169299250]
 position = Vector2(192, 123)
 scale = Vector2(2, 2)
 texture = ExtResource("4_jeqoc")
 
-[node name="CatOfTheDayText" type="HBoxContainer" parent="Control/WindowContainer/Content/InnerContent" index="3"]
+[node name="CatOfTheDayText" type="HBoxContainer" parent="Control/WindowContainer/Content/InnerContent" index="3" unique_id=615993207]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -96.0
 offset_top = 8.0
-offset_right = 0.0005187988
-offset_bottom = 68.00002
+offset_right = 0.00045776367
+offset_bottom = 68.00013
 grow_horizontal = 0
 pivot_offset = Vector2(96, 0)
 theme_override_constants/separation = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText" index="0" unique_id=988827321]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = -4
 
-[node name="Label" type="Label" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText/VBoxContainer" index="0"]
+[node name="Label" type="Label" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText/VBoxContainer" index="0" unique_id=1957500426]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_06rtt")
 text = "cat"
 
-[node name="Label2" type="Label" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText/VBoxContainer" index="1"]
+[node name="Label2" type="Label" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText/VBoxContainer" index="1" unique_id=1875605532]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_06rtt")
 text = "the"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText" index="1"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText" index="1" unique_id=1973676860]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = -4
 
-[node name="Control" type="Control" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText/VBoxContainer2" index="0"]
+[node name="Control" type="Control" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText/VBoxContainer2" index="0" unique_id=1382299182]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 14)
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText/VBoxContainer2" index="1"]
+[node name="Label3" type="Label" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText/VBoxContainer2" index="1" unique_id=305553853]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_06rtt")
 text = "of"
 
-[node name="Label4" type="Label" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText/VBoxContainer2" index="2"]
+[node name="Label4" type="Label" parent="Control/WindowContainer/Content/InnerContent/CatOfTheDayText/VBoxContainer2" index="2" unique_id=1116862480]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_06rtt")
 text = "day"
 
-[node name="Correct" type="Label" parent="Control/WindowContainer/Content/InnerContent" index="4"]
+[node name="Correct" type="Label" parent="Control/WindowContainer/Content/InnerContent" index="4" unique_id=1171249767]
+use_parent_material = true
 layout_mode = 0
 offset_left = 38.0
 offset_top = 41.0
@@ -457,7 +457,8 @@ theme_override_font_sizes/font_size = 110
 theme_override_styles/normal = SubResource("StyleBoxEmpty_hqbv3")
 text = "✓"
 
-[node name="Button" type="Button" parent="Control/WindowContainer/Content/InnerContent" index="5"]
+[node name="Button" type="Button" parent="Control/WindowContainer/Content/InnerContent" index="5" unique_id=220009835]
+use_parent_material = true
 layout_mode = 0
 offset_left = 8.0
 offset_top = 154.0
@@ -465,7 +466,7 @@ offset_right = 109.0
 offset_bottom = 186.0
 text = "Забрать"
 
-[node name="LeftParticles" type="GPUParticles2D" parent="Control/WindowContainer/Content/InnerContent" index="6"]
+[node name="LeftParticles" type="GPUParticles2D" parent="Control/WindowContainer/Content/InnerContent" index="6" unique_id=1277847114]
 emitting = false
 amount = 2000
 texture = ExtResource("5_tlw08")
@@ -473,7 +474,7 @@ lifetime = 10.0
 visibility_rect = Rect2(0, 0, 170, 195)
 process_material = SubResource("ParticleProcessMaterial_hqbv3")
 
-[node name="RightParticles" type="GPUParticles2D" parent="Control/WindowContainer/Content/InnerContent" index="7"]
+[node name="RightParticles" type="GPUParticles2D" parent="Control/WindowContainer/Content/InnerContent" index="7" unique_id=1420802065]
 position = Vector2(273, 0)
 scale = Vector2(-1, 1)
 emitting = false
@@ -483,10 +484,8 @@ lifetime = 10.0
 visibility_rect = Rect2(0, 0, 170, 195)
 process_material = SubResource("ParticleProcessMaterial_hqbv3")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
-libraries = {
-&"": SubResource("AnimationLibrary_xqnxt")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=812844746]
+libraries/ = SubResource("AnimationLibrary_xqnxt")
 
-[node name="SkinDrop" type="AudioStreamPlayer" parent="." index="2"]
+[node name="SkinDrop" type="AudioStreamPlayer" parent="." index="2" unique_id=1260989339]
 stream = ExtResource("5_3ux7i")

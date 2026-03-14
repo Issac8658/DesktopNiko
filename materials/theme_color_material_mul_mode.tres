@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c6wj8bf6fua0x"]
+
+[ext_resource type="Shader" uid="uid://mrpf5krtj88o" path="res://shaders/ui_theme_painter_spatial_mode_mul.gdshader" id="1_8raet"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_8raet")

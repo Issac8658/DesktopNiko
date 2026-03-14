@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://cw1tov6mght2a" path="res://sounds/major_puzzle_solved.ogg" id="5_r0fcy"]
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="6_jm0jf"]
 [ext_resource type="Script" uid="uid://05w6e57vrsyx" path="res://events/pass_code_part.gd" id="7_jmh5g"]
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="10_d6ilm"]
 [ext_resource type="Texture2D" uid="uid://k3j8qcm4l4wu" path="res://games/pancake_clicker/little_pancake.png" id="11_is2ju"]
 
 [sub_resource type="GDScript" id="GDScript_qnufv"]
@@ -592,6 +593,7 @@ near = 0.1
 
 [node name="Control" type="Control" parent="Window/Control" unique_id=1061644660]
 visible = false
+material = ExtResource("10_d6ilm")
 anchors_preset = 0
 offset_left = 108.0
 offset_top = 665.0
@@ -599,6 +601,7 @@ offset_right = 258.0
 offset_bottom = 920.0
 
 [node name="Button" type="Button" parent="Window/Control/Control" unique_id=1430833130]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -611,6 +614,7 @@ autowrap_mode = 2
 
 [node name="PassCode" type="VBoxContainer" parent="Window/Control/Control" unique_id=859775694]
 visible = false
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -621,20 +625,24 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Control2" type="Control" parent="Window/Control/Control/PassCode" unique_id=177227810]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Window/Control/Control/PassCode" unique_id=779102643]
+use_parent_material = true
 layout_mode = 2
 text = "other.events.pancake_machine.passcode_text"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer" type="HBoxContainer" parent="Window/Control/Control/PassCode" unique_id=347056497]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Window/Control/Control/PassCode/VBoxContainer" unique_id=1824538674 node_paths=PackedStringArray("up_button", "label", "down_button")]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("7_jmh5g")
@@ -644,12 +652,14 @@ label = NodePath("0")
 down_button = NodePath("Down")
 
 [node name="Up" type="Button" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer" unique_id=1746515826]
+use_parent_material = true
 layout_mode = 2
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 40
 text = "↑"
 
 [node name="0" type="Label" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer" unique_id=269267193]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 56
 text = "0"
@@ -657,12 +667,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Down" type="Button" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer" unique_id=480865946]
+use_parent_material = true
 layout_mode = 2
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 40
 text = "↓"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Window/Control/Control/PassCode/VBoxContainer" unique_id=134359325 node_paths=PackedStringArray("up_button", "label", "down_button")]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("7_jmh5g")
@@ -672,12 +684,14 @@ label = NodePath("1")
 down_button = NodePath("Down")
 
 [node name="Up" type="Button" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer2" unique_id=2138192373]
+use_parent_material = true
 layout_mode = 2
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 40
 text = "↑"
 
 [node name="1" type="Label" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer2" unique_id=1710037943]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 56
 text = "0"
@@ -685,12 +699,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Down" type="Button" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer2" unique_id=1292985366]
+use_parent_material = true
 layout_mode = 2
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 40
 text = "↓"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Window/Control/Control/PassCode/VBoxContainer" unique_id=69822780 node_paths=PackedStringArray("up_button", "label", "down_button")]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("7_jmh5g")
@@ -700,12 +716,14 @@ label = NodePath("2")
 down_button = NodePath("Down")
 
 [node name="Up" type="Button" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer3" unique_id=902161661]
+use_parent_material = true
 layout_mode = 2
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 40
 text = "↑"
 
 [node name="2" type="Label" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer3" unique_id=974983588]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 56
 text = "0"
@@ -713,16 +731,19 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Down" type="Button" parent="Window/Control/Control/PassCode/VBoxContainer/VBoxContainer3" unique_id=1825821277]
+use_parent_material = true
 layout_mode = 2
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 40
 text = "↓"
 
 [node name="Cancel" type="Button" parent="Window/Control/Control/PassCode" unique_id=1395768926]
+use_parent_material = true
 layout_mode = 2
 text = "shared.continue"
 
 [node name="Control" type="Control" parent="Window/Control/Control/PassCode" unique_id=2026990403]
+use_parent_material = true
 layout_mode = 2
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Window/Control" unique_id=299149883]

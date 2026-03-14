@@ -46,7 +46,14 @@ public partial class ValuesContainer : Node
 	private int _donedEvents = 0;
 	//private bool _shutdownButtonHovered = false;
 	//private bool _shutdownPopupShowed = false;
-	private byte _currentTheme = 0;
+	private Color _themeColorMain;
+	private Color _themeColorHover;
+	private Color _themeColorOutlineHover;
+	private Color _themeColorBaseHover;
+	private Color _themeColorOutlinePressed;
+	private Color _themeColorBasePressed;
+	private Color _themeColorBackground;
+	private bool _themeRainbow;
 	#endregion
 	#region >>Niko States
 	private byte _nikoScale = 1; // 0 - 0.5x, 1 - 1x, 2 - 2x, 3 - 3x, 4 - 4x
@@ -145,13 +152,68 @@ public partial class ValuesContainer : Node
 	//		EmitSignal("ShutdownPupupShowed", value);
 	//	}
 	//}
-	public byte CurrentTheme
-	{
-		get => _currentTheme;
+	public Color ThemeColorMain{
+		get => _themeColorMain;
 		set
 		{
-			_currentTheme = value;
-			EmitSignal("ThemeChanged", value);
+			_themeColorMain = value;
+			RenderingServer.GlobalShaderParameterSet("theme_color_main", value);
+		}
+	}
+	public Color ThemeColorHover{
+		get => _themeColorHover;
+		set
+		{
+			_themeColorHover = value;
+			RenderingServer.GlobalShaderParameterSet("theme_color_hover", value);
+		}
+	}
+	public Color ThemeColorOutlineHover{
+		get => _themeColorOutlineHover;
+		set
+		{
+			_themeColorOutlineHover = value;
+			RenderingServer.GlobalShaderParameterSet("theme_color_button_outline_hover", value);
+		}
+	}
+	public Color ThemeColorBaseHover{
+		get => _themeColorBaseHover;
+		set
+		{
+			_themeColorBaseHover = value;
+			RenderingServer.GlobalShaderParameterSet("theme_color_button_base_hover", value);
+		}
+	}
+	public Color ThemeColorOutlinePressed{
+		get => _themeColorOutlinePressed;
+		set
+		{
+			_themeColorOutlinePressed = value;
+			RenderingServer.GlobalShaderParameterSet("theme_color_button_outline_pressed", value);
+		}
+	}
+	public Color ThemeColorBasePressed{
+		get => _themeColorBasePressed;
+		set
+		{
+			_themeColorBasePressed = value;
+			RenderingServer.GlobalShaderParameterSet("theme_color_button_base_pressed", value);
+		}
+	}
+	public Color ThemeColorBackground{
+		get => _themeColorBackground;
+		set
+		{
+			_themeColorBackground = value;
+			RenderingServer.GlobalShaderParameterSet("theme_color_background", value);
+		}
+	}
+	public bool ThemeRainbow{
+		get => _themeRainbow;
+		set
+		{
+			_themeRainbow = value;
+			RenderingServer.GlobalShaderParameterSet("theme_rainbow", value);
 		}
 	}
 	#endregion

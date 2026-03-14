@@ -37,14 +37,13 @@
 [ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://sprites/icons/pancake_clicker.png" id="26_rkakh"]
 [ext_resource type="Texture2D" uid="uid://baeok1rdljmfl" path="res://sprites/icons/skins.png" id="27_7ggmy"]
 [ext_resource type="Texture2D" uid="uid://cr3ixq7u1lyrk" path="res://sprites/icons/github.png" id="27_id8vy"]
-[ext_resource type="Script" uid="uid://boigyc7vtdgxg" path="res://scripts/windows/functional_windows/games_shorcuts.gd" id="27_im3ns"]
+[ext_resource type="Script" uid="uid://boigyc7vtdgxg" path="res://scripts/windows/functional_windows/games_shortcuts.gd" id="27_im3ns"]
 [ext_resource type="Texture2D" uid="uid://bk87tkulx74jb" path="res://sprites/icons/exit.png" id="28_xtheg"]
 [ext_resource type="Texture2D" uid="uid://crlrkmttey356" path="res://sprites/characters/unreal.png" id="29_rkakh"]
 [ext_resource type="AudioStream" uid="uid://dw73t7aavxakx" path="res://sounds/HELLO_big.wav" id="30_id8vy"]
 [ext_resource type="Texture2D" uid="uid://dbd54jv3tcs30" path="res://sprites/icons/telegram.png" id="31_dftep"]
 [ext_resource type="Texture2D" uid="uid://bjfdcbs4wdh0k" path="res://events/tennis/tennis_icon.png" id="32_mmq7y"]
 [ext_resource type="PackedScene" uid="uid://8hficp4dbvqs" path="res://prefabs/popup_window.tscn" id="33_id8vy"]
-[ext_resource type="Script" uid="uid://duqfgxmwf1mkr" path="res://scripts/themes/theme_changer.gd" id="34_84x1k"]
 [ext_resource type="StyleBox" uid="uid://doojaqhvw2o0d" path="res://themes/themed/blue_file_focus.stylebox" id="34_c5xsv"]
 [ext_resource type="Texture2D" uid="uid://c2peytyd0ce3i" path="res://sprites/icons/games.png" id="34_im3ns"]
 [ext_resource type="StyleBox" uid="uid://bg8rwg0agm3i1" path="res://themes/themed/purple_file_focus.stylebox" id="34_uacds"]
@@ -66,6 +65,7 @@
 [ext_resource type="ColorPalette" uid="uid://3sstnvg6e56a" path="res://themes/twm_theme/white_color_palette.tres" id="44_8jixl"]
 [ext_resource type="AudioStream" uid="uid://cib02grlrlcd0" path="res://sounds/twm_mouse_unclick.wav" id="44_euc68"]
 [ext_resource type="StyleBox" uid="uid://bxcb1cxo17xnf" path="res://themes/themed/red_file_focus.stylebox" id="45_8quq7"]
+[ext_resource type="Script" uid="uid://jqxc0sp1qg13" path="res://scripts/windows/functional_windows/ThemeChangerShortcut.cs" id="45_pwjuq"]
 [ext_resource type="ColorPalette" uid="uid://biqcrctnsr5be" path="res://themes/twm_theme/orange_color_palette.tres" id="45_wmw63"]
 [ext_resource type="ColorPalette" uid="uid://c0mo737ff2x2u" path="res://themes/twm_theme/teal_color_palette.tres" id="46_uush8"]
 [ext_resource type="StyleBox" uid="uid://bjaphqxio33wx" path="res://themes/themed/red_file_hover.stylebox" id="46_vhc7d"]
@@ -86,8 +86,12 @@
 [ext_resource type="StyleBox" uid="uid://7knach8205vl" path="res://themes/twm_theme/window_tab.stylebox" id="67_im3ns"]
 [ext_resource type="StyleBox" uid="uid://nyb3y3mcmw8e" path="res://themes/twm_theme/window_tab_selected.stylebox" id="67_xevt3"]
 [ext_resource type="Texture2D" uid="uid://bq0l8gsn8md3e" path="res://sprites/icons/language.png" id="69_05sqr"]
+[ext_resource type="Shader" uid="uid://ck777xnbrcqw8" path="res://shaders/rainbow.gdshader" id="71_573ql"]
+[ext_resource type="ColorPalette" uid="uid://i6fjfelj00tm" path="res://themes/twm_theme/base_palette.tres" id="71_greh8"]
+[ext_resource type="Shader" uid="uid://c0qsuhk3v6f16" path="res://shaders/rainbow_shadow_shader.gdshader" id="72_greh8"]
 [ext_resource type="Script" uid="uid://cgjvtemq32u7a" path="res://scripts/windows/functional_windows/settings/gaming_mode_setting.gd" id="74_2umrp"]
 [ext_resource type="Script" uid="uid://lowrqksp45hd" path="res://scripts/windows/functional_windows/settings/sleep_controls.gd" id="74_j53bq"]
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="74_s717c"]
 [ext_resource type="Texture2D" uid="uid://4fifkt7n1ua4" path="res://sprites/shop_base.tres" id="74_v118d"]
 [ext_resource type="Texture2D" uid="uid://gsgodind7qoq" path="res://sprites/shop_front.tres" id="75_lwncm"]
 [ext_resource type="Texture2D" uid="uid://doq31fc3w01dr" path="res://sprites/shop_back.tres" id="75_o63de"]
@@ -120,6 +124,7 @@
 [ext_resource type="Texture2D" uid="uid://dnwbeed7hrv83" path="res://sprites/ui/test_shit.png" id="92_ixb38"]
 [ext_resource type="Script" uid="uid://dbaokjrp7ef13" path="res://scripts/achievements/achievement_show.gd" id="92_l8no8"]
 [ext_resource type="Material" uid="uid://cmlk3yixxx4u4" path="res://materials/world_machine_glitch_material.tres" id="92_ldlqy"]
+[ext_resource type="Script" uid="uid://by1cd1rvin4oh" path="res://scripts/RecursiveThemeApplier.cs" id="97_wonw5"]
 [ext_resource type="Script" uid="uid://cxgqoi8ca5cdk" path="res://scripts/windows/functional_windows/settings/do_events_setting.gd" id="98_ude2c"]
 [ext_resource type="Script" uid="uid://biqdchmemfsah" path="res://scripts/windows/functional_windows/settings/niko_always_on_top_setting.gd" id="99_s717c"]
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="100_ix15y"]
@@ -192,6 +197,13 @@ func _ready() -> void:
 	)
 "
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0vb1"]
+shader = ExtResource("71_573ql")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_573ql"]
+shader = ExtResource("72_greh8")
+shader_parameter/shadow_distance = 0.5
+
 [sub_resource type="GDScript" id="GDScript_0dwp6"]
 resource_name = "resizer"
 script/source = "extends Control
@@ -205,6 +217,8 @@ func _ready() -> void:
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xtheg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ubkm4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wonw5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j8kkg"]
 atlas = ExtResource("4_hq1ik")
@@ -661,6 +675,7 @@ text = "titles.shortcuts"
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content" index="0" unique_id=475839431]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
@@ -668,10 +683,12 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=1009032401]
+use_parent_material = true
 layout_mode = 2
 horizontal_scroll_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer" unique_id=289314224]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -679,14 +696,17 @@ theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
+metadata/_recursiveItemParentMaterial = true
 
 [node name="GridContainer" type="HFlowContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer" unique_id=2027614381 node_paths=PackedStringArray("shutdown_popup", "shutdown_accept_button")]
+use_parent_material = true
 layout_mode = 2
 script = ExtResource("20_q4750")
 shutdown_popup = NodePath("../../../../../../../../ShutdownPopup")
 shutdown_accept_button = NodePath("../../../../../../../../ShutdownPopup/Control/WindowContainer/Content/PopupMargin/VBoxContainer/Actions/Yes")
 
 [node name="Settings" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=469128266]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_filter = 2
@@ -696,6 +716,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="Button" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Settings" unique_id=1035681988]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -706,6 +727,7 @@ vertical_icon_alignment = 0
 metadata/TargetWindow = NodePath("../../../../../../../../../../SettingsWindow")
 
 [node name="ButtonMargin" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Settings" unique_id=620696977]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 8
@@ -714,6 +736,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="ButtonContent" type="VBoxContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Settings/ButtonMargin" unique_id=743447195]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 2
@@ -730,6 +753,7 @@ expand_icon = true
 
 [node name="ShortcutIcon" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Settings/ButtonMargin/ButtonContent/Icon" unique_id=793554330]
 visible = false
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -743,6 +767,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Settings/ButtonMargin/ButtonContent" unique_id=508376270]
+use_parent_material = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 text = "titles.settings"
@@ -750,6 +775,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Themes" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=1134225281]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_filter = 2
@@ -759,6 +785,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="Button" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Themes" unique_id=1081005311]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -769,6 +796,7 @@ vertical_icon_alignment = 0
 metadata/TargetWindow = NodePath("../../../../../../../../../../ThemesWindow")
 
 [node name="ButtonMargin" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Themes" unique_id=1795680005]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 8
@@ -777,6 +805,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="ButtonContent" type="VBoxContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Themes/ButtonMargin" unique_id=1109809415]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 2
@@ -793,6 +822,7 @@ expand_icon = true
 
 [node name="ShortcutIcon" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Themes/ButtonMargin/ButtonContent/Icon" unique_id=2123919924]
 visible = false
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -806,6 +836,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Themes/ButtonMargin/ButtonContent" unique_id=1950378035]
+use_parent_material = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 text = "titles.themes"
@@ -813,6 +844,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Skins" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=541156003]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_filter = 2
@@ -822,6 +854,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="Button" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Skins" unique_id=26382282]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -832,6 +865,7 @@ vertical_icon_alignment = 0
 metadata/TargetWindow = NodePath("../../../../../../../../../../SkinViewer")
 
 [node name="ButtonMargin" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Skins" unique_id=806130299]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 8
@@ -840,6 +874,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="ButtonContent" type="VBoxContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Skins/ButtonMargin" unique_id=1460934274]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 2
@@ -856,6 +891,7 @@ expand_icon = true
 
 [node name="ShortcutIcon" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Skins/ButtonMargin/ButtonContent/Icon" unique_id=358943287]
 visible = false
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -869,6 +905,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Skins/ButtonMargin/ButtonContent" unique_id=1448436372]
+use_parent_material = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 text = "titles.skins"
@@ -876,6 +913,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Achievements" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=1372644420]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_filter = 2
@@ -885,6 +923,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="Button" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Achievements" unique_id=1101354394]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -895,6 +934,7 @@ vertical_icon_alignment = 0
 metadata/TargetWindow = NodePath("../../../../../../../../../../AchievementsWindow")
 
 [node name="ButtonMargin" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Achievements" unique_id=743340477]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 8
@@ -903,6 +943,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="ButtonContent" type="VBoxContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Achievements/ButtonMargin" unique_id=1108093191]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 2
@@ -919,6 +960,7 @@ expand_icon = true
 
 [node name="ShortcutIcon" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Achievements/ButtonMargin/ButtonContent/Icon" unique_id=358338239]
 visible = false
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -932,6 +974,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Achievements/ButtonMargin/ButtonContent" unique_id=344829916]
+use_parent_material = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 text = "titles.achievements"
@@ -940,6 +983,7 @@ autowrap_mode = 3
 
 [node name="Pancake" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=482989812]
 visible = false
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_filter = 2
@@ -949,6 +993,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="Button" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Pancake" unique_id=554845829]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -959,6 +1004,7 @@ vertical_icon_alignment = 0
 metadata/TargetWindow = NodePath("")
 
 [node name="ButtonMargin" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Pancake" unique_id=1485431456]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 8
@@ -967,6 +1013,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="ButtonContent" type="VBoxContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Pancake/ButtonMargin" unique_id=2115999204]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 2
@@ -983,6 +1030,7 @@ expand_icon = true
 
 [node name="ShortcutIcon" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Pancake/ButtonMargin/ButtonContent/Icon" unique_id=452642334]
 visible = false
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -996,6 +1044,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Pancake/ButtonMargin/ButtonContent" unique_id=301360256]
+use_parent_material = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 text = "PANCAKECLICKER"
@@ -1003,6 +1052,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Games" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=995874809]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_filter = 2
@@ -1012,6 +1062,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="Button" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Games" unique_id=1396893508]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -1022,6 +1073,7 @@ vertical_icon_alignment = 0
 metadata/TargetWindow = NodePath("../../../../../../../../../../GamesWindow")
 
 [node name="ButtonMargin" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Games" unique_id=925105513]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 8
@@ -1030,6 +1082,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="ButtonContent" type="VBoxContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Games/ButtonMargin" unique_id=1893100924]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 2
@@ -1046,6 +1099,7 @@ expand_icon = true
 
 [node name="ShortcutIcon" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Games/ButtonMargin/ButtonContent/Icon" unique_id=1450716533]
 visible = false
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1059,6 +1113,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Games/ButtonMargin/ButtonContent" unique_id=93914008]
+use_parent_material = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 text = "titles.games"
@@ -1066,6 +1121,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Github" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=1273128632]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_filter = 2
@@ -1075,6 +1131,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="Button" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Github" unique_id=435183034]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -1084,6 +1141,7 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 
 [node name="ButtonMargin" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Github" unique_id=1261569818]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 8
@@ -1092,6 +1150,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="ButtonContent" type="VBoxContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Github/ButtonMargin" unique_id=123549850]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 2
@@ -1108,6 +1167,7 @@ expand_icon = true
 
 [node name="ShortcutIcon" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Github/ButtonMargin/ButtonContent/Icon" unique_id=552625471]
 visible = false
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1121,6 +1181,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Github/ButtonMargin/ButtonContent" unique_id=313564248]
+use_parent_material = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 text = "Github"
@@ -1128,6 +1189,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Telegram" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=1941236678]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_filter = 2
@@ -1137,6 +1199,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="Button" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Telegram" unique_id=2115934594]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -1147,6 +1210,7 @@ vertical_icon_alignment = 0
 script = SubResource("GDScript_dftep")
 
 [node name="ButtonMargin" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Telegram" unique_id=1699125999]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 8
@@ -1155,6 +1219,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="ButtonContent" type="VBoxContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Telegram/ButtonMargin" unique_id=953721796]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 2
@@ -1171,6 +1236,7 @@ expand_icon = true
 
 [node name="ShortcutIcon" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Telegram/ButtonMargin/ButtonContent/Icon" unique_id=498386321]
 visible = false
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1184,6 +1250,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Telegram/ButtonMargin/ButtonContent" unique_id=1630316624]
+use_parent_material = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 text = "Telegram Channel (rus)"
@@ -1191,6 +1258,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Shutdown" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=2096974747]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_filter = 2
@@ -1200,6 +1268,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="Button" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Shutdown" unique_id=1666842798]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -1209,6 +1278,7 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 
 [node name="ButtonMargin" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Shutdown" unique_id=1163959856]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 8
@@ -1217,6 +1287,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="ButtonContent" type="VBoxContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Shutdown/ButtonMargin" unique_id=1094247160]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 2
@@ -1233,6 +1304,7 @@ expand_icon = true
 
 [node name="ShortcutIcon" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Shutdown/ButtonMargin/ButtonContent/Icon" unique_id=1144897218]
 visible = false
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1246,11 +1318,16 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Label" type="Label" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Shutdown/ButtonMargin/ButtonContent" unique_id=1475718911]
+use_parent_material = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 text = "titles.shutdown"
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="RecursiveThemeApplier" type="Node" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer" unique_id=1853816892]
+script = ExtResource("97_wonw5")
+metadata/_custom_type_script = "uid://by1cd1rvin4oh"
 
 [node name="Control" type="Control" parent="ShortcutsWindow/Control/WindowContainer/Content" index="1" unique_id=217377118]
 layout_mode = 2
@@ -1278,6 +1355,7 @@ min_size = Vector2i(193, 270)
 max_size = Vector2i(1920, 1040)
 
 [node name="Control" parent="GamesWindow" index="0" unique_id=579132620]
+use_parent_material = true
 mouse_filter = 1
 
 [node name="WindowContainer" parent="GamesWindow/Control" index="0" unique_id=106878241]
@@ -1296,6 +1374,7 @@ text = "titles.games"
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content" index="0" unique_id=1217171850]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
@@ -1303,10 +1382,12 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
 [node name="ScrollContainer" type="ScrollContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer" unique_id=629448063]
+use_parent_material = true
 layout_mode = 2
 horizontal_scroll_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer" unique_id=989216526]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -1314,14 +1395,18 @@ theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
+metadata/_recursiveItemParentMaterial = true
 
 [node name="GridContainer" type="HFlowContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer" unique_id=1704889754 node_paths=PackedStringArray("games_node")]
+use_parent_material = true
 layout_mode = 2
 script = ExtResource("27_im3ns")
 games = Array[PackedScene]([null, null, ExtResource("40_gv8l5")])
 games_node = NodePath("../../../../../../../../Games")
 
 [node name="Pancake" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=486940095]
+visible = false
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_filter = 2
@@ -1331,6 +1416,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="Button" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Pancake" unique_id=901485890]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -1341,6 +1427,7 @@ vertical_icon_alignment = 0
 metadata/TargetWindow = NodePath("")
 
 [node name="ButtonMargin" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Pancake" unique_id=1929635538]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 8
@@ -1349,6 +1436,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="ButtonContent" type="VBoxContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Pancake/ButtonMargin" unique_id=1293053914]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 2
@@ -1365,6 +1453,7 @@ expand_icon = true
 
 [node name="ShortcutIcon" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Pancake/ButtonMargin/ButtonContent/Icon" unique_id=1327400357]
 visible = false
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1378,6 +1467,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Label" type="Label" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Pancake/ButtonMargin/ButtonContent" unique_id=1740688486]
+use_parent_material = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 text = "PANCAKECLICKER"
@@ -1385,6 +1475,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Tennis" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=557150113 node_paths=PackedStringArray("games")]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_filter = 2
@@ -1397,6 +1488,7 @@ event = ExtResource("17_xevt3")
 games = NodePath("../../../../../../../../../Games")
 
 [node name="Button" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis" unique_id=117628325]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -1406,6 +1498,7 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 
 [node name="ButtonMargin" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis" unique_id=1596397565]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 8
@@ -1414,6 +1507,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="ButtonContent" type="VBoxContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis/ButtonMargin" unique_id=72494976]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 2
@@ -1430,6 +1524,7 @@ expand_icon = true
 
 [node name="ShortcutIcon" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis/ButtonMargin/ButtonContent/Icon" unique_id=1054871560]
 visible = false
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1443,6 +1538,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Label" type="Label" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tennis/ButtonMargin/ButtonContent" unique_id=923480719]
+use_parent_material = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 text = "titles.tennis"
@@ -1450,6 +1546,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="OneShotFunkin" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=496614002]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_filter = 2
@@ -1459,6 +1556,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="Button" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/OneShotFunkin" unique_id=657341913]
+use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -1468,6 +1566,7 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 
 [node name="ButtonMargin" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/OneShotFunkin" unique_id=1694642414]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 8
@@ -1476,6 +1575,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="ButtonContent" type="VBoxContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/OneShotFunkin/ButtonMargin" unique_id=316217164]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 2
@@ -1492,6 +1592,7 @@ expand_icon = true
 
 [node name="ShortcutIcon" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/OneShotFunkin/ButtonMargin/ButtonContent/Icon" unique_id=1403319446]
 visible = false
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1505,11 +1606,16 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Label" type="Label" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/OneShotFunkin/ButtonMargin/ButtonContent" unique_id=1753133638]
+use_parent_material = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 text = "OneShot Funkin'"
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="RecursiveThemeApplier" type="Node" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer" unique_id=1393340744]
+script = ExtResource("97_wonw5")
+metadata/_custom_type_script = "uid://by1cd1rvin4oh"
 
 [node name="ShutdownPopup" parent="." unique_id=1496860589 instance=ExtResource("33_id8vy")]
 title = "SHUTDOWN"
@@ -1560,6 +1666,7 @@ clip_text = false
 text_overrun_behavior = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="ThemesWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(995621362, 971726425) index="0" unique_id=328062935]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
@@ -1567,11 +1674,13 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer" unique_id=755679370]
+use_parent_material = true
 layout_mode = 2
 scroll_vertical_custom_step = 15.0
 horizontal_scroll_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer" unique_id=1964891764]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -1579,11 +1688,11 @@ theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
+metadata/_recursiveItemParentMaterial = true
 
 [node name="GridContainer" type="HFlowContainer" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer" unique_id=77427064]
+use_parent_material = true
 layout_mode = 2
-script = ExtResource("34_84x1k")
-Palettes = Array[ColorPalette]([ExtResource("39_l3hih"), ExtResource("40_xevt3"), ExtResource("41_im3ns"), ExtResource("42_2jqx2"), ExtResource("43_gv8l5"), ExtResource("44_8jixl"), ExtResource("45_wmw63"), ExtResource("46_uush8"), ExtResource("47_dftep")])
 
 [node name="Purple" type="MarginContainer" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=223809717]
 custom_minimum_size = Vector2(160, 108)
@@ -1604,6 +1713,8 @@ theme_override_styles/focus = ExtResource("34_uacds")
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
+script = ExtResource("45_pwjuq")
+ThemePallete = ExtResource("39_l3hih")
 metadata/TargetWindow = NodePath("")
 
 [node name="ButtonMargin" type="MarginContainer" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Purple" unique_id=1280673348]
@@ -1661,6 +1772,8 @@ theme_override_styles/focus = ExtResource("34_c5xsv")
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
+script = ExtResource("45_pwjuq")
+ThemePallete = ExtResource("40_xevt3")
 metadata/TargetWindow = NodePath("")
 
 [node name="ButtonMargin" type="MarginContainer" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Blue" unique_id=628231045]
@@ -1718,6 +1831,8 @@ theme_override_styles/focus = ExtResource("41_ya33n")
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
+script = ExtResource("45_pwjuq")
+ThemePallete = ExtResource("41_im3ns")
 metadata/TargetWindow = NodePath("")
 
 [node name="ButtonMargin" type="MarginContainer" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Yellow" unique_id=555778519]
@@ -1775,6 +1890,8 @@ theme_override_styles/focus = ExtResource("45_8quq7")
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
+script = ExtResource("45_pwjuq")
+ThemePallete = ExtResource("42_2jqx2")
 metadata/TargetWindow = NodePath("")
 
 [node name="ButtonMargin" type="MarginContainer" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Red" unique_id=402874458]
@@ -1832,6 +1949,8 @@ theme_override_styles/focus = ExtResource("48_id12a")
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
+script = ExtResource("45_pwjuq")
+ThemePallete = ExtResource("43_gv8l5")
 metadata/TargetWindow = NodePath("")
 
 [node name="ButtonMargin" type="MarginContainer" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Pink" unique_id=1393508130]
@@ -1889,6 +2008,8 @@ theme_override_styles/focus = ExtResource("51_0mwxc")
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
+script = ExtResource("45_pwjuq")
+ThemePallete = ExtResource("44_8jixl")
 metadata/TargetWindow = NodePath("")
 
 [node name="ButtonMargin" type="MarginContainer" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/White" unique_id=1092169319]
@@ -1910,11 +2031,11 @@ custom_minimum_size = Vector2(64, 66)
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(0.99607843, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(0.99607843, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(0.99607843, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(0.99607843, 1, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.99607843, 1, 1, 1)
 icon = ExtResource("17_ijoax")
 icon_alignment = 1
 expand_icon = true
@@ -1946,6 +2067,8 @@ theme_override_styles/focus = ExtResource("53_pw1oq")
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
+script = ExtResource("45_pwjuq")
+ThemePallete = ExtResource("45_wmw63")
 metadata/TargetWindow = NodePath("")
 
 [node name="ButtonMargin" type="MarginContainer" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Orange" unique_id=266836529]
@@ -2003,6 +2126,8 @@ theme_override_styles/focus = ExtResource("57_v63vh")
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
+script = ExtResource("45_pwjuq")
+ThemePallete = ExtResource("46_uush8")
 metadata/TargetWindow = NodePath("")
 
 [node name="ButtonMargin" type="MarginContainer" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Teal" unique_id=529080263]
@@ -2060,6 +2185,8 @@ theme_override_styles/focus = ExtResource("60_jl6hu")
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
+script = ExtResource("45_pwjuq")
+ThemePallete = ExtResource("47_dftep")
 metadata/TargetWindow = NodePath("")
 
 [node name="ButtonMargin" type="MarginContainer" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Green" unique_id=1261253814]
@@ -2097,6 +2224,67 @@ theme_override_colors/font_color = Color(0.247059, 0.835294, 0.392157, 1)
 text = "shared.colors.green"
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="Rainbow" type="MarginContainer" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=889757684]
+material = SubResource("ShaderMaterial_u0vb1")
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Button" type="Button" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Rainbow" unique_id=655263392]
+use_parent_material = true
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"FlatButton"
+autowrap_mode = 2
+icon_alignment = 1
+vertical_icon_alignment = 0
+script = ExtResource("45_pwjuq")
+ThemePallete = ExtResource("71_greh8")
+Rainbow = true
+metadata/TargetWindow = NodePath("")
+
+[node name="ButtonMargin" type="MarginContainer" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Rainbow" unique_id=1773418011]
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ButtonContent" type="VBoxContainer" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Rainbow/ButtonMargin" unique_id=1248414074]
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Icon" type="Button" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Rainbow/ButtonMargin/ButtonContent" unique_id=350530735]
+material = SubResource("ShaderMaterial_573ql")
+custom_minimum_size = Vector2(64, 66)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("17_ijoax")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Rainbow/ButtonMargin/ButtonContent" unique_id=1555818188]
+use_parent_material = true
+custom_minimum_size = Vector2(16, 24)
+layout_mode = 2
+text = "shared.colors.rainbow"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="RecursiveThemeApplier" type="Node" parent="ThemesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer" unique_id=1965684322]
+script = ExtResource("97_wonw5")
+metadata/_custom_type_script = "uid://by1cd1rvin4oh"
 
 [node name="ThemeEditorWindow" parent="ThemesWindow" unique_id=1041291773 instance=ExtResource("38_q4750")]
 title = "THEME_EDITOR"
@@ -2239,7 +2427,7 @@ text = "APPLY"
 [node name="SettingsWindow" parent="." unique_id=759122465 instance=ExtResource("38_q4750")]
 title = "SETTINGS"
 initial_position = 4
-size = Vector2i(704, 406)
+size = Vector2i(704, 408)
 visible = false
 wrap_controls = true
 min_size = Vector2i(704, 404)
@@ -2257,22 +2445,27 @@ clip_text = false
 text_overrun_behavior = 0
 
 [node name="HSeparator" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(759122465, 332691484) index="2" unique_id=825365711]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 8
 theme_override_styles/separator = SubResource("StyleBoxEmpty_xtheg")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(759122465, 332691484) index="3" unique_id=312492250]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 
 [node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1444007206]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ubkm4")
 
 [node name="TabBar" type="TabBar" parent="SettingsWindow/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/VBoxContainer" unique_id=703842480 node_paths=PackedStringArray("pages")]
+z_index = 1
+use_parent_material = true
 layout_mode = 2
 theme_override_styles/tab_unselected = ExtResource("67_im3ns")
 theme_override_styles/tab_hovered = ExtResource("67_im3ns")
@@ -2293,11 +2486,23 @@ mouse_filter = 2
 theme_override_constants/separation = 8
 theme_override_styles/separator = SubResource("StyleBoxEmpty_xtheg")
 
-[node name="Control" type="Control" parent="SettingsWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(759122465, 971726425) index="0" unique_id=1056996756]
+[node name="Control" type="Panel" parent="SettingsWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(759122465, 971726425) index="0" unique_id=716837464]
+clip_children = 1
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wonw5")
 
-[node name="Button" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/Control" unique_id=2143305622]
-self_modulate = Color(1, 1, 1, 0.164706)
+[node name="Control" type="Control" parent="SettingsWindow/Control/WindowContainer/Content/Control" unique_id=1456085235]
+material = ExtResource("74_s717c")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/Control/Control" unique_id=2143305622]
+self_modulate = Color(1, 1, 1, 0.3529412)
+use_parent_material = true
 custom_minimum_size = Vector2(400, 354)
 layout_mode = 1
 anchors_preset = 3
@@ -2314,23 +2519,25 @@ theme_type_variation = &"IconButton"
 icon = ExtResource("65_82rj2")
 expand_icon = true
 
-[node name="Button2" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/Control" unique_id=1202350171]
-self_modulate = Color(1, 1, 1, 0.164706)
-custom_minimum_size = Vector2(400, 354)
+[node name="Button2" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/Control/Control" unique_id=1202350171]
+self_modulate = Color(1, 1, 1, 0.3529412)
+use_parent_material = true
+custom_minimum_size = Vector2(158, 394)
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -177.0
-offset_right = 400.0
-offset_bottom = 177.0
+offset_top = -197.0
+offset_right = 158.0
+offset_bottom = 197.0
 grow_vertical = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
 icon = ExtResource("66_76in0")
 expand_icon = true
 
-[node name="LampEasteregg" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/Control" unique_id=609729115]
+[node name="LampEasteregg" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/Control/Control" unique_id=609729115]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -2347,9 +2554,10 @@ mouse_filter = 2
 theme_type_variation = &"IconButton"
 icon = ExtResource("90_2umrp")
 
-[node name="LampEasteregg2" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/Control" unique_id=1107665669]
+[node name="LampEasteregg2" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/Control/Control" unique_id=1107665669]
 visible = false
 self_modulate = Color(0.588235, 0.392157, 1, 1)
+use_parent_material = true
 layout_mode = 0
 anchor_left = 1.0
 anchor_top = 1.0
@@ -2363,7 +2571,8 @@ grow_horizontal = 0
 grow_vertical = 0
 texture = SubResource("AtlasTexture_j8kkg")
 
-[node name="Version" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/Control" unique_id=244057053]
+[node name="Version" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/Control/Control" unique_id=244057053]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -2381,6 +2590,7 @@ text = "v0.0.0"
 script = SubResource("GDScript_1b22m")
 
 [node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(759122465, 971726425) index="1" unique_id=1189183008]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
@@ -2388,15 +2598,17 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="General" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=796068923]
-visible = false
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="SettingsPanel" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General" unique_id=848334405]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="GamingMode" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel" unique_id=379552911]
+use_parent_material = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "settings.general.gaming_mode"
@@ -2408,6 +2620,7 @@ offset_top = -12.0
 offset_bottom = 12.0
 
 [node name="Peaceful" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel" unique_id=235203742]
+use_parent_material = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "settings.general.peaceful_mode"
@@ -2419,6 +2632,7 @@ offset_top = -12.0
 offset_bottom = 12.0
 
 [node name="ClickSound" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel" unique_id=804619212]
+use_parent_material = true
 layout_mode = 2
 tooltip_auto_translate_mode = 1
 mouse_default_cursor_shape = 2
@@ -2432,6 +2646,7 @@ offset_top = -12.0
 offset_bottom = 12.0
 
 [node name="SavingIcon" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel" unique_id=954725907]
+use_parent_material = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 button_pressed = true
@@ -2444,6 +2659,7 @@ offset_top = -12.0
 offset_bottom = 12.0
 
 [node name="ShowAchievements" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel" unique_id=603058109]
+use_parent_material = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 button_pressed = true
@@ -2456,29 +2672,35 @@ offset_top = -12.0
 offset_bottom = 12.0
 
 [node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel" unique_id=1004875925]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_o48om")
 
 [node name="Language2" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel" unique_id=1991253891]
+use_parent_material = true
 layout_mode = 2
 
 [node name="Padding" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/Language2" unique_id=711815634]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_7th4q")
 
 [node name="SoundSelectionHint" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/Language2" unique_id=372480204]
+use_parent_material = true
 layout_mode = 2
 text = "settings.general.language"
 
 [node name="Padding2" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/Language2" unique_id=502680125]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_7th4q")
 
 [node name="Button" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/Language2" unique_id=557621530]
+use_parent_material = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 mouse_filter = 2
@@ -2487,6 +2709,7 @@ icon = ExtResource("69_05sqr")
 expand_icon = true
 
 [node name="LanguageSelectionOptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/Language2" unique_id=1008157042]
+use_parent_material = true
 custom_minimum_size = Vector2(132, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -2502,63 +2725,78 @@ popup/item_3/text = "Українська (~99%)"
 popup/item_3/id = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel" unique_id=1449445208]
+use_parent_material = true
 layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/HBoxContainer" unique_id=299329854]
+use_parent_material = true
 custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/HBoxContainer" unique_id=212880194]
+use_parent_material = true
 layout_mode = 2
 text = "settings.sections.actions"
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/HBoxContainer" unique_id=998636605]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="LogsFolder" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel" unique_id=1670968315]
+use_parent_material = true
 layout_mode = 2
 text = "settings.general.actions.open_logs_folder"
 script = SubResource("GDScript_7y85w")
 
 [node name="AutorunButton" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel" unique_id=1724100836]
+use_parent_material = true
 layout_mode = 2
 text = "settings.general.actions.add_to_autorun"
 script = ExtResource("77_q4750")
 
 [node name="Statistics" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General" unique_id=719493708]
+use_parent_material = true
 custom_minimum_size = Vector2(308, 0)
 layout_mode = 2
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics" unique_id=822858613]
+use_parent_material = true
 layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/HBoxContainer3" unique_id=1148191197]
+use_parent_material = true
 custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/HBoxContainer3" unique_id=2047718877]
+use_parent_material = true
 layout_mode = 2
 text = "settings.sections.statistics"
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/HBoxContainer3" unique_id=2072868216]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Cps" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics" unique_id=1908624230]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Cps" unique_id=749038790]
+use_parent_material = true
 layout_mode = 2
 text = "settings.general.statistics.clicks_per_second"
 
 [node name="Dots" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Cps" unique_id=765809239]
+use_parent_material = true
 layout_mode = 2
 text = ":"
 
 [node name="CPSLabel" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Cps" unique_id=86260200]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxEmpty_82rj2")
@@ -2567,18 +2805,22 @@ horizontal_alignment = 2
 script = ExtResource("77_uush8")
 
 [node name="Clicks" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics" unique_id=1314594574]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Clicks" unique_id=1119573002]
+use_parent_material = true
 layout_mode = 2
 text = "settings.general.statistics.clicks"
 
 [node name="Dots" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Clicks" unique_id=363847937]
+use_parent_material = true
 layout_mode = 2
 text = ":"
 
 [node name="Count" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Clicks" unique_id=2131179962]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxEmpty_82rj2")
@@ -2587,18 +2829,22 @@ horizontal_alignment = 2
 script = SubResource("GDScript_ubkm4")
 
 [node name="Events" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics" unique_id=1172672948]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Events" unique_id=2014779570]
+use_parent_material = true
 layout_mode = 2
 text = "settings.general.statistics.events_passed"
 
 [node name="Dots" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Events" unique_id=502750929]
+use_parent_material = true
 layout_mode = 2
 text = ":"
 
 [node name="Count" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Events" unique_id=1266370100]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxEmpty_82rj2")
@@ -2607,18 +2853,22 @@ horizontal_alignment = 2
 script = SubResource("GDScript_l76vu")
 
 [node name="TotalTime" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics" unique_id=1375474517]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/TotalTime" unique_id=560229603]
+use_parent_material = true
 layout_mode = 2
 text = "settings.general.statistics.total_time"
 
 [node name="Dots" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/TotalTime" unique_id=1209689854]
+use_parent_material = true
 layout_mode = 2
 text = ":"
 
 [node name="Count" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/TotalTime" unique_id=701629291]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxEmpty_82rj2")
@@ -2627,22 +2877,27 @@ horizontal_alignment = 2
 script = SubResource("GDScript_o48om")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics" unique_id=1666704925]
+use_parent_material = true
 layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/HBoxContainer2" unique_id=1924988531]
+use_parent_material = true
 custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/HBoxContainer2" unique_id=713015767]
+use_parent_material = true
 layout_mode = 2
 text = "settings.sections.hint"
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/HBoxContainer2" unique_id=981313129]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="HintsText" type="RichTextLabel" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics" unique_id=187417398 node_paths=PackedStringArray("nodes")]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 bbcode_enabled = true
@@ -2650,18 +2905,25 @@ script = SubResource("GDScript_k2ony")
 nodes = [NodePath("../../SettingsPanel/Peaceful"), NodePath("../../SettingsPanel/SavingIcon"), NodePath("../../SettingsPanel/GamingMode"), NodePath("../../SettingsPanel/ClickSound"), NodePath("../../SettingsPanel/ShowAchievements")]
 texts = Array[String](["settings.general.hint.peaceful_mode", "settings.general.hint.show_saving_icon", "settings.general.hint.gaming_mode", "settings.general.hint.click_sound", "settings.general.hint.show_achievements"])
 
+[node name="RecursiveThemeApplier" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/HintsText" unique_id=837269128]
+script = ExtResource("97_wonw5")
+metadata/_custom_type_script = "uid://by1cd1rvin4oh"
+
 [node name="Niko" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=320743199]
 visible = false
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="GridContainer" type="GridContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko" unique_id=959886990]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/h_separation = 1
 theme_override_constants/v_separation = 2
 columns = 3
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1185377533]
+use_parent_material = true
 layout_mode = 2
 text = "settings.niko.facepic.default"
 horizontal_alignment = 1
@@ -2669,10 +2931,12 @@ clip_text = true
 text_overrun_behavior = 3
 
 [node name="VSeparator2" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1874949543]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
 
 [node name="Label2" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1522091716]
+use_parent_material = true
 layout_mode = 2
 text = "settings.niko.facepic.speak"
 horizontal_alignment = 1
@@ -2680,6 +2944,7 @@ clip_text = true
 text_overrun_behavior = 3
 
 [node name="Idle" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=979954395]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -2690,16 +2955,19 @@ texture = ExtResource("2_gyfs4")
 stretch_mode = 5
 
 [node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Idle" unique_id=1656476475]
+use_parent_material = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
 
 [node name="VSeparator" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1233663303]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
 
 [node name="Speak" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=241891206]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -2710,21 +2978,26 @@ texture = ExtResource("3_d5x1h")
 stretch_mode = 5
 
 [node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Speak" unique_id=1945537714]
+use_parent_material = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
 
 [node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1013240464]
+use_parent_material = true
 layout_mode = 2
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1781713608]
+use_parent_material = true
 layout_mode = 2
 
 [node name="HSeparator3" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1613854066]
+use_parent_material = true
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=958129040]
+use_parent_material = true
 layout_mode = 2
 text = "settings.niko.facepic.scared"
 horizontal_alignment = 1
@@ -2732,10 +3005,12 @@ clip_text = true
 text_overrun_behavior = 3
 
 [node name="VSeparator3" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1060096799]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
 
 [node name="Label4" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1766029954]
+use_parent_material = true
 layout_mode = 2
 text = "settings.niko.facepic.scared_speak"
 horizontal_alignment = 1
@@ -2743,6 +3018,7 @@ clip_text = true
 text_overrun_behavior = 3
 
 [node name="Scare" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1752587635]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -2753,16 +3029,19 @@ texture = ExtResource("8_7ycvg")
 stretch_mode = 5
 
 [node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Scare" unique_id=1621349757]
+use_parent_material = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
 
 [node name="VSeparator4" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1012622975]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
 
 [node name="ScareSpeak" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=186221155]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -2773,12 +3052,14 @@ texture = ExtResource("9_wr18j")
 stretch_mode = 5
 
 [node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/ScareSpeak" unique_id=297117380]
+use_parent_material = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko" unique_id=857804836]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
@@ -2786,48 +3067,59 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 1
 
 [node name="VSeparator" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/MarginContainer" unique_id=1004042396]
+use_parent_material = true
 layout_mode = 2
 
 [node name="VSeparator2" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko" unique_id=1573734467]
+use_parent_material = true
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_k2ony")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko" unique_id=2020905471]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 4
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer" unique_id=605026460]
+use_parent_material = true
 layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/HBoxContainer5" unique_id=1393140941]
+use_parent_material = true
 custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/HBoxContainer5" unique_id=278766466]
+use_parent_material = true
 layout_mode = 2
 text = "settings.sections.niko"
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/HBoxContainer5" unique_id=2055253896]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="SoundSelectionContainer" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer" unique_id=332482616]
+use_parent_material = true
 layout_mode = 2
 
 [node name="SoundSelectionHint" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SoundSelectionContainer" unique_id=2121993147]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "settings.niko.meow_sound"
 
 [node name="Padding2" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SoundSelectionContainer" unique_id=634862805]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_7th4q")
 
 [node name="MeowSoundSelectionOptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SoundSelectionContainer" unique_id=75119171]
+use_parent_material = true
 custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -2853,20 +3145,24 @@ popup/item_7/id = 7
 script = ExtResource("83_77al4")
 
 [node name="NikoScaleSelectionContainer" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer" unique_id=965174835]
+use_parent_material = true
 layout_mode = 2
 
 [node name="SoundSelectionHint" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/NikoScaleSelectionContainer" unique_id=221236894]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "settings.niko.scale"
 
 [node name="Padding2" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/NikoScaleSelectionContainer" unique_id=533848404]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_7th4q")
 
 [node name="NikoScaleSelectionOptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/NikoScaleSelectionContainer" unique_id=1296518406]
+use_parent_material = true
 custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -2886,6 +3182,7 @@ popup/item_4/id = 4
 script = ExtResource("83_dftep")
 
 [node name="SnapToBottom" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer" unique_id=761666412]
+use_parent_material = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 button_pressed = true
@@ -2898,6 +3195,7 @@ offset_top = -12.0
 offset_bottom = 12.0
 
 [node name="WorldMachine" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer" unique_id=849027869]
+use_parent_material = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 button_pressed = true
@@ -2910,6 +3208,7 @@ offset_top = -12.0
 offset_bottom = 12.0
 
 [node name="SleepControls" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer" unique_id=73468926 node_paths=PackedStringArray("toggle_checkbox", "hours_spinbox", "minutes_spinbox", "seconds_spinbox")]
+use_parent_material = true
 layout_mode = 2
 script = ExtResource("74_j53bq")
 toggle_checkbox = NodePath("HBoxContainer3/SleepCheckbox")
@@ -2918,30 +3217,37 @@ minutes_spinbox = NodePath("SleepTimerCombo/Minutes")
 seconds_spinbox = NodePath("SleepTimerCombo/Seconds")
 
 [node name="Title" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls" unique_id=1841812523]
+use_parent_material = true
 layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/Title" unique_id=1952121543]
+use_parent_material = true
 custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/Title" unique_id=911175701]
+use_parent_material = true
 layout_mode = 2
 text = "settings.sections.sleeping"
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/Title" unique_id=1336139967]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls" unique_id=984098922]
+use_parent_material = true
 layout_mode = 2
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/HBoxContainer3" unique_id=886809322]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "settings.niko.time_to_sleep"
 
 [node name="SleepCheckbox" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/HBoxContainer3" unique_id=1329836324]
+use_parent_material = true
 custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -2954,16 +3260,19 @@ offset_top = -12.0
 offset_bottom = 12.0
 
 [node name="SleepTimerCombo" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls" unique_id=958905931]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 2
 
 [node name="Hours" type="SpinBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo" unique_id=1961658975]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 24.0
 alignment = 3
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo/Hours" unique_id=1435571619]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -2979,8 +3288,14 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1b22m")
 text = "shared.short.time.hours"
 horizontal_alignment = 2
+metadata/_recursiveItemParentMaterial = true
+
+[node name="RecursiveThemeApplier" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo/Hours" unique_id=588344567]
+script = ExtResource("97_wonw5")
+metadata/_custom_type_script = "uid://by1cd1rvin4oh"
 
 [node name="Minutes" type="SpinBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo" unique_id=906191622]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 59.0
@@ -2988,6 +3303,7 @@ value = 15.0
 alignment = 3
 
 [node name="Label2" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo/Minutes" unique_id=1234632772]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -3003,14 +3319,21 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1b22m")
 text = "shared.short.time.minutes"
 horizontal_alignment = 2
+metadata/_recursiveItemParentMaterial = true
+
+[node name="RecursiveThemeApplier2" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo/Minutes" unique_id=1175090680]
+script = ExtResource("97_wonw5")
+metadata/_custom_type_script = "uid://by1cd1rvin4oh"
 
 [node name="Seconds" type="SpinBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo" unique_id=1624917844]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 59.0
 alignment = 3
 
 [node name="Label3" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo/Seconds" unique_id=1145588994]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -3026,58 +3349,78 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1b22m")
 text = "shared.short.time.seconds"
 horizontal_alignment = 2
+metadata/_recursiveItemParentMaterial = true
+
+[node name="RecursiveThemeApplier3" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo/Seconds" unique_id=1277527702]
+script = ExtResource("97_wonw5")
+metadata/_custom_type_script = "uid://by1cd1rvin4oh"
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls" unique_id=650344873]
+use_parent_material = true
 layout_mode = 2
 text = "settings.niko.press_f_to_flip"
 
 [node name="Other" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=2021078338]
+visible = false
+use_parent_material = true
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other" unique_id=688981092]
+use_parent_material = true
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=1845505314]
+use_parent_material = true
 layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer4" unique_id=1618040505]
+use_parent_material = true
 custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer4" unique_id=1538510526]
+use_parent_material = true
 layout_mode = 2
 text = "settings.sections.volume"
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer4" unique_id=368793808]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Control2" type="Control" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=897864836]
+use_parent_material = true
 layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=557507448]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer2" unique_id=582477239]
+use_parent_material = true
 layout_mode = 2
 text = "settings.other.master_volume"
 
 [node name="Label2" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer2" unique_id=1459990368]
+use_parent_material = true
 layout_mode = 2
 text = ": "
 
 [node name="Label3" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer2" unique_id=1024259658]
+use_parent_material = true
 layout_mode = 2
 text = "10"
 
 [node name="Label4" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer2" unique_id=1083685513]
+use_parent_material = true
 layout_mode = 2
 text = "%"
 
 [node name="HSlider2" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=2063593018 node_paths=PackedStringArray("label") instance=ExtResource("76_o48om")]
+use_parent_material = true
 layout_mode = 2
 max_value = 5.0
 step = 0.01
@@ -3087,27 +3430,33 @@ label = NodePath("../HBoxContainer2/Label3")
 mult = 100.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=2029718582]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer" unique_id=176998658]
+use_parent_material = true
 layout_mode = 2
 text = "settings.other.meow_volume"
 
 [node name="Label2" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer" unique_id=541717541]
+use_parent_material = true
 layout_mode = 2
 text = ": "
 
 [node name="Label3" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer" unique_id=1019873392]
+use_parent_material = true
 layout_mode = 2
 text = "10"
 
 [node name="Label4" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer" unique_id=1577907838]
+use_parent_material = true
 layout_mode = 2
 text = "%"
 
 [node name="HSlider" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=1230770970 node_paths=PackedStringArray("label") instance=ExtResource("76_o48om")]
+use_parent_material = true
 layout_mode = 2
 max_value = 5.0
 step = 0.01
@@ -3118,75 +3467,92 @@ idx = 1
 mult = 100.0
 
 [node name="Control" type="Control" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=1462129201]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=288766176]
+use_parent_material = true
 layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer3" unique_id=1121383495]
+use_parent_material = true
 custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer3" unique_id=802889528]
+use_parent_material = true
 layout_mode = 2
 text = "settings.sections.actions"
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer3" unique_id=1743991800]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Save" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=1054755687]
+use_parent_material = true
 layout_mode = 2
 text = "settings.other.actions.save"
 
 [node name="ResetAllData" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=626692052]
 visible = false
+use_parent_material = true
 layout_mode = 2
 text = "RESET_ALL_DATA"
 
 [node name="VSeparator" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other" unique_id=1599658259]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other" unique_id=265919438]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 horizontal_scroll_mode = 0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer" unique_id=512873253]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Title2" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=1709777476]
 visible = false
+use_parent_material = true
 layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/Title2" unique_id=1383673776]
+use_parent_material = true
 custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/Title2" unique_id=297940809]
+use_parent_material = true
 layout_mode = 2
 text = "ABOUT_PROGRAMM"
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/Title2" unique_id=971745993]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=1559218683]
 visible = false
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "DESKTOP_NIKO_INFO"
 
 [node name="Control" type="Control" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=1873193077]
 visible = false
+use_parent_material = true
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
 [node name="DoEvents" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=205263746]
+use_parent_material = true
 layout_mode = 2
 button_pressed = true
 text = "settings.other.do_events"
@@ -3196,6 +3562,7 @@ script = ExtResource("98_ude2c")
 layout_mode = 1
 
 [node name="NikoAlwaysOnTop" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=1709047077]
+use_parent_material = true
 layout_mode = 2
 button_pressed = true
 text = "settings.other.niko_always_on_top"
@@ -3205,6 +3572,7 @@ script = ExtResource("99_s717c")
 layout_mode = 1
 
 [node name="WindowsAlwaysOnTop" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=1101211832]
+use_parent_material = true
 layout_mode = 2
 button_pressed = true
 text = "settings.other.windows_always_on_top"
@@ -3214,21 +3582,26 @@ script = ExtResource("100_wonw5")
 layout_mode = 1
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=543034811]
+use_parent_material = true
 layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/HBoxContainer5" unique_id=1931949119]
+use_parent_material = true
 custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/HBoxContainer5" unique_id=655774808]
+use_parent_material = true
 layout_mode = 2
 text = "settings.sections.windows_only"
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/HBoxContainer5" unique_id=1647823076]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="TaskBarIcon" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=979091871]
+use_parent_material = true
 layout_mode = 2
 button_pressed = true
 text = "settings.other.taskbar_icon"
@@ -3238,22 +3611,27 @@ script = ExtResource("101_ude2c")
 layout_mode = 1
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=1902703613]
+use_parent_material = true
 layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/HBoxContainer4" unique_id=1200072430]
+use_parent_material = true
 custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/HBoxContainer4" unique_id=1632690905]
+use_parent_material = true
 layout_mode = 2
 text = "settings.sections.hint"
 
 [node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/HBoxContainer4" unique_id=1157804246]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="HintsText2" type="RichTextLabel" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=1757335928 node_paths=PackedStringArray("nodes")]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 104)
 layout_mode = 2
 bbcode_enabled = true
@@ -3261,27 +3639,58 @@ script = SubResource("GDScript_k2ony")
 nodes = [NodePath("../DoEvents"), NodePath("../NikoAlwaysOnTop"), NodePath("../WindowsAlwaysOnTop"), NodePath("../TaskBarIcon")]
 texts = Array[String](["settings.other.hint.do_events", "settings.other.hint.niko_always_on_top", "settings.other.hint.windows_always_on_top", "settings.other.hint.taskbar"])
 
+[node name="RecursiveThemeApplier" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/HintsText2" unique_id=1627306139]
+script = ExtResource("97_wonw5")
+metadata/_custom_type_script = "uid://by1cd1rvin4oh"
+
 [node name="ResetDataPopup" parent="SettingsWindow" unique_id=865820121 instance=ExtResource("33_id8vy")]
 visible = false
 unresizable = true
 maximize_disabled = false
 
 [node name="Control" parent="SettingsWindow/ResetDataPopup" index="1" unique_id=579132620]
+material = null
 mouse_filter = 1
 
 [node name="WindowContainer" parent="SettingsWindow/ResetDataPopup/Control" index="0" unique_id=106878241]
+use_parent_material = false
 mouse_filter = 1
 
 [node name="Topbar" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer" index="0" unique_id=763031887]
+use_parent_material = false
 theme_type_variation = &""
 
-[node name="Icon" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(865820121, 1002331087) index="0" unique_id=1518425686]
+[node name="MarginContainer" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Topbar" index="0" unique_id=654231062]
+use_parent_material = false
+
+[node name="HBoxContainer" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Topbar/MarginContainer" index="0" unique_id=332691484]
+use_parent_material = false
+
+[node name="IconContainer" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="0" unique_id=1002331087]
+use_parent_material = false
+
+[node name="Icon" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" index="0" unique_id=1518425686]
+use_parent_material = false
 icon = ExtResource("82_l76vu")
 
-[node name="Title" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(865820121, 332691484) index="1" unique_id=2015855131]
+[node name="Title" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1" unique_id=2015855131]
+use_parent_material = false
 text = "DATA_RESET_POPUP"
 
+[node name="HideButtonContainer" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="2" unique_id=1853849343]
+use_parent_material = false
+
+[node name="HideButton" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/HideButtonContainer" index="0" unique_id=397655583]
+use_parent_material = false
+
+[node name="CloseButtonContainer" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="3" unique_id=347735988]
+use_parent_material = false
+
+[node name="CloseButton" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/CloseButtonContainer" index="0" unique_id=522478686]
+use_parent_material = false
+
 [node name="Content" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer" index="1" unique_id=971726425]
+use_parent_material = false
 theme_type_variation = &""
 
 [node name="Quest" parent="SettingsWindow/ResetDataPopup/Control/WindowContainer/Content/PopupMargin/VBoxContainer" parent_id_path=PackedInt32Array(865820121, 1750489675) index="0" unique_id=1354308728]
@@ -3433,12 +3842,14 @@ theme_override_constants/margin_bottom = 4
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="AchievementsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer" unique_id=1125762922]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 8
+metadata/_recursiveItemParentMaterial = false
 
 [node name="AchivementConatiner" type="VBoxContainer" parent="AchievementsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer" unique_id=1475193472]
 layout_mode = 2
@@ -3447,6 +3858,10 @@ script = ExtResource("88_ym5p0")
 locked_icon = ExtResource("89_ym5p0")
 achievement_template = ExtResource("88_05sqr")
 achievement_sepatator_template = ExtResource("90_05sqr")
+
+[node name="RecursiveThemeApplier" type="Node" parent="AchievementsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer" unique_id=1674647349]
+script = ExtResource("97_wonw5")
+metadata/_custom_type_script = "uid://by1cd1rvin4oh"
 
 [node name="AchievementOverlay" type="Window" parent="." unique_id=436032910 node_paths=PackedStringArray("image_rect", "animator", "icon", "name_label", "desc_label", "sound")]
 process_mode = 3
@@ -3491,6 +3906,7 @@ texture = ExtResource("92_ixb38")
 expand_mode = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="AchievementOverlay" unique_id=2116224639]
+material = ExtResource("74_s717c")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -3500,6 +3916,7 @@ offset_bottom = 72.0
 grow_horizontal = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="AchievementOverlay/PanelContainer" unique_id=1038341283]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
 
@@ -3510,16 +3927,19 @@ layout_mode = 2
 texture = ExtResource("91_3s6xx")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AchievementOverlay/PanelContainer/HBoxContainer" unique_id=164875372]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="AchivementName" type="Label" parent="AchievementOverlay/PanelContainer/HBoxContainer/VBoxContainer" unique_id=510286070]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Achivement text"
 
 [node name="MarginContainer" type="MarginContainer" parent="AchievementOverlay/PanelContainer/HBoxContainer/VBoxContainer" unique_id=324718918]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
@@ -3527,10 +3947,12 @@ theme_override_constants/margin_right = -1
 theme_override_constants/margin_bottom = 0
 
 [node name="HSeparator" type="HSeparator" parent="AchievementOverlay/PanelContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=1311995242]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
 
 [node name="AchivementDesc" type="Label" parent="AchievementOverlay/PanelContainer/HBoxContainer/VBoxContainer" unique_id=124135755]
+use_parent_material = true
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_vertical = 3
@@ -3556,6 +3978,7 @@ reset_pos_button = NodePath("Panel/MarginContainer/VBoxContainer/ResetPos")
 shutdown_button = NodePath("Panel/MarginContainer/VBoxContainer/Shutdown")
 
 [node name="Panel" type="PanelContainer" parent="IndicatorPopup" unique_id=467450569]
+material = ExtResource("74_s717c")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -3564,12 +3987,15 @@ grow_vertical = 2
 theme_type_variation = &"ThickPanelContainer"
 
 [node name="MarginContainer" type="MarginContainer" parent="IndicatorPopup/Panel" unique_id=377517628]
+use_parent_material = true
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="IndicatorPopup/Panel/MarginContainer" unique_id=521817363]
+use_parent_material = true
 layout_mode = 2
 
 [node name="GamingMode" type="CheckBox" parent="IndicatorPopup/Panel/MarginContainer/VBoxContainer" unique_id=1458295662]
+use_parent_material = true
 layout_mode = 2
 text = "settings.general.gaming_mode"
 script = ExtResource("74_2umrp")
@@ -3578,11 +4004,13 @@ script = ExtResource("74_2umrp")
 layout_mode = 1
 
 [node name="ResetPos" type="Button" parent="IndicatorPopup/Panel/MarginContainer/VBoxContainer" unique_id=1628464723]
+use_parent_material = true
 layout_mode = 2
 text = "settings.taskbar.reset_pos"
 alignment = 0
 
 [node name="Shutdown" type="Button" parent="IndicatorPopup/Panel/MarginContainer/VBoxContainer" unique_id=1111468738]
+use_parent_material = true
 layout_mode = 2
 text = "titles.shutdown"
 alignment = 0

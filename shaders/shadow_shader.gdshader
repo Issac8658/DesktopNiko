@@ -1,5 +1,7 @@
 shader_type canvas_item;
 
+#include "theme_include.gdshaderinc"
+
 uniform float shadow_distance = 0.5;
 
 float alpha_clamp(vec2 uv) {
@@ -20,4 +22,5 @@ void fragment() {
 	vec4 original_color = COLOR * alpha_clamp(UV);
 	vec4 shadow_color = texture(TEXTURE, moved_uv) * vec4(0,0,0, alpha_clamp(moved_uv));
 	COLOR = mix(original_color, shadow_color, clamp(shadow_color.a - original_color.a, 0, 1));
+	COLOR = getThemeColor(COLOR);
 }

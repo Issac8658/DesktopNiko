@@ -12,8 +12,10 @@
 [ext_resource type="PhysicsMaterial" uid="uid://dhjj26w46jyw2" path="res://prefabs/skin_viewer/bump_material.tres" id="8_bd1xs"]
 [ext_resource type="Script" uid="uid://bwe7c2qky5dwl" path="res://scripts/main/skin_viewer/MainScreenController.cs" id="10_d5j35"]
 [ext_resource type="Texture2D" uid="uid://u55jnyjyyf14" path="res://sprites/ui/world_machine/fullscreen_border_down_frame1.png" id="11_4uqou"]
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="11_xgbat"]
 [ext_resource type="Texture2D" uid="uid://bg1d3l2m525pq" path="res://sprites/ui/world_machine/fullscreen_border_up_frame1.png" id="12_hexfx"]
 [ext_resource type="Script" uid="uid://bm4qpq58h02u1" path="res://scripts/main/skin_viewer/Line2DAnimator.cs" id="12_qjn3m"]
+[ext_resource type="Material" uid="uid://d1ff373hk1gn7" path="res://materials/theme_canvas_item_material_add_mode.tres" id="13_d5j35"]
 [ext_resource type="Texture2D" uid="uid://bo75qtdw8r5bo" path="res://sprites/ui/world_machine/fullscreen_border_down_frame2.png" id="13_kaaeg"]
 [ext_resource type="Texture2D" uid="uid://cdyfmg4lia60e" path="res://sprites/ui/world_machine/fullscreen_border_right_frame1.png" id="13_lkdlf"]
 [ext_resource type="Texture2D" uid="uid://dtdaasaukdb5m" path="res://sprites/ui/world_machine/fullscreen_border_left_frame1.png" id="14_1s81l"]
@@ -51,9 +53,6 @@ alpha_curve = SubResource("CurveTexture_5qhg3")
 size = Vector2(440, 300)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_05ljl"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bd1xs"]
-blend_mode = 1
 
 [sub_resource type="Curve" id="Curve_kp0l0"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5017544, 0.17579246), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -100,8 +99,7 @@ scroll_scale = Vector2(0.6, 0.6)
 scroll_offset = Vector2(960, 540)
 
 [node name="TextureRect" type="TextureRect" parent="BgGrid" unique_id=409475826]
-modulate = Color(0.588235, 0.392157, 1, 1)
-self_modulate = Color(1, 1, 1, 0.22745098)
+self_modulate = Color(1, 1, 1, 0.26666668)
 texture_repeat = 2
 material = ExtResource("3_xgbat")
 anchors_preset = 8
@@ -123,7 +121,7 @@ scroll_scale = Vector2(0.2, 0.2)
 scroll_offset = Vector2(960, 540)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="BgParticles" unique_id=1293889098]
-modulate = Color(0.588235, 0.392157, 1, 1)
+material = ExtResource("11_xgbat")
 amount = 400
 texture = SubResource("GradientTexture2D_1r0fe")
 lifetime = 5.0
@@ -156,6 +154,7 @@ CommentsLabel = NodePath("MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/
 ApplySkinButton = NodePath("MainMonitor/HBoxContainer/VBoxContainer2/Button")
 
 [node name="MainMonitor" type="PanelContainer" parent="MainMonitor" unique_id=1762449007]
+material = ExtResource("11_xgbat")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -170,10 +169,12 @@ grow_vertical = 2
 theme = ExtResource("1_siacp")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMonitor/MainMonitor" unique_id=1382789562]
+use_parent_material = true
 layout_mode = 2
 theme = ExtResource("2_4jyfp")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MainMonitor/MainMonitor/HBoxContainer" unique_id=1024514184]
+use_parent_material = true
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer2" unique_id=425413701]
@@ -183,39 +184,48 @@ size_flags_vertical = 10
 stretch_mode = 5
 
 [node name="Button" type="Button" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer2" unique_id=234536148]
+use_parent_material = true
 layout_mode = 2
 text = "Apply
 "
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMonitor/MainMonitor/HBoxContainer" unique_id=946627054]
+use_parent_material = true
 layout_mode = 2
 
 [node name="Name" type="Label" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer" unique_id=801693167]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer" unique_id=1544779283]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1242117866]
+use_parent_material = true
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer" unique_id=351593875]
+use_parent_material = true
 layout_mode = 2
 horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer" unique_id=327841913]
+use_parent_material = true
 layout_mode = 2
 
 [node name="Description" type="Label" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=2115263568]
+use_parent_material = true
 custom_minimum_size = Vector2(264, 0)
 layout_mode = 2
 autowrap_mode = 3
 
 [node name="Author" type="Label" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=1879465669]
 modulate = Color(1, 1, 1, 0.49411765)
+use_parent_material = true
 custom_minimum_size = Vector2(264, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
@@ -223,10 +233,12 @@ autowrap_mode = 3
 
 [node name="HSeparator" type="HSeparator" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=1109883234]
 modulate = Color(1, 1, 1, 0.2)
+use_parent_material = true
 layout_mode = 2
 
 [node name="Comment" type="Label" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=1219660021]
 modulate = Color(1, 1, 1, 0.49411765)
+use_parent_material = true
 custom_minimum_size = Vector2(264, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
@@ -234,12 +246,14 @@ horizontal_alignment = 2
 autowrap_mode = 3
 
 [node name="ExitButtonAnchor" type="Control" parent="MainMonitor/MainMonitor" unique_id=758620247]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
 [node name="Button" type="Button" parent="MainMonitor/MainMonitor/ExitButtonAnchor" unique_id=2003815982]
 z_index = 1
+use_parent_material = true
 layout_mode = 0
 offset_left = 34.0
 offset_top = -22.0
@@ -254,6 +268,7 @@ shape = SubResource("RectangleShape2D_82vyj")
 
 [node name="Label" type="Label" parent="MainMonitor" unique_id=560358780]
 modulate = Color(1, 1, 1, 0.38431373)
+material = ExtResource("11_xgbat")
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -281,9 +296,8 @@ scroll_scale = Vector2(1.75, 1.75)
 scroll_offset = Vector2(960, 540)
 
 [node name="GPUParticles2D2" type="GPUParticles2D" parent="FrontParticles" unique_id=1349958235]
-modulate = Color(0.588235, 0.392157, 1, 1)
 z_index = 1
-material = SubResource("CanvasItemMaterial_bd1xs")
+material = ExtResource("13_d5j35")
 amount = 300
 texture = SubResource("GradientTexture2D_1r0fe")
 lifetime = 5.0
@@ -302,8 +316,8 @@ rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_bd1xs")
 
 [node name="Line2D4" type="Line2D" parent="ScreenBounds/Right" unique_id=1857373232]
-modulate = Color(0.588235, 0.392157, 1, 1)
 texture_repeat = 2
+material = ExtResource("11_xgbat")
 position = Vector2(0, 198)
 rotation = -1.5707964
 points = PackedVector2Array(0, -10000, 0, 10000)
@@ -320,8 +334,8 @@ rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_bd1xs")
 
 [node name="Line2D3" type="Line2D" parent="ScreenBounds/Left" unique_id=2105535921]
-modulate = Color(0.588235, 0.392157, 1, 1)
 texture_repeat = 2
+material = ExtResource("11_xgbat")
 position = Vector2(0, 198)
 rotation = -1.5707964
 points = PackedVector2Array(0, -10000, 0, 10000)
@@ -338,8 +352,8 @@ rotation = 3.1415927
 shape = SubResource("WorldBoundaryShape2D_bd1xs")
 
 [node name="Line2D2" type="Line2D" parent="ScreenBounds/Top" unique_id=1419613540]
-modulate = Color(0.588235, 0.392157, 1, 1)
 texture_repeat = 2
+material = ExtResource("11_xgbat")
 position = Vector2(0, 98)
 rotation = 3.1415925
 points = PackedVector2Array(-10000, 0, 10000, 0)
@@ -355,8 +369,8 @@ position = Vector2(0, 540)
 shape = SubResource("WorldBoundaryShape2D_bd1xs")
 
 [node name="Line2D" type="Line2D" parent="ScreenBounds/Bottom" unique_id=1773737072]
-modulate = Color(0.588235, 0.392157, 1, 1)
 texture_repeat = 2
+material = ExtResource("11_xgbat")
 position = Vector2(0, 98)
 points = PackedVector2Array(-10000, 0, 10000, 0)
 width = 204.0

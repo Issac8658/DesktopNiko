@@ -283,9 +283,11 @@ icon = ExtResource("8_a5d04")
 text = "titles.tennis"
 
 [node name="MainMenu" type="Control" parent="TennisWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(985109894, 971726425) index="0" unique_id=903052183]
+use_parent_material = true
 layout_mode = 2
 
 [node name="Buttons" type="MarginContainer" parent="TennisWindow/Control/WindowContainer/Content/MainMenu" unique_id=1265756145]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -297,22 +299,27 @@ theme_override_constants/margin_left = 300
 theme_override_constants/margin_right = 300
 
 [node name="ButtonContainer" type="VBoxContainer" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/Buttons" unique_id=234288644]
+use_parent_material = true
 layout_mode = 2
 alignment = 1
 
 [node name="PlayButton" type="Button" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/Buttons/ButtonContainer" unique_id=739597181]
+use_parent_material = true
 layout_mode = 2
 text = "shared.play"
 
 [node name="HTPButton" type="Button" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/Buttons/ButtonContainer" unique_id=855319061]
+use_parent_material = true
 layout_mode = 2
 text = "shared.how_to_play"
 
 [node name="ExitButton" type="Button" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/Buttons/ButtonContainer" unique_id=1452760430]
+use_parent_material = true
 layout_mode = 2
 text = "shared.exit"
 
 [node name="TennisText" type="Control" parent="TennisWindow/Control/WindowContainer/Content/MainMenu" unique_id=1786798337]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -322,6 +329,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="T" type="Label" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/TennisText" unique_id=629892297]
+use_parent_material = true
 layout_mode = 0
 offset_left = 157.0
 offset_top = 77.0
@@ -333,6 +341,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_64cqo")
 text = "T"
 
 [node name="E" type="Label" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/TennisText" unique_id=1942300935]
+use_parent_material = true
 layout_mode = 0
 offset_left = 211.0
 offset_top = 148.0
@@ -345,6 +354,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_64cqo")
 text = "E"
 
 [node name="N" type="Label" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/TennisText" unique_id=1668116342]
+use_parent_material = true
 layout_mode = 0
 offset_left = 270.0
 offset_top = 119.0
@@ -357,6 +367,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_64cqo")
 text = "N"
 
 [node name="N2" type="Label" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/TennisText" unique_id=614299693]
+use_parent_material = true
 layout_mode = 0
 offset_left = 335.0
 offset_top = 86.0
@@ -369,6 +380,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_64cqo")
 text = "N"
 
 [node name="I" type="Label" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/TennisText" unique_id=1608152929]
+use_parent_material = true
 layout_mode = 0
 offset_left = 403.0
 offset_top = 64.0
@@ -381,6 +393,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_64cqo")
 text = "I"
 
 [node name="S" type="Label" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/TennisText" unique_id=1383146216]
+use_parent_material = true
 layout_mode = 0
 offset_left = 482.0
 offset_top = 54.0
@@ -392,6 +405,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_64cqo")
 text = "S"
 
 [node name="!" type="Label" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/TennisText" unique_id=190074381]
+use_parent_material = true
 layout_mode = 0
 offset_left = 571.0
 offset_top = 51.0
@@ -404,6 +418,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_64cqo")
 text = "!"
 
 [node name="Label2" type="Label" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/TennisText" unique_id=326099572]
+use_parent_material = true
 layout_mode = 0
 offset_left = 507.0
 offset_top = 204.0
@@ -415,6 +430,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_64cqo")
 text = "With Niko"
 
 [node name="Button" type="Button" parent="TennisWindow/Control/WindowContainer/Content/MainMenu/TennisText" unique_id=2085752355]
+use_parent_material = true
 custom_minimum_size = Vector2(124, 60)
 layout_mode = 0
 offset_left = 237.0
@@ -428,6 +444,7 @@ expand_icon = true
 
 [node name="HTPText" type="RichTextLabel" parent="TennisWindow/Control/WindowContainer/Content/MainMenu" unique_id=171106400]
 visible = false
+use_parent_material = true
 layout_mode = 0
 offset_left = 90.0
 offset_top = 67.0
@@ -438,6 +455,7 @@ text = "other.games.tennis.how_to_play"
 
 [node name="Game" type="Control" parent="TennisWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(985109894, 971726425) index="1" unique_id=1601390193]
 visible = false
+use_parent_material = true
 layout_mode = 2
 
 [node name="Nikochko" type="TextureRect" parent="TennisWindow/Control/WindowContainer/Content/Game" unique_id=1915246910]
@@ -451,6 +469,7 @@ texture = ExtResource("7_i1fqx")
 
 [node name="NikoRaket" type="Button" parent="TennisWindow/Control/WindowContainer/Content/Game" unique_id=1581699435]
 texture_filter = 2
+use_parent_material = true
 layout_mode = 0
 offset_left = 423.0
 offset_top = 168.0
@@ -475,6 +494,7 @@ expand_mode = 1
 
 [node name="PlayerRaket" type="Button" parent="TennisWindow/Control/WindowContainer/Content/Game" unique_id=2021284769]
 texture_filter = 2
+use_parent_material = true
 layout_mode = 0
 offset_left = 178.0
 offset_top = 238.0
@@ -488,6 +508,7 @@ icon = ExtResource("8_wh27w")
 expand_icon = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TennisWindow/Control/WindowContainer/Content/Game" unique_id=1770656383]
+use_parent_material = true
 layout_mode = 0
 offset_left = 13.0
 offset_top = 12.0
@@ -496,14 +517,17 @@ offset_bottom = 33.0
 theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="TennisWindow/Control/WindowContainer/Content/Game/HBoxContainer" unique_id=1318821225]
+use_parent_material = true
 layout_mode = 2
 text = "shared.points"
 
 [node name="Label2" type="Label" parent="TennisWindow/Control/WindowContainer/Content/Game/HBoxContainer" unique_id=1379449341]
+use_parent_material = true
 layout_mode = 2
 text = ": "
 
 [node name="Label3" type="Label" parent="TennisWindow/Control/WindowContainer/Content/Game/HBoxContainer" unique_id=35909469]
+use_parent_material = true
 layout_mode = 2
 text = "0"
 
@@ -532,9 +556,11 @@ expand_mode = 1
 [node name="Lose" type="Panel" parent="TennisWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(985109894, 971726425) index="2" unique_id=1229319137]
 visible = false
 self_modulate = Color(1, 1, 1, 0.67451)
+use_parent_material = true
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TennisWindow/Control/WindowContainer/Content/Lose" unique_id=803502017]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -543,11 +569,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TennisWindow/Control/WindowContainer/Content/Lose/MarginContainer" unique_id=324400270]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
 [node name="Label" type="Label" parent="TennisWindow/Control/WindowContainer/Content/Lose/MarginContainer/VBoxContainer" unique_id=1717839686]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 120
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d2fhx")
@@ -555,31 +583,37 @@ text = "other.games.tennis.you_lose"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="TennisWindow/Control/WindowContainer/Content/Lose/MarginContainer/VBoxContainer" unique_id=1684848805]
+use_parent_material = true
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d2fhx")
 text = "other.games.tennis.you_lose.wm_comment"
 horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="TennisWindow/Control/WindowContainer/Content/Lose/MarginContainer/VBoxContainer" unique_id=2137320052]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 
 [node name="Button" type="Button" parent="TennisWindow/Control/WindowContainer/Content/Lose/MarginContainer/VBoxContainer" unique_id=2098130461]
+use_parent_material = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "other.games.tennis.retry"
 
 [node name="Control2" type="Control" parent="TennisWindow/Control/WindowContainer/Content/Lose/MarginContainer/VBoxContainer" unique_id=1192163010]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 84)
 layout_mode = 2
 
 [node name="Win" type="Panel" parent="TennisWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(985109894, 971726425) index="3" unique_id=1936847695]
 visible = false
 self_modulate = Color(1, 1, 1, 0.67451)
+use_parent_material = true
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TennisWindow/Control/WindowContainer/Content/Win" unique_id=829143968]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -588,11 +622,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TennisWindow/Control/WindowContainer/Content/Win/MarginContainer" unique_id=1338994856]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
 [node name="Label" type="Label" parent="TennisWindow/Control/WindowContainer/Content/Win/MarginContainer/VBoxContainer" unique_id=506519568]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 120
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d2fhx")
@@ -600,22 +636,26 @@ text = "other.games.tennis.you_win"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="TennisWindow/Control/WindowContainer/Content/Win/MarginContainer/VBoxContainer" unique_id=1503363792]
+use_parent_material = true
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d2fhx")
 text = "other.games.tennis.you_win.wm_comment"
 horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="TennisWindow/Control/WindowContainer/Content/Win/MarginContainer/VBoxContainer" unique_id=1524750484]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 
 [node name="Button" type="Button" parent="TennisWindow/Control/WindowContainer/Content/Win/MarginContainer/VBoxContainer" unique_id=1697194762]
+use_parent_material = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "shared.yay"
 
 [node name="Control2" type="Control" parent="TennisWindow/Control/WindowContainer/Content/Win/MarginContainer/VBoxContainer" unique_id=1804681285]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 84)
 layout_mode = 2
 

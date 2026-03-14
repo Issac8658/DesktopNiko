@@ -1,36 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi5pu8hc54t3d"]
+[gd_scene format=3 uid="uid://bi5pu8hc54t3d"]
 
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="1_ucnrl"]
 [ext_resource type="Texture2D" uid="uid://widgkfxwlx5" path="res://sprites/achievements/unknown_gray.png" id="1_w05dq"]
 [ext_resource type="FontVariation" uid="uid://c2ecs2kfpewaq" path="res://fonts/TightTerminus.tres" id="2_yrdct"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yrdct"]
 
-[node name="Achievement" type="HBoxContainer"]
+[node name="Achievement" type="HBoxContainer" unique_id=1869139084]
+material = ExtResource("1_ucnrl")
 theme_override_constants/separation = 4
 
-[node name="Icon" type="TextureRect" parent="."]
+[node name="Icon" type="TextureRect" parent="." unique_id=1586019811]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("1_w05dq")
 stretch_mode = 4
 
-[node name="TextInfo" type="VBoxContainer" parent="."]
+[node name="TextInfo" type="VBoxContainer" parent="." unique_id=1805990904]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="AchievementName" type="Label" parent="TextInfo"]
+[node name="AchievementName" type="Label" parent="TextInfo" unique_id=1283329031]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Achievement text"
 
-[node name="HSeparator" type="HSeparator" parent="TextInfo"]
+[node name="HSeparator" type="HSeparator" parent="TextInfo" unique_id=1211798942]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 8
 theme_override_styles/separator = SubResource("StyleBoxEmpty_yrdct")
 
-[node name="AchievementDesc" type="Label" parent="TextInfo"]
+[node name="AchievementDesc" type="Label" parent="TextInfo" unique_id=453103512]
+use_parent_material = true
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_vertical = 3

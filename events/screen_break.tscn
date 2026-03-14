@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://26xnfokg4q28"]
+[gd_scene format=3 uid="uid://26xnfokg4q28"]
 
 [ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/events/event.gd" id="1_gio5k"]
 [ext_resource type="AudioStream" uid="uid://0a17a7bk3og3" path="res://sounds/bass_metal.wav" id="2_njfk7"]
@@ -45,12 +45,12 @@ func _process(_delta: float) -> void:
 		screen_window.position.y += velocity
 "
 
-[node name="ScreenBreak" type="Node" node_paths=PackedStringArray("event_controller")]
+[node name="ScreenBreak" type="Node" unique_id=162000058 node_paths=PackedStringArray("event_controller")]
 script = ExtResource("1_gio5k")
 event_controller = NodePath("EventController")
 metadata/_custom_type_script = "uid://73yfcqn4tt7s"
 
-[node name="EventController" type="Node" parent="." node_paths=PackedStringArray("window", "screen_window", "screen_texture_rect", "bg_control", "break_sound")]
+[node name="EventController" type="Node" parent="." unique_id=1292803865 node_paths=PackedStringArray("window", "screen_window", "screen_texture_rect", "bg_control", "break_sound")]
 script = SubResource("GDScript_wdcdh")
 window = NodePath("../Window")
 screen_window = NodePath("../Window/Window2")
@@ -58,10 +58,10 @@ screen_texture_rect = NodePath("../Window/Window2/TextureRect")
 bg_control = NodePath("../Window/Control")
 break_sound = NodePath("../AudioStreamPlayer")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=258330146]
 stream = ExtResource("2_njfk7")
 
-[node name="Window" type="Window" parent="."]
+[node name="Window" type="Window" parent="." unique_id=124702299]
 transparent_bg = true
 size = Vector2i(605, 290)
 visible = false
@@ -71,7 +71,7 @@ always_on_top = true
 transparent = true
 exclude_from_capture = true
 
-[node name="Control" type="Control" parent="Window"]
+[node name="Control" type="Control" parent="Window" unique_id=1090801535]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -80,7 +80,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Shadow" type="NinePatchRect" parent="Window/Control"]
+[node name="Shadow" type="NinePatchRect" parent="Window/Control" unique_id=694500548]
 visible = false
 self_modulate = Color(0, 0, 0, 0.262745)
 layout_mode = 1
@@ -97,7 +97,7 @@ patch_margin_top = 32
 patch_margin_right = 32
 patch_margin_bottom = 32
 
-[node name="MarginContainer" type="MarginContainer" parent="Window/Control"]
+[node name="MarginContainer" type="MarginContainer" parent="Window/Control" unique_id=1655878808]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -109,13 +109,13 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="TextureRect" type="TextureRect" parent="Window/Control/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="Window/Control/MarginContainer" unique_id=1124965616]
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 texture = ExtResource("3_njfk7")
 expand_mode = 1
 
-[node name="Window2" type="Window" parent="Window"]
+[node name="Window2" type="Window" parent="Window" unique_id=541751986]
 transparent_bg = true
 visible = false
 transient = true
@@ -125,6 +125,6 @@ always_on_top = true
 transparent = true
 exclude_from_capture = true
 
-[node name="TextureRect" type="TextureRect" parent="Window/Window2"]
+[node name="TextureRect" type="TextureRect" parent="Window/Window2" unique_id=1048536922]
 offset_right = 40.0
 offset_bottom = 40.0

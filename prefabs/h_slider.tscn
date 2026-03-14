@@ -1,17 +1,20 @@
 [gd_scene format=3 uid="uid://bh426a06uwkf0"]
 
 [ext_resource type="Script" uid="uid://bnv3db8ai16vj" path="res://scripts/windows/components/h_slider.gd" id="1_5ht0c"]
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="1_28ok6"]
 [ext_resource type="Texture2D" uid="uid://csr7soelb8dws" path="res://sprites/ui/world_machine/left_arrow_button.tres" id="2_aybxp"]
 [ext_resource type="StyleBox" uid="uid://seh5m867naoa" path="res://themes/twm_theme/thin_panel.stylebox" id="3_rhojm"]
 [ext_resource type="Texture2D" uid="uid://b4mqvkkqui8s6" path="res://sprites/ui/world_machine/grabber.tres" id="4_7oqf0"]
 [ext_resource type="Texture2D" uid="uid://wy5m4kn1mxkt" path="res://sprites/ui/world_machine/right_arrow_button.tres" id="5_k3bu1"]
 
 [node name="HSlider" type="HSlider" unique_id=44054534]
+material = ExtResource("1_28ok6")
 custom_minimum_size = Vector2(124, 32)
 mouse_filter = 2
 value = 50.0
 
 [node name="HSlider" type="HBoxContainer" parent="." unique_id=1429202850 node_paths=PackedStringArray("left_button", "right_button", "grabber_button", "fill", "fill_zone", "slider")]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 0
 anchor_right = 1.0
@@ -28,6 +31,7 @@ fill_zone = NodePath("Line")
 slider = NodePath("..")
 
 [node name="LeftButton" type="Button" parent="HSlider" unique_id=971258924]
+use_parent_material = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 theme_type_variation = &"IconButton"
@@ -36,6 +40,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Line" type="Panel" parent="HSlider" unique_id=764947014]
+use_parent_material = true
 custom_minimum_size = Vector2(1, 8)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -44,6 +49,7 @@ mouse_filter = 2
 theme_override_styles/panel = ExtResource("3_rhojm")
 
 [node name="Fill" type="Panel" parent="HSlider/Line" unique_id=49065278]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 0
 offset_bottom = 8.0
@@ -53,6 +59,7 @@ size_flags_stretch_ratio = 16.91
 mouse_filter = 2
 
 [node name="Grabber" type="Button" parent="HSlider/Line" unique_id=1273768223]
+use_parent_material = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 0
 offset_top = -12.5
@@ -63,6 +70,7 @@ icon = ExtResource("4_7oqf0")
 expand_icon = true
 
 [node name="RightButton" type="Button" parent="HSlider" unique_id=1003393155]
+use_parent_material = true
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 theme_type_variation = &"IconButton"

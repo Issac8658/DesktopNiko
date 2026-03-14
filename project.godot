@@ -179,3 +179,35 @@ offset_shader_offset={
 "type": "float",
 "value": 0.0
 }
+theme_color_main={
+"type": "color",
+"value": Color(0.5882353, 0.39215687, 1, 1)
+}
+theme_color_hover={
+"type": "color",
+"value": Color(0.39215687, 0.25882354, 0.64705884, 1)
+}
+theme_color_button_outline_hover={
+"type": "color",
+"value": Color(0.19607843, 0.12941177, 0.32156864, 1)
+}
+theme_color_button_base_hover={
+"type": "color",
+"value": Color(0.09803922, 0.06666667, 0.16078432, 1)
+}
+theme_color_button_outline_pressed={
+"type": "color",
+"value": Color(0.29411766, 0.19607843, 0.49803922, 1)
+}
+theme_color_button_base_pressed={
+"type": "color",
+"value": Color(0.14901961, 0.09803922, 0.2509804, 1)
+}
+theme_color_background={
+"type": "color",
+"value": Color(0, 0, 0, 1)
+}
+theme_rainbow={
+"type": "bool",
+"value": true
+}

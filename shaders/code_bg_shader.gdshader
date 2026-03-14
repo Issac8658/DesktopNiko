@@ -1,5 +1,7 @@
 shader_type canvas_item;
 
+#include "theme_include.gdshaderinc"
+
 uniform sampler2D codebgTexture : repeat_enable;
 const float time_scale = 6.0;
 const float scale = 50.0;
@@ -14,6 +16,7 @@ void fragment() {
 	vec3 col3 = texture(codebgTexture, (UV.xy + vec2(TIME / time_scale, 0.1)) / scale).bbb;
 	vec3 col4 = texture(codebgTexture, (UV.xy + vec2(0, TIME / time_scale)) / scale).bbb;
 	COLOR.rgb = COLOR.rgb - (col1 + col2 + col3 + col4);
+	COLOR = getThemeColor(COLOR);
 }
 
 //void light() {
