@@ -194,14 +194,14 @@ public partial class NikoController : Node
 	// for animations
 	public void SetSpeakFacepic()
 	{
-		if (_valuesContainer.NikoScared)
+		if (_valuesContainer.NikoScared && !_valuesContainer.PeacfulMode)
 			SetSprite(_valuesContainer.ScareSpeakFacepic);
 		else
 			SetSprite(_valuesContainer.SpeakFacepic);
 	}
 	public void SetIdleFacepic()
 	{
-		if (_valuesContainer.NikoScared)
+		if (_valuesContainer.NikoScared && !_valuesContainer.PeacfulMode)
 			SetSprite(_valuesContainer.ScareFacepic);
 		else
 			SetSprite(_valuesContainer.IdleFacepic);

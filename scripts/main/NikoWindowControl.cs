@@ -58,6 +58,7 @@ public partial class NikoWindowControl : Control
 		};
 		_valuesContainer.NikoAsWindowStateChanged += (ShowTaskbarIcon, NikoAlwaysOnTop) =>
 		{
+			_mainWindow.AlwaysOnTop = NikoAlwaysOnTop;
 			_windowExtantions.UpdateWindowsExStyles(_mainWindow, !ShowTaskbarIcon);
 		};
 

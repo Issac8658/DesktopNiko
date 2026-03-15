@@ -7,15 +7,15 @@ public partial class NikoClickablePolygon : Node2D
 	public Area2D ClickablePolygon;
 	[Export]
 	public Area2D MousePolygon;
-	public WindowExstantions WindowExstantions;
-	public ValuesContainer ValuesContainer;
+	public WindowExstantions _windowExstantions;
+	public ValuesContainer _valuesContainer;
 
 	private bool m_old = false;
 
 	public override void _Ready()
 	{
-		ValuesContainer = GetNode<ValuesContainer>("/root/ValuesContainer");
-		WindowExstantions = GetNode<WindowExstantions>("/root/WindowExstantions");
+		_valuesContainer = GetNode<ValuesContainer>("/root/ValuesContainer");
+		_windowExstantions = GetNode<WindowExstantions>("/root/WindowExstantions");
 	}
 
 
@@ -28,7 +28,7 @@ public partial class NikoClickablePolygon : Node2D
 		if (m_new != m_old)
 		{
 			GetWindow().MousePassthrough = m_new;
-			WindowExstantions.UpdateWindowsExStyles(GetWindow(), !ValuesContainer.ShowTaskbarIcon);
+			_windowExstantions.UpdateWindowsExStyles(GetWindow(), !_valuesContainer.ShowTaskbarIcon);
 			m_old = m_new;
 		}
 	}
@@ -39,7 +39,7 @@ public partial class NikoClickablePolygon : Node2D
 		if (Polygons.ToArray().Contains(MousePolygon))
 		{
 			//GD.Print("Yay, Mouse can pat Niko!");
-			return true;
+			return true && !_valuesContainer.GamingModeEnabled;
 		}
 		return false;
 	}

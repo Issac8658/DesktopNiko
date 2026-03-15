@@ -119,12 +119,13 @@
 [ext_resource type="Texture2D" uid="uid://widgkfxwlx5" path="res://sprites/achievements/unknown_gray.png" id="89_ym5p0"]
 [ext_resource type="Texture2D" uid="uid://c37kquhg5mklo" path="res://sprites/ui/world_machine/bulb.tres" id="90_2umrp"]
 [ext_resource type="PackedScene" uid="uid://dl8543lp0qwyv" path="res://prefabs/achievement_separator.tscn" id="90_05sqr"]
+[ext_resource type="Script" uid="uid://f06fqp3valks" path="res://scripts/RecursiveThemeApplier.cs" id="90_u0vb1"]
 [ext_resource type="Texture2D" uid="uid://dlavpw6yhbnab" path="res://sprites/achievements/unknown.png" id="91_3s6xx"]
 [ext_resource type="Script" uid="uid://cek4uuj03m1ws" path="res://scripts/windows/functional_windows/settings/world_machine_setting.gd" id="92_0dwp6"]
 [ext_resource type="Texture2D" uid="uid://dnwbeed7hrv83" path="res://sprites/ui/test_shit.png" id="92_ixb38"]
 [ext_resource type="Script" uid="uid://dbaokjrp7ef13" path="res://scripts/achievements/achievement_show.gd" id="92_l8no8"]
 [ext_resource type="Material" uid="uid://cmlk3yixxx4u4" path="res://materials/world_machine_glitch_material.tres" id="92_ldlqy"]
-[ext_resource type="Script" uid="uid://by1cd1rvin4oh" path="res://scripts/RecursiveThemeApplier.cs" id="97_wonw5"]
+[ext_resource type="Script" uid="uid://by1cd1rvin4oh" path="res://scripts/ChildrenThemeApplier.cs" id="97_wonw5"]
 [ext_resource type="Script" uid="uid://cxgqoi8ca5cdk" path="res://scripts/windows/functional_windows/settings/do_events_setting.gd" id="98_ude2c"]
 [ext_resource type="Script" uid="uid://biqdchmemfsah" path="res://scripts/windows/functional_windows/settings/niko_always_on_top_setting.gd" id="99_s717c"]
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="100_ix15y"]
@@ -2727,6 +2728,11 @@ popup/item_2/id = 2
 popup/item_3/text = "Українська (~99%)"
 popup/item_3/id = 3
 
+[node name="RecursiveThemeApplier" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/Language2/LanguageSelectionOptionButton" unique_id=1002840926]
+script = ExtResource("90_u0vb1")
+ThemeMaterial = ExtResource("74_s717c")
+metadata/_custom_type_script = "uid://f06fqp3valks"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel" unique_id=1449445208]
 use_parent_material = true
 layout_mode = 2
@@ -3147,6 +3153,11 @@ popup/item_7/text = "settings.niko.meow.7"
 popup/item_7/id = 7
 script = ExtResource("83_77al4")
 
+[node name="RecursiveThemeApplier" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SoundSelectionContainer/MeowSoundSelectionOptionButton" unique_id=421962397]
+script = ExtResource("90_u0vb1")
+ThemeMaterial = ExtResource("74_s717c")
+metadata/_custom_type_script = "uid://f06fqp3valks"
+
 [node name="NikoScaleSelectionContainer" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer" unique_id=965174835]
 use_parent_material = true
 layout_mode = 2
@@ -3183,6 +3194,11 @@ popup/item_3/id = 3
 popup/item_4/text = "4x"
 popup/item_4/id = 4
 script = ExtResource("83_dftep")
+
+[node name="RecursiveThemeApplier" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/NikoScaleSelectionContainer/NikoScaleSelectionOptionButton" unique_id=416782412]
+script = ExtResource("90_u0vb1")
+ThemeMaterial = ExtResource("74_s717c")
+metadata/_custom_type_script = "uid://f06fqp3valks"
 
 [node name="SnapToBottom" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer" unique_id=761666412]
 use_parent_material = true
@@ -3291,11 +3307,10 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1b22m")
 text = "shared.short.time.hours"
 horizontal_alignment = 2
-metadata/_recursiveItemParentMaterial = true
 
-[node name="RecursiveThemeApplier" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo/Hours" unique_id=588344567]
-script = ExtResource("97_wonw5")
-metadata/_custom_type_script = "uid://by1cd1rvin4oh"
+[node name="RecursiveThemeApplier" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo/Hours" unique_id=2136196016]
+script = ExtResource("90_u0vb1")
+metadata/_custom_type_script = "uid://f06fqp3valks"
 
 [node name="Minutes" type="SpinBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo" unique_id=906191622]
 use_parent_material = true
@@ -3322,11 +3337,10 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1b22m")
 text = "shared.short.time.minutes"
 horizontal_alignment = 2
-metadata/_recursiveItemParentMaterial = true
 
-[node name="RecursiveThemeApplier2" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo/Minutes" unique_id=1175090680]
-script = ExtResource("97_wonw5")
-metadata/_custom_type_script = "uid://by1cd1rvin4oh"
+[node name="RecursiveThemeApplier2" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo/Minutes" unique_id=1133212557]
+script = ExtResource("90_u0vb1")
+metadata/_custom_type_script = "uid://f06fqp3valks"
 
 [node name="Seconds" type="SpinBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo" unique_id=1624917844]
 use_parent_material = true
@@ -3352,11 +3366,10 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_1b22m")
 text = "shared.short.time.seconds"
 horizontal_alignment = 2
-metadata/_recursiveItemParentMaterial = true
 
-[node name="RecursiveThemeApplier3" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo/Seconds" unique_id=1277527702]
-script = ExtResource("97_wonw5")
-metadata/_custom_type_script = "uid://by1cd1rvin4oh"
+[node name="RecursiveThemeApplier3" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls/SleepTimerCombo/Seconds" unique_id=551518053]
+script = ExtResource("90_u0vb1")
+metadata/_custom_type_script = "uid://f06fqp3valks"
 
 [node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer/SleepControls" unique_id=650344873]
 use_parent_material = true
@@ -3855,7 +3868,7 @@ theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 8
-metadata/_recursiveItemParentMaterial = false
+metadata/_recursiveItemParentMaterial = true
 
 [node name="AchivementConatiner" type="VBoxContainer" parent="AchievementsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer" unique_id=1475193472]
 layout_mode = 2

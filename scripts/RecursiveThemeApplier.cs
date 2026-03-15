@@ -1,36 +1,43 @@
 using Godot;
 
-[Tool, GlobalClass]
+[GlobalClass]
 public partial class RecursiveThemeApplier : Node
 {
+	[Export]
+	public ShaderMaterial ThemeMaterial;
 	public override void _EnterTree()
 	{
 		Node Parent = GetParent();
-		if (Parent is CanvasItem)
-		{
-			foreach (Node child in Parent.GetChildren(true))
-				if (child is CanvasItem CanvasNode)
-				{
-					CanvasNode.SetMeta("_recursiveItemParentMaterial", CanvasNode.UseParentMaterial);
-					CanvasNode.UseParentMaterial = true;
-				}
-		}
+		ApplyThemeRecursive(Parent);
 	}
-	public override void _ExitTree()
+	public override void _Ready()
 	{
 		Node Parent = GetParent();
-		if (Parent is CanvasItem)
+		ChildEnteredTree += (child) => ApplyThemeRecursive(child, true);
+	}
+
+	private void ApplyThemeRecursive(Node Parent, bool ChangeThis = false)
+	{
+		foreach (Node child in Parent.GetChildren(true))
 		{
-			foreach (Node child in Parent.GetChildren(true))
-				if (child is CanvasItem CanvasNode)
+			if (child is CanvasItem CanvasNode)
+			{
+				CanvasNode.UseParentMaterial = true;
+				CanvasNode.Material = ThemeMaterial;
+			}
+			ApplyThemeRecursive(child, true);
+		}
+		if (Parent is CanvasItem ThisItem)
+		{
+			if (ChangeThis)
+			{
+				ThisItem.UseParentMaterial = true;
+				ThisItem.Material = ThemeMaterial;
+				if (ThisItem is LineEdit lineEdit)
 				{
-					Variant Meta = CanvasNode.GetMeta("_recursiveItemParentMaterial", CanvasNode.UseParentMaterial);
-					if (Meta.VariantType == Variant.Type.Bool)
-					{
-						CanvasNode.UseParentMaterial = Meta.AsBool();
-						CanvasNode.RemoveMeta("_recursiveItemParentMaterial");
-					}
+					lineEdit.ContextMenuEnabled = false;
 				}
+			}
 		}
 	}
 }
