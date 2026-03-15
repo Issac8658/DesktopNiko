@@ -20,9 +20,11 @@
 [ext_resource type="StyleBox" uid="uid://44fcasdfg8t4" path="res://themes/twm_theme/button_focus.stylebox" id="11_pa4av"]
 [ext_resource type="StyleBox" uid="uid://bd2g4ws0gk1b6" path="res://themes/twm_theme/vertical_line.stylebox" id="11_xdasf"]
 [ext_resource type="StyleBox" uid="uid://dg1twp8kt2bvx" path="res://themes/twm_theme/tab.stylebox" id="12_d6ho4"]
+[ext_resource type="Texture2D" uid="uid://cvhn4tne5py2b" path="res://sprites/ui/world_machine/checkbox_checked.tres" id="15_7fhb0"]
 [ext_resource type="Texture2D" uid="uid://b67r5bffv66ql" path="res://sprites/ui/world_machine/spinbox_down.tres" id="16_85n5b"]
 [ext_resource type="StyleBox" uid="uid://b821x8hwjmnyo" path="res://themes/twm_theme/frame_no_bg.tres" id="16_f1ivg"]
 [ext_resource type="Texture2D" uid="uid://cw32ceii5133" path="res://sprites/ui/world_machine/spinbox_up.tres" id="16_hcquw"]
+[ext_resource type="Texture2D" uid="uid://gbj57sugism2" path="res://sprites/ui/world_machine/checkbox_unchecked.tres" id="16_lkf4q"]
 [ext_resource type="StyleBox" uid="uid://cnomj40gsn02c" path="res://themes/twm_theme/filled_panel.stylebox" id="16_y63lx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8odgm"]
@@ -212,8 +214,9 @@ PanelContainer/styles/panel = ExtResource("9_1ext6")
 PopupMenu/colors/font_color = Color(1, 1, 1, 1)
 PopupMenu/colors/font_hover_color = Color(0.64705884, 0.64705884, 0.64705884, 1)
 PopupMenu/colors/font_separator_color = Color(1, 1, 1, 1)
-PopupMenu/icons/radio_checked = ExtResource("3_xdasf")
-PopupMenu/icons/radio_unchecked = ExtResource("3_xdasf")
+PopupMenu/constants/item_start_padding = 6
+PopupMenu/icons/radio_checked = ExtResource("15_7fhb0")
+PopupMenu/icons/radio_unchecked = ExtResource("16_lkf4q")
 PopupMenu/styles/hover = ExtResource("1_h7d4g")
 PopupMenu/styles/labeled_separator_left = SubResource("StyleBoxLine_31yms")
 PopupMenu/styles/labeled_separator_right = SubResource("StyleBoxLine_h0ux4")

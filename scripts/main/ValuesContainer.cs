@@ -2,7 +2,15 @@ using Godot;
 
 public partial class ValuesContainer : Node
 {
-// idk what this :3
+	public enum FacepicType
+	{
+		Default = 0,
+		Speak = 1,
+		Scared = 2,
+		ScaredSpeak = 3
+	}
+
+// idk what is this :3
 	private Timer GlobalTimer = new();
 // Signals
 	// TWM
@@ -14,7 +22,7 @@ public partial class ValuesContainer : Node
 	[Signal] public delegate void ThemeChangedEventHandler(byte Theme);
 	// Niko States
 	[Signal] public delegate void NikoScaleChangedEventHandler(byte CurrentScale);
-	[Signal] public delegate void FacepicChangedEventHandler(byte FacepicType, string Facepic);
+	[Signal] public delegate void FacepicChangedEventHandler(FacepicType FacepicType, string Facepic);
 	[Signal] public delegate void NikoTimeToSleepChangedEventHandler(int TimeToSleep);
 	[Signal] public delegate void GamingModeToggledEventHandler(bool GamingMode);
 	[Signal] public delegate void NikoSkinChangedEventHandler(string SkinId);
@@ -60,8 +68,8 @@ public partial class ValuesContainer : Node
 	private byte _nikoScale = 1; // 0 - 0.5x, 1 - 1x, 2 - 2x, 3 - 3x, 4 - 4x
 	private string _idleFacepic = "smile";
 	private string _speakFacepic = "speak";
-	private string _scareFacepic = "shock";
-	private string _scareSpeakFacepic = "surprised";
+	private string _scaredFacepic = "shock";
+	private string _scaredSpeakFacepic = "surprised";
 	private int _nikoTimeToSleep = 900; // in seconds
 	private bool _gamingModeEnabled = false;
 	private string _currentSkin = ""; // sets by SaveLoad.cs
@@ -98,6 +106,29 @@ public partial class ValuesContainer : Node
 		set
 		{
 			_language = value;
+			switch (value)
+			{
+				case 0:
+					{
+						TranslationServer.SetLocale("en");
+						break;
+					}
+				case 1:
+					{
+						TranslationServer.SetLocale("ru");
+						break;
+					}
+				case 2:
+					{
+						TranslationServer.SetLocale("de");
+						break;
+					}
+				case 3:
+					{
+						TranslationServer.SetLocale("ua");
+						break;
+					}
+			}
 			EmitSignal("LanguageChanged", value);
 		}
 	}
@@ -243,23 +274,23 @@ public partial class ValuesContainer : Node
 		}
 		get => _speakFacepic;
 	}
-	public string ScareFacepic
+	public string ScaredFacepic
 	{
 		set
 		{
-			_scareFacepic = value;
+			_scaredFacepic = value;
 			EmitSignal("FacepicChanged", 2, value);
 		}
-		get => _scareFacepic;
+		get => _scaredFacepic;
 	}
-	public string ScareSpeakFacepic
+	public string ScaredSpeakFacepic
 	{
 		set
 		{
-			_scareSpeakFacepic = value;
+			_scaredSpeakFacepic = value;
 			EmitSignal("FacepicChanged", 3, value);
 		}
-		get => _scareSpeakFacepic;
+		get => _scaredSpeakFacepic;
 	}
 	public byte NikoScale // 0 - 0.5x, 1 - 1x, 2 - 2x, 3 - 3x, 4 - 4x
 	{

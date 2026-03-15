@@ -1,5 +1,6 @@
 using System.Linq;
 using Godot;
+using Godot.NativeInterop;
 
 public partial class NikoClickablePolygon : Node2D
 {
@@ -7,6 +8,8 @@ public partial class NikoClickablePolygon : Node2D
 	public Area2D ClickablePolygon;
 	[Export]
 	public Area2D MousePolygon;
+	[Export]
+	public CollisionPolygon2D Polygon;
 	public WindowExstantions _windowExstantions;
 	public ValuesContainer _valuesContainer;
 
@@ -16,6 +19,7 @@ public partial class NikoClickablePolygon : Node2D
 	{
 		_valuesContainer = GetNode<ValuesContainer>("/root/ValuesContainer");
 		_windowExstantions = GetNode<WindowExstantions>("/root/WindowExstantions");
+		GD.Print(new Godot.Collections.Array<Vector2>(Polygon.Polygon));
 	}
 
 

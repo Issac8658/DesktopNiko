@@ -122,7 +122,7 @@ public partial class NikoController : Node
 
 			case NikoState.Idle:
 				if (_valuesContainer.NikoScared)
-					SetSprite(_valuesContainer.ScareFacepic);
+					SetSprite(_valuesContainer.ScaredFacepic);
 				else
 					SetSprite(_valuesContainer.IdleFacepic);
 				break;
@@ -195,14 +195,14 @@ public partial class NikoController : Node
 	public void SetSpeakFacepic()
 	{
 		if (_valuesContainer.NikoScared && !_valuesContainer.PeacfulMode)
-			SetSprite(_valuesContainer.ScareSpeakFacepic);
+			SetSprite(_valuesContainer.ScaredSpeakFacepic);
 		else
 			SetSprite(_valuesContainer.SpeakFacepic);
 	}
 	public void SetIdleFacepic()
 	{
 		if (_valuesContainer.NikoScared && !_valuesContainer.PeacfulMode)
-			SetSprite(_valuesContainer.ScareFacepic);
+			SetSprite(_valuesContainer.ScaredFacepic);
 		else
 			SetSprite(_valuesContainer.IdleFacepic);
 	}

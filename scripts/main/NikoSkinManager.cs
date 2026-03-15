@@ -6,11 +6,11 @@ using Godot;
 public partial class NikoSkinManager : Node
 {
 	[Signal] public delegate void SkinChangedEventHandler(string SkinId);
-	private const string SKINS_FOLDER_PATH = "res://niko/";
-	private const string DEFAULT_SKIN_ID = "niko_default";
-	private const string SKIN_PATH_OVERRIDE = "skin://";
-	private const string SKIN_CONF_NAME = "skin.cfg";
-	private const string DEFAULT_SPRITE_ID = "default";
+	public const string SKINS_FOLDER_PATH = "res://niko/";
+	public const string DEFAULT_SKIN_ID = "niko_default";
+	public const string SKIN_PATH_OVERRIDE = "skin://";
+	public const string SKIN_CONF_NAME = "skin.cfg";
+	public const string DEFAULT_SPRITE_ID = "default";
 	public static readonly List<string> RequiaredSkinStates = [
 		DEFAULT_SPRITE_ID,
 		"normal",
@@ -20,7 +20,6 @@ public partial class NikoSkinManager : Node
 		"cry",
 		"cool",
 		"sad",
-		"cry",
 		"super_cry",
 		"eat1",
 		"eat2",
@@ -67,6 +66,11 @@ public partial class NikoSkinManager : Node
 		}
 		EmitSignal("SkinChanged", SkinId);
 	}
+
+	public Skin GetCurrentSkin()
+	{
+		return (Skin)GetSkinFromId(_valuesContainer.CurrentSkin);
+	}
 	
 	public float GetCurrentSkinBaseScale()
 	{
@@ -108,6 +112,8 @@ public partial class NikoSkinManager : Node
 			{
 				if (skin.Sprites.TryGetValue(spriteId, out string SpritePath))
 					sprite = LoadTexture(SpritePath);
+				else if (skin.ExtraSprites.TryGetValue(spriteId, out string ExtraSpritePath))
+					sprite = LoadTexture(ExtraSpritePath);
 				else
 				{
 					sprite = LoadTexture(skin.Sprites[DEFAULT_SPRITE_ID]);

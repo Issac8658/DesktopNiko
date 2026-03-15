@@ -119,12 +119,14 @@
 [ext_resource type="Texture2D" uid="uid://widgkfxwlx5" path="res://sprites/achievements/unknown_gray.png" id="89_ym5p0"]
 [ext_resource type="Texture2D" uid="uid://c37kquhg5mklo" path="res://sprites/ui/world_machine/bulb.tres" id="90_2umrp"]
 [ext_resource type="PackedScene" uid="uid://dl8543lp0qwyv" path="res://prefabs/achievement_separator.tscn" id="90_05sqr"]
+[ext_resource type="Script" uid="uid://ot1ydidnsase" path="res://scripts/windows/functional_windows/settings/language_selector.gd" id="90_68j6s"]
 [ext_resource type="Script" uid="uid://f06fqp3valks" path="res://scripts/RecursiveThemeApplier.cs" id="90_u0vb1"]
 [ext_resource type="Texture2D" uid="uid://dlavpw6yhbnab" path="res://sprites/achievements/unknown.png" id="91_3s6xx"]
 [ext_resource type="Script" uid="uid://cek4uuj03m1ws" path="res://scripts/windows/functional_windows/settings/world_machine_setting.gd" id="92_0dwp6"]
 [ext_resource type="Texture2D" uid="uid://dnwbeed7hrv83" path="res://sprites/ui/test_shit.png" id="92_ixb38"]
 [ext_resource type="Script" uid="uid://dbaokjrp7ef13" path="res://scripts/achievements/achievement_show.gd" id="92_l8no8"]
 [ext_resource type="Material" uid="uid://cmlk3yixxx4u4" path="res://materials/world_machine_glitch_material.tres" id="92_ldlqy"]
+[ext_resource type="Script" uid="uid://bi52cwkn25b8s" path="res://scripts/windows/functional_windows/settings/FacepicSelection.cs" id="93_g60li"]
 [ext_resource type="Script" uid="uid://by1cd1rvin4oh" path="res://scripts/ChildrenThemeApplier.cs" id="97_wonw5"]
 [ext_resource type="Script" uid="uid://cxgqoi8ca5cdk" path="res://scripts/windows/functional_windows/settings/do_events_setting.gd" id="98_ude2c"]
 [ext_resource type="Script" uid="uid://biqdchmemfsah" path="res://scripts/windows/functional_windows/settings/niko_always_on_top_setting.gd" id="99_s717c"]
@@ -2431,7 +2433,7 @@ text = "APPLY"
 [node name="SettingsWindow" parent="." unique_id=759122465 instance=ExtResource("38_q4750")]
 title = "SETTINGS"
 initial_position = 4
-size = Vector2i(704, 408)
+size = Vector2i(704, 404)
 visible = false
 wrap_controls = true
 min_size = Vector2i(704, 404)
@@ -2602,6 +2604,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="General" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=796068923]
+visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 8
@@ -2725,8 +2728,9 @@ popup/item_1/text = "Русский (100%)"
 popup/item_1/id = 1
 popup/item_2/text = "Deutsch (~60%)"
 popup/item_2/id = 2
-popup/item_3/text = "Українська (~99%)"
+popup/item_3/text = "Українська (~80%)"
 popup/item_3/id = 3
+script = ExtResource("90_68j6s")
 
 [node name="RecursiveThemeApplier" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/Language2/LanguageSelectionOptionButton" unique_id=1002840926]
 script = ExtResource("90_u0vb1")
@@ -2919,7 +2923,6 @@ script = ExtResource("97_wonw5")
 metadata/_custom_type_script = "uid://by1cd1rvin4oh"
 
 [node name="Niko" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=320743199]
-visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 0
@@ -2952,10 +2955,14 @@ horizontal_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
 
-[node name="Idle" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=979954395]
+[node name="Idle" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=979954395 node_paths=PackedStringArray("PreviewImage", "FacepicOption")]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 0
+script = ExtResource("93_g60li")
+PreviewImage = NodePath("TextureRect")
+FacepicOption = NodePath("OptionButton")
 
 [node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Idle" unique_id=1329252268]
 custom_minimum_size = Vector2(120, 120)
@@ -2970,15 +2977,25 @@ mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
 
+[node name="RecursiveThemeApplier3" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Idle/OptionButton" unique_id=778251764]
+script = ExtResource("90_u0vb1")
+ThemeMaterial = ExtResource("74_s717c")
+metadata/_custom_type_script = "uid://f06fqp3valks"
+
 [node name="VSeparator" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1233663303]
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Speak" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=241891206]
+[node name="Speak" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=241891206 node_paths=PackedStringArray("PreviewImage", "FacepicOption")]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 0
+script = ExtResource("93_g60li")
+PreviewImage = NodePath("TextureRect")
+FacepicOption = NodePath("OptionButton")
+TargetFacepic = 1
 
 [node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Speak" unique_id=332199103]
 custom_minimum_size = Vector2(120, 120)
@@ -2992,6 +3009,11 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
+
+[node name="RecursiveThemeApplier4" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Speak/OptionButton" unique_id=143236271]
+script = ExtResource("90_u0vb1")
+ThemeMaterial = ExtResource("74_s717c")
+metadata/_custom_type_script = "uid://f06fqp3valks"
 
 [node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1013240464]
 use_parent_material = true
@@ -3026,10 +3048,15 @@ horizontal_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
 
-[node name="Scare" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1752587635]
+[node name="Scare" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1752587635 node_paths=PackedStringArray("PreviewImage", "FacepicOption")]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 0
+script = ExtResource("93_g60li")
+PreviewImage = NodePath("TextureRect")
+FacepicOption = NodePath("OptionButton")
+TargetFacepic = 2
 
 [node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Scare" unique_id=624558841]
 custom_minimum_size = Vector2(120, 120)
@@ -3044,15 +3071,25 @@ mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
 
+[node name="RecursiveThemeApplier2" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Scare/OptionButton" unique_id=1492597275]
+script = ExtResource("90_u0vb1")
+ThemeMaterial = ExtResource("74_s717c")
+metadata/_custom_type_script = "uid://f06fqp3valks"
+
 [node name="VSeparator4" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1012622975]
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="ScareSpeak" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=186221155]
+[node name="ScareSpeak" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=186221155 node_paths=PackedStringArray("PreviewImage", "FacepicOption")]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 0
+script = ExtResource("93_g60li")
+PreviewImage = NodePath("TextureRect")
+FacepicOption = NodePath("OptionButton")
+TargetFacepic = 3
 
 [node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/ScareSpeak" unique_id=1184585687]
 custom_minimum_size = Vector2(120, 120)
@@ -3066,6 +3103,11 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
+
+[node name="RecursiveThemeApplier" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/ScareSpeak/OptionButton" unique_id=1779692551]
+script = ExtResource("90_u0vb1")
+ThemeMaterial = ExtResource("74_s717c")
+metadata/_custom_type_script = "uid://f06fqp3valks"
 
 [node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko" unique_id=857804836]
 use_parent_material = true
@@ -4040,10 +4082,11 @@ icon = ExtResource("10_wr18j")
 script = ExtResource("88_7y85w")
 styled_menu = NodePath("../IndicatorPopup")
 
-[node name="Area" type="Node2D" parent="." unique_id=1077347290 node_paths=PackedStringArray("ClickablePolygon", "MousePolygon")]
+[node name="Area" type="Node2D" parent="." unique_id=1077347290 node_paths=PackedStringArray("ClickablePolygon", "MousePolygon", "Polygon")]
 script = ExtResource("114_8jixl")
 ClickablePolygon = NodePath("ClickableArea")
 MousePolygon = NodePath("MouseArea")
+Polygon = NodePath("ClickableArea/CollisionPolygon2D")
 
 [node name="ClickableArea" type="Area2D" parent="Area" unique_id=242231655]
 
@@ -4052,7 +4095,7 @@ position = Vector2(0, 121)
 shape = SubResource("WorldBoundaryShape2D_uush8")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area/ClickableArea" unique_id=1673148127]
-polygon = PackedVector2Array(36, 10, 30, 16, 14, 50, 6, 54, 0, 60, 0, 64, 18, 62, 18, 73, 21, 77, 24, 72, 34, 104, 32, 110, 41, 113, 38, 120, 104, 120, 104, 109, 97, 89, 102, 76, 104, 64, 120, 64, 120, 60, 112, 53, 114, 24, 112, 14, 108, 10, 104, 10, 98, 14, 48, 14, 42.07, 10)
+polygon = PackedVector2Array(36, 10, 30, 16, 22, 32, 14, 50, 6, 54, 0, 60, 0, 64, 4, 68, 18, 72, 21, 77, 24, 72, 34, 104, 32, 110, 41, 113, 38, 120, 104, 120, 104, 109, 97, 89, 104, 70, 112, 70, 120, 64, 120, 60, 112, 53, 114, 38, 114, 24, 112, 14, 108, 10, 104, 10, 98, 14, 48, 14, 42.07, 10)
 
 [node name="MouseArea" type="Area2D" parent="Area" unique_id=294532626]
 monitoring = false
