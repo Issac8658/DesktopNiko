@@ -70,7 +70,7 @@ public partial class ValuesContainer : Node
 	private string _speakFacepic = "speak";
 	private string _scaredFacepic = "shock";
 	private string _scaredSpeakFacepic = "surprised";
-	private int _nikoTimeToSleep = 900; // in seconds
+	private uint _nikoTimeToSleep = 900; // in seconds
 	private bool _gamingModeEnabled = false;
 	private string _currentSkin = ""; // sets by SaveLoad.cs
 	private bool _isWorldMachine = false;
@@ -301,7 +301,7 @@ public partial class ValuesContainer : Node
 		}
 		get => _nikoScale;
 	}
-	public int NikoTimeToSleep
+	public uint NikoTimeToSleep
 	{
 		get => _nikoTimeToSleep;
 		set

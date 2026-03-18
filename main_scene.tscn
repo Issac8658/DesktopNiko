@@ -2433,7 +2433,7 @@ text = "APPLY"
 [node name="SettingsWindow" parent="." unique_id=759122465 instance=ExtResource("38_q4750")]
 title = "SETTINGS"
 initial_position = 4
-size = Vector2i(704, 404)
+size = Vector2i(704, 413)
 visible = false
 wrap_controls = true
 min_size = Vector2i(704, 404)

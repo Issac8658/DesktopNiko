@@ -33,6 +33,7 @@ public partial class NikoSkinManager : Node
 	private List<Skin> SkinsList = [];
 	//private Dictionary<string, Texture2D> PreloadedSkin = [];
 	private Dictionary<string, Dictionary<string, Texture2D>> _loadedSprites = [];
+	private AudioStream _customSound;
 
 	private ValuesContainer _valuesContainer;
 
@@ -46,7 +47,7 @@ public partial class NikoSkinManager : Node
 		if (!UserFolder.DirExists("skins"))
 			UserFolder.MakeDir("skins");
 		else
-			RegisterSkins("user://skins/");
+			RegisterSkins("user://skins/", "custom_");
 
 		if(_valuesContainer.CurrentSkin != "")
 			SetSkin(_valuesContainer.CurrentSkin);
@@ -82,17 +83,22 @@ public partial class NikoSkinManager : Node
 		return LoadSkinSpriteFromId(_valuesContainer.CurrentSkin, SpriteId);
 	}
 
+	public Skin[] GetSkinsList()
+	{
+		return [.. SkinsList];
+	}
+
+	public AudioStream GetCurrentSkinAudioStream()
+	{
+		return _customSound;
+	}
+
 	public bool SkinIsExist(string SkinId)
 	{
 		foreach (Skin skin in SkinsList)
 			if (skin.Id == SkinId)
 				return true;
 		return false;
-	}
-
-	public Skin[] GetSkinsList()
-	{
-		return [.. SkinsList];
 	}
 
 	public Texture2D LoadSkinSprite(Skin skin, string spriteId)
@@ -163,13 +169,13 @@ public partial class NikoSkinManager : Node
 		return Path.Contains("res://");
 	}
 
-	private void RegisterSkins(string SkinsFolderPaths)
+	private void RegisterSkins(string SkinsFolderPaths, string IdPreffix = "")
 	{
 		GD.Print($"Registering skins from {SkinsFolderPaths}");
 		DirAccess SkinsFolder = DirAccess.Open(SkinsFolderPaths);
 		foreach (string SkinId in SkinsFolder.GetDirectories())
 		{
-			RegisterSkin(SkinsFolder.GetCurrentDir() + "/" + SkinId);
+			RegisterSkin(SkinsFolder.GetCurrentDir() + "/" + SkinId, IdPreffix);
 		}
 	}
 
@@ -188,14 +194,14 @@ public partial class NikoSkinManager : Node
 		return texture;
 	}
 
-	private void RegisterSkin(string SkinPath)
+	private void RegisterSkin(string SkinPath, string IdPreffix = "")
 	{
 		DirAccess SkinDir = DirAccess.Open(SkinPath);
 		SkinPath = SkinDir.GetCurrentDir(); // for remove "/" at end if it exist
 		string[] SkinFiles = SkinDir.GetFiles();
 		if (SkinFiles.Contains(SKIN_CONF_NAME))
 		{
-			string SkinId = SkinDir.GetCurrentDir().Split("/").Last();
+			string SkinId = IdPreffix + SkinDir.GetCurrentDir().Split("/").Last();
 			GD.Print($"Registering skin \"{SkinId}\"...");
 
 			ConfigFile SkinConfig = new();

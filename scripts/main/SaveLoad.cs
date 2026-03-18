@@ -48,8 +48,8 @@ public partial class SaveLoad : Node
                 {"PeacfulMode", "PeacfulMode"},
                 {"IdleFacepic", "IdleFacepic"},
                 {"SpeakFacepic", "SpeakFacepic"},
-                {"ScareFacepic", "ScareFacepic"},
-                {"ScareSpeakFacepic", "ScareSpeakFacepic"},
+                {"ScaredFacepic", "ScaredFacepic"},
+                {"ScaredSpeakFacepic", "ScaredSpeakFacepic"},
                 {"NikoScale", "NikoScale"},
                 {"NikoTimeToSleep", "NikoTimeToSleep"},
                 {"CurrentSkin", "Skin"}

@@ -83,6 +83,7 @@ public partial class FacepicSelection : Node
 		}
 
 		FacepicOption.Select(-1);
+		FacepicOption.Text = "???";
 		for (int i = 0; i < FacepicOption.ItemCount; i++)
 		{
 			switch (TargetFacepic)

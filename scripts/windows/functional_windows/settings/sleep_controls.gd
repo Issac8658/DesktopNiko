@@ -40,4 +40,4 @@ func update(_value):
 		else:
 			seconds_spinbox.min_value = 0
 	else:
-		ValuesContainer.NikoTimeToSleep = 2147483628
+		ValuesContainer.NikoTimeToSleep = -1
