@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/events/event.gd" id="1_nodym"]
 [ext_resource type="AudioStream" uid="uid://fwhbmmo7fr0n" path="res://sounds/rb_cry.mp3" id="2_kivn3"]
-[ext_resource type="AudioStream" uid="uid://dq1jrk427a2q3" path="res://sounds/glitch2.wav" id="3_4vcw5"]
+[ext_resource type="AudioStream" uid="uid://dq1jrk427a2q3" path="res://sounds/glitches/glitch2.wav" id="3_4vcw5"]
 [ext_resource type="AudioStream" uid="uid://r3rwi76obhmu" path="res://sounds/rb_eat.mp3" id="3_o5iab"]
 [ext_resource type="PackedScene" uid="uid://8hficp4dbvqs" path="res://prefabs/popup_window.tscn" id="4_mhhk1"]
 [ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://sprites/icons/pancake_clicker.png" id="5_nm1hw"]

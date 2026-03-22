@@ -30,6 +30,7 @@
 [ext_resource type="Resource" uid="uid://0jpmuyj06155" path="res://events/packed_events/tennis_event.tres" id="17_xevt3"]
 [ext_resource type="Script" uid="uid://beofedlggjnkj" path="res://scripts/main/NikoWindowControl.cs" id="18_wmw63"]
 [ext_resource type="PackedScene" uid="uid://bdipf040tg1gp" path="res://prefabs/resizable_window.tscn" id="19_rkakh"]
+[ext_resource type="Resource" uid="uid://dxxu6pjl2rmuo" path="res://events/packed_events/screen_break_event.tres" id="19_x3j81"]
 [ext_resource type="Texture2D" uid="uid://bextf2un1mfx4" path="res://sprites/icons/shortcuts.png" id="20_o63de"]
 [ext_resource type="Script" uid="uid://hlcidpic34kr" path="res://scripts/windows/functional_windows/shortcuts.gd" id="20_q4750"]
 [ext_resource type="Texture2D" uid="uid://dl8ue5tnsufb7" path="res://sprites/icons/shortcut.tres" id="23_30vx0"]
@@ -645,7 +646,7 @@ volume_db = -5.0
 
 [node name="Events" type="Node" parent="." unique_id=1879553896]
 script = ExtResource("12_82rj2")
-events = Array[ExtResource("14_xevt3")]([ExtResource("15_ix15y"), ExtResource("16_l3hih"), ExtResource("17_xevt3")])
+events = Array[ExtResource("14_xevt3")]([ExtResource("15_ix15y"), ExtResource("16_l3hih"), ExtResource("17_xevt3"), ExtResource("19_x3j81")])
 
 [node name="Games" type="Node" parent="." unique_id=2139058686]
 

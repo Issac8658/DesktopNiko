@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dq1jrk427a2q3"
-path="res://.godot/imported/glitch2.wav-e083eeb243fda46e67c0d61b9894fbc1.sample"
+path="res://.godot/imported/glitch2.wav-26b3ab5e57af8e69b457fa8650d5df78.sample"
 
 [deps]
 
-source_file="res://sounds/glitch2.wav"
-dest_files=["res://.godot/imported/glitch2.wav-e083eeb243fda46e67c0d61b9894fbc1.sample"]
+source_file="res://sounds/glitches/glitch2.wav"
+dest_files=["res://.godot/imported/glitch2.wav-26b3ab5e57af8e69b457fa8650d5df78.sample"]
 
 [params]
 

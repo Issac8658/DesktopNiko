@@ -1,4 +1,6 @@
-extends VBoxContainer
+extends Node
+
+signal value_changed()
 
 @export var symbols_list : Array[String]
 @export var up_button : Button
@@ -23,3 +25,5 @@ func update():
 	if current_symbol < 0:
 		current_symbol = len(symbols_list) - 1
 	label.text = symbols_list[current_symbol]
+	
+	value_changed.emit()

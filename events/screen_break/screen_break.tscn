@@ -1,0 +1,1117 @@
+[gd_scene format=3 uid="uid://26xnfokg4q28"]
+
+[ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/events/event.gd" id="1_k4dh2"]
+[ext_resource type="AudioStream" uid="uid://bimjmbhqtl8ik" path="res://sounds/glitches/glitch1.wav" id="2_o2b7h"]
+[ext_resource type="AudioStream" uid="uid://d2fd3ber2jevi" path="res://sounds/glitches/glitch_glitched1.ogg" id="3_tweoe"]
+[ext_resource type="AudioStream" uid="uid://djil4phnmwg64" path="res://sounds/glitches/glitch_glitched2.ogg" id="4_hgw02"]
+[ext_resource type="AudioStream" uid="uid://7v46wamjbg7e" path="res://sounds/glitches/glitch_glitched3.ogg" id="5_8rph2"]
+[ext_resource type="AudioStream" uid="uid://yrpkxtdtvidl" path="res://sounds/glitches/glitch_glitched4.ogg" id="6_dsxot"]
+[ext_resource type="AudioStream" uid="uid://blheno4uh0gmf" path="res://sounds/glitches/glitch_glitched5.ogg" id="7_rb5ak"]
+[ext_resource type="AudioStream" uid="uid://0a17a7bk3og3" path="res://sounds/bass_metal.wav" id="8_xwi3i"]
+[ext_resource type="AudioStream" uid="uid://7got448yqqeh" path="res://sounds/square_death.ogg" id="9_y1vm7"]
+[ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="10_vksct"]
+[ext_resource type="Texture2D" uid="uid://cvhn4tne5py2b" path="res://sprites/ui/world_machine/checkbox_checked.tres" id="11_m2giu"]
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="12_gq0ea"]
+[ext_resource type="Script" uid="uid://05w6e57vrsyx" path="res://events/pass_code_part.gd" id="13_7l0y5"]
+
+[sub_resource type="GDScript" id="GDScript_wdcdh"]
+resource_name = "screen_break_controller"
+script/source = "extends Node
+
+var hex_solved := false
+var block_solved := false
+
+@export var squares_death : AudioStreamPlayer
+@export var glitch_sound : AudioStreamPlayer
+@export var sounds : Array[AudioStream]
+
+@export var hex_puzzle_window : Window
+@export var bits : Array[Node]
+@export var hex_target_label : Label
+@export var hex_result_label : Label
+@export var hex_result2_label : Label
+@export var hex_output : Label
+@export var hex_squares_emmiter : GPUParticles2D;
+var hex_target = 0;
+
+@export var block_puzzle_window : Window
+
+func _ready() -> void:
+	block_puzzle_window.visible = false
+	for bit_node in bits:
+		bit_node.value_changed.connect(func ():
+			update()
+		)
+
+func do_event() -> void:
+	glitch_sound.stream = sounds.pick_random()
+	glitch_sound.play()
+	
+	var screen_size := DisplayServer.screen_get_size(DisplayServer.SCREEN_OF_MAIN_WINDOW)
+	var position : Vector2i = Vector2i(0, 0)
+	position.x = randi_range(0, screen_size.x - hex_puzzle_window.size.x)
+	position.y = randi_range(0, screen_size.y - hex_puzzle_window.size.y)
+	hex_puzzle_window.position = DisplayServer.screen_get_position(DisplayServer.SCREEN_OF_MAIN_WINDOW) + position
+	hex_target = randi_range(1, 255)
+	hex_target_label.text = str(hex_target)
+
+func update() -> void:
+	var count := 0
+	for i in range(len(bits)):
+		count += pow(2, i) * bits[i].current_symbol
+	hex_result_label.text = str(count)
+	hex_result2_label.text = hex_result_label.text
+	hex_output.text = str(count == hex_target)
+	if (count == hex_target):
+		squares_death.play()
+		hex_squares_emmiter.emitting = false
+		get_tree().create_timer(1.5).timeout.connect(blocks)
+
+func blocks() -> void:
+	hex_puzzle_window.hide()
+	glitch_sound.stream = sounds.pick_random()
+	glitch_sound.play()
+	
+	var screen_size := DisplayServer.screen_get_size(DisplayServer.SCREEN_OF_MAIN_WINDOW)
+	var position : Vector2i = Vector2i(0, 0)
+	position.x = randi_range(0, screen_size.x - block_puzzle_window.size.x)
+	position.y = randi_range(0, screen_size.y - block_puzzle_window.size.y)
+	block_puzzle_window.position = DisplayServer.screen_get_position(DisplayServer.SCREEN_OF_MAIN_WINDOW) + position
+	block_puzzle_window.visible = true
+"
+
+[sub_resource type="Gradient" id="Gradient_cyylu"]
+offsets = PackedFloat32Array(0, 0.79913604, 0.8034557, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.44313726, 0.328125, 0.328125, 0.328125, 1, 0.32941177, 0.32941177, 0.32941177, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h4kja"]
+gradient = SubResource("Gradient_cyylu")
+
+[sub_resource type="Curve" id="Curve_sk6fq"]
+_limits = [0.91706735, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, -1.6779028, 0, 1, Vector2(0.047034763, 0.92108023), -1.6779028, 0.4947662, 1, 1, Vector2(0.20654398, 1), 0.4947662, -0.7379567, 1, 1, Vector2(0.28629854, 0.9411446), -0.7379567, 0.75737566, 1, 1, Vector2(0.36400822, 1), 0.75737566, -0.55536634, 1, 1, Vector2(0.47239265, 0.93980694), -0.55536634, 0.65409756, 1, 1, Vector2(0.56441724, 1), 0.65409756, 0.0, 1, 1, Vector2(0.6850716, 1), 0.0, -0.9216835, 1, 1, Vector2(0.7750511, 0.91706735), -0.9216835, 0.86285144, 1, 1, Vector2(0.87116575, 1), 0.86285144, -0.49621296, 1, 1, Vector2(0.93047035, 0.9705723), -0.49621296, 0.42323968, 1, 1, Vector2(1, 1), 0.42323968, 0.0, 1, 0]
+point_count = 12
+
+[sub_resource type="CurveTexture" id="CurveTexture_737ph"]
+curve = SubResource("Curve_sk6fq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0fres"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(215.29, 84.33, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_max = 23.5
+gravity = Vector3(0, 0, 0)
+scale_min = 2.3
+scale_max = 4.45
+scale_curve = SubResource("CurveTexture_737ph")
+color_initial_ramp = SubResource("GradientTexture1D_h4kja")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8vbma"]
+viewport_path = NodePath("HexPuzzle/SubViewportContainer/SubViewport")
+
+[sub_resource type="Gradient" id="Gradient_2bqfi"]
+offsets = PackedFloat32Array(0, 0.94736844, 0.9494737, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.2890625, 0.2890625, 0.2890625, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hnpgn"]
+gradient = SubResource("Gradient_2bqfi")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dakml"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+texture = SubResource("GradientTexture2D_hnpgn")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+region_rect = Rect2(0, 0, 64, 64)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_acmlg"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(215.29, 251.425, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_max = 23.5
+gravity = Vector3(0, 0, 0)
+scale_min = 2.3
+scale_max = 4.45
+scale_curve = SubResource("CurveTexture_737ph")
+color_initial_ramp = SubResource("GradientTexture1D_h4kja")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_uwr32"]
+viewport_path = NodePath("BlockPuzzle/SubViewportContainer/SubViewport")
+
+[node name="ScreenBreak" type="Node" unique_id=162000058 node_paths=PackedStringArray("event_controller")]
+script = ExtResource("1_k4dh2")
+event_controller = NodePath("EventController")
+metadata/_custom_type_script = "uid://73yfcqn4tt7s"
+
+[node name="EventController" type="Node" parent="." unique_id=1292803865 node_paths=PackedStringArray("squares_death", "glitch_sound", "hex_puzzle_window", "bits", "hex_target_label", "hex_result_label", "hex_result2_label", "hex_output", "hex_squares_emmiter", "block_puzzle_window")]
+script = SubResource("GDScript_wdcdh")
+squares_death = NodePath("../SquaresDeath")
+glitch_sound = NodePath("../Glitch")
+sounds = Array[AudioStream]([ExtResource("2_o2b7h"), ExtResource("3_tweoe"), ExtResource("4_hgw02"), ExtResource("5_8rph2"), ExtResource("6_dsxot"), ExtResource("7_rb5ak")])
+hex_puzzle_window = NodePath("../HexPuzzle")
+bits = [NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit1"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit2"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit4"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit8"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit16"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit32"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit64"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit128")]
+hex_target_label = NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer2/Target")
+hex_result_label = NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/ResultsView1/HBoxContainer/result")
+hex_result2_label = NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer2/Result2")
+hex_output = NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer2/Corrent")
+hex_squares_emmiter = NodePath("../HexPuzzle/SubViewportContainer/SubViewport/GPUParticles2D")
+block_puzzle_window = NodePath("../BlockPuzzle")
+
+[node name="Glitch" type="AudioStreamPlayer" parent="." unique_id=258330146]
+stream = ExtResource("8_xwi3i")
+
+[node name="SquaresDeath" type="AudioStreamPlayer" parent="." unique_id=869359748]
+stream = ExtResource("9_y1vm7")
+
+[node name="HexPuzzle" type="Window" parent="." unique_id=866570742]
+transparent_bg = true
+oversampling_override = 1.0
+title = "[ idk what is this ]"
+position = Vector2i(0, 36)
+size = Vector2i(500, 280)
+borderless = true
+always_on_top = true
+transparent = true
+popup_window = true
+minimize_disabled = true
+maximize_disabled = true
+theme = ExtResource("10_vksct")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HexPuzzle" unique_id=1102273956]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="HexPuzzle/SubViewportContainer" unique_id=1901833818]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+oversampling = false
+size = Vector2i(500, 280)
+render_target_update_mode = 4
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="HexPuzzle/SubViewportContainer/SubViewport" unique_id=1904264514]
+position = Vector2(250, 138)
+amount = 92
+texture = ExtResource("11_m2giu")
+lifetime = 1.5
+fract_delta = false
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_0fres")
+
+[node name="TextureRect" type="TextureRect" parent="HexPuzzle" unique_id=1236908712]
+clip_children = 2
+texture_filter = 1
+material = ExtResource("12_gq0ea")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ViewportTexture_8vbma")
+
+[node name="Panel" type="PanelContainer" parent="HexPuzzle/TextureRect" unique_id=1699056756]
+use_parent_material = true
+custom_minimum_size = Vector2(384, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.42625
+offset_top = -74.49625
+offset_right = 132.42627
+offset_bottom = 74.49625
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"ThickPanelContainer"
+
+[node name="MarginContainer" type="MarginContainer" parent="HexPuzzle/TextureRect/Panel" unique_id=680445564]
+use_parent_material = true
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HexPuzzle/TextureRect/Panel/MarginContainer" unique_id=240791784]
+use_parent_material = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dakml")
+
+[node name="MarginContainer2" type="MarginContainer" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer" unique_id=2137719481]
+use_parent_material = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2" unique_id=1365473010]
+use_parent_material = true
+layout_mode = 2
+
+[node name="Pre" type="VBoxContainer" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer" unique_id=1936826241]
+use_parent_material = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Pre" unique_id=362467582]
+modulate = Color(0.4862745, 0.4862745, 0.4862745, 0)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Button" type="Control" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Pre" unique_id=689306611]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Pre" unique_id=541057165]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+text = "0x"
+
+[node name="Button2" type="Control" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Pre" unique_id=193600503]
+modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Bit128" type="VBoxContainer" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer" unique_id=86077714 node_paths=PackedStringArray("up_button", "label", "down_button")]
+use_parent_material = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+script = ExtResource("13_7l0y5")
+symbols_list = Array[String](["0", "1"])
+up_button = NodePath("Button")
+label = NodePath("Label2")
+down_button = NodePath("Button2")
+
+[node name="Label" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit128" unique_id=1351578645]
+modulate = Color(0.484375, 0.484375, 0.484375, 1)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "128"
+
+[node name="Button" type="Button" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit128" unique_id=874252390]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "!"
+
+[node name="Label2" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit128" unique_id=731620479]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "0"
+
+[node name="Button2" type="Button" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit128" unique_id=353400833]
+modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+text = "↓"
+
+[node name="Bit64" type="VBoxContainer" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer" unique_id=225050104 node_paths=PackedStringArray("up_button", "label", "down_button")]
+use_parent_material = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+script = ExtResource("13_7l0y5")
+symbols_list = Array[String](["0", "1"])
+up_button = NodePath("Button")
+label = NodePath("Label2")
+down_button = NodePath("Button2")
+
+[node name="Label" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit64" unique_id=2141251330]
+modulate = Color(0.484375, 0.484375, 0.484375, 1)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "64"
+
+[node name="Button" type="Button" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit64" unique_id=336028039]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "!"
+
+[node name="Label2" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit64" unique_id=767021417]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "0"
+
+[node name="Button2" type="Button" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit64" unique_id=507798050]
+modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+text = "↓"
+
+[node name="Bit32" type="VBoxContainer" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer" unique_id=239882268 node_paths=PackedStringArray("up_button", "label", "down_button")]
+use_parent_material = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+script = ExtResource("13_7l0y5")
+symbols_list = Array[String](["0", "1"])
+up_button = NodePath("Button")
+label = NodePath("Label2")
+down_button = NodePath("Button2")
+
+[node name="Label" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit32" unique_id=1213364993]
+modulate = Color(0.484375, 0.484375, 0.484375, 1)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "32"
+
+[node name="Button" type="Button" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit32" unique_id=625858879]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "!"
+
+[node name="Label2" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit32" unique_id=1814237741]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "0"
+
+[node name="Button2" type="Button" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit32" unique_id=230476376]
+modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+text = "↓"
+
+[node name="Bit16" type="VBoxContainer" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer" unique_id=429750340 node_paths=PackedStringArray("up_button", "label", "down_button")]
+use_parent_material = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+script = ExtResource("13_7l0y5")
+symbols_list = Array[String](["0", "1"])
+up_button = NodePath("Button")
+label = NodePath("Label2")
+down_button = NodePath("Button2")
+
+[node name="Label" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit16" unique_id=1662684898]
+modulate = Color(0.484375, 0.484375, 0.484375, 1)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "16"
+
+[node name="Button" type="Button" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit16" unique_id=220940711]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "!"
+
+[node name="Label2" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit16" unique_id=1272326947]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "0"
+
+[node name="Button2" type="Button" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit16" unique_id=1184380520]
+modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+text = "↓"
+
+[node name="Bit8" type="VBoxContainer" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer" unique_id=221950711 node_paths=PackedStringArray("up_button", "label", "down_button")]
+use_parent_material = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+script = ExtResource("13_7l0y5")
+symbols_list = Array[String](["0", "1"])
+up_button = NodePath("Button")
+label = NodePath("Label2")
+down_button = NodePath("Button2")
+
+[node name="Label" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit8" unique_id=1957334395]
+modulate = Color(0.484375, 0.484375, 0.484375, 1)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "8"
+
+[node name="Button" type="Button" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit8" unique_id=1951678175]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "!"
+
+[node name="Label2" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit8" unique_id=1835555405]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "0"
+
+[node name="Button2" type="Button" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit8" unique_id=884396918]
+modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+text = "↓"
+
+[node name="Bit4" type="VBoxContainer" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer" unique_id=1125979399 node_paths=PackedStringArray("up_button", "label", "down_button")]
+use_parent_material = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+script = ExtResource("13_7l0y5")
+symbols_list = Array[String](["0", "1"])
+up_button = NodePath("Button")
+label = NodePath("Label2")
+down_button = NodePath("Button2")
+
+[node name="Label" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit4" unique_id=1295128730]
+modulate = Color(0.484375, 0.484375, 0.484375, 1)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "4"
+
+[node name="Button" type="Button" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit4" unique_id=2132666835]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "!"
+
+[node name="Label2" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit4" unique_id=1721124090]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "0"
+
+[node name="Button2" type="Button" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit4" unique_id=806409910]
+modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+text = "↓"
+
+[node name="Bit2" type="VBoxContainer" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer" unique_id=166768726 node_paths=PackedStringArray("up_button", "label", "down_button")]
+use_parent_material = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+script = ExtResource("13_7l0y5")
+symbols_list = Array[String](["0", "1"])
+up_button = NodePath("Button")
+label = NodePath("Label2")
+down_button = NodePath("Button2")
+
+[node name="Label" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit2" unique_id=1575020933]
+modulate = Color(0.484375, 0.484375, 0.484375, 1)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "2"
+
+[node name="Button" type="Button" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit2" unique_id=1445670035]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "!"
+
+[node name="Label2" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit2" unique_id=264394568]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "0"
+
+[node name="Button2" type="Button" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit2" unique_id=682643521]
+modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+text = "↓"
+
+[node name="Bit1" type="VBoxContainer" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer" unique_id=496583556 node_paths=PackedStringArray("up_button", "label", "down_button")]
+use_parent_material = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+script = ExtResource("13_7l0y5")
+symbols_list = Array[String](["0", "1"])
+up_button = NodePath("Button")
+label = NodePath("Label2")
+down_button = NodePath("Button2")
+
+[node name="Label" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit1" unique_id=1911642957]
+modulate = Color(0.484375, 0.484375, 0.484375, 1)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "1"
+
+[node name="Button" type="Button" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit1" unique_id=1066674784]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "!"
+
+[node name="Label2" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit1" unique_id=1382929912]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "0"
+
+[node name="Button2" type="Button" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit1" unique_id=347264961]
+modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+text = "↓"
+
+[node name="ResultsView1" type="VBoxContainer" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer" unique_id=247178408]
+use_parent_material = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/ResultsView1" unique_id=920567010]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Button" type="Control" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/ResultsView1" unique_id=511017487]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/ResultsView1" unique_id=2030566359]
+use_parent_material = true
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/ResultsView1/HBoxContainer" unique_id=1937000095]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "="
+
+[node name="Button3" type="Control" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/ResultsView1/HBoxContainer" unique_id=1927107184]
+use_parent_material = true
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="result" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/ResultsView1/HBoxContainer" unique_id=79943781]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "0"
+
+[node name="Button2" type="Control" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/ResultsView1" unique_id=1709084657]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2" unique_id=970035717]
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+
+[node name="Target" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer2" unique_id=80613840]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "123"
+
+[node name="Sep" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer2" unique_id=706714753]
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 3
+text = " == "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Result2" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer2" unique_id=172376142]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="aa" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer2" unique_id=533538718]
+modulate = Color(0.41015625, 0.41015625, 0.41015625, 1)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = " // output: "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Corrent" type="Label" parent="HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer2" unique_id=291613346]
+modulate = Color(0.41015625, 0.41015625, 0.41015625, 1)
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "false"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BlockPuzzle" type="Window" parent="." unique_id=1532963754]
+transparent_bg = true
+oversampling_override = 1.0
+title = "[ idk what is this ]"
+position = Vector2i(488, 36)
+size = Vector2i(500, 580)
+borderless = true
+always_on_top = true
+transparent = true
+popup_window = true
+minimize_disabled = true
+maximize_disabled = true
+theme = ExtResource("10_vksct")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="BlockPuzzle" unique_id=2037260925]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="BlockPuzzle/SubViewportContainer" unique_id=128720389]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+oversampling = false
+size = Vector2i(500, 580)
+render_target_update_mode = 4
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BlockPuzzle/SubViewportContainer/SubViewport" unique_id=2098875886]
+position = Vector2(250, 290)
+amount = 250
+texture = ExtResource("11_m2giu")
+lifetime = 1.5
+fract_delta = false
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_acmlg")
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle" unique_id=1469937694]
+clip_children = 2
+texture_filter = 1
+material = ExtResource("12_gq0ea")
+offset_right = 500.0
+offset_bottom = 492.0
+texture = SubResource("ViewportTexture_uwr32")
+
+[node name="Panel" type="PanelContainer" parent="BlockPuzzle/TextureRect" unique_id=2027067033]
+use_parent_material = true
+custom_minimum_size = Vector2(384, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.42625
+offset_top = -74.49625
+offset_right = 132.42627
+offset_bottom = 74.49625
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"ThickPanelContainer"
+
+[node name="MarginContainer" type="MarginContainer" parent="BlockPuzzle/TextureRect/Panel" unique_id=1194184026]
+use_parent_material = true
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer" unique_id=1616627900]
+use_parent_material = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dakml")
+
+[node name="MarginContainer2" type="MarginContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer" unique_id=734802444]
+use_parent_material = true
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2" unique_id=987680095]
+use_parent_material = true
+layout_mode = 2
+columns = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1125654242]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer" unique_id=1632861596]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer2" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=550915960]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer2" unique_id=123801337]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer3" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1431535392]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer3" unique_id=187957580]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer4" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=430867819]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer4" unique_id=456454519]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer5" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=682305888]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer5" unique_id=23772554]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer6" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=279506811]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer6" unique_id=1860421174]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer7" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=237284252]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer7" unique_id=1794123744]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer8" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=676489166]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer8" unique_id=1982488002]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer9" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=211643779]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer9" unique_id=1251710965]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer10" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1300790285]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer10" unique_id=1820535369]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer11" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=483182962]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer11" unique_id=570274491]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer12" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1767440347]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer12" unique_id=1667048401]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer13" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=370883040]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer13" unique_id=137866849]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer14" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1584866816]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer14" unique_id=476456789]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer15" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=399027776]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer15" unique_id=291645535]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer16" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=772356597]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer16" unique_id=1941252793]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer17" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1484057169]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer17" unique_id=20362853]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer18" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1362122880]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer18" unique_id=1993419356]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer19" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=680338298]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer19" unique_id=605140139]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer20" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=292440585]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer20" unique_id=1368950605]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer21" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1158800748]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer21" unique_id=818098937]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer22" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1191563278]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer22" unique_id=1830240310]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer23" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=732257956]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer23" unique_id=600021737]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer24" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=848082622]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer24" unique_id=1886151302]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer25" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1542329229]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer25" unique_id=1679723357]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer26" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1318731183]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer26" unique_id=1662452281]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer27" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=793564532]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer27" unique_id=1023514017]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer28" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=255557470]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer28" unique_id=1176253769]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer29" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=158789616]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer29" unique_id=327288826]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")
+
+[node name="PanelContainer30" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1357480302]
+use_parent_material = true
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer30" unique_id=1022201881]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_m2giu")

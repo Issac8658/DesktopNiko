@@ -209,5 +209,5 @@ theme_color_background={
 }
 theme_rainbow={
 "type": "bool",
-"value": true
+"value": false
 }
