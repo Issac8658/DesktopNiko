@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 
 public partial class ValuesContainer : Node
@@ -349,9 +350,8 @@ public partial class ValuesContainer : Node
 	[Signal] public delegate void FacepicUnforcedEventHandler();
 	[Signal] public delegate void NikoVisibilityChangedEventHandler(bool Visibility);
 
-	private int _CPS = 0;
-	private int _CPSCounter = 0;
-	public int CPS { get => _CPS; }
+	private Queue<double> _CPSWindow = [];
+	public int CPS { get => _CPSWindow.Count; }
 // Duplicates
 	// Main
 	private uint _globalTime = 0; // Time for current session
@@ -433,19 +433,29 @@ public partial class ValuesContainer : Node
 		{
 			_globalTime += 1;
 			TotalTime += 1;
-
-			_CPS = _CPSCounter;
-			_CPSCounter = 0;
 			
 			EmitSignal("GlobalTimerTicked");
-
 		};
 		Clicked += diff => {
-			_CPSCounter += 1;
+			if (diff == 1)
+			{
+    			double CurrentTime = Time.GetTicksMsec() / 1000.0;
+
+    			_CPSWindow.Enqueue(CurrentTime);
+    			while (_CPSWindow.Count > 0 && CurrentTime - _CPSWindow.Peek() > 1.0)
+    			    _CPSWindow.Dequeue();
+			}
 		};
 		
 		AddChild(GlobalTimer);
 		GlobalTimer.Start();
 	}
+    public override void _Process(double delta)
+    {
+    	double CurrentTime = Time.GetTicksMsec() / 1000.0;
+    	if (_CPSWindow.Count > 0 && CurrentTime - _CPSWindow.Peek() > 1.0)
+    	    _CPSWindow.Dequeue();
+    }
+
 	#endregion
 }

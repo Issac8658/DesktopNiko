@@ -20,6 +20,9 @@ script/source = "extends Node
 
 signal called_to_clear()
 
+const player_raket_size : float = 86
+const niko_raket_size : float = 52
+
 @export var window : Window
 @export_group(\"sounds\", \"sound\")
 @export var sound_player_shot : AudioStreamPlayer
@@ -51,21 +54,24 @@ signal called_to_clear()
 
 @export var niko_debug : Control
 @export var player_debug : Control
+@export var ball_debug : Control
 
-var player_raket_pos = Vector2i(0,0)
-var niko_raket_pos = Vector2(450,250)
-var niko_raket_fake_pos = Vector2(450,250)
+var player_raket_pos := Vector2(0,0)
+var player_raket_fake_pos := Vector2(0,0)
+var niko_raket_pos := Vector2(450,250)
+var niko_raket_fake_pos := Vector2(450,250)
 var tennis_ball_pos : Array[float] = [300,300,300,200,0.99] # x,y on player, x,y on niko, z
-var tennis_ball_fly_to_niko = false
+var tennis_ball_fly_to_niko := false
 var tennis_ball_current_speed : float = 0
 var tennis_ball_speed : float = 0
 var points : int = 0
-var gaming = false
+var gaming := false
 
 func _ready() -> void:
 	window.window_input.connect(func (event : InputEvent):
 		if event is InputEventMouseMotion:
-			player_raket_pos = Vector2i(event.position) - window.position
+			player_raket_fake_pos = Vector2i(event.position) - window.position
+			player_raket_pos = lerp(player_raket_pos, player_raket_fake_pos, 0.25)
 			tennis_ball_current_speed = event.relative.length()
 	)
 	play_button.pressed.connect(start_game)
@@ -81,6 +87,8 @@ func _ready() -> void:
 		tennis_text.visible = true
 		htp_text.visible = false
 	)
+	niko_debug.scale = Vector2(niko_raket_size, niko_raket_size)
+	player_debug.scale = Vector2(player_raket_size, player_raket_size)
 
 func do_event():
 	ValuesContainer.NikoVisible = false
@@ -132,12 +140,7 @@ func _physics_process(delta: float) -> void:
 			tennis_ball_fly_to_niko = false
 			tennis_ball_pos[0] = randf_range(200,600)
 			tennis_ball_pos[1] = randf_range(150,300)
-			points += 1
-			if points >= 100:
-				if not AchievementsController.IsAchievementTaked(\"master_of_tennis\"):
-					AchievementsController.TakeAchievement(\"master_of_tennis\", true)
-			points_label.text = str(points)
-			if niko_raket_fake_pos.distance_to(Vector2(tennis_ball_pos[2], tennis_ball_pos[3])) >= 40:
+			if niko_raket_fake_pos.distance_to(Vector2(tennis_ball_pos[2], tennis_ball_pos[3])) >= niko_raket_size:
 				print(\"win\")
 				if not AchievementsController.IsAchievementTaked(\"little_win\"):
 					AchievementsController.TakeAchievement(\"little_win\", true)
@@ -154,9 +157,14 @@ func _physics_process(delta: float) -> void:
 			tennis_ball_fly_to_niko = true
 			tennis_ball_pos[2] = randf_range(250,550)
 			tennis_ball_pos[3] = randf_range(150,300)
+			points += 1
+			if points >= 100:
+				if not AchievementsController.IsAchievementTaked(\"master_of_tennis\"):
+					AchievementsController.TakeAchievement(\"master_of_tennis\", true)
+			points_label.text = str(points)
 			#print(player_raket_pos + window.position - Vector2i(5,30))
 			#print(Vector2(tennis_ball_pos[0], tennis_ball_pos[1]))
-			if Vector2(player_raket_pos + window.position - Vector2i(5,30)).distance_to(Vector2(tennis_ball_pos[0], tennis_ball_pos[1])) >= 75:
+			if Vector2(player_raket_pos + Vector2(window.position) - Vector2(5,30)).distance_to(Vector2(tennis_ball_pos[0], tennis_ball_pos[1])) >= player_raket_size:
 				update_facepic(NikoSkinManager.GetCurrentSkinSprite(\"cool\"), NikoSkinManager.GetCurrentSkinBaseScale())
 				lose()
 			else:
@@ -169,14 +177,13 @@ func _physics_process(delta: float) -> void:
 			niko_raket_pos = Vector2(tennis_ball_pos[2], tennis_ball_pos[3])
 
 func update_all():
-	player_raket.position = player_raket_pos + window.position - Vector2i(80,120)
+	player_raket.position = player_raket_pos + Vector2(window.position) - Vector2(80,120)
 	var p_center = player_raket.position - Vector2(400, 600)
 	player_raket.rotation = -atan2(p_center.x, p_center.y) + PI
-	player_debug.position = player_raket_pos + window.position - Vector2i(5,30)
 
 	var ball_scale = 1 - tennis_ball_pos[4] * 0.5
 	tennis_ball.scale = Vector2(ball_scale, ball_scale)
-	tennis_ball.position = mix(Vector2(tennis_ball_pos[0] - 25, tennis_ball_pos[1] - 25), Vector2(tennis_ball_pos[2] - 25, tennis_ball_pos[3] - 25), pow(clamp(tennis_ball_pos[4], 0,1), 0.75))
+	tennis_ball.position = mix(Vector2(tennis_ball_pos[0] - 25, tennis_ball_pos[1] - 25), Vector2(tennis_ball_pos[2] - 25, tennis_ball_pos[3] - 25), pow(clamp(tennis_ball_pos[4], 0, 1), 0.75))
 	tennis_ball.position.y -= sin(tennis_ball_pos[4] * PI) * 100
 	tennis_ball.rotation = tennis_ball_pos[4] * PI
 	
@@ -184,7 +191,13 @@ func update_all():
 	niko_raket.position = niko_raket_fake_pos - Vector2(41,51)
 	var n_center = niko_raket.position - Vector2(370, 280)
 	niko_raket.rotation = -atan2(n_center.x, n_center.y) + PI
+	
 	niko_debug.position = niko_raket_fake_pos
+	player_debug.position = player_raket_pos + Vector2(window.position) - Vector2(5,30)
+	if (tennis_ball_fly_to_niko):
+		ball_debug.position = Vector2(tennis_ball_pos[2], tennis_ball_pos[3])
+	else:
+		ball_debug.position = Vector2(tennis_ball_pos[0], tennis_ball_pos[1])
 
 func mix(a : Vector2, b : Vector2, alpha : float) -> Vector2:
 	return (b - a) * alpha + a
@@ -219,6 +232,16 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
+[sub_resource type="Gradient" id="Gradient_7tr5k"]
+offsets = PackedFloat32Array(0, 0.06122449, 0.07755102, 0.979508, 1)
+colors = PackedColorArray(0, 0.4627451, 0, 1, 0, 0.43529412, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2g3r7"]
+gradient = SubResource("Gradient_7tr5k")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d2fhx"]
 
 [node name="Tennis" type="Node" unique_id=1498491248 node_paths=PackedStringArray("event_controller")]
@@ -226,7 +249,7 @@ script = ExtResource("1_4neqe")
 event_controller = NodePath("EventController")
 metadata/_custom_type_script = "uid://73yfcqn4tt7s"
 
-[node name="EventController" type="Node" parent="." unique_id=852286869 node_paths=PackedStringArray("window", "sound_player_shot", "sound_niko_shot", "sound_tennis_music", "sound_lose", "sound_win", "screen_main_menu", "screen_game", "screen_lose", "screen_win", "tennis_text", "htp_text", "points_label", "play_button", "htp_button", "exit_button", "win_button", "lose_button", "player_raket", "niko_raket", "tennis_ball", "playing_niko_rect", "niko_debug", "player_debug")]
+[node name="EventController" type="Node" parent="." unique_id=852286869 node_paths=PackedStringArray("window", "sound_player_shot", "sound_niko_shot", "sound_tennis_music", "sound_lose", "sound_win", "screen_main_menu", "screen_game", "screen_lose", "screen_win", "tennis_text", "htp_text", "points_label", "play_button", "htp_button", "exit_button", "win_button", "lose_button", "player_raket", "niko_raket", "tennis_ball", "playing_niko_rect", "niko_debug", "player_debug", "ball_debug")]
 script = SubResource("GDScript_ao3bx")
 window = NodePath("../TennisWindow")
 sound_player_shot = NodePath("../TennisShot2")
@@ -252,6 +275,7 @@ tennis_ball = NodePath("../TennisWindow/Control/WindowContainer/Content/Game/Ten
 playing_niko_rect = NodePath("../TennisWindow/Control/WindowContainer/Content/Game/Nikochko")
 niko_debug = NodePath("../TennisWindow/Control/WindowContainer/Content/Game/NikoDebug")
 player_debug = NodePath("../TennisWindow/Control/WindowContainer/Content/Game/PlayerDebug")
+ball_debug = NodePath("../TennisWindow/Control/WindowContainer/Content/Game/BallDebug")
 
 [node name="TennisShot" type="AudioStreamPlayer" parent="." unique_id=2062091037]
 stream = ExtResource("2_4kq60")
@@ -551,6 +575,17 @@ offset_bottom = 2.0
 scale = Vector2(75, 75)
 pivot_offset = Vector2(1, 1)
 texture = SubResource("GradientTexture2D_qret7")
+expand_mode = 1
+
+[node name="BallDebug" type="TextureRect" parent="TennisWindow/Control/WindowContainer/Content/Game" unique_id=843891372]
+visible = false
+material = SubResource("CanvasItemMaterial_a5d04")
+layout_mode = 0
+offset_right = 2.0
+offset_bottom = 2.0
+scale = Vector2(25, 25)
+pivot_offset = Vector2(1, 1)
+texture = SubResource("GradientTexture2D_2g3r7")
 expand_mode = 1
 
 [node name="Lose" type="Panel" parent="TennisWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(985109894, 971726425) index="2" unique_id=1229319137]
