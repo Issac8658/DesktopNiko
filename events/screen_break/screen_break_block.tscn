@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b54kq712udacr"]
+
+[ext_resource type="Texture2D" uid="uid://cvhn4tne5py2b" path="res://sprites/ui/world_machine/checkbox_checked.tres" id="1_fkkdk"]
+
+[node name="Block" type="PanelContainer" unique_id=273829436]
+use_parent_material = true
+custom_minimum_size = Vector2(72, 72)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2136951217]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_fkkdk")

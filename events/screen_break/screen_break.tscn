@@ -7,16 +7,22 @@
 [ext_resource type="AudioStream" uid="uid://7v46wamjbg7e" path="res://sounds/glitches/glitch_glitched3.ogg" id="5_8rph2"]
 [ext_resource type="AudioStream" uid="uid://yrpkxtdtvidl" path="res://sounds/glitches/glitch_glitched4.ogg" id="6_dsxot"]
 [ext_resource type="AudioStream" uid="uid://blheno4uh0gmf" path="res://sounds/glitches/glitch_glitched5.ogg" id="7_rb5ak"]
+[ext_resource type="BitMap" uid="uid://c0imwg1yukukh" path="res://events/screen_break/blocks.png" id="8_8rph2"]
 [ext_resource type="AudioStream" uid="uid://0a17a7bk3og3" path="res://sounds/bass_metal.wav" id="8_xwi3i"]
+[ext_resource type="PackedScene" uid="uid://b54kq712udacr" path="res://events/screen_break/screen_break_block.tscn" id="9_dsxot"]
 [ext_resource type="AudioStream" uid="uid://7got448yqqeh" path="res://sounds/square_death.ogg" id="9_y1vm7"]
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="10_vksct"]
 [ext_resource type="Texture2D" uid="uid://cvhn4tne5py2b" path="res://sprites/ui/world_machine/checkbox_checked.tres" id="11_m2giu"]
 [ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="12_gq0ea"]
+[ext_resource type="AudioStream" uid="uid://6j35j7ci51dn" path="res://sounds/block_show.ogg" id="12_rb5ak"]
 [ext_resource type="Script" uid="uid://05w6e57vrsyx" path="res://events/pass_code_part.gd" id="13_7l0y5"]
+[ext_resource type="AudioStream" uid="uid://1bqwhfjk54as" path="res://sounds/select.ogg" id="13_xwi3i"]
 
 [sub_resource type="GDScript" id="GDScript_wdcdh"]
 resource_name = "screen_break_controller"
 script/source = "extends Node
+
+const blocks_size := Vector2i(5,6)
 
 var hex_solved := false
 var block_solved := false
@@ -26,7 +32,7 @@ var block_solved := false
 @export var sounds : Array[AudioStream]
 
 @export var hex_puzzle_window : Window
-@export var bits : Array[Node]
+@export var hex_bits : Array[Node]
 @export var hex_target_label : Label
 @export var hex_result_label : Label
 @export var hex_result2_label : Label
@@ -35,12 +41,22 @@ var block_solved := false
 var hex_target = 0;
 
 @export var block_puzzle_window : Window
+@export var blocks_bitmap : BitMap
+@export var blocks_count : int
+@export var block_show_sound : AudioStreamPlayer
+@export var block_press_sound : AudioStreamPlayer
+@export var block_template : PackedScene
+@export var blocks_container : GridContainer
+@export var blocks_fake_container : GridContainer
+@export var blocks_squares_emmiter : GPUParticles2D;
+var block_bitmap_offset : Vector2i
+var blocks_checks : Array[bool] = []
 
 func _ready() -> void:
 	block_puzzle_window.visible = false
-	for bit_node in bits:
-		bit_node.value_changed.connect(func ():
-			update()
+	for hex_bit in hex_bits:
+		hex_bit.value_changed.connect(func ():
+			hex_update()
 		)
 
 func do_event() -> void:
@@ -54,15 +70,19 @@ func do_event() -> void:
 	hex_puzzle_window.position = DisplayServer.screen_get_position(DisplayServer.SCREEN_OF_MAIN_WINDOW) + position
 	hex_target = randi_range(1, 255)
 	hex_target_label.text = str(hex_target)
+	
+	@warning_ignore(\"integer_division\")
+	block_bitmap_offset = Vector2i(randi_range(1, blocks_bitmap.get_size().x / blocks_size.x) - 1, randi_range(1, blocks_bitmap.get_size().y / blocks_size.y) - 1) * blocks_size
 
-func update() -> void:
+func hex_update() -> void:
 	var count := 0
-	for i in range(len(bits)):
-		count += pow(2, i) * bits[i].current_symbol
+	for i in range(len(hex_bits)):
+		count += pow(2, i) * hex_bits[i].current_symbol
 	hex_result_label.text = str(count)
 	hex_result2_label.text = hex_result_label.text
 	hex_output.text = str(count == hex_target)
-	if (count == hex_target):
+	if (count == hex_target and not hex_solved):
+		hex_solved = true
 		squares_death.play()
 		hex_squares_emmiter.emitting = false
 		get_tree().create_timer(1.5).timeout.connect(blocks)
@@ -78,6 +98,50 @@ func blocks() -> void:
 	position.y = randi_range(0, screen_size.y - block_puzzle_window.size.y)
 	block_puzzle_window.position = DisplayServer.screen_get_position(DisplayServer.SCREEN_OF_MAIN_WINDOW) + position
 	block_puzzle_window.visible = true
+	
+	blocks_container.columns = blocks_size.x
+	for y in range(blocks_size.y):
+		for x in range(blocks_size.x):
+			await get_tree().create_timer(0.1).timeout
+			var block : Control = block_template.instantiate()
+			blocks_container.add_child(block)
+			var texture : CanvasItem = block.get_node(\"TextureRect\")
+			block.gui_input.connect(func (event : InputEvent):
+				if event is InputEventMouseButton:
+					if event.button_index == MOUSE_BUTTON_LEFT:
+						if event.pressed:
+							texture.visible = not texture.visible
+							blocks_checks[y * blocks_size.x + x] = texture.visible == blocks_bitmap.get_bit(x + block_bitmap_offset.x, y + block_bitmap_offset.y)
+							block_press_sound.play()
+							blocks_update()
+			)
+			blocks_checks.append(texture.visible == blocks_bitmap.get_bit(x + block_bitmap_offset.x, y + block_bitmap_offset.y))
+			
+			var fake_block : Control = block_template.instantiate()
+			blocks_fake_container.add_child(fake_block)
+			fake_block.get_node(\"TextureRect\").visible = blocks_bitmap.get_bit(x + block_bitmap_offset.x, y + block_bitmap_offset.y)
+			
+			block_show_sound.play()
+
+func blocks_update() -> void:
+	#print(\"----------\")
+	var can_continue := true
+	for b in blocks_checks:
+		#print(b)
+		if not b:
+			can_continue = false
+			break
+	if (can_continue and not block_solved):
+		block_solved = true
+		squares_death.play()
+		blocks_squares_emmiter.emitting = false
+		blocks_fake_container.visible = false
+		get_tree().create_timer(1.5).timeout.connect(func():
+			block_puzzle_window.hide()
+		)
+		await squares_death.finished
+		ValuesContainer.DonedEvents += 1
+		get_parent().emit_signal(\"event_ended\")
 "
 
 [sub_resource type="Gradient" id="Gradient_cyylu"]
@@ -153,25 +217,40 @@ script = ExtResource("1_k4dh2")
 event_controller = NodePath("EventController")
 metadata/_custom_type_script = "uid://73yfcqn4tt7s"
 
-[node name="EventController" type="Node" parent="." unique_id=1292803865 node_paths=PackedStringArray("squares_death", "glitch_sound", "hex_puzzle_window", "bits", "hex_target_label", "hex_result_label", "hex_result2_label", "hex_output", "hex_squares_emmiter", "block_puzzle_window")]
+[node name="EventController" type="Node" parent="." unique_id=1292803865 node_paths=PackedStringArray("squares_death", "glitch_sound", "hex_puzzle_window", "hex_bits", "hex_target_label", "hex_result_label", "hex_result2_label", "hex_output", "hex_squares_emmiter", "block_puzzle_window", "block_show_sound", "block_press_sound", "blocks_container", "blocks_fake_container", "blocks_squares_emmiter")]
 script = SubResource("GDScript_wdcdh")
 squares_death = NodePath("../SquaresDeath")
 glitch_sound = NodePath("../Glitch")
 sounds = Array[AudioStream]([ExtResource("2_o2b7h"), ExtResource("3_tweoe"), ExtResource("4_hgw02"), ExtResource("5_8rph2"), ExtResource("6_dsxot"), ExtResource("7_rb5ak")])
 hex_puzzle_window = NodePath("../HexPuzzle")
-bits = [NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit1"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit2"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit4"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit8"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit16"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit32"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit64"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit128")]
+hex_bits = [NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit1"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit2"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit4"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit8"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit16"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit32"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit64"), NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/Bit128")]
 hex_target_label = NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer2/Target")
 hex_result_label = NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer/ResultsView1/HBoxContainer/result")
 hex_result2_label = NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer2/Result2")
 hex_output = NodePath("../HexPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/HBoxContainer2/Corrent")
 hex_squares_emmiter = NodePath("../HexPuzzle/SubViewportContainer/SubViewport/GPUParticles2D")
 block_puzzle_window = NodePath("../BlockPuzzle")
+blocks_bitmap = ExtResource("8_8rph2")
+blocks_count = 16
+block_show_sound = NodePath("../BlockShow")
+block_press_sound = NodePath("../BlockPress")
+block_template = ExtResource("9_dsxot")
+blocks_container = NodePath("../BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer")
+blocks_fake_container = NodePath("../BlockPuzzle/Fake/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer")
+blocks_squares_emmiter = NodePath("../BlockPuzzle/SubViewportContainer/SubViewport/GPUParticles2D")
 
 [node name="Glitch" type="AudioStreamPlayer" parent="." unique_id=258330146]
 stream = ExtResource("8_xwi3i")
 
 [node name="SquaresDeath" type="AudioStreamPlayer" parent="." unique_id=869359748]
 stream = ExtResource("9_y1vm7")
+
+[node name="BlockShow" type="AudioStreamPlayer" parent="." unique_id=1398970536]
+stream = ExtResource("12_rb5ak")
+
+[node name="BlockPress" type="AudioStreamPlayer" parent="." unique_id=1553991071]
+stream = ExtResource("13_xwi3i")
+max_polyphony = 16
 
 [node name="HexPuzzle" type="Window" parent="." unique_id=866570742]
 transparent_bg = true
@@ -182,7 +261,6 @@ size = Vector2i(500, 280)
 borderless = true
 always_on_top = true
 transparent = true
-popup_window = true
 minimize_disabled = true
 maximize_disabled = true
 theme = ExtResource("10_vksct")
@@ -704,7 +782,7 @@ vertical_alignment = 1
 transparent_bg = true
 oversampling_override = 1.0
 title = "[ idk what is this ]"
-position = Vector2i(488, 36)
+position = Vector2i(385, 0)
 size = Vector2i(500, 580)
 borderless = true
 always_on_top = true
@@ -736,12 +814,56 @@ render_target_update_mode = 4
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="BlockPuzzle/SubViewportContainer/SubViewport" unique_id=2098875886]
 position = Vector2(250, 290)
-amount = 250
+amount = 400
 texture = ExtResource("11_m2giu")
 lifetime = 1.5
 fract_delta = false
 draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_acmlg")
+
+[node name="Fake" type="Control" parent="BlockPuzzle" unique_id=1666156849]
+texture_filter = 1
+material = ExtResource("12_gq0ea")
+layout_mode = 3
+anchors_preset = 0
+offset_right = 500.0
+offset_bottom = 580.0
+
+[node name="Panel" type="PanelContainer" parent="BlockPuzzle/Fake" unique_id=1243269470]
+self_modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -54.0
+offset_right = 54.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"ThickPanelContainer"
+
+[node name="MarginContainer" type="MarginContainer" parent="BlockPuzzle/Fake/Panel" unique_id=1245198942]
+use_parent_material = true
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="BlockPuzzle/Fake/Panel/MarginContainer" unique_id=306991989]
+self_modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dakml")
+
+[node name="MarginContainer2" type="MarginContainer" parent="BlockPuzzle/Fake/Panel/MarginContainer/PanelContainer" unique_id=848434195]
+use_parent_material = true
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="BlockPuzzle/Fake/Panel/MarginContainer/PanelContainer/MarginContainer2" unique_id=1236080502]
+use_parent_material = true
+layout_mode = 2
+columns = 5
 
 [node name="TextureRect" type="TextureRect" parent="BlockPuzzle" unique_id=1469937694]
 clip_children = 2
@@ -753,17 +875,16 @@ texture = SubResource("ViewportTexture_uwr32")
 
 [node name="Panel" type="PanelContainer" parent="BlockPuzzle/TextureRect" unique_id=2027067033]
 use_parent_material = true
-custom_minimum_size = Vector2(384, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -132.42625
-offset_top = -74.49625
-offset_right = 132.42627
-offset_bottom = 74.49625
+offset_left = -54.0
+offset_top = -54.0
+offset_right = 54.0
+offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"ThickPanelContainer"
@@ -785,333 +906,3 @@ layout_mode = 2
 use_parent_material = true
 layout_mode = 2
 columns = 5
-
-[node name="PanelContainer" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1125654242]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer" unique_id=1632861596]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer2" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=550915960]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer2" unique_id=123801337]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer3" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1431535392]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer3" unique_id=187957580]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer4" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=430867819]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer4" unique_id=456454519]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer5" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=682305888]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer5" unique_id=23772554]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer6" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=279506811]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer6" unique_id=1860421174]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer7" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=237284252]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer7" unique_id=1794123744]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer8" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=676489166]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer8" unique_id=1982488002]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer9" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=211643779]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer9" unique_id=1251710965]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer10" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1300790285]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer10" unique_id=1820535369]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer11" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=483182962]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer11" unique_id=570274491]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer12" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1767440347]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer12" unique_id=1667048401]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer13" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=370883040]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer13" unique_id=137866849]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer14" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1584866816]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer14" unique_id=476456789]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer15" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=399027776]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer15" unique_id=291645535]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer16" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=772356597]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer16" unique_id=1941252793]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer17" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1484057169]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer17" unique_id=20362853]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer18" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1362122880]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer18" unique_id=1993419356]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer19" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=680338298]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer19" unique_id=605140139]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer20" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=292440585]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer20" unique_id=1368950605]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer21" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1158800748]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer21" unique_id=818098937]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer22" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1191563278]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer22" unique_id=1830240310]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer23" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=732257956]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer23" unique_id=600021737]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer24" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=848082622]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer24" unique_id=1886151302]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer25" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1542329229]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer25" unique_id=1679723357]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer26" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1318731183]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer26" unique_id=1662452281]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer27" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=793564532]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer27" unique_id=1023514017]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer28" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=255557470]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer28" unique_id=1176253769]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer29" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=158789616]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer29" unique_id=327288826]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
-
-[node name="PanelContainer30" type="PanelContainer" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer" unique_id=1357480302]
-use_parent_material = true
-custom_minimum_size = Vector2(6, 0)
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BlockPuzzle/TextureRect/Panel/MarginContainer/PanelContainer/MarginContainer2/GridContainer/PanelContainer30" unique_id=1022201881]
-use_parent_material = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_m2giu")
