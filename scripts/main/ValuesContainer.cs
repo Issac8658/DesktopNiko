@@ -18,6 +18,7 @@ public partial class ValuesContainer : Node
 	[Signal] public delegate void LanguageChangedEventHandler(byte Language);
 	[Signal] public delegate void NikoAsWindowStateChangedEventHandler(bool ShowTaskbarIcon, bool NikoAlwaysOnTop);
 	[Signal] public delegate void WindowsStateChangedEventHandler(bool AlwaysOnTop);
+	[Signal] public delegate void EventDonedEventHandler();
 	//[Signal] public delegate void ShutdownButtonHoveredEventHandler(bool Hovered);
 	//[Signal] public delegate void ShutdownPopupShowedEventHandler(bool Showed);
 	[Signal] public delegate void ThemeChangedEventHandler(byte Theme);
@@ -166,6 +167,7 @@ public partial class ValuesContainer : Node
 		set
 		{
 			_donedEvents = value;
+			EmitSignal("EventDoned");
 		}
 	}
 	//public bool IsShutdownButtonHovered

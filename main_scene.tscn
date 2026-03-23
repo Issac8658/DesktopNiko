@@ -280,13 +280,10 @@ script/source = "extends Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	update(0)
-	ValuesContainer.Clicked.connect(update)
-
-
-func update(_difference):
-	#text = str(GlobalControlls.doned_events)
-	pass
+	text = str(ValuesContainer.DonedEvents)
+	ValuesContainer.EventDoned.connect(func():
+		text = str(ValuesContainer.DonedEvents)
+	)
 "
 
 [sub_resource type="GDScript" id="GDScript_o48om"]
@@ -2435,7 +2432,6 @@ text = "APPLY"
 title = "SETTINGS"
 initial_position = 4
 size = Vector2i(704, 413)
-visible = false
 wrap_controls = true
 min_size = Vector2i(704, 404)
 
@@ -2605,7 +2601,6 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="General" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=796068923]
-visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 8
@@ -2924,6 +2919,7 @@ script = ExtResource("97_wonw5")
 metadata/_custom_type_script = "uid://by1cd1rvin4oh"
 
 [node name="Niko" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=320743199]
+visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 0
