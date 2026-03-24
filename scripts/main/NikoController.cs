@@ -18,6 +18,9 @@ public partial class NikoController : Node
 	private NikoState _currentState = NikoState.Idle;
 
 	[Export]
+	public int CPS_ToScare = 8;
+
+	[Export]
 	public AudioStream[] Meows = [];
 	[Export]
 	public Control MenuPanel;
@@ -61,8 +64,8 @@ public partial class NikoController : Node
 
 		NikoAnimationPlayer.AnimationFinished += animName => DoWhatNikoNeedToDo();
 		NikoAnimationPlayer.AnimationStarted += animName => DoWhatNikoNeedToDo();
-		_valuesContainer.FacepicForced += FacepicId => DoWhatNikoNeedToDo();
 		_valuesContainer.WorldMachineToggled += Toggled => DoWhatNikoNeedToDo();
+		_valuesContainer.FacepicForced += FacepicId => DoWhatNikoNeedToDo();
 		_valuesContainer.FacepicUnforced += DoWhatNikoNeedToDo;
 		_valuesContainer.GlobalTimerTicked += GlobalTimerTicked;
 		_valuesContainer.NikoFlipped += Flipped => NikoSpriteNode.FlipH = Flipped;
@@ -99,7 +102,6 @@ public partial class NikoController : Node
 
 	private void UpdateFacepic()
 	{
-		 
 		SleepParticles.Emitting = false;
 		switch (_currentState)
 		{
@@ -121,10 +123,7 @@ public partial class NikoController : Node
 				break;
 
 			case NikoState.Idle:
-				if (_valuesContainer.NikoScared)
-					SetSprite(_valuesContainer.ScaredFacepic);
-				else
-					SetSprite(_valuesContainer.IdleFacepic);
+				SetIdleFacepic();
 				break;
 		}
 		NikoSpriteNode.Material = _valuesContainer.IsWorldMachine ? WorldMachineMaterial : null;
@@ -133,14 +132,11 @@ public partial class NikoController : Node
 
 	private void DoWhatNikoNeedToDo()
 	{
-		_valuesContainer.NikoScared = _valuesContainer.CPS > 8;
+		_valuesContainer.NikoScared = _valuesContainer.CPS > CPS_ToScare;
 
 		if (NikoAnimationPlayer.IsPlaying())
-		{
 			_currentState = NikoState.InAnimation;
-			return;
-		}
-		if (_valuesContainer.IsFacepicForced)
+		else if (_valuesContainer.IsFacepicForced)
 			_currentState = NikoState.ForcedFacepic;
 		else if (_idleTime >= _valuesContainer.NikoTimeToSleep)
 			_currentState = NikoState.Sleeping;
@@ -201,6 +197,8 @@ public partial class NikoController : Node
 	}
 	public void SetIdleFacepic()
 	{
+		if (_valuesContainer.IsFacepicForced)
+			SetSprite(_valuesContainer.ForcedFacepicId);
 		if (_valuesContainer.NikoScared && !_valuesContainer.PeacfulMode)
 			SetSprite(_valuesContainer.ScaredFacepic);
 		else

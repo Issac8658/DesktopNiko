@@ -11,7 +11,7 @@ public partial class AchievementsRegistrar : Node
 		{"one_thousand_clicks",			["achievements.one_thousand_clicks",			"res://sprites/achievements/one_thousand_clicks.png",			false]},
 		{"one_hundred_thousand_clicks", ["achievements.one_hundred_thousand_clicks",	"res://sprites/achievements/one_hundred_thousand_clicks.png",	false]},
 		{"one_million_clicks", 			["achievements.one_million_clicks",				"res://sprites/achievements/one_million_clicks.png",			false]},
-		{"one_billion_clicks", 			["achievements.one_billion_clicks",				"res://sprites/achievements/glitched.png",						false]},
+		{"one_billion_clicks", 			["achievements.one_billion_clicks",				"res://sprites/achievements/glitched2.png",						false]},
 		{"im_scared", 					["achievements.im_scared",						"res://sprites/achievements/im_scared.png",						false]},
 		{"what_you_do", 				["achievements.what_you_do",					"res://sprites/achievements/what_you_doing.png",				false]},
 		{"sweet_dreams", 				["achievements.sweet_dreams",					"res://sprites/achievements/sweet_dreams.png",					false]},
@@ -19,6 +19,7 @@ public partial class AchievementsRegistrar : Node
 		{"master_of_tennis", 			["achievements.master_of_tennis",				"res://sprites/achievements/master_of_tennis.png",				false]},
 		{"hacked_a_machine", 			["achievements.hacked_a_machine",				"res://sprites/achievements/hacked_a_machine.png",				false]},
 		{"time_to_dinner", 				["achievements.time_to_dinner",					"res://sprites/achievements/time_to_dinner.png",				false]},
+		{"few_squares", 				["achievements.few_squares",					"res://sprites/achievements/glitched2.png",				false]},
 		{"worst_friend", 				["achievements.worst_friend",					"res://sprites/achievements/glitched.png",						true]},
 		{"hello_secret", 				["achievements.hello_secret",					"res://sprites/achievements/unknown.png",						true]}
 	};

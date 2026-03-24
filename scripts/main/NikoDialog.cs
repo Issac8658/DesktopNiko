@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using Godot;
 
@@ -53,7 +54,7 @@ public partial class NikoDialog : Window
 		Size = new (84, 112);
 		RemoveButtons();
 		Hint.Visible = false;
-		if (Buttons == null) {
+		if (Buttons is null || Buttons.Length <= 0) {
 			ButtonsContainer.Visible = false;
 			CanSkip = true;
 		}
@@ -135,6 +136,7 @@ public partial class NikoDialog : Window
 		{
 			TextShowTimer.Stop();
 			EmitSignal("ShowNextRequest");
+			GD.Print("Show Next Niko Dialog Request");
 		}
 	}
 

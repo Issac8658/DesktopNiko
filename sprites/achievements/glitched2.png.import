@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmyfp5nje8t0m"
-path="res://.godot/imported/ten_clicks.png-48ce47510437ddb2b812d27287feab79.ctex"
+uid="uid://bewevanu3ayuk"
+path="res://.godot/imported/glitched2.png-e5322bc066ea47458f59485d32c0b2ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/achievements/ten_clicks.png"
-dest_files=["res://.godot/imported/ten_clicks.png-48ce47510437ddb2b812d27287feab79.ctex"]
+source_file="res://sprites/achievements/glitched2.png"
+dest_files=["res://.godot/imported/glitched2.png-e5322bc066ea47458f59485d32c0b2ad.ctex"]
 
 [params]
 

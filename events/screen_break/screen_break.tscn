@@ -55,9 +55,12 @@ var blocks_checks : Array[bool] = []
 func _ready() -> void:
 	block_puzzle_window.visible = false
 	for hex_bit in hex_bits:
+		hex_bit.current_symbol = randi_range(0, 1)
 		hex_bit.value_changed.connect(func ():
 			hex_update()
+			block_press_sound.play()
 		)
+	hex_update()
 
 func do_event() -> void:
 	glitch_sound.stream = sounds.pick_random()
@@ -106,6 +109,7 @@ func blocks() -> void:
 			var block : Control = block_template.instantiate()
 			blocks_container.add_child(block)
 			var texture : CanvasItem = block.get_node(\"TextureRect\")
+			texture.visible = randf() >= 0.5
 			block.gui_input.connect(func (event : InputEvent):
 				if event is InputEventMouseButton:
 					if event.button_index == MOUSE_BUTTON_LEFT:
@@ -138,6 +142,8 @@ func blocks_update() -> void:
 		blocks_fake_container.visible = false
 		get_tree().create_timer(1.5).timeout.connect(func():
 			block_puzzle_window.hide()
+			if not AchievementsController.IsAchievementTaked(\"few_squares\"):
+				AchievementsController.TakeAchievement(\"few_squares\", true)
 		)
 		await squares_death.finished
 		ValuesContainer.DonedEvents += 1
@@ -295,6 +301,7 @@ draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_0fres")
 
 [node name="TextureRect" type="TextureRect" parent="HexPuzzle" unique_id=1236908712]
+modulate = Color(0.54509807, 0.105882354, 1, 1)
 clip_children = 2
 texture_filter = 1
 material = ExtResource("12_gq0ea")
@@ -814,7 +821,7 @@ render_target_update_mode = 4
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="BlockPuzzle/SubViewportContainer/SubViewport" unique_id=2098875886]
 position = Vector2(250, 290)
-amount = 400
+amount = 300
 texture = ExtResource("11_m2giu")
 lifetime = 1.5
 fract_delta = false
@@ -822,6 +829,7 @@ draw_order = 0
 process_material = SubResource("ParticleProcessMaterial_acmlg")
 
 [node name="Fake" type="Control" parent="BlockPuzzle" unique_id=1666156849]
+modulate = Color(0.54509807, 0.105882354, 1, 1)
 texture_filter = 1
 material = ExtResource("12_gq0ea")
 layout_mode = 3
@@ -866,6 +874,7 @@ layout_mode = 2
 columns = 5
 
 [node name="TextureRect" type="TextureRect" parent="BlockPuzzle" unique_id=1469937694]
+modulate = Color(0.54509807, 0.105882354, 1, 1)
 clip_children = 2
 texture_filter = 1
 material = ExtResource("12_gq0ea")
