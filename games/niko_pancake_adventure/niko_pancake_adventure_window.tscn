@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://dlurkbybsf21c"]
+[gd_scene format=3 uid="uid://dlurkbybsf21c"]
 
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="1_hmqtk"]
 [ext_resource type="SpriteFrames" uid="uid://cncmfemd8y0q1" path="res://games/niko_pancake_adventure/nyan_niko_sprite_frame.tres" id="2_a3e8k"]
 [ext_resource type="Script" uid="uid://m6hjiig1mkmj" path="res://scripts/windows/window_controller.gd" id="2_cyfwr"]
 [ext_resource type="AudioStream" uid="uid://dwe3a2glybfyd" path="res://games/niko_pancake_adventure/game.ogg" id="3_fn71e"]
 [ext_resource type="Texture2D" uid="uid://c8a2o0ruiwceh" path="res://sprites/icons/place_holder.png" id="3_oh7bs"]
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="4_wb3wp"]
 [ext_resource type="Texture2D" uid="uid://bvbx7qccj2uks" path="res://sprites/ui/world_machine/hide_button.tres" id="4_xwvnc"]
 [ext_resource type="Texture2D" uid="uid://bo3x8yy4g81xb" path="res://sprites/ui/world_machine/close_button.tres" id="5_fn71e"]
 [ext_resource type="Script" uid="uid://cfnwlfwlphlbq" path="res://games/niko_pancake_adventure/scripts/NPAController.cs" id="7_cyfwr"]
@@ -34,7 +35,7 @@ friction = 0.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_vxuq5"]
 radius = 37.0
 
-[node name="BaseWindow" type="Window" node_paths=PackedStringArray("topbar", "CloseButton", "HideButton")]
+[node name="BaseWindow" type="Window" unique_id=1001914932 node_paths=PackedStringArray("topbar", "close_button", "hide_button")]
 auto_translate_mode = 1
 disable_3d = true
 oversampling_override = 1.0
@@ -50,18 +51,20 @@ keep_title_visible = true
 theme = ExtResource("1_hmqtk")
 script = ExtResource("2_cyfwr")
 topbar = NodePath("CanvasLayer/Control/WindowContainer/Topbar")
-CloseButton = NodePath("CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/CloseButtonContainer/CloseButton")
-HideButton = NodePath("CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/HideButtonContainer/HideButton")
+close_button = NodePath("CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/CloseButtonContainer/CloseButton")
+hide_button = NodePath("CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/HideButtonContainer/HideButton")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1937846714]
 stream = ExtResource("3_fn71e")
+volume_db = -40.22
 autoplay = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=202189591]
 follow_viewport_scale = 0.51
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1595711490]
 texture_filter = 1
+material = ExtResource("4_wb3wp")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,7 +73,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_hmqtk")
 
-[node name="WindowContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="WindowContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=1222497837]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,12 +83,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="Topbar" type="Panel" parent="CanvasLayer/Control/WindowContainer"]
+[node name="Topbar" type="Panel" parent="CanvasLayer/Control/WindowContainer" unique_id=1727498191]
 z_index = 1
+use_parent_material = true
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/WindowContainer/Topbar"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/WindowContainer/Topbar" unique_id=541243597]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -92,18 +98,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer" unique_id=348346236]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="IconContainer" type="MarginContainer" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer"]
+[node name="IconContainer" type="MarginContainer" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" unique_id=802279391]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="Icon" type="Button" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer"]
+[node name="Icon" type="Button" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" unique_id=1325556202]
+use_parent_material = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 mouse_filter = 2
@@ -112,21 +121,24 @@ icon = ExtResource("3_oh7bs")
 flat = true
 expand_icon = true
 
-[node name="Title" type="Label" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer"]
+[node name="Title" type="Label" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" unique_id=1509020933]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Nyan Niko :3"
 clip_text = true
 text_overrun_behavior = 3
 
-[node name="HideButtonContainer" type="MarginContainer" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer"]
+[node name="HideButtonContainer" type="MarginContainer" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" unique_id=1267568337]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 4
 
-[node name="HideButton" type="Button" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/HideButtonContainer"]
+[node name="HideButton" type="Button" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/HideButtonContainer" unique_id=904794652]
+use_parent_material = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -135,14 +147,16 @@ icon = ExtResource("4_xwvnc")
 flat = true
 expand_icon = true
 
-[node name="CloseButtonContainer" type="MarginContainer" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer"]
+[node name="CloseButtonContainer" type="MarginContainer" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" unique_id=2014949129]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="CloseButton" type="Button" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/CloseButtonContainer"]
+[node name="CloseButton" type="Button" parent="CanvasLayer/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/CloseButtonContainer" unique_id=961936365]
+use_parent_material = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -151,13 +165,15 @@ icon = ExtResource("5_fn71e")
 flat = true
 expand_icon = true
 
-[node name="Content" type="Panel" parent="CanvasLayer/Control/WindowContainer"]
+[node name="Content" type="Panel" parent="CanvasLayer/Control/WindowContainer" unique_id=772785707]
+use_parent_material = true
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("7_lmrhu")
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control/WindowContainer/Content"]
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control/WindowContainer/Content" unique_id=80971246]
+use_parent_material = true
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
@@ -166,7 +182,8 @@ offset_bottom = 64.0
 value = 27.0
 show_percentage = false
 
-[node name="Label2" type="Label" parent="CanvasLayer/Control/WindowContainer/Content/ProgressBar"]
+[node name="Label2" type="Label" parent="CanvasLayer/Control/WindowContainer/Content/ProgressBar" unique_id=346789771]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -183,7 +200,8 @@ text = "Niko's powers"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/WindowContainer/Content"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/WindowContainer/Content" unique_id=149183276]
+use_parent_material = true
 layout_mode = 0
 offset_left = 380.0
 offset_top = 8.0
@@ -191,7 +209,8 @@ offset_right = 444.0
 offset_bottom = 72.0
 texture = ExtResource("8_lmrhu")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/WindowContainer/Content"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/WindowContainer/Content" unique_id=1787246338]
+use_parent_material = true
 layout_mode = 0
 offset_left = 16.0
 offset_top = 72.0
@@ -199,19 +218,22 @@ offset_right = 226.0
 offset_bottom = 93.0
 theme_override_constants/separation = 0
 
-[node name="Label2" type="Label" parent="CanvasLayer/Control/WindowContainer/Content/HBoxContainer"]
+[node name="Label2" type="Label" parent="CanvasLayer/Control/WindowContainer/Content/HBoxContainer" unique_id=1830500813]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_lmrhu")
 text = "0"
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/WindowContainer/Content/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/WindowContainer/Content/HBoxContainer" unique_id=95519552]
+use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/normal = SubResource("StyleBoxEmpty_lmrhu")
 text = " Pancakes collected"
 
-[node name="MiniMap" type="MarginContainer" parent="CanvasLayer/Control/WindowContainer/Content"]
+[node name="MiniMap" type="MarginContainer" parent="CanvasLayer/Control/WindowContainer/Content" unique_id=465209461]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -221,14 +243,16 @@ offset_top = -8.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Control" type="Control" parent="CanvasLayer/Control/WindowContainer/Content/MiniMap" node_paths=PackedStringArray("TerrainGenrator", "Niko")]
+[node name="Control" type="Control" parent="CanvasLayer/Control/WindowContainer/Content/MiniMap" unique_id=1343556597 node_paths=PackedStringArray("TerrainGenrator", "Niko")]
+use_parent_material = true
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 script = ExtResource("9_j4cw1")
+MinimapScale = 10.0
 TerrainGenrator = NodePath("../../../../../../Node2D/Terrain")
 Niko = NodePath("../../../../../../Node2D/RigidBody2D")
 
-[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("NikoPowerRange", "NikoBody", "NikoSprite", "Camera", "NikoTrail", "PancakeCountLabel")]
+[node name="Node2D" type="Node2D" parent="." unique_id=1987976856 node_paths=PackedStringArray("NikoPowerRange", "NikoBody", "NikoSprite", "Camera", "NikoTrail", "PancakeCountLabel")]
 script = ExtResource("7_cyfwr")
 NikoPowerRange = NodePath("../CanvasLayer/Control/WindowContainer/Content/ProgressBar")
 NikoBody = NodePath("RigidBody2D")
@@ -237,7 +261,7 @@ Camera = NodePath("RigidBody2D/Camera2D")
 NikoTrail = NodePath("Line2D")
 PancakeCountLabel = NodePath("../CanvasLayer/Control/WindowContainer/Content/HBoxContainer/Label2")
 
-[node name="Terrain" type="Node2D" parent="Node2D" node_paths=PackedStringArray("Controller")]
+[node name="Terrain" type="Node2D" parent="Node2D" unique_id=841913937 node_paths=PackedStringArray("Controller")]
 script = ExtResource("9_uy58a")
 TerrainTexture = ExtResource("8_oh7bs")
 Noise = SubResource("FastNoiseLite_uy58a")
@@ -245,29 +269,29 @@ PancakeNoise = SubResource("FastNoiseLite_0cbnc")
 PancakePrefab = ExtResource("14_0cbnc")
 Controller = NodePath("..")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="Node2D"]
+[node name="RigidBody2D" type="RigidBody2D" parent="Node2D" unique_id=291178819]
 z_index = 2
 position = Vector2(1359, -452)
 physics_material_override = SubResource("PhysicsMaterial_hmqtk")
 can_sleep = false
 lock_rotation = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D/RigidBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D/RigidBody2D" unique_id=170653578]
 texture_filter = 1
 position = Vector2(25, 1)
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_a3e8k")
 frame_progress = 0.92616534
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/RigidBody2D" unique_id=137017621]
 shape = SubResource("CircleShape2D_vxuq5")
 
-[node name="Camera2D" type="Camera2D" parent="Node2D/RigidBody2D"]
+[node name="Camera2D" type="Camera2D" parent="Node2D/RigidBody2D" unique_id=2040999105]
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
-[node name="Line2D" type="Line2D" parent="Node2D"]
+[node name="Line2D" type="Line2D" parent="Node2D" unique_id=736092691]
 z_index = 1
 texture_filter = 1
 texture_repeat = 2

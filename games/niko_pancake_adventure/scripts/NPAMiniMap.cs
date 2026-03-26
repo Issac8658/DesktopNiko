@@ -3,8 +3,9 @@ using System;
 public partial class NPAMiniMap : Control
 {
 	const int MAP_RESOLUTION = 500;
-	const float MAP_SCALE = 2f;
 	const float TERRAIN_SCALE = NPATerrainGenrator.TERRAIN_POINTS_DISTANCE;
+	[Export]
+	public float MinimapScale = 4f;
 	[Export]
 	public NPATerrainGenrator TerrainGenrator;
 	[Export]
@@ -18,8 +19,8 @@ public partial class NPAMiniMap : Control
 			float pos1 = (float)i / MAP_RESOLUTION * Size.X;
 			float pos2 = (float)(i + 1) / MAP_RESOLUTION * Size.X;
 
-			float height1 = (TerrainGenrator.GetTerrainHeight(pos1 + Niko.Position.X, true) + 1f) * Size.Y / 2f;
-			float height2 = (TerrainGenrator.GetTerrainHeight(pos2 + Niko.Position.X, true) + 1f) * Size.Y / 2f;
+			float height1 = (TerrainGenrator.GetTerrainHeight((pos1 - Size.X / 2) * MinimapScale + Niko.Position.X, true) + 1f) * Size.Y / 2f;
+			float height2 = (TerrainGenrator.GetTerrainHeight((pos2 - Size.X / 2) * MinimapScale + Niko.Position.X, true) + 1f) * Size.Y / 2f;
 
 			DrawLine(new Vector2(pos1, height1), new Vector2(pos2, height2), new(1, 1, 1));
 		}

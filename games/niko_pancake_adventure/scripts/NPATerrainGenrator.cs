@@ -110,7 +110,7 @@ public partial class NPATerrainGenrator : Node
 		PolygonVertices.Add(new Vector2(c_pos, TERRAIN_FLOOR_HEIGHT));
 		PolygonVertices.Add(new Vector2(0, TERRAIN_FLOOR_HEIGHT + 200));
 
-		CollisionPolygon.BuildMode = CollisionPolygon2D.BuildModeEnum.Segments;
+		CollisionPolygon.BuildMode = CollisionPolygon2D.BuildModeEnum.Solids;
 		CollisionPolygon.Polygon = PolygonVertices.ToArray();
 
 		Body.AddChild(CollisionPolygon);
