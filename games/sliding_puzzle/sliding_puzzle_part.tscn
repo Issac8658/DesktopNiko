@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dpd84ocqrw0tv"]
+
+[sub_resource type="GDScript" id="GDScript_jduoh"]
+resource_name = "Setter"
+script/source = "extends PanelContainer
+
+var texture : Texture2D:
+	set(value):
+		%TextureRect.texture = value
+"
+
+[node name="PanelContainer" type="PanelContainer" unique_id=1557498697]
+use_parent_material = true
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 76.0
+offset_bottom = 76.0
+script = SubResource("GDScript_jduoh")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1636060177]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=1092918668]
+use_parent_material = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1

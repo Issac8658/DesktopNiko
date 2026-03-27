@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://blfp7l6sy700u"]
+
+[ext_resource type="PackedScene" uid="uid://o3kl3g87pn3q" path="res://prefabs/base_window.tscn" id="1_6neyp"]
+[ext_resource type="PackedScene" uid="uid://dpd84ocqrw0tv" path="res://games/sliding_puzzle/sliding_puzzle_part.tscn" id="2_iylmv"]
+
+[node name="SlidingPuzzle" unique_id=190368190 instance=ExtResource("1_6neyp")]
+
+[node name="Control" type="Control" parent="Control/WindowContainer/Content" parent_id_path=PackedInt32Array(971726425) index="0" unique_id=494199592]
+use_parent_material = true
+layout_mode = 2
+
+[node name="PanelContainer" parent="Control/WindowContainer/Content/Control" index="0" unique_id=1557498697 instance=ExtResource("2_iylmv")]
+layout_mode = 0
