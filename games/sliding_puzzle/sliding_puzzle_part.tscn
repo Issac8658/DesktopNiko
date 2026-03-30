@@ -4,18 +4,31 @@
 resource_name = "Setter"
 script/source = "extends PanelContainer
 
+@export var label : Label
+@export var texture_rect : TextureRect
+
 var texture : Texture2D:
 	set(value):
-		%TextureRect.texture = value
+		texture_rect.texture = value
+	get:
+		return texture_rect.texture
+
+var text : String:
+	set(value):
+		label.text = value
+	get:
+		return label.text
 "
 
-[node name="PanelContainer" type="PanelContainer" unique_id=1557498697]
+[node name="PanelContainer" type="PanelContainer" unique_id=1557498697 node_paths=PackedStringArray("label", "texture_rect")]
 use_parent_material = true
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 76.0
 offset_bottom = 76.0
 script = SubResource("GDScript_jduoh")
+label = NodePath("Label")
+texture_rect = NodePath("TextureRect")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1636060177]
 custom_minimum_size = Vector2(64, 64)

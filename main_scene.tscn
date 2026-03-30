@@ -1625,7 +1625,6 @@ metadata/_custom_type_script = "uid://by1cd1rvin4oh"
 [node name="ShutdownPopup" parent="." unique_id=1496860589 instance=ExtResource("33_id8vy")]
 title = "SHUTDOWN"
 visible = false
-unresizable = true
 minimize_disabled = true
 
 [node name="Control" parent="ShutdownPopup" index="1" unique_id=579132620]
@@ -3702,7 +3701,6 @@ metadata/_custom_type_script = "uid://by1cd1rvin4oh"
 
 [node name="ResetDataPopup" parent="SettingsWindow" unique_id=865820121 instance=ExtResource("33_id8vy")]
 visible = false
-unresizable = true
 maximize_disabled = false
 
 [node name="Control" parent="SettingsWindow/ResetDataPopup" index="1" unique_id=579132620]

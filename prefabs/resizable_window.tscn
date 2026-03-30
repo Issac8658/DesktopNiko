@@ -1,12 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdipf040tg1gp"]
+[gd_scene format=3 uid="uid://bdipf040tg1gp"]
 
 [ext_resource type="PackedScene" uid="uid://o3kl3g87pn3q" path="res://prefabs/base_window.tscn" id="1_xq1hx"]
 [ext_resource type="PackedScene" uid="uid://jf3fe5rn6ijb" path="res://prefabs/resize_zone.tscn" id="2_i83l6"]
 
-[node name="ResizableWindow" instance=ExtResource("1_xq1hx")]
-oversampling_override = 1.0
+[node name="ResizableWindow" unique_id=1089119666 instance=ExtResource("1_xq1hx")]
+unresizable = false
 
-[node name="Title" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" index="1"]
+[node name="Title" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(332691484) index="1" unique_id=2015855131]
 text = "Resizable Window"
 
-[node name="ResizeZone" parent="." index="1" instance=ExtResource("2_i83l6")]
+[node name="ResizeZone" parent="." index="1" unique_id=936185745 instance=ExtResource("2_i83l6")]

@@ -1,13 +1,23 @@
 [gd_scene format=3 uid="uid://blfp7l6sy700u"]
 
 [ext_resource type="PackedScene" uid="uid://o3kl3g87pn3q" path="res://prefabs/base_window.tscn" id="1_6neyp"]
+[ext_resource type="Script" uid="uid://xgxsaerwljet" path="res://games/sliding_puzzle/sliding_puzzle.gd" id="2_13y3f"]
 [ext_resource type="PackedScene" uid="uid://dpd84ocqrw0tv" path="res://games/sliding_puzzle/sliding_puzzle_part.tscn" id="2_iylmv"]
 
 [node name="SlidingPuzzle" unique_id=190368190 instance=ExtResource("1_6neyp")]
+position = Vector2i(165, 0)
+size = Vector2i(320, 368)
 
-[node name="Control" type="Control" parent="Control/WindowContainer/Content" parent_id_path=PackedInt32Array(971726425) index="0" unique_id=494199592]
+[node name="Title" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(332691484) index="1" unique_id=2015855131]
+text = "titles.sliding_puzzle"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/WindowContainer/Content" parent_id_path=PackedInt32Array(971726425) index="0" unique_id=1192296992]
 use_parent_material = true
 layout_mode = 2
 
-[node name="PanelContainer" parent="Control/WindowContainer/Content/Control" index="0" unique_id=1557498697 instance=ExtResource("2_iylmv")]
-layout_mode = 0
+[node name="Control" type="Control" parent="Control/WindowContainer/Content/MarginContainer" index="0" unique_id=494199592]
+use_parent_material = true
+layout_mode = 2
+script = ExtResource("2_13y3f")
+part_template = ExtResource("2_iylmv")
+parts_gap = 4

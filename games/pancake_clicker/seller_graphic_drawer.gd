@@ -31,16 +31,16 @@ func _process(delta: float) -> void:
 	if is_visible_in_tree():
 		for i in range(res):
 			var value = (custom_noise.get_noise_1d(pos - i/res*100)/2 + 0.5)
-			if PancakeClickerGlobalController.has_syrup:
-				value *= syrups_mult[PancakeClickerGlobalController.selected_syrup]
-			values[i] = value * (max_cost + PancakeClickerGlobalController.yelli_add) * PancakeClickerGlobalController.yelli_multiplier
+		#	if PancakeClickerGlobalController.has_syrup:
+		#		value *= syrups_mult[PancakeClickerGlobalController.selected_syrup]
+		#	values[i] = value * (max_cost + PancakeClickerGlobalController.yelli_add) * PancakeClickerGlobalController.yelli_multiplier
 		
 		pos += delta * 75
 		
-		match save_to:
-			1: PancakeClickerGlobalController.seller_cost_1 = values[0]
-			2: PancakeClickerGlobalController.seller_cost_2 = values[0]
-			3: PancakeClickerGlobalController.seller_cost_3 = values[0]
+		#match save_to:
+		#	1: PancakeClickerGlobalController.seller_cost_1 = values[0]
+		#	2: PancakeClickerGlobalController.seller_cost_2 = values[0]
+		#	3: PancakeClickerGlobalController.seller_cost_3 = values[0]
 		
 		queue_redraw()
 
@@ -55,7 +55,7 @@ func _draw() -> void:
 	label_max.text = str(round(max_value * 10) / 10)
 	label_current.text = str(round(values[0] * 10) / 10)
 	
-	draw_line(Vector2(0, fitted_values[0]), Vector2(size.x, fitted_values[0]), GlobalControlls.global_color_palette.colors[1])
+	#draw_line(Vector2(0, fitted_values[0]), Vector2(size.x, fitted_values[0]), GlobalControlls.global_color_palette.colors[1])
 	
-	for value_id in range(res - 1):
-		draw_line(Vector2(value_id * size.x / (res - 1), fitted_values[value_id]), Vector2((value_id + 1) * size.x / (res - 1), fitted_values[value_id + 1]), GlobalControlls.global_color_palette.colors[0])
+	#for value_id in range(res - 1):
+	#	draw_line(Vector2(value_id * size.x / (res - 1), fitted_values[value_id]), Vector2((value_id + 1) * size.x / (res - 1), fitted_values[value_id + 1]), GlobalControlls.global_color_palette.colors[0])

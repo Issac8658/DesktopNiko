@@ -33,7 +33,7 @@ var yelli_multiplier : float = 1
 var yelli_add : float = 0
 
 func _ready() -> void:
-	GlobalControlls.scripts_to_save.append(PancakeClickerGlobalController)
+#	GlobalControlls.scripts_to_save.append(PancakeClickerGlobalController)
 	
 	pancakes_save_file.load(SAVE_FILE_PATH)
 	pancakes = pancakes_save_file.get_value("Values", "Pancakes", 0)

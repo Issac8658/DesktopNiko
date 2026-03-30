@@ -41,18 +41,18 @@ var labels_list = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	PancakeClickerGlobalController.item_buyed.connect(func (_item_id):
-		update_pancake()
-	)
-	PancakeClickerGlobalController.pancake_update.connect(func ():
-		update_pancake()
-	)
-	pancake_animator.animation_finished.connect(func (_anim):
-		var pancakes = roundi((1 + PancakeClickerGlobalController.pancakes_add) * PancakeClickerGlobalController.pancakes_multiplier)
-		PancakeClickerGlobalController.pancakes += pancakes
-		update_labels()
-		show_pancake_add_label(pancakes)
-	)
+#	PancakeClickerGlobalController.item_buyed.connect(func (_item_id):
+#		update_pancake()
+#	)
+#	PancakeClickerGlobalController.pancake_update.connect(func ():
+#		update_pancake()
+#	)
+#	pancake_animator.animation_finished.connect(func (_anim):
+#		var pancakes = roundi((1 + PancakeClickerGlobalController.pancakes_add) * PancakeClickerGlobalController.pancakes_multiplier)
+#		PancakeClickerGlobalController.pancakes += pancakes
+#		update_labels()
+#		show_pancake_add_label(pancakes)
+#	)
 	# Panels
 	left_panel_grabber.gui_input.connect(func (event):
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -82,9 +82,9 @@ func _ready() -> void:
 	update_left_panel()
 	update_right_panel()
 	
-	PancakeClickerGlobalController.labels_update.connect(update_labels)
-	update_labels()
-	update_pancake()
+#	PancakeClickerGlobalController.labels_update.connect(update_labels)
+#	update_labels()
+#	update_pancake()
 
 
 func _process(_delta: float) -> void:
@@ -106,21 +106,21 @@ func show_pancake_add_label(value : int):
 	)
 
 
-func update_labels():
-	pancakes_count_label.text = str(PancakeClickerGlobalController.pancakes)
-	yellis_count_label.text = str(PancakeClickerGlobalController.format_big_number(round(PancakeClickerGlobalController.yelli * 10) / 10))
-
-func update_pancake():
-	syrup_base.visible = PancakeClickerGlobalController.has_syrup
-	syrup_base.self_modulate = syrup_colors[PancakeClickerGlobalController.selected_syrup * 2]
-	syrup_light.self_modulate = syrup_colors[PancakeClickerGlobalController.selected_syrup * 2 + 1]
-	butter.visible = PancakeClickerGlobalController.has_butter
-	
-	pancake.icon = pancake_layers[PancakeClickerGlobalController.pancake_layers]
-	pancake.self_modulate = pancake_colors[PancakeClickerGlobalController.pancake_type]
-	syrup_base.icon = syrup_layers[PancakeClickerGlobalController.pancake_layers]
-	syrup_light.icon = syrup_light_layers[PancakeClickerGlobalController.pancake_layers]
-	pancake.get_parent().position.y = default_pancake_pos.y + pancake_offsets[PancakeClickerGlobalController.pancake_layers] * 2
+#func update_labels():
+#	pancakes_count_label.text = str(PancakeClickerGlobalController.pancakes)
+#	yellis_count_label.text = str(PancakeClickerGlobalController.format_big_number(round(PancakeClickerGlobalController.yelli * 10) / 10))
+#
+#func update_pancake():
+#	syrup_base.visible = PancakeClickerGlobalController.has_syrup
+#	syrup_base.self_modulate = syrup_colors[PancakeClickerGlobalController.selected_syrup * 2]
+#	syrup_light.self_modulate = syrup_colors[PancakeClickerGlobalController.selected_syrup * 2 + 1]
+#	butter.visible = PancakeClickerGlobalController.has_butter
+#	
+#	pancake.icon = pancake_layers[PancakeClickerGlobalController.pancake_layers]
+#	pancake.self_modulate = pancake_colors[PancakeClickerGlobalController.pancake_type]
+#	syrup_base.icon = syrup_layers[PancakeClickerGlobalController.pancake_layers]
+#	syrup_light.icon = syrup_light_layers[PancakeClickerGlobalController.pancake_layers]
+#	pancake.get_parent().position.y = default_pancake_pos.y + pancake_offsets[PancakeClickerGlobalController.pancake_layers] * 2
 
 
 func _on_pancake_pressed() -> void:
