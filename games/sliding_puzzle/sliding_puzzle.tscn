@@ -34,9 +34,10 @@ expand_icon = true
 use_parent_material = true
 layout_mode = 2
 
-[node name="Control" type="Control" parent="Control/WindowContainer/Content/MarginContainer" index="0" unique_id=494199592]
+[node name="Control" type="Control" parent="Control/WindowContainer/Content/MarginContainer" index="0" unique_id=494199592 node_paths=PackedStringArray("restart_button")]
 use_parent_material = true
 layout_mode = 2
 script = ExtResource("2_13y3f")
 part_template = ExtResource("2_iylmv")
 parts_gap = 4
+restart_button = NodePath("../../../Topbar/MarginContainer/HBoxContainer/RestartButtonContainer/RestartButton")

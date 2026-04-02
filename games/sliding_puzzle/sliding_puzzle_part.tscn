@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://dpd84ocqrw0tv"]
 
+[ext_resource type="Material" uid="uid://d1ff373hk1gn7" path="res://materials/theme_canvas_item_material_add_mode.tres" id="1_02yep"]
+[ext_resource type="Texture2D" uid="uid://dlavpw6yhbnab" path="res://sprites/achievements/unknown.png" id="2_e8xo6"]
+
 [sub_resource type="GDScript" id="GDScript_jduoh"]
 resource_name = "Setter"
 script/source = "extends PanelContainer
 
 @export var label : Label
 @export var texture_rect : TextureRect
+@onready var parent = get_parent()
 
 var target_pos : Rect2 = Rect2(0, 0, 1, 1)
 var accel : Rect2 = Rect2(0, 0, 0, 0)
@@ -23,49 +27,59 @@ var text : String:
 	get:
 		return label.text
 
-func _process(delta: float) -> void:
-	accel.position.y = (target_pos.position.y - anchor_top) * delta * 1.2
-	accel.size.y = (target_pos.size.y - anchor_bottom) * delta * 1.2
-	accel.position.x = (target_pos.position.x - anchor_left) * delta * 1.2
-	accel.size.x = (target_pos.size.x - anchor_right) * delta * 1.2
-	
-	speed.position.y += accel.position.y
-	speed.size.y += accel.size.y
-	speed.position.x += accel.position.x
-	speed.size.x += accel.size.x
-	
-	speed.position.y *= 0.9
-	speed.size.y *= 0.9
-	speed.position.x *= 0.9
-	speed.size.x *= 0.9
-	
-	anchor_top += speed.position.y * 1.2
-	anchor_bottom += speed.size.y * 1.2
-	anchor_left += speed.position.x * 1.2
-	anchor_right += speed.size.x * 1.2
-	
-	anchor_top = clamp(anchor_top, 0, 1)
-	anchor_bottom = clamp(anchor_bottom, 0, 1)
-	anchor_left = clamp(anchor_left, 0, 1)
-	anchor_right = clamp(anchor_right, 0, 1)
+#func _process(delta: float) -> void:
+#	pivot_offset = size / 2;
+#	
+#	accel.position.y = (target_pos.position.y - anchor_top) * delta * 1.2
+#	accel.size.y = (target_pos.size.y - anchor_bottom) * delta * 1.2
+#	accel.position.x = (target_pos.position.x - anchor_left) * delta * 1.2
+#	accel.size.x = (target_pos.size.x - anchor_right) * delta * 1.2
+#	
+#	speed.position.y += accel.position.y
+#	speed.size.y += accel.size.y
+#	speed.position.x += accel.position.x
+#	speed.size.x += accel.size.x
+#	
+#	speed.position.y *= 0.9
+#	speed.size.y *= 0.9
+#	speed.position.x *= 0.9
+#	speed.size.x *= 0.9
+#	
+#	anchor_top += speed.position.y * 1.2
+#	anchor_bottom += speed.size.y * 1.2
+#	anchor_left += speed.position.x * 1.2
+#	anchor_right += speed.size.x * 1.2
+#	
+#	anchor_top = clamp(anchor_top, 0, float(parent.CELLS_COUNT.y - 1) / parent.CELLS_COUNT.y)
+#	anchor_bottom = clamp(anchor_bottom, 1.0 / parent.CELLS_COUNT.y, 1)
+#	anchor_left = clamp(anchor_left, 0, float(parent.CELLS_COUNT.y - 1) / parent.CELLS_COUNT.y)
+#	anchor_right = clamp(anchor_right, 1.0 / parent.CELLS_COUNT.y, 1)
 "
 
 [node name="PanelContainer" type="PanelContainer" unique_id=1557498697 node_paths=PackedStringArray("label", "texture_rect")]
-use_parent_material = true
+material = ExtResource("1_02yep")
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 76.0
-offset_bottom = 76.0
+offset_right = 68.0
+offset_bottom = 68.0
 script = SubResource("GDScript_jduoh")
 label = NodePath("Label")
-texture_rect = NodePath("TextureRect")
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1636060177]
-layout_mode = 2
+texture_rect = NodePath("")
 
 [node name="Label" type="Label" parent="." unique_id=1092918668]
 use_parent_material = true
 layout_mode = 2
-text = "1"
+text = ":3"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Control" type="Control" parent="." unique_id=1855019955]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="Sprite2D" parent="Control" unique_id=157719826]
+use_parent_material = true
+texture = ExtResource("2_e8xo6")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
