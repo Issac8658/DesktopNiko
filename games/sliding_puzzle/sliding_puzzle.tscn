@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://o3kl3g87pn3q" path="res://prefabs/base_window.tscn" id="1_6neyp"]
 [ext_resource type="Script" uid="uid://xgxsaerwljet" path="res://games/sliding_puzzle/sliding_puzzle.gd" id="2_13y3f"]
+[ext_resource type="Texture2D" uid="uid://bo3x8yy4g81xb" path="res://sprites/ui/world_machine/close_button.tres" id="2_bqrj3"]
 [ext_resource type="PackedScene" uid="uid://dpd84ocqrw0tv" path="res://games/sliding_puzzle/sliding_puzzle_part.tscn" id="2_iylmv"]
 
 [node name="SlidingPuzzle" unique_id=190368190 instance=ExtResource("1_6neyp")]
@@ -10,6 +11,24 @@ size = Vector2i(320, 368)
 
 [node name="Title" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(332691484) index="1" unique_id=2015855131]
 text = "titles.sliding_puzzle"
+
+[node name="RestartButtonContainer" type="MarginContainer" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(332691484) index="3" unique_id=1882884999]
+use_parent_material = true
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 4
+
+[node name="RestartButton" type="Button" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/RestartButtonContainer" index="0" unique_id=1927280136]
+use_parent_material = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("2_bqrj3")
+flat = true
+expand_icon = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/WindowContainer/Content" parent_id_path=PackedInt32Array(971726425) index="0" unique_id=1192296992]
 use_parent_material = true

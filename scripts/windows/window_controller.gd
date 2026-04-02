@@ -7,21 +7,21 @@ signal close_button_pressed();
 @export var hide_button : BaseButton
 @export var ignore_on_top_settings : bool = false;
 
-var is_dragging : bool = false;
-var mouse_offset : Vector2;
+#var is_dragging : bool = false;
+#var mouse_offset : Vector2;
 
 func _ready() -> void:
 	topbar.gui_input.connect(func (event : InputEvent):
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
 				if get_visible_rect().has_point(event.position):
-					#DisplayServer.window_start_drag(get_window_id())
-					is_dragging = true
-					mouse_offset = event.position
-			else:
-				is_dragging = false
-		if event is InputEventMouseMotion and is_dragging:
-			MoveWindow(event.position - mouse_offset)
+					DisplayServer.window_start_drag(get_window_id())
+		#			is_dragging = true
+		#			mouse_offset = event.position
+		#	else:
+		#		is_dragging = false
+		#if event is InputEventMouseMotion and is_dragging:
+		#	MoveWindow(event.position - mouse_offset)
 	)
 	
 	close_button.pressed.connect(func ():
@@ -47,6 +47,7 @@ func _ready() -> void:
 	if not ignore_on_top_settings:
 		always_on_top = ValuesContainer.WindowsAlwaysOnTop;
 		Update()
+
 func MoveWindow(Offset:Vector2i) -> void:
 	position += Vector2i(Offset);
 

@@ -42,8 +42,8 @@
 [ext_resource type="ArrayMesh" uid="uid://b63hfp02vjqd1" path="res://games/one_machine_night_funkin/resources/models/BarrensPart5.obj" id="38_i7vop"]
 [ext_resource type="ArrayMesh" uid="uid://bpqrhpn0wddma" path="res://games/one_machine_night_funkin/resources/models/BarrensPart4.obj" id="39_lswlk"]
 [ext_resource type="ArrayMesh" uid="uid://co81jj5lp48nt" path="res://games/one_machine_night_funkin/resources/models/BarrensPart3.obj" id="40_u3eq4"]
-[ext_resource type="ArrayMesh" uid="uid://cad34v1mrflst" path="res://games/one_machine_night_funkin/resources/models/Outpost.obj" id="41_2lpvn"]
-[ext_resource type="Shader" path="res://games/one_machine_night_funkin/resources/shaders/neon_sky.gdshader" id="41_qfqh5"]
+[ext_resource type="ArrayMesh" uid="uid://cad34v1mrflst" path="res://games/one_machine_night_funkin/resources/models/outpost.obj" id="41_2lpvn"]
+[ext_resource type="Shader" uid="uid://cus3drp27jmbc" path="res://games/one_machine_night_funkin/resources/shaders/neon_sky.gdshader" id="41_qfqh5"]
 [ext_resource type="Material" uid="uid://dnqpnbdxg2qo4" path="res://games/one_machine_night_funkin/resources/materials/outpost.tres" id="42_dofsl"]
 [ext_resource type="Material" uid="uid://dwnd6gaj7msik" path="res://games/one_machine_night_funkin/resources/materials/shadow.tres" id="43_vha3p"]
 

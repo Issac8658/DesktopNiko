@@ -82,6 +82,10 @@ folder_colors={
 "res://themes/": "purple"
 }
 
+[filesystem]
+
+import/blender/enabled=false
+
 [gui]
 
 theme/default_font_antialiasing=0
