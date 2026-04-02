@@ -6,9 +6,18 @@ const ANIM_TIME : float = .25
 @export var part_template : PackedScene
 @export var parts_gap : int;
 @export var restart_button : Button
+@export var full_image : TextureRect
+@export var full_image_final : TextureRect
+@export var solved_sound : AudioStreamPlayer
+@export var pictures : Array[Texture2D]
 var parts : Dictionary[Vector2i, Control] = {}
 
 func _ready() -> void:
+	var rand_image = pictures.pick_random()
+	var image_size = rand_image.get_size()
+	full_image.texture = rand_image
+	full_image_final.texture = rand_image
+	
 	for y in range(CELLS_COUNT.y):
 		for x in range(CELLS_COUNT.x):
 			if Vector2i(x + 1, y + 1) != CELLS_COUNT:
@@ -19,6 +28,9 @@ func _ready() -> void:
 				update_part(part, pos)
 				part.text = str(y * CELLS_COUNT.x + x + 1)
 				parts[pos] = part
+				part.sprite.texture = rand_image
+				part.sprite.region_rect = Rect2i(6 + x * image_size.x / CELLS_COUNT.x, 6 + y * image_size.x / CELLS_COUNT.x, image_size.x / CELLS_COUNT.x - 12, image_size.x / CELLS_COUNT.x - 12)
+				part.original_pos = pos
 				
 				part.gui_input.connect(func (event):
 					if (event is InputEventMouseButton):
@@ -63,7 +75,7 @@ func move_part(part_pos: Vector2i) -> bool:
 
 
 func update_part(part : Control, pos : Vector2i):
-	part.target_pos = Rect2(float(pos.x) / float(CELLS_COUNT.x), float(pos.y) / float(CELLS_COUNT.y), float(pos.x + 1) / float(CELLS_COUNT.x), float(pos.y + 1) / float(CELLS_COUNT.y))
+	#part.target_pos = Rect2(float(pos.x) / float(CELLS_COUNT.x), float(pos.y) / float(CELLS_COUNT.y), float(pos.x + 1) / float(CELLS_COUNT.x), float(pos.y + 1) / float(CELLS_COUNT.y))
 	@warning_ignore("integer_division")
 	part.set_anchor_and_offset(SIDE_TOP, float(pos.y) / float(CELLS_COUNT.y), parts_gap / 2)
 	@warning_ignore("integer_division")
@@ -118,9 +130,31 @@ func smooth_update_part(part : Control, pos : Vector2i):
 	t4.tween_property(part, "anchor_left", float(pos.x) / float(CELLS_COUNT.x), ANIM_TIME)
 	t3.tween_property(part, "anchor_right", float(pos.x + 1) / float(CELLS_COUNT.x), ANIM_TIME)
 	
+	if (all_is_correct()):
+		#create_tween().tween_property(full_image_final, "self_modulate", Color.WHITE, 7)
+		full_image_final.self_modulate = Color.WHITE
+		solved_sound.play()
+	else:
+		full_image_final.self_modulate = Color.TRANSPARENT
+		solved_sound.stop()
+	
 func mix(count : int = 200):
 	var i = 0
 	
 	while (i < count):
 		if (move_part(Vector2i(randi_range(0, CELLS_COUNT.x), randi_range(0, CELLS_COUNT.y)))):
 			i += 1;
+	
+	var rand_image = pictures.pick_random()
+	var image_size = rand_image.get_size()
+	full_image.texture = rand_image
+	full_image_final.texture = rand_image
+	for pos in parts:
+		parts[pos].sprite.texture = rand_image
+		parts[pos].sprite.region_rect = Rect2i(6 + parts[pos].original_pos.x * image_size.x / CELLS_COUNT.x, 6 + parts[pos].original_pos.y * image_size.x / CELLS_COUNT.x, image_size.x / CELLS_COUNT.x - 12, image_size.x / CELLS_COUNT.x - 12)
+
+func all_is_correct() -> bool:
+	for pos in parts:
+		if (pos != parts[pos].original_pos):
+			return false
+	return true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnwbeed7hrv83"
-path="res://.godot/imported/test_shit.png-f368a8968c65d349c78a893c6154826d.ctex"
+uid="uid://djc4oym3rjfge"
+path="res://.godot/imported/niko_and_pancakes.png-5ccacf3e685620f75a77bc4e673de44d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/test_shit.png"
-dest_files=["res://.godot/imported/test_shit.png-f368a8968c65d349c78a893c6154826d.ctex"]
+source_file="res://sprites/pictures/niko_and_pancakes.png"
+dest_files=["res://.godot/imported/niko_and_pancakes.png-5ccacf3e685620f75a77bc4e673de44d.ctex"]
 
 [params]
 

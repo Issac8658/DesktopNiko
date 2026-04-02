@@ -2,24 +2,21 @@
 
 [ext_resource type="Material" uid="uid://d1ff373hk1gn7" path="res://materials/theme_canvas_item_material_add_mode.tres" id="1_02yep"]
 [ext_resource type="Texture2D" uid="uid://dlavpw6yhbnab" path="res://sprites/achievements/unknown.png" id="2_e8xo6"]
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="3_h3u53"]
 
 [sub_resource type="GDScript" id="GDScript_jduoh"]
 resource_name = "Setter"
 script/source = "extends PanelContainer
 
 @export var label : Label
-@export var texture_rect : TextureRect
-@onready var parent = get_parent()
+@export var sprite : Sprite2D
+#@onready var parent = get_parent()
 
-var target_pos : Rect2 = Rect2(0, 0, 1, 1)
-var accel : Rect2 = Rect2(0, 0, 0, 0)
-var speed : Rect2 = Rect2(0, 0, 0, 0)
+#var target_pos : Rect2 = Rect2(0, 0, 1, 1)
+#var accel : Rect2 = Rect2(0, 0, 0, 0)
+#var speed : Rect2 = Rect2(0, 0, 0, 0)
 
-var texture : Texture2D:
-	set(value):
-		texture_rect.texture = value
-	get:
-		return texture_rect.texture
+var original_pos : Vector2i
 
 var text : String:
 	set(value):
@@ -56,22 +53,17 @@ var text : String:
 #	anchor_right = clamp(anchor_right, 1.0 / parent.CELLS_COUNT.y, 1)
 "
 
-[node name="PanelContainer" type="PanelContainer" unique_id=1557498697 node_paths=PackedStringArray("label", "texture_rect")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d3ywr"]
+
+[node name="PanelContainer" type="PanelContainer" unique_id=1557498697 node_paths=PackedStringArray("label", "sprite")]
 material = ExtResource("1_02yep")
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 68.0
-offset_bottom = 68.0
+offset_right = 18.0
+offset_bottom = 27.0
 script = SubResource("GDScript_jduoh")
 label = NodePath("Label")
-texture_rect = NodePath("")
-
-[node name="Label" type="Label" parent="." unique_id=1092918668]
-use_parent_material = true
-layout_mode = 2
-text = ":3"
-horizontal_alignment = 1
-vertical_alignment = 1
+sprite = NodePath("Control/TextureRect")
 
 [node name="Control" type="Control" parent="." unique_id=1855019955]
 layout_mode = 2
@@ -82,4 +74,13 @@ size_flags_vertical = 4
 use_parent_material = true
 texture = ExtResource("2_e8xo6")
 region_enabled = true
-region_rect = Rect2(0, 0, 64, 64)
+region_rect = Rect2(0, 0, 52, 52)
+
+[node name="Label" type="Label" parent="." unique_id=1092918668]
+material = ExtResource("3_h3u53")
+layout_mode = 2
+theme_override_constants/outline_size = 9
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d3ywr")
+text = ":3"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -2,12 +2,35 @@
 
 [ext_resource type="PackedScene" uid="uid://o3kl3g87pn3q" path="res://prefabs/base_window.tscn" id="1_6neyp"]
 [ext_resource type="Script" uid="uid://xgxsaerwljet" path="res://games/sliding_puzzle/sliding_puzzle.gd" id="2_13y3f"]
-[ext_resource type="Texture2D" uid="uid://bo3x8yy4g81xb" path="res://sprites/ui/world_machine/close_button.tres" id="2_bqrj3"]
 [ext_resource type="PackedScene" uid="uid://dpd84ocqrw0tv" path="res://games/sliding_puzzle/sliding_puzzle_part.tscn" id="2_iylmv"]
+[ext_resource type="Texture2D" uid="uid://bt76g50ouhwre" path="res://sprites/ui/world_machine/replay_button.tres" id="2_vkvek"]
+[ext_resource type="Texture2D" uid="uid://bi4fw6k8nif68" path="res://sprites/pictures/banana.png" id="5_82l8p"]
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="5_g840i"]
+[ext_resource type="Texture2D" uid="uid://c1dgfy0ieeqjq" path="res://sprites/pictures/all_roads_to_pancakes.png" id="5_x7g4d"]
+[ext_resource type="Texture2D" uid="uid://cm7sd4gchm3uk" path="res://sprites/pictures/job.png" id="7_a8oyi"]
+[ext_resource type="Texture2D" uid="uid://b0t0hekbvvhom" path="res://sprites/pictures/cute_niko.png" id="7_vkvek"]
+[ext_resource type="Texture2D" uid="uid://baykj538ya2ri" path="res://sprites/pictures/milk.png" id="8_2jfc4"]
+[ext_resource type="Texture2D" uid="uid://d1ud2aal66h6o" path="res://sprites/pictures/demotivator.png" id="8_bpku0"]
+[ext_resource type="Texture2D" uid="uid://dlo3air7k2iqu" path="res://sprites/pictures/eyes_proto.png" id="9_7tbxl"]
+[ext_resource type="Texture2D" uid="uid://xccvlej7nbfb" path="res://sprites/pictures/niko_under_chrismas_tree.png" id="9_vtywc"]
+[ext_resource type="Texture2D" uid="uid://cqsnv5pijmwm6" path="res://sprites/pictures/idkhowtoname.png" id="10_73ra2"]
+[ext_resource type="Texture2D" uid="uid://bo24lryc1gcw5" path="res://sprites/pictures/night_sky_niko.png" id="13_t35eo"]
+[ext_resource type="Texture2D" uid="uid://djc4oym3rjfge" path="res://sprites/pictures/niko_and_pancakes.png" id="14_wx8q4"]
+[ext_resource type="Texture2D" uid="uid://djd3pk4ddhfex" path="res://sprites/pictures/niko_but_kip.png" id="15_53b2q"]
+[ext_resource type="Texture2D" uid="uid://pfeauk6smv31" path="res://sprites/pictures/niko_kalachek.png" id="16_tl0nd"]
+[ext_resource type="Texture2D" uid="uid://cfyyov4ko2etl" path="res://sprites/pictures/this_is_not_pancakes.png" id="18_3rgk2"]
+[ext_resource type="AudioStream" uid="uid://cw1tov6mght2a" path="res://sounds/major_puzzle_solved.ogg" id="20_vkvek"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pxi0b"]
 
 [node name="SlidingPuzzle" unique_id=190368190 instance=ExtResource("1_6neyp")]
+transparent_bg = true
 position = Vector2i(165, 0)
-size = Vector2i(320, 368)
+size = Vector2i(272, 336)
+transparent = true
+
+[node name="Control" parent="." index="0" unique_id=579132620]
+theme_override_constants/margin_bottom = 16
 
 [node name="Title" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(332691484) index="1" unique_id=2015855131]
 text = "titles.sliding_puzzle"
@@ -26,7 +49,7 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_type_variation = &"IconButton"
-icon = ExtResource("2_bqrj3")
+icon = ExtResource("2_vkvek")
 flat = true
 expand_icon = true
 
@@ -34,10 +57,42 @@ expand_icon = true
 use_parent_material = true
 layout_mode = 2
 
-[node name="Control" type="Control" parent="Control/WindowContainer/Content/MarginContainer" index="0" unique_id=494199592 node_paths=PackedStringArray("restart_button")]
+[node name="TextureRect" type="TextureRect" parent="Control/WindowContainer/Content/MarginContainer" index="0" unique_id=1628245603]
+self_modulate = Color(1, 1, 1, 0.44705883)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="Control/WindowContainer/Content/MarginContainer" index="1" unique_id=494199592 node_paths=PackedStringArray("restart_button", "full_image", "full_image_final", "solved_sound")]
+self_modulate = Color(1, 1, 1, 0.37254903)
 use_parent_material = true
 layout_mode = 2
 script = ExtResource("2_13y3f")
 part_template = ExtResource("2_iylmv")
 parts_gap = 4
 restart_button = NodePath("../../../Topbar/MarginContainer/HBoxContainer/RestartButtonContainer/RestartButton")
+full_image = NodePath("../TextureRect")
+full_image_final = NodePath("../TextureRect2")
+solved_sound = NodePath("../../../../../MajorPuzzleSolved")
+pictures = Array[Texture2D]([ExtResource("5_x7g4d"), ExtResource("5_82l8p"), ExtResource("7_vkvek"), ExtResource("8_bpku0"), ExtResource("9_7tbxl"), ExtResource("10_73ra2"), ExtResource("7_a8oyi"), ExtResource("8_2jfc4"), ExtResource("13_t35eo"), ExtResource("14_wx8q4"), ExtResource("15_53b2q"), ExtResource("16_tl0nd"), ExtResource("9_vtywc"), ExtResource("18_3rgk2")])
+
+[node name="TextureRect2" type="TextureRect" parent="Control/WindowContainer/Content/MarginContainer" index="2" unique_id=1878034863]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="." index="1" unique_id=1279217497]
+material = ExtResource("5_g840i")
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pxi0b")
+text = "All images were not created by me."
+horizontal_alignment = 1
+
+[node name="MajorPuzzleSolved" type="AudioStreamPlayer" parent="." index="2" unique_id=135451598]
+stream = ExtResource("20_vkvek")
