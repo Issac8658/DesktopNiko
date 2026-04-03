@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://clo633qc1pd8w"]
 
-[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="1_33qed"]
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_painter_material.tres" id="1_33qed"]
 [ext_resource type="Texture2D" uid="uid://c8a2o0ruiwceh" path="res://sprites/icons/place_holder.png" id="1_j06oa"]
 [ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://sprites/icons/pancake_clicker.png" id="2_33qed"]
-[ext_resource type="Texture2D" uid="uid://bhkcmk72oktdr" path="res://sprites/click.png" id="3_cdfg7"]
+[ext_resource type="Texture2D" uid="uid://bhkcmk72oktdr" path="res://sprites/ui/click.png" id="3_cdfg7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwncm"]
 bg_color = Color(0, 0, 0, 0.392157)

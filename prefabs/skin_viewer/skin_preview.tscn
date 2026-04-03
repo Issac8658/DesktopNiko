@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cks35xrbpjdyt"]
 
-[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="1_i6wn3"]
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_painter_material.tres" id="1_i6wn3"]
 [ext_resource type="PhysicsMaterial" uid="uid://dhjj26w46jyw2" path="res://prefabs/skin_viewer/bump_material.tres" id="1_k8vdx"]
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="1_ro3h6"]
 [ext_resource type="Theme" uid="uid://dfef00daciy56" path="res://themes/skin_view_theme/skin_view_theme.theme" id="1_s20vd"]

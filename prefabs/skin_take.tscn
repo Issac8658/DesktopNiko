@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://o3kl3g87pn3q" path="res://prefabs/base_window.tscn" id="1_hqbv3"]
 [ext_resource type="Texture2D" uid="uid://cj74xwnjydvk6" path="res://sprites/icons/info.png" id="2_tlw08"]
-[ext_resource type="Texture2D" uid="uid://cgv32itt6tnjb" path="res://sprites/bulb_bg.png" id="3_wxsyl"]
+[ext_resource type="Texture2D" uid="uid://cgv32itt6tnjb" path="res://sprites/ui/bulb_bg.png" id="3_wxsyl"]
 [ext_resource type="Texture2D" uid="uid://dgmfa7kusbs5v" path="res://niko/skin_sources/niko_gasmask.png" id="4_jeqoc"]
 [ext_resource type="AudioStream" uid="uid://bygfng2teuf0p" path="res://sounds/skin_drop.ogg" id="5_3ux7i"]
 [ext_resource type="Texture2D" uid="uid://ck26j0ebmp7va" path="res://sprites/particle.png" id="5_tlw08"]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bi5pu8hc54t3d"]
 
-[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="1_ucnrl"]
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_painter_material.tres" id="1_ucnrl"]
 [ext_resource type="Texture2D" uid="uid://widgkfxwlx5" path="res://sprites/achievements/unknown_gray.png" id="1_w05dq"]
 [ext_resource type="FontVariation" uid="uid://c2ecs2kfpewaq" path="res://fonts/TightTerminus.tres" id="2_yrdct"]
 

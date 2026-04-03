@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dpd84ocqrw0tv" path="res://games/sliding_puzzle/sliding_puzzle_part.tscn" id="2_iylmv"]
 [ext_resource type="Texture2D" uid="uid://bt76g50ouhwre" path="res://sprites/ui/world_machine/replay_button.tres" id="2_vkvek"]
 [ext_resource type="Texture2D" uid="uid://bi4fw6k8nif68" path="res://sprites/pictures/banana.png" id="5_82l8p"]
-[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="5_g840i"]
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_painter_material.tres" id="5_g840i"]
 [ext_resource type="Texture2D" uid="uid://c1dgfy0ieeqjq" path="res://sprites/pictures/all_roads_to_pancakes.png" id="5_x7g4d"]
 [ext_resource type="Texture2D" uid="uid://cm7sd4gchm3uk" path="res://sprites/pictures/job.png" id="7_a8oyi"]
 [ext_resource type="Texture2D" uid="uid://b0t0hekbvvhom" path="res://sprites/pictures/cute_niko.png" id="7_vkvek"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://jf3fe5rn6ijb"]
 
 [ext_resource type="Script" uid="uid://dupfag105mf6t" path="res://scripts/windows/window_resize_controller.gd" id="1_3vdsj"]
-[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="1_q2dac"]
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_painter_material.tres" id="1_q2dac"]
 [ext_resource type="Texture2D" uid="uid://j2lw1hsnhwk" path="res://sprites/ui/world_machine/resize_hint.tres" id="2_m1nqu"]
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="3_ro07g"]
 

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dpd84ocqrw0tv"]
 
-[ext_resource type="Material" uid="uid://d1ff373hk1gn7" path="res://materials/theme_canvas_item_material_add_mode.tres" id="1_02yep"]
-[ext_resource type="Texture2D" uid="uid://dlavpw6yhbnab" path="res://sprites/achievements/unknown.png" id="2_e8xo6"]
-[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="3_h3u53"]
+[ext_resource type="Material" uid="uid://d1ff373hk1gn7" path="res://materials/theme_painter_material_add_mode.tres" id="1_02yep"]
+[ext_resource type="Texture2D" uid="uid://bo24lryc1gcw5" path="res://sprites/pictures/night_sky_niko.png" id="2_h3u53"]
+[ext_resource type="Material" uid="uid://e8ijop6hxxqy" path="res://materials/theme_painter_material_invert_mode.tres" id="3_h3u53"]
 
 [sub_resource type="GDScript" id="GDScript_jduoh"]
 resource_name = "Setter"
@@ -72,15 +72,13 @@ size_flags_vertical = 4
 
 [node name="TextureRect" type="Sprite2D" parent="Control" unique_id=157719826]
 use_parent_material = true
-texture = ExtResource("2_e8xo6")
+texture = ExtResource("2_h3u53")
 region_enabled = true
 region_rect = Rect2(0, 0, 52, 52)
 
 [node name="Label" type="Label" parent="." unique_id=1092918668]
 material = ExtResource("3_h3u53")
-use_parent_material = true
 layout_mode = 2
-theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_d3ywr")
 text = ":3"

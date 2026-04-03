@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dl8543lp0qwyv"]
 
-[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="1_13jik"]
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_painter_material.tres" id="1_13jik"]
 [ext_resource type="StyleBox" uid="uid://c47lb30cio4to" path="res://themes/twm_theme/horizontal_line_wide.stylebox" id="1_gnj1r"]
 [ext_resource type="Texture2D" uid="uid://8tnj3kv357ky" path="res://sprites/achievements/achievement_separator.tres" id="2_oxbdd"]
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bihaq5sq4yuxk"]
 
-[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="1_ueh7f"]
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_painter_material.tres" id="1_ueh7f"]
 [ext_resource type="Texture2D" uid="uid://bip0eerfucj2q" path="res://sprites/ui/world_machine/pipe.png" id="1_ynbrx"]
 
 [node name="Line2D" type="Line2D" unique_id=1784287988]

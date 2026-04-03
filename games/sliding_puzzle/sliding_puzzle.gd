@@ -12,6 +12,8 @@ const ANIM_TIME : float = .25
 @export var pictures : Array[Texture2D]
 var parts : Dictionary[Vector2i, Control] = {}
 
+var win_tween
+
 func _ready() -> void:
 	var rand_image = pictures.pick_random()
 	var image_size = rand_image.get_size()
@@ -131,10 +133,12 @@ func smooth_update_part(part : Control, pos : Vector2i):
 	t3.tween_property(part, "anchor_right", float(pos.x + 1) / float(CELLS_COUNT.x), ANIM_TIME)
 	
 	if (all_is_correct()):
-		#create_tween().tween_property(full_image_final, "self_modulate", Color.WHITE, 7)
-		full_image_final.self_modulate = Color.WHITE
+		win_tween = create_tween()
+		win_tween.tween_property(full_image_final, "self_modulate", Color.WHITE, 7)
 		solved_sound.play()
 	else:
+		if (win_tween != null):
+			win_tween.stop()
 		full_image_final.self_modulate = Color.TRANSPARENT
 		solved_sound.stop()
 	

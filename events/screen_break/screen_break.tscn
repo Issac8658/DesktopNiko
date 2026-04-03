@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://7got448yqqeh" path="res://sounds/square_death.ogg" id="9_y1vm7"]
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="10_vksct"]
 [ext_resource type="Texture2D" uid="uid://cvhn4tne5py2b" path="res://sprites/ui/world_machine/checkbox_checked.tres" id="11_m2giu"]
-[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_canvas_item_material.tres" id="12_gq0ea"]
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_painter_material.tres" id="12_gq0ea"]
 [ext_resource type="AudioStream" uid="uid://6j35j7ci51dn" path="res://sounds/block_show.ogg" id="12_rb5ak"]
 [ext_resource type="Script" uid="uid://05w6e57vrsyx" path="res://events/pass_code_part.gd" id="13_7l0y5"]
 [ext_resource type="AudioStream" uid="uid://1bqwhfjk54as" path="res://sounds/select.ogg" id="13_xwi3i"]
