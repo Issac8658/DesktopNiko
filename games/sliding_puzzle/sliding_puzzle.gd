@@ -10,6 +10,7 @@ const ANIM_TIME : float = .25
 @export var full_image_final : TextureRect
 @export var solved_sound : AudioStreamPlayer
 @export var pictures : Array[Texture2D]
+@export var win_particles : GPUParticles2D
 var parts : Dictionary[Vector2i, Control] = {}
 
 var win_tween
@@ -48,6 +49,7 @@ func _ready() -> void:
 						#print(curr_pos)
 				)
 	restart_button.pressed.connect(mix)
+	mix()
 
 func move_part(part_pos: Vector2i) -> bool:
 	var part = parts.get(part_pos)
@@ -135,12 +137,17 @@ func smooth_update_part(part : Control, pos : Vector2i):
 	if (all_is_correct()):
 		win_tween = create_tween()
 		win_tween.tween_property(full_image_final, "self_modulate", Color.WHITE, 7)
+		win_tween.finished.connect(func ():
+			win_particles.emitting = false
+		)
 		solved_sound.play()
+		win_particles.emitting = true
 	else:
 		if (win_tween != null):
 			win_tween.stop()
 		full_image_final.self_modulate = Color.TRANSPARENT
 		solved_sound.stop()
+		win_particles.emitting = false
 	
 func mix(count : int = 200):
 	var i = 0

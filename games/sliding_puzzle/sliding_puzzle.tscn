@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://o3kl3g87pn3q" path="res://prefabs/base_window.tscn" id="1_6neyp"]
 [ext_resource type="Script" uid="uid://xgxsaerwljet" path="res://games/sliding_puzzle/sliding_puzzle.gd" id="2_13y3f"]
+[ext_resource type="Texture2D" uid="uid://cunfk1fgy18og" path="res://sprites/icons/sliding_puzzle.png" id="2_73ra2"]
 [ext_resource type="PackedScene" uid="uid://dpd84ocqrw0tv" path="res://games/sliding_puzzle/sliding_puzzle_part.tscn" id="2_iylmv"]
 [ext_resource type="Texture2D" uid="uid://bt76g50ouhwre" path="res://sprites/ui/world_machine/replay_button.tres" id="2_vkvek"]
 [ext_resource type="Texture2D" uid="uid://bi4fw6k8nif68" path="res://sprites/pictures/banana.png" id="5_82l8p"]
@@ -19,7 +20,31 @@
 [ext_resource type="Texture2D" uid="uid://djd3pk4ddhfex" path="res://sprites/pictures/niko_but_kip.png" id="15_53b2q"]
 [ext_resource type="Texture2D" uid="uid://pfeauk6smv31" path="res://sprites/pictures/niko_kalachek.png" id="16_tl0nd"]
 [ext_resource type="Texture2D" uid="uid://cfyyov4ko2etl" path="res://sprites/pictures/this_is_not_pancakes.png" id="18_3rgk2"]
+[ext_resource type="Material" uid="uid://d1ff373hk1gn7" path="res://materials/theme_painter_material_add_mode.tres" id="19_7tbxl"]
+[ext_resource type="Texture2D" uid="uid://bv45dqge8biu6" path="res://sprites/ui/shadow.tres" id="20_73ra2"]
 [ext_resource type="AudioStream" uid="uid://cw1tov6mght2a" path="res://sounds/major_puzzle_solved.ogg" id="20_vkvek"]
+
+[sub_resource type="Curve" id="Curve_t35eo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.7983606, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wx8q4"]
+curve = SubResource("Curve_t35eo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_53b2q"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(128, 128, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_min = 25.05
+initial_velocity_max = 25.05
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -22.470001
+radial_accel_max = -22.220001
+scale_min = 0.5
+scale_max = 0.59
+scale_curve = SubResource("CurveTexture_wx8q4")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pxi0b"]
 
@@ -31,6 +56,9 @@ transparent = true
 
 [node name="Control" parent="." index="0" unique_id=579132620]
 theme_override_constants/margin_bottom = 16
+
+[node name="Icon" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(1002331087) index="0" unique_id=1518425686]
+icon = ExtResource("2_73ra2")
 
 [node name="Title" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(332691484) index="1" unique_id=2015855131]
 text = "titles.sliding_puzzle"
@@ -62,7 +90,7 @@ self_modulate = Color(1, 1, 1, 0.44705883)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Control" type="Control" parent="Control/WindowContainer/Content/MarginContainer" index="1" unique_id=494199592 node_paths=PackedStringArray("restart_button", "full_image", "full_image_final", "solved_sound")]
+[node name="Control" type="Control" parent="Control/WindowContainer/Content/MarginContainer" index="1" unique_id=494199592 node_paths=PackedStringArray("restart_button", "full_image", "full_image_final", "solved_sound", "win_particles")]
 self_modulate = Color(1, 1, 1, 0.37254903)
 use_parent_material = true
 layout_mode = 2
@@ -74,11 +102,24 @@ full_image = NodePath("../TextureRect")
 full_image_final = NodePath("../TextureRect2")
 solved_sound = NodePath("../../../../../MajorPuzzleSolved")
 pictures = Array[Texture2D]([ExtResource("5_x7g4d"), ExtResource("5_82l8p"), ExtResource("7_vkvek"), ExtResource("8_bpku0"), ExtResource("9_7tbxl"), ExtResource("10_73ra2"), ExtResource("7_a8oyi"), ExtResource("8_2jfc4"), ExtResource("13_t35eo"), ExtResource("14_wx8q4"), ExtResource("15_53b2q"), ExtResource("16_tl0nd"), ExtResource("9_vtywc"), ExtResource("18_3rgk2")])
+win_particles = NodePath("../ParticlesAnchor/WinParticles")
 
 [node name="TextureRect2" type="TextureRect" parent="Control/WindowContainer/Content/MarginContainer" index="2" unique_id=1878034863]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 mouse_filter = 2
+
+[node name="ParticlesAnchor" type="Control" parent="Control/WindowContainer/Content/MarginContainer" index="3" unique_id=372192073]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="WinParticles" type="GPUParticles2D" parent="Control/WindowContainer/Content/MarginContainer/ParticlesAnchor" index="0" unique_id=827596058]
+texture_filter = 2
+material = ExtResource("19_7tbxl")
+emitting = false
+texture = ExtResource("20_73ra2")
+process_material = SubResource("ParticleProcessMaterial_53b2q")
 
 [node name="Label" type="Label" parent="." index="1" unique_id=1279217497]
 material = ExtResource("5_g840i")
@@ -89,9 +130,9 @@ anchor_bottom = 1.0
 offset_top = -17.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxEmpty_pxi0b")
-text = "All images were not created by me."
+text = "All pictures here were not made by me"
 horizontal_alignment = 1
 
 [node name="MajorPuzzleSolved" type="AudioStreamPlayer" parent="." index="2" unique_id=135451598]

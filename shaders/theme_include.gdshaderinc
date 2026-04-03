@@ -6,6 +6,7 @@ global uniform vec4 theme_color_button_base_pressed;
 global uniform vec4 theme_color_button_base_hover;
 global uniform vec4 theme_color_background;
 global uniform bool theme_rainbow;
+global uniform bool theme_enabled;
 const float mid1 = 0.649019608;
 const float mid2 = 0.494117647;
 const float mid3 = 0.323529412;
@@ -26,6 +27,10 @@ vec4 rainbow(vec4 c){
 }
 
 vec4 getThemeColor(vec4 originalColor) {
+	if (!theme_enabled){
+		return originalColor;
+	}
+	
 	float gray = (originalColor.x + originalColor.y + originalColor.z) / 3.0;
 	
 	if (abs(originalColor.x - originalColor.y) < colorComparisonAccuracy

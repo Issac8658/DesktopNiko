@@ -215,3 +215,7 @@ theme_rainbow={
 "type": "bool",
 "value": false
 }
+theme_enabled={
+"type": "bool",
+"value": true
+}
