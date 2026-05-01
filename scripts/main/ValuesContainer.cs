@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Godot;
 
@@ -44,7 +45,7 @@ public partial class ValuesContainer : Node
 
 
     #region >>Main
-	private ulong _clicks = 0;
+	private UInt128 _clicks = 0;
 	private string _verison;
 	#endregion
 
@@ -82,12 +83,12 @@ public partial class ValuesContainer : Node
 
 	#region >Main
 	public uint TotalTime = 0;
-	public ulong Clicks
+	public UInt128 Clicks
 	{
 		get => _clicks;
 		set
 		{
-			EmitSignal("Clicked", value - _clicks);
+			EmitSignal("Clicked", (ulong)(value - _clicks));
 			_clicks = value;
 		}
 	}

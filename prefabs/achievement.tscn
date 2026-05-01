@@ -25,9 +25,11 @@ theme_override_constants/separation = 0
 
 [node name="AchievementName" type="Label" parent="TextInfo" unique_id=1283329031]
 use_parent_material = true
+custom_minimum_size = Vector2(200, 20)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Achievement text"
+autowrap_mode = 3
 
 [node name="HSeparator" type="HSeparator" parent="TextInfo" unique_id=1211798942]
 use_parent_material = true

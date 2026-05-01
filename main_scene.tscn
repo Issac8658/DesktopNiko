@@ -18,10 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://biwmud5wjovh4" path="res://prefabs/skin_viewer/skin_viewer.tscn" id="10_uush8"]
 [ext_resource type="Texture2D" uid="uid://qsweuhlblj1" path="res://icon.png" id="10_wr18j"]
 [ext_resource type="Script" uid="uid://cqdig7ltehghd" path="res://scripts/windows/components/status_icon_controller.gd" id="11_qwutr"]
-[ext_resource type="Script" uid="uid://chdf6qgvok3dk" path="res://scripts/events/events_manager.gd" id="12_82rj2"]
 [ext_resource type="AudioStream" uid="uid://dhwgvb6t1ulx" path="res://sounds/twm_notif2.wav" id="13_1n88h"]
-[ext_resource type="Script" uid="uid://b1axu2q55ml5w" path="res://scripts/events/event_resource.gd" id="14_xevt3"]
+[ext_resource type="Script" uid="uid://c174vj133vpsb" path="res://scripts/events/EventsManager.cs" id="14_x3j81"]
 [ext_resource type="Resource" uid="uid://xa5i42fm2p37" path="res://events/packed_events/pancake_machine_event.tres" id="15_ix15y"]
+[ext_resource type="Script" uid="uid://b8e6xm3c4x2sj" path="res://scripts/events/PackedEvent.cs" id="15_x3j81"]
 [ext_resource type="Texture2D" uid="uid://b55s8l68phsqe" path="res://niko/niko_default/normal.png" id="16_7th4q"]
 [ext_resource type="Texture2D" uid="uid://cmck41qjd7h12" path="res://sprites/icons/customize.png" id="16_kv3aw"]
 [ext_resource type="Resource" uid="uid://brffaerkti5xg" path="res://events/packed_events/pancake_alert_event.tres" id="16_l3hih"]
@@ -257,21 +257,6 @@ func _ready() -> void:
 "
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_82rj2"]
-
-[sub_resource type="GDScript" id="GDScript_ubkm4"]
-resource_name = "ClicksCount"
-script/source = "extends Label
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	update(0)
-	ValuesContainer.Clicked.connect(update)
-
-
-func update(_difference):
-	text = str(ValuesContainer.Clicks)
-"
 
 [sub_resource type="GDScript" id="GDScript_l76vu"]
 resource_name = "EventsCount"
@@ -642,8 +627,8 @@ stream = ExtResource("44_euc68")
 volume_db = -5.0
 
 [node name="Events" type="Node" parent="." unique_id=1879553896]
-script = ExtResource("12_82rj2")
-events = Array[ExtResource("14_xevt3")]([ExtResource("15_ix15y"), ExtResource("16_l3hih"), ExtResource("17_xevt3"), ExtResource("19_x3j81"), ExtResource("20_7dyhx")])
+script = ExtResource("14_x3j81")
+Events = Array[ExtResource("15_x3j81")]([ExtResource("20_7dyhx"), ExtResource("16_l3hih"), ExtResource("15_ix15y"), ExtResource("19_x3j81"), ExtResource("17_xevt3")])
 
 [node name="Games" type="Node" parent="." unique_id=2139058686]
 
@@ -2835,7 +2820,7 @@ size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxEmpty_82rj2")
 text = "0"
 horizontal_alignment = 2
-script = SubResource("GDScript_ubkm4")
+script = ExtResource("116_dftep")
 
 [node name="Events" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics" unique_id=1172672948]
 use_parent_material = true
@@ -3876,7 +3861,7 @@ frame_progress = 0.30546513
 
 [node name="AchievementsWindow" parent="." unique_id=1722617301 instance=ExtResource("38_q4750")]
 initial_position = 4
-size = Vector2i(400, 560)
+size = Vector2i(560, 560)
 visible = false
 min_size = Vector2i(202, 100)
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://4baxjml3wpgo"]
 
-[ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/events/event.gd" id="1_nodym"]
+[ext_resource type="Script" uid="uid://2hiu1do36oxf" path="res://scripts/events/Event.cs" id="1_c55ud"]
 [ext_resource type="AudioStream" uid="uid://fwhbmmo7fr0n" path="res://sounds/rb_cry.mp3" id="2_kivn3"]
 [ext_resource type="AudioStream" uid="uid://dq1jrk427a2q3" path="res://sounds/glitches/glitch2.wav" id="3_4vcw5"]
 [ext_resource type="AudioStream" uid="uid://r3rwi76obhmu" path="res://sounds/rb_eat.mp3" id="3_o5iab"]
@@ -21,7 +21,6 @@ signal called_to_clear()
 @export var glitch_sound : AudioStreamPlayer
 @export var eat_sound : AudioStreamPlayer
 @export var timer : Timer
-@onready var event : Event = get_parent()
 
 var eventing = false
 var _anim_state = 0;
@@ -129,10 +128,9 @@ func _process(delta: float) -> void:
 shader = ExtResource("7_c7ay0")
 shader_parameter/offset_power = 0.0
 
-[node name="PancakeAlert" type="Node" unique_id=313695715 node_paths=PackedStringArray("event_controller")]
-script = ExtResource("1_nodym")
-event_controller = NodePath("EventController")
-metadata/_custom_type_script = "uid://73yfcqn4tt7s"
+[node name="PancakeAlert" type="Node" unique_id=313695715 node_paths=PackedStringArray("EventController")]
+script = ExtResource("1_c55ud")
+EventController = NodePath("EventController")
 
 [node name="EventController" type="Node" parent="." unique_id=611419158 node_paths=PackedStringArray("popup", "glitch", "cry_sound", "glitch_sound", "eat_sound", "timer")]
 script = SubResource("GDScript_le437")
@@ -159,10 +157,11 @@ volume_db = -10.0
 stream = ExtResource("3_4vcw5")
 
 [node name="PancakeQuest" parent="." unique_id=76261233 instance=ExtResource("4_mhhk1")]
-size = Vector2i(328, 320)
+size = Vector2i(328, 334)
 visible = false
 exclusive = true
 popup_window = false
+ignore_on_top_settings = true
 
 [node name="Icon" parent="PancakeQuest/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(76261233, 1002331087) index="0" unique_id=1518425686]
 icon = ExtResource("5_nm1hw")
@@ -170,7 +169,10 @@ icon = ExtResource("5_nm1hw")
 [node name="Title" parent="PancakeQuest/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(76261233, 332691484) index="1" unique_id=2015855131]
 text = "other.events.pancakes_alert.title"
 
-[node name="Control" type="Control" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" parent_id_path=PackedInt32Array(76261233, 1750489675) index="0" unique_id=1855135970]
+[node name="VBoxContainer" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin" parent_id_path=PackedInt32Array(76261233, 684682523) index="0" unique_id=1750489675]
+theme_override_constants/separation = -3
+
+[node name="Control" type="Control" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="0" unique_id=1855135970]
 custom_minimum_size = Vector2(0, 168)
 layout_mode = 2
 
@@ -189,11 +191,15 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_3kxgl")
 
-[node name="Quest" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" parent_id_path=PackedInt32Array(76261233, 1750489675) index="1" unique_id=1354308728]
+[node name="Quest" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="1" unique_id=1354308728]
 text = "other.events.pancakes_alert.message"
 
-[node name="Control2" type="Control" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" parent_id_path=PackedInt32Array(76261233, 1750489675) index="3" unique_id=1731252218]
-custom_minimum_size = Vector2(0, 4)
+[node name="Control3" type="Control" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="2" unique_id=1621858708]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="PancakeQuest/Control/WindowContainer/Content/PopupMargin/VBoxContainer" index="4" unique_id=1731252218]
+custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 
 [node name="GlitchW" type="Window" parent="." unique_id=882526535 node_paths=PackedStringArray("texture_rect")]

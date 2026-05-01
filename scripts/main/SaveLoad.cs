@@ -16,7 +16,6 @@ public partial class SaveLoad : Node
         {"Main", new()
             {
                 {"TotalTime", "TotalTime"},
-                {"Clicks", "Clicks"},
                 {"Version", "SaveVersion"}
             }
         },
@@ -120,9 +119,10 @@ public partial class SaveLoad : Node
             if (_achievementsController.IsAchievementTaked(achievement.Id))
                 TakedAchievements.Add(achievement.Id);
         saveFile.SetValue("Main", "TakedAchievements", TakedAchievements.ToArray());
-        saveFile.SetValue("TWM", "MasterVolume", AudioServer.GetBusVolumeLinear(0)); 
-        saveFile.SetValue("TWM", "MeowVolume", AudioServer.GetBusVolumeLinear(1)); 
+        saveFile.SetValue("TWM", "MasterVolume", AudioServer.GetBusVolumeLinear(0));
+        saveFile.SetValue("TWM", "MeowVolume", AudioServer.GetBusVolumeLinear(1));
         saveFile.SetValue("TWM", "MusicVolume", AudioServer.GetBusVolumeLinear(2));
+        saveFile.SetValue("Main", "Clicks", _valuesContainer.Clicks.ToString());
 
         saveFile.Save(SAVE_FILE_PATH);
         GD.Print("Niko memories saved");
@@ -200,6 +200,9 @@ public partial class SaveLoad : Node
                     _achievementsController.TakeAchievement(achievementId, false);
                 }
             }
+            if (saveFile.HasSectionKey("Main", "Clicks"))
+                if (UInt128.TryParse(saveFile.GetValue("Main", "Clicks").AsString(), out UInt128 result))
+                    _valuesContainer.Clicks = result;
             AudioServer.SetBusVolumeLinear(0, (float)saveFile.GetValue("TWM", "MasterVolume", 1));
             AudioServer.SetBusVolumeLinear(1, (float)saveFile.GetValue("TWM", "MeowVolume", 1));
             AudioServer.SetBusVolumeLinear(2, (float)saveFile.GetValue("TWM", "MusicVolume", 1));

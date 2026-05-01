@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cykd86boymkkf"]
 
-[ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/events/event.gd" id="1_4neqe"]
+[ext_resource type="Script" uid="uid://2hiu1do36oxf" path="res://scripts/events/Event.cs" id="1_7tr5k"]
 [ext_resource type="AudioStream" uid="uid://pf6m77hcecy8" path="res://sounds/tennis_shot.mp3" id="2_4kq60"]
 [ext_resource type="AudioStream" uid="uid://yx8u66qbbw5e" path="res://sounds/tennis_shot_2.mp3" id="3_64cqo"]
 [ext_resource type="AudioStream" uid="uid://bryfuuvpcrhl0" path="res://sounds/tennis_result_song.ogg" id="4_52hgy"]
@@ -244,10 +244,9 @@ fill_to = Vector2(0.5, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d2fhx"]
 
-[node name="Tennis" type="Node" unique_id=1498491248 node_paths=PackedStringArray("event_controller")]
-script = ExtResource("1_4neqe")
-event_controller = NodePath("EventController")
-metadata/_custom_type_script = "uid://73yfcqn4tt7s"
+[node name="Tennis" type="Node" unique_id=1498491248 node_paths=PackedStringArray("EventController")]
+script = ExtResource("1_7tr5k")
+EventController = NodePath("EventController")
 
 [node name="EventController" type="Node" parent="." unique_id=852286869 node_paths=PackedStringArray("window", "sound_player_shot", "sound_niko_shot", "sound_tennis_music", "sound_lose", "sound_win", "screen_main_menu", "screen_game", "screen_lose", "screen_win", "tennis_text", "htp_text", "points_label", "play_button", "htp_button", "exit_button", "win_button", "lose_button", "player_raket", "niko_raket", "tennis_ball", "playing_niko_rect", "niko_debug", "player_debug", "ball_debug")]
 script = SubResource("GDScript_ao3bx")

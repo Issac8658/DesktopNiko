@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bamb7oq8lwi6f"]
 
-[ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/events/event.gd" id="1_le8pu"]
+[ext_resource type="Script" uid="uid://2hiu1do36oxf" path="res://scripts/events/Event.cs" id="1_d6ilm"]
 [ext_resource type="AudioStream" uid="uid://bumcwrlk1covl" path="res://sounds/machine_drop.wav" id="2_qnufv"]
 [ext_resource type="AudioStream" uid="uid://bmaqut0akruy7" path="res://sounds/machine_hide.wav" id="3_4ujhy"]
 [ext_resource type="ArrayMesh" uid="uid://423hrjncruup" path="res://models/pancake_machine.obj" id="3_ufmvg"]
@@ -493,10 +493,9 @@ damping_max = 0.501
 scale_min = 2.0
 scale_max = 2.0
 
-[node name="PancakeMachine" type="Node" unique_id=458549214 node_paths=PackedStringArray("event_controller")]
-script = ExtResource("1_le8pu")
-event_controller = NodePath("EventController")
-metadata/_custom_type_script = "uid://73yfcqn4tt7s"
+[node name="PancakeMachine" type="Node" unique_id=458549214 node_paths=PackedStringArray("EventController")]
+script = ExtResource("1_d6ilm")
+EventController = NodePath("EventController")
 
 [node name="EventController" type="Node" parent="." unique_id=1496192551 node_paths=PackedStringArray("animator", "container", "viewport_container", "window", "enter_sound", "passcode_show_button", "passcode_container", "passcode_parts_contrainers", "cancel_button")]
 script = SubResource("GDScript_qnufv")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://sidn4pfwxi5w"]
 
-[ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/events/event.gd" id="1_dufes"]
+[ext_resource type="Script" uid="uid://2hiu1do36oxf" path="res://scripts/events/Event.cs" id="1_dufes"]
 
 [sub_resource type="GDScript" id="GDScript_le437"]
 resource_name = "event_controller"
@@ -23,10 +23,9 @@ func do_event() -> void:
 	
 "
 
-[node name="Meow" type="Node" unique_id=313695715 node_paths=PackedStringArray("event_controller")]
+[node name="Meow" type="Node" unique_id=313695715 node_paths=PackedStringArray("EventController")]
 script = ExtResource("1_dufes")
-event_controller = NodePath("EventController")
-metadata/_custom_type_script = "uid://73yfcqn4tt7s"
+EventController = NodePath("EventController")
 
 [node name="EventController" type="Node" parent="." unique_id=611419158]
 script = SubResource("GDScript_le437")

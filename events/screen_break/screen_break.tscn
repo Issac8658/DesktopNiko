@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://26xnfokg4q28"]
 
-[ext_resource type="Script" uid="uid://73yfcqn4tt7s" path="res://scripts/events/event.gd" id="1_k4dh2"]
+[ext_resource type="Script" uid="uid://2hiu1do36oxf" path="res://scripts/events/Event.cs" id="1_8rph2"]
 [ext_resource type="AudioStream" uid="uid://bimjmbhqtl8ik" path="res://sounds/glitches/glitch1.wav" id="2_o2b7h"]
 [ext_resource type="AudioStream" uid="uid://d2fd3ber2jevi" path="res://sounds/glitches/glitch_glitched1.ogg" id="3_tweoe"]
 [ext_resource type="AudioStream" uid="uid://djil4phnmwg64" path="res://sounds/glitches/glitch_glitched2.ogg" id="4_hgw02"]
@@ -218,10 +218,9 @@ color_initial_ramp = SubResource("GradientTexture1D_h4kja")
 [sub_resource type="ViewportTexture" id="ViewportTexture_uwr32"]
 viewport_path = NodePath("BlockPuzzle/SubViewportContainer/SubViewport")
 
-[node name="ScreenBreak" type="Node" unique_id=162000058 node_paths=PackedStringArray("event_controller")]
-script = ExtResource("1_k4dh2")
-event_controller = NodePath("EventController")
-metadata/_custom_type_script = "uid://73yfcqn4tt7s"
+[node name="ScreenBreak" type="Node" unique_id=162000058 node_paths=PackedStringArray("EventController")]
+script = ExtResource("1_8rph2")
+EventController = NodePath("EventController")
 
 [node name="EventController" type="Node" parent="." unique_id=1292803865 node_paths=PackedStringArray("squares_death", "glitch_sound", "hex_puzzle_window", "hex_bits", "hex_target_label", "hex_result_label", "hex_result2_label", "hex_output", "hex_squares_emmiter", "block_puzzle_window", "block_show_sound", "block_press_sound", "blocks_container", "blocks_fake_container", "blocks_squares_emmiter")]
 script = SubResource("GDScript_wdcdh")

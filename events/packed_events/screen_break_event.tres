@@ -1,11 +1,10 @@
 [gd_resource type="Resource" script_class="PackedEvent" format=3 uid="uid://dxxu6pjl2rmuo"]
 
 [ext_resource type="PackedScene" uid="uid://26xnfokg4q28" path="res://events/screen_break/screen_break.tscn" id="1_l6gkj"]
-[ext_resource type="Script" uid="uid://b1axu2q55ml5w" path="res://scripts/events/event_resource.gd" id="2_d6k5l"]
+[ext_resource type="Script" uid="uid://b8e6xm3c4x2sj" path="res://scripts/events/PackedEvent.cs" id="2_l6gkj"]
 
 [resource]
-script = ExtResource("2_d6k5l")
-max_cps = 10
-display_name = "Screen break"
-linked_scene = ExtResource("1_l6gkj")
-metadata/_custom_type_script = "uid://b1axu2q55ml5w"
+script = ExtResource("2_l6gkj")
+MaxCPS = 10
+DisplayName = "Squares"
+LinkedScene = ExtResource("1_l6gkj")
