@@ -38,9 +38,12 @@ public partial class NikoClickablePolygon : Node2D
 
 	public bool MouseInClickableArea()
 	{
+		if (_valuesContainer.GamingModeEnabled)
+			return false;
+			
 		var Polygons = ClickablePolygon.GetOverlappingAreas();
 		if (Polygons.Contains(MousePolygon))
-			return true && !_valuesContainer.GamingModeEnabled;
+			return true;
 
 		Vector2 MousePositionOnRect = MousePositionRelative - (Vector2I)NikoSprite.Position;
 		Image NikoImage = NikoSprite.Texture.GetImage();
