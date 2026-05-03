@@ -4062,20 +4062,17 @@ icon = ExtResource("10_wr18j")
 script = ExtResource("88_7y85w")
 styled_menu = NodePath("../IndicatorPopup")
 
-[node name="Area" type="Node2D" parent="." unique_id=1077347290 node_paths=PackedStringArray("ClickablePolygon", "MousePolygon", "Polygon")]
+[node name="Area" type="Node2D" parent="." unique_id=1077347290 node_paths=PackedStringArray("ClickablePolygon", "MousePolygon", "NikoSprite")]
 script = ExtResource("114_8jixl")
 ClickablePolygon = NodePath("ClickableArea")
 MousePolygon = NodePath("MouseArea")
-Polygon = NodePath("ClickableArea/CollisionPolygon2D")
+NikoSprite = NodePath("../NikoBase/Niko")
 
 [node name="ClickableArea" type="Area2D" parent="Area" unique_id=242231655]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area/ClickableArea" unique_id=1917805216]
 position = Vector2(0, 121)
 shape = SubResource("WorldBoundaryShape2D_uush8")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area/ClickableArea" unique_id=1673148127]
-polygon = PackedVector2Array(36, 10, 30, 16, 22, 32, 14, 50, 6, 54, 0, 60, 0, 64, 4, 68, 18, 72, 21, 77, 24, 72, 34, 104, 32, 110, 41, 113, 38, 120, 104, 120, 104, 109, 97, 89, 104, 70, 112, 70, 120, 64, 120, 60, 112, 53, 114, 38, 114, 24, 112, 14, 108, 10, 104, 10, 98, 14, 48, 14, 42.07, 10)
 
 [node name="MouseArea" type="Area2D" parent="Area" unique_id=294532626]
 monitoring = false
