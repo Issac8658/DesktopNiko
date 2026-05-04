@@ -62,8 +62,10 @@
 [ext_resource type="StyleBox" uid="uid://elx3eo2ima3" path="res://themes/themed/yellow_file_hover.stylebox" id="42_3wiol"]
 [ext_resource type="Script" uid="uid://8rlra1llxmsn" path="res://scripts/windows/functional_windows/settings/mouse_sound_player.gd" id="42_ek5vw"]
 [ext_resource type="PackedScene" uid="uid://b1ypbdeyjoksp" path="res://prefabs/state_icon.tscn" id="42_sp30j"]
+[ext_resource type="PackedScene" uid="uid://blfp7l6sy700u" path="res://games/sliding_puzzle/sliding_puzzle.tscn" id="42_synyf"]
 [ext_resource type="ColorPalette" uid="uid://bd2ulhb7vthfq" path="res://themes/twm_theme/pink_color_palette.tres" id="43_gv8l5"]
 [ext_resource type="AudioStream" uid="uid://c4ctukqwa2omc" path="res://sounds/twm_mouse_click.wav" id="43_jip8q"]
+[ext_resource type="Texture2D" uid="uid://dtxlnn2la7pmg" path="res://sprites/icons/oneshot.png" id="44_1ke4k"]
 [ext_resource type="ColorPalette" uid="uid://3sstnvg6e56a" path="res://themes/twm_theme/white_color_palette.tres" id="44_8jixl"]
 [ext_resource type="AudioStream" uid="uid://cib02grlrlcd0" path="res://sounds/twm_mouse_unclick.wav" id="44_euc68"]
 [ext_resource type="StyleBox" uid="uid://bxcb1cxo17xnf" path="res://themes/themed/red_file_focus.stylebox" id="45_8quq7"]
@@ -1390,7 +1392,7 @@ metadata/_recursiveItemParentMaterial = true
 use_parent_material = true
 layout_mode = 2
 script = ExtResource("27_im3ns")
-games = Array[PackedScene]([null, null, ExtResource("40_gv8l5")])
+games = Array[PackedScene]([null, null, ExtResource("40_gv8l5"), ExtResource("42_synyf")])
 games_node = NodePath("../../../../../../../../Games")
 
 [node name="Pancake" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=486940095]
@@ -1595,6 +1597,74 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Label" type="Label" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/OneShotFunkin/ButtonMargin/ButtonContent" unique_id=1753133638]
+use_parent_material = true
+custom_minimum_size = Vector2(16, 24)
+layout_mode = 2
+text = "OneShot Funkin'"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="SlidingPuzzle" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=904055377]
+use_parent_material = true
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Button" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/SlidingPuzzle" unique_id=1003435991]
+use_parent_material = true
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"FlatButton"
+autowrap_mode = 2
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="ButtonMargin" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/SlidingPuzzle" unique_id=900779653]
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ButtonContent" type="VBoxContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/SlidingPuzzle/ButtonMargin" unique_id=1881904554]
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Icon" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/SlidingPuzzle/ButtonMargin/ButtonContent" unique_id=1488629395]
+material = ExtResource("41_iylel")
+custom_minimum_size = Vector2(64, 66)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("44_1ke4k")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ShortcutIcon" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/SlidingPuzzle/ButtonMargin/ButtonContent/Icon" unique_id=1898545647]
+visible = false
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("23_30vx0")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/SlidingPuzzle/ButtonMargin/ButtonContent" unique_id=793254676]
 use_parent_material = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
@@ -4095,6 +4165,7 @@ SleepParticles = NodePath("GPUParticles2D")
 texture_filter = 1
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+size_flags_horizontal = 0
 mouse_default_cursor_shape = 2
 texture = ExtResource("16_7th4q")
 stretch_mode = 4

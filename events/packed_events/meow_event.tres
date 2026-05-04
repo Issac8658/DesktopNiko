@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_se7ex")
+SpawnChance = 0.01
 MaxCPS = 10
 DisplayName = "Meow"
 LinkedScene = ExtResource("1_gq8t7")

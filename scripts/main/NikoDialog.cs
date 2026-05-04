@@ -49,6 +49,8 @@ public partial class NikoDialog : Window
 		};
 	}
 
+	#region Public Funtions
+
 	public void ShowDialog(Vector2I TargetDialogSize, string Text = "Nothing beats a jet2holidays and right now you can save fifty pounds per person", string[] Buttons = null, float SymbolShowTime = 0.05f)
 	{
 		Size = new (84, 112);
@@ -67,7 +69,7 @@ public partial class NikoDialog : Window
 		DialogLabel.VisibleCharacters = 0;
 		DialogLabel.Text = "";
 		Size = new(114, 114);
-		Position = GetNikoPosition();
+		Position = StaticFunctions.GetNikoPosition();
 		DialogSize = TargetDialogSize;
 		DialogLabel.Text = Text;
 		Visible = true;
@@ -113,6 +115,10 @@ public partial class NikoDialog : Window
 		TextShowTimer.WaitTime = SymbolShowTime;
 		TextShowTimer.Start();
 	}
+
+	#endregion
+	
+	#region Private Functions
 
 	private void ShowNextSymbol()
 	{
@@ -167,10 +173,9 @@ public partial class NikoDialog : Window
 		if (CanSkip) 
 			Hint.Visible = true;
 	}
-
-	//------------------------------------------------------------------------------------------------------
-
-	// Window Move Animation Parameters
+	#endregion
+	
+	#region Dialog Moving
 	[Export]
 	public Texture2D[] ArrowsVariants;
 	[ExportGroup("Upper Panel", "Upper")]
@@ -204,12 +209,12 @@ public partial class NikoDialog : Window
 	{
 		if (Visible)
 		{
-			Size = Lerp(Size, DialogSize, 0.2f);
+			Size = StaticFunctions.V2ILerp(Size, DialogSize, 0.2f);
 
-			Vector2I NikoPos = GetNikoPosition();
-			Position = Lerp(Position, GetFreePos(NikoPos) + NikoPos, 0.1f);
+			Vector2I NikoPos = StaticFunctions.GetNikoPosition();
+			Position = StaticFunctions.V2ILerp(Position, GetFreePos(NikoPos) + NikoPos, 0.1f);
 
-			NikoPos += DisplayServer.WindowGetSize(MainWindowId) / 2;
+			NikoPos += (Vector2I)StaticFunctions.GetNikoSize() / 2;
 			Vector2I SizeDiv2 = Size / 2;
 			if (NikoPos.X < Position.X + SizeDiv2.X)
 			{
@@ -271,13 +276,5 @@ public partial class NikoDialog : Window
 		return PositionTopLeft - Size;
 	}
 
-	private static Vector2I Lerp(Vector2I a, Vector2I b, float t)
-	{
-		return (Vector2I)(a * new Vector2(1 - t, 1 - t) + new Vector2(t, t) * b);
-	}
-	
-	private static Vector2I GetNikoPosition()
-	{
-		return DisplayServer.WindowGetPosition(MainWindowId);
-	}
+	#endregion
 }
