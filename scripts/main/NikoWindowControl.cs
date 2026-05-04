@@ -29,10 +29,8 @@ public partial class NikoWindowControl : Control
 		_valuesContainer = GetNode<ValuesContainer>("/root/ValuesContainer");
 		_skinManager = GetNode<NikoSkinManager>("/root/NikoSkinManager");
 		_windowExtantions = GetNode<WindowExstantions>("/root/WindowExstantions");
-		//MainWindow.WrapControls = true;
 
 		_valuesContainer.NikoScaleChanged += (NikoScale) => UpdateScale();
-
 		ItemRectChanged += () => _mainWindow.Size = (Vector2I)Size;
 
 		NikoClickControl.GuiInput += Event =>
@@ -78,5 +76,6 @@ public partial class NikoWindowControl : Control
 		SleepParticles.Scale = AreasNode.Scale = new(scale, scale);
 		_mainWindow.Size = new((int)Size.X, (int)Size.Y);
 		NikoSpriteNode.CustomMinimumSize = NikoSpriteNode.Texture.GetSize() * scale * _skinManager.GetCurrentSkinBaseScale();
+		Size = Vector2.Zero;
 	}
 }

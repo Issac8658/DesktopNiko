@@ -40,7 +40,7 @@ public partial class NikoClickablePolygon : Node2D
 	{
 		if (_valuesContainer.GamingModeEnabled)
 			return false;
-			
+
 		var Polygons = ClickablePolygon.GetOverlappingAreas();
 		if (Polygons.Contains(MousePolygon))
 			return true;
@@ -53,8 +53,12 @@ public partial class NikoClickablePolygon : Node2D
 		 && MousePositionOnImage.Y >= 0
 		 && MousePositionOnImage.X < ImageSize.X
 		 && MousePositionOnImage.Y < ImageSize.Y)
+		{
+		 	if (NikoSprite.FlipH)
+				MousePositionOnImage = new (ImageSize.X - MousePositionOnImage.X - 1, MousePositionOnImage.Y);
 			if (NikoImage.GetPixelv((Vector2I)MousePositionOnImage).A > 0.5f)
 				return true;
+		}
 		
 		return false;
 	}

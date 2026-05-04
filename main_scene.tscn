@@ -485,7 +485,7 @@ _data = {
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uush8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gv8l5"]
-radius = 1.4142135
+radius = 1.0
 
 [sub_resource type="Animation" id="Animation_u0ygc"]
 length = 2.0
@@ -4071,7 +4071,7 @@ NikoSprite = NodePath("../NikoBase/Niko")
 [node name="ClickableArea" type="Area2D" parent="Area" unique_id=242231655]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area/ClickableArea" unique_id=1917805216]
-position = Vector2(0, 121)
+position = Vector2(0, 120)
 shape = SubResource("WorldBoundaryShape2D_uush8")
 
 [node name="MouseArea" type="Area2D" parent="Area" unique_id=294532626]
