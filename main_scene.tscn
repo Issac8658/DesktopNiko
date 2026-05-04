@@ -1668,7 +1668,7 @@ expand_icon = true
 use_parent_material = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
-text = "OneShot Funkin'"
+text = "games.sliding_puzzle"
 horizontal_alignment = 1
 autowrap_mode = 3
 
