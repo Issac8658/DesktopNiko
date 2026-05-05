@@ -2881,7 +2881,7 @@ text = "settings.general.statistics.clicks"
 [node name="Dots" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Clicks" unique_id=363847937]
 use_parent_material = true
 layout_mode = 2
-text = ":"
+text = ": "
 
 [node name="Count" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/Clicks" unique_id=2131179962]
 use_parent_material = true
