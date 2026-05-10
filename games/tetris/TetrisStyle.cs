@@ -66,7 +66,7 @@ public partial class TetrisStyle : Control
 	{
 		if (_styleTimeOut > 0 || CurrentStyle > 0)
 		{
-			_styleTimeOut -= delta / 10 * TimeoutSpeedMultipliers[CurrentStyle];
+			_styleTimeOut -= Controller.CurrentState == TetrisGameController.GameStates.Playing ? delta / 10 * TimeoutSpeedMultipliers[CurrentStyle] : 0;
 			if (_styleTimeOut <= 0)
 			{
 				CurrentStyle -= 1;

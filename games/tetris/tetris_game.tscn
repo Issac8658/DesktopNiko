@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="1_r7lrb"]
 [ext_resource type="Texture2D" uid="uid://dxttgd6e0px18" path="res://sprites/icons/quit.png" id="1_ukql8"]
+[ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_painter_material.tres" id="1_uqggt"]
 [ext_resource type="Texture2D" uid="uid://bmkfjsjqgrlxn" path="res://sprites/icons/restart.png" id="2_r7lrb"]
 [ext_resource type="Texture2D" uid="uid://barnq7jddv7a2" path="res://sprites/icons/pause.png" id="3_32x37"]
 [ext_resource type="SpriteFrames" uid="uid://cqpfo8p0wgo1h" path="res://sprites/characters/dancing_niko.tres" id="4_uqggt"]
@@ -201,11 +202,13 @@ size = Vector2(180, 40)
 radius = 1.4142135
 
 [node name="GlobalAnchor" type="Control" unique_id=144354466]
+material = ExtResource("1_uqggt")
 layout_mode = 3
 anchors_preset = 0
 theme = ExtResource("1_r7lrb")
 
 [node name="Statistics" type="HBoxContainer" parent="." unique_id=333237421]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -222,6 +225,7 @@ pivot_offset = Vector2(420, 400)
 theme_override_constants/separation = 0
 
 [node name="Control2" type="MarginContainer" parent="Statistics" unique_id=2084993392]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 0
@@ -230,67 +234,80 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Statistics/Control2" unique_id=1742660163]
+use_parent_material = true
 layout_mode = 2
 
 [node name="Panel6" type="PanelContainer" parent="Statistics/Control2/VBoxContainer" unique_id=337943691]
 self_modulate = Color(1, 1, 1, 0.6745098)
+use_parent_material = true
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Statistics/Control2/VBoxContainer/Panel6" unique_id=1327959104]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Statistics/Control2/VBoxContainer/Panel6/VBoxContainer" unique_id=341203673]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="Control" type="Control" parent="Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer" unique_id=1975746328]
+use_parent_material = true
 custom_minimum_size = Vector2(3, 0)
 layout_mode = 2
 
 [node name="ScoreText" type="Label" parent="Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer" unique_id=838505315]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cnhj0")
 text = "SCORE"
 
 [node name="Dots" type="Label" parent="Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer" unique_id=17955137]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cnhj0")
 text = ": "
 
 [node name="Score" type="Label" parent="Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer" unique_id=814412140]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cnhj0")
 text = "0"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Statistics/Control2/VBoxContainer/Panel6/VBoxContainer" unique_id=1065216162]
+use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="Control2" type="Control" parent="Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer2" unique_id=1583828577]
+use_parent_material = true
 custom_minimum_size = Vector2(3, 0)
 layout_mode = 2
 
 [node name="LinesText" type="Label" parent="Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer2" unique_id=1057916972]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cnhj0")
 text = "LINES"
 
 [node name="Dots" type="Label" parent="Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer2" unique_id=227844569]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cnhj0")
 text = ": "
 
 [node name="Lines" type="Label" parent="Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer2" unique_id=1897624071]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cnhj0")
@@ -298,17 +315,20 @@ text = "0"
 
 [node name="Panel5" type="Panel" parent="Statistics/Control2/VBoxContainer/Panel6/VBoxContainer" unique_id=1960140225]
 visible = false
+use_parent_material = true
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Statistics/Control2/VBoxContainer" unique_id=245589805]
+use_parent_material = true
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="Exit" type="Button" parent="Statistics/Control2/VBoxContainer/HBoxContainer" unique_id=1765265864]
+use_parent_material = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -316,6 +336,7 @@ focus_mode = 0
 
 [node name="Button" type="Button" parent="Statistics/Control2/VBoxContainer/HBoxContainer/Exit" unique_id=78602113]
 texture_filter = 1
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -337,6 +358,7 @@ icon = ExtResource("1_ukql8")
 expand_icon = true
 
 [node name="Restart" type="Button" parent="Statistics/Control2/VBoxContainer/HBoxContainer" unique_id=994917970]
+use_parent_material = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -344,6 +366,7 @@ focus_mode = 0
 
 [node name="Button" type="Button" parent="Statistics/Control2/VBoxContainer/HBoxContainer/Restart" unique_id=742210165]
 texture_filter = 1
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -365,6 +388,7 @@ icon = ExtResource("2_r7lrb")
 expand_icon = true
 
 [node name="Pause" type="Button" parent="Statistics/Control2/VBoxContainer/HBoxContainer" unique_id=1785632309]
+use_parent_material = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -372,6 +396,7 @@ focus_mode = 0
 
 [node name="Button" type="Button" parent="Statistics/Control2/VBoxContainer/HBoxContainer/Pause" unique_id=2114286178]
 texture_filter = 1
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -393,6 +418,7 @@ icon = ExtResource("3_32x37")
 expand_icon = true
 
 [node name="Control" type="Control" parent="Statistics/Control2/VBoxContainer" unique_id=736682494]
+use_parent_material = true
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -400,6 +426,7 @@ size_flags_vertical = 3
 
 [node name="Panel7" type="PanelContainer" parent="Statistics/Control2/VBoxContainer/Control" unique_id=523724886]
 self_modulate = Color(1, 1, 1, 0.6745098)
+use_parent_material = true
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -411,19 +438,23 @@ size_flags_horizontal = 4
 size_flags_vertical = 3
 
 [node name="Style" type="VBoxContainer" parent="Statistics/Control2/VBoxContainer/Control/Panel7" unique_id=797637398 node_paths=PackedStringArray("StyleLabel", "StyleTimeOutFiller")]
+use_parent_material = true
 layout_mode = 2
 script = ExtResource("5_32x37")
 StyleLabel = NodePath("StyleTextContainer/StyleText")
 StyleTimeOutFiller = NodePath("StyleTimeOut/StyleTimeOutFiller")
 
 [node name="StyleHint" type="Label" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style" unique_id=1979414707]
+use_parent_material = true
 layout_mode = 2
 text = "Style"
 
 [node name="StyleTextContainer" type="PanelContainer" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style" unique_id=837912184]
+use_parent_material = true
 layout_mode = 2
 
 [node name="StyleText" type="RichTextLabel" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style/StyleTextContainer" unique_id=1570248816]
+use_parent_material = true
 layout_mode = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/normal_font_size = 32
@@ -437,10 +468,12 @@ vertical_alignment = 1
 
 [node name="StyleTimeOut" type="Panel" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style" unique_id=544977895]
 self_modulate = Color(0.375, 0.375, 0.375, 1)
+use_parent_material = true
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
 [node name="StyleTimeOutFiller" type="Panel" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style/StyleTimeOut" unique_id=1180536433]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
@@ -454,20 +487,24 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_32x37")
 
 [node name="PanelContainer2" type="PanelContainer" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style/PanelContainer" unique_id=1604755011]
+material = ExtResource("1_uqggt")
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style/PanelContainer/PanelContainer2" unique_id=499307196]
+use_parent_material = true
 layout_mode = 2
 mouse_filter = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style/PanelContainer/PanelContainer2/ScrollContainer" unique_id=1008304277]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style/PanelContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=1024402521]
+use_parent_material = true
 layout_mode = 2
 bbcode_enabled = true
 text = "{0} - [color=#911]{1}[/color]"
@@ -555,18 +592,21 @@ custom_minimum_size = Vector2(408, 0)
 layout_mode = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Statistics" unique_id=876613270]
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
 [node name="Panel5" type="PanelContainer" parent="Statistics/VBoxContainer2" unique_id=1135361884]
 self_modulate = Color(1, 1, 1, 0.6745098)
+use_parent_material = true
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 
 [node name="Next" type="Label" parent="Statistics/VBoxContainer2/Panel5" unique_id=1142208043]
+use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cnhj0")
@@ -575,14 +615,15 @@ horizontal_alignment = 1
 
 [node name="Panel" type="PanelContainer" parent="Statistics/VBoxContainer2" unique_id=1830775220]
 self_modulate = Color(1, 1, 1, 0.6745098)
+use_parent_material = true
 custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Control" type="Control" parent="Statistics/VBoxContainer2/Panel" unique_id=948313049]
-modulate = Color(0.588235, 0.392157, 1, 1)
 texture_filter = 1
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -591,14 +632,15 @@ TetrisTileSet = ExtResource("7_8lq6y")
 
 [node name="Panel2" type="PanelContainer" parent="Statistics/VBoxContainer2" unique_id=1812937741]
 self_modulate = Color(1, 1, 1, 0.6745098)
+use_parent_material = true
 custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Control2" type="Control" parent="Statistics/VBoxContainer2/Panel2" unique_id=1260035810]
-modulate = Color(0.588235, 0.392157, 1, 1)
 texture_filter = 1
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -608,14 +650,15 @@ NextFigureId = 1
 
 [node name="Panel3" type="PanelContainer" parent="Statistics/VBoxContainer2" unique_id=407190473]
 self_modulate = Color(1, 1, 1, 0.6745098)
+use_parent_material = true
 custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Control3" type="Control" parent="Statistics/VBoxContainer2/Panel3" unique_id=987087713]
-modulate = Color(0.588235, 0.392157, 1, 1)
 texture_filter = 1
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -625,14 +668,15 @@ NextFigureId = 2
 
 [node name="Panel4" type="PanelContainer" parent="Statistics/VBoxContainer2" unique_id=466819356]
 self_modulate = Color(1, 1, 1, 0.6745098)
+use_parent_material = true
 custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Control4" type="Control" parent="Statistics/VBoxContainer2/Panel4" unique_id=602183092]
-modulate = Color(0.588235, 0.392157, 1, 1)
 texture_filter = 1
+use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -644,6 +688,7 @@ NextFigureId = 3
 libraries/ = SubResource("AnimationLibrary_25s1u")
 
 [node name="TetrisAnchor" type="Control" parent="." unique_id=1300014302]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -654,6 +699,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="TetrisAnchor" unique_id=772644358]
+use_parent_material = true
 custom_minimum_size = Vector2(408, 808)
 layout_mode = 1
 anchors_preset = 8
@@ -670,13 +716,13 @@ grow_vertical = 2
 theme_override_styles/panel = ExtResource("8_l7fpa")
 
 [node name="BG" type="TextureRect" parent="TetrisAnchor/PanelContainer" unique_id=2019604994]
-self_modulate = Color(0.5882353, 0.39215687, 1, 1)
+use_parent_material = true
 layout_mode = 2
 texture = SubResource("GradientTexture2D_3s1wb")
 stretch_mode = 1
 
 [node name="LeftRuler" type="Panel" parent="TetrisAnchor/PanelContainer/BG" unique_id=1802050543]
-self_modulate = Color(1, 1, 1, 0.7372549)
+use_parent_material = true
 layout_mode = 0
 offset_left = -4.0
 offset_right = 2.0
@@ -684,7 +730,7 @@ offset_bottom = 800.0
 theme_override_styles/panel = ExtResource("9_g58hi")
 
 [node name="RightRuler" type="Panel" parent="TetrisAnchor/PanelContainer/BG" unique_id=1590842892]
-self_modulate = Color(1, 1, 1, 0.7372549)
+use_parent_material = true
 layout_mode = 0
 offset_left = 398.0
 offset_right = 404.0
@@ -692,7 +738,7 @@ offset_bottom = 800.0
 theme_override_styles/panel = ExtResource("9_g58hi")
 
 [node name="GameOverRuler" type="Panel" parent="TetrisAnchor/PanelContainer/BG" unique_id=982391941]
-self_modulate = Color(1, 1, 1, 0.7372549)
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -703,19 +749,21 @@ theme_override_styles/panel = ExtResource("9_g58hi")
 
 [node name="Fps" type="Label" parent="TetrisAnchor/PanelContainer/BG" unique_id=2023850348]
 visible = false
+use_parent_material = true
 layout_mode = 0
 offset_right = 30.0
 offset_bottom = 21.0
 text = "fps"
 
 [node name="TetrisTileMap" type="Control" parent="TetrisAnchor/PanelContainer" unique_id=1198170412]
-self_modulate = Color(0.588235, 0.392157, 1, 1)
 texture_filter = 1
+use_parent_material = true
 layout_mode = 2
 script = ExtResource("10_vaymm")
 TetrisTileSet = ExtResource("7_8lq6y")
 
 [node name="Particles" type="Node2D" parent="TetrisAnchor" unique_id=1915332978]
+use_parent_material = true
 position = Vector2(20, 20)
 script = ExtResource("11_dm23t")
 DestructionParticlesPrefab = ExtResource("12_krqo5")

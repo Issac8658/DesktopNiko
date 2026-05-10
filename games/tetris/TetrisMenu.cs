@@ -44,13 +44,13 @@ public partial class TetrisMenu : Node
 			if (GameController.CurrentState == TetrisGameController.GameStates.Lose)
 			{
 				MenuWindow.Visible = true;
-				PlayButton.Text = "RESTART";
+				PlayButton.Text = "shared.restart";
 				MusicPlayer.Stop();
 			}
 			if (GameController.CurrentState == TetrisGameController.GameStates.Menu)
 			{
 				MenuWindow.Visible = true;
-				PlayButton.Text = "PLAY";
+				PlayButton.Text = "shared.play";
 				MusicPlayer.StreamPaused = true;
 			}
 		};

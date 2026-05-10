@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtkyq6kw6tgfq"]
+[gd_scene format=3 uid="uid://dtkyq6kw6tgfq"]
 
 [sub_resource type="Gradient" id="Gradient_o08yc"]
 interpolation_mode = 1
@@ -33,8 +33,8 @@ scale_max = 0.5
 color = Color(1, 1, 1, 0.50980395)
 color_initial_ramp = SubResource("GradientTexture1D_vrgys")
 
-[node name="DistructionParticles" type="GPUParticles2D"]
-modulate = Color(0.588235, 0.392157, 1, 1)
+[node name="DistructionParticles" type="GPUParticles2D" unique_id=174827815]
+use_parent_material = true
 emitting = false
 amount = 200
 texture = SubResource("GradientTexture2D_n3222")

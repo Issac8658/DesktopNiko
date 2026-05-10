@@ -63,6 +63,7 @@
 [ext_resource type="Script" uid="uid://8rlra1llxmsn" path="res://scripts/windows/functional_windows/settings/mouse_sound_player.gd" id="42_ek5vw"]
 [ext_resource type="PackedScene" uid="uid://b1ypbdeyjoksp" path="res://prefabs/state_icon.tscn" id="42_sp30j"]
 [ext_resource type="PackedScene" uid="uid://blfp7l6sy700u" path="res://games/sliding_puzzle/sliding_puzzle.tscn" id="42_synyf"]
+[ext_resource type="PackedScene" uid="uid://d1vx0y4r6i37o" path="res://games/tetris/tetris.tscn" id="43_1ke4k"]
 [ext_resource type="ColorPalette" uid="uid://bd2ulhb7vthfq" path="res://themes/twm_theme/pink_color_palette.tres" id="43_gv8l5"]
 [ext_resource type="AudioStream" uid="uid://c4ctukqwa2omc" path="res://sounds/twm_mouse_click.wav" id="43_jip8q"]
 [ext_resource type="Texture2D" uid="uid://dtxlnn2la7pmg" path="res://sprites/icons/oneshot.png" id="44_1ke4k"]
@@ -136,6 +137,7 @@
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="100_ix15y"]
 [ext_resource type="Script" uid="uid://ba7gjttxhpopm" path="res://scripts/windows/functional_windows/settings/windows_always_on_top_setting.gd" id="100_wonw5"]
 [ext_resource type="Script" uid="uid://dbdnt7ofhpfhh" path="res://scripts/windows/functional_windows/settings/task_bar_icon_setting.gd" id="101_ude2c"]
+[ext_resource type="Script" uid="uid://3o01pclo3idm" path="res://scripts/windows/functional_windows/settings/skins_opener.gd" id="105_covva"]
 [ext_resource type="SpriteFrames" uid="uid://45cacwxydn2f" path="res://sprites/ui/world_machine/bulb_anim.tres" id="106_tnorr"]
 [ext_resource type="Theme" uid="uid://depgndu5hyrlf" path="res://themes/OneShotButtonedTheme.tres" id="112_uush8"]
 [ext_resource type="Script" uid="uid://hwog55yrrr11" path="res://scripts/main/NikoClickablePolygon.cs" id="114_8jixl"]
@@ -835,6 +837,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Skins" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=541156003]
+visible = false
 use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
@@ -1392,7 +1395,7 @@ metadata/_recursiveItemParentMaterial = true
 use_parent_material = true
 layout_mode = 2
 script = ExtResource("27_im3ns")
-games = Array[PackedScene]([null, null, ExtResource("40_gv8l5"), ExtResource("42_synyf")])
+games = Array[PackedScene]([null, null, ExtResource("40_gv8l5"), ExtResource("42_synyf"), ExtResource("43_1ke4k")])
 games_node = NodePath("../../../../../../../../Games")
 
 [node name="Pancake" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=486940095]
@@ -1669,6 +1672,74 @@ use_parent_material = true
 custom_minimum_size = Vector2(16, 24)
 layout_mode = 2
 text = "games.sliding_puzzle"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Tetris" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=1525139351]
+use_parent_material = true
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Button" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tetris" unique_id=2114716024]
+use_parent_material = true
+custom_minimum_size = Vector2(160, 108)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"FlatButton"
+autowrap_mode = 2
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="ButtonMargin" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tetris" unique_id=869406029]
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ButtonContent" type="VBoxContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tetris/ButtonMargin" unique_id=705376199]
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="Icon" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tetris/ButtonMargin/ButtonContent" unique_id=2119199752]
+material = ExtResource("41_iylel")
+custom_minimum_size = Vector2(64, 66)
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("44_1ke4k")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ShortcutIcon" type="Button" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tetris/ButtonMargin/ButtonContent/Icon" unique_id=1124335195]
+visible = false
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"IconButton"
+icon = ExtResource("23_30vx0")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Tetris/ButtonMargin/ButtonContent" unique_id=1237564091]
+use_parent_material = true
+custom_minimum_size = Vector2(16, 24)
+layout_mode = 2
+text = "games.tetris"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -2485,7 +2556,7 @@ text = "APPLY"
 [node name="SettingsWindow" parent="." unique_id=759122465 instance=ExtResource("38_q4750")]
 title = "SETTINGS"
 initial_position = 4
-size = Vector2i(704, 413)
+size = Vector2i(719, 438)
 visible = false
 wrap_controls = true
 min_size = Vector2i(704, 404)
@@ -2656,6 +2727,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="General" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=796068923]
+visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 8
@@ -2974,19 +3046,23 @@ script = ExtResource("97_wonw5")
 metadata/_custom_type_script = "uid://by1cd1rvin4oh"
 
 [node name="Niko" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=320743199]
-visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="GridContainer" type="GridContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko" unique_id=959886990]
+[node name="VBoxContainer2" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko" unique_id=713299338]
+use_parent_material = true
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="GridContainer" type="GridContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2" unique_id=959886990]
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/h_separation = 1
 theme_override_constants/v_separation = 2
 columns = 3
 
-[node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1185377533]
+[node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer" unique_id=1185377533]
 use_parent_material = true
 layout_mode = 2
 text = "settings.niko.facepic.default"
@@ -2994,12 +3070,12 @@ horizontal_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
 
-[node name="VSeparator2" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1874949543]
+[node name="VSeparator2" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer" unique_id=1874949543]
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Label2" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1522091716]
+[node name="Label2" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer" unique_id=1522091716]
 use_parent_material = true
 layout_mode = 2
 text = "settings.niko.facepic.speak"
@@ -3007,7 +3083,7 @@ horizontal_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
 
-[node name="Idle" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=979954395 node_paths=PackedStringArray("PreviewImage", "FacepicOption")]
+[node name="Idle" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer" unique_id=979954395 node_paths=PackedStringArray("PreviewImage", "FacepicOption")]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -3016,30 +3092,30 @@ script = ExtResource("93_g60li")
 PreviewImage = NodePath("TextureRect")
 FacepicOption = NodePath("OptionButton")
 
-[node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Idle" unique_id=1329252268]
+[node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/Idle" unique_id=1329252268]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 texture = ExtResource("2_gyfs4")
 stretch_mode = 5
 
-[node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Idle" unique_id=1656476475]
+[node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/Idle" unique_id=1656476475]
 use_parent_material = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
 
-[node name="RecursiveThemeApplier3" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Idle/OptionButton" unique_id=778251764]
+[node name="RecursiveThemeApplier3" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/Idle/OptionButton" unique_id=778251764]
 script = ExtResource("90_u0vb1")
 ThemeMaterial = ExtResource("74_s717c")
 metadata/_custom_type_script = "uid://f06fqp3valks"
 
-[node name="VSeparator" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1233663303]
+[node name="VSeparator" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer" unique_id=1233663303]
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Speak" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=241891206 node_paths=PackedStringArray("PreviewImage", "FacepicOption")]
+[node name="Speak" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer" unique_id=241891206 node_paths=PackedStringArray("PreviewImage", "FacepicOption")]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -3049,37 +3125,45 @@ PreviewImage = NodePath("TextureRect")
 FacepicOption = NodePath("OptionButton")
 TargetFacepic = 1
 
-[node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Speak" unique_id=332199103]
+[node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/Speak" unique_id=332199103]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 texture = ExtResource("3_d5x1h")
 stretch_mode = 5
 
-[node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Speak" unique_id=1945537714]
+[node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/Speak" unique_id=1945537714]
 use_parent_material = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
 
-[node name="RecursiveThemeApplier4" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Speak/OptionButton" unique_id=143236271]
+[node name="RecursiveThemeApplier4" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/Speak/OptionButton" unique_id=143236271]
 script = ExtResource("90_u0vb1")
 ThemeMaterial = ExtResource("74_s717c")
 metadata/_custom_type_script = "uid://f06fqp3valks"
 
-[node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1013240464]
+[node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer" unique_id=698162185]
+use_parent_material = true
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="HSeparator" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/MarginContainer" unique_id=1013240464]
 use_parent_material = true
 layout_mode = 2
 
-[node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1781713608]
+[node name="HSeparator2" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer" unique_id=1781713608]
 use_parent_material = true
 layout_mode = 2
 
-[node name="HSeparator3" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1613854066]
+[node name="HSeparator3" type="HSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer" unique_id=1613854066]
 use_parent_material = true
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=958129040]
+[node name="Label3" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer" unique_id=958129040]
 use_parent_material = true
 layout_mode = 2
 text = "settings.niko.facepic.scared"
@@ -3087,12 +3171,12 @@ horizontal_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
 
-[node name="VSeparator3" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1060096799]
+[node name="VSeparator3" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer" unique_id=1060096799]
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Label4" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1766029954]
+[node name="Label4" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer" unique_id=1766029954]
 use_parent_material = true
 layout_mode = 2
 text = "settings.niko.facepic.scared_speak"
@@ -3100,66 +3184,89 @@ horizontal_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
 
-[node name="Scare" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1752587635 node_paths=PackedStringArray("PreviewImage", "FacepicOption")]
+[node name="Scare" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer" unique_id=1752587635 node_paths=PackedStringArray("PreviewImage", "FacepicOption")]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 script = ExtResource("93_g60li")
 PreviewImage = NodePath("TextureRect")
-FacepicOption = NodePath("OptionButton")
+FacepicOption = NodePath("MarginContainer/OptionButton")
 TargetFacepic = 2
 
-[node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Scare" unique_id=624558841]
+[node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/Scare" unique_id=624558841]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 texture = ExtResource("8_7ycvg")
 stretch_mode = 5
 
-[node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Scare" unique_id=1621349757]
+[node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/Scare" unique_id=2088141154]
+use_parent_material = true
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = -2
+
+[node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/Scare/MarginContainer" unique_id=1621349757]
 use_parent_material = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
 
-[node name="RecursiveThemeApplier2" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/Scare/OptionButton" unique_id=1492597275]
+[node name="RecursiveThemeApplier2" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/Scare/MarginContainer/OptionButton" unique_id=1492597275]
 script = ExtResource("90_u0vb1")
 ThemeMaterial = ExtResource("74_s717c")
 metadata/_custom_type_script = "uid://f06fqp3valks"
 
-[node name="VSeparator4" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=1012622975]
+[node name="VSeparator4" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer" unique_id=1012622975]
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="ScareSpeak" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer" unique_id=186221155 node_paths=PackedStringArray("PreviewImage", "FacepicOption")]
+[node name="ScareSpeak" type="VBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer" unique_id=186221155 node_paths=PackedStringArray("PreviewImage", "FacepicOption")]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 script = ExtResource("93_g60li")
 PreviewImage = NodePath("TextureRect")
-FacepicOption = NodePath("OptionButton")
+FacepicOption = NodePath("MarginContainer/OptionButton")
 TargetFacepic = 3
 
-[node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/ScareSpeak" unique_id=1184585687]
+[node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/ScareSpeak" unique_id=1184585687]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 texture = ExtResource("9_wr18j")
 stretch_mode = 5
 
-[node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/ScareSpeak" unique_id=297117380]
+[node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/ScareSpeak" unique_id=632646334]
+use_parent_material = true
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = -2
+
+[node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/ScareSpeak/MarginContainer" unique_id=297117380]
 use_parent_material = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
 
-[node name="RecursiveThemeApplier" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/GridContainer/ScareSpeak/OptionButton" unique_id=1779692551]
+[node name="RecursiveThemeApplier" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/ScareSpeak/MarginContainer/OptionButton" unique_id=1779692551]
 script = ExtResource("90_u0vb1")
 ThemeMaterial = ExtResource("74_s717c")
 metadata/_custom_type_script = "uid://f06fqp3valks"
+
+[node name="SkinsButton" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2" unique_id=696722613 node_paths=PackedStringArray("skins_window")]
+use_parent_material = true
+layout_mode = 2
+text = "other.open_skins"
+script = ExtResource("105_covva")
+skins_window = NodePath("../../../../../../../../SkinViewer")
 
 [node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko" unique_id=857804836]
 use_parent_material = true
@@ -3167,7 +3274,7 @@ layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 1
+theme_override_constants/margin_bottom = 2
 
 [node name="VSeparator" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/MarginContainer" unique_id=1004042396]
 use_parent_material = true
