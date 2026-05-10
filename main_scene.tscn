@@ -645,10 +645,11 @@ stream = ExtResource("13_1n88h")
 volume_db = -10.0
 
 [node name="SkinViewer" parent="." unique_id=1593866773 instance=ExtResource("10_uush8")]
+title = "titles.skins"
 visible = false
 
 [node name="ShortcutsWindow" parent="." unique_id=765980327 instance=ExtResource("19_rkakh")]
-title = "SHORTCUTS"
+title = "titles.shortcuts"
 initial_position = 4
 size = Vector2i(358, 394)
 visible = false
@@ -1341,7 +1342,7 @@ sound = NodePath("HELLO")
 stream = ExtResource("30_id8vy")
 
 [node name="GamesWindow" parent="." unique_id=300262121 instance=ExtResource("19_rkakh")]
-title = "GAMES"
+title = "titles.games"
 initial_position = 4
 size = Vector2i(358, 394)
 visible = false
@@ -1748,7 +1749,7 @@ script = ExtResource("97_wonw5")
 metadata/_custom_type_script = "uid://by1cd1rvin4oh"
 
 [node name="ShutdownPopup" parent="." unique_id=1496860589 instance=ExtResource("33_id8vy")]
-title = "SHUTDOWN"
+title = "titles.shutdown"
 visible = false
 minimize_disabled = true
 
@@ -1770,7 +1771,7 @@ text_overrun_behavior = 0
 text = "SHUTDOWN_QUEST"
 
 [node name="ThemesWindow" parent="." unique_id=995621362 instance=ExtResource("19_rkakh")]
-title = "THEMES"
+title = "titles.themes"
 initial_position = 4
 size = Vector2i(358, 380)
 visible = false
@@ -2554,7 +2555,7 @@ layout_mode = 2
 text = "APPLY"
 
 [node name="SettingsWindow" parent="." unique_id=759122465 instance=ExtResource("38_q4750")]
-title = "SETTINGS"
+title = "titles.settings"
 initial_position = 4
 size = Vector2i(719, 438)
 visible = false
@@ -3913,6 +3914,7 @@ theme_type_variation = &""
 text = "DATA_RESET_POPUP_MESSAGE"
 
 [node name="ShopWindow" parent="." unique_id=1900906359 instance=ExtResource("38_q4750")]
+title = "titles.shop"
 initial_position = 4
 size = Vector2i(808, 656)
 visible = false
@@ -4037,6 +4039,7 @@ autoplay = "default"
 frame_progress = 0.30546513
 
 [node name="AchievementsWindow" parent="." unique_id=1722617301 instance=ExtResource("38_q4750")]
+title = "titles.achievements"
 initial_position = 4
 size = Vector2i(560, 560)
 visible = false

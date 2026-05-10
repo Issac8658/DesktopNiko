@@ -1,10 +1,10 @@
 using Godot;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 
 public partial class TetrisTileMap : Control
 {
-	private readonly TileSet.CellNeighbor[] SQUARE_SIDES = [
+	private static readonly TileSet.CellNeighbor[] SQUARE_SIDES = [
 		TileSet.CellNeighbor.TopLeftCorner,
 		TileSet.CellNeighbor.TopSide,
 		TileSet.CellNeighbor.TopRightCorner,
@@ -14,7 +14,7 @@ public partial class TetrisTileMap : Control
 		TileSet.CellNeighbor.BottomSide,
 		TileSet.CellNeighbor.BottomRightCorner,
 	];
-	private readonly Vector2I[] SQUARE_DIRECTIONS = [
+	private static readonly Vector2I[] SQUARE_DIRECTIONS = [
 		new(-1, -1),
 		new(0, -1),
 		new(1, -1),
@@ -23,6 +23,16 @@ public partial class TetrisTileMap : Control
 		new(-1, 1),
 		new(0, 1),
 		new(1, 1),
+	];
+	public static readonly Color[] BlockColors =
+	[
+		Colors.White,
+		Colors.Green,
+		Colors.Yellow,
+		Colors.Blue,
+		Colors.Purple,
+		Colors.Cyan,
+		Colors.Red,
 	];
 
 	public List<List<Rect2?>> Tiles = [];
@@ -45,8 +55,11 @@ public partial class TetrisTileMap : Control
 	{
 		for (int X = 0; X < TetrisGameController.GAME_WIDTH; X++)
 			for (int Y = 0; Y < TetrisGameController.GAME_HEIGHT; Y++)
+			{
+				Color BlockColor = GameController.Blocks[X][Y] != null ? GetColorFromType((TetrisGameController.BlockType)GameController.Blocks[X][Y]) : GameController.CurrentFigureIsHere(new(X, Y)) ? GetColorFromType(GameController.CurrentFigureType) : Colors.Black; // 😭🙏
 				if (Tiles[X][Y] != null)
-					DrawTextureRectRegion(_tilesSource.Texture, new(X * 40, Y * 40, 40, 40), (Rect2I)Tiles[X][Y]);
+					DrawTextureRectRegion(_tilesSource.Texture, new(X * 40, Y * 40, 40, 40), (Rect2I)Tiles[X][Y], BlockColor);
+				}
 	}
 
 	public void FullRedraw(){
@@ -79,14 +92,18 @@ public partial class TetrisTileMap : Control
 	{
 		bool[] sides = [false, false, false, false, false, false, false, false];
 	   
+		TetrisGameController.BlockType? CurrentBlockType = GameController.Blocks[BlockPos.X][BlockPos.Y];
+		CurrentBlockType = CurrentBlockType != null ? CurrentBlockType : GameController.CurrentFigureIsHere(BlockPos) ? GameController.CurrentFigureType : null;
+
 		for (int side = 0; side < 8; side++)
 		{
 			Vector2I offset = SQUARE_DIRECTIONS[side];
 			Vector2I offsetedPos = BlockPos + offset;
 			if (offsetedPos.Y >= 0 && offsetedPos.X >= 0 && offsetedPos.Y < TetrisGameController.GAME_HEIGHT && offsetedPos.X < TetrisGameController.GAME_WIDTH)
 			{
-				if (GameController.Blocks[offsetedPos.X][offsetedPos.Y] != null || GameController.CurrentFigureIsHere(new (offsetedPos.X, offsetedPos.Y)) )
-					sides[side] = true;
+				TetrisGameController.BlockType? OtherBlockType = GameController.Blocks[offsetedPos.X][offsetedPos.Y];
+				OtherBlockType = OtherBlockType != null ? OtherBlockType : GameController.CurrentFigureIsHere(new (offsetedPos.X, offsetedPos.Y)) ? GameController.CurrentFigureType : null;
+				sides[side] = OtherBlockType != null && OtherBlockType == CurrentBlockType;
 			}
 			else sides[side] = WallsIsBlocks;
 		}
@@ -94,8 +111,6 @@ public partial class TetrisTileMap : Control
 	}
 	private Rect2 GetTile(bool[] sides)
 	{
-		//Rect2 mostSimilarTile = new(0, 0, 20, 20);
-		//int similarSidesCount = 0;
 		for (int i = 0; i < _tilesSource.GetTilesCount(); i++)
 		{
 			Vector2I tileId = _tilesSource.GetTileId(i);
@@ -103,32 +118,21 @@ public partial class TetrisTileMap : Control
 			TileData data = _tilesSource.GetTileData(tileId, 0);
 
 			bool canUse = true;
-			//int NiceSidesCount = 0;
 			for (int side = 0; side < 8; side++)
 			{
 				bool niceSide = data.GetTerrainPeeringBit(SQUARE_SIDES[side]) != -1 == sides[side];
-				if (!niceSide){ // remove ! for old
-					//NiceSidesCount += 1;
-				//else {
+				if (!niceSide){
 					canUse = false;
 					break;
 				}
-				//}
 			}
 			
 			if (canUse)
 				return _tilesSource.GetTileTextureRegion(tileId);
-			
-			//if (NiceSidesCount > similarSidesCount)
-			//{
-			//	mostSimilarTile = _tilesSource.GetTileTextureRegion(tileId);
-			//	similarSidesCount = NiceSidesCount;
-			//}
-			
-			//data.GetTerrainPeeringBit(,)
-			//tilesSource.GetTileTextureRegion(tileId);
 		}
-		//return mostSimilarTile;
 		return new(0, 0, 20, 20);
 	}
+
+	public Vector2I GamePosToCurrentFigurePos(Vector2I GamePos) => GamePos - GameController.GetCurrentFigureRealPosition();
+	public static Color GetColorFromType(TetrisGameController.BlockType BlockType) => BlockColors[(int)BlockType];
 }

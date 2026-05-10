@@ -1,8 +1,8 @@
 using Godot;
-using System;
 
 public partial class TetrisMenu : Node
 {
+
 	[Export]
 	public TetrisGameController GameController;
 	[Export]
@@ -19,10 +19,11 @@ public partial class TetrisMenu : Node
 	[Export]
 	public AnimationPlayer StatisticBumpAnimator;
 	[Export]
-	public Timer GameTimer;
+	public Timer MusicTimer;
 
 	public override void _Ready()
 	{
+
 		PlayButton.Pressed += () =>
 		{
 			MenuWindow.Visible = false;
@@ -30,9 +31,15 @@ public partial class TetrisMenu : Node
 				GameController.CurrentState = TetrisGameController.GameStates.Playing;
 			else
 				GameController.CurrentState = TetrisGameController.GameStates.Restart;
-			if (MusicCheckbox.ButtonPressed)
+			if (!MusicCheckbox.ButtonPressed)
+			{
+				MusicPlayer.Stop();
+				MusicTimer.Stop();
+			}
+			else if (!MusicPlayer.Playing)
 			{
 				MusicPlayer.Play();
+				MusicTimer.Start();
 			}
 		};
 		ExitButton.Pressed += GameController.QueueFree;
@@ -46,16 +53,16 @@ public partial class TetrisMenu : Node
 				MenuWindow.Visible = true;
 				PlayButton.Text = "shared.restart";
 				MusicPlayer.Stop();
+				MusicTimer.Stop();
 			}
 			if (GameController.CurrentState == TetrisGameController.GameStates.Menu)
 			{
 				MenuWindow.Visible = true;
 				PlayButton.Text = "shared.play";
-				MusicPlayer.StreamPaused = true;
 			}
 		};
 
-		GameTimer.Timeout += () =>
+		MusicTimer.Timeout += () =>
 		{
 			//ProgressionPlayer.PlaySection("Progression", MusicPlayer.GetPlaybackPosition());
 			StatisticBumpAnimator.Play("Bump2");

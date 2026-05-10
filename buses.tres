@@ -4,6 +4,11 @@
 resource_name = "Limiter"
 soft_clip_db = 0.0
 
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_xc52u"]
+resource_name = "LowPassFilter"
+cutoff_hz = 20500.0
+db = 3
+
 [resource]
 bus/0/effect/0/effect = SubResource("AudioEffectLimiter_xc52u")
 bus/0/effect/0/enabled = true
@@ -19,3 +24,5 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectLowPassFilter_xc52u")
+bus/2/effect/0/enabled = true

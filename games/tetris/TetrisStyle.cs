@@ -33,6 +33,7 @@ public partial class TetrisStyle : Control
 		get => _currentStyle;
 		set
 		{
+			value = Mathf.Clamp(value, 0, StylesTexts.Length - 1);
 			StyleLabel.Text = StylesTexts[value];
 			_currentStyle = value;
 		}
@@ -58,6 +59,7 @@ public partial class TetrisStyle : Control
 				_styleTimeOut -= (int)Mathf.Floor(_styleTimeOut);
 			}
 		};
+		Controller.Restarted += () => _styleTimeOut = _currentStyle = 0;
 		CurrentStyle = 0;
 		StyleTimeOutFiller.AnchorRight = (float)_styleTimeOut;
 	}

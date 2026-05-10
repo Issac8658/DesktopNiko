@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://citvei7uwa516" path="res://games/tetris/TetrisCombo.cs" id="5_8lmhe"]
 [ext_resource type="Script" uid="uid://i1grkoicei1g" path="res://games/tetris/TetrisStyle.cs" id="5_32x37"]
 [ext_resource type="Script" uid="uid://dgx5rydb7a45o" path="res://games/tetris/NextFigureDrawer.cs" id="6_basdr"]
+[ext_resource type="Material" uid="uid://b33fsoy0b4grq" path="res://materials/canvas_item_clip_material.tres" id="7_8lmhe"]
 [ext_resource type="TileSet" uid="uid://d35jpcju6we27" path="res://games/tetris/tiles/tetris_more.tres" id="7_8lq6y"]
 [ext_resource type="StyleBox" uid="uid://b821x8hwjmnyo" path="res://themes/twm_theme/frame_no_bg.tres" id="8_l7fpa"]
 [ext_resource type="StyleBox" uid="uid://seh5m867naoa" path="res://themes/twm_theme/thin_panel.stylebox" id="9_g58hi"]
@@ -35,8 +36,6 @@ content_margin_bottom = 0.0
 border_width_bottom = 252
 border_color = Color(0.8, 0.8, 0.8, 0)
 border_blend = true
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6p23"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqggt"]
 
@@ -266,7 +265,7 @@ use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cnhj0")
-text = "SCORE"
+text = "other.games.tetris.score"
 
 [node name="Dots" type="Label" parent="Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer" unique_id=17955137]
 use_parent_material = true
@@ -297,7 +296,7 @@ use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cnhj0")
-text = "LINES"
+text = "other.games.tetris.lines"
 
 [node name="Dots" type="Label" parent="Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer2" unique_id=227844569]
 use_parent_material = true
@@ -447,7 +446,7 @@ StyleTimeOutFiller = NodePath("StyleTimeOut/StyleTimeOutFiller")
 [node name="StyleHint" type="Label" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style" unique_id=1979414707]
 use_parent_material = true
 layout_mode = 2
-text = "Style"
+text = "other.games.tetris.style"
 
 [node name="StyleTextContainer" type="PanelContainer" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style" unique_id=837912184]
 use_parent_material = true
@@ -515,12 +514,14 @@ custom_minimum_size = Vector2(0, 176)
 layout_mode = 2
 
 [node name="Control" type="Panel" parent="Statistics/Control2/VBoxContainer/Control/Panel7" unique_id=570058631]
-clip_children = 1
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 191)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_q6p23")
+size_flags_vertical = 8
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Control" unique_id=2066121825]
-position = Vector2(86, 618)
+material = ExtResource("7_8lmhe")
+position = Vector2(86, 115)
 scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("4_uqggt")
 autoplay = "default"
@@ -577,7 +578,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_q6p23")
-text = "ComBo: x"
+text = "other.games.tetris.combo"
 
 [node name="Label2" type="Label" parent="Statistics/Control2/VBoxContainer/Control/Panel/Combo/HBoxContainer2" unique_id=1437506908]
 texture_filter = 1
@@ -610,7 +611,7 @@ use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_cnhj0")
-text = "NEXT"
+text = "other.games.tetris.next"
 horizontal_alignment = 1
 
 [node name="Panel" type="PanelContainer" parent="Statistics/VBoxContainer2" unique_id=1830775220]

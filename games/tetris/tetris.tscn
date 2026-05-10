@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://bunttssun0swb" path="res://themes/twm_theme/twm_theme.tres" id="1_kusv6"]
 [ext_resource type="Script" uid="uid://dg1q0tio7xgdj" path="res://games/tetris/TetrisGameController.cs" id="2_jbl8a"]
 [ext_resource type="PackedScene" uid="uid://hotb3k0j3v61" path="res://games/tetris/tetris_game.tscn" id="3_6mx11"]
-[ext_resource type="AudioStream" uid="uid://cnges3gq54ajb" path="res://games/tetris/NikoProcessing.mp3" id="7_2166b"]
+[ext_resource type="AudioStream" uid="uid://ot0h11vo76o2" path="res://games/tetris/NikoProcessing.ogg" id="4_6mx11"]
 [ext_resource type="AudioStream" uid="uid://c4rp6m7evcn11" path="res://games/tetris/sounds/drop_light.ogg" id="9_kkf6g"]
 [ext_resource type="AudioStream" uid="uid://brljmdrmc8f5s" path="res://games/tetris/sounds/drop_normal.ogg" id="10_il17r"]
 [ext_resource type="AudioStream" uid="uid://dn5mbakemduix" path="res://games/tetris/sounds/height_place.ogg" id="10_lplub"]
@@ -22,7 +22,6 @@ oversampling_override = 1.0
 initial_position = 4
 size = Vector2i(1900, 1080)
 borderless = true
-always_on_top = true
 transparent = true
 minimize_disabled = true
 maximize_disabled = true
@@ -31,7 +30,7 @@ content_scale_mode = 2
 content_scale_aspect = 4
 theme = ExtResource("1_kusv6")
 script = ExtResource("2_jbl8a")
-GameTimer = NodePath("Timer")
+GameTimer = NodePath("GameTimer")
 FpsCounter = NodePath("GlobalAnchor/TetrisAnchor/PanelContainer/BG/Fps")
 ScoreCounter = NodePath("GlobalAnchor/Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer/Score")
 LinesCounter = NodePath("GlobalAnchor/Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer2/Lines")
@@ -77,16 +76,15 @@ GameController = NodePath("../../..")
 [node name="Area" parent="GlobalAnchor" index="2" unique_id=538390412]
 ShowTaskbarIcon = true
 
-[node name="Timer" type="Timer" parent="." unique_id=67181535]
+[node name="MusicTimer" type="Timer" parent="." unique_id=67181535]
 wait_time = 0.444
 
-[node name="NikoProcessing" type="AudioStreamPlayer" parent="." unique_id=919146333]
-stream = ExtResource("7_2166b")
-volume_db = -11.335
-bus = &"Music"
+[node name="GameTimer" type="Timer" parent="." unique_id=1551091824]
+wait_time = 0.5
 
-[node name="NikoProcessing2" type="AudioStreamPlayer" parent="." unique_id=573513503]
-volume_db = -11.335
+[node name="NikoProcessing" type="AudioStreamPlayer" parent="." unique_id=919146333]
+stream = ExtResource("4_6mx11")
+volume_db = -10.0
 bus = &"Music"
 
 [node name="DropLight" type="AudioStreamPlayer" parent="." unique_id=1328584627]
@@ -118,7 +116,7 @@ always_on_top = false
 minimize_disabled = true
 ignore_on_top_settings = true
 
-[node name="Control" parent="Menu" index="0" unique_id=579132620 node_paths=PackedStringArray("GameController", "MenuWindow", "MusicPlayer", "PlayButton", "MusicCheckbox", "ExitButton", "StatisticBumpAnimator", "GameTimer")]
+[node name="Control" parent="Menu" index="0" unique_id=579132620 node_paths=PackedStringArray("GameController", "MenuWindow", "MusicPlayer", "PlayButton", "MusicCheckbox", "ExitButton", "StatisticBumpAnimator", "MusicTimer")]
 script = ExtResource("15_o08yc")
 GameController = NodePath("../..")
 MenuWindow = NodePath("..")
@@ -127,10 +125,10 @@ PlayButton = NodePath("WindowContainer/Content/VBoxContainer/Start")
 MusicCheckbox = NodePath("WindowContainer/Content/VBoxContainer/CheckBox")
 ExitButton = NodePath("WindowContainer/Content/VBoxContainer/Exit")
 StatisticBumpAnimator = NodePath("../../GlobalAnchor/Statistics/StatisticsAnimator")
-GameTimer = NodePath("../../Timer")
+MusicTimer = NodePath("../../MusicTimer")
 
 [node name="Title" parent="Menu/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(1561168932, 332691484) index="1" unique_id=2015855131]
-text = "games.tetris.starter"
+text = "other.games.tetris.starter"
 
 [node name="CloseButtonContainer" parent="Menu/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(1561168932, 332691484) index="3" unique_id=347735988]
 visible = false

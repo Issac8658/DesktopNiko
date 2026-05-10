@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b33fsoy0b4grq"]
+
+[ext_resource type="Shader" uid="uid://v71blr8lnevh" path="res://shaders/canvas_item_clip.gdshader" id="1_b2itp"]
+
+[resource]
+shader = ExtResource("1_b2itp")
+shader_parameter/clipTop = 0.0
+shader_parameter/clipRight = 0.0
+shader_parameter/clipBottom = 0.144
+shader_parameter/clipLeft = 0.0

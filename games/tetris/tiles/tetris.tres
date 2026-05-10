@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cywofvi1gdrk7"]
+[gd_resource type="TileSet" format=3 uid="uid://cywofvi1gdrk7"]
 
 [ext_resource type="Texture2D" uid="uid://dpgql74o4s6jm" path="res://games/tetris/tiles/tetris_tiles.png" id="1_rp120"]
 

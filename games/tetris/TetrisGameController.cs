@@ -7,6 +7,7 @@ public partial class TetrisGameController : Window
 
 	public const int GAME_HEIGHT = 20;
 	public const int GAME_WIDTH = 10;
+	public const double START_TICK_TIME = 0.5;
 
 	// signals
 	[Signal]
@@ -23,6 +24,8 @@ public partial class TetrisGameController : Window
 	public delegate void BlockDroppedEventHandler(int DestroyedLinesCount);
 	[Signal]
 	public delegate void ComboChangedEventHandler(uint Combo);
+	[Signal]
+	public delegate void RestartedEventHandler();
 
 	// enums
 	public enum GameStates
@@ -45,11 +48,15 @@ public partial class TetrisGameController : Window
 		Red,
 	}
 	private static readonly Vector2I FIGURE_DEFAULT_POSITION = new(5, 1);
+	private static readonly BlockType[] _blockTypes = (BlockType[])Enum.GetValues(typeof(BlockType));
+
+	public static readonly AudioEffectLowPassFilter LowPassFilter = AudioServer.GetBusEffect(2, 0) as AudioEffectLowPassFilter;
 
 	private List<List<BlockType?>> _blocks = [];
 	private List<bool[][]> _nextFigures = [];
 	private bool[][] _currentFigure = [];
 	private Vector2I _currentFigurePosition = FIGURE_DEFAULT_POSITION;
+	private BlockType _currentFigureType;
 
 	private uint _score = 0;
 	private uint _lines = 0;
@@ -89,6 +96,10 @@ public partial class TetrisGameController : Window
 	{
 		get => [.. _nextFigures];
 	}
+	public BlockType CurrentFigureType
+	{
+		get => _currentFigureType;
+	}
 
 	[Export]
 	public Timer GameTimer;
@@ -124,10 +135,7 @@ public partial class TetrisGameController : Window
 	[Export]
 	public AudioStreamPlayer HeightPlaceSound;
 
-	public List<List<BlockType?>> Blocks
-	{
-		get => _blocks;
-	}
+	public List<List<BlockType?>> Blocks { get => _blocks; }
 
 	public override void _Ready()
 	{
@@ -135,9 +143,7 @@ public partial class TetrisGameController : Window
 		{
 			List<BlockType?> Line = [];
 			for (int X = 0; X < GAME_HEIGHT; X++)
-			{
 				Line.Add(null);
-			}
 			_blocks.Add(Line);
 		}
 
@@ -145,8 +151,9 @@ public partial class TetrisGameController : Window
 			_nextFigures.Add(GetRandomFigure());
 
 		_currentFigure = GetRandomFigure(); // getting current figure
+		_currentFigureType = GetRandomBlockType();
 
-
+		GameTimer.WaitTime = START_TICK_TIME;
 		GameTimer.Timeout += Tick; // ticks timer
 
 		StateChanged += () => // states
@@ -156,9 +163,11 @@ public partial class TetrisGameController : Window
 				case GameStates.Restart:
 					RestartGame();
 					CurrentState = GameStates.Playing;
+					TweenLowPass(20500);
 					break;
 				case GameStates.Playing:
 					GameTimer.Start();
+					TweenLowPass(20500);
 					break;
 				default:
 					GameTimer.Stop();
@@ -171,10 +180,22 @@ public partial class TetrisGameController : Window
 		RestartButton.Pressed += RestartGame; // restart
 		PauseButton.Pressed += () => // pause
 		{
-			if (CurrentState == GameStates.Playing) CurrentState = GameStates.Paused;
-			else if (CurrentState == GameStates.Paused) CurrentState = GameStates.Playing;
+			if (CurrentState == GameStates.Playing)
+			{
+				CurrentState = GameStates.Paused;
+				TweenLowPass(300);
+			}
+			else if (CurrentState == GameStates.Paused) 
+			{
+				CurrentState = GameStates.Playing;
+				TweenLowPass(20500);
+			}
 		};
-		ExitButton.Pressed += () => CurrentState = GameStates.Menu; // menu
+		ExitButton.Pressed += () =>
+		{
+			CurrentState = GameStates.Menu;
+			TweenLowPass(300);
+		}; // menu
 
 		// init redraw
 		ReDraw();
@@ -285,9 +306,7 @@ public partial class TetrisGameController : Window
 		else
 		{
 			if (pos.Y < 3) // lose checking
-			{
 				CurrentState = GameStates.Lose;
-			}
 			else
 			{
 				// redrawing and figure place and some similar shit idk
@@ -313,9 +332,7 @@ public partial class TetrisGameController : Window
 			for (int X = 0; X < GAME_WIDTH; X++)
 			{
 				if (_blocks[X][Y] != null)
-				{
 					lineFull = true;
-				}
 				else
 				{
 					lineFull = false;
@@ -331,6 +348,8 @@ public partial class TetrisGameController : Window
 				}
 				DestroyedLines++;
 				EmitSignal("LineDestroyed", Y);
+
+				GameTimer.WaitTime *= 0.998;
 			}
 		}
 
@@ -383,9 +402,7 @@ public partial class TetrisGameController : Window
 		{
 			List<BlockType?> Line = [];
 			for (int X = 0; X < GAME_HEIGHT; X++)
-			{
 				Line.Add(null);
-			}
 			_blocks.Add(Line);
 		}
 		_nextFigures = [];
@@ -396,16 +413,16 @@ public partial class TetrisGameController : Window
 		_currentFigurePosition = FIGURE_DEFAULT_POSITION;
 		_score = 0;
 		_lines = 0;
+		GameTimer.WaitTime = START_TICK_TIME;
 		ReDraw();
 		EmitSignal("ReDrawNextTiles");
+		EmitSignal("Restarted");
 	}
 
 	private void MoveCurrentFigure(Vector2I Offset)
 	{
 		if (FigureCanMove(_currentFigure, _currentFigurePosition - GetFigureCenterOffset(_currentFigure) + Offset))
-		{
 			_currentFigurePosition += Offset;
-		}
 		MoveCurrentFigureInBorders();
 	}
 
@@ -416,7 +433,6 @@ public partial class TetrisGameController : Window
 		for (int X = 0; X < size.X; X++)
 		{
 			for (int Y = 0; Y < size.Y; Y++)
-			{
 				if (Figure[X][Y])
 				{
 					Vector2I globalPos = new Vector2I(X, Y) + Position;
@@ -427,7 +443,6 @@ public partial class TetrisGameController : Window
 							break;
 					}
 				}
-			}
 			if (!canMove)
 				break;
 		}
@@ -449,9 +464,7 @@ public partial class TetrisGameController : Window
 		{
 			List<bool> NewRow = [];
 			for (int Y = 0; Y < _currentFigure.Length; Y++)
-			{
 				NewRow.Add(_currentFigure[Y][X]);
-			}
 			RotatedFigure.Add([.. NewRow]);
 		}
 		bool[][] RotatedFigureArray = [.. RotatedFigure];
@@ -465,15 +478,10 @@ public partial class TetrisGameController : Window
 	private void PlaceCurrentFigure()
 	{
 		for (int X = 0; X < GAME_WIDTH; X++)
-		{
 			for (int Y = 0; Y < GAME_HEIGHT; Y++)
-			{
 				if (CurrentFigureIsHere(new(X, Y)))
-				{
-					_blocks[X][Y] = BlockType.White;
-				}
-			}
-		}
+					_blocks[X][Y] = _currentFigureType;
+		_currentFigureType = GetRandomBlockType();
 	}
 
 	public bool CurrentFigureIsHere(Vector2I Position) // checking if current figure's block in this pos 
@@ -490,26 +498,26 @@ public partial class TetrisGameController : Window
 		return false;
 	}
 
-
-	public Vector2I GetCurrentFigureRealPosition() // Getting top left corner of current figure
+	private void TweenLowPass(float result)
 	{
-		return _currentFigurePosition - GetFigureCenterOffset(_currentFigure);
+		Tween tween = CreateTween();
+		tween.SetTrans(Tween.TransitionType.Quint);
+		tween.TweenProperty(LowPassFilter, "cutoff_hz", result, 0.25);
 	}
 
-	public static bool[][] GetRandomFigure() // getting random figure
-	{
-		return _figures[GD.Randi() % _figures.Length];
-	}
+	public Vector2I GetCurrentFigureRealPosition() => // Getting top left corner of current figure
+		_currentFigurePosition - GetFigureCenterOffset(_currentFigure);
 
-	public static Vector2I GetFigureSize(bool[][] Figure) // figure size
-	{
-		return new Vector2I(Figure.Length, Figure[0].Length);
-	}
+	public static BlockType GetRandomBlockType() => _blockTypes[GD.Randi() % (_blockTypes.Length - 1) + 1];
 
-	public static Vector2I GetFigureCenterOffset(bool[][] Figure) // get center of figure
-	{
-		return GetFigureSize(Figure) / 2;
-	}
+	public static bool[][] GetRandomFigure() => // getting random figure
+		_figures[GD.Randi() % _figures.Length];
+
+	public static Vector2I GetFigureSize(bool[][] Figure) => // figure size
+		new(Figure.Length, Figure[0].Length);
+
+	public static Vector2I GetFigureCenterOffset(bool[][] Figure) => // get center of figure
+		GetFigureSize(Figure) / 2;
 
 	// Figures
 	public static readonly bool[][][] _figures = [ // figures
