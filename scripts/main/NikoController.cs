@@ -244,12 +244,16 @@ public partial class NikoController : Node
 				_achievementsController.TakeAchievement("one_hundred_clicks");
 			if (_valuesContainer.Clicks >= 1000 && !_achievementsController.IsAchievementTaked("one_thousand_clicks"))
 				_achievementsController.TakeAchievement("one_thousand_clicks");
-			if (_valuesContainer.Clicks >= 100000 && !_achievementsController.IsAchievementTaked("one_hundred_thousand_clicks"))
+			if (_valuesContainer.Clicks >= 100_000 && !_achievementsController.IsAchievementTaked("one_hundred_thousand_clicks"))
 				_achievementsController.TakeAchievement("one_hundred_thousand_clicks");
-			if (_valuesContainer.Clicks >= 1000000 && !_achievementsController.IsAchievementTaked("one_million_clicks"))
+			if (_valuesContainer.Clicks >= 1_000_000 && !_achievementsController.IsAchievementTaked("one_million_clicks"))
 				_achievementsController.TakeAchievement("one_million_clicks");
-			if (_valuesContainer.Clicks >= 1000000000 && !_achievementsController.IsAchievementTaked("one_billion_clicks"))
+			if (_valuesContainer.Clicks >= 1_000_000_000 && !_achievementsController.IsAchievementTaked("one_billion_clicks"))
 				_achievementsController.TakeAchievement("one_billion_clicks");
+			if (_valuesContainer.NikoScared && !_achievementsController.IsAchievementTaked("im_scared"))
+				_achievementsController.TakeAchievement("im_scared");
+			if (_valuesContainer.CPS >= 100 && !_achievementsController.IsAchievementTaked("what_you_do"))
+				_achievementsController.TakeAchievement("what_you_do");
 		}
 	}
 

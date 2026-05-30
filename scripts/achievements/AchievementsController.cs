@@ -43,9 +43,9 @@ public partial class AchievementsController : Node
 	{
 		int? achievement = GetAchievementIndexById(AchievementId);
 		if (achievement is int achievementId)
-		{
 			return AchievementTakedList[achievementId];
-		}
+		else
+			GD.PushWarning($"Unknown achievement \"{AchievementId}\"!");
 		return false;
 	}
 
