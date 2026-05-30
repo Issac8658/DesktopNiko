@@ -14,13 +14,14 @@ shared.no,No,Нет,Nein,Ні
 shared.short.time.hours,h,ч,h,г
 shared.short.time.minutes,m,м,m,х
 shared.short.time.seconds,s,с,s,с
-shared.cancel,Cancel,Отмена,,Скасування
-shared.play,Play,Играть,,Грати
+shared.cancel,Cancel,Отмена,Abbrechen,Скасування
+shared.play,Play,Играть,Spielen,Грати
 shared.exit,Exit,Выход,Ausgang,Вихід
 shared.continue,Continue,Продолжить,Weiterhin,Продовживши
-shared.points,Points,Очки,,Очко
-shared.music,Music,Музыка,,
-shared.restart,Restart,Заного,,
-shared.yay,Yay!,Ура!,,Ура!
-shared.how_to_play,How to play?,Как играть?,,Як грати?
-shared.apply,Apply,Применить,,
+shared.points,Points,Очки,Punkte,Очок
+shared.music,Music,Музыка,Musik,Музика
+shared.restart,Restart,Заного,Neustart,Заного
+shared.yay,Yay!,Ура!,Yay!,Ура!
+shared.how_to_play,How to play?,Как играть?,Wie spielt man?,Як грати?
+shared.apply,Apply,Применить,Anwenden,Застосувати
+shared.paused,Paused,Пауза,,Пауза

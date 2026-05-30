@@ -18,21 +18,21 @@ achievements.what_you_do.title,WHAT ARE YOU DOING?!,ЧТО ТЫ ДЕЛАЕШЬ?!
 achievements.what_you_do.description,100 clicks per second? Are you serious?,100 кликов в секунду? Ты серьезно?,100 klicks pro Sekunde? Meinst du das ernst?,100 кліків в секунду? Ти серйозно?
 achievements.sweet_dreams.title,Sweet dreams!,Сладких снов!,Träum süß!,Солодких снів!
 achievements.sweet_dreams.description,"Isn't it time for us to sleep?",Не пора ли нам поспать?,Ist es nicht Zeit für uns zu schlafen?,Чи не час нам поспати?
-achievements.little_win.title,Little win,Маленькая победа,,Маленька перемога
-achievements.little_win.description,Win Niko in tennis,Победите Нико в теннисе,,Перемогти Ніко в тенісі
-achievements.master_of_tennis.title,Master of tennis,Мастер тенниса,,Майстер тенісу
-achievements.master_of_tennis.description,Score only 100 points.,Наберите всего лишь 100 очков.,,Наберіть всього лише 100 очок.
-achievements.hacked_a_machine.title,Hacked a machine,Взломал автомат,,Зламав автомат
-achievements.hacked_a_machine.description,You hacked it... a pancake machine??,Ты взломал... автомат с блинчиками??,,Ти зламав... автомат з млинцями??
-achievements.time_to_dinner.title,Time to dinner!,Время ужинать!,,Час вечеряти!
-achievements.time_to_dinner.description,Feed Niko pancakes (the main thing is not to overdo it),Накормите Нико блинчиками (главное не переборщи),,Нагодуйте Ніко млинцями (головне не переборщи)
-achievements.worst_friend.title,WORST friend.,ХУДШИЙ друг.,,НАЙГІРШИЙ друг.
-achievements.worst_friend.description,"[ Of course, I understand everything, experiments are all that, but are you SERIOUSLY ready to sacrifice pancakes for Niko for some damn experiments?! ]","[ Я, конечно, всё понимаю, эксперименты всё такое, но ты СЕРЬЕЗНО готов пожертвовать блинчиками для Нико ради каких то эксперементов?! ]",,"[ Я, звичайно, все розумію, експерименти все таке, але ти СЕРЙОЗНО готовий пожертвувати млинцями для Ніко заради якихось експериментів?! ]"
+achievements.little_win.title,Little win,Маленькая победа,Kleiner Sieg,Маленька перемога
+achievements.little_win.description,Win Niko in tennis,Победите Нико в теннисе,Besiege Niko im Tennis,Перемогти Ніко в тенісі
+achievements.master_of_tennis.title,Master of tennis,Мастер тенниса,Tennismeister,Майстер тенісу
+achievements.master_of_tennis.description,Score only 100 points.,Наберите всего лишь 100 очков.,Erreiche nur 100 Punkte.,Наберіть всього лише 100 очок.
+achievements.hacked_a_machine.title,Hacked a machine,Взломал автомат,Einen Automaten gehackt,Зламав автомат
+achievements.hacked_a_machine.description,You hacked it... a pancake machine??,Ты взломал... автомат с блинчиками??,Du hast ihn gehackt... einen Pfannkuchenautomaten??,Ти зламав... автомат з млинцями??
+achievements.time_to_dinner.title,Time to dinner!,Время ужинать!,Zeit zum Abendessen!,Час вечеряти!
+achievements.time_to_dinner.description,Feed Niko pancakes (the main thing is not to overdo it),Накормите Нико блинчиками (главное не переборщи),"Füttere Niko mit Pfannkuchen (Hauptsache, du übertreibst es nicht)",Нагодуйте Ніко млинцями (головне не переборщи)
+achievements.worst_friend.title,WORST friend.,ХУДШИЙ друг.,SCHLECHTESTER Freund.,НАЙГІРШИЙ друг.
+achievements.worst_friend.description,"[ Of course, I understand everything, experiments are all that, but are you SERIOUSLY ready to sacrifice pancakes for Niko for some damn experiments?! ]","[ Я, конечно, всё понимаю, эксперименты всё такое, но ты СЕРЬЕЗНО готов пожертвовать блинчиками для Нико ради каких то эксперементов?! ]","[ Natürlich verstehe ich alles, Experimente und so weiter, aber bist du ERNSTHAFT bereit, Pfannkuchen für Niko für irgendwelche verdammten Experimente zu opfern?! ]","[ Я, звичайно, все розумію, експерименти все таке, але ти СЕРЙОЗНО готовий пожертвувати млинцями для Ніко заради якихось експериментів?! ]"
 achievements.hello_secret.title,"Hello, Secret!","Привет, Секрет!","Hallo, das Geheimnis!","Привіт, Секрет!"
 achievements.hello_secret.description,What was that?,Что это было?,Was war das?,Що це було?
-achievements.meow.title,Meow,Мяу,,
-achievements.meow.description,I'm not a cat!,Я не кот!,,
-achievements.sliding_win.title,Sliding Win.,Скользящая победа.,,
-achievements.sliding_win.description,Assemble the sliding puzzle.,Соберите скользящий пазл (Пятнаяшки).,,
-achievements.cat_window.title,A Cat Window :3,Кото-окошко :3,,
-achievements.cat_window.description,Find a possible friend for Niko.,Найдите возможного друга для Нико.,,
+achievements.meow.title,Meow,Мяу,Miau,Няв
+achievements.meow.description,I'm not a cat!,Я не кот!,Ich bin keine Katze!,Я не кіт!
+achievements.sliding_win.title,Sliding Win.,Пятнашки пройдены.,Gleitender Sieg.,П'ятнашки пройдено
+achievements.sliding_win.description,Assemble the sliding puzzle.,Соберите Пятнашки.,Setze das Schiebepuzzle zusammen.,Соберите П'ятнашки.
+achievements.cat_window.title,A Cat Window :3,Кото-окошко :3,Ein Katzenfenster :3,Кото-віконце: 3
+achievements.cat_window.description,Find a possible friend for Niko.,Найдите возможного друга для Нико.,Finde einen möglichen Freund für Niko.,Знайдіть можливого друга для Ніко.

@@ -4,9 +4,10 @@ titles.shortcuts,Shortcuts,Ярлыки,Verknüpfungen,Ярлики
 titles.themes,Themes,Темы,Themen,Теми
 titles.jukebox,Jukebox,Музыкальная шкатулка,Spieldose,Музична скринька
 titles.console,Console,Консоль,Konsole,Консоль
-titles.tennis,Tennis,Теннис,,Теніс
-titles.games,Games,Игры,,
+titles.tennis,Tennis,Теннис,Tennis,Теніс
+titles.games,Games,Игры,Spiele,Ігри
 titles.achievements,Achivements,Достижения,Erreichung,Досягнення
 titles.shutdown,Shutdown,Завершение работы,Shutdown,Завершення роботи
-titles.skins,Skins,Скины,,
-titles.sliding_puzzle,Sliding Puzzle,Пятнашки,,
+titles.skins,Skins,Скины,Skins,Скіни
+titles.sliding_puzzle,Sliding Puzzle,Пятнашки,Schiebepuzzle,"П'ятнашки"
+titles.tetris,tetris,Тетрис,,Тетріс
