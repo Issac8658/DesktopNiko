@@ -26,7 +26,7 @@ public partial class AchievementsRegistrar : Node
 		{"hello_secret", 				["res://sprites/achievements/unknown.png",						true]},
 		{"cat_window", 					["res://sprites/achievements/cat_window.png",					true]}
 	};
-	// Called when the node enters the scene tree for the first time.
+	
 	public override void _Ready()
 	{
 		_achCon = GetNode<AchievementsController>("/root/AchievementsController");

@@ -142,6 +142,8 @@ func smooth_update_part(part : Control, pos : Vector2i):
 		)
 		solved_sound.play()
 		win_particles.emitting = true
+		if not AchievementsController.IsAchievementTaked("sliding_win"):
+			AchievementsController.TakeAchievement("sliding_win", true)
 	else:
 		if (win_tween != null):
 			win_tween.stop()

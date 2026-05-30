@@ -31,6 +31,7 @@ public partial class NikoWindowControl : Control
 		_windowExtantions = GetNode<WindowExstantions>("/root/WindowExstantions");
 
 		_valuesContainer.NikoScaleChanged += (NikoScale) => UpdateScale();
+		_valuesContainer.NikoVisibilityChanged += (Visible) => UpdateScale();
 		ItemRectChanged += () => _mainWindow.Size = (Vector2I)Size;
 
 		NikoClickControl.GuiInput += Event =>
@@ -72,6 +73,8 @@ public partial class NikoWindowControl : Control
 
 	public void UpdateScale()
 	{
+		Visible = _valuesContainer.NikoVisible;
+
 		float scale = NikoScales[_valuesContainer.NikoScale];
 		SleepParticles.Scale = AreasNode.Scale = new(scale, scale);
 		_mainWindow.Size = new((int)Size.X, (int)Size.Y);

@@ -38,7 +38,7 @@ public partial class NikoClickablePolygon : Node2D
 
 	public bool MouseInClickableArea()
 	{
-		if (_valuesContainer.GamingModeEnabled)
+		if (_valuesContainer.GamingModeEnabled || !_valuesContainer.NikoVisible)
 			return false;
 
 		var Polygons = ClickablePolygon.GetOverlappingAreas();
