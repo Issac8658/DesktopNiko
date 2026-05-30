@@ -9,6 +9,11 @@ public partial class TetrisGameController : Window
 	public const int GAME_WIDTH = 10;
 	public const double START_TICK_TIME = 0.5;
 
+    public const int STATE_0 = 0;
+    public const int STATE_R = 1;
+    public const int STATE_2 = 2;
+    public const int STATE_L = 3;
+
 	// signals
 	[Signal]
 	public delegate void ReDrawTilesEventHandler();
@@ -58,7 +63,7 @@ public partial class TetrisGameController : Window
 		Colors.Red,
 	];
 
-	private static readonly Vector2I FIGURE_DEFAULT_POSITION = new(5, 1);
+	private static readonly Vector2I FIGURE_DEFAULT_POSITION = new(3, 0);
 	private static readonly BlockType[] _blockTypes = (BlockType[])Enum.GetValues(typeof(BlockType));
 
 	public static readonly AudioEffectLowPassFilter LowPassFilter = AudioServer.GetBusEffect(2, 0) as AudioEffectLowPassFilter;
@@ -99,7 +104,7 @@ public partial class TetrisGameController : Window
 	{
 		get => _currentFigure;
 	}
-	public Vector2I CurrentFigurePositiontFigure
+	public Vector2I CurrentFigurePosition
 	{
 		get => _currentFigurePosition;
 	}
@@ -278,20 +283,21 @@ public partial class TetrisGameController : Window
 
 	private void ReDrawCurrentFigure(bool Drop = false) // redrawing current figure
 	{
-		Vector2I pos = _currentFigurePosition - GetFigureCenterOffset(_currentFigure);
 		if (Drop)
-			EmitSignal("ReDrawZone", new Rect2I(pos.X - 2, 0, 4 + GetFigureSize(CurrentFigure).X, GAME_HEIGHT)); // full colums if pressing space
+			EmitSignal("ReDrawZone", new Rect2I(_currentFigurePosition.X - 2, 0, 4 + GetFigureMatrixSize(CurrentFigure).X, GAME_HEIGHT)); // full colums if pressing space
 		else
-			EmitSignal("ReDrawZone", new Rect2I(pos - new Vector2I(2,2), new Vector2I(4,4) + GetFigureSize(CurrentFigure))); // else zone around figure
+			EmitSignal("ReDrawZone", new Rect2I(_currentFigurePosition - new Vector2I(2,2), new Vector2I(4,4) + GetFigureMatrixSize(CurrentFigure))); // else zone around figure
 		
-
 		UpdateRulers();
 	}
 
 	private void UpdateRulers()
 	{
-		LeftRuler.Position = new((_currentFigurePosition.X - GetFigureCenterOffset(_currentFigure).X) * 40 - 3, 0); // positing left ruler
-		RightRuler.Position = LeftRuler.Position + new Vector2(_currentFigure.Length * 40, 0); // positing right ruler
+		Rect2I ActiveZone = GetFigureActiveZone(_currentFigure);
+		Vector2I ActiveZonePosition = _currentFigurePosition + ActiveZone.Position;
+
+		LeftRuler.Position = new(ActiveZonePosition.X * 40 - 3, 0); // positing left ruler
+		RightRuler.Position = LeftRuler.Position + new Vector2(ActiveZone.Size.X * 40, 0); // positing right ruler
 		RightRuler.Modulate = LeftRuler.Modulate = GetColorFromType(CurrentFigureType);
 	}
 
@@ -308,8 +314,7 @@ public partial class TetrisGameController : Window
 
 	private bool TickCurrentFigure(bool HeightPlace = false)
 	{
-		Vector2I pos = _currentFigurePosition - GetFigureCenterOffset(_currentFigure); // getting top left corner of current figure
-		if (FigureCanMove(_currentFigure, pos + new Vector2I(0, 1))) // checking if current figure can move
+		if (FigureCanMove(_currentFigure, _currentFigurePosition + new Vector2I(0, 1))) // checking if current figure can move
 		{
 			_currentFigurePosition.Y += 1; // moving
 			_score += 1;
@@ -317,7 +322,7 @@ public partial class TetrisGameController : Window
 		}
 		else
 		{
-			if (pos.Y < 3) // lose checking
+			if (_currentFigurePosition.Y < 3) // lose checking
 				CurrentState = GameStates.Lose;
 			else
 			{
@@ -335,9 +340,10 @@ public partial class TetrisGameController : Window
 			}
 		}
 
+		// LinesChecking
+		
 		uint DestroyedLines = 0;
 
-		// LinesChecking
 		for (int Y = 0; Y < GAME_HEIGHT; Y++)
 		{
 			bool lineFull = false;
@@ -434,56 +440,52 @@ public partial class TetrisGameController : Window
 
 	private void MoveCurrentFigure(Vector2I Offset)
 	{
-		if (FigureCanMove(_currentFigure, _currentFigurePosition - GetFigureCenterOffset(_currentFigure) + Offset))
+		if (FigureCanMove(_currentFigure, _currentFigurePosition + Offset))
 			_currentFigurePosition += Offset;
 		MoveCurrentFigureInBorders();
 	}
 
 	private bool FigureCanMove(bool[][] Figure, Vector2I Position)
 	{
-		Position.X += GetFigureInBordersOffset();
-		Vector2I size = GetFigureSize(Figure);
-		bool canMove = false;
-		for (int X = 0; X < size.X; X++)
-		{
-			for (int Y = 0; Y < size.Y; Y++)
+		if (Position == _currentFigurePosition)
+			return true;
+
+		Rect2I ActiveZone = GetFigureActiveZone(Figure);
+		Vector2I ActiveZonePosition = Position + ActiveZone.Position;
+		
+		if (ActiveZonePosition.X < 0
+		 || ActiveZonePosition.X + ActiveZone.Size.X - 1 >= GAME_WIDTH
+		 || ActiveZonePosition.Y + ActiveZone.Size.Y - 1 >= GAME_HEIGHT)
+			return false;
+		
+		for (int X = ActiveZone.Position.X; X < ActiveZone.Position.X + ActiveZone.Size.X; X++)
+			for (int Y = ActiveZone.Position.Y; Y < ActiveZone.Position.Y + ActiveZone.Size.Y; Y++)
 				if (Figure[X][Y])
 				{
 					Vector2I globalPos = new Vector2I(X, Y) + Position;
-					if (globalPos.X >= 0 && globalPos.Y >= 0)
-					{
-						canMove = globalPos.Y < GAME_HEIGHT && _blocks[globalPos.X][globalPos.Y] == null;
-						if (!canMove)
-							break;
-					}
+					if (_blocks[globalPos.X][globalPos.Y] != null)
+						return false;
 				}
-			if (!canMove)
-				break;
-		}
-		return canMove;
+		return true;
 	}
 
 	private void MoveCurrentFigureInBorders() // if figure want to go out of bounds
 	{
-		//Vector2I pos = GetCurrentFigureRealPosition();
-		//_currentFigurePosition.X -= Math.Clamp(pos.X, -9999, 0);
-		//_currentFigurePosition.X += Math.Clamp(GAME_WIDTH - pos.X - GetFigureSize(_currentFigure).X, -9999, 0);
-		_currentFigurePosition.X = Math.Clamp(
-			GetCurrentFigureRealPosition().X,
-			0,
-			GAME_WIDTH - GetFigureSize(CurrentFigure).X
-		) + GetFigureCenterOffset(_currentFigure).X;
+		Rect2I ActiveZone = GetFigureActiveZone(_currentFigure);
+		int ActiveZonePosition = _currentFigurePosition.X + ActiveZone.Position.X;
+		_currentFigurePosition.X = Mathf.Clamp(ActiveZonePosition, 0, GAME_WIDTH - ActiveZone.Size.X + 1) - ActiveZone.Position.X;
 	}
 	
 	private int GetFigureInBordersOffset() =>
 		Math.Clamp(
-			GetCurrentFigureRealPosition().X,
+			_currentFigurePosition.X,
 			0,
-			GAME_WIDTH - GetFigureSize(CurrentFigure).X
-		) + GetFigureCenterOffset(_currentFigure).X - _currentFigurePosition.X;
+			GAME_WIDTH - GetFigureMatrixSize(CurrentFigure).X
+		) - _currentFigurePosition.X;
 
 	private void RotateCurrentFigure() // figure rotating
 	{
+		GD.Print("Rotating");
 		List<bool[]> RotatedFigure = [];
 
 		for (int X = _currentFigure[0].Length - 1; X >= 0; X--)
@@ -494,10 +496,11 @@ public partial class TetrisGameController : Window
 			RotatedFigure.Add([.. NewRow]);
 		}
 		bool[][] RotatedFigureArray = [.. RotatedFigure];
-		if (FigureCanMove(RotatedFigureArray, _currentFigurePosition - GetFigureCenterOffset(RotatedFigureArray)))
+		if (FigureCanMove(RotatedFigureArray, _currentFigurePosition))
 		{
+			GD.Print("Rotaded");
 			_currentFigure = RotatedFigureArray;
-			MoveCurrentFigureInBorders();
+			//MoveCurrentFigureInBorders();
 		}
 	}
 
@@ -512,14 +515,11 @@ public partial class TetrisGameController : Window
 
 	public bool CurrentFigureIsHere(Vector2I Position) // checking if current figure's block in this pos 
 	{
-		Vector2I FigureSize = GetFigureSize(_currentFigure);
+		Vector2I FigureSize = GetFigureMatrixSize(_currentFigure);
 
-		Vector2I CurrentFigureRealPosition = GetCurrentFigureRealPosition();
-
-
-		if (Position.X - CurrentFigureRealPosition.X >= 0 && Position.X - CurrentFigureRealPosition.X < FigureSize.X &&
-			Position.Y - CurrentFigureRealPosition.Y >= 0 && Position.Y - CurrentFigureRealPosition.Y < FigureSize.Y) // wtf is this that..?
-			return _currentFigure[Position.X - CurrentFigureRealPosition.X][Position.Y - CurrentFigureRealPosition.Y];
+		if (Position.X - _currentFigurePosition.X >= 0 && Position.X - _currentFigurePosition.X < FigureSize.X &&
+			Position.Y - _currentFigurePosition.Y >= 0 && Position.Y - _currentFigurePosition.Y < FigureSize.Y) // wtf is this that..?
+			return _currentFigure[Position.X - _currentFigurePosition.X][Position.Y - _currentFigurePosition.Y];
 			
 		return false;
 	}
@@ -531,19 +531,32 @@ public partial class TetrisGameController : Window
 		tween.TweenProperty(LowPassFilter, "cutoff_hz", result, 0.25);
 	}
 
-	public Vector2I GetCurrentFigureRealPosition() => // Getting top left corner of current figure
-		_currentFigurePosition - GetFigureCenterOffset(_currentFigure);
+	public Vector2I GetCurrentFigureCenterPosition() => _currentFigurePosition + GetFigureCenterOffset(_currentFigure); // Getting top left corner of current figure
+
+	public static Rect2I GetFigureActiveZone(bool[][] Figure)
+	{
+		Rect2I Result = new(Figure.Length, Figure[0].Length, -1, -1);
+		for (int X = 0; X < Figure.Length; X++)
+			for (int Y = 0; Y < Figure[0].Length; Y++)
+				if (Figure[X][Y])
+				{
+					if (Result.Position.X > X) Result.Position = new(X, Result.Position.Y);
+					if (Result.Position.Y > Y) Result.Position = new(Result.Position.X, Y);
+					if (Result.Size.X < X) Result.Size = new(X, Result.Size.Y);
+					if (Result.Size.Y < Y) Result.Size = new(Result.Size.X, Y);
+				}
+		Result.Size -= Result.Position;
+		Result.Size += Vector2I.One;
+		return Result;
+	}
+
+	public static bool[][] GetRandomFigure() => _figures[GD.Randi() % _figures.Length]; // getting random figure
+
+	public static Vector2I GetFigureMatrixSize(bool[][] Figure) => new(Figure.Length, Figure[0].Length); // figure size
+
+	public static Vector2I GetFigureCenterOffset(bool[][] Figure) => GetFigureMatrixSize(Figure) / 2; // get center of figure
 
 	public static BlockType GetRandomBlockType() => _blockTypes[GD.Randi() % (_blockTypes.Length - 1) + 1];
-
-	public static bool[][] GetRandomFigure() => // getting random figure
-		_figures[GD.Randi() % _figures.Length];
-
-	public static Vector2I GetFigureSize(bool[][] Figure) => // figure size
-		new(Figure.Length, Figure[0].Length);
-
-	public static Vector2I GetFigureCenterOffset(bool[][] Figure) => // get center of figure
-		GetFigureSize(Figure) / 2;
 
 	public static Color GetColorFromType(BlockType BlockType) => BlockColors[(int)BlockType];
 
@@ -554,27 +567,58 @@ public partial class TetrisGameController : Window
 			[true,	true],
 		],
 		[
-			[true,	true,	true,	true]
+			[false,	true,	false,	false],
+			[false,	true,	false,	false],
+			[false,	true,	false,	false],
+			[false,	true,	false,	false]
 		],
 		[
-			[true,	true, 	true],
-			[true,	false, 	false]
-		],
-		[
-			[true,	true, 	true],
-			[false,	false, 	true]
-		],
-		[
-			[true,	true, 	false],
-			[false,	true, 	true]
-		],
-		[
-			[false,	true, 	true],
+			[false,	true, 	false],
+			[false,	true, 	false],
 			[true,	true, 	false]
 		],
 		[
-			[true,	true, 	true],
+			[true,	true, 	false],
+			[false,	true, 	false],
+			[false,	true, 	false]
+		],
+		[
+			[true,	false, 	false],
+			[true,	true, 	false],
+			[false,	true, 	false]
+		],
+		[
+			[false,	true, 	false],
+			[true,	true, 	false],
+			[true,	false, 	false]
+		],
+		[
+			[false,	true, 	false],
+			[true,	true, 	false],
 			[false,	true, 	false]
 		],
 	];
+
+	public static readonly Vector2I[][] WallKickTables3x3 = [
+        [ new(0, 0), new(-1, 0), new(-1, -1), new(0,  2), new(-1,  2) ], // 0 -> R
+        [ new(0, 0), new( 1, 0), new( 1,  1), new(0, -2), new( 1, -2) ], // R -> 0
+        [ new(0, 0), new( 1, 0), new( 1,  1), new(0, -2), new( 1, -2) ], // R -> 2
+        [ new(0, 0), new(-1, 0), new(-1, -1), new(0,  2), new(-1,  2) ], // 2 -> R
+        [ new(0, 0), new( 1, 0), new( 1, -1), new(0,  2), new( 1,  2) ], // 2 -> L
+        [ new(0, 0), new(-1, 0), new(-1,  1), new(0, -2), new(-1, -2) ], // L -> 2
+        [ new(0, 0), new(-1, 0), new(-1,  1), new(0, -2), new(-1, -2) ], // L -> 0
+        [ new(0, 0), new( 1, 0), new( 1, -1), new(0,  2), new( 1,  2) ]  // 0 -> L
+	];
+	public static readonly Vector2I[][] WallKickTables4x4 =
+    [
+        [ new(0, 0), new(-2, 0), new( 1, 0), new(-2,  1), new( 1, -2) ], // 0 -> R
+        [ new(0, 0), new( 2, 0), new(-1, 0), new( 2, -1), new(-1,  2) ], // R -> 0
+        [ new(0, 0), new(-1, 0), new( 2, 0), new(-1, -2), new( 2,  1) ], // R -> 2
+        [ new(0, 0), new( 1, 0), new(-2, 0), new( 1,  2), new(-2, -1) ], // 2 -> R
+        [ new(0, 0), new( 2, 0), new(-1, 0), new( 2, -1), new(-1,  2) ], // 2 -> L
+        [ new(0, 0), new(-2, 0), new( 1, 0), new(-2,  1), new( 1, -2) ], // L -> 2
+        [ new(0, 0), new( 1, 0), new(-2, 0), new( 1,  2), new(-2, -1) ], // L -> 0
+        [ new(0, 0), new(-1, 0), new( 2, 0), new(-1, -2), new( 2,  1) ]  // 0 -> L
+    ];
+	
 }

@@ -123,5 +123,5 @@ public partial class TetrisTileMap : Control
 		return new(0, 0, 20, 20);
 	}
 
-	public Vector2I GamePosToCurrentFigurePos(Vector2I GamePos) => GamePos - GameController.GetCurrentFigureRealPosition();
+	public Vector2I GamePosToCurrentFigurePos(Vector2I GamePos) => GamePos - GameController.CurrentFigurePosition;
 }
