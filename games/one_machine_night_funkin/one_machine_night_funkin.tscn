@@ -15,10 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://cdfijixxp6p6f" path="res://games/one_machine_night_funkin/resources/sprites/up_niko_arrow.tres" id="7_opkc3"]
 [ext_resource type="Texture2D" uid="uid://dqivyb4rfaw0l" path="res://games/one_machine_night_funkin/resources/sprites/right_niko_arrow.tres" id="8_ynly3"]
 [ext_resource type="Material" uid="uid://c6wj8bf6fua0x" path="res://materials/theme_painter_spatial_material_mul_mode.tres" id="10_ckkcy"]
+[ext_resource type="PackedScene" uid="uid://fy6bw5ixfgwx" path="res://games/one_machine_night_funkin/resources/models/world_machine_art.glb" id="10_tkl75"]
 [ext_resource type="Material" uid="uid://dyl3jlsfuqu73" path="res://games/one_machine_night_funkin/shadowed_theme_color_material.tres" id="11_gvh5a"]
 [ext_resource type="Texture2D" uid="uid://fxuikr51auxs" path="res://games/one_machine_night_funkin/resources/sprites/vignette.tres" id="11_uu4jc"]
 [ext_resource type="Texture2D" uid="uid://dnp0ssokaef08" path="res://games/one_machine_night_funkin/resources/sprites/grid_tile.png" id="12_mdd26"]
-[ext_resource type="PackedScene" uid="uid://dux14lx1jt02t" path="res://models/some_niko_art.blend" id="13_ff44s"]
 [ext_resource type="Material" uid="uid://dlf53nu0vfhcn" path="res://materials/theme_painter_spatial_material.tres" id="13_oyh13"]
 [ext_resource type="Material" uid="uid://iwvpwtihkrel" path="res://materials/world_machine_material.tres" id="15_srfix"]
 [ext_resource type="Texture2D" uid="uid://bopjsdp0ehenl" path="res://niko/niko_default/sleepy.png" id="16_jklxq"]
@@ -868,135 +868,135 @@ _data = {
 [sub_resource type="Animation" id="Animation_mdwxf"]
 resource_name = "MenuDance"
 step = 0.0167
-tracks/0/type = "animation"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("some_niko_art/AnimationPlayer")
+tracks/0/path = NodePath("Menu/Control:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"clips": PackedStringArray("WMDance"),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Menu/Control:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.0166667, 0.5, 0.516667, 1),
 "transitions": PackedFloat32Array(1, 0.466516, 1, 0.466516, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.055, 1.055), Vector2(1, 1), Vector2(1.055, 1.055), Vector2(1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Menu/BeginText/TextPart1/Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0182465, 0.5, 0.513719, 1),
+"transitions": PackedFloat32Array(1, 0.25, 1, 0.25, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 0), Vector2(0, 20), Vector2(0, 0)]
+}
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Menu/BeginText/TextPart1/Label:position")
+tracks/2/path = NodePath("Menu/BeginText/TextPart2/Label:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.0182465, 0.5, 0.513719, 1),
 "transitions": PackedFloat32Array(1, 0.25, 1, 0.25, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 0), Vector2(0, 20), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, 0), Vector2(0, -20), Vector2(0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Menu/BeginText/TextPart2/Label:position")
+tracks/3/path = NodePath("Menu/BeginText/TextPart3/Label:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.0182465, 0.5, 0.513719, 1),
 "transitions": PackedFloat32Array(1, 0.25, 1, 0.25, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, 0), Vector2(0, -20), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 0), Vector2(0, 20), Vector2(0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Menu/BeginText/TextPart3/Label:position")
+tracks/4/path = NodePath("Menu/BeginText/TextPart4/Label:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.0182465, 0.5, 0.513719, 1),
 "transitions": PackedFloat32Array(1, 0.25, 1, 0.25, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 0), Vector2(0, 20), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, 0), Vector2(0, -20), Vector2(0, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Menu/BeginText/TextPart4/Label:position")
+tracks/5/path = NodePath("Menu/Control:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.0182465, 0.5, 0.513719, 1),
-"transitions": PackedFloat32Array(1, 0.25, 1, 0.25, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 20), Vector2(0, 0), Vector2(0, -20), Vector2(0, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Menu/Control:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.0166667, 0.497177, 0.515881, 1),
 "transitions": PackedFloat32Array(1, 0.420448, 1, 0.420448, 1),
 "update": 0,
 "values": [-0.0699609, -0.15708, -0.0699609, 0.0174533, -0.0699609]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Background/Layer1:surface_material_override/0:uv1_offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1, -1, 0)]
+}
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Background/Layer1:surface_material_override/0:uv1_offset")
+tracks/7/path = NodePath("Background/Layer2:surface_material_override/0:uv1_offset")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1, -1, 0)]
+"values": [Vector3(0, 0, 0), Vector3(1, 1, 0)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Background/Layer2:surface_material_override/0:uv1_offset")
+tracks/8/path = NodePath("Background/Layer3:surface_material_override/0:albedo_color")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1, 1, 0)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Background/Layer3:surface_material_override/0:albedo_color")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
 "times": PackedFloat32Array(0, 0.483333, 0.5, 0.983333, 1),
 "transitions": PackedFloat32Array(0.659754, 1, 0.659754, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Background/Layer3:surface_material_override/0:uv1_offset")
-tracks/10/interp = 0
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Background/Layer3:surface_material_override/0:uv1_offset")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0, 0.483333, 0.983333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.5, 0.5, 0), Vector3(0, 0, 0)]
+}
+tracks/10/type = "animation"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("world_machine_art/AnimationPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": PackedStringArray("WMDance"),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_n51mw"]
@@ -1503,34 +1503,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0983487)
 mesh = SubResource("PlaneMesh_wyq7x")
 surface_material_override/0 = ExtResource("10_ckkcy")
 
-[node name="some_niko_art" parent="Window" unique_id=418165075 instance=ExtResource("13_ff44s")]
+[node name="world_machine_art" parent="Window" unique_id=244650962 instance=ExtResource("10_tkl75")]
 
-[node name="Skeleton3D" parent="Window/some_niko_art/WorldMachineArmature" index="0"]
-bones/0/position = Vector3(0.24542709, 0.0012032572, -0.14100552)
-bones/0/rotation = Quaternion(0.114229955, 0.697819, 0.6978192, -0.11423055)
-bones/0/scale = Vector3(0.9997126, 0.99738294, 1)
-bones/1/rotation = Quaternion(-0.050853528, 0.7052758, 0.7052759, 0.050853096)
-bones/2/rotation = Quaternion(-0.039335128, 0.70601195, 0.7060119, 0.0393337)
+[node name="Skeleton3D" parent="Window/world_machine_art/WorldMachineArmature" parent_id_path=PackedInt32Array(244650962, 319114383) index="0" unique_id=2111687688]
+bones/0/position = Vector3(0.24499694, 0.0012032572, -0.1419662)
+bones/0/rotation = Quaternion(0.12338506, 0.69625854, 0.6962587, -0.12338567)
+bones/0/scale = Vector3(1.0000015, 0.99999994, 1)
+bones/1/rotation = Quaternion(-0.06374445, 0.7042277, 0.70422775, 0.06374424)
+bones/2/rotation = Quaternion(-0.027326498, 0.7065786, 0.7065787, 0.027325278)
 bones/4/rotation = Quaternion(-1.5928492e-07, -3.9697234e-08, 0.4713396, 0.8819518)
 bones/4/scale = Vector3(0.9999999, 0.9999999, 0.90000004)
-bones/5/rotation = Quaternion(-2.4002418e-08, -2.7957524e-08, 0.07960952, 0.9968262)
-bones/6/rotation = Quaternion(-1.664023e-08, 4.3184404e-08, 0.18937182, 0.9819055)
-bones/7/rotation = Quaternion(-2.3162673e-07, 4.5583383e-07, 0.4644323, 0.88560873)
-bones/8/rotation = Quaternion(4.6441133e-07, 5.170584e-07, -0.3037636, 0.95274746)
-bones/9/rotation = Quaternion(1.572986e-07, -7.272155e-08, -0.8197219, 0.5727617)
-bones/10/rotation = Quaternion(-5.171114e-07, 1.9895747e-07, 0.7976342, 0.60314167)
-bones/11/position = Vector3(0.052251562, 0.15553737, 4.7748898e-08)
-bones/11/rotation = Quaternion(-1.3619447e-08, 8.6045205e-08, 0.0120274685, 0.99992776)
-bones/11/scale = Vector3(0.96040595, 0.9999999, 1)
-bones/12/rotation = Quaternion(1.3076217e-07, 9.810331e-09, 0.99966854, -0.025745755)
-bones/13/position = Vector3(-0.042183504, 0.27548876, 2.085439e-08)
-bones/13/scale = Vector3(0.9999999, 1, 1)
-bones/14/position = Vector3(0.03261041, 0.54199255, -1.8099934e-08)
-bones/15/position = Vector3(0.97766846, 0.6364381, 4.1157293e-07)
-bones/16/position = Vector3(0.16690136, -1.0616704, 1.0498983e-07)
-bones/17/position = Vector3(-0.3523932, -0.5440794, -1.7517979e-07)
+bones/5/rotation = Quaternion(-2.4024235e-08, -2.7938597e-08, 0.08038718, 0.9967637)
+bones/6/rotation = Quaternion(-1.6605524e-08, 4.319777e-08, 0.19016078, 0.981753)
+bones/7/rotation = Quaternion(-2.312726e-07, 4.5601354e-07, 0.46512005, 0.88524765)
+bones/8/rotation = Quaternion(4.6487344e-07, 5.1664307e-07, -0.3029117, 0.9530186)
+bones/9/rotation = Quaternion(1.5745917e-07, -7.237322e-08, -0.82098764, 0.57094604)
+bones/11/position = Vector3(0.052247286, 0.15559787, 4.8017135e-08)
+bones/11/rotation = Quaternion(-1.3619441e-08, 8.604524e-08, 0.01202745, 0.99992776)
+bones/11/scale = Vector3(0.9604059, 1, 1)
+bones/12/rotation = Quaternion(1.3076115e-07, 9.823749e-09, 0.9996712, -0.025643177)
+bones/13/position = Vector3(-0.042183474, 0.27548873, 2.098297e-08)
+bones/13/scale = Vector3(0.99999994, 0.9999999, 1.0000001)
+bones/14/position = Vector3(0.043032207, 0.5138067, -1.8419781e-08)
+bones/15/position = Vector3(0.9545645, 0.6172219, 4.0393243e-07)
+bones/16/position = Vector3(0.16269872, -1.0319148, 8.966725e-08)
+bones/17/position = Vector3(-0.32447, -0.532973, -1.6253384e-07)
 
-[node name="AnimationPlayer" parent="Window/some_niko_art" index="2"]
+[node name="WorldMachineMesh" parent="Window/world_machine_art/WorldMachineArmature/Skeleton3D" index="0" unique_id=1461693750]
+surface_material_override/0 = ExtResource("13_oyh13")
+
+[node name="AnimationPlayer" parent="Window/world_machine_art" index="1" unique_id=594224387]
 speed_scale = 0.851
 
 [node name="MainCamera" type="Camera3D" parent="Window" unique_id=889279661]
@@ -1929,7 +1931,7 @@ script = ExtResource("26_mdwxf")
 use_parent_material = true
 layout_mode = 0
 offset_right = 364.0
-offset_bottom = 122.0
+offset_bottom = 122.00006
 theme_override_constants/outline_size = 40
 theme_override_font_sizes/font_size = 121
 theme_override_styles/normal = SubResource("StyleBoxEmpty_oyh13")
@@ -1945,7 +1947,7 @@ script = ExtResource("26_mdwxf")
 use_parent_material = true
 layout_mode = 0
 offset_right = 364.0
-offset_bottom = 122.0
+offset_bottom = 122.000015
 theme_override_constants/outline_size = 40
 theme_override_font_sizes/font_size = 121
 theme_override_styles/normal = SubResource("StyleBoxEmpty_oyh13")
@@ -1961,7 +1963,7 @@ script = ExtResource("26_mdwxf")
 use_parent_material = true
 layout_mode = 0
 offset_right = 182.0
-offset_bottom = 122.0
+offset_bottom = 122.00006
 theme_override_constants/outline_size = 40
 theme_override_font_sizes/font_size = 121
 theme_override_styles/normal = SubResource("StyleBoxEmpty_oyh13")
@@ -1977,7 +1979,7 @@ script = ExtResource("26_mdwxf")
 use_parent_material = true
 layout_mode = 0
 offset_right = 303.0
-offset_bottom = 122.0
+offset_bottom = 122.000015
 theme_override_constants/outline_size = 40
 theme_override_font_sizes/font_size = 121
 theme_override_styles/normal = SubResource("StyleBoxEmpty_oyh13")
@@ -2443,5 +2445,5 @@ text = "Label 4 4 4 4"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[editable path="Window/some_niko_art"]
+[editable path="Window/world_machine_art"]
 [editable path="Window/WMLocation/wm_location"]

@@ -20,7 +20,7 @@ public partial class TetrisShake : Node
 
 		GameController.LineDestroyed += Y =>
 		{
-			_shakePower += 2.0;
+			_shakePower += 100.0;
 		};
 	}
 

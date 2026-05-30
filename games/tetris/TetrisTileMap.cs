@@ -24,16 +24,6 @@ public partial class TetrisTileMap : Control
 		new(0, 1),
 		new(1, 1),
 	];
-	public static readonly Color[] BlockColors =
-	[
-		Colors.White,
-		Colors.Green,
-		Colors.Yellow,
-		Colors.Blue,
-		Colors.Purple,
-		Colors.Cyan,
-		Colors.Red,
-	];
 
 	public List<List<Rect2?>> Tiles = [];
 
@@ -56,7 +46,7 @@ public partial class TetrisTileMap : Control
 		for (int X = 0; X < TetrisGameController.GAME_WIDTH; X++)
 			for (int Y = 0; Y < TetrisGameController.GAME_HEIGHT; Y++)
 			{
-				Color BlockColor = GameController.Blocks[X][Y] != null ? GetColorFromType((TetrisGameController.BlockType)GameController.Blocks[X][Y]) : GameController.CurrentFigureIsHere(new(X, Y)) ? GetColorFromType(GameController.CurrentFigureType) : Colors.Black; // 😭🙏
+				Color BlockColor = GameController.Blocks[X][Y] != null ? TetrisGameController.GetColorFromType((TetrisGameController.BlockType)GameController.Blocks[X][Y]) : GameController.CurrentFigureIsHere(new(X, Y)) ? TetrisGameController.GetColorFromType(GameController.CurrentFigureType) : Colors.Black; // 😭🙏
 				if (Tiles[X][Y] != null)
 					DrawTextureRectRegion(_tilesSource.Texture, new(X * 40, Y * 40, 40, 40), (Rect2I)Tiles[X][Y], BlockColor);
 				}
@@ -134,5 +124,4 @@ public partial class TetrisTileMap : Control
 	}
 
 	public Vector2I GamePosToCurrentFigurePos(Vector2I GamePos) => GamePos - GameController.GetCurrentFigureRealPosition();
-	public static Color GetColorFromType(TetrisGameController.BlockType BlockType) => BlockColors[(int)BlockType];
 }

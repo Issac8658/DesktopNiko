@@ -19,6 +19,7 @@
 transparent_bg = true
 oversampling = false
 oversampling_override = 1.0
+title = "other.games.tetris"
 initial_position = 4
 size = Vector2i(1900, 1080)
 borderless = true
@@ -84,7 +85,7 @@ wait_time = 0.5
 
 [node name="NikoProcessing" type="AudioStreamPlayer" parent="." unique_id=919146333]
 stream = ExtResource("4_6mx11")
-volume_db = -10.0
+volume_db = -5.0
 bus = &"Music"
 
 [node name="DropLight" type="AudioStreamPlayer" parent="." unique_id=1328584627]
@@ -106,7 +107,7 @@ volume_db = -2.0
 
 [node name="Menu" parent="." unique_id=1561168932 instance=ExtResource("14_6mx11")]
 oversampling = false
-title = "Tetris Starter"
+title = "other.games.tetris.starter"
 initial_position = 4
 size = Vector2i(280, 200)
 visible = false
@@ -116,7 +117,7 @@ always_on_top = false
 minimize_disabled = true
 ignore_on_top_settings = true
 
-[node name="Control" parent="Menu" index="0" unique_id=579132620 node_paths=PackedStringArray("GameController", "MenuWindow", "MusicPlayer", "PlayButton", "MusicCheckbox", "ExitButton", "StatisticBumpAnimator", "MusicTimer")]
+[node name="Control" parent="Menu" index="0" unique_id=579132620 node_paths=PackedStringArray("GameController", "MenuWindow", "MusicPlayer", "PlayButton", "MusicCheckbox", "ExitButton", "StatisticBumpAnimator", "MusicTimer", "PausePanel")]
 script = ExtResource("15_o08yc")
 GameController = NodePath("../..")
 MenuWindow = NodePath("..")
@@ -126,6 +127,7 @@ MusicCheckbox = NodePath("WindowContainer/Content/VBoxContainer/CheckBox")
 ExitButton = NodePath("WindowContainer/Content/VBoxContainer/Exit")
 StatisticBumpAnimator = NodePath("../../GlobalAnchor/Statistics/StatisticsAnimator")
 MusicTimer = NodePath("../../MusicTimer")
+PausePanel = NodePath("../../GlobalAnchor/TetrisAnchor/PanelContainer/PausePanel")
 
 [node name="Title" parent="Menu/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(1561168932, 332691484) index="1" unique_id=2015855131]
 text = "other.games.tetris.starter"

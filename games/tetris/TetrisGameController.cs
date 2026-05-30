@@ -47,6 +47,17 @@ public partial class TetrisGameController : Window
 		Cyan,
 		Red,
 	}
+	public static readonly Color[] BlockColors =
+	[
+		Colors.White,
+		Colors.Green,
+		Colors.Yellow,
+		Colors.DodgerBlue,
+		Colors.Purple,
+		Colors.Aqua,
+		Colors.Red,
+	];
+
 	private static readonly Vector2I FIGURE_DEFAULT_POSITION = new(5, 1);
 	private static readonly BlockType[] _blockTypes = (BlockType[])Enum.GetValues(typeof(BlockType));
 
@@ -55,7 +66,7 @@ public partial class TetrisGameController : Window
 	private List<List<BlockType?>> _blocks = [];
 	private List<bool[][]> _nextFigures = [];
 	private bool[][] _currentFigure = [];
-	private Vector2I _currentFigurePosition = FIGURE_DEFAULT_POSITION;
+	private Vector2I _currentFigurePosition = FIGURE_DEFAULT_POSITION; // this is position of figure center
 	private BlockType _currentFigureType;
 
 	private uint _score = 0;
@@ -281,6 +292,7 @@ public partial class TetrisGameController : Window
 	{
 		LeftRuler.Position = new((_currentFigurePosition.X - GetFigureCenterOffset(_currentFigure).X) * 40 - 3, 0); // positing left ruler
 		RightRuler.Position = LeftRuler.Position + new Vector2(_currentFigure.Length * 40, 0); // positing right ruler
+		RightRuler.Modulate = LeftRuler.Modulate = GetColorFromType(CurrentFigureType);
 	}
 
 	private void ReDraw()
@@ -349,7 +361,7 @@ public partial class TetrisGameController : Window
 				DestroyedLines++;
 				EmitSignal("LineDestroyed", Y);
 
-				GameTimer.WaitTime *= 0.998;
+				GameTimer.WaitTime *= 0.995;
 			}
 		}
 
@@ -415,6 +427,7 @@ public partial class TetrisGameController : Window
 		_lines = 0;
 		GameTimer.WaitTime = START_TICK_TIME;
 		ReDraw();
+		UpdateRulers();
 		EmitSignal("ReDrawNextTiles");
 		EmitSignal("Restarted");
 	}
@@ -428,6 +441,7 @@ public partial class TetrisGameController : Window
 
 	private bool FigureCanMove(bool[][] Figure, Vector2I Position)
 	{
+		Position.X += GetFigureInBordersOffset();
 		Vector2I size = GetFigureSize(Figure);
 		bool canMove = false;
 		for (int X = 0; X < size.X; X++)
@@ -451,10 +465,22 @@ public partial class TetrisGameController : Window
 
 	private void MoveCurrentFigureInBorders() // if figure want to go out of bounds
 	{
-		Vector2I pos = GetCurrentFigureRealPosition();
-		_currentFigurePosition.X -= Math.Clamp(pos.X, -9999, 0);
-		_currentFigurePosition.X += Math.Clamp(GAME_WIDTH - pos.X - GetFigureSize(_currentFigure).X, -9999, 0);
+		//Vector2I pos = GetCurrentFigureRealPosition();
+		//_currentFigurePosition.X -= Math.Clamp(pos.X, -9999, 0);
+		//_currentFigurePosition.X += Math.Clamp(GAME_WIDTH - pos.X - GetFigureSize(_currentFigure).X, -9999, 0);
+		_currentFigurePosition.X = Math.Clamp(
+			GetCurrentFigureRealPosition().X,
+			0,
+			GAME_WIDTH - GetFigureSize(CurrentFigure).X
+		) + GetFigureCenterOffset(_currentFigure).X;
 	}
+	
+	private int GetFigureInBordersOffset() =>
+		Math.Clamp(
+			GetCurrentFigureRealPosition().X,
+			0,
+			GAME_WIDTH - GetFigureSize(CurrentFigure).X
+		) + GetFigureCenterOffset(_currentFigure).X - _currentFigurePosition.X;
 
 	private void RotateCurrentFigure() // figure rotating
 	{
@@ -518,6 +544,8 @@ public partial class TetrisGameController : Window
 
 	public static Vector2I GetFigureCenterOffset(bool[][] Figure) => // get center of figure
 		GetFigureSize(Figure) / 2;
+
+	public static Color GetColorFromType(BlockType BlockType) => BlockColors[(int)BlockType];
 
 	// Figures
 	public static readonly bool[][][] _figures = [ // figures

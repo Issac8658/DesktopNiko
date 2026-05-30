@@ -16,6 +16,10 @@ public partial class TetrisStyle : Control
 		"[color=#FFCC00][left]CARRY[/left]\n[right]THE SUN[/right][/color]", // SSS CARRY THE SUN
 		"[center][color=#FFD800][outline_size=4][outline_color=#FFFFFF]ONESHOT[/outline_color][/outline_size][/color][/center]", // ONESHOT
 	];
+	private readonly Dictionary<string, string[]> PointsHistoryTexts = new() {
+		{"LineBreaked", ["Line Breaked ({0})", "FFFFFE"]}, // id, text, points color
+		{"LineBreakedCombo", ["Combo! ({0})", "FF0"]}
+	};
 	private readonly double[] TimeoutSpeedMultipliers = [0.5, 1, 1.25, 1.5, 2, 3, 4, 6, 8];
 	private readonly double[] TimeoutCounters = [
 		0.2, // figure block
@@ -59,7 +63,7 @@ public partial class TetrisStyle : Control
 				_styleTimeOut -= (int)Mathf.Floor(_styleTimeOut);
 			}
 		};
-		Controller.Restarted += () => _styleTimeOut = _currentStyle = 0;
+		Controller.Restarted += () => _styleTimeOut = CurrentStyle = 0;
 		CurrentStyle = 0;
 		StyleTimeOutFiller.AnchorRight = (float)_styleTimeOut;
 	}

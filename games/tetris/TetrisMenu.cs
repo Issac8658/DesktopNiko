@@ -2,6 +2,7 @@ using Godot;
 
 public partial class TetrisMenu : Node
 {
+	private double _pauseColtdown;
 
 	[Export]
 	public TetrisGameController GameController;
@@ -20,6 +21,8 @@ public partial class TetrisMenu : Node
 	public AnimationPlayer StatisticBumpAnimator;
 	[Export]
 	public Timer MusicTimer;
+	[Export]
+	public Control PausePanel;
 
 	public override void _Ready()
 	{
@@ -42,7 +45,10 @@ public partial class TetrisMenu : Node
 				MusicTimer.Start();
 			}
 		};
-		ExitButton.Pressed += GameController.QueueFree;
+		ExitButton.Pressed += () => {
+			(AudioServer.GetBusEffect(2, 0) as AudioEffectLowPassFilter).CutoffHz = 20500;
+			GameController.QueueFree();
+		};
 
 		MenuWindow.Visible = true;
 
@@ -55,11 +61,17 @@ public partial class TetrisMenu : Node
 				MusicPlayer.Stop();
 				MusicTimer.Stop();
 			}
+
 			if (GameController.CurrentState == TetrisGameController.GameStates.Menu)
 			{
 				MenuWindow.Visible = true;
 				PlayButton.Text = "shared.play";
 			}
+
+			if (GameController.CurrentState != TetrisGameController.GameStates.Playing)
+				TweenPause(Colors.White);
+			else
+				TweenPause(Colors.Transparent);
 		};
 
 		MusicTimer.Timeout += () =>
@@ -67,5 +79,13 @@ public partial class TetrisMenu : Node
 			//ProgressionPlayer.PlaySection("Progression", MusicPlayer.GetPlaybackPosition());
 			StatisticBumpAnimator.Play("Bump2");
 		};
+	}
+
+	
+	private void TweenPause(Color result)
+	{
+		Tween tween = CreateTween();
+		tween.SetTrans(Tween.TransitionType.Quint);
+		tween.TweenProperty(PausePanel, "modulate", result, 0.25);
 	}
 }

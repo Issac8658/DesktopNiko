@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dgx5rydb7a45o" path="res://games/tetris/NextFigureDrawer.cs" id="6_basdr"]
 [ext_resource type="Material" uid="uid://b33fsoy0b4grq" path="res://materials/canvas_item_clip_material.tres" id="7_8lmhe"]
 [ext_resource type="TileSet" uid="uid://d35jpcju6we27" path="res://games/tetris/tiles/tetris_more.tres" id="7_8lq6y"]
+[ext_resource type="Script" uid="uid://tp3lj04cv8kl" path="res://games/tetris/niko_easteregg.gd" id="7_basdr"]
 [ext_resource type="StyleBox" uid="uid://b821x8hwjmnyo" path="res://themes/twm_theme/frame_no_bg.tres" id="8_l7fpa"]
 [ext_resource type="StyleBox" uid="uid://seh5m867naoa" path="res://themes/twm_theme/thin_panel.stylebox" id="9_g58hi"]
 [ext_resource type="Script" uid="uid://cue462yaulkpl" path="res://games/tetris/TetrisTileMap.cs" id="10_vaymm"]
@@ -36,8 +37,6 @@ content_margin_bottom = 0.0
 border_width_bottom = 252
 border_color = Color(0.8, 0.8, 0.8, 0)
 border_blend = true
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqggt"]
 
 [sub_resource type="Animation" id="Animation_5ecpt"]
 resource_name = "Bump"
@@ -195,7 +194,10 @@ fill_from = Vector2(0.5, 0.5)
 size = Vector2(408, 808)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bc3vh"]
-size = Vector2(180, 40)
+size = Vector2(180, 800)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lmhe"]
+size = Vector2(180, 800)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6n4u4"]
 radius = 1.4142135
@@ -221,12 +223,14 @@ offset_bottom = 400.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(420, 400)
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="Control2" type="MarginContainer" parent="Statistics" unique_id=2084993392]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
@@ -235,6 +239,7 @@ theme_override_constants/margin_bottom = 0
 [node name="VBoxContainer" type="VBoxContainer" parent="Statistics/Control2" unique_id=1742660163]
 use_parent_material = true
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Panel6" type="PanelContainer" parent="Statistics/Control2/VBoxContainer" unique_id=337943691]
 self_modulate = Color(1, 1, 1, 0.6745098)
@@ -243,22 +248,26 @@ custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Statistics/Control2/VBoxContainer/Panel6" unique_id=1327959104]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Statistics/Control2/VBoxContainer/Panel6/VBoxContainer" unique_id=341203673]
 use_parent_material = true
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="Control" type="Control" parent="Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer" unique_id=1975746328]
 use_parent_material = true
 custom_minimum_size = Vector2(3, 0)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="ScoreText" type="Label" parent="Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer" unique_id=838505315]
 use_parent_material = true
@@ -284,12 +293,14 @@ text = "0"
 [node name="HBoxContainer2" type="HBoxContainer" parent="Statistics/Control2/VBoxContainer/Panel6/VBoxContainer" unique_id=1065216162]
 use_parent_material = true
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="Control2" type="Control" parent="Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer2" unique_id=1583828577]
 use_parent_material = true
 custom_minimum_size = Vector2(3, 0)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="LinesText" type="Label" parent="Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer2" unique_id=1057916972]
 use_parent_material = true
@@ -319,12 +330,14 @@ custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Statistics/Control2/VBoxContainer" unique_id=245589805]
 use_parent_material = true
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 
 [node name="Exit" type="Button" parent="Statistics/Control2/VBoxContainer/HBoxContainer" unique_id=1765265864]
 use_parent_material = true
@@ -422,6 +435,7 @@ custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="Panel7" type="PanelContainer" parent="Statistics/Control2/VBoxContainer/Control" unique_id=523724886]
 self_modulate = Color(1, 1, 1, 0.6745098)
@@ -435,10 +449,12 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="Style" type="VBoxContainer" parent="Statistics/Control2/VBoxContainer/Control/Panel7" unique_id=797637398 node_paths=PackedStringArray("StyleLabel", "StyleTimeOutFiller")]
 use_parent_material = true
 layout_mode = 2
+mouse_filter = 2
 script = ExtResource("5_32x37")
 StyleLabel = NodePath("StyleTextContainer/StyleText")
 StyleTimeOutFiller = NodePath("StyleTimeOut/StyleTimeOutFiller")
@@ -506,7 +522,7 @@ size_flags_vertical = 3
 use_parent_material = true
 layout_mode = 2
 bbcode_enabled = true
-text = "{0} - [color=#911]{1}[/color]"
+text = "{0} - [color={2}]{1}[/color]"
 fit_content = true
 
 [node name="Control" type="Control" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style" unique_id=1791909459]
@@ -514,10 +530,12 @@ custom_minimum_size = Vector2(0, 176)
 layout_mode = 2
 
 [node name="Control" type="Panel" parent="Statistics/Control2/VBoxContainer/Control/Panel7" unique_id=570058631]
-self_modulate = Color(0, 0, 0, 1)
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0, 0, 0, 0)
 custom_minimum_size = Vector2(0, 191)
 layout_mode = 2
 size_flags_vertical = 8
+script = ExtResource("7_basdr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Control" unique_id=2066121825]
 material = ExtResource("7_8lmhe")
@@ -530,13 +548,13 @@ frame_progress = 0.48422167
 speed_scale = 1.125
 
 [node name="Panel" type="Panel" parent="Statistics/Control2/VBoxContainer/Control" unique_id=718399785]
-clip_children = 1
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 176.0
 offset_bottom = 694.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_uqggt")
+mouse_filter = 2
 
 [node name="Combo" type="Control" parent="Statistics/Control2/VBoxContainer/Control/Panel" unique_id=2065137089 node_paths=PackedStringArray("ComboLabel", "ComboControl")]
 layout_mode = 1
@@ -549,6 +567,7 @@ offset_top = -68.0
 offset_bottom = -68.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 script = ExtResource("5_8lmhe")
 ComboLabel = NodePath("HBoxContainer2/Label2")
 ComboControl = NodePath("HBoxContainer2")
@@ -570,6 +589,7 @@ offset_right = 45.0
 offset_bottom = 10.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="Statistics/Control2/VBoxContainer/Control/Panel/Combo/HBoxContainer2" unique_id=140923710]
@@ -591,11 +611,13 @@ text = "0"
 [node name="Control" type="Control" parent="Statistics" unique_id=778781352]
 custom_minimum_size = Vector2(408, 0)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Statistics" unique_id=876613270]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_constants/separation = 10
 
 [node name="Panel5" type="PanelContainer" parent="Statistics/VBoxContainer2" unique_id=1135361884]
@@ -605,6 +627,7 @@ custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="Next" type="Label" parent="Statistics/VBoxContainer2/Panel5" unique_id=1142208043]
 use_parent_material = true
@@ -621,6 +644,7 @@ custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="Control" type="Control" parent="Statistics/VBoxContainer2/Panel" unique_id=948313049]
 texture_filter = 1
@@ -628,6 +652,7 @@ use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 script = ExtResource("6_basdr")
 TetrisTileSet = ExtResource("7_8lq6y")
 
@@ -638,6 +663,7 @@ custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="Control2" type="Control" parent="Statistics/VBoxContainer2/Panel2" unique_id=1260035810]
 texture_filter = 1
@@ -645,6 +671,7 @@ use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 script = ExtResource("6_basdr")
 TetrisTileSet = ExtResource("7_8lq6y")
 NextFigureId = 1
@@ -656,6 +683,7 @@ custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="Control3" type="Control" parent="Statistics/VBoxContainer2/Panel3" unique_id=987087713]
 texture_filter = 1
@@ -663,6 +691,7 @@ use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 script = ExtResource("6_basdr")
 TetrisTileSet = ExtResource("7_8lq6y")
 NextFigureId = 2
@@ -674,6 +703,7 @@ custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="Control4" type="Control" parent="Statistics/VBoxContainer2/Panel4" unique_id=602183092]
 texture_filter = 1
@@ -681,6 +711,7 @@ use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 script = ExtResource("6_basdr")
 TetrisTileSet = ExtResource("7_8lq6y")
 NextFigureId = 3
@@ -698,6 +729,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="TetrisAnchor" unique_id=772644358]
 use_parent_material = true
@@ -714,11 +746,13 @@ offset_right = 204.0
 offset_bottom = 404.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("8_l7fpa")
 
 [node name="BG" type="TextureRect" parent="TetrisAnchor/PanelContainer" unique_id=2019604994]
 use_parent_material = true
 layout_mode = 2
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_3s1wb")
 stretch_mode = 1
 
@@ -760,8 +794,31 @@ text = "fps"
 texture_filter = 1
 use_parent_material = true
 layout_mode = 2
+mouse_filter = 2
 script = ExtResource("10_vaymm")
 TetrisTileSet = ExtResource("7_8lq6y")
+
+[node name="PausePanel" type="MarginContainer" parent="TetrisAnchor/PanelContainer" unique_id=70132528]
+modulate = Color(1, 1, 1, 0)
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -4
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_right = -4
+theme_override_constants/margin_bottom = -4
+
+[node name="Panel" type="PanelContainer" parent="TetrisAnchor/PanelContainer/PausePanel" unique_id=176179142]
+self_modulate = Color(0, 0, 0, 0.49411765)
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="TetrisAnchor/PanelContainer/PausePanel/Panel" unique_id=842452636]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "shared.paused"
 
 [node name="Particles" type="Node2D" parent="TetrisAnchor" unique_id=1915332978]
 use_parent_material = true
@@ -780,8 +837,12 @@ MousePolygon = NodePath("MouseArea")
 shape = SubResource("RectangleShape2D_bc4hr")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area/ClickableArea" unique_id=1699779867]
-position = Vector2(-312, -322)
+position = Vector2(312, 0)
 shape = SubResource("RectangleShape2D_bc3vh")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area/ClickableArea" unique_id=1401100171]
+position = Vector2(-312, 0)
+shape = SubResource("RectangleShape2D_8lmhe")
 
 [node name="MouseArea" type="Area2D" parent="Area" unique_id=1832244512]
 monitoring = false
