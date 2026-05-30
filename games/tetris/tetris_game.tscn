@@ -756,6 +756,13 @@ mouse_filter = 2
 texture = SubResource("GradientTexture2D_3s1wb")
 stretch_mode = 1
 
+[node name="Panel" type="Panel" parent="TetrisAnchor/PanelContainer/BG" unique_id=1728408031]
+modulate = Color(0, 0, 0, 0.78039217)
+layout_mode = 0
+offset_left = 121.0
+offset_right = 279.0
+offset_bottom = 117.0
+
 [node name="LeftRuler" type="Panel" parent="TetrisAnchor/PanelContainer/BG" unique_id=1802050543]
 use_parent_material = true
 layout_mode = 0

@@ -42,10 +42,14 @@ public partial class NextFigureDrawer : Control
 	public override void _Draw()
 	{
 		bool[][] figure = GameController.NextFigures[NextFigureId];
+
+		Rect2I ActiveZone = TetrisGameController.GetFigureActiveZone(figure);
+		Vector2 Offset = ActiveZone.Position + ((Vector2)ActiveZone.Size) / 2f - new Vector2(figure.Length / 2f, figure[0].Length / 2f);		
+
 		for (int X = 0; X < figure.Length; X++)
 			for (int Y = 0; Y < figure[0].Length; Y++)
 				if (figure[X][Y])
-					DrawTextureRectRegion(_tilesSource.Texture, new(X * 40, Y * 40, 40, 40), GetTile(GetSidesFigure(new(X,Y), figure)));
+					DrawTextureRectRegion(_tilesSource.Texture, new((X - Offset.X) * 40, (Y - Offset.Y) * 40, 40, 40), GetTile(GetSidesFigure(new(X,Y), figure)));
 		CustomMinimumSize = new(figure.Length * 40f, figure[0].Length * 40f);
 	}
 
@@ -68,8 +72,6 @@ public partial class NextFigureDrawer : Control
 	}
 	private Rect2 GetTile(bool[] sides)
 	{
-		Rect2 mostSimilarTile = new(0, 0, 20, 20);
-		int similarSidesCount = 0;
 		for (int i = 0; i < _tilesSource.GetTilesCount(); i++)
 		{
 			Vector2I tileId = _tilesSource.GetTileId(i);
@@ -77,29 +79,18 @@ public partial class NextFigureDrawer : Control
 			TileData data = _tilesSource.GetTileData(tileId, 0);
 
 			bool canUse = true;
-			int NiceSidesCount = 0;
 			for (int side = 0; side < 8; side++)
 			{
 				bool niceSide = data.GetTerrainPeeringBit(SQUARE_SIDES[side]) != -1 == sides[side];
-				if (niceSide)
-					NiceSidesCount += 1;
-				else {
+				if (!niceSide){
 					canUse = false;
-				};
+					break;
+				}
 			}
 			
 			if (canUse)
 				return _tilesSource.GetTileTextureRegion(tileId);
-			
-			if (NiceSidesCount > similarSidesCount)
-			{
-				mostSimilarTile = _tilesSource.GetTileTextureRegion(tileId);
-				similarSidesCount = NiceSidesCount;
-			}
-			
-			//data.GetTerrainPeeringBit(,)
-			//tilesSource.GetTileTextureRegion(tileId);
 		}
-		return mostSimilarTile;
+		return new(0, 0, 20, 20);
 	}
 }

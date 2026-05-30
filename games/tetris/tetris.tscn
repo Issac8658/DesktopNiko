@@ -19,7 +19,7 @@
 transparent_bg = true
 oversampling = false
 oversampling_override = 1.0
-title = "other.games.tetris"
+title = "titles.tetris"
 initial_position = 4
 size = Vector2i(1900, 1080)
 borderless = true

@@ -9,10 +9,10 @@ public partial class TetrisGameController : Window
 	public const int GAME_WIDTH = 10;
 	public const double START_TICK_TIME = 0.5;
 
-    public const int STATE_0 = 0;
-    public const int STATE_R = 1;
-    public const int STATE_2 = 2;
-    public const int STATE_L = 3;
+    public const int ROTATION_0 = 0;
+    public const int ROTATION_R = 1;
+    public const int ROTATION_2 = 2;
+    public const int ROTATION_L = 3;
 
 	// signals
 	[Signal]
@@ -73,6 +73,7 @@ public partial class TetrisGameController : Window
 	private bool[][] _currentFigure = [];
 	private Vector2I _currentFigurePosition = FIGURE_DEFAULT_POSITION; // this is position of figure center
 	private BlockType _currentFigureType;
+	private int _currentFigureRotation = ROTATION_0;
 
 	private uint _score = 0;
 	private uint _lines = 0;
@@ -247,6 +248,16 @@ public partial class TetrisGameController : Window
 				RotateCurrentFigure(); // rotate current figure
 				ReDrawCurrentFigure();
 			}
+			else if (@event.IsActionPressed("rotate_left")) // q
+			{
+				RotateCurrentFigure(true); // rotate current figure
+				ReDrawCurrentFigure();
+			}
+			else if (@event.IsActionPressed("rotate_right")) // e
+			{
+				RotateCurrentFigure(); // rotate current figure
+				ReDrawCurrentFigure();
+			}
 			else if (@event.IsActionPressed("down")) // s, ↓
 			{
 				TickCurrentFigure(); // move current figure down for 1 block
@@ -277,7 +288,6 @@ public partial class TetrisGameController : Window
 	private void Tick() // calls every timer timeout
 	{
 		TickCurrentFigure(); // figure physics
-		ReDrawCurrentFigure(); // figure redraw
 		UpdateStats(); // stats update
 	}
 
@@ -312,7 +322,7 @@ public partial class TetrisGameController : Window
 		LinesCounter.Text = _lines.ToString();
 	}
 
-	private bool TickCurrentFigure(bool HeightPlace = false)
+	private bool TickCurrentFigure(bool HeightPlace = false) // returns whether the figure touched ground or another figure
 	{
 		if (FigureCanMove(_currentFigure, _currentFigurePosition + new Vector2I(0, 1))) // checking if current figure can move
 		{
@@ -322,22 +332,24 @@ public partial class TetrisGameController : Window
 		}
 		else
 		{
-			if (_currentFigurePosition.Y < 3) // lose checking
-				CurrentState = GameStates.Lose;
-			else
-			{
-				// redrawing and figure place and some similar shit idk
+			// redrawing and figure place and some similar shit idk
+			ReDrawCurrentFigure(true);
+			PlaceCurrentFigure();
+			_currentFigure = _nextFigures[0];
+			_nextFigures.RemoveAt(0);
+			_nextFigures.Add(GetRandomFigure());
+			_currentFigureRotation = 0;
+			_currentFigurePosition = FIGURE_DEFAULT_POSITION;
 
-				ReDrawCurrentFigure(true);
-				PlaceCurrentFigure();
-				_currentFigure = _nextFigures[0];
-				_nextFigures.RemoveAt(0);
-				_nextFigures.Add(GetRandomFigure());
-				_currentFigurePosition = FIGURE_DEFAULT_POSITION;
-				_score += 10;
-				EmitSignal("ReDrawNextTiles");
-				ReDrawCurrentFigure(true);
+			if (!FigureCanMove(_nextFigures[0], FIGURE_DEFAULT_POSITION)) // lose checking
+			{
+				CurrentState = GameStates.Lose;
+				return true;
 			}
+			
+			_score += 10;
+			EmitSignal("ReDrawNextTiles");
+			ReDrawCurrentFigure(true);
 		}
 
 		// LinesChecking
@@ -428,6 +440,7 @@ public partial class TetrisGameController : Window
 			_nextFigures.Add(GetRandomFigure());
 
 		_currentFigure = GetRandomFigure();
+		_currentFigureRotation = 0;
 		_currentFigurePosition = FIGURE_DEFAULT_POSITION;
 		_score = 0;
 		_lines = 0;
@@ -447,9 +460,6 @@ public partial class TetrisGameController : Window
 
 	private bool FigureCanMove(bool[][] Figure, Vector2I Position)
 	{
-		if (Position == _currentFigurePosition)
-			return true;
-
 		Rect2I ActiveZone = GetFigureActiveZone(Figure);
 		Vector2I ActiveZonePosition = Position + ActiveZone.Position;
 		
@@ -483,24 +493,47 @@ public partial class TetrisGameController : Window
 			GAME_WIDTH - GetFigureMatrixSize(CurrentFigure).X
 		) - _currentFigurePosition.X;
 
-	private void RotateCurrentFigure() // figure rotating
+	private void RotateCurrentFigure(bool Reverse = false) // figure rotating
 	{
-		GD.Print("Rotating");
+		if (_currentFigure.Length == 2) return;
+
 		List<bool[]> RotatedFigure = [];
 
-		for (int X = _currentFigure[0].Length - 1; X >= 0; X--)
-		{
-			List<bool> NewRow = [];
-			for (int Y = 0; Y < _currentFigure.Length; Y++)
-				NewRow.Add(_currentFigure[Y][X]);
-			RotatedFigure.Add([.. NewRow]);
-		}
+		if (Reverse)
+			for (int X = 0; X < _currentFigure.Length; X++)
+			{
+				List<bool> NewRow = [];
+				for (int Y = _currentFigure[0].Length - 1; Y >= 0; Y--)
+					NewRow.Add(_currentFigure[Y][X]);
+				RotatedFigure.Add([.. NewRow]);
+			}
+		else
+			for (int X = _currentFigure[0].Length - 1; X >= 0; X--)
+			{
+				List<bool> NewRow = [];
+				for (int Y = 0; Y < _currentFigure.Length; Y++)
+					NewRow.Add(_currentFigure[Y][X]);
+				RotatedFigure.Add([.. NewRow]);
+			}
+		
 		bool[][] RotatedFigureArray = [.. RotatedFigure];
-		if (FigureCanMove(RotatedFigureArray, _currentFigurePosition))
+		Vector2I[][] Table = RotatedFigureArray.Length == 3 ? WallKickTable3x3 : WallKickTable4x4;
+		
+		int NextRotation = Reverse ?
+		_currentFigureRotation - 1 < ROTATION_0 ? ROTATION_L : _currentFigureRotation - 1 :
+		_currentFigureRotation + 1 > ROTATION_L ? ROTATION_0 : _currentFigureRotation + 1;
+		
+		for (int attempt = 0; attempt <= Table[0].Length; attempt++)
 		{
-			GD.Print("Rotaded");
-			_currentFigure = RotatedFigureArray;
-			//MoveCurrentFigureInBorders();
+			Vector2I ResultPosition = _currentFigurePosition + GetWallKickOffset(Table, _currentFigureRotation, NextRotation, attempt);
+			if (FigureCanMove(RotatedFigureArray, ResultPosition))
+			{
+				_currentFigure = RotatedFigureArray;
+				_currentFigureRotation = NextRotation;
+				_currentFigurePosition = ResultPosition;
+				//MoveCurrentFigureInBorders();
+				return;
+			}
 		}
 	}
 
@@ -599,26 +632,33 @@ public partial class TetrisGameController : Window
 		],
 	];
 
-	public static readonly Vector2I[][] WallKickTables3x3 = [
+	public static readonly Vector2I[][] WallKickTable3x3 = [
         [ new(0, 0), new(-1, 0), new(-1, -1), new(0,  2), new(-1,  2) ], // 0 -> R
-        [ new(0, 0), new( 1, 0), new( 1,  1), new(0, -2), new( 1, -2) ], // R -> 0
         [ new(0, 0), new( 1, 0), new( 1,  1), new(0, -2), new( 1, -2) ], // R -> 2
-        [ new(0, 0), new(-1, 0), new(-1, -1), new(0,  2), new(-1,  2) ], // 2 -> R
         [ new(0, 0), new( 1, 0), new( 1, -1), new(0,  2), new( 1,  2) ], // 2 -> L
-        [ new(0, 0), new(-1, 0), new(-1,  1), new(0, -2), new(-1, -2) ], // L -> 2
         [ new(0, 0), new(-1, 0), new(-1,  1), new(0, -2), new(-1, -2) ], // L -> 0
-        [ new(0, 0), new( 1, 0), new( 1, -1), new(0,  2), new( 1,  2) ]  // 0 -> L
 	];
-	public static readonly Vector2I[][] WallKickTables4x4 =
+	public static readonly Vector2I[][] WallKickTable4x4 =
     [
         [ new(0, 0), new(-2, 0), new( 1, 0), new(-2,  1), new( 1, -2) ], // 0 -> R
-        [ new(0, 0), new( 2, 0), new(-1, 0), new( 2, -1), new(-1,  2) ], // R -> 0
         [ new(0, 0), new(-1, 0), new( 2, 0), new(-1, -2), new( 2,  1) ], // R -> 2
-        [ new(0, 0), new( 1, 0), new(-2, 0), new( 1,  2), new(-2, -1) ], // 2 -> R
         [ new(0, 0), new( 2, 0), new(-1, 0), new( 2, -1), new(-1,  2) ], // 2 -> L
-        [ new(0, 0), new(-2, 0), new( 1, 0), new(-2,  1), new( 1, -2) ], // L -> 2
         [ new(0, 0), new( 1, 0), new(-2, 0), new( 1,  2), new(-2, -1) ], // L -> 0
-        [ new(0, 0), new(-1, 0), new( 2, 0), new(-1, -2), new( 2,  1) ]  // 0 -> L
     ];
 	
+    public static Vector2I GetWallKickOffset(Vector2I[][] Table, int OldState, int NewState, int Attempt)
+    {
+		if (Attempt >= Table[0].Length) return Vector2I.Zero;
+
+        if (OldState == ROTATION_0 && NewState == ROTATION_R) return  Table[0][Attempt];
+        if (OldState == ROTATION_R && NewState == ROTATION_0) return -Table[0][Attempt];
+        if (OldState == ROTATION_R && NewState == ROTATION_2) return  Table[1][Attempt];
+        if (OldState == ROTATION_2 && NewState == ROTATION_R) return -Table[1][Attempt];
+        if (OldState == ROTATION_2 && NewState == ROTATION_L) return  Table[2][Attempt];
+        if (OldState == ROTATION_L && NewState == ROTATION_2) return -Table[2][Attempt];
+        if (OldState == ROTATION_L && NewState == ROTATION_0) return  Table[3][Attempt];
+        if (OldState == ROTATION_0 && NewState == ROTATION_L) return -Table[3][Attempt];
+        
+        return Vector2I.Zero;
+    }
 }

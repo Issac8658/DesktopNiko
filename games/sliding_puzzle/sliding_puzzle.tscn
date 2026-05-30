@@ -50,6 +50,7 @@ scale_curve = SubResource("CurveTexture_wx8q4")
 
 [node name="SlidingPuzzle" unique_id=190368190 instance=ExtResource("1_6neyp")]
 transparent_bg = true
+title = "titles.sliding_puzzle"
 initial_position = 4
 size = Vector2i(272, 336)
 transparent = true
