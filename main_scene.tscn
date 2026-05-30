@@ -191,10 +191,10 @@ func _ready() -> void:
 		visible = false
 	($Button as Button).gui_input.connect(func (input):
 		if input is InputEventMouseButton and input.double_click and not loaded_event:
-			loaded_event = event.linked_scene.instantiate() as Event
+			loaded_event = event.LinkedScene.instantiate() as Event
 			games.add_child(loaded_event)
-			loaded_event.event()
-			loaded_event.event_ended.connect(func ():
+			loaded_event.StartEventController()
+			loaded_event.EventEnded.connect(func ():
 				loaded_event.queue_free()
 				loaded_event = null
 			, CONNECT_ONE_SHOT)
@@ -2845,7 +2845,7 @@ custom_minimum_size = Vector2(132, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 selected = 0
-item_count = 4
+item_count = 5
 popup/item_0/text = "English (100%)"
 popup/item_0/id = 0
 popup/item_1/text = "Русский (100%)"
@@ -2854,6 +2854,7 @@ popup/item_2/text = "Deutsch (~95%)"
 popup/item_2/id = 2
 popup/item_3/text = "Українська (~99%)"
 popup/item_3/id = 3
+popup/item_4/id = 4
 script = ExtResource("90_68j6s")
 
 [node name="RecursiveThemeApplier" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel/Language2/LanguageSelectionOptionButton" unique_id=1002840926]

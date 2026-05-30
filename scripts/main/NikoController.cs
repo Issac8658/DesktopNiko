@@ -1,10 +1,69 @@
 using Godot;
+using Godot.NativeInterop;
 
 public enum NikoState {Idle, Clicking, Sleepy, Sleeping, ForcedFacepic, InAnimation}
 
 public partial class NikoController : Node
 {
 	public readonly float[] NikoScales = [0.5f, 1f, 2f, 3f, 4f];
+	public readonly Godot.Collections.Dictionary<Key, float> Pitches = new()
+	{
+		// ocatave 4
+		{Key.Z, -12f},
+		{Key.S, -11f},
+		{Key.X, -10f},
+		{Key.D, -9f},
+		{Key.C, -8f},
+		{Key.V, -7f},
+		{Key.G, -6f},
+		{Key.B, -5f},
+		{Key.H, -4f},
+		{Key.N, -3f},
+		{Key.J, -2f},
+		{Key.M, -1f},
+
+		// octave 5
+		{Key.Comma,     0f},
+		{Key.L,         1f},
+		{Key.Period,    2f},
+		{Key.Semicolon, 3f},
+		{Key.Slash,     4f},
+
+		{Key.Q,    0f},
+		{Key.Key2, 1f},
+		{Key.W,    2f},
+		{Key.Key3, 3f},
+		{Key.E,    4f},
+		{Key.R,    5f},
+		{Key.Key5, 6f},
+		{Key.T,    7f},
+		{Key.Key6, 8f},
+		{Key.Y,    9f},
+		{Key.Key7, 10f},
+		{Key.U,    11f},
+		
+		// octave 6
+		{Key.I,            12f},
+		{Key.Key9,         13f},
+		{Key.O,            14f},
+		{Key.Key0,         15f},
+		{Key.P,            16f},
+		{Key.Bracketleft,  17f},
+		{Key.Plus,         18f},
+		{Key.Bracketright, 19f},
+	};
+	// im literally taked it from FL Studio
+	public readonly Godot.Collections.Array<float> MeowPitches =
+    [
+        1.18f / 2f,
+		1.63f / 2f,
+		1.65f,
+		1.55f / 2f,
+		1.49f / 2f,
+		1f,
+		1.51f / 2f,
+		1.1f
+	];
 	const int TIME_BEFORE_SLEEP = 6;
 
 	private ValuesContainer _valuesContainer;
@@ -41,6 +100,8 @@ public partial class NikoController : Node
 
 	public override void _Ready()
 	{
+		OS.OpenMidiInputs();
+
 		_valuesContainer = GetNode<ValuesContainer>("/root/ValuesContainer");
 		_skinManager = GetNode<NikoSkinManager>("/root/NikoSkinManager");
 		_achievementsController = GetNode<AchievementsController>("/root/AchievementsController");
@@ -75,9 +136,7 @@ public partial class NikoController : Node
 		{
 			if (Event is InputEventMouseButton EventMouse)
 				if (EventMouse.IsPressed() && EventMouse.ButtonIndex == MouseButton.Left && !_valuesContainer.IsFacepicForced)
-				{
 					Click();
-				}
 		};
 
 		NikoSpriteNode.FlipH = _valuesContainer.NikoIsFlipped;
@@ -98,6 +157,24 @@ public partial class NikoController : Node
 				DoWhatNikoNeedToDo();
 			}
 	}
+
+    public override void _Input(InputEvent @event)
+    {
+		if (@event is InputEventKey keyEvent && keyEvent.Pressed)
+		{
+			if (Pitches.TryGetValue(keyEvent.Keycode, out float pitch))
+			{
+				AnimateClick();
+				Meow(MeowPitches[_valuesContainer.CurrentMeowSoundId] * MidiToPitch(pitch + 60f));
+			}
+		}
+		else if (@event is InputEventMidi MidiEvent && MidiEvent.Message == MidiMessage.NoteOn)
+		{
+			AnimateClick();
+			Meow(MeowPitches[_valuesContainer.CurrentMeowSoundId] * MidiToPitch(MidiEvent.Pitch));
+		}
+    }
+
 
 
 	private void UpdateFacepic()
@@ -158,11 +235,8 @@ public partial class NikoController : Node
 		{
 			_valuesContainer.Clicks += 1;
 			_idleTime = 0;
-			NikoAnimationPlayer.Stop();
-			NikoAnimationPlayer.Play("click");
-			if (MeowSoundPlayer.Stream != Meows[_valuesContainer.CurrentMeowSoundId])
-				MeowSoundPlayer.Stream = Meows[_valuesContainer.CurrentMeowSoundId];
-			MeowSoundPlayer.Play();
+			Meow();
+			AnimateClick();
 		
 			if (_valuesContainer.Clicks >= 10 && !_achievementsController.IsAchievementTaked("ten_clicks"))
 				_achievementsController.TakeAchievement("ten_clicks");
@@ -178,7 +252,21 @@ public partial class NikoController : Node
 				_achievementsController.TakeAchievement("one_billion_clicks");
 		}
 	}
+
+	private void Meow(float pitch = 1f)
+	{
+		if (MeowSoundPlayer.Stream != Meows[_valuesContainer.CurrentMeowSoundId])
+			MeowSoundPlayer.Stream = Meows[_valuesContainer.CurrentMeowSoundId];
+		MeowSoundPlayer.PitchScale = pitch;
+		MeowSoundPlayer.Play();
+	}
 	
+	private void AnimateClick()
+	{
+		NikoAnimationPlayer.Stop();
+		NikoAnimationPlayer.Play("click");
+	}
+
 	public void SetSprite(string spriteId)
 	{
 		float scale = NikoScales[_valuesContainer.NikoScale];
@@ -203,5 +291,10 @@ public partial class NikoController : Node
 			SetSprite(_valuesContainer.ScaredFacepic);
 		else
 			SetSprite(_valuesContainer.IdleFacepic);
+	}
+
+	public static float MidiToPitch(float Midi)
+	{
+		return Mathf.Pow(2, (Midi - 60) / 12);
 	}
 }
