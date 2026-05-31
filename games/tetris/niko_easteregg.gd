@@ -8,4 +8,6 @@ func _ready() -> void:
 			if (event.button_index == MOUSE_BUTTON_LEFT):
 				if (event.is_pressed()):
 					modulate = Color.WHITE
+					if not AchievementsController.IsAchievementTaked("everyone_is_dancing"):
+						AchievementsController.TakeAchievement("everyone_is_dancing", true)
 	)

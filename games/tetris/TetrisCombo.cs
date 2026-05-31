@@ -1,5 +1,5 @@
 using Godot;
-using System;
+using Tetris;
 
 public partial class TetrisCombo : Node
 {
@@ -17,10 +17,7 @@ public partial class TetrisCombo : Node
 		GameController.ComboChanged += Combo =>
 		{
 			ComboLabel.Text = Combo.ToString();
-			if (Combo == 0)
-				target_visible_mult = 0;
-			else
-				target_visible_mult = 1;
+			target_visible_mult = Combo < 2 ? 0 : 1;
 		};
 	}
 	

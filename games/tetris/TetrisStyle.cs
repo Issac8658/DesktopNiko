@@ -1,6 +1,6 @@
 using Godot;
-using System;
 using System.Collections.Generic;
+using Tetris;
 
 public partial class TetrisStyle : Control
 {
@@ -18,7 +18,8 @@ public partial class TetrisStyle : Control
 	];
 	private readonly Dictionary<string, string[]> PointsHistoryTexts = new() {
 		{"LineBreaked", ["Line Breaked ({0})", "FFFFFE"]}, // id, text, points color
-		{"LineBreakedCombo", ["Combo! ({0})", "FF0"]}
+		{"LineBreakedCombo", ["Combo! ({0})", "FF0"]},
+		{"LineBrdsfdfeakedCombo", ["Combo! ({0})", "FF0"]}
 	};
 	private readonly double[] TimeoutSpeedMultipliers = [0.5, 1, 1.25, 1.5, 2, 3, 4, 6, 8];
 	private readonly double[] TimeoutCounters = [
@@ -50,7 +51,9 @@ public partial class TetrisStyle : Control
 	[Export]
 	public Control StyleTimeOutFiller;
 	[Export]
-	public PackedScene StylePonintLabelTemplate;
+	public Control StyleList;
+	[Export]
+	public PackedScene StylePointsLabelTemplate;
 
 	public override void _Ready()
 	{

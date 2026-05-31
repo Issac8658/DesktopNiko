@@ -512,13 +512,13 @@ mouse_filter = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style/PanelContainer/PanelContainer2/ScrollContainer" unique_id=1008304277]
+[node name="StyleList" type="VBoxContainer" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style/PanelContainer/PanelContainer2/ScrollContainer" unique_id=1008304277]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style/PanelContainer/PanelContainer2/ScrollContainer/VBoxContainer" unique_id=1024402521]
+[node name="RichTextLabel" type="RichTextLabel" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Style/PanelContainer/PanelContainer2/ScrollContainer/StyleList" unique_id=1024402521]
 use_parent_material = true
 layout_mode = 2
 bbcode_enabled = true
@@ -577,6 +577,7 @@ deterministic = true
 libraries/ = SubResource("AnimationLibrary_q6p23")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Statistics/Control2/VBoxContainer/Control/Panel/Combo" unique_id=951937223]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

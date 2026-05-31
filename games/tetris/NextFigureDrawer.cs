@@ -1,5 +1,5 @@
 using Godot;
-using System;
+using Tetris;
 
 public partial class NextFigureDrawer : Control
 {
@@ -41,15 +41,14 @@ public partial class NextFigureDrawer : Control
 
 	public override void _Draw()
 	{
-		bool[][] figure = GameController.NextFigures[NextFigureId];
+		Figure figure = GameController.NextFigures[NextFigureId];
 
-		Rect2I ActiveZone = TetrisGameController.GetFigureActiveZone(figure);
-		Vector2 Offset = ActiveZone.Position + ((Vector2)ActiveZone.Size) / 2f - new Vector2(figure.Length / 2f, figure[0].Length / 2f);		
+		Vector2 Offset = figure.ActiveZone.Position + ((Vector2)figure.ActiveZone.Size) / 2f - new Vector2(figure.Length / 2f, figure[0].Length / 2f);		
 
 		for (int X = 0; X < figure.Length; X++)
 			for (int Y = 0; Y < figure[0].Length; Y++)
 				if (figure[X][Y])
-					DrawTextureRectRegion(_tilesSource.Texture, new((X - Offset.X) * 40, (Y - Offset.Y) * 40, 40, 40), GetTile(GetSidesFigure(new(X,Y), figure)));
+					DrawTextureRectRegion(_tilesSource.Texture, new((X - Offset.X) * 40, (Y - Offset.Y) * 40, 40, 40), GetTile(GetSidesFigure(new(X,Y), figure.Form)));
 		CustomMinimumSize = new(figure.Length * 40f, figure[0].Length * 40f);
 	}
 

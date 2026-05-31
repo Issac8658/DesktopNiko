@@ -1,10 +1,8 @@
 using Godot;
-using System;
+using Tetris;
 
 public partial class TetrisShake : Node
 {
-	const double SHAKE_DELAY = 0.1;
-
 	[Export]
 	public TetrisGameController GameController;
 	[Export]

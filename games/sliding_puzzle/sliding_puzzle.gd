@@ -75,6 +75,24 @@ func move_part(part_pos: Vector2i) -> bool:
 			return false
 	else:
 		return false
+	
+	if (all_is_correct()):
+		win_tween = create_tween()
+		win_tween.tween_property(full_image_final, "self_modulate", Color.WHITE, 7)
+		win_tween.finished.connect(func ():
+			win_particles.emitting = false
+		)
+		solved_sound.play()
+		win_particles.emitting = true
+		if not AchievementsController.IsAchievementTaked("sliding_win"):
+			AchievementsController.TakeAchievement("sliding_win", true)
+	else:
+		if (win_tween != null):
+			win_tween.stop()
+		full_image_final.self_modulate = Color.TRANSPARENT
+		solved_sound.stop()
+		win_particles.emitting = false
+
 	return true
 
 
@@ -134,29 +152,14 @@ func smooth_update_part(part : Control, pos : Vector2i):
 	t4.tween_property(part, "anchor_left", float(pos.x) / float(CELLS_COUNT.x), ANIM_TIME)
 	t3.tween_property(part, "anchor_right", float(pos.x + 1) / float(CELLS_COUNT.x), ANIM_TIME)
 	
-	if (all_is_correct()):
-		win_tween = create_tween()
-		win_tween.tween_property(full_image_final, "self_modulate", Color.WHITE, 7)
-		win_tween.finished.connect(func ():
-			win_particles.emitting = false
-		)
-		solved_sound.play()
-		win_particles.emitting = true
-		if not AchievementsController.IsAchievementTaked("sliding_win"):
-			AchievementsController.TakeAchievement("sliding_win", true)
-	else:
-		if (win_tween != null):
-			win_tween.stop()
-		full_image_final.self_modulate = Color.TRANSPARENT
-		solved_sound.stop()
-		win_particles.emitting = false
-	
 func mix(count : int = 200):
 	var i = 0
 	
 	while (i < count):
-		if (move_part(Vector2i(randi_range(0, CELLS_COUNT.x), randi_range(0, CELLS_COUNT.y)))):
-			i += 1;
+		var pos = Vector2i(randi_range(0, CELLS_COUNT.x), randi_range(0, CELLS_COUNT.y))
+		if (can_move(pos)):
+			if (move_part(pos)):
+				i += 1;
 	
 	var rand_image = pictures.pick_random()
 	var image_size = rand_image.get_size()
@@ -165,6 +168,9 @@ func mix(count : int = 200):
 	for pos in parts:
 		parts[pos].sprite.texture = rand_image
 		parts[pos].sprite.region_rect = Rect2i(6 + parts[pos].original_pos.x * image_size.x / CELLS_COUNT.x, 6 + parts[pos].original_pos.y * image_size.x / CELLS_COUNT.x, image_size.x / CELLS_COUNT.x - 12, image_size.x / CELLS_COUNT.x - 12)
+
+func can_move(part_pos : Vector2i) -> bool:
+	return (part_pos.y > 0 and not parts.has(part_pos - Vector2i(0, 1))) or (part_pos.y < CELLS_COUNT.y - 1 and not parts.has(part_pos + Vector2i(0, 1))) or (part_pos.x > 0 and not parts.has(part_pos - Vector2i(1, 0))) or (part_pos.x < CELLS_COUNT.x - 1 and not parts.has(part_pos + Vector2i(1, 0)))
 
 func all_is_correct() -> bool:
 	for pos in parts:

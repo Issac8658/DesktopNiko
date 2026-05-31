@@ -6,6 +6,7 @@ signal close_button_pressed();
 @export var close_button : BaseButton
 @export var hide_button : BaseButton
 @export var ignore_on_top_settings : bool = false;
+@export var destroy_on_close : bool = false;
 
 #var is_dragging : bool = false;
 #var mouse_offset : Vector2;
@@ -27,6 +28,8 @@ func _ready() -> void:
 	close_button.pressed.connect(func ():
 		close_button_pressed.emit()
 		visible = false
+		if destroy_on_close:
+			queue_free()
 	)
 	close_requested.connect(func ():
 		close_button_pressed.emit()

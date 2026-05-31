@@ -1,11 +1,10 @@
 using Godot;
-using System;
 using System.Collections.Generic;
 
 public partial class AchievementsRegistrar : Node
 {
 	private AchievementsController _achCon;
-	private readonly Dictionary<string, Variant[]> Achievements = new(){ // Name, description, icon, is description hidden before unlock
+	private readonly Dictionary<string, Variant[]> Achievements = new(){ // Name, description, icon, is description and name hidden before unlock
 		{"ten_clicks", 					["res://sprites/achievements/ten_clicks.png",					false]},
 		{"one_hundred_clicks", 			["res://sprites/achievements/one_hundred_clicks.png",			false]},
 		{"one_thousand_clicks",			["res://sprites/achievements/one_thousand_clicks.png",			false]},
@@ -21,6 +20,7 @@ public partial class AchievementsRegistrar : Node
 		{"time_to_dinner", 				["res://sprites/achievements/time_to_dinner.png",				false]},
 		{"meow", 						["res://sprites/achievements/meow.png",							false]},
 		{"sliding_win", 				["res://sprites/achievements/sliding_puzzle.png",				false]},
+		{"everyone_is_dancing", 		["res://sprites/achievements/everyone_is_dancing.png",			false]},
 		{"few_squares", 				["res://sprites/achievements/glitched2.png",					true]},
 		{"worst_friend", 				["res://sprites/achievements/glitched.png",						true]},
 		{"hello_secret", 				["res://sprites/achievements/unknown.png",						true]},

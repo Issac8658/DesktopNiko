@@ -54,6 +54,7 @@ title = "titles.sliding_puzzle"
 initial_position = 4
 size = Vector2i(272, 336)
 transparent = true
+destroy_on_close = true
 
 [node name="Control" parent="." index="0" unique_id=579132620]
 theme_override_constants/margin_bottom = 16

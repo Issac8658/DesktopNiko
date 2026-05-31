@@ -1,6 +1,6 @@
 using Godot;
-using System;
 using System.Collections.Generic;
+using Tetris;
 
 public partial class TetrisTileMap : Control
 {
@@ -43,11 +43,23 @@ public partial class TetrisTileMap : Control
 
 	public override void _Draw()
 	{
+		// Fake Figure
+		Vector2I FigurePos = GameController.GetLowestFigurePoint(GameController.CurrentFigure, GameController.CurrentFigure.Position);
+		for (int X = 0; X < GameController.CurrentFigure.Length; X++)
+			for (int Y = 0; Y < GameController.CurrentFigure[0].Length; Y++)
+				if (GameController.CurrentFigure[X][Y])
+					DrawTextureRectRegion(_tilesSource.Texture, new((X + FigurePos.X) * 40, (Y + FigurePos.Y) * 40, 40, 40), GetTile(GetSides(GameController.CurrentFigure.Form, new(X, Y))), new Color(1, 1, 1, 0.35f) * GameController.CurrentFigure.GetColor());
+		
+		// other blocks
 		for (int X = 0; X < TetrisGameController.GAME_WIDTH; X++)
 			for (int Y = 0; Y < TetrisGameController.GAME_HEIGHT; Y++)
-			{
-				Color BlockColor = GameController.Blocks[X][Y] != null ? TetrisGameController.GetColorFromType((TetrisGameController.BlockType)GameController.Blocks[X][Y]) : GameController.CurrentFigureIsHere(new(X, Y)) ? TetrisGameController.GetColorFromType(GameController.CurrentFigureType) : Colors.Black; // 😭🙏
 				if (Tiles[X][Y] != null)
+				{
+					Color BlockColor = 
+						GameController.Blocks[X][Y] != null ?
+							Figure.GetColorFromType((Figure.FigureColor)GameController.Blocks[X][Y]) :
+							GameController.CurrentFigureIsHere(new(X, Y)) ?
+								GameController.CurrentFigure.GetColor() : Colors.Black; // 😭🙏
 					DrawTextureRectRegion(_tilesSource.Texture, new(X * 40, Y * 40, 40, 40), (Rect2I)Tiles[X][Y], BlockColor);
 				}
 	}
@@ -80,10 +92,15 @@ public partial class TetrisTileMap : Control
 	}
 	private bool[] GetSides(Vector2I BlockPos, bool WallsIsBlocks = false)
 	{
+		/* ---------
+		   | 1 2 3 |
+		   | 4 # 5 |
+		   | 6 7 8 |
+		   --------- */
 		bool[] sides = [false, false, false, false, false, false, false, false];
 	   
-		TetrisGameController.BlockType? CurrentBlockType = GameController.Blocks[BlockPos.X][BlockPos.Y];
-		CurrentBlockType = CurrentBlockType != null ? CurrentBlockType : GameController.CurrentFigureIsHere(BlockPos) ? GameController.CurrentFigureType : null;
+		Figure.FigureColor? CurrentBlockType = GameController.Blocks[BlockPos.X][BlockPos.Y];
+		CurrentBlockType = CurrentBlockType != null ? CurrentBlockType : GameController.CurrentFigureIsHere(BlockPos) ? GameController.CurrentFigure.Color : null;
 
 		for (int side = 0; side < 8; side++)
 		{
@@ -91,11 +108,33 @@ public partial class TetrisTileMap : Control
 			Vector2I offsetedPos = BlockPos + offset;
 			if (offsetedPos.Y >= 0 && offsetedPos.X >= 0 && offsetedPos.Y < TetrisGameController.GAME_HEIGHT && offsetedPos.X < TetrisGameController.GAME_WIDTH)
 			{
-				TetrisGameController.BlockType? OtherBlockType = GameController.Blocks[offsetedPos.X][offsetedPos.Y];
-				OtherBlockType = OtherBlockType != null ? OtherBlockType : GameController.CurrentFigureIsHere(new (offsetedPos.X, offsetedPos.Y)) ? GameController.CurrentFigureType : null;
-				sides[side] = OtherBlockType != null && OtherBlockType == CurrentBlockType;
+				Figure.FigureColor? OtherBlockColor = GameController.Blocks[offsetedPos.X][offsetedPos.Y];
+				OtherBlockColor = OtherBlockColor != null ? OtherBlockColor : GameController.CurrentFigureIsHere(new (offsetedPos.X, offsetedPos.Y)) ? GameController.CurrentFigure.Color : null;
+				sides[side] = OtherBlockColor != null && OtherBlockColor == CurrentBlockType;
 			}
 			else sides[side] = WallsIsBlocks;
+		}
+		return sides;
+	}
+	public static bool[] GetSides(bool[][] Figure, Vector2I BlockPos)
+	{
+		/* ---------
+		   | 1 2 3 |
+		   | 4 # 5 |
+		   | 6 7 8 |
+		   --------- */
+		bool[] sides = [false, false, false, false, false, false, false, false];
+
+		for (int side = 0; side < 8; side++)
+		{
+			Vector2I offset = SQUARE_DIRECTIONS[side];
+			Vector2I offsetedPos = BlockPos + offset;
+			if (offsetedPos.Y >= 0 && offsetedPos.X >= 0 && offsetedPos.Y < Figure[0].Length && offsetedPos.X < Figure.Length)
+			{
+				bool HasBlock = Figure[offsetedPos.X][offsetedPos.Y];
+				sides[side] = HasBlock;
+			}
+			else sides[side] = false;
 		}
 		return sides;
 	}
@@ -123,5 +162,5 @@ public partial class TetrisTileMap : Control
 		return new(0, 0, 20, 20);
 	}
 
-	public Vector2I GamePosToCurrentFigurePos(Vector2I GamePos) => GamePos - GameController.CurrentFigurePosition;
+	public Vector2I GamePosToCurrentFigurePos(Vector2I GamePos) => GamePos - GameController.CurrentFigure.Position;
 }

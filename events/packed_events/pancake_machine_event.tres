@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_ifetb")
-SpawnChance = 0.5
+SpawnChance = 0.3
 MaxCPS = 10
 DisplayName = "Pancake Machine"
 LinkedScene = ExtResource("1_af5pl")
