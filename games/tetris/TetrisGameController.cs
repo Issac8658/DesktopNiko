@@ -387,40 +387,64 @@ namespace Tetris
 									{
 										case Figure.ROTATION_0:
 											{
-												if (_currentFigure[0][0] && _currentFigure[2][0] && (_currentFigure[0][2] || _currentFigure[2][2]))
-													EmitSignal("SpinOccurred", DestroyedLines, (int)SpinType.TSpin);
-												else if ((_currentFigure[0][0] || _currentFigure[2][0]) && _currentFigure[0][2] && _currentFigure[2][2])
-													EmitSignal("SpinOccurred", DestroyedLines, (int)SpinType.TSpinMini);
+												if (_blocks[_currentFigure.Position.X][_currentFigure.Position.Y] != null
+												 && _blocks[_currentFigure.Position.X + 2][_currentFigure.Position.Y] != null
+												 &&(_blocks[_currentFigure.Position.X][_currentFigure.Position.Y + 2] != null
+												 || _blocks[_currentFigure.Position.X + 2][_currentFigure.Position.Y + 2] != null))
+													EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.TSpin);
+												else if ((_blocks[_currentFigure.Position.X][_currentFigure.Position.Y] != null
+													   || _blocks[_currentFigure.Position.X + 2][_currentFigure.Position.Y] != null)
+													   && _blocks[_currentFigure.Position.X][_currentFigure.Position.Y + 2] != null
+													   && _blocks[_currentFigure.Position.X + 2][_currentFigure.Position.Y + 2] != null)
+													EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.TSpinMini);
 												else
 													EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.None);
 												break;
 											}
 										case Figure.ROTATION_R:
 											{
-												if (_currentFigure[2][0] && _currentFigure[2][2] && (_currentFigure[0][0] || _currentFigure[0][2]))
-													EmitSignal("SpinOccurred", DestroyedLines, (int)SpinType.TSpin);
-												else if ((_currentFigure[2][0] || _currentFigure[2][2]) && _currentFigure[0][0] && _currentFigure[0][2])
-													EmitSignal("SpinOccurred", DestroyedLines, (int)SpinType.TSpinMini);
+												if (_blocks[_currentFigure.Position.X + 2][_currentFigure.Position.Y] != null
+												 && _blocks[_currentFigure.Position.X + 2][_currentFigure.Position.Y + 2] != null
+												 &&(_blocks[_currentFigure.Position.X][_currentFigure.Position.Y] != null
+												 || _blocks[_currentFigure.Position.X][_currentFigure.Position.Y + 2] != null))
+													EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.TSpin);
+												else if ((_blocks[_currentFigure.Position.X + 2][_currentFigure.Position.Y] != null
+													   || _blocks[_currentFigure.Position.X + 2][_currentFigure.Position.Y + 2] != null)
+													   && _blocks[_currentFigure.Position.X][_currentFigure.Position.Y] != null
+													   && _blocks[_currentFigure.Position.X][_currentFigure.Position.Y + 1] != null)
+													EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.TSpinMini);
 												else
 													EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.None);
 												break;
 											}
 										case Figure.ROTATION_2:
 											{
-												if (_currentFigure[2][2] && _currentFigure[0][2] && (_currentFigure[2][0] || _currentFigure[0][0]))
-													EmitSignal("SpinOccurred", DestroyedLines, (int)SpinType.TSpin);
-												else if ((_currentFigure[2][2] || _currentFigure[0][2]) && _currentFigure[2][0] && _currentFigure[0][0])
-													EmitSignal("SpinOccurred", DestroyedLines, (int)SpinType.TSpinMini);
+												if (_blocks[_currentFigure.Position.X + 2][_currentFigure.Position.Y + 2] != null
+												 && _blocks[_currentFigure.Position.X][_currentFigure.Position.Y + 2] != null
+												 &&(_blocks[_currentFigure.Position.X + 2][_currentFigure.Position.Y] != null
+												 || _blocks[_currentFigure.Position.X][_currentFigure.Position.Y] != null))
+													EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.TSpin);
+												else if ((_blocks[_currentFigure.Position.X + 2][_currentFigure.Position.Y + 2] != null
+													   || _blocks[_currentFigure.Position.X][_currentFigure.Position.Y + 2] != null)
+													   && _blocks[_currentFigure.Position.X + 2][_currentFigure.Position.Y] != null
+													   && _blocks[_currentFigure.Position.X][_currentFigure.Position.Y] != null)
+													EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.TSpinMini);
 												else
 													EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.None);
 												break;
 											}
 										case Figure.ROTATION_L:
 											{
-												if (_currentFigure[0][2] && _currentFigure[0][0] && (_currentFigure[2][2] || _currentFigure[2][0]))
-													EmitSignal("SpinOccurred", DestroyedLines, (int)SpinType.TSpin);
-												else if ((_currentFigure[0][2] || _currentFigure[0][0]) && _currentFigure[2][2] && _currentFigure[2][0])
-													EmitSignal("SpinOccurred", DestroyedLines, (int)SpinType.TSpinMini);
+												if (_blocks[_currentFigure.Position.X][_currentFigure.Position.Y + 2] != null
+												 && _blocks[_currentFigure.Position.X][_currentFigure.Position.Y] != null
+												 &&(_blocks[_currentFigure.Position.X + 2][_currentFigure.Position.Y + 2] != null
+												 || _blocks[_currentFigure.Position.X + 2][_currentFigure.Position.Y] != null))
+													EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.TSpin);
+												else if ((_blocks[_currentFigure.Position.X][_currentFigure.Position.Y + 2] != null
+													   || _blocks[_currentFigure.Position.X][_currentFigure.Position.Y] != null)
+													   && _blocks[_currentFigure.Position.X + 2][_currentFigure.Position.Y + 2] != null
+													   && _blocks[_currentFigure.Position.X + 2][_currentFigure.Position.Y] != null)
+													EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.TSpinMini);
 												else
 													EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.None);
 												break;

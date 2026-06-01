@@ -194,10 +194,10 @@ fill_from = Vector2(0.5, 0.5)
 size = Vector2(408, 808)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bc3vh"]
-size = Vector2(180, 800)
+size = Vector2(230, 800)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lmhe"]
-size = Vector2(180, 800)
+size = Vector2(230, 800)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6n4u4"]
 radius = 1.4142135
@@ -231,9 +231,9 @@ use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-theme_override_constants/margin_left = 0
+theme_override_constants/margin_left = -32
 theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
+theme_override_constants/margin_right = 18
 theme_override_constants/margin_bottom = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Statistics/Control2" unique_id=1742660163]
@@ -246,7 +246,6 @@ self_modulate = Color(1, 1, 1, 0.6745098)
 use_parent_material = true
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 0
 mouse_filter = 2
 
@@ -336,7 +335,6 @@ mouse_filter = 2
 use_parent_material = true
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
-size_flags_horizontal = 4
 mouse_filter = 2
 
 [node name="Exit" type="Button" parent="Statistics/Control2/VBoxContainer/HBoxContainer" unique_id=1765265864]
@@ -433,7 +431,6 @@ expand_icon = true
 use_parent_material = true
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 3
 mouse_filter = 2
 
@@ -533,7 +530,7 @@ script = ExtResource("7_basdr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Statistics/Control2/VBoxContainer/Control/Panel7/Control" unique_id=2066121825]
 material = ExtResource("7_8lmhe")
-position = Vector2(86, 115)
+position = Vector2(111, 115)
 scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("4_uqggt")
 autoplay = "default"
@@ -543,10 +540,12 @@ speed_scale = 1.125
 
 [node name="Panel" type="Panel" parent="Statistics/Control2/VBoxContainer/Control" unique_id=718399785]
 self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 176.0
+offset_right = -4.0
 offset_bottom = 694.0
 mouse_filter = 2
 
@@ -608,23 +607,34 @@ custom_minimum_size = Vector2(408, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Statistics" unique_id=876613270]
+[node name="StatisticsAnimator" type="AnimationPlayer" parent="Statistics" unique_id=670910991]
+libraries/ = SubResource("AnimationLibrary_25s1u")
+
+[node name="MarginContainer" type="MarginContainer" parent="Statistics" unique_id=555905415]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = -32
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Statistics/MarginContainer" unique_id=876613270]
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_constants/separation = 10
 
-[node name="Panel5" type="PanelContainer" parent="Statistics/VBoxContainer2" unique_id=1135361884]
+[node name="Panel5" type="PanelContainer" parent="Statistics/MarginContainer/VBoxContainer2" unique_id=1135361884]
 self_modulate = Color(1, 1, 1, 0.6745098)
 use_parent_material = true
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="Next" type="Label" parent="Statistics/VBoxContainer2/Panel5" unique_id=1142208043]
+[node name="Next" type="Label" parent="Statistics/MarginContainer/VBoxContainer2/Panel5" unique_id=1142208043]
 use_parent_material = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
@@ -632,16 +642,15 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_cnhj0")
 text = "other.games.tetris.next"
 horizontal_alignment = 1
 
-[node name="Panel" type="PanelContainer" parent="Statistics/VBoxContainer2" unique_id=1830775220]
+[node name="Panel" type="PanelContainer" parent="Statistics/MarginContainer/VBoxContainer2" unique_id=1830775220]
 self_modulate = Color(1, 1, 1, 0.6745098)
 use_parent_material = true
 custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="Control" type="Control" parent="Statistics/VBoxContainer2/Panel" unique_id=948313049]
+[node name="Control" type="Control" parent="Statistics/MarginContainer/VBoxContainer2/Panel" unique_id=948313049]
 texture_filter = 1
 use_parent_material = true
 layout_mode = 2
@@ -651,16 +660,15 @@ mouse_filter = 2
 script = ExtResource("6_basdr")
 TetrisTileSet = ExtResource("7_8lq6y")
 
-[node name="Panel2" type="PanelContainer" parent="Statistics/VBoxContainer2" unique_id=1812937741]
+[node name="Panel2" type="PanelContainer" parent="Statistics/MarginContainer/VBoxContainer2" unique_id=1812937741]
 self_modulate = Color(1, 1, 1, 0.6745098)
 use_parent_material = true
 custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="Control2" type="Control" parent="Statistics/VBoxContainer2/Panel2" unique_id=1260035810]
+[node name="Control2" type="Control" parent="Statistics/MarginContainer/VBoxContainer2/Panel2" unique_id=1260035810]
 texture_filter = 1
 use_parent_material = true
 layout_mode = 2
@@ -671,16 +679,15 @@ script = ExtResource("6_basdr")
 TetrisTileSet = ExtResource("7_8lq6y")
 NextFigureId = 1
 
-[node name="Panel3" type="PanelContainer" parent="Statistics/VBoxContainer2" unique_id=407190473]
+[node name="Panel3" type="PanelContainer" parent="Statistics/MarginContainer/VBoxContainer2" unique_id=407190473]
 self_modulate = Color(1, 1, 1, 0.6745098)
 use_parent_material = true
 custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="Control3" type="Control" parent="Statistics/VBoxContainer2/Panel3" unique_id=987087713]
+[node name="Control3" type="Control" parent="Statistics/MarginContainer/VBoxContainer2/Panel3" unique_id=987087713]
 texture_filter = 1
 use_parent_material = true
 layout_mode = 2
@@ -691,16 +698,15 @@ script = ExtResource("6_basdr")
 TetrisTileSet = ExtResource("7_8lq6y")
 NextFigureId = 2
 
-[node name="Panel4" type="PanelContainer" parent="Statistics/VBoxContainer2" unique_id=466819356]
+[node name="Panel4" type="PanelContainer" parent="Statistics/MarginContainer/VBoxContainer2" unique_id=466819356]
 self_modulate = Color(1, 1, 1, 0.6745098)
 use_parent_material = true
 custom_minimum_size = Vector2(180, 180)
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="Control4" type="Control" parent="Statistics/VBoxContainer2/Panel4" unique_id=602183092]
+[node name="Control4" type="Control" parent="Statistics/MarginContainer/VBoxContainer2/Panel4" unique_id=602183092]
 texture_filter = 1
 use_parent_material = true
 layout_mode = 2
@@ -710,9 +716,6 @@ mouse_filter = 2
 script = ExtResource("6_basdr")
 TetrisTileSet = ExtResource("7_8lq6y")
 NextFigureId = 3
-
-[node name="StatisticsAnimator" type="AnimationPlayer" parent="Statistics" unique_id=670910991]
-libraries/ = SubResource("AnimationLibrary_25s1u")
 
 [node name="TetrisAnchor" type="Control" parent="." unique_id=1300014302]
 use_parent_material = true
@@ -756,7 +759,7 @@ modulate = Color(0, 0, 0, 0.78039217)
 layout_mode = 0
 offset_left = 121.0
 offset_right = 279.0
-offset_bottom = 117.0
+offset_bottom = 119.0
 
 [node name="LeftRuler" type="Panel" parent="TetrisAnchor/PanelContainer/BG" unique_id=1802050543]
 use_parent_material = true
@@ -772,16 +775,6 @@ layout_mode = 0
 offset_left = 398.0
 offset_right = 404.0
 offset_bottom = 800.0
-theme_override_styles/panel = ExtResource("9_g58hi")
-
-[node name="GameOverRuler" type="Panel" parent="TetrisAnchor/PanelContainer/BG" unique_id=982391941]
-use_parent_material = true
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 117.0
-offset_bottom = 123.0
-grow_horizontal = 2
 theme_override_styles/panel = ExtResource("9_g58hi")
 
 [node name="Fps" type="Label" parent="TetrisAnchor/PanelContainer/BG" unique_id=2023850348]
@@ -839,11 +832,11 @@ MousePolygon = NodePath("MouseArea")
 shape = SubResource("RectangleShape2D_bc4hr")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area/ClickableArea" unique_id=1699779867]
-position = Vector2(312, 0)
+position = Vector2(337, 0)
 shape = SubResource("RectangleShape2D_bc3vh")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Area/ClickableArea" unique_id=1401100171]
-position = Vector2(-312, 0)
+position = Vector2(-337, 0)
 shape = SubResource("RectangleShape2D_8lmhe")
 
 [node name="MouseArea" type="Area2D" parent="Area" unique_id=1832244512]

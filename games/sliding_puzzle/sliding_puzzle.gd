@@ -170,7 +170,11 @@ func mix(count : int = 200):
 		parts[pos].sprite.region_rect = Rect2i(6 + parts[pos].original_pos.x * image_size.x / CELLS_COUNT.x, 6 + parts[pos].original_pos.y * image_size.x / CELLS_COUNT.x, image_size.x / CELLS_COUNT.x - 12, image_size.x / CELLS_COUNT.x - 12)
 
 func can_move(part_pos : Vector2i) -> bool:
-	return (part_pos.y > 0 and not parts.has(part_pos - Vector2i(0, 1))) or (part_pos.y < CELLS_COUNT.y - 1 and not parts.has(part_pos + Vector2i(0, 1))) or (part_pos.x > 0 and not parts.has(part_pos - Vector2i(1, 0))) or (part_pos.x < CELLS_COUNT.x - 1 and not parts.has(part_pos + Vector2i(1, 0)))
+	var part = parts.get(part_pos)
+	
+	if (part != null):
+		return (part_pos.y > 0 and not parts.has(part_pos - Vector2i(0, 1))) or (part_pos.y < CELLS_COUNT.y - 1 and not parts.has(part_pos + Vector2i(0, 1))) or (part_pos.x > 0 and not parts.has(part_pos - Vector2i(1, 0))) or (part_pos.x < CELLS_COUNT.x - 1 and not parts.has(part_pos + Vector2i(1, 0)))
+	return false
 
 func all_is_correct() -> bool:
 	for pos in parts:

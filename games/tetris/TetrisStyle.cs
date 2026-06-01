@@ -10,21 +10,21 @@ public partial class TetrisStyle : Control
 		" ", // no style
 		"[center][color=#AB8346]FLICKER[/color][/center]", // D FLICKER
 		"[center][color=#CEA261]DIM LIGHT[/color][/center]", // C DIM LIGHT
-		"[color=#FFF9CC][left]STEADY[/left]\n[right]GLOW[/right][/color]", // B STEADY GLOW
-		"[color=#FFFFFF][left]BRIGHT[/left]\n[right]PATH[/right][/color]", // A BRIGHT PATH
-		"[color=#AAE2FF][left]GUIDING[/left]\n[right]LIGHT[/right][/color]", // S GUIDING LIGHT
+		"[center][color=#FFF9CC]STEADY GLOW[/color][/center]", // B STEADY GLOW
+		"[center][color=#FFFFFF]BRIGHT PATH[/color][/center]", // A BRIGHT PATH
+		"[center][color=#AAE2FF]GUIDING LIGHT[/color][/center]", // S GUIDING LIGHT
 		"[color=#FFFF66][left]THE SUN[/left]\n[right]MUST RISE[/right][/color]", // SS THE SUN MUST RISE
-		"[color=#FFCC00][left]CARRY[/left]\n[right]THE SUN[/right][/color]", // SSS CARRY THE SUN
+		"[center][color=#FFCC00]CARRY THE SUN[[/color][/center]", // SSS CARRY THE SUN
 		"[center][color=#FFD800][outline_size=4][outline_color=#FFFFFF]ONESHOT[/outline_color][/outline_size][/color][/center]", // ONESHOT
 	];
 	private readonly Dictionary<string, string[]> StyleHistoryTexts = new() {
-		{"LineBreaked", ["Line{0} Breaked{1} - {2}", "FFFFFE"]}, // id, text, color
+		{"LineBreaked", ["Line{0} Break{1} - {2}", "FFFFFE"]}, // id, text, color
 		{"Combo", ["Combo x{0}", "FF0"]},
 		{"TSpin", ["T-Spin{0} - {1}", "F20"]},
 		{"TSpinMini", ["T-Spin Mini{0} - {1}", "FF0"]},
 		{"AllSpin", ["All-Spin{0} - {1}", "2F0"]},
 		{"MapCleared", ["Map Cleared", "0F0"]},
-		{"Tetris", ["B2B x{0}", "F0F"]}
+		{"Tetris", ["Tetris!", "F0F"]}
 	};
 	private readonly double[] TimeoutSpeedMultipliers = [0.5, 1, 1.25, 1.5, 2, 3, 4, 6, 8];
 	private readonly double[] TimeoutCounters = [
@@ -75,17 +75,24 @@ public partial class TetrisStyle : Control
 					StyleHistoryTexts[text][0],
 					StyleHistoryTexts[text][1],
 					LinesCount > 0 ? $" + {LinesCount} Line{(LinesCount > 1 ? "s" : "")}" : "",
-					TetrisGameController.SpinPoints[Spin][LinesCount].ToString()
+					TetrisGameController.SpinPoints[Spin][LinesCount].ToString() + (Controller.Combo > 1 ? $"*{Controller.Combo}" : "")
 				);
 			}
-			else if (LinesCount > 0)
+			else if (LinesCount > 0 && LinesCount < 4)
 				DrawHistory(
 					StyleHistoryTexts["LineBreaked"][0],
 					StyleHistoryTexts["LineBreaked"][1],
 					LinesCount > 1 ? "s" : "",
 					LinesCount > 1 ? $" ({LinesCount})" : "",
-					TetrisGameController.DestroyedLinesScores[LinesCount].ToString()
+					TetrisGameController.DestroyedLinesScores[LinesCount].ToString() + (Controller.Combo > 1 ? $"*{Controller.Combo}" : "")
 				);
+			if (LinesCount == 4)
+			{
+				DrawHistory(
+					StyleHistoryTexts["Tetris"][0],
+					StyleHistoryTexts["Tetris"][1]
+				);
+			}
 			/*
 			if (Controller.Combo > 1)
 				DrawHistory(
@@ -101,7 +108,12 @@ public partial class TetrisStyle : Control
 				_styleTimeOut -= (int)Mathf.Floor(_styleTimeOut);
 			}
 		};
-		Controller.Restarted += () => _styleTimeOut = CurrentStyle = 0;
+		Controller.Restarted += () =>
+		{
+			_styleTimeOut = CurrentStyle = 0;
+			foreach (Node child in StyleList.GetChildren())
+				child.QueueFree();
+		};
 		CurrentStyle = 0;
 		StyleTimeOutFiller.AnchorRight = (float)_styleTimeOut;
 	}
