@@ -2,6 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Tetris
 {
@@ -24,11 +25,9 @@ namespace Tetris
 		[Signal]
 		public delegate void LineDestroyedEventHandler(short Line);
 		[Signal]
-		public delegate void BlockDroppedEventHandler(int DestroyedLinesCount);
+		public delegate void BlockDroppedEventHandler(int DestroyedLinesCount, SpinType Spin);
 		[Signal]
 		public delegate void ComboChangedEventHandler(uint Combo);
-		[Signal]
-		public delegate void SuperRotationOccurredEventHandler(uint Attempt);
 		[Signal]
 		public delegate void RestartedEventHandler();
 
@@ -49,6 +48,14 @@ namespace Tetris
 			Rotation
 		}
 
+		public enum SpinType
+		{
+			None,
+			TSpin,
+			TSpinMini,
+			AllSpin
+		}
+
 		public static readonly AudioEffectLowPassFilter LowPassFilter = AudioServer.GetBusEffect(2, 0) as AudioEffectLowPassFilter;
 
 		private List<List<Figure.FigureColor?>> _blocks = [];
@@ -58,8 +65,10 @@ namespace Tetris
 		private uint _score = 0;
 		private uint _lines = 0;
 		private uint _combo = 0;
-		private TetrisAction LastAction = TetrisAction.Unknown;
+		private TetrisAction _lastAction = TetrisAction.Unknown;
+		private SpinType _currentSpin = SpinType.None;
 		private GameStates _currentState = GameStates.Menu;
+		private short _rotationAttempt = -1;
 
 		public uint Combo
 		{
@@ -184,6 +193,8 @@ namespace Tetris
 				CurrentState = GameStates.Menu;
 				TweenLowPass(300);
 			}; // menu
+
+			BlockDropped += (DestroyedLinesCount, Spin) => _score += SpinPoints[Spin][DestroyedLinesCount];
 
 			// init redraw
 			ReDraw();
@@ -347,6 +358,7 @@ namespace Tetris
 					Combo = 0;
 
 				// sounds and score if some lines destroyed
+				_score += DestroyedLinesScores[DestroyedLines] * Combo;
 				switch (DestroyedLines)
 				{
 					case 0:
@@ -355,31 +367,91 @@ namespace Tetris
 						else
 							PlaceSound.Play();
 						break;
-					case 1:
-						PlaceLightSound.Play();
-						_score += 100 * Combo;
-						break;
-					case 2:
-						PlaceNormalSound.Play();
-						_score += 300 * Combo;
-						break;
-					case 3:
-						PlaceMegaSound.Play();
-						_score += 700 * Combo;
-						break;
-					case 4:
-						PlaceMegaSound.Play();
-						_score += 1500 * Combo;
-						break;
+					case 1: PlaceLightSound.Play(); break;
+					case 2: PlaceNormalSound.Play(); break;
+					case 3: PlaceMegaSound.Play(); break;
+					case 4: PlaceMegaSound.Play(); break;
 				}
-				EmitSignal("BlockDropped", DestroyedLines);
 				_lines += DestroyedLines;
+
+				if (_lastAction == TetrisAction.Rotation)
+					switch (_currentFigure.Type)
+					{
+						case Figure.FigureType.O: break;
+						case Figure.FigureType.T:
+							{
+								if (_rotationAttempt == WallKickTable4x4[0].Length - 1)
+									EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.TSpin);
+								else
+									switch (_currentFigure.Rotation)
+									{
+										case Figure.ROTATION_0:
+											{
+												if (_currentFigure[0][0] && _currentFigure[2][0] && (_currentFigure[0][2] || _currentFigure[2][2]))
+													EmitSignal("SpinOccurred", DestroyedLines, (int)SpinType.TSpin);
+												else if ((_currentFigure[0][0] || _currentFigure[2][0]) && _currentFigure[0][2] && _currentFigure[2][2])
+													EmitSignal("SpinOccurred", DestroyedLines, (int)SpinType.TSpinMini);
+												else
+													EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.None);
+												break;
+											}
+										case Figure.ROTATION_R:
+											{
+												if (_currentFigure[2][0] && _currentFigure[2][2] && (_currentFigure[0][0] || _currentFigure[0][2]))
+													EmitSignal("SpinOccurred", DestroyedLines, (int)SpinType.TSpin);
+												else if ((_currentFigure[2][0] || _currentFigure[2][2]) && _currentFigure[0][0] && _currentFigure[0][2])
+													EmitSignal("SpinOccurred", DestroyedLines, (int)SpinType.TSpinMini);
+												else
+													EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.None);
+												break;
+											}
+										case Figure.ROTATION_2:
+											{
+												if (_currentFigure[2][2] && _currentFigure[0][2] && (_currentFigure[2][0] || _currentFigure[0][0]))
+													EmitSignal("SpinOccurred", DestroyedLines, (int)SpinType.TSpin);
+												else if ((_currentFigure[2][2] || _currentFigure[0][2]) && _currentFigure[2][0] && _currentFigure[0][0])
+													EmitSignal("SpinOccurred", DestroyedLines, (int)SpinType.TSpinMini);
+												else
+													EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.None);
+												break;
+											}
+										case Figure.ROTATION_L:
+											{
+												if (_currentFigure[0][2] && _currentFigure[0][0] && (_currentFigure[2][2] || _currentFigure[2][0]))
+													EmitSignal("SpinOccurred", DestroyedLines, (int)SpinType.TSpin);
+												else if ((_currentFigure[0][2] || _currentFigure[0][0]) && _currentFigure[2][2] && _currentFigure[2][0])
+													EmitSignal("SpinOccurred", DestroyedLines, (int)SpinType.TSpinMini);
+												else
+													EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.None);
+												break;
+											}
+										default:
+											{
+												EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.None);
+												break;
+											}
+									}
+								break;
+							}
+						default:
+							{
+								if (!FigureCanMove(_currentFigure, Vector2I.Up)
+								 && !FigureCanMove(_currentFigure, Vector2I.Right)
+								 && !FigureCanMove(_currentFigure, Vector2I.Left)
+								 && !FigureCanMove(_currentFigure, Vector2I.Down))
+									EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.AllSpin);
+								break;
+							}
+					}
+				else
+					EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.None);
 
 				if (!FigureCanMove(_nextFigures[0], Vector2I.Zero)) // lose checking
 				{
 					CurrentState = GameStates.Lose;
 					return true;
 				}
+				_lastAction = TetrisAction.Unknown;
 
 				EmitSignal("ReDrawNextTiles");
 				ReDrawCurrentFigure(true);
@@ -417,7 +489,8 @@ namespace Tetris
 			if (FigureCanMove(_currentFigure, Offset))
 			{
 				_currentFigure.Position += Offset;
-				LastAction = TetrisAction.Move;
+				_lastAction = TetrisAction.Move;
+				_rotationAttempt = -1;
 			}
 		}
 
@@ -435,7 +508,7 @@ namespace Tetris
 					if (Figure[X][Y])
 					{
 						Vector2I globalPos = new Vector2I(X, Y) + Figure.Position + Offset;
-						if (_blocks[globalPos.X][globalPos.Y] != null)
+						if (globalPos.Y >= 0 && _blocks[globalPos.X][globalPos.Y] != null)
 							return false;
 					}
 			return true;
@@ -455,7 +528,7 @@ namespace Tetris
 					if (Form[X][Y])
 					{
 						Vector2I globalPos = new Vector2I(X, Y) + Position;
-						if (_blocks[globalPos.X][globalPos.Y] != null)
+						if (globalPos.Y >= 0 && _blocks[globalPos.X][globalPos.Y] != null)
 							return false;
 					}
 			return true;
@@ -477,10 +550,10 @@ namespace Tetris
 
 			// SRS
 			int NextRotation = Reverse ?
-			_currentFigure.Rotation - 1 < Figure.ROTATION_0 ? Figure.ROTATION_L : _currentFigure.Rotation - 1 :
+			_currentFigure.Rotation == 0 ? Figure.ROTATION_L : _currentFigure.Rotation - 1 :
 			_currentFigure.Rotation + 1 > Figure.ROTATION_L ? Figure.ROTATION_0 : _currentFigure.Rotation + 1;
 
-			for (int attempt = 0; attempt <= Table[0].Length; attempt++)
+			for (short attempt = 0; attempt <= Table[0].Length; attempt++)
 			{
 				Vector2I ResultPosition = _currentFigure.Position + GetWallKickOffset(Table, _currentFigure.Rotation, NextRotation, attempt);
 				if (FigureCanMove(RotatedFigureArray, ResultPosition))
@@ -488,7 +561,8 @@ namespace Tetris
 					_currentFigure.Rotate(Reverse);
 					_currentFigure.Position = ResultPosition;
 					//MoveCurrentFigureInBorders();
-					EmitSignal("SuperRotationOccurred", attempt);
+					_rotationAttempt = attempt;
+					_lastAction = TetrisAction.Rotation;
 					return;
 				}
 			}
@@ -545,7 +619,16 @@ namespace Tetris
     	    [ new(0, 0), new( 2, 0), new(-1, 0), new( 2, -1), new(-1,  2) ], // 2 -> L
     	    [ new(0, 0), new( 1, 0), new(-2, 0), new( 1,  2), new(-2, -1) ], // L -> 0
     	];
-		public static readonly int[] WallKickPoints = [0, 0, 10, 100, 250];
+		
+		public static readonly System.Collections.Generic.Dictionary<SpinType, uint[]> SpinPoints = new()
+		{
+			{SpinType.None,      [0,   0,   0,    0,    0]},
+			{SpinType.TSpin,     [400, 800, 1200, 1600, 2000]},
+			{SpinType.TSpinMini, [100, 200, 400,  800,  1000]},
+			{SpinType.AllSpin,   [100, 400, 800,  1200, 1800]}
+		};
+
+		public static readonly uint[] DestroyedLinesScores = [0, 100, 300, 700, 1500];
 
 		public static Vector2I GetWallKickOffset(Vector2I[][] Table, int OldState, int NewState, int Attempt)
 		{
@@ -569,10 +652,10 @@ namespace Tetris
 		private static readonly FigureType[] _figureTypes = (FigureType[])Enum.GetValues(typeof(FigureType));
 		private static readonly FigureColor[] _figureColors = (FigureColor[])Enum.GetValues(typeof(FigureColor));
 
-		public const int ROTATION_0 = 0;
-		public const int ROTATION_R = 1;
-		public const int ROTATION_2 = 2;
-		public const int ROTATION_L = 3;
+		public const byte ROTATION_0 = 0;
+		public const byte ROTATION_R = 1;
+		public const byte ROTATION_2 = 2;
+		public const byte ROTATION_L = 3;
 		private static readonly Vector2I DEFAULT_POSITION = new(3, 0);
 
 		public enum FigureType { O, I, J, L, S, Z, T };
@@ -603,7 +686,7 @@ namespace Tetris
 		private Rect2I _activeZone;
 
 		public Vector2I Position = DEFAULT_POSITION;
-		public int Rotation = ROTATION_0;
+		public byte Rotation = ROTATION_0;
 		public FigureType Type = FigureType.O;
 		public FigureColor Color = FigureColor.White;
 		public Vector2I Size { get => _size; }

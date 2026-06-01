@@ -48,7 +48,7 @@ public partial class NextFigureDrawer : Control
 		for (int X = 0; X < figure.Length; X++)
 			for (int Y = 0; Y < figure[0].Length; Y++)
 				if (figure[X][Y])
-					DrawTextureRectRegion(_tilesSource.Texture, new((X - Offset.X) * 40, (Y - Offset.Y) * 40, 40, 40), GetTile(GetSidesFigure(new(X,Y), figure.Form)));
+					DrawTextureRectRegion(_tilesSource.Texture, new((X - Offset.X) * 40, (Y - Offset.Y) * 40, 40, 40), GetTile(GetSidesFigure(new(X,Y), figure.Form)), figure.GetColor());
 		CustomMinimumSize = new(figure.Length * 40f, figure[0].Length * 40f);
 	}
 

@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 using Tetris;
 
@@ -16,10 +17,14 @@ public partial class TetrisStyle : Control
 		"[color=#FFCC00][left]CARRY[/left]\n[right]THE SUN[/right][/color]", // SSS CARRY THE SUN
 		"[center][color=#FFD800][outline_size=4][outline_color=#FFFFFF]ONESHOT[/outline_color][/outline_size][/color][/center]", // ONESHOT
 	];
-	private readonly Dictionary<string, string[]> PointsHistoryTexts = new() {
-		{"LineBreaked", ["Line Breaked ({0})", "FFFFFE"]}, // id, text, points color
-		{"LineBreakedCombo", ["Combo! ({0})", "FF0"]},
-		{"LineBrdsfdfeakedCombo", ["Combo! ({0})", "FF0"]}
+	private readonly Dictionary<string, string[]> StyleHistoryTexts = new() {
+		{"LineBreaked", ["Line{0} Breaked{1} - {2}", "FFFFFE"]}, // id, text, color
+		{"Combo", ["Combo x{0}", "FF0"]},
+		{"TSpin", ["T-Spin{0} - {1}", "F20"]},
+		{"TSpinMini", ["T-Spin Mini{0} - {1}", "FF0"]},
+		{"AllSpin", ["All-Spin{0} - {1}", "2F0"]},
+		{"MapCleared", ["Map Cleared", "0F0"]},
+		{"Tetris", ["B2B x{0}", "F0F"]}
 	};
 	private readonly double[] TimeoutSpeedMultipliers = [0.5, 1, 1.25, 1.5, 2, 3, 4, 6, 8];
 	private readonly double[] TimeoutCounters = [
@@ -29,6 +34,12 @@ public partial class TetrisStyle : Control
 		2.0, // 3 lines
 		3.0 // 4 lines
 	];
+	private readonly Dictionary<TetrisGameController.SpinType, double> SpinStylePoints = new() {
+		{TetrisGameController.SpinType.None, 0},
+		{TetrisGameController.SpinType.TSpin, 0.8},
+		{TetrisGameController.SpinType.TSpinMini, 0.4},
+		{TetrisGameController.SpinType.AllSpin, 0.4}
+	};
 
 	private int _currentStyle = 0;
 	private double _styleTimeOut = 0;
@@ -52,14 +63,38 @@ public partial class TetrisStyle : Control
 	public Control StyleTimeOutFiller;
 	[Export]
 	public Control StyleList;
-	[Export]
-	public PackedScene StylePointsLabelTemplate;
 
 	public override void _Ready()
 	{
-		Controller.BlockDropped += LinesCount =>
+		Controller.BlockDropped += (LinesCount, Spin) =>
 		{
-			_styleTimeOut += TimeoutCounters[LinesCount] * Mathf.Clamp(Controller.Combo, 1.0, double.MaxValue);
+			if (Spin != TetrisGameController.SpinType.None)
+			{
+				string text = Spin.ToString();
+				DrawHistory(
+					StyleHistoryTexts[text][0],
+					StyleHistoryTexts[text][1],
+					LinesCount > 0 ? $" + {LinesCount} Line{(LinesCount > 1 ? "s" : "")}" : "",
+					TetrisGameController.SpinPoints[Spin][LinesCount].ToString()
+				);
+			}
+			else if (LinesCount > 0)
+				DrawHistory(
+					StyleHistoryTexts["LineBreaked"][0],
+					StyleHistoryTexts["LineBreaked"][1],
+					LinesCount > 1 ? "s" : "",
+					LinesCount > 1 ? $" ({LinesCount})" : "",
+					TetrisGameController.DestroyedLinesScores[LinesCount].ToString()
+				);
+			/*
+			if (Controller.Combo > 1)
+				DrawHistory(
+					StyleHistoryTexts["Combo"][0],
+					StyleHistoryTexts["Combo"][1],
+					Controller.Combo.ToString()
+				);
+			*/
+			_styleTimeOut += TimeoutCounters[LinesCount] * Mathf.Clamp(Controller.Combo, 1.0, double.MaxValue) + SpinStylePoints[Spin];
 			if (_styleTimeOut >= 1)
 			{
 				CurrentStyle += (int)Mathf.Floor(_styleTimeOut);
@@ -84,4 +119,32 @@ public partial class TetrisStyle : Control
 			StyleTimeOutFiller.AnchorRight = (float)_styleTimeOut;
 		}
 	}
+
+	private void DrawHistory(string text, string color, params string[] insertStrings)
+	{
+		string ResultText = string.Format(text, insertStrings);
+		if (StyleList.GetChildCount() > 0)
+		{
+			Label FirstLabel = StyleList.GetChild<Label>(0);
+			if (FirstLabel.Text.StartsWith(ResultText))
+			{
+				string[] splited = FirstLabel.Text.Replace(ResultText, null).Split("x");
+				FirstLabel.Text = $"{ResultText} x{(splited[^1] == "" ? 1 : int.Parse(splited[^1])) + 1}";
+				FirstLabel.Modulate = new(FirstLabel.Modulate.R, FirstLabel.Modulate.G * 0.875f, FirstLabel.Modulate.B * 0.75f);
+				return;
+			}
+		}
+
+
+        Label Label = new()
+        {
+            Text = ResultText,
+            Modulate = Color.FromString(color, Colors.Gray),
+            UseParentMaterial = true,
+            AutowrapMode = TextServer.AutowrapMode.WordSmart
+        };
+		Label.AddThemeFontSizeOverride("font_size", 16);
+        StyleList.AddChild(Label);
+		StyleList.MoveChild(Label, 0);
+    }
 }

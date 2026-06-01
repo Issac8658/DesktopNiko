@@ -164,14 +164,14 @@ public partial class NikoController : Node
 		{
 			if (Pitches.TryGetValue(keyEvent.Keycode, out float pitch))
 			{
-				AnimateClick();
 				Meow(MeowPitches[_valuesContainer.CurrentMeowSoundId] * MidiToPitch(pitch + 60f));
+				AnimateClick();
 			}
 		}
 		else if (@event is InputEventMidi MidiEvent && MidiEvent.Message == MidiMessage.NoteOn)
 		{
-			AnimateClick();
 			Meow(MeowPitches[_valuesContainer.CurrentMeowSoundId] * MidiToPitch(MidiEvent.Pitch));
+			AnimateClick();
 		}
     }
 
@@ -268,6 +268,7 @@ public partial class NikoController : Node
 	private void AnimateClick()
 	{
 		NikoAnimationPlayer.Stop();
+		NikoAnimationPlayer.SpeedScale = MeowSoundPlayer.PitchScale;
 		NikoAnimationPlayer.Play("click");
 	}
 
