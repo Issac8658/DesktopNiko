@@ -19,7 +19,7 @@ public partial class TetrisStyle : Control
 	];
 	private readonly Dictionary<string, string[]> StyleHistoryTexts = new() {
 		{"LineBreaked", ["Line{0} Break{1} - {2}", "FFFFFE"]}, // id, text, color
-		{"Combo", ["Combo x{0}", "FF0"]},
+		{"Combo", ["Combo multiplier x{0}", "FF0"]},
 		{"TSpin", ["T-Spin{0} - {1}", "F20"]},
 		{"TSpinMini", ["T-Spin Mini{0} - {1}", "FF0"]},
 		{"AllSpin", ["All-Spin{0} - {1}", "2F0"]},
@@ -52,6 +52,11 @@ public partial class TetrisStyle : Control
 			value = Mathf.Clamp(value, 0, StylesTexts.Length - 1);
 			StyleLabel.Text = StylesTexts[value];
 			_currentStyle = value;
+			if (value == StylesTexts.Length - 1)
+			{
+				if (!AchievementsController.IsAchievementTakedStatic("tetris_oneshot"))
+					AchievementsController.TakeAchievementStatic("tetris_oneshot");
+			}
 		}
 	}
 
@@ -63,6 +68,8 @@ public partial class TetrisStyle : Control
 	public Control StyleTimeOutFiller;
 	[Export]
 	public Control StyleList;
+	[Export]
+	public Label ComboLabel;
 
 	public override void _Ready()
 	{
@@ -75,7 +82,7 @@ public partial class TetrisStyle : Control
 					StyleHistoryTexts[text][0],
 					StyleHistoryTexts[text][1],
 					LinesCount > 0 ? $" + {LinesCount} Line{(LinesCount > 1 ? "s" : "")}" : "",
-					TetrisGameController.SpinPoints[Spin][LinesCount].ToString() + (Controller.Combo > 1 ? $"*{Controller.Combo}" : "")
+					TetrisGameController.SpinPoints[Spin][LinesCount].ToString()
 				);
 			}
 			else if (LinesCount > 0 && LinesCount < 4)
@@ -84,7 +91,7 @@ public partial class TetrisStyle : Control
 					StyleHistoryTexts["LineBreaked"][1],
 					LinesCount > 1 ? "s" : "",
 					LinesCount > 1 ? $" ({LinesCount})" : "",
-					TetrisGameController.DestroyedLinesScores[LinesCount].ToString() + (Controller.Combo > 1 ? $"*{Controller.Combo}" : "")
+					TetrisGameController.DestroyedLinesScores[LinesCount].ToString()
 				);
 			if (LinesCount == 4)
 			{
@@ -93,14 +100,10 @@ public partial class TetrisStyle : Control
 					StyleHistoryTexts["Tetris"][1]
 				);
 			}
-			/*
-			if (Controller.Combo > 1)
-				DrawHistory(
-					StyleHistoryTexts["Combo"][0],
-					StyleHistoryTexts["Combo"][1],
-					Controller.Combo.ToString()
-				);
-			*/
+			
+			ComboLabel.Visible = Controller.Combo > 1;
+			ComboLabel.Text = string.Format(StyleHistoryTexts["Combo"][0], Controller.Combo);
+			
 			_styleTimeOut += TimeoutCounters[LinesCount] * Mathf.Clamp(Controller.Combo, 1.0, double.MaxValue) + SpinStylePoints[Spin];
 			if (_styleTimeOut >= 1)
 			{

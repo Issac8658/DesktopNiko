@@ -54,8 +54,8 @@ public partial class NikoController : Node
 	};
 	// im literally taked it from FL Studio
 	public readonly Godot.Collections.Array<float> MeowPitches =
-    [
-        1.18f / 2f,
+	[
+		1.18f / 2f,
 		1.63f / 2f,
 		1.65f,
 		1.55f / 2f,
@@ -158,8 +158,8 @@ public partial class NikoController : Node
 			}
 	}
 
-    public override void _Input(InputEvent @event)
-    {
+	public override void _Input(InputEvent @event)
+	{
 		if (@event is InputEventKey keyEvent && keyEvent.Pressed)
 		{
 			if (Pitches.TryGetValue(keyEvent.Keycode, out float pitch))
@@ -173,7 +173,7 @@ public partial class NikoController : Node
 			Meow(MeowPitches[_valuesContainer.CurrentMeowSoundId] * MidiToPitch(MidiEvent.Pitch));
 			AnimateClick();
 		}
-    }
+	}
 
 
 

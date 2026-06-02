@@ -271,6 +271,9 @@ namespace Tetris
 		{
 			TickCurrentFigure(); // figure physics
 			UpdateStats(); // stats update
+
+			if (!AchievementsController.IsAchievementTakedStatic("tetris_25000") && _score >= 25000)
+				AchievementsController.TakeAchievementStatic("tetris_25000");
 		}
 
 		private void ReDrawCurrentFigure(bool Drop = false) // redrawing current figure
@@ -278,7 +281,7 @@ namespace Tetris
 			if (Drop)
 				EmitSignal("ReDrawZone", new Rect2I(_currentFigure.Position.X - 2, 0, 4 + _currentFigure.Size.X, GAME_HEIGHT)); // full colums if pressing space
 			else
-				EmitSignal("ReDrawZone", new Rect2I(_currentFigure.Position - new Vector2I(2, 2), new Vector2I(4, 4) + _currentFigure.Size)); // else zone around figure
+				EmitSignal("ReDrawZone", new Rect2I(_currentFigure.Position - new Vector2I(3, 3), new Vector2I(6, 6) + _currentFigure.Size)); // else zone around figure
 
 			UpdateRulers();
 		}
@@ -370,14 +373,19 @@ namespace Tetris
 					case 1: PlaceLightSound.Play(); break;
 					case 2: PlaceNormalSound.Play(); break;
 					case 3: PlaceMegaSound.Play(); break;
-					case 4: PlaceMegaSound.Play(); break;
+					case 4:
+					{
+						PlaceMegaSound.Play();
+						if (!AchievementsController.IsAchievementTakedStatic("tetris"))
+							AchievementsController.TakeAchievementStatic("tetris");
+						break;
+					}
 				}
 				_lines += DestroyedLines;
 
 				if (_lastAction == TetrisAction.Rotation)
 					switch (_currentFigure.Type)
 					{
-						case Figure.FigureType.O: break;
 						case Figure.FigureType.T:
 							{
 								if (_rotationAttempt == WallKickTable4x4[0].Length - 1)
@@ -464,6 +472,8 @@ namespace Tetris
 								 && !FigureCanMove(_currentFigure, Vector2I.Left)
 								 && !FigureCanMove(_currentFigure, Vector2I.Down))
 									EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.AllSpin);
+								else
+									EmitSignal("BlockDropped", DestroyedLines, (int)SpinType.None);
 								break;
 							}
 					}

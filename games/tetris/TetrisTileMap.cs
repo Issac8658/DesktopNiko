@@ -43,12 +43,20 @@ public partial class TetrisTileMap : Control
 
 	public override void _Draw()
 	{
+		Vector2I LowestPos = GameController.GetLowestFigurePoint(GameController.CurrentFigure, GameController.CurrentFigure.Position);
+		
+		// Next Figure
+		Vector2I NextFigurePos = GameController.NextFigures[0].Position;
+		for (int X = 0; X < GameController.NextFigures[0].Length; X++)
+			for (int Y = 0; Y < GameController.NextFigures[0][0].Length; Y++)
+				if (GameController.NextFigures[0][X][Y])
+					DrawTextureRectRegion(_tilesSource.Texture, new((X + NextFigurePos.X) * 40, (Y + NextFigurePos.Y) * 40, 40, 40), GetTile(GetSides(GameController.NextFigures[0].Form, new(X, Y))), new Color(1, 1, 1, (GameController.CurrentFigure.Position.Y - NextFigurePos.Y) / (float)LowestPos.Y * 0.5f + 0.1f) * GameController.NextFigures[0].GetColor());
+		
 		// Fake Figure
-		Vector2I FigurePos = GameController.GetLowestFigurePoint(GameController.CurrentFigure, GameController.CurrentFigure.Position);
 		for (int X = 0; X < GameController.CurrentFigure.Length; X++)
 			for (int Y = 0; Y < GameController.CurrentFigure[0].Length; Y++)
 				if (GameController.CurrentFigure[X][Y])
-					DrawTextureRectRegion(_tilesSource.Texture, new((X + FigurePos.X) * 40, (Y + FigurePos.Y) * 40, 40, 40), GetTile(GetSides(GameController.CurrentFigure.Form, new(X, Y))), new Color(1, 1, 1, 0.35f) * GameController.CurrentFigure.GetColor());
+					DrawTextureRectRegion(_tilesSource.Texture, new((X + LowestPos.X) * 40, (Y + LowestPos.Y) * 40, 40, 40), GetTile(GetSides(GameController.CurrentFigure.Form, new(X, Y))), new Color(1, 1, 1, 0.35f) * GameController.CurrentFigure.GetColor());
 		
 		// other blocks
 		for (int X = 0; X < TetrisGameController.GAME_WIDTH; X++)
