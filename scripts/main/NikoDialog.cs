@@ -127,6 +127,7 @@ public partial class NikoDialog : Window
 		if (DialogLabel.VisibleCharacters >= DialogLabel.GetParsedText().Length)
 		{
 			TextShowTimer.Stop();
+			DialogLabel.VisibleRatio = 1f;
 			ShowHint();
 		}
 	}

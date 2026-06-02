@@ -13,10 +13,11 @@ func _ready() -> void:
 	pass
 
 func do_event() -> void:
-	NikoDialog.ShowDialog(Vector2i(200,100), \"meow\", null, 0.1)
+	NikoDialog.ShowDialog(Vector2i(200,100), \"achievements.meow.title\", null, 0.1)
 	NikoDialog.ShowNextRequest.connect(func():
 		NikoDialog.EndDialog()
 		ValuesContainer.UnforceFacepic()
+		AchievementsController.TakeAchievement(\"meow\", true)
 		called_to_clear.emit()
 	, CONNECT_ONE_SHOT)
 	ValuesContainer.ForceFacepic(\"smug\")
