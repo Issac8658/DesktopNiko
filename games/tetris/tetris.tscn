@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dn5mbakemduix" path="res://games/tetris/sounds/height_place.ogg" id="10_lplub"]
 [ext_resource type="AudioStream" uid="uid://nhg41mam7lpf" path="res://games/tetris/sounds/place.ogg" id="11_6mx11"]
 [ext_resource type="AudioStream" uid="uid://x2klbwvgekl6" path="res://games/tetris/sounds/drop_mega.ogg" id="11_lplub"]
+[ext_resource type="Texture2D" uid="uid://cetp415146xf2" path="res://sprites/icons/tetris.png" id="12_6mj4e"]
 [ext_resource type="PackedScene" uid="uid://o3kl3g87pn3q" path="res://prefabs/base_window.tscn" id="14_6mx11"]
 [ext_resource type="PackedScene" uid="uid://b1ypbdeyjoksp" path="res://prefabs/state_icon.tscn" id="15_6mj4e"]
 [ext_resource type="Script" uid="uid://dfwf2y7b0yloy" path="res://games/tetris/TetrisMenu.cs" id="15_o08yc"]
@@ -128,6 +129,9 @@ ExitButton = NodePath("WindowContainer/Content/VBoxContainer/Exit")
 StatisticBumpAnimator = NodePath("../../GlobalAnchor/Statistics/StatisticsAnimator")
 MusicTimer = NodePath("../../MusicTimer")
 PausePanel = NodePath("../../GlobalAnchor/TetrisAnchor/PanelContainer/PausePanel")
+
+[node name="Icon" parent="Menu/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(1561168932, 1002331087) index="0" unique_id=1518425686]
+icon = ExtResource("12_6mj4e")
 
 [node name="Title" parent="Menu/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(1561168932, 332691484) index="1" unique_id=2015855131]
 text = "other.games.tetris.starter"

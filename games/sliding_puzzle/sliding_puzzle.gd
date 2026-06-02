@@ -51,7 +51,7 @@ func _ready() -> void:
 	restart_button.pressed.connect(mix)
 	mix()
 
-func move_part(part_pos: Vector2i) -> bool:
+func move_part(part_pos: Vector2i, mixing: bool = false) -> bool:
 	var part = parts.get(part_pos)
 	
 	if (part != null):
@@ -76,7 +76,7 @@ func move_part(part_pos: Vector2i) -> bool:
 	else:
 		return false
 	
-	if (all_is_correct()):
+	if (all_is_correct() and not mixing):
 		win_tween = create_tween()
 		win_tween.tween_property(full_image_final, "self_modulate", Color.WHITE, 7)
 		win_tween.finished.connect(func ():
@@ -108,33 +108,6 @@ func update_part(part : Control, pos : Vector2i):
 	part.set_anchor_and_offset(SIDE_RIGHT, float(pos.x + 1) / float(CELLS_COUNT.x), -parts_gap / 2)
 
 func smooth_update_part(part : Control, pos : Vector2i):
-	#part.target_pos = Rect2(float(pos.x) / float(CELLS_COUNT.x), float(pos.y) / float(CELLS_COUNT.y), float(pos.x + 1) / float(CELLS_COUNT.x), float(pos.y + 1) / float(CELLS_COUNT.y))
-	#if (old_pos.y != pos.y):
-	#	var t1 = part.create_tween()
-	#	var t2 = part.create_tween()
-	#	t1.set_trans(Tween.TRANS_ELASTIC)
-	#	t2.set_trans(Tween.TRANS_ELASTIC)
-	#	t1.set_ease(Tween.EASE_OUT)
-	#	t2.set_ease(Tween.EASE_OUT)
-	#	if (old_pos.y > pos.y):
-	#		t1.tween_property(part, "anchor_top", float(pos.y) / float(CELLS_COUNT.y), ANIM_TIME)
-	#		t2.tween_property(part, "anchor_bottom", float(pos.y + 1) / float(CELLS_COUNT.y), ANIM_TIME + 0.2)
-	#	else:
-	#		t1.tween_property(part, "anchor_bottom", float(pos.y + 1) / float(CELLS_COUNT.y), ANIM_TIME)
-	#		t2.tween_property(part, "anchor_top", float(pos.y) / float(CELLS_COUNT.y), ANIM_TIME + 0.2)
-	#if (old_pos.x != pos.x):
-	#	var t1 = part.create_tween()
-	#	var t2 = part.create_tween()
-	#	t1.set_trans(Tween.TRANS_ELASTIC)
-	#	t2.set_trans(Tween.TRANS_ELASTIC)
-	#	t1.set_ease(Tween.EASE_OUT)
-	#	t2.set_ease(Tween.EASE_OUT)
-	#	if (old_pos.x > pos.x):
-	#		t1.tween_property(part, "anchor_left", float(pos.x) / float(CELLS_COUNT.x), ANIM_TIME)
-	#		t2.tween_property(part, "anchor_right", float(pos.x + 1) / float(CELLS_COUNT.x), ANIM_TIME + 0.2)
-	#	elif (old_pos.x != pos.x):
-	#		t1.tween_property(part, "anchor_right", float(pos.x + 1) / float(CELLS_COUNT.x), ANIM_TIME)
-	#		t2.tween_property(part, "anchor_left", float(pos.x) / float(CELLS_COUNT.x), ANIM_TIME + 0.2)
 	var t1 = part.create_tween()
 	var t2 = part.create_tween()
 	var t3 = part.create_tween()
@@ -157,9 +130,8 @@ func mix(count : int = 200):
 	
 	while (i < count):
 		var pos = Vector2i(randi_range(0, CELLS_COUNT.x), randi_range(0, CELLS_COUNT.y))
-		if (can_move(pos)):
-			if (move_part(pos)):
-				i += 1;
+		if (move_part(pos, true)):
+			i += 1;
 	
 	var rand_image = pictures.pick_random()
 	var image_size = rand_image.get_size()
@@ -168,13 +140,6 @@ func mix(count : int = 200):
 	for pos in parts:
 		parts[pos].sprite.texture = rand_image
 		parts[pos].sprite.region_rect = Rect2i(6 + parts[pos].original_pos.x * image_size.x / CELLS_COUNT.x, 6 + parts[pos].original_pos.y * image_size.x / CELLS_COUNT.x, image_size.x / CELLS_COUNT.x - 12, image_size.x / CELLS_COUNT.x - 12)
-
-func can_move(part_pos : Vector2i) -> bool:
-	var part = parts.get(part_pos)
-	
-	if (part != null):
-		return (part_pos.y > 0 and not parts.has(part_pos - Vector2i(0, 1))) or (part_pos.y < CELLS_COUNT.y - 1 and not parts.has(part_pos + Vector2i(0, 1))) or (part_pos.x > 0 and not parts.has(part_pos - Vector2i(1, 0))) or (part_pos.x < CELLS_COUNT.x - 1 and not parts.has(part_pos + Vector2i(1, 0)))
-	return false
 
 func all_is_correct() -> bool:
 	for pos in parts:

@@ -66,12 +66,13 @@
 [ext_resource type="PackedScene" uid="uid://d1vx0y4r6i37o" path="res://games/tetris/tetris.tscn" id="43_1ke4k"]
 [ext_resource type="ColorPalette" uid="uid://bd2ulhb7vthfq" path="res://themes/twm_theme/pink_color_palette.tres" id="43_gv8l5"]
 [ext_resource type="AudioStream" uid="uid://c4ctukqwa2omc" path="res://sounds/twm_mouse_click.wav" id="43_jip8q"]
-[ext_resource type="Texture2D" uid="uid://dtxlnn2la7pmg" path="res://sprites/icons/oneshot.png" id="44_1ke4k"]
 [ext_resource type="ColorPalette" uid="uid://3sstnvg6e56a" path="res://themes/twm_theme/white_color_palette.tres" id="44_8jixl"]
 [ext_resource type="AudioStream" uid="uid://cib02grlrlcd0" path="res://sounds/twm_mouse_unclick.wav" id="44_euc68"]
+[ext_resource type="Texture2D" uid="uid://cunfk1fgy18og" path="res://sprites/icons/sliding_puzzle.png" id="45_2supj"]
 [ext_resource type="StyleBox" uid="uid://bxcb1cxo17xnf" path="res://themes/themed/red_file_focus.stylebox" id="45_8quq7"]
 [ext_resource type="Script" uid="uid://jqxc0sp1qg13" path="res://scripts/windows/functional_windows/ThemeChangerShortcut.cs" id="45_pwjuq"]
 [ext_resource type="ColorPalette" uid="uid://biqcrctnsr5be" path="res://themes/twm_theme/orange_color_palette.tres" id="45_wmw63"]
+[ext_resource type="Texture2D" uid="uid://cetp415146xf2" path="res://sprites/icons/tetris.png" id="46_mfmn3"]
 [ext_resource type="ColorPalette" uid="uid://c0mo737ff2x2u" path="res://themes/twm_theme/teal_color_palette.tres" id="46_uush8"]
 [ext_resource type="StyleBox" uid="uid://bjaphqxio33wx" path="res://themes/themed/red_file_hover.stylebox" id="46_vhc7d"]
 [ext_resource type="ColorPalette" uid="uid://b8irobpfjfk46" path="res://themes/twm_theme/green_color_palette.tres" id="47_dftep"]
@@ -1541,6 +1542,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="OneShotFunkin" type="MarginContainer" parent="GamesWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" unique_id=496614002]
+visible = false
 use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
@@ -1649,7 +1651,7 @@ custom_minimum_size = Vector2(64, 66)
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
-icon = ExtResource("44_1ke4k")
+icon = ExtResource("45_2supj")
 icon_alignment = 1
 expand_icon = true
 
@@ -1717,7 +1719,7 @@ custom_minimum_size = Vector2(64, 66)
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"IconButton"
-icon = ExtResource("44_1ke4k")
+icon = ExtResource("46_mfmn3")
 icon_alignment = 1
 expand_icon = true
 
