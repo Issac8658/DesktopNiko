@@ -48,7 +48,7 @@ public partial class NikoClickablePolygon : Node2D
 		Vector2 MousePositionOnRect = MousePositionRelative - (Vector2I)NikoSprite.Position;
 		Image NikoImage = NikoSprite.Texture.GetImage();
 		Vector2I ImageSize = NikoImage.GetSize();
-		Vector2 MousePositionOnImage = MousePositionOnRect * ImageSize / new Vector2(NikoSprite.Size.Y, NikoSprite.Size.Y);
+		Vector2 MousePositionOnImage = MousePositionOnRect * ImageSize / NikoSprite.Size;
 		if (MousePositionOnImage.X >= 0 
 		 && MousePositionOnImage.Y >= 0
 		 && MousePositionOnImage.X < ImageSize.X

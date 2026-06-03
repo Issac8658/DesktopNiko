@@ -489,6 +489,16 @@ _data = {
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uush8"]
 
+[sub_resource type="GDScript" id="GDScript_2supj"]
+resource_name = "positioner"
+script/source = "extends CollisionShape2D
+
+@export var move_to : Control
+
+func _process(_delta: float) -> void:
+	position = move_to.global_position
+"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_gv8l5"]
 radius = 1.0
 
@@ -2719,6 +2729,7 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_76in0")
 text = "v0.0.0"
+horizontal_alignment = 2
 script = SubResource("GDScript_1b22m")
 
 [node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/Control/WindowContainer/Content" parent_id_path=PackedInt32Array(759122465, 971726425) index="1" unique_id=1189183008]
@@ -3061,6 +3072,7 @@ theme_override_constants/separation = 10
 [node name="GridContainer" type="GridContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2" unique_id=959886990]
 use_parent_material = true
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/h_separation = 1
 theme_override_constants/v_separation = 2
 columns = 3
@@ -3090,6 +3102,7 @@ text_overrun_behavior = 3
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 0
 script = ExtResource("93_g60li")
 PreviewImage = NodePath("TextureRect")
@@ -3098,12 +3111,15 @@ FacepicOption = NodePath("OptionButton")
 [node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/Idle" unique_id=1329252268]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 20.0
 texture = ExtResource("2_gyfs4")
 stretch_mode = 5
 
 [node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/Idle" unique_id=1656476475]
 use_parent_material = true
 layout_mode = 2
+size_flags_vertical = 10
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
@@ -3122,6 +3138,7 @@ theme_override_constants/separation = 4
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 0
 script = ExtResource("93_g60li")
 PreviewImage = NodePath("TextureRect")
@@ -3131,12 +3148,15 @@ TargetFacepic = 1
 [node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/Speak" unique_id=332199103]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 20.0
 texture = ExtResource("3_d5x1h")
 stretch_mode = 5
 
 [node name="OptionButton" type="OptionButton" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/Speak" unique_id=1945537714]
 use_parent_material = true
 layout_mode = 2
+size_flags_vertical = 10
 mouse_default_cursor_shape = 2
 theme_override_constants/icon_max_width = 21
 text_overrun_behavior = 1
@@ -3191,6 +3211,7 @@ text_overrun_behavior = 3
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 0
 script = ExtResource("93_g60li")
 PreviewImage = NodePath("TextureRect")
@@ -3200,12 +3221,15 @@ TargetFacepic = 2
 [node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/Scare" unique_id=624558841]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 20.0
 texture = ExtResource("8_7ycvg")
 stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/Scare" unique_id=2088141154]
 use_parent_material = true
 layout_mode = 2
+size_flags_vertical = 10
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
@@ -3232,6 +3256,7 @@ theme_override_constants/separation = 4
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 0
 script = ExtResource("93_g60li")
 PreviewImage = NodePath("TextureRect")
@@ -3241,12 +3266,15 @@ TargetFacepic = 3
 [node name="TextureRect" type="TextureRect" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/ScareSpeak" unique_id=1184585687]
 custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 20.0
 texture = ExtResource("9_wr18j")
 stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2/GridContainer/ScareSpeak" unique_id=632646334]
 use_parent_material = true
 layout_mode = 2
+size_flags_vertical = 10
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
@@ -4252,9 +4280,11 @@ NikoSprite = NodePath("../NikoBase/Niko")
 
 [node name="ClickableArea" type="Area2D" parent="Area" unique_id=242231655]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/ClickableArea" unique_id=1917805216]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/ClickableArea" unique_id=1917805216 node_paths=PackedStringArray("move_to")]
 position = Vector2(0, 120)
 shape = SubResource("WorldBoundaryShape2D_uush8")
+script = SubResource("GDScript_2supj")
+move_to = NodePath("../../../NikoBase/MenuPanel")
 
 [node name="MouseArea" type="Area2D" parent="Area" unique_id=294532626]
 monitoring = false

@@ -11,7 +11,7 @@ public partial class MainScreenController : Node2D
 	[Export]
 	public Label NameLabel;
 	[Export]
-	public Label DescLabel;
+	public RichTextLabel DescLabel;
 	[Export]
 	public Label AuthorLabel;
 	[Export]

@@ -27,7 +27,7 @@ public partial class AchievementsRegistrar : Node
 		{"few_squares", 				["res://sprites/achievements/glitched2.png",					true]},
 		{"worst_friend", 				["res://sprites/achievements/glitched.png",						true]},
 		{"hello_secret", 				["res://sprites/achievements/unknown.png",						true]},
-		{"cat_window", 					["res://sprites/achievements/cat_window.png",					true]}
+	//	{"cat_window", 					["res://sprites/achievements/cat_window.png",					true]}
 	};
 	
 	public override void _Ready()

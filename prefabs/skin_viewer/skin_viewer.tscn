@@ -216,11 +216,13 @@ horizontal_scroll_mode = 0
 use_parent_material = true
 layout_mode = 2
 
-[node name="Description" type="Label" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=2115263568]
+[node name="Description" type="RichTextLabel" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=534377253]
 use_parent_material = true
 custom_minimum_size = Vector2(264, 0)
 layout_mode = 2
-autowrap_mode = 3
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
 
 [node name="Author" type="Label" parent="MainMonitor/MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer" unique_id=1879465669]
 modulate = Color(1, 1, 1, 0.49411765)
