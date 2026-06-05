@@ -225,9 +225,6 @@ public partial class NikoSkinManager : Node
 					string[] SkinTags = (string[])SkinConfig.GetValue("Info", "Tags", "[]");
 
 					float SkinScale = (float)SkinConfig.GetValue("Data", "Scale", 1.0);
-					Vector2[] SkinCollisionPolygon = (Vector2[])SkinConfig.GetValue("Data", "CollisionPolygon", "[0,0, 100,0 ,100,100, 0,100]");
-					if (!SkinConfig.HasSectionKey("Data", "CollisionPolygon"))
-						GD.PushWarning($"Collision polygon in \"{SkinId}\" doesn't exist! Using skin is not recommended");
 
 					Dictionary<string, string> SkinExtraSprites = [];
 					if (SkinConfig.HasSection("ExtraSprites"))
@@ -238,7 +235,7 @@ public partial class NikoSkinManager : Node
 						}
 					}
 
-					Skin RegisteredSkin = new(SkinId, SkinPath, SkinSprites, SkinExtraSprites, SkinScale, SkinCollisionPolygon, SkinName, SkinDesc, SkinAuthor, SkinVersion, SkinForVersion, SkinComment, SkinTags);
+					Skin RegisteredSkin = new(SkinId, SkinPath, SkinSprites, SkinExtraSprites, SkinScale, SkinName, SkinDesc, SkinAuthor, SkinVersion, SkinForVersion, SkinComment, SkinTags);
 					SkinsList.Add(RegisteredSkin);
 					GD.Print($"Skin \"{SkinId}\" registered");
 				}
@@ -251,14 +248,13 @@ public partial class NikoSkinManager : Node
 	}
 
 
-	public struct Skin(string SkinId, string SkinPath, Dictionary<string, string> SkinSprites, Dictionary<string, string> SkinExtraSprites, float SkinScale, Vector2[] SkinCollisionPolygon, string SkinName, string SkinDesc, string SkinAuthor, string SkinVersion, string SkinForVersion, string SkinComment, string[] SkinTags)
+	public struct Skin(string SkinId, string SkinPath, Dictionary<string, string> SkinSprites, Dictionary<string, string> SkinExtraSprites, float SkinScale, string SkinName, string SkinDesc, string SkinAuthor, string SkinVersion, string SkinForVersion, string SkinComment, string[] SkinTags)
 	{
 		public string Id = SkinId;
 		public string Dir = SkinPath;
 		public Dictionary<string, string> Sprites = SkinSprites;
 		public Dictionary<string, string> ExtraSprites = SkinExtraSprites;
 		public float Scale = SkinScale;
-		public Vector2[] CollisionPolygon = SkinCollisionPolygon;
 		public string Name = SkinName;
 		public string Description = SkinDesc;
 		public string Author = SkinAuthor;

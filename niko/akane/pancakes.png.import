@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbf756qk6g3a3"
-path="res://.godot/imported/normal.png-fb6d53b33edda0669e41a213fc286c06.ctex"
+uid="uid://cdot06u8vgbxu"
+path="res://.godot/imported/pancakes.png-38f868f8d5f2b6982d3ef33c18269d0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://niko/shadi/normal.png"
-dest_files=["res://.godot/imported/normal.png-fb6d53b33edda0669e41a213fc286c06.ctex"]
+source_file="res://niko/akane/pancakes.png"
+dest_files=["res://.godot/imported/pancakes.png-38f868f8d5f2b6982d3ef33c18269d0d.ctex"]
 
 [params]
 

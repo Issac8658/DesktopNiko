@@ -230,6 +230,7 @@ ProgressBar/styles/fill = ExtResource("16_y63lx")
 RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
 RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 1)
 RichTextLabel/colors/selection_color = Color(1, 1, 1, 1)
+RichTextLabel/constants/strikethrough_alpha = 255
 SpinBox/colors/down_disabled_icon_modulate = Color(0.3254902, 0.3254902, 0.3254902, 1)
 SpinBox/colors/down_hover_icon_modulate = Color(0.501961, 0.501961, 0.501961, 1)
 SpinBox/colors/down_icon_modulate = Color(1, 1, 1, 1)

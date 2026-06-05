@@ -83,6 +83,7 @@ title = "SKIN_VIEWER"
 initial_position = 4
 size = Vector2i(1920, 1079)
 borderless = true
+always_on_top = true
 minimize_disabled = true
 maximize_disabled = true
 content_scale_mode = 1
