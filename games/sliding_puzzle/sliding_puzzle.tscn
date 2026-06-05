@@ -5,21 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cunfk1fgy18og" path="res://sprites/icons/sliding_puzzle.png" id="2_73ra2"]
 [ext_resource type="PackedScene" uid="uid://dpd84ocqrw0tv" path="res://games/sliding_puzzle/sliding_puzzle_part.tscn" id="2_iylmv"]
 [ext_resource type="Texture2D" uid="uid://bt76g50ouhwre" path="res://sprites/ui/world_machine/replay_button.tres" id="2_vkvek"]
-[ext_resource type="Texture2D" uid="uid://bi4fw6k8nif68" path="res://sprites/pictures/banana.png" id="5_82l8p"]
 [ext_resource type="Material" uid="uid://p1pqqfmmosdh" path="res://materials/theme_painter_material.tres" id="5_g840i"]
-[ext_resource type="Texture2D" uid="uid://c1dgfy0ieeqjq" path="res://sprites/pictures/all_roads_to_pancakes.png" id="5_x7g4d"]
-[ext_resource type="Texture2D" uid="uid://cm7sd4gchm3uk" path="res://sprites/pictures/job.png" id="7_a8oyi"]
-[ext_resource type="Texture2D" uid="uid://b0t0hekbvvhom" path="res://sprites/pictures/cute_niko.png" id="7_vkvek"]
-[ext_resource type="Texture2D" uid="uid://baykj538ya2ri" path="res://sprites/pictures/milk.png" id="8_2jfc4"]
-[ext_resource type="Texture2D" uid="uid://d1ud2aal66h6o" path="res://sprites/pictures/demotivator.png" id="8_bpku0"]
-[ext_resource type="Texture2D" uid="uid://dlo3air7k2iqu" path="res://sprites/pictures/eyes_proto.png" id="9_7tbxl"]
-[ext_resource type="Texture2D" uid="uid://xccvlej7nbfb" path="res://sprites/pictures/niko_under_chrismas_tree.png" id="9_vtywc"]
-[ext_resource type="Texture2D" uid="uid://cqsnv5pijmwm6" path="res://sprites/pictures/idkhowtoname.png" id="10_73ra2"]
-[ext_resource type="Texture2D" uid="uid://bo24lryc1gcw5" path="res://sprites/pictures/night_sky_niko.png" id="13_t35eo"]
-[ext_resource type="Texture2D" uid="uid://djc4oym3rjfge" path="res://sprites/pictures/niko_and_pancakes.png" id="14_wx8q4"]
-[ext_resource type="Texture2D" uid="uid://djd3pk4ddhfex" path="res://sprites/pictures/niko_but_kip.png" id="15_53b2q"]
-[ext_resource type="Texture2D" uid="uid://pfeauk6smv31" path="res://sprites/pictures/niko_kalachek.png" id="16_tl0nd"]
-[ext_resource type="Texture2D" uid="uid://cfyyov4ko2etl" path="res://sprites/pictures/this_is_not_pancakes.png" id="18_3rgk2"]
 [ext_resource type="Material" uid="uid://d1ff373hk1gn7" path="res://materials/theme_painter_material_add_mode.tres" id="19_7tbxl"]
 [ext_resource type="Texture2D" uid="uid://bv45dqge8biu6" path="res://sprites/ui/shadow.tres" id="20_73ra2"]
 [ext_resource type="AudioStream" uid="uid://cw1tov6mght2a" path="res://sounds/major_puzzle_solved.ogg" id="20_vkvek"]
@@ -103,7 +89,6 @@ restart_button = NodePath("../../../Topbar/MarginContainer/HBoxContainer/Restart
 full_image = NodePath("../TextureRect")
 full_image_final = NodePath("../TextureRect2")
 solved_sound = NodePath("../../../../../MajorPuzzleSolved")
-pictures = Array[Texture2D]([ExtResource("5_x7g4d"), ExtResource("5_82l8p"), ExtResource("7_vkvek"), ExtResource("8_bpku0"), ExtResource("9_7tbxl"), ExtResource("10_73ra2"), ExtResource("7_a8oyi"), ExtResource("8_2jfc4"), ExtResource("13_t35eo"), ExtResource("14_wx8q4"), ExtResource("15_53b2q"), ExtResource("16_tl0nd"), ExtResource("9_vtywc"), ExtResource("18_3rgk2")])
 win_particles = NodePath("../ParticlesAnchor/WinParticles")
 
 [node name="TextureRect2" type="TextureRect" parent="Control/WindowContainer/Content/MarginContainer" index="2" unique_id=1878034863]

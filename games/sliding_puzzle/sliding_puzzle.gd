@@ -9,13 +9,18 @@ const ANIM_TIME : float = .25
 @export var full_image : TextureRect
 @export var full_image_final : TextureRect
 @export var solved_sound : AudioStreamPlayer
-@export var pictures : Array[Texture2D]
 @export var win_particles : GPUParticles2D
+
 var parts : Dictionary[Vector2i, Control] = {}
+var pictures : Array[Texture2D] = []
 
 var win_tween
 
 func _ready() -> void:
+	for file_name in DirAccess.get_files_at("res://sprites/pictures/"):
+		if file_name.ends_with(".png"):
+			pictures.append(load("res://sprites/pictures/" + file_name))
+	
 	var rand_image = pictures.pick_random()
 	var image_size = rand_image.get_size()
 	full_image.texture = rand_image
