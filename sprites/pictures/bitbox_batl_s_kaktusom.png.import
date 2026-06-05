@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfyyov4ko2etl"
-path.s3tc="res://.godot/imported/this_is_not_pancakes.png-58333cba234e649277aaf1b228191e7b.s3tc.ctex"
+uid="uid://by17gk5x60gnf"
+path.s3tc="res://.godot/imported/bitbox_batl_s_kaktusom.png-f5db4532f6e7e0aaee262a3942451c42.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/pictures/this_is_not_pancakes.png"
-dest_files=["res://.godot/imported/this_is_not_pancakes.png-58333cba234e649277aaf1b228191e7b.s3tc.ctex"]
+source_file="res://sprites/pictures/bitbox_batl_s_kaktusom.png"
+dest_files=["res://.godot/imported/bitbox_batl_s_kaktusom.png-f5db4532f6e7e0aaee262a3942451c42.s3tc.ctex"]
 
 [params]
 

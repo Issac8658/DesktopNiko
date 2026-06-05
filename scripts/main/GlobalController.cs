@@ -18,6 +18,8 @@ public partial class GlobalController : Node
 		_valuesContainer = GetNode<ValuesContainer>("/root/ValuesContainer");
 
 		_saveLoadNode.Load();
+		
+		AutoSave();
 
 		GD.Print("Hello, Niko! :3"); // Hello!!1 :3
 	}
@@ -45,7 +47,6 @@ public partial class GlobalController : Node
 		}
     }
 
-
 	public void Save()
 	{
 		EmitSignal("SaveStarted");
@@ -63,6 +64,14 @@ public partial class GlobalController : Node
 		}
 		EmitSignal("SaveEnded");
 	}
+
+	private async void AutoSave()
+	{
+		await ToSignal(GetTree().CreateTimer(180), SceneTreeTimer.SignalName.Timeout);
+		Save();
+		AutoSave();
+	}
+
 	public static Vector2I GetDefaultPosition(Vector2I NikoSize)
 	{
 		int PrimaryScreenId = DisplayServer.GetPrimaryScreen();

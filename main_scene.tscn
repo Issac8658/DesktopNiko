@@ -221,6 +221,9 @@ script/source = "extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_window().size = Vector2i.ZERO
+	get_window().close_button_pressed.connect(func():
+		GlobalController.Save()
+	)
 "
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xtheg"]
@@ -3295,7 +3298,7 @@ metadata/_custom_type_script = "uid://f06fqp3valks"
 [node name="SkinsButton" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2" unique_id=696722613 node_paths=PackedStringArray("skins_window")]
 use_parent_material = true
 layout_mode = 2
-text = "other.open_skins"
+text = "settings.niko.open_skins"
 script = ExtResource("105_covva")
 skins_window = NodePath("../../../../../../../../SkinViewer")
 

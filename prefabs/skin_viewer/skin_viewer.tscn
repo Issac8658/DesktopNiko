@@ -22,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://kofp1aca6crn" path="res://sprites/ui/world_machine/fullscreen_border_up_frame2.png" id="14_08ho8"]
 [ext_resource type="Texture2D" uid="uid://c7eu46vnfe3m3" path="res://sprites/ui/world_machine/fullscreen_border_left_frame2.png" id="16_xgbat"]
 [ext_resource type="Texture2D" uid="uid://ruqprahda1wp" path="res://sprites/ui/world_machine/fullscreen_border_right_frame2.png" id="17_d5j35"]
+[ext_resource type="Texture2D" uid="uid://dxttgd6e0px18" path="res://sprites/icons/quit.png" id="23_pg0m7"]
+[ext_resource type="Texture2D" uid="uid://bmkfjsjqgrlxn" path="res://sprites/icons/restart.png" id="24_rt5mw"]
 
 [sub_resource type="Gradient" id="Gradient_4rl6t"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -79,43 +81,35 @@ alpha_curve = SubResource("CurveTexture_4uqou")
 [node name="SkinViewer" type="Window" unique_id=719478319 node_paths=PackedStringArray("ExitButton", "TopBorder", "RightBorder", "BottomBorder", "LeftBorder")]
 canvas_item_default_texture_filter = 0
 oversampling_override = 1.0
-title = "SKIN_VIEWER"
 initial_position = 4
 size = Vector2i(1920, 1079)
 borderless = true
-always_on_top = true
 minimize_disabled = true
 maximize_disabled = true
 content_scale_mode = 1
 theme = ExtResource("1_siacp")
 script = ExtResource("2_5qhg3")
-ExitButton = NodePath("MainMonitor/MainMonitor/ExitButtonAnchor/Button")
+ExitButton = NodePath("WindowButtonsAnchor/ExitButton")
 TopBorder = NodePath("ScreenBounds/Top")
 RightBorder = NodePath("ScreenBounds/Right")
 BottomBorder = NodePath("ScreenBounds/Bottom")
 LeftBorder = NodePath("ScreenBounds/Left")
 
-[node name="BgGrid" type="Parallax2D" parent="." unique_id=828938441]
-scroll_scale = Vector2(0.6, 0.6)
-scroll_offset = Vector2(960, 540)
-
-[node name="TextureRect" type="TextureRect" parent="BgGrid" unique_id=409475826]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=409475826]
 self_modulate = Color(1, 1, 1, 0.26666668)
 texture_repeat = 2
 material = ExtResource("3_xgbat")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1000.0
-offset_top = -600.0
-offset_right = 1000.0
-offset_bottom = 600.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_lkdlf")
 stretch_mode = 1
+
+[node name="BgGrid" type="Parallax2D" parent="." unique_id=828938441]
+scroll_scale = Vector2(0.6, 0.6)
+scroll_offset = Vector2(960, 540)
 
 [node name="BgParticles" type="Parallax2D" parent="." unique_id=1506357495]
 scroll_scale = Vector2(0.2, 0.2)
@@ -137,9 +131,10 @@ From = NodePath("../MainMonitor")
 MonitorsContainer = NodePath("../Monitors")
 MaxRandomOffset = Vector2(180, 73.5)
 
-[node name="Monitors" type="Node2D" parent="." unique_id=2136676360]
+[node name="Monitors" type="Node2D" parent="." unique_id=2136676360 node_paths=PackedStringArray("Chupep")]
 position = Vector2(960, 540)
 script = ExtResource("5_bd1xs")
+Chupep = NodePath("../TextureRect")
 SkinPreviewPrefab = ExtResource("5_j3gpn")
 
 [node name="MainMonitor" type="StaticBody2D" parent="." unique_id=2141272195 node_paths=PackedStringArray("MonitorsContainer", "SkinPreviewImage", "NameLabel", "DescLabel", "AuthorLabel", "CommentsLabel", "ApplySkinButton")]
@@ -246,23 +241,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 2
 autowrap_mode = 3
-
-[node name="ExitButtonAnchor" type="Control" parent="MainMonitor/MainMonitor" unique_id=758620247]
-use_parent_material = true
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-
-[node name="Button" type="Button" parent="MainMonitor/MainMonitor/ExitButtonAnchor" unique_id=2003815982]
-z_index = 1
-use_parent_material = true
-layout_mode = 0
-offset_left = 34.0
-offset_top = -22.0
-offset_right = 90.0
-offset_bottom = 10.0
-theme = ExtResource("2_4jyfp")
-text = "shared.exit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainMonitor" unique_id=549411550]
 position = Vector2(0, 0.5)
@@ -381,3 +359,72 @@ texture_mode = 1
 script = ExtResource("12_qjn3m")
 Sprites = Array[Texture2D]([ExtResource("11_4uqou"), ExtResource("13_kaaeg")])
 WaitTime = 0.1
+
+[node name="WindowButtonsAnchor" type="Control" parent="." unique_id=758620247]
+use_parent_material = true
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="ExitButton" type="Button" parent="WindowButtonsAnchor" unique_id=2003815982]
+z_index = 1
+material = ExtResource("11_xgbat")
+layout_mode = 0
+offset_left = -48.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 48.0
+theme = ExtResource("2_4jyfp")
+
+[node name="TextureRect" type="Button" parent="WindowButtonsAnchor/ExitButton" unique_id=1286560365]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_type_variation = &"IconButton"
+icon = ExtResource("23_pg0m7")
+expand_icon = true
+
+[node name="ReloadButton" type="Button" parent="WindowButtonsAnchor" unique_id=1227696004]
+visible = false
+z_index = 1
+material = ExtResource("11_xgbat")
+layout_mode = 0
+offset_left = -90.0
+offset_top = 8.0
+offset_right = -50.0
+offset_bottom = 48.0
+theme = ExtResource("2_4jyfp")
+
+[node name="TextureRect" type="Button" parent="WindowButtonsAnchor/ReloadButton" unique_id=1397685828]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_type_variation = &"IconButton"
+icon = ExtResource("24_rt5mw")
+expand_icon = true

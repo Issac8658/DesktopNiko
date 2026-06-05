@@ -3,19 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://djc4oym3rjfge"
-path="res://.godot/imported/niko_and_pancakes.png-5ccacf3e685620f75a77bc4e673de44d.ctex"
+path.s3tc="res://.godot/imported/niko_and_pancakes.png-5ccacf3e685620f75a77bc4e673de44d.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://sprites/pictures/niko_and_pancakes.png"
-dest_files=["res://.godot/imported/niko_and_pancakes.png-5ccacf3e685620f75a77bc4e673de44d.ctex"]
+dest_files=["res://.godot/imported/niko_and_pancakes.png-5ccacf3e685620f75a77bc4e673de44d.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

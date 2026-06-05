@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfyyov4ko2etl"
-path.s3tc="res://.godot/imported/this_is_not_pancakes.png-58333cba234e649277aaf1b228191e7b.s3tc.ctex"
+uid="uid://biyhbkfm3o1r0"
+path.s3tc="res://.godot/imported/niko_cook.png-4cf5a6dcdd7f1381942d57532869c4b2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://sprites/pictures/this_is_not_pancakes.png"
-dest_files=["res://.godot/imported/this_is_not_pancakes.png-58333cba234e649277aaf1b228191e7b.s3tc.ctex"]
+source_file="res://sprites/pictures/niko_cook.png"
+dest_files=["res://.godot/imported/niko_cook.png-4cf5a6dcdd7f1381942d57532869c4b2.s3tc.ctex"]
 
 [params]
 
