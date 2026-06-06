@@ -203,28 +203,28 @@ smug="skin://smug.png"
 
 In result your skin folder can be look like that:
 
-![Folder icon](/sprites/icons/folder.png) your_skin
-├ ![Image icon](/sprites/icons/photo.png) cool.png
-├ ![Image icon](/sprites/icons/photo.png) cry.png
-├ ![Image icon](/sprites/icons/photo.png) default.png
-│ ...
-├ ![Gear icon](/sprites/icons/customize.png) skin.cfg
-│ ...
-├ ![Image icon](/sprites/icons/photo.png) speak.png
-├ ![Image icon](/sprites/icons/photo.png) super_cry.png
+![Folder icon](/sprites/icons/folder.png) your_skin<br>
+├ ![Image icon](/sprites/icons/photo.png) cool.png<br>
+├ ![Image icon](/sprites/icons/photo.png) cry.png<br>
+├ ![Image icon](/sprites/icons/photo.png) default.png<br>
+│ ...<br>
+├ ![Gear icon](/sprites/icons/customize.png) skin.cfg<br>
+│ ...<br>
+├ ![Image icon](/sprites/icons/photo.png) speak.png<br>
+├ ![Image icon](/sprites/icons/photo.png) super_cry.png<br>
 └ ![Image icon](/sprites/icons/photo.png) surprised.png
 
 Or you can group sprites into folder:
 
-![Folder icon](/sprites/icons/folder.png) your_skin
-├ ![Folder icon](/sprites/icons/folder.png) sprites
-│&nbsp;&nbsp;├ ![Image icon](/sprites/icons/photo.png) cool.png
-│&nbsp;&nbsp;├ ![Image icon](/sprites/icons/photo.png) cry.png
-│&nbsp;&nbsp;├ ![Image icon](/sprites/icons/photo.png) default.png
-│&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;...
-│&nbsp;&nbsp;├ ![Image icon](/sprites/icons/photo.png) speak.png
-│&nbsp;&nbsp;├ ![Image icon](/sprites/icons/photo.png) super_cry.png
-│&nbsp;&nbsp;└ ![Image icon](/sprites/icons/photo.png) surprised.png
+![Folder icon](/sprites/icons/folder.png) your_skin<br>
+├ ![Folder icon](/sprites/icons/folder.png) sprites<br>
+│&nbsp;&nbsp;├ ![Image icon](/sprites/icons/photo.png) cool.png<br>
+│&nbsp;&nbsp;├ ![Image icon](/sprites/icons/photo.png) cry.png<br>
+│&nbsp;&nbsp;├ ![Image icon](/sprites/icons/photo.png) default.png<br>
+│&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;...<br>
+│&nbsp;&nbsp;├ ![Image icon](/sprites/icons/photo.png) speak.png<br>
+│&nbsp;&nbsp;├ ![Image icon](/sprites/icons/photo.png) super_cry.png<br>
+│&nbsp;&nbsp;└ ![Image icon](/sprites/icons/photo.png) surprised.png<br>
 └ ![Gear icon](/sprites/icons/customize.png) skin.cfg
 
 but you need to specify the path to sprites along with the folder in skin.cfg
