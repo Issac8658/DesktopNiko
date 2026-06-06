@@ -123,31 +123,31 @@ Data displayed in DN
 
 - **Name** `string`
 
-  Any value
+  > Any value
 - **Description** `string`
 
-  Any value
+  > Any value
 - **Author** `string`
 
-  Any value
+  > Any value
 - **Version** `string`
 
-  Version of skin, any value
+  > Version of skin, any value
 - **Comment** `string`
 
-  Any value
+  > Any value
 - **Tags** `string[]`
 
-  List of tags, reserved for future versions, any value
+  > List of tags, reserved for future versions, any value
 
 ### \[Data]
 
 - **Format** `int`
 
-  Format of skin, in v5 value is `5`
+  > Format of skin, in v5 value is `5`
 - **Scale** `float`
 
-  Base scale of sprites
+  > Base scale of sprites
 
 ### \[Sprites]
 
