@@ -1,4 +1,6 @@
-extends "res://scripts/windows/window_controller.gd"
+@icon("res://sprites/icons/popup.png")
+extends WMWindow
+class_name WMPopup
 
 signal yes_button_pressed()
 signal no_button_pressed()

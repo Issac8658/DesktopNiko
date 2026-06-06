@@ -54,7 +54,8 @@ public sealed partial class ShutdownHandler : Node
 			case WM_QUERYENDSESSION:
 				IsShuttingDown = true;
 
-				NativeMethods.ShutdownBlockReasonCreate(_hWnd, TranslationServer.Translate("SHUTDOWN_BLOCK_MESSAGE"));
+				//NativeMethods.ShutdownBlockReasonCreate(_hWnd, TranslationServer.Translate("SHUTDOWN_BLOCK_MESSAGE"));
+				(GetNode("/root/GlobalController") as GlobalController).Shutdown();
 
 				EmitSignal(SignalName.OnShutdownSignal);
 				return IntPtr.Zero; // FALSE

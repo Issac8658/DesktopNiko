@@ -51,6 +51,7 @@
 [ext_resource type="StyleBox" uid="uid://bg8rwg0agm3i1" path="res://themes/themed/purple_file_focus.stylebox" id="34_uacds"]
 [ext_resource type="StyleBox" uid="uid://mldy0j3o25oq" path="res://themes/themed/blue_file_hover.stylebox" id="35_84x1k"]
 [ext_resource type="StyleBox" uid="uid://cmgo2xhfrn3e3" path="res://themes/themed/purple_file_hover.stylebox" id="35_y0lqw"]
+[ext_resource type="Script" uid="uid://b6mwk6ghr7h2h" path="res://scripts/windows/functional_windows/shutdown.gd" id="36_mfmn3"]
 [ext_resource type="PackedScene" uid="uid://o3kl3g87pn3q" path="res://prefabs/base_window.tscn" id="38_q4750"]
 [ext_resource type="ColorPalette" uid="uid://drsd5tiuhu4u1" path="res://themes/twm_theme/purple_color_palette.tres" id="39_l3hih"]
 [ext_resource type="PackedScene" uid="uid://06vemu4dsjuh" path="res://games/oneshot_funkin/one_machine_night_funkin.tscn" id="40_gv8l5"]
@@ -1288,7 +1289,7 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="Button" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Shutdown" unique_id=1666842798]
+[node name="Button" type="Button" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Shutdown" unique_id=1666842798 node_paths=PackedStringArray("shutdown_popup")]
 use_parent_material = true
 custom_minimum_size = Vector2(160, 108)
 layout_mode = 2
@@ -1297,6 +1298,8 @@ theme_type_variation = &"FlatButton"
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
+script = ExtResource("36_mfmn3")
+shutdown_popup = NodePath("../../../../../../../../../../ShutdownPopup")
 
 [node name="ButtonMargin" type="MarginContainer" parent="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Shutdown" unique_id=1163959856]
 use_parent_material = true
@@ -1777,8 +1780,13 @@ metadata/_custom_type_script = "uid://by1cd1rvin4oh"
 
 [node name="ShutdownPopup" parent="." unique_id=1496860589 instance=ExtResource("33_id8vy")]
 title = "titles.shutdown"
+size = Vector2i(328, 208)
 visible = false
+transient_to_focused = true
+exclusive = true
+popup_window = false
 minimize_disabled = true
+ignore_on_top_settings = true
 
 [node name="Control" parent="ShutdownPopup" index="1" unique_id=579132620]
 mouse_filter = 1
@@ -1795,7 +1803,7 @@ clip_text = false
 text_overrun_behavior = 0
 
 [node name="Quest" parent="ShutdownPopup/Control/WindowContainer/Content/PopupMargin/VBoxContainer" parent_id_path=PackedInt32Array(1496860589, 1750489675) index="0" unique_id=1354308728]
-text = "SHUTDOWN_QUEST"
+text = "other.shutdown_quest"
 
 [node name="ThemesWindow" parent="." unique_id=995621362 instance=ExtResource("19_rkakh")]
 title = "titles.themes"

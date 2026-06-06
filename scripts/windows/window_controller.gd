@@ -1,4 +1,6 @@
+@icon("res://sprites/icons/window.png")
 extends Window
+class_name WMWindow
 
 signal close_button_pressed();
 

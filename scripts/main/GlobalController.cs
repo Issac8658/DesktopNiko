@@ -29,9 +29,7 @@ public partial class GlobalController : Node
 		switch ((long)what)
 		{
 			case NotificationWMCloseRequest:
-				Save();
-				GD.Print("Goodbye, Niko!");
-				GetTree().Quit();
+				Shutdown();
 				break;
 		}
 	}
@@ -46,6 +44,13 @@ public partial class GlobalController : Node
 			}
 		}
     }
+
+	public void Shutdown()
+	{
+		Save();
+		GD.Print("Goodbye, Niko!");
+		GetTree().Quit();
+	}
 
 	public void Save()
 	{

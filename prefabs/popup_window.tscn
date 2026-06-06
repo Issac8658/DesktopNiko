@@ -6,13 +6,13 @@
 [ext_resource type="AudioStream" uid="uid://dhwgvb6t1ulx" path="res://sounds/twm_notif2.wav" id="2_tokai"]
 [ext_resource type="AudioStream" uid="uid://bnv7o6bmlo6ic" path="res://sounds/twm_notif3.wav" id="4_w1na8"]
 [ext_resource type="AudioStream" uid="uid://54f4ilgm2r3g" path="res://sounds/twm_notif4.wav" id="5_vfins"]
+[ext_resource type="Texture2D" uid="uid://ddaoov7lp1dhu" path="res://sprites/icons/question.png" id="6_vfins"]
 
 [node name="PopupWindow" unique_id=1265308202 node_paths=PackedStringArray("cancel_button", "accept_button", "PopupStreamPlayer") instance=ExtResource("1_7xd75")]
 initial_position = 4
 size = Vector2i(328, 184)
 transient = true
 always_on_top = false
-popup_window = true
 script = ExtResource("2_p1j5h")
 cancel_button = NodePath("Control/WindowContainer/Content/PopupMargin/VBoxContainer/Actions/No")
 accept_button = NodePath("Control/WindowContainer/Content/PopupMargin/VBoxContainer/Actions/Yes")
@@ -22,6 +22,9 @@ Sounds = Array[AudioStream]([ExtResource("2_tokai"), ExtResource("4_w1na8"), Ext
 [node name="PopupSound" type="AudioStreamPlayer" parent="." index="0" unique_id=813187369]
 stream = ExtResource("2_tokai")
 volume_db = -10.0
+
+[node name="Icon" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(1002331087) index="0" unique_id=1518425686]
+icon = ExtResource("6_vfins")
 
 [node name="Title" parent="Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(332691484) index="1" unique_id=2015855131]
 text = "Popup Window"
