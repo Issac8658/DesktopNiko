@@ -220,10 +220,10 @@ public partial class NikoSkinManager : Node
 					string SkinDesc = (string)SkinConfig.GetValue("Info", "Description", "");
 					string SkinAuthor = (string)SkinConfig.GetValue("Info", "Author", "Unknown");
 					string SkinVersion = (string)SkinConfig.GetValue("Info", "Version", "Unknown");
-					string SkinForVersion = (string)SkinConfig.GetValue("Info", "ForVersion", "Unknown");
 					string SkinComment = (string)SkinConfig.GetValue("Info", "Comment", "");
 					string[] SkinTags = (string[])SkinConfig.GetValue("Info", "Tags", "[]");
 
+					string SkinFormat = (string)SkinConfig.GetValue("Data", "Format", "Unknown");
 					float SkinScale = (float)SkinConfig.GetValue("Data", "Scale", 1.0);
 
 					Dictionary<string, string> SkinExtraSprites = [];
@@ -235,7 +235,7 @@ public partial class NikoSkinManager : Node
 						}
 					}
 
-					Skin RegisteredSkin = new(SkinId, SkinPath, SkinSprites, SkinExtraSprites, SkinScale, SkinName, SkinDesc, SkinAuthor, SkinVersion, SkinForVersion, SkinComment, SkinTags);
+					Skin RegisteredSkin = new(SkinId, SkinPath, SkinSprites, SkinExtraSprites, SkinScale, SkinName, SkinDesc, SkinAuthor, SkinVersion, SkinFormat, SkinComment, SkinTags);
 					SkinsList.Add(RegisteredSkin);
 					GD.Print($"Skin \"{SkinId}\" registered");
 				}
@@ -248,7 +248,7 @@ public partial class NikoSkinManager : Node
 	}
 
 
-	public struct Skin(string SkinId, string SkinPath, Dictionary<string, string> SkinSprites, Dictionary<string, string> SkinExtraSprites, float SkinScale, string SkinName, string SkinDesc, string SkinAuthor, string SkinVersion, string SkinForVersion, string SkinComment, string[] SkinTags)
+	public struct Skin(string SkinId, string SkinPath, Dictionary<string, string> SkinSprites, Dictionary<string, string> SkinExtraSprites, float SkinScale, string SkinName, string SkinDesc, string SkinAuthor, string SkinVersion, string SkinFormat, string SkinComment, string[] SkinTags)
 	{
 		public string Id = SkinId;
 		public string Dir = SkinPath;
@@ -259,7 +259,7 @@ public partial class NikoSkinManager : Node
 		public string Description = SkinDesc;
 		public string Author = SkinAuthor;
 		public string Version = SkinVersion;
-		public string ForVersion = SkinForVersion;
+		public string Format = SkinFormat;
 		public string Comment = SkinComment;
 		public string[] Tags = SkinTags;
 
