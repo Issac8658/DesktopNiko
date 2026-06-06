@@ -84,7 +84,6 @@ it to all sprites, but I recommend doing all 17
 
 You can make any number of additional sprites, they will be added to facepics settings as extra sprites
 
-
 1. smug
 <img width="120px" style="image-rendering: pixelated;" alt="smug sprite" src="niko/niko_default/smug.png" />
     <span style="opacity: 0.6; font-size: 0.9em;">Extra sprite</span>
