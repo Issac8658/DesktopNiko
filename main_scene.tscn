@@ -325,6 +325,18 @@ func _ready() -> void:
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1b22m"]
 
+[sub_resource type="GDScript" id="GDScript_mfmn3"]
+resource_name = "SaveButton"
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pressed.connect(func():
+		GlobalController.Save()
+	)
+"
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_30vx0"]
 blend_mode = 1
 
@@ -2744,7 +2756,6 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="General" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=796068923]
-visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 8
@@ -3063,6 +3074,7 @@ script = ExtResource("97_wonw5")
 metadata/_custom_type_script = "uid://by1cd1rvin4oh"
 
 [node name="Niko" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=320743199]
+visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 0
@@ -3717,6 +3729,43 @@ label = NodePath("../HBoxContainer/Label3")
 idx = 1
 mult = 100.0
 
+[node name="HBoxContainer5" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=1614536119]
+use_parent_material = true
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer5" unique_id=1494164550]
+use_parent_material = true
+layout_mode = 2
+text = "settings.other.music_volume"
+
+[node name="Label2" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer5" unique_id=1732919728]
+use_parent_material = true
+layout_mode = 2
+text = ": "
+
+[node name="Label3" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer5" unique_id=432206633]
+use_parent_material = true
+layout_mode = 2
+text = "10"
+
+[node name="Label4" type="Label" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer/HBoxContainer5" unique_id=640517706]
+use_parent_material = true
+layout_mode = 2
+text = "%"
+
+[node name="HSlider3" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=44054534 node_paths=PackedStringArray("label") instance=ExtResource("76_o48om")]
+use_parent_material = true
+layout_mode = 2
+max_value = 5.0
+step = 0.01
+value = 1.0
+script = ExtResource("77_k2ony")
+label = NodePath("../HBoxContainer5/Label3")
+idx = 2
+mult = 100.0
+
 [node name="Control" type="Control" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=1462129201]
 use_parent_material = true
 layout_mode = 2
@@ -3745,6 +3794,7 @@ size_flags_horizontal = 3
 use_parent_material = true
 layout_mode = 2
 text = "settings.other.actions.save"
+script = SubResource("GDScript_mfmn3")
 
 [node name="ResetAllData" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=626692052]
 visible = false

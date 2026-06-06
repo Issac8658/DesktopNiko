@@ -67,7 +67,7 @@ public partial class GlobalController : Node
 
 	private async void AutoSave()
 	{
-		await ToSignal(GetTree().CreateTimer(180), SceneTreeTimer.SignalName.Timeout);
+		await ToSignal(GetTree().CreateTimer(600), SceneTreeTimer.SignalName.Timeout);
 		Save();
 		AutoSave();
 	}
