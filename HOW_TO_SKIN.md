@@ -12,7 +12,7 @@ Default sprites use a 60x60 resolution for each sprite with 2x scaling in skin c
 ### Required sprites
 
 Niko in Desktop Niko has 17 states (v5):
-*<span style="opacity: 0.6; font-size: 0.9em;">name corresponds to file name</span>*
+> name corresponds to file name
 
 1. default
 <img width="120px" style="image-rendering: pixelated;" alt="default sprite" src="niko/niko_default/default.png" />
@@ -31,51 +31,51 @@ Niko in Desktop Niko has 17 states (v5):
 
 6. cool
 <img width="120px" style="image-rendering: pixelated;" alt="cool sprite" src="niko/niko_default/cool.png" />
-    <span style="opacity: 0.6; font-size: 0.9em;">Used in tennis when you lose</span>
+    > Used in tennis when you lose
 
 7. sad
 <img width="120px" style="image-rendering: pixelated;" alt="sad sprite" src="niko/niko_default/sad.png" />
-    <span style="opacity: 0.6; font-size: 0.9em;">Used when you hover over the shutdown shortcut</span>
+    > Used when you hover over the shutdown shortcut
 
 8. cry
 <img width="120px" style="image-rendering: pixelated;" alt="cry sprite" src="niko/niko_default/cry.png" />
-    <span style="opacity: 0.6; font-size: 0.9em;">Used when you double click on the shutdown shortcut</span>
+    > Used when you double click on the shutdown shortcut
 
 9. super_cry
 <img width="120px" style="image-rendering: pixelated;" alt="super cry sprite" src="niko/niko_default/super_cry.png" />
-    <span style="opacity: 0.6; font-size: 0.9em;">Used if you clicked no in the "Alert: Pancake!" event</span>
+    > Used if you clicked no in the "Alert: Pancake!" event
 
 10. eat1
 <img width="120px" style="image-rendering: pixelated;" alt="eat1 sprite" src="niko/niko_default/eat1.png" />
-    <span style="opacity: 0.6; font-size: 0.9em;">Used if you clicked yes in "Alert: Pancake!" event (frame 1)</span>
+    > Used if you clicked yes in "Alert: Pancake!" event (frame 1)
 
 11. eat2
 <img width="120px" style="image-rendering: pixelated;" alt="eat2 sprite" src="niko/niko_default/eat2.png" />
-    <span style="opacity: 0.6; font-size: 0.9em;">Used if you clicked yes in "Alert: Pancake!" event (frame 2)</span>
+    > Used if you clicked yes in "Alert: Pancake!" event (frame 2)
 
 12. look_left
 <img width="120px" style="image-rendering: pixelated;" alt="look left sprite" src="niko/niko_default/look_left.png" />
-    <span style="opacity: 0.6; font-size: 0.9em;">Used in an animation that plays when you are idle for 3 minutes</span>
+    > Used in an animation that plays when you are idle for 3 minutes
 
 13. look_right
 <img width="120px" style="image-rendering: pixelated;" alt="look right sprite" src="niko/niko_default/look_right.png" />
-    <span style="opacity: 0.6; font-size: 0.9em;">Used in an animation that plays when you are idle for 3 minutes</span>
+    > Used in an animation that plays when you are idle for 3 minutes
 
 14. huh
 <img width="120px" style="image-rendering: pixelated;" alt="huh sprite" src="niko/niko_default/huh.png" />
-    <span style="opacity: 0.6; font-size: 0.9em;">Used in "Pancake Machine" event</span>
+    > Used in "Pancake Machine" event
 
 15. pancakes
 <img width="120px" style="image-rendering: pixelated;" alt="pancakes sprite" src="niko/niko_default/pancakes.png" />
-    <span style="opacity: 0.6; font-size: 0.9em;">Used in "Pancake Machine" and "Alert: Pancake!" events</span>
+    > Used in "Pancake Machine" and "Alert: Pancake!" events
 
 16. sleep
 <img width="120px" style="image-rendering: pixelated;" alt="sleep sprite" src="niko/niko_default/sleep.png" />
-    <span style="opacity: 0.6; font-size: 0.9em;">Used if you don't click on Niko for a long time (default is 15 minutes)</span>
+    > Used if you don't click on Niko for a long time (default is 15 minutes)
 
 17. sleepy
 <img width="120px" style="image-rendering: pixelated;" alt="sleepy sprite" src="niko/niko_default/sleepy.png" />
-    <span style="opacity: 0.6; font-size: 0.9em;">Used if you don't click on Niko for a long time (default is 15 minutes)</span>
+    > Used if you don't click on Niko for a long time (default is 15 minutes)
 
 Technically, it's enough to make one `default.png` image, later assigning
 it to all sprites, but I recommend doing all 17
@@ -86,11 +86,11 @@ You can make any number of additional sprites, they will be added to facepics se
 
 1. smug
 <img width="120px" style="image-rendering: pixelated;" alt="smug sprite" src="niko/niko_default/smug.png" />
-    <span style="opacity: 0.6; font-size: 0.9em;">Extra sprite</span>
+    > Extra sprite
 
 2. smile
 <img width="120px" style="image-rendering: pixelated;" alt="smile sprite" src="niko/niko_default/smile.png" />
-    <span style="opacity: 0.6; font-size: 0.9em;">Extra sprite</span>
+    > Extra sprite
 
 ## Skin configuration
 
