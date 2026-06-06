@@ -52,7 +52,7 @@ Niko in Desktop Niko has 17 states (v5):
 9. super_cry
 
     ![super cry sprite](niko/niko_default/super_cry.png)
-    > Used if you clicked no in the "Alert: Pancake!" event
+    > Used if you clicked no in "Alert: Pancake!" event
 
 10. eat1
 
@@ -122,23 +122,31 @@ Here are parameters of these sections:
 Data displayed in DN
 
 - **Name** `string`
+
   Any value
 - **Description** `string`
+
   Any value
 - **Author** `string`
+
   Any value
 - **Version** `string`
+
   Version of skin, any value
 - **Comment** `string`
+
   Any value
 - **Tags** `string[]`
+
   List of tags, reserved for future versions, any value
 
 ### \[Data]
 
 - **Format** `int`
+
   Format of skin, in v5 value is `5`
 - **Scale** `float`
+
   Base scale of sprites
 
 ### \[Sprites]
