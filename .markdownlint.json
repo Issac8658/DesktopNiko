@@ -1,6 +1,6 @@
 {
   "MD033": {
-    "allowed_elements": ["img", "span"]
+    "allowed_elements": ["br"]
   },
   "MD013": false 
 }

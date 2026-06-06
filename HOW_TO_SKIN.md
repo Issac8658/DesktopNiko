@@ -15,66 +15,66 @@ Niko in Desktop Niko has 17 states (v5):
 > name corresponds to file name
 
 1. default
-<img width="120px" style="image-rendering: pixelated;" alt="default sprite" src="niko/niko_default/default.png" />
+![default sprite](niko/niko_default/default.png)
 
 2. normal
-<img width="120px" style="image-rendering: pixelated;" alt="normal sprite" src="niko/niko_default/normal.png" />
+![normal sprite](niko/niko_default/normal.png)
 
 3. speak
-<img width="120px" style="image-rendering: pixelated;" alt="speak sprite" src="niko/niko_default/speak.png" />
+![speak sprite](niko/niko_default/speak.png)
 
 4. shock
-<img width="120px" style="image-rendering: pixelated;" alt="shock sprite" src="niko/niko_default/shock.png" />
+![shock sprite](niko/niko_default/shock.png)
 
 5. surprised
-<img width="120px" style="image-rendering: pixelated;" alt="speak surprised" src="niko/niko_default/surprised.png" />
+![speak surprised](niko/niko_default/surprised.png)
 
 6. cool
-<img width="120px" style="image-rendering: pixelated;" alt="cool sprite" src="niko/niko_default/cool.png" />
+![cool sprite](niko/niko_default/cool.png)
     > Used in tennis when you lose
 
 7. sad
-<img width="120px" style="image-rendering: pixelated;" alt="sad sprite" src="niko/niko_default/sad.png" />
+![sad sprite](niko/niko_default/sad.png)
     > Used when you hover over the shutdown shortcut
 
 8. cry
-<img width="120px" style="image-rendering: pixelated;" alt="cry sprite" src="niko/niko_default/cry.png" />
+![cry sprite](niko/niko_default/cry.png)
     > Used when you double click on the shutdown shortcut
 
 9. super_cry
-<img width="120px" style="image-rendering: pixelated;" alt="super cry sprite" src="niko/niko_default/super_cry.png" />
+![super cry sprite](niko/niko_default/super_cry.png)
     > Used if you clicked no in the "Alert: Pancake!" event
 
 10. eat1
-<img width="120px" style="image-rendering: pixelated;" alt="eat1 sprite" src="niko/niko_default/eat1.png" />
+![eat1 sprite](niko/niko_default/eat1.png)
     > Used if you clicked yes in "Alert: Pancake!" event (frame 1)
 
 11. eat2
-<img width="120px" style="image-rendering: pixelated;" alt="eat2 sprite" src="niko/niko_default/eat2.png" />
+![eat2 sprite](niko/niko_default/eat2.png)
     > Used if you clicked yes in "Alert: Pancake!" event (frame 2)
 
 12. look_left
-<img width="120px" style="image-rendering: pixelated;" alt="look left sprite" src="niko/niko_default/look_left.png" />
+![look left sprite](niko/niko_default/look_left.png)
     > Used in an animation that plays when you are idle for 3 minutes
 
 13. look_right
-<img width="120px" style="image-rendering: pixelated;" alt="look right sprite" src="niko/niko_default/look_right.png" />
+![look right sprite](niko/niko_default/look_right.png)
     > Used in an animation that plays when you are idle for 3 minutes
 
 14. huh
-<img width="120px" style="image-rendering: pixelated;" alt="huh sprite" src="niko/niko_default/huh.png" />
+![huh sprite](niko/niko_default/huh.png)
     > Used in "Pancake Machine" event
 
 15. pancakes
-<img width="120px" style="image-rendering: pixelated;" alt="pancakes sprite" src="niko/niko_default/pancakes.png" />
+![pancakes sprite](niko/niko_default/pancakes.png)
     > Used in "Pancake Machine" and "Alert: Pancake!" events
 
 16. sleep
-<img width="120px" style="image-rendering: pixelated;" alt="sleep sprite" src="niko/niko_default/sleep.png" />
+![sleep sprite](niko/niko_default/sleep.png)
     > Used if you don't click on Niko for a long time (default is 15 minutes)
 
 17. sleepy
-<img width="120px" style="image-rendering: pixelated;" alt="sleepy sprite" src="niko/niko_default/sleepy.png" />
+![sleepy sprite](niko/niko_default/sleepy.png)
     > Used if you don't click on Niko for a long time (default is 15 minutes)
 
 Technically, it's enough to make one `default.png` image, later assigning
@@ -85,11 +85,11 @@ it to all sprites, but I recommend doing all 17
 You can make any number of additional sprites, they will be added to facepics settings as extra sprites
 
 1. smug
-<img width="120px" style="image-rendering: pixelated;" alt="smug sprite" src="niko/niko_default/smug.png" />
+![smug sprite](niko/niko_default/smug.png)
     > Extra sprite
 
 2. smile
-<img width="120px" style="image-rendering: pixelated;" alt="smile sprite" src="niko/niko_default/smile.png" />
+![smile sprite](niko/niko_default/smile.png)
     > Extra sprite
 
 ## Skin configuration
