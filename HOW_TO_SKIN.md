@@ -236,4 +236,10 @@ but you need to specify the path to sprites along with the folder in skin.cfg
 default="skin://sprites/default.png"
 normal="skin://sprites/normal.png"
 ...
+
+[ExtraSprites]
+
+smile="skin://sprites/smile.png"
+smug="skin://sprites/smug.png"
+...
 ```
