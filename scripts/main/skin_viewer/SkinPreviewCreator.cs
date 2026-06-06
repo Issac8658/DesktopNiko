@@ -23,7 +23,7 @@ public partial class SkinPreviewCreator : Node
 			SkinNode.DisplayText = skin.Name;
 			SkinNode.SkinScale = skin.Scale;
 			SkinNode.OriginalSkinId = skin.Id;
-			SkinNode.GlobalPosition = Chupep.Position + new Vector2((float)GD.Randf() * Chupep.Size.X, (float)GD.Randf() * Chupep.Size.Y);
+			SkinNode.Position = new Vector2((float)GD.Randf() * Chupep.Size.X, (float)GD.Randf() * Chupep.Size.Y) - Chupep.Size / 2;
 			AddChild(SkinNode);
 		}
 	}

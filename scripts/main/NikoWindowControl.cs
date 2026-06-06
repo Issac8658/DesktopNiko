@@ -31,6 +31,7 @@ public partial class NikoWindowControl : Control
 		_windowExtantions = GetNode<WindowExstantions>("/root/WindowExstantions");
 
 		_valuesContainer.NikoScaleChanged += (NikoScale) => UpdateScale();
+		_valuesContainer.NikoSkinChanged += (SkinId) => UpdateScale();
 		_valuesContainer.NikoVisibilityChanged += (Visible) => UpdateScale();
 		ItemRectChanged += () => _mainWindow.Size = (Vector2I)Size;
 

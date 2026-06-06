@@ -4,5 +4,5 @@ extends Button
 
 func _ready() -> void:
 	pressed.connect(func ():
-		skins_window.show()
+		skins_window.visible = not skins_window.visible
 	)

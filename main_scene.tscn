@@ -4363,13 +4363,13 @@ layout_mode = 2
 size_flags_horizontal = 0
 mouse_default_cursor_shape = 2
 texture = ExtResource("16_7th4q")
-stretch_mode = 4
+expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NikoBase/Niko" unique_id=1616263173]
 libraries/ = SubResource("AnimationLibrary_7th4q")
 
 [node name="MenuPanel" type="HBoxContainer" parent="NikoBase" unique_id=356451475]
-custom_minimum_size = Vector2(124, 30)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 2
