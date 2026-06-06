@@ -1,0 +1,2 @@
+FreakyMachine; res://games/oneshot_funkin/resources/music/FreakyMachine.ogg; 102
+TheMachineCalmness; res://games/oneshot_funkin/resources/music/TheMachineCalmness.mp3; 155

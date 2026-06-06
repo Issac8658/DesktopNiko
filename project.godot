@@ -73,10 +73,10 @@ project/assembly_name="Desktop Niko"
 
 folder_colors={
 "res://games/": "gray",
-"res://games/one_machine_night_funkin/data/": "orange",
-"res://games/one_machine_night_funkin/data/songs/": "green",
-"res://games/one_machine_night_funkin/data/weeks/": "red",
-"res://games/one_machine_night_funkin/resources/": "blue",
+"res://games/oneshot_funkin/data/": "orange",
+"res://games/oneshot_funkin/data/songs/": "green",
+"res://games/oneshot_funkin/data/weeks/": "red",
+"res://games/oneshot_funkin/resources/": "blue",
 "res://niko/": "yellow",
 "res://prefabs/": "pink",
 "res://scripts/": "blue",

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dyl3jlsfuqu73"]
+
+[ext_resource type="Material" uid="uid://budjvmxtfklmi" path="res://games/oneshot_funkin/resources/materials/disered_shadow.tres" id="1_3q7fu"]
+[ext_resource type="Shader" uid="uid://hd7jqjosi2yi" path="res://shaders/ui_theme_painter_spatial.gdshader" id="2_3wkml"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_3q7fu")
+shader = ExtResource("2_3wkml")

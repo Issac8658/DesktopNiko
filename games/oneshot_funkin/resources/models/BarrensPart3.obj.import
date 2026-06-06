@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://co81jj5lp48nt"
+path="res://.godot/imported/BarrensPart3.obj-2a9bc0d12252bf65f079536a9d0c756d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/BarrensPart3.obj-2a9bc0d12252bf65f079536a9d0c756d.mesh"]
+
+source_file="res://games/oneshot_funkin/resources/models/BarrensPart3.obj"
+dest_files=["res://.godot/imported/BarrensPart3.obj-2a9bc0d12252bf65f079536a9d0c756d.mesh", "res://.godot/imported/BarrensPart3.obj-2a9bc0d12252bf65f079536a9d0c756d.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=false
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

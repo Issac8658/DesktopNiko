@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dy157bnj6dd8e"
+path="res://.godot/imported/big_phosphor_basin.obj-eb4122ef0e3df3906c884b7c2eed4c8d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/big_phosphor_basin.obj-eb4122ef0e3df3906c884b7c2eed4c8d.mesh"]
+
+source_file="res://games/oneshot_funkin/resources/models/big_phosphor_basin.obj"
+dest_files=["res://.godot/imported/big_phosphor_basin.obj-eb4122ef0e3df3906c884b7c2eed4c8d.mesh", "res://.godot/imported/big_phosphor_basin.obj-eb4122ef0e3df3906c884b7c2eed4c8d.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

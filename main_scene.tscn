@@ -53,7 +53,7 @@
 [ext_resource type="StyleBox" uid="uid://cmgo2xhfrn3e3" path="res://themes/themed/purple_file_hover.stylebox" id="35_y0lqw"]
 [ext_resource type="PackedScene" uid="uid://o3kl3g87pn3q" path="res://prefabs/base_window.tscn" id="38_q4750"]
 [ext_resource type="ColorPalette" uid="uid://drsd5tiuhu4u1" path="res://themes/twm_theme/purple_color_palette.tres" id="39_l3hih"]
-[ext_resource type="PackedScene" uid="uid://06vemu4dsjuh" path="res://games/one_machine_night_funkin/one_machine_night_funkin.tscn" id="40_gv8l5"]
+[ext_resource type="PackedScene" uid="uid://06vemu4dsjuh" path="res://games/oneshot_funkin/one_machine_night_funkin.tscn" id="40_gv8l5"]
 [ext_resource type="ColorPalette" uid="uid://kjuhi60rb6ip" path="res://themes/twm_theme/blue_color_palette.tres" id="40_xevt3"]
 [ext_resource type="ColorPalette" uid="uid://dcwi11gqweq8b" path="res://themes/twm_theme/yellow_color_palette.tres" id="41_im3ns"]
 [ext_resource type="Material" uid="uid://db230eaasl2pl" path="res://materials/shadow_material.tres" id="41_iylel"]
