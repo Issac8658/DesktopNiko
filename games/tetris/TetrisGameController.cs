@@ -12,6 +12,7 @@ namespace Tetris
 		public const int GAME_HEIGHT = 20;
 		public const int GAME_WIDTH = 10;
 		public const double START_TICK_TIME = 0.5;
+		public const int BASE_WINDOW_HEIGHT = 1080;
 
 		// signals
 		[Signal]
@@ -114,6 +115,8 @@ namespace Tetris
 		public Control LeftRuler;
 		[Export]
 		public Control RightRuler;
+		[Export]
+		public Control GlobalAnchor;
 
 		[ExportGroup("Buttons")]
 		[Export]
@@ -204,6 +207,7 @@ namespace Tetris
 
 			Size = DisplayServer.ScreenGetSize(CurrentScreen) - new Vector2I(20, 0);
 			Position = DisplayServer.ScreenGetPosition(CurrentScreen) + new Vector2I(10, 0);
+			GlobalAnchor.Scale = new Vector2((float)Size.Y / BASE_WINDOW_HEIGHT, (float)Size.Y / BASE_WINDOW_HEIGHT);
 		}
 
 		public override void _Process(double delta)
@@ -642,17 +646,17 @@ namespace Tetris
 
 		public static readonly Vector2I[][] WallKickTable3x3 = [
 			[ new(0, 0), new(-1, 0), new(-1, -1), new(0,  2), new(-1,  2) ], // 0 -> R
-    	    [ new(0, 0), new( 1, 0), new( 1,  1), new(0, -2), new( 1, -2) ], // R -> 2
-    	    [ new(0, 0), new( 1, 0), new( 1, -1), new(0,  2), new( 1,  2) ], // 2 -> L
-    	    [ new(0, 0), new(-1, 0), new(-1,  1), new(0, -2), new(-1, -2) ], // L -> 0
+			[ new(0, 0), new( 1, 0), new( 1,  1), new(0, -2), new( 1, -2) ], // R -> 2
+			[ new(0, 0), new( 1, 0), new( 1, -1), new(0,  2), new( 1,  2) ], // 2 -> L
+			[ new(0, 0), new(-1, 0), new(-1,  1), new(0, -2), new(-1, -2) ], // L -> 0
 		];
 		public static readonly Vector2I[][] WallKickTable4x4 =
 		[
 			[ new(0, 0), new(-2, 0), new( 1, 0), new(-2,  1), new( 1, -2) ], // 0 -> R
-    	    [ new(0, 0), new(-1, 0), new( 2, 0), new(-1, -2), new( 2,  1) ], // R -> 2
-    	    [ new(0, 0), new( 2, 0), new(-1, 0), new( 2, -1), new(-1,  2) ], // 2 -> L
-    	    [ new(0, 0), new( 1, 0), new(-2, 0), new( 1,  2), new(-2, -1) ], // L -> 0
-    	];
+			[ new(0, 0), new(-1, 0), new( 2, 0), new(-1, -2), new( 2,  1) ], // R -> 2
+			[ new(0, 0), new( 2, 0), new(-1, 0), new( 2, -1), new(-1,  2) ], // 2 -> L
+			[ new(0, 0), new( 1, 0), new(-2, 0), new( 1,  2), new(-2, -1) ], // L -> 0
+		];
 		
 		public static readonly System.Collections.Generic.Dictionary<SpinType, uint[]> SpinPoints = new()
 		{
