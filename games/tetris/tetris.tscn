@@ -16,20 +16,17 @@
 [ext_resource type="Script" uid="uid://dx72gvtweybk5" path="res://games/tetris/midi/JsonMidiPlayer.cs" id="16_5ecpt"]
 [ext_resource type="Script" uid="uid://i1vgqb61238n" path="res://games/tetris/TetrisShake.cs" id="23_bh2wt"]
 
-[node name="Tetris" type="Window" unique_id=631506823 node_paths=PackedStringArray("GameTimer", "FpsCounter", "ScoreCounter", "LinesCounter", "LeftRuler", "RightRuler", "PauseButton", "RestartButton", "ExitButton", "PlaceLightSound", "PlaceNormalSound", "PlaceMegaSound", "PlaceSound", "HeightPlaceSound")]
+[node name="Tetris" type="Window" unique_id=631506823 node_paths=PackedStringArray("GameTimer", "FpsCounter", "ScoreCounter", "LinesCounter", "LeftRuler", "RightRuler", "GlobalAnchor", "PauseButton", "RestartButton", "ExitButton", "PlaceLightSound", "PlaceNormalSound", "PlaceMegaSound", "PlaceSound", "HeightPlaceSound")]
 transparent_bg = true
 oversampling = false
 oversampling_override = 1.0
 title = "titles.tetris"
 initial_position = 4
-size = Vector2i(1900, 1080)
+size = Vector2i(1800, 1080)
 borderless = true
 transparent = true
 minimize_disabled = true
 maximize_disabled = true
-content_scale_size = Vector2i(1400, 1080)
-content_scale_mode = 2
-content_scale_aspect = 4
 theme = ExtResource("1_kusv6")
 script = ExtResource("2_jbl8a")
 GameTimer = NodePath("GameTimer")
@@ -38,6 +35,7 @@ ScoreCounter = NodePath("GlobalAnchor/Statistics/Control2/VBoxContainer/Panel6/V
 LinesCounter = NodePath("GlobalAnchor/Statistics/Control2/VBoxContainer/Panel6/VBoxContainer/HBoxContainer2/Lines")
 LeftRuler = NodePath("GlobalAnchor/TetrisAnchor/PanelContainer/BG/LeftRuler")
 RightRuler = NodePath("GlobalAnchor/TetrisAnchor/PanelContainer/BG/RightRuler")
+GlobalAnchor = NodePath("GlobalAnchor")
 PauseButton = NodePath("GlobalAnchor/Statistics/Control2/VBoxContainer/HBoxContainer/Pause")
 RestartButton = NodePath("GlobalAnchor/Statistics/Control2/VBoxContainer/HBoxContainer/Restart")
 ExitButton = NodePath("GlobalAnchor/Statistics/Control2/VBoxContainer/HBoxContainer/Exit")
@@ -48,6 +46,7 @@ PlaceSound = NodePath("Place")
 HeightPlaceSound = NodePath("HeightPlace")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=901100193]
+limit_enabled = false
 
 [node name="GlobalAnchor" parent="." unique_id=144354466 instance=ExtResource("3_6mx11")]
 

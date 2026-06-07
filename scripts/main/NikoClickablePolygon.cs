@@ -36,6 +36,9 @@ public partial class NikoClickablePolygon : Node
 		if (_valuesContainer.GamingModeEnabled || !_valuesContainer.NikoVisible)
 			return false;
 
+		if (DisplayServer.GetName() == "Wayland")
+			return true;
+
 		if (MousePositionRelative.Y >= NikoSprite.Size.Y && MousePositionRelative.Y < NikoSprite.Size.Y + 30)
 			return true;
 
