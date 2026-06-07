@@ -132,7 +132,7 @@ Data displayed in DN
   > Any value
 - **Version** `string`
 
-  > Version of skin, any value
+  > Version of skin, reserved for future versions, any value
 - **Comment** `string`
 
   > Any value
@@ -141,6 +141,8 @@ Data displayed in DN
   > List of tags, reserved for future versions, any value
 
 ### \[Data]
+
+Data affecting the display and processing of the skin itself
 
 - **Format** `int`
 
@@ -152,6 +154,7 @@ Data displayed in DN
 ### \[Sprites]
 
 Required sprites for skin
+
 For values you can use Godot [Notations](https://docs.godotengine.org/en/4.6/tutorials/io/data_paths.html#file-paths-in-godot-projects) (`res://` and `user://`) and `skin://` notation reletive to skin folder
 
 - **default** `string`
