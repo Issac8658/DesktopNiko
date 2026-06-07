@@ -645,7 +645,7 @@ volume_db = -5.0
 script = ExtResource("114_8jixl")
 NikoSprite = NodePath("../NikoBase/Niko")
 
-[node name="NikoBase" type="VBoxContainer" parent="." unique_id=738868689 node_paths=PackedStringArray("NikoClickControl", "NikoSpriteNode", "AreasNode", "SleepParticles")]
+[node name="NikoBase" type="VBoxContainer" parent="." unique_id=738868689 node_paths=PackedStringArray("NikoClickControl", "NikoSpriteNode", "SleepParticles")]
 offset_right = 124.0
 offset_bottom = 150.0
 theme = ExtResource("112_uush8")
@@ -653,7 +653,6 @@ theme_override_constants/separation = 0
 script = ExtResource("18_wmw63")
 NikoClickControl = NodePath("Niko")
 NikoSpriteNode = NodePath("Niko")
-AreasNode = NodePath("")
 SleepParticles = NodePath("GPUParticles2D")
 
 [node name="Niko" type="TextureRect" parent="NikoBase" unique_id=1991101792]
@@ -728,7 +727,7 @@ visible = false
 [node name="ShortcutsWindow" parent="." unique_id=765980327 instance=ExtResource("19_rkakh")]
 title = "titles.shortcuts"
 initial_position = 4
-size = Vector2i(358, 394)
+size = Vector2i(522, 394)
 visible = false
 min_size = Vector2i(202, 270)
 max_size = Vector2i(1920, 1040)

@@ -3,7 +3,7 @@
 To create a skin, you will need any image editor, any text editor,
 and the ability to draw ;3
 
-Your skin will be a folder with images supported by Godot (see [Supported image formats](https://docs.godotengine.org/en/4.6/tutorials/assets_pipeline/importing_images.html#supported-image-formats)) and a configuration file (.cfg) for the skin, which should be located in `%APPDATA%\DesktopNiko\Skins` on Windows or in `~/.local/share/DesktopNiko/Skins` on Linux
+Your skin will be a folder with images supported by Godot (see [Supported image formats](https://docs.godotengine.org/en/4.6/tutorials/assets_pipeline/importing_images.html#supported-image-formats)) and a configuration file (.cfg) for the skin, which should be located in `%APPDATA%\DesktopNiko\skins` on Windows or in `~/.local/share/DesktopNiko/skins` on Linux
 
 ## Sprites
 
