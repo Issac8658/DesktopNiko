@@ -270,3 +270,14 @@ smile="skin://sprites/smile.png"
 smug="skin://sprites/smug.png"
 ...
 ```
+
+You can also assign one image to multiple sprites
+
+```ini
+...
+[Sprites]
+
+default="skin://default.png"
+normal="skin://default.png"
+...
+```
