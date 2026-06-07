@@ -9,9 +9,11 @@ public partial class NikoClickablePolygon : Node
 	
 	private Vector2I MousePositionRelative;
 	private bool m_old = false;
+	private string _displayServerName;
 
 	public override void _Ready()
 	{
+		_displayServerName = DisplayServer.GetName();
 		_valuesContainer = GetNode<ValuesContainer>("/root/ValuesContainer");
 		_windowExstantions = GetNode<WindowExstantions>("/root/WindowExstantions");
 	}
@@ -36,7 +38,7 @@ public partial class NikoClickablePolygon : Node
 		if (_valuesContainer.GamingModeEnabled || !_valuesContainer.NikoVisible)
 			return false;
 
-		if (DisplayServer.GetName() == "Wayland")
+		if (_displayServerName == "Wayland" || _displayServerName == "X11")
 			return true;
 
 		if (MousePositionRelative.Y >= NikoSprite.Size.Y && MousePositionRelative.Y < NikoSprite.Size.Y + 30)
