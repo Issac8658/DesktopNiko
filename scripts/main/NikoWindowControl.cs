@@ -15,8 +15,6 @@ public partial class NikoWindowControl : Control
 	[Export]
 	public TextureRect NikoSpriteNode;
 	[Export]
-	public Node2D AreasNode;
-	[Export]
 	public Node2D SleepParticles;
 
 	// Window drag vars
@@ -77,7 +75,7 @@ public partial class NikoWindowControl : Control
 		Visible = _valuesContainer.NikoVisible;
 
 		float scale = NikoScales[_valuesContainer.NikoScale];
-		SleepParticles.Scale = AreasNode.Scale = new(scale, scale);
+		SleepParticles.Scale = new(scale, scale);
 		_mainWindow.Size = new((int)Size.X, (int)Size.Y);
 		NikoSpriteNode.CustomMinimumSize = NikoSpriteNode.Texture.GetSize() * scale * _skinManager.GetCurrentSkinBaseScale();
 		Size = Vector2.Zero;

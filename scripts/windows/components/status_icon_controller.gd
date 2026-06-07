@@ -1,3 +1,4 @@
+@icon("res://sprites/icons/executable.png")
 extends Window
 
 @export var reset_pos_button : Button

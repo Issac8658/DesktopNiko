@@ -1,3 +1,4 @@
+@icon("res://sprites/icons/achievements.png")
 extends Window
 
 const MAIN_WINDOW_ID = DisplayServer.MAIN_WINDOW_ID

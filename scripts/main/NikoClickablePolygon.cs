@@ -1,11 +1,7 @@
 using Godot;
 
-public partial class NikoClickablePolygon : Node2D
+public partial class NikoClickablePolygon : Node
 {
-	[Export]
-	public Area2D ClickablePolygon;
-	[Export]
-	public Area2D MousePolygon;
 	[Export]
 	public TextureRect NikoSprite;
 	public WindowExstantions _windowExstantions;
@@ -24,7 +20,6 @@ public partial class NikoClickablePolygon : Node2D
 	public override void _Process(double delta)
 	{
 		MousePositionRelative = DisplayServer.MouseGetPosition() - DisplayServer.WindowGetPosition((int)DisplayServer.MainWindowId);
-		MousePolygon.Position = MousePositionRelative;
 
 
 		bool m_new = !MouseInClickableArea();
@@ -41,8 +36,7 @@ public partial class NikoClickablePolygon : Node2D
 		if (_valuesContainer.GamingModeEnabled || !_valuesContainer.NikoVisible)
 			return false;
 
-		var Polygons = ClickablePolygon.GetOverlappingAreas();
-		if (Polygons.Contains(MousePolygon))
+		if (MousePositionRelative.Y >= NikoSprite.Size.Y && MousePositionRelative.Y < NikoSprite.Size.Y + 30)
 			return true;
 
 		Vector2 MousePositionOnRect = MousePositionRelative - (Vector2I)NikoSprite.Position;

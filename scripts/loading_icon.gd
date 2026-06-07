@@ -1,3 +1,4 @@
+@icon("res://sprites/icons/save.png")
 extends Window
 
 @export var animator : AnimationPlayer

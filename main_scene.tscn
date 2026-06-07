@@ -35,7 +35,6 @@
 [ext_resource type="Texture2D" uid="uid://bextf2un1mfx4" path="res://sprites/icons/shortcuts.png" id="20_o63de"]
 [ext_resource type="Script" uid="uid://hlcidpic34kr" path="res://scripts/windows/functional_windows/shortcuts.gd" id="20_q4750"]
 [ext_resource type="Texture2D" uid="uid://dl8ue5tnsufb7" path="res://sprites/icons/shortcut.tres" id="23_30vx0"]
-[ext_resource type="Texture2D" uid="uid://ddaoov7lp1dhu" path="res://sprites/icons/question.png" id="25_opjno"]
 [ext_resource type="Texture2D" uid="uid://d1g7cvwjlpgsc" path="res://sprites/icons/pancake_clicker.png" id="26_rkakh"]
 [ext_resource type="Texture2D" uid="uid://baeok1rdljmfl" path="res://sprites/icons/skins.png" id="27_7ggmy"]
 [ext_resource type="Texture2D" uid="uid://cr3ixq7u1lyrk" path="res://sprites/icons/github.png" id="27_id8vy"]
@@ -146,6 +145,120 @@
 [ext_resource type="StyleBox" uid="uid://bt8jrmkhinmn" path="res://themes/twm_theme/dialog_panel.tres" id="114_77al4"]
 [ext_resource type="Texture2D" uid="uid://drnq140l71h0r" path="res://sprites/ui/menu_icon.tres" id="115_8g87k"]
 [ext_resource type="Script" uid="uid://cwe0iho0cgqye" path="res://scripts/ClicksLabel.cs" id="116_dftep"]
+
+[sub_resource type="Animation" id="Animation_u0ygc"]
+length = 2.0
+
+[sub_resource type="Animation" id="Animation_dftep"]
+resource_name = "click"
+length = 0.2
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.008333334, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"SetIdleFacepic"
+}, {
+"args": [],
+"method": &"SetSpeakFacepic"
+}, {
+"args": [],
+"method": &"SetIdleFacepic"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_m35m6"]
+resource_name = "niko_look_around"
+length = 2.6
+step = 0.0333
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 1.2, 1.4, 2.4, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"values": [{
+"args": ["normal"],
+"method": &"SetSprite"
+}, {
+"args": ["look_right"],
+"method": &"SetSprite"
+}, {
+"args": ["normal"],
+"method": &"SetSprite"
+}, {
+"args": ["look_left"],
+"method": &"SetSprite"
+}, {
+"args": ["normal"],
+"method": &"SetSprite"
+}, {
+"args": [],
+"method": &"SetIdleFacepic"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7th4q"]
+_data = {
+&"RESET": SubResource("Animation_u0ygc"),
+&"click": SubResource("Animation_dftep"),
+&"niko_look_around": SubResource("Animation_m35m6")
+}
+
+[sub_resource type="Curve" id="Curve_j53bq"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.508333, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_05sqr"]
+curve = SubResource("Curve_j53bq")
+
+[sub_resource type="Curve" id="Curve_vafvb"]
+_data = [Vector2(0, 0.0674158), 0.0, 0.0, 0, 0, Vector2(0.429167, 0.337079), 0.0, 0.0, 0, 0, Vector2(1, 0.134832), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_2umrp"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_cqe75"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_j53bq"]
+curve_x = SubResource("Curve_vafvb")
+curve_y = SubResource("Curve_2umrp")
+curve_z = SubResource("Curve_cqe75")
+
+[sub_resource type="Curve" id="Curve_05sqr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.483333, 1), 0.0, 0.0, 0, 0, Vector2(0.833333, 0.775281), -2.20633, -2.20633, 0, 0, Vector2(0.95, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ym5p0"]
+curve = SubResource("Curve_05sqr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s2ody"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(59.485, 52.04, 0)
+direction = Vector3(1, -0.02, 0)
+spread = 0.0
+initial_velocity_min = 118.71
+initial_velocity_max = 118.71
+directional_velocity_min = -553.25
+directional_velocity_max = -553.25
+directional_velocity_curve = SubResource("CurveXYZTexture_j53bq")
+attractor_interaction_enabled = false
+scale_curve = SubResource("CurveTexture_ym5p0")
+color = Color(0.282353, 0.286275, 0.784314, 1)
+alpha_curve = SubResource("CurveTexture_05sqr")
 
 [sub_resource type="GDScript" id="GDScript_dftep"]
 resource_name = "Telegram"
@@ -503,135 +616,6 @@ _data = {
 &"showing": SubResource("Animation_3s6xx")
 }
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uush8"]
-
-[sub_resource type="GDScript" id="GDScript_2supj"]
-resource_name = "positioner"
-script/source = "extends CollisionShape2D
-
-@export var move_to : Control
-
-func _process(_delta: float) -> void:
-	position = move_to.global_position
-"
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_gv8l5"]
-radius = 1.0
-
-[sub_resource type="Animation" id="Animation_u0ygc"]
-length = 2.0
-
-[sub_resource type="Animation" id="Animation_dftep"]
-resource_name = "click"
-length = 0.2
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../..")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.008333334, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [],
-"method": &"SetIdleFacepic"
-}, {
-"args": [],
-"method": &"SetSpeakFacepic"
-}, {
-"args": [],
-"method": &"SetIdleFacepic"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_m35m6"]
-resource_name = "niko_look_around"
-length = 2.6
-step = 0.0333
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../..")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.20000002, 1.2, 1.4, 2.4, 2.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"values": [{
-"args": ["normal"],
-"method": &"SetSprite"
-}, {
-"args": ["look_right"],
-"method": &"SetSprite"
-}, {
-"args": ["normal"],
-"method": &"SetSprite"
-}, {
-"args": ["look_left"],
-"method": &"SetSprite"
-}, {
-"args": ["normal"],
-"method": &"SetSprite"
-}, {
-"args": [],
-"method": &"SetIdleFacepic"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7th4q"]
-_data = {
-&"RESET": SubResource("Animation_u0ygc"),
-&"click": SubResource("Animation_dftep"),
-&"niko_look_around": SubResource("Animation_m35m6")
-}
-
-[sub_resource type="Curve" id="Curve_j53bq"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.508333, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_05sqr"]
-curve = SubResource("Curve_j53bq")
-
-[sub_resource type="Curve" id="Curve_vafvb"]
-_data = [Vector2(0, 0.0674158), 0.0, 0.0, 0, 0, Vector2(0.429167, 0.337079), 0.0, 0.0, 0, 0, Vector2(1, 0.134832), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_2umrp"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_cqe75"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_j53bq"]
-curve_x = SubResource("Curve_vafvb")
-curve_y = SubResource("Curve_2umrp")
-curve_z = SubResource("Curve_cqe75")
-
-[sub_resource type="Curve" id="Curve_05sqr"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.483333, 1), 0.0, 0.0, 0, 0, Vector2(0.833333, 0.775281), -2.20633, -2.20633, 0, 0, Vector2(0.95, 0), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_ym5p0"]
-curve = SubResource("Curve_05sqr")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s2ody"]
-particle_flag_disable_z = true
-emission_shape_offset = Vector3(59.485, 52.04, 0)
-direction = Vector3(1, -0.02, 0)
-spread = 0.0
-initial_velocity_min = 118.71
-initial_velocity_max = 118.71
-directional_velocity_min = -553.25
-directional_velocity_max = -553.25
-directional_velocity_curve = SubResource("CurveXYZTexture_j53bq")
-attractor_interaction_enabled = false
-scale_curve = SubResource("CurveTexture_ym5p0")
-color = Color(0.282353, 0.286275, 0.784314, 1)
-alpha_curve = SubResource("CurveTexture_05sqr")
-
 [node name="TheWorldMachine" type="Node" unique_id=1533983871 node_paths=PackedStringArray("MenuPanel", "MenuButton", "WindowToOpen", "NikoSpriteNode", "NikoAnimationPlayer", "MeowSoundPlayer", "SleepParticles")]
 script = ExtResource("1_wmw63")
 Meows = [ExtResource("2_ghshe"), ExtResource("3_fv2he"), ExtResource("4_5smuj"), ExtResource("5_5smuj"), ExtResource("6_y5ved"), ExtResource("9_30vx0"), ExtResource("7_gv8l5"), ExtResource("8_8jixl")]
@@ -656,6 +640,72 @@ volume_db = -5.0
 [node name="MouseUp" type="AudioStreamPlayer" parent="MouseSoundPlayer" unique_id=1728053759]
 stream = ExtResource("44_euc68")
 volume_db = -5.0
+
+[node name="ClickbleArea" type="Node" parent="." unique_id=880889786 node_paths=PackedStringArray("NikoSprite")]
+script = ExtResource("114_8jixl")
+NikoSprite = NodePath("../NikoBase/Niko")
+
+[node name="NikoBase" type="VBoxContainer" parent="." unique_id=738868689 node_paths=PackedStringArray("NikoClickControl", "NikoSpriteNode", "AreasNode", "SleepParticles")]
+offset_right = 124.0
+offset_bottom = 150.0
+theme = ExtResource("112_uush8")
+theme_override_constants/separation = 0
+script = ExtResource("18_wmw63")
+NikoClickControl = NodePath("Niko")
+NikoSpriteNode = NodePath("Niko")
+AreasNode = NodePath("")
+SleepParticles = NodePath("GPUParticles2D")
+
+[node name="Niko" type="TextureRect" parent="NikoBase" unique_id=1991101792]
+texture_filter = 1
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+texture = ExtResource("16_7th4q")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NikoBase/Niko" unique_id=1616263173]
+libraries/ = SubResource("AnimationLibrary_7th4q")
+
+[node name="MenuPanel" type="HBoxContainer" parent="NikoBase" unique_id=356451475]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="MenuButton" type="Button" parent="NikoBase/MenuPanel" unique_id=175337361]
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("114_77al4")
+theme_override_styles/pressed = ExtResource("114_77al4")
+theme_override_styles/hover = ExtResource("114_77al4")
+theme_override_styles/disabled = ExtResource("114_77al4")
+icon = ExtResource("115_8g87k")
+icon_alignment = 1
+
+[node name="СounterPanel" type="PanelContainer" parent="NikoBase/MenuPanel" unique_id=472332324]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="Counter" type="Label" parent="NikoBase/MenuPanel/СounterPanel" unique_id=632536758]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+script = ExtResource("116_dftep")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="NikoBase" unique_id=185067943]
+emitting = false
+amount = 4
+texture = ExtResource("16_vafvb")
+lifetime = 2.95
+interpolate = false
+visibility_rect = Rect2(0, 0, 124, 152)
+local_coords = true
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_s2ody")
 
 [node name="Events" type="Node" parent="." unique_id=1879553896]
 script = ExtResource("14_x3j81")
@@ -1782,9 +1832,7 @@ metadata/_custom_type_script = "uid://by1cd1rvin4oh"
 title = "titles.shutdown"
 size = Vector2i(328, 208)
 visible = false
-transient_to_focused = true
 exclusive = true
-popup_window = false
 minimize_disabled = true
 ignore_on_top_settings = true
 
@@ -1793,9 +1841,6 @@ mouse_filter = 1
 
 [node name="WindowContainer" parent="ShutdownPopup/Control" index="0" unique_id=106878241]
 mouse_filter = 1
-
-[node name="Icon" parent="ShutdownPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/IconContainer" parent_id_path=PackedInt32Array(1496860589, 1002331087) index="0" unique_id=1518425686]
-icon = ExtResource("25_opjno")
 
 [node name="Title" parent="ShutdownPopup/Control/WindowContainer/Topbar/MarginContainer/HBoxContainer" parent_id_path=PackedInt32Array(1496860589, 332691484) index="1" unique_id=2015855131]
 visible = false
@@ -4321,99 +4366,20 @@ layout_mode = 2
 text = "settings.taskbar.reset_pos"
 alignment = 0
 
-[node name="Shutdown" type="Button" parent="IndicatorPopup/Panel/MarginContainer/VBoxContainer" unique_id=1111468738]
+[node name="Shutdown" type="Button" parent="IndicatorPopup/Panel/MarginContainer/VBoxContainer" unique_id=1111468738 node_paths=PackedStringArray("shutdown_popup")]
 use_parent_material = true
 layout_mode = 2
 text = "titles.shutdown"
 alignment = 0
+script = ExtResource("36_mfmn3")
+shutdown_popup = NodePath("../../../../../ShutdownPopup")
+use_double_click = false
 
 [node name="StatusIndicator" type="StatusIndicator" parent="." unique_id=1578129275 node_paths=PackedStringArray("styled_menu")]
 tooltip = "Niko!!!1!"
 icon = ExtResource("10_wr18j")
 script = ExtResource("88_7y85w")
 styled_menu = NodePath("../IndicatorPopup")
-
-[node name="Area" type="Node2D" parent="." unique_id=1077347290 node_paths=PackedStringArray("ClickablePolygon", "MousePolygon", "NikoSprite")]
-script = ExtResource("114_8jixl")
-ClickablePolygon = NodePath("ClickableArea")
-MousePolygon = NodePath("MouseArea")
-NikoSprite = NodePath("../NikoBase/Niko")
-
-[node name="ClickableArea" type="Area2D" parent="Area" unique_id=242231655]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/ClickableArea" unique_id=1917805216 node_paths=PackedStringArray("move_to")]
-position = Vector2(0, 120)
-shape = SubResource("WorldBoundaryShape2D_uush8")
-script = SubResource("GDScript_2supj")
-move_to = NodePath("../../../NikoBase/MenuPanel")
-
-[node name="MouseArea" type="Area2D" parent="Area" unique_id=294532626]
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area/MouseArea" unique_id=748962583]
-shape = SubResource("CircleShape2D_gv8l5")
-
-[node name="NikoBase" type="VBoxContainer" parent="." unique_id=738868689 node_paths=PackedStringArray("NikoClickControl", "NikoSpriteNode", "AreasNode", "SleepParticles")]
-offset_right = 124.0
-offset_bottom = 150.0
-theme = ExtResource("112_uush8")
-theme_override_constants/separation = 0
-script = ExtResource("18_wmw63")
-NikoClickControl = NodePath("Niko")
-NikoSpriteNode = NodePath("Niko")
-AreasNode = NodePath("../Area/ClickableArea")
-SleepParticles = NodePath("GPUParticles2D")
-
-[node name="Niko" type="TextureRect" parent="NikoBase" unique_id=1991101792]
-texture_filter = 1
-custom_minimum_size = Vector2(120, 120)
-layout_mode = 2
-size_flags_horizontal = 0
-mouse_default_cursor_shape = 2
-texture = ExtResource("16_7th4q")
-expand_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NikoBase/Niko" unique_id=1616263173]
-libraries/ = SubResource("AnimationLibrary_7th4q")
-
-[node name="MenuPanel" type="HBoxContainer" parent="NikoBase" unique_id=356451475]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 2
-
-[node name="MenuButton" type="Button" parent="NikoBase/MenuPanel" unique_id=175337361]
-layout_mode = 2
-mouse_filter = 1
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = ExtResource("114_77al4")
-theme_override_styles/pressed = ExtResource("114_77al4")
-theme_override_styles/hover = ExtResource("114_77al4")
-theme_override_styles/disabled = ExtResource("114_77al4")
-icon = ExtResource("115_8g87k")
-icon_alignment = 1
-
-[node name="СounterPanel" type="PanelContainer" parent="NikoBase/MenuPanel" unique_id=472332324]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 1
-
-[node name="Counter" type="Label" parent="NikoBase/MenuPanel/СounterPanel" unique_id=632536758]
-layout_mode = 2
-text = "0"
-horizontal_alignment = 2
-script = ExtResource("116_dftep")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="NikoBase" unique_id=185067943]
-emitting = false
-amount = 4
-texture = ExtResource("16_vafvb")
-lifetime = 2.95
-interpolate = false
-visibility_rect = Rect2(0, 0, 124, 152)
-local_coords = true
-draw_order = 0
-process_material = SubResource("ParticleProcessMaterial_s2ody")
 
 [connection signal="gui_input" from="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer/Github/Button" to="ShortcutsWindow/Control/WindowContainer/Content/MarginContainer/ScrollContainer/MarginContainer/GridContainer" method="_on_github_gui_input"]
 
