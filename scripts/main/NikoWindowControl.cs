@@ -23,7 +23,7 @@ public partial class NikoWindowControl : Control
 	//private bool IsDragging = false;
 	//private Vector2I MouseOffset = new();
 
-	public override void _Ready()
+	public override async void _Ready()
 	{
 		_mainWindow = GetWindow();
 		_valuesContainer = GetNode<ValuesContainer>("/root/ValuesContainer");
@@ -62,6 +62,7 @@ public partial class NikoWindowControl : Control
 			_windowExtantions.UpdateWindowsExStyles(_mainWindow, !ShowTaskbarIcon);
 		};
 
+		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 		UpdateScale();
 	}
 

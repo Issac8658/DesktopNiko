@@ -111,7 +111,7 @@ func win():
 	screen_win.visible = true
 	sound_tennis_music.stop()
 	sound_win.play()
-	#GlobalControlls.doned_events += 1
+	ValuesContainer.DonedEvents += 1
 	#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 

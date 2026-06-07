@@ -30,7 +30,7 @@ func _ready() -> void:
 	popup.yes_button_pressed.connect(func ():
 		print(\"pressed yes\")
 		play_eating_anim()
-		#GlobalControlls.doned_events += 1
+		ValuesContainer.DonedEvents += 1
 		if not AchievementsController.IsAchievementTaked(\"time_to_dinner\"):
 			AchievementsController.TakeAchievement(\"time_to_dinner\", true)
 	)

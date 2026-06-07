@@ -27,7 +27,6 @@ public partial class PipeBuilder : Node2D
 			if (node is Node2D Monitor)
 				CreatePipe(Monitor);
 		}
-		Position = GetWindow().Size / 2;
 	}
 
 	public override void _Process(double delta)
