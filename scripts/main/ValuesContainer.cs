@@ -58,14 +58,14 @@ public partial class ValuesContainer : Node
 	private int _donedEvents = 0;
 	//private bool _shutdownButtonHovered = false;
 	//private bool _shutdownPopupShowed = false;
-	private Color _themeColorMain;
-	private Color _themeColorHover;
-	private Color _themeColorOutlineHover;
-	private Color _themeColorBaseHover;
-	private Color _themeColorOutlinePressed;
-	private Color _themeColorBasePressed;
-	private Color _themeColorBackground;
-	private bool _themeRainbow;
+	private Color _themeColorMain = new(0.588f, 0.392f, 1);
+	private Color _themeColorHover = new(0.392f, 0.259f, 0.647f);
+	private Color _themeColorOutlineHover = new(0.196f, 0.129f, 0.322f);
+	private Color _themeColorBaseHover = new(0.098f, 0.067f, 0.161f);
+	private Color _themeColorOutlinePressed = new(0.294f, 0.196f, 0.498f);
+	private Color _themeColorBasePressed = new(0.149f, 0.098f, 0.251f);
+	private Color _themeColorBackground = new(0, 0, 0);
+	private bool _themeRainbow = false;
 	#endregion
 	#region >>Niko States
 	private byte _nikoScale = 1; // 0 - 0.5x, 1 - 1x, 2 - 2x, 3 - 3x, 4 - 4x
@@ -428,6 +428,7 @@ public partial class ValuesContainer : Node
 
 	public override void _Ready()
 	{
+		
 		_verison = (string)ProjectSettings.GetSetting("application/config/version");
 		GlobalTimer.WaitTime = 1;
 		GlobalTimer.OneShot = false;

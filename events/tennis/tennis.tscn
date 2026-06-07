@@ -102,6 +102,10 @@ func revert():
 
 
 func win():
+	print(\"win\")
+	if not AchievementsController.IsAchievementTaked(\"little_win\"):
+		AchievementsController.TakeAchievement(\"little_win\", true)
+	update_facepic(NikoSkinManager.GetCurrentSkinSprite(\"sleepy\"), NikoSkinManager.GetCurrentSkinBaseScale())
 	gaming = false
 	tennis_ball.visible = false
 	screen_win.visible = true
@@ -112,6 +116,7 @@ func win():
 
 
 func lose():
+	update_facepic(NikoSkinManager.GetCurrentSkinSprite(\"cool\"), NikoSkinManager.GetCurrentSkinBaseScale())
 	gaming = false
 	tennis_ball.visible = false
 	screen_lose.visible = true
@@ -141,10 +146,6 @@ func _physics_process(delta: float) -> void:
 			tennis_ball_pos[0] = randf_range(200,600)
 			tennis_ball_pos[1] = randf_range(150,300)
 			if niko_raket_fake_pos.distance_to(Vector2(tennis_ball_pos[2], tennis_ball_pos[3])) >= niko_raket_size:
-				print(\"win\")
-				if not AchievementsController.IsAchievementTaked(\"little_win\"):
-					AchievementsController.TakeAchievement(\"little_win\", true)
-				update_facepic(NikoSkinManager.GetCurrentSkinSprite(\"sleepy\"), NikoSkinManager.GetCurrentSkinBaseScale())
 				win()
 			else:
 				sound_niko_shot.play()
@@ -165,7 +166,6 @@ func _physics_process(delta: float) -> void:
 			#print(player_raket_pos + window.position - Vector2i(5,30))
 			#print(Vector2(tennis_ball_pos[0], tennis_ball_pos[1]))
 			if Vector2(player_raket_pos + Vector2(window.position) - Vector2(5,30)).distance_to(Vector2(tennis_ball_pos[0], tennis_ball_pos[1])) >= player_raket_size:
-				update_facepic(NikoSkinManager.GetCurrentSkinSprite(\"cool\"), NikoSkinManager.GetCurrentSkinBaseScale())
 				lose()
 			else:
 				sound_player_shot.play()
@@ -204,7 +204,7 @@ func mix(a : Vector2, b : Vector2, alpha : float) -> Vector2:
 
 func update_facepic(facepic : Texture2D, scale : float):
 	playing_niko_rect.texture = facepic
-	playing_niko_rect.custom_minimum_size = facepic.get_size() * scale
+	playing_niko_rect.size = facepic.get_size() * scale
 "
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64cqo"]
@@ -482,13 +482,13 @@ use_parent_material = true
 layout_mode = 2
 
 [node name="Nikochko" type="TextureRect" parent="TennisWindow/Control/WindowContainer/Content/Game" unique_id=1915246910]
-custom_minimum_size = Vector2(120, 120)
 layout_mode = 0
 offset_left = 338.0
 offset_top = 198.0
 offset_right = 458.0
 offset_bottom = 318.0
 texture = ExtResource("7_i1fqx")
+expand_mode = 1
 
 [node name="NikoRaket" type="Button" parent="TennisWindow/Control/WindowContainer/Content/Game" unique_id=1581699435]
 texture_filter = 2

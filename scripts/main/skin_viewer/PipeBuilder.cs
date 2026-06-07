@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class PipeBuilder : Node
+public partial class PipeBuilder : Node2D
 {
 	[Export]
 	public PackedScene PipeTemplate;
@@ -27,6 +27,7 @@ public partial class PipeBuilder : Node
 			if (node is Node2D Monitor)
 				CreatePipe(Monitor);
 		}
+		Position = GetWindow().Size / 2;
 	}
 
 	public override void _Process(double delta)

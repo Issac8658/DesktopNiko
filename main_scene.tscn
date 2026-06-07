@@ -645,7 +645,7 @@ volume_db = -5.0
 script = ExtResource("114_8jixl")
 NikoSprite = NodePath("../NikoBase/Niko")
 
-[node name="NikoBase" type="VBoxContainer" parent="." unique_id=738868689 node_paths=PackedStringArray("NikoClickControl", "NikoSpriteNode", "SleepParticles")]
+[node name="NikoBase" type="VBoxContainer" parent="." unique_id=738868689 node_paths=PackedStringArray("NikoClickControl", "NikoSpriteNode", "SleepParticles", "NikoCtrlr")]
 offset_right = 124.0
 offset_bottom = 150.0
 theme = ExtResource("112_uush8")
@@ -654,6 +654,7 @@ script = ExtResource("18_wmw63")
 NikoClickControl = NodePath("Niko")
 NikoSpriteNode = NodePath("Niko")
 SleepParticles = NodePath("GPUParticles2D")
+NikoCtrlr = NodePath("..")
 
 [node name="Niko" type="TextureRect" parent="NikoBase" unique_id=1991101792]
 texture_filter = 1

@@ -130,7 +130,6 @@ public partial class NikoController : Node
 		_valuesContainer.FacepicUnforced += DoWhatNikoNeedToDo;
 		_valuesContainer.GlobalTimerTicked += GlobalTimerTicked;
 		_valuesContainer.NikoFlipped += Flipped => NikoSpriteNode.FlipH = Flipped;
-		_skinManager.SkinChanged += SkinId => UpdateFacepic();
 
 		NikoSpriteNode.GuiInput += Event =>
 		{
@@ -177,7 +176,7 @@ public partial class NikoController : Node
 
 
 
-	private void UpdateFacepic()
+	public void UpdateFacepic()
 	{
 		SleepParticles.Emitting = false;
 		switch (_currentState)

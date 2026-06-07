@@ -42,6 +42,7 @@ public partial class MainScreenController : Node2D
 			if (SelectedSkin != "")
 				SkinManager.SetSkin(SelectedSkin);
 		};
+		Position = GetWindow().Size / 2;
 	}
 	
 

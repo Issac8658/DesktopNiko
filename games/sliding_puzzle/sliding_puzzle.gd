@@ -18,8 +18,8 @@ var win_tween
 
 func _ready() -> void:
 	for file_name in DirAccess.get_files_at("res://sprites/pictures/"):
-		if file_name.ends_with(".png"):
-			pictures.append(load("res://sprites/pictures/" + file_name))
+		if file_name.ends_with(".png") or file_name.ends_with(".png.import"):
+			pictures.append(load("res://sprites/pictures/" + file_name.replace(".import", "")))
 	
 	var rand_image = pictures.pick_random()
 	var image_size = rand_image.get_size()
