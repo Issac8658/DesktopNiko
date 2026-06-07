@@ -18,6 +18,7 @@ func do_event() -> void:
 		NikoDialog.EndDialog()
 		ValuesContainer.UnforceFacepic()
 		AchievementsController.TakeAchievement(\"meow\", true)
+		ValuesContainer.DonedEvents += 1
 		called_to_clear.emit()
 	, CONNECT_ONE_SHOT)
 	ValuesContainer.ForceFacepic(\"smug\")

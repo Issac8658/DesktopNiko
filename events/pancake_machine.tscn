@@ -46,7 +46,7 @@ func _ready() -> void:
 					passcode_container.visible = true
 					cancel_button.pressed.connect(func ():
 						if passcode_parts_contrainers[0].text + passcode_parts_contrainers[1].text + passcode_parts_contrainers[2].text == PASSCODE:
-							#GlobalControlls.doned_events += 1
+							ValuesContainer.DonedEvents += 1
 							ValuesContainer.ForceFacepic(\"pancakes\")
 							animator.play(\"true\")
 							if not AchievementsController.IsAchievementTaked(\"hacked_a_machine\"):
