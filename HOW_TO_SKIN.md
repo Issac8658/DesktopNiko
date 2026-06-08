@@ -7,7 +7,7 @@ Your skin will be a folder with images supported by Godot (see [Supported image 
 
 ## Sprites
 
-Default sprites use a 60x60 resolution for each sprite with 2x scaling in skin configuration, I recommend using the same resolution for each sprite
+By default, sprites use a resolution of 60x60 for each sprite with 2x scaling in the skin configuration, but you can use any resolution and I recommend using the same resolution for each sprite.
 
 ### Required sprites
 
