@@ -89,4 +89,10 @@ public partial class TetrisMenu : Node
 		tween.SetTrans(Tween.TransitionType.Quint);
 		tween.TweenProperty(PausePanel, "modulate", result, 0.25);
 	}
+
+	private void ResetPosition()
+	{
+		int Screen = DisplayServer.WindowGetCurrentScreen(GameController.GetWindowId());
+		MenuWindow.Position = DisplayServer.ScreenGetPosition(Screen) + DisplayServer.ScreenGetSize(Screen) / 2 - MenuWindow.Size/2;
+	}
 }
