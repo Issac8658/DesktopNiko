@@ -42,5 +42,7 @@ achievements.tetris.title,Tetris!,Tetris!,Tetris!,Tetris!
 achievements.tetris.description,Destroy 4 lines at a time in Tetris.,Уничтожьте 4 линии в Тетрисе за раз.,,Знищуйте 4 лінії в Тетрісі за раз.
 achievements.tetris_oneshot.title,OneShot!,OneShot!,OneShot!,OneShot!
 achievements.tetris_oneshot.description,Get the maximum style rank in Tetris.,Получите максимальный ранг стиля в Тетрисе.,,Отримайте максимальний ранг стилю в Тетрісі.
+achievements.tetris_10000.title,"Level: Easy","Уровень: Легкий",,"Складно, але можливо"
+achievements.tetris_10000.description,"Score 10,000 points in Tetris.",Наберите 10.000 очков в Тетрисе.,,Наберіть 10.000 очок у Тетрісі.
 achievements.tetris_25000.title,"Difficult, but possible","Сложно, но возможно",,"Складно, але можливо"
 achievements.tetris_25000.description,"Score 25,000 points in Tetris.",Наберите 25.000 очков в Тетрисе.,,Наберіть 25.000 очок у Тетрісі.
