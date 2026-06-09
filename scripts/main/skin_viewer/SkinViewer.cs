@@ -12,12 +12,13 @@ public partial class SkinViewer : Window
 		ExitButton.Pressed += Hide;
 		CloseRequested += Hide;
 		VisibilityChanged += Update;
-
-		Update();
 	}
 
 	private void Update()
 	{
+		if (!Visible)
+			return;
+
 		int Screen = DisplayServer.WindowGetCurrentScreen(GetWindowId());
 		Vector2I ScreenPos = DisplayServer.ScreenGetPosition(Screen);
 		Vector2I ScreenSize = DisplayServer.ScreenGetSize(Screen);

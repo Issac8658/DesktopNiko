@@ -209,23 +209,21 @@ public partial class SaveLoad : Node
 			if (saveFile.HasSectionKey("Main", "Clicks"))
 				if (UInt128.TryParse(saveFile.GetValue("Main", "Clicks").AsString(), out UInt128 result))
 					currentClicks = result;
-			if (!_valuesContainer.LegacyClicksReturned && saveFile.HasSectionKey("TWM", "LegacyClicksReturned"))
-				if (saveFile.GetValue("TWM", "LegacyClicksReturned").AsBool())
-				{
-					
-					ConfigFile oldSaveFile = new();
-					Error oldSaveErr = oldSaveFile.Load("user://1.1.4_backup.cfg");
-					if (oldSaveErr != Error.Ok)
-						GD.PushWarning("Failed to read old save file, old clicks cannot be returned: " + err);
-					else if (oldSaveFile.HasSectionKey("Main", "Clicks"))
-						if (UInt128.TryParse(oldSaveFile.GetValue("Main", "Clicks").AsString(), out UInt128 result))
-							if (result > currentClicks)
-							{
-								_valuesContainer.Clicks = result;
-								GetNode("GlobalPopupWindow").Call("show_popup", "", "other.old_clicks");
-								_valuesContainer.LegacyClicksReturned = true;
-							}
-				}
+			if (!_valuesContainer.LegacyClicksReturned)
+			{
+				ConfigFile oldSaveFile = new();
+				Error oldSaveErr = oldSaveFile.Load("user://1.1.4_backup.cfg");
+				if (oldSaveErr != Error.Ok)
+					GD.PushWarning("Failed to read old save file, old clicks cannot be returned: " + err);
+				else if (oldSaveFile.HasSectionKey("Main", "Clicks"))
+					if (UInt128.TryParse(oldSaveFile.GetValue("Main", "Clicks").AsString(), out UInt128 result))
+						if (result > currentClicks)
+						{
+							currentClicks = result;
+							GetNode("/root/GlobalPopupWindow").Call("show_popup", "", "other.old_clicks");
+							_valuesContainer.LegacyClicksReturned = true;
+						}
+			}
 			_valuesContainer.Clicks = currentClicks;
 			AudioServer.SetBusVolumeLinear(0, (float)saveFile.GetValue("TWM", "MasterVolume", 1));
 			AudioServer.SetBusVolumeLinear(1, (float)saveFile.GetValue("TWM", "MeowVolume", 1));

@@ -14,6 +14,8 @@ func _ready() -> void:
 
 func do_event() -> void:
 	NikoDialog.ShowDialog(Vector2i(200,100), \"achievements.meow.title\", null, 0.1)
+	ValuesContainer.ForceFacepic(\"smug\")
+	await get_tree().create_timer(0.5).timeout
 	NikoDialog.ShowNextRequest.connect(func():
 		NikoDialog.EndDialog()
 		ValuesContainer.UnforceFacepic()
@@ -21,7 +23,6 @@ func do_event() -> void:
 		ValuesContainer.DonedEvents += 1
 		called_to_clear.emit()
 	, CONNECT_ONE_SHOT)
-	ValuesContainer.ForceFacepic(\"smug\")
 	
 "
 

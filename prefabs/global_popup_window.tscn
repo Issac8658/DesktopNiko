@@ -4,11 +4,12 @@
 [ext_resource type="Script" uid="uid://boifga5d4w6e1" path="res://scripts/windows/global_popup_controller.gd" id="2_uwtmc"]
 
 [node name="GlobalPopupWindow" unique_id=1265308202 node_paths=PackedStringArray("title_label", "text_label") instance=ExtResource("1_aa6ba")]
+size = Vector2i(569, 251)
 visible = false
-wrap_controls = true
 script = ExtResource("2_uwtmc")
 title_label = NodePath("Control/WindowContainer/Topbar/MarginContainer/HBoxContainer/Title")
 text_label = NodePath("Control/WindowContainer/Content/PopupMargin/VBoxContainer/Quest")
+ignore_on_top_settings = true
 
 [node name="Quest" parent="Control/WindowContainer/Content/PopupMargin/VBoxContainer" parent_id_path=PackedInt32Array(1750489675) index="0" unique_id=1354308728]
 text = "You like pancakes."
