@@ -103,6 +103,8 @@ public partial class ValuesContainer : Node
 	public bool ShowSavingIcon = true;
 	public bool ShowAchievements = true;
 	public bool DoEvents = true;
+	public bool LegacyClicksReturned = false;
+
 	public byte Language
 	{
 		get => _language;
@@ -259,6 +261,7 @@ public partial class ValuesContainer : Node
 	public byte CurrentMeowSoundId = 0;
 	public bool SnapToBottom = true;
 	public bool PeacfulMode = false;
+	public bool NikoCanSleep = true;
 
 	public string IdleFacepic
 	{

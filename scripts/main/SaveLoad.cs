@@ -37,7 +37,8 @@ public partial class SaveLoad : Node
                 {"ThemeColorOutlinePressed", "ThemeColorOutlinePressed"},
                 {"ThemeColorBasePressed", "ThemeColorBasePressed"},
                 {"ThemeColorBackground", "ThemeColorBackground"},
-                {"ThemeRainbow", "ThemeRainbow"}
+                {"ThemeRainbow", "ThemeRainbow"},
+                {"LegacyClicksReturned", "LegacyClicksReturned"}
             }
         },
         {"NikoStates", new()
@@ -51,6 +52,7 @@ public partial class SaveLoad : Node
                 {"ScaredSpeakFacepic", "ScaredSpeakFacepic"},
                 {"NikoScale", "NikoScale"},
                 {"NikoTimeToSleep", "NikoTimeToSleep"},
+                {"NikoCanSleep", "NikoCanSleep"},
                 {"CurrentSkin", "Skin"},
                 {"IsWorldMachine", "WorldMachine"}
             }
@@ -61,7 +63,6 @@ public partial class SaveLoad : Node
         // vars from ValuesContainer.cs to save
         {"Main", new()
             {
-                {"Clicks", "Clicks"},
                 {"CurrentMeowSoundId", "MeowSoundId"},
                 {"TotalTime", "TotalTime"},
                 {"NikoScale", "NikoScale"},
@@ -170,6 +171,9 @@ public partial class SaveLoad : Node
                     _achievementsController.TakeAchievement(achievementId, false);
                 }
             }
+            if (saveFile.HasSectionKey("Main", "Clicks"))
+                if (UInt128.TryParse(saveFile.GetValue("Main", "Clicks").AsString(), out UInt128 result))
+                    _valuesContainer.Clicks = result;
             AudioServer.SetBusVolumeLinear(0, (float)saveFile.GetValue("Settings", "MasterVolume", 1));
             AudioServer.SetBusVolumeLinear(1, (float)saveFile.GetValue("Settings", "MeowVolume", 1));
         }
@@ -201,16 +205,34 @@ public partial class SaveLoad : Node
                     _achievementsController.TakeAchievement(achievementId, false);
                 }
             }
+            UInt128 currentClicks = 0;
             if (saveFile.HasSectionKey("Main", "Clicks"))
                 if (UInt128.TryParse(saveFile.GetValue("Main", "Clicks").AsString(), out UInt128 result))
-                    _valuesContainer.Clicks = result;
+                    currentClicks = result;
+            if (saveFile.HasSectionKey("TWM", "LegacyClicksReturned"))
+                if (saveFile.GetValue("TWM", "LegacyClicksReturned").AsBool())
+                {
+                    
+                    ConfigFile oldSaveFile = new();
+                    Error oldSaveErr = oldSaveFile.Load("user://1.1.4_backup.cfg");
+                    if (oldSaveErr != Error.Ok)
+                        GD.PushWarning("Failed to read old save file, old clicks cannot be returned: " + err);
+                    else if (oldSaveFile.HasSectionKey("Main", "Clicks"))
+                        if (UInt128.TryParse(oldSaveFile.GetValue("Main", "Clicks").AsString(), out UInt128 result))
+                            if (result > currentClicks)
+                            {
+                                _valuesContainer.Clicks = result;
+                                GetNode("GlobalPopupWindow").Call("show_popup", "", "other.old_clicks");
+                            }
+                }
+            _valuesContainer.Clicks = currentClicks;
             AudioServer.SetBusVolumeLinear(0, (float)saveFile.GetValue("TWM", "MasterVolume", 1));
             AudioServer.SetBusVolumeLinear(1, (float)saveFile.GetValue("TWM", "MeowVolume", 1));
             AudioServer.SetBusVolumeLinear(2, (float)saveFile.GetValue("TWM", "MusicVolume", 1));
         }
     }
 
-    private void BackupSave(string NewName)
+    private static void BackupSave(string NewName)
     {
         DirAccess UserFolder = DirAccess.Open("user://");
         if (UserFolder.FileExists(SAVE_FILE_PATH))
