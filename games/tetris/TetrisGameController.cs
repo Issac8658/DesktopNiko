@@ -197,6 +197,8 @@ namespace Tetris
 				TweenLowPass(300);
 			}; // menu
 
+			CloseRequested += QueueFree;
+
 			BlockDropped += (DestroyedLinesCount, Spin) => _score += SpinPoints[Spin][DestroyedLinesCount];
 
 			// init redraw
