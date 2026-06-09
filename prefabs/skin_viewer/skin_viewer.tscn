@@ -22,7 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://kofp1aca6crn" path="res://sprites/ui/world_machine/fullscreen_border_up_frame2.png" id="14_08ho8"]
 [ext_resource type="Texture2D" uid="uid://c7eu46vnfe3m3" path="res://sprites/ui/world_machine/fullscreen_border_left_frame2.png" id="16_xgbat"]
 [ext_resource type="Texture2D" uid="uid://ruqprahda1wp" path="res://sprites/ui/world_machine/fullscreen_border_right_frame2.png" id="17_d5j35"]
+[ext_resource type="PackedScene" uid="uid://b1ypbdeyjoksp" path="res://prefabs/state_icon.tscn" id="23_7h3ry"]
 [ext_resource type="Texture2D" uid="uid://dxttgd6e0px18" path="res://sprites/icons/quit.png" id="23_pg0m7"]
+[ext_resource type="Texture2D" uid="uid://tj87jbb0bkde" path="res://sprites/icons/link.png" id="24_o4t38"]
 [ext_resource type="Texture2D" uid="uid://bmkfjsjqgrlxn" path="res://sprites/icons/restart.png" id="24_rt5mw"]
 
 [sub_resource type="Gradient" id="Gradient_4rl6t"]
@@ -78,6 +80,53 @@ alpha_curve = SubResource("CurveTexture_4uqou")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bd1xs"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y18gd"]
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 40.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grbmq"]
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 40.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvmxm"]
+content_margin_left = 4.0
+content_margin_top = 6.0
+content_margin_right = 40.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.64705884, 0.64705884, 0.64705884, 1)
+
+[sub_resource type="GDScript" id="GDScript_7h3ry"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pressed.connect(func ():
+		OS.shell_open(\"https://github.com/Issac8658/DesktopNiko/blob/main/HOW_TO_SKIN.md\")
+	)
+"
+
 [node name="SkinViewer" type="Window" unique_id=719478319 node_paths=PackedStringArray("ExitButton", "TopBorder", "RightBorder", "BottomBorder", "LeftBorder")]
 canvas_item_default_texture_filter = 0
 oversampling_override = 1.0
@@ -88,7 +137,7 @@ minimize_disabled = true
 maximize_disabled = true
 theme = ExtResource("1_siacp")
 script = ExtResource("2_5qhg3")
-ExitButton = NodePath("WindowButtonsAnchor/ExitButton")
+ExitButton = NodePath("WindowButtonsAnchor/HBoxContainer/ExitButton")
 TopBorder = NodePath("ScreenBounds/Top")
 RightBorder = NodePath("ScreenBounds/Right")
 BottomBorder = NodePath("ScreenBounds/Bottom")
@@ -369,17 +418,56 @@ grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="ExitButton" type="Button" parent="WindowButtonsAnchor" unique_id=2003815982]
-z_index = 1
-material = ExtResource("11_xgbat")
-layout_mode = 0
-offset_left = -48.0
+[node name="HBoxContainer" type="HBoxContainer" parent="WindowButtonsAnchor" unique_id=754222606]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -604.0
 offset_top = 8.0
 offset_right = -8.0
 offset_bottom = 48.0
+grow_horizontal = 0
+
+[node name="HowToSkin" type="Button" parent="WindowButtonsAnchor/HBoxContainer" unique_id=2077610780]
+z_index = 1
+material = ExtResource("11_xgbat")
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("2_4jyfp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_y18gd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_grbmq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lvmxm")
+text = "other.skins.how_to_skin"
+alignment = 2
+icon_alignment = 2
+script = SubResource("GDScript_7h3ry")
+
+[node name="StateIcon" parent="WindowButtonsAnchor/HBoxContainer/HowToSkin" unique_id=1653320294 instance=ExtResource("23_7h3ry")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -36.0
+offset_top = -16.0
+offset_right = -4.0
+offset_bottom = 16.0
+grow_horizontal = 0
+icon = ExtResource("24_o4t38")
+expand_icon = true
+on_icon = ExtResource("24_o4t38")
+off_icon = ExtResource("24_o4t38")
+
+[node name="ExitButton" type="Button" parent="WindowButtonsAnchor/HBoxContainer" unique_id=2003815982]
+z_index = 1
+material = ExtResource("11_xgbat")
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 8
 theme = ExtResource("2_4jyfp")
 
-[node name="TextureRect" type="Button" parent="WindowButtonsAnchor/ExitButton" unique_id=1286560365]
+[node name="TextureRect" type="Button" parent="WindowButtonsAnchor/HBoxContainer/ExitButton" unique_id=1286560365]
 use_parent_material = true
 layout_mode = 1
 anchors_preset = 8
@@ -398,18 +486,15 @@ theme_type_variation = &"IconButton"
 icon = ExtResource("23_pg0m7")
 expand_icon = true
 
-[node name="ReloadButton" type="Button" parent="WindowButtonsAnchor" unique_id=1227696004]
+[node name="ReloadButton" type="Button" parent="WindowButtonsAnchor/HBoxContainer" unique_id=1227696004]
 visible = false
 z_index = 1
 material = ExtResource("11_xgbat")
-layout_mode = 0
-offset_left = -90.0
-offset_top = 8.0
-offset_right = -50.0
-offset_bottom = 48.0
+layout_mode = 2
+size_flags_horizontal = 10
 theme = ExtResource("2_4jyfp")
 
-[node name="TextureRect" type="Button" parent="WindowButtonsAnchor/ReloadButton" unique_id=1397685828]
+[node name="TextureRect" type="Button" parent="WindowButtonsAnchor/HBoxContainer/ReloadButton" unique_id=1397685828]
 use_parent_material = true
 layout_mode = 1
 anchors_preset = 8
