@@ -19,7 +19,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Desktop Niko"
-config/version="5.0.2"
+config/version="5.0.3"
 config/tags=PackedStringArray("niko", "non_com", "one_shot", "software")
 run/main_scene="uid://cj66sb2a5oolj"
 config/use_custom_user_dir=true
@@ -40,6 +40,7 @@ buses/default_bus_layout="uid://bhb1lhs548lii"
 
 [autoload]
 
+GlobalPopupWindow="*uid://xlxdote1hlo5"
 ShutdownHandler="res://scripts/ShutdownHandler.cs"
 WindowExstantions="*uid://dmmny8ej1eouw"
 ValuesContainer="*res://scripts/main/ValuesContainer.cs"

@@ -899,6 +899,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"ThickPanelContainer"
 
+[node name="Panel" type="Panel" parent="BlockPuzzle/TextureRect/Panel" unique_id=355916905]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BlockPuzzle/TextureRect/Panel/Panel" unique_id=1687885212]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -65.0
+offset_top = -29.0
+offset_right = 65.0
+offset_bottom = -8.0
+grow_horizontal = 2
+text = "other.events.screen_break.help"
+
 [node name="MarginContainer" type="MarginContainer" parent="BlockPuzzle/TextureRect/Panel" unique_id=1194184026]
 use_parent_material = true
 layout_mode = 2

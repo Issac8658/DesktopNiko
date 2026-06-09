@@ -1831,7 +1831,6 @@ metadata/_custom_type_script = "uid://by1cd1rvin4oh"
 [node name="ShutdownPopup" parent="." unique_id=1496860589 instance=ExtResource("33_id8vy")]
 title = "titles.shutdown"
 size = Vector2i(328, 208)
-visible = false
 exclusive = true
 minimize_disabled = true
 ignore_on_top_settings = true
@@ -2809,6 +2808,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="General" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=796068923]
+visible = false
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 8
@@ -3117,6 +3117,7 @@ size_flags_horizontal = 3
 use_parent_material = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
+size_flags_vertical = 3
 bbcode_enabled = true
 script = SubResource("GDScript_k2ony")
 nodes = [NodePath("../../SettingsPanel/Peaceful"), NodePath("../../SettingsPanel/SavingIcon"), NodePath("../../SettingsPanel/GamingMode"), NodePath("../../SettingsPanel/ClickSound"), NodePath("../../SettingsPanel/ShowAchievements")]
@@ -3125,6 +3126,10 @@ texts = Array[String](["settings.general.hint.peaceful_mode", "settings.general.
 [node name="RecursiveThemeApplier" type="Node" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics/HintsText" unique_id=837269128]
 script = ExtResource("97_wonw5")
 metadata/_custom_type_script = "uid://by1cd1rvin4oh"
+
+[node name="Control" type="Control" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/Statistics" unique_id=318260903]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
 
 [node name="Niko" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=320743199]
 visible = false
@@ -3677,7 +3682,6 @@ layout_mode = 2
 text = "settings.niko.press_f_to_flip"
 
 [node name="Other" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer" unique_id=2021078338]
-visible = false
 use_parent_material = true
 layout_mode = 2
 
@@ -3870,6 +3874,7 @@ horizontal_scroll_mode = 0
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Title2" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=1709777476]
 visible = false
@@ -3988,6 +3993,7 @@ size_flags_horizontal = 3
 use_parent_material = true
 custom_minimum_size = Vector2(0, 104)
 layout_mode = 2
+size_flags_vertical = 3
 bbcode_enabled = true
 script = SubResource("GDScript_k2ony")
 nodes = [NodePath("../DoEvents"), NodePath("../NikoAlwaysOnTop"), NodePath("../WindowsAlwaysOnTop"), NodePath("../TaskBarIcon")]
@@ -3997,8 +4003,11 @@ texts = Array[String](["settings.other.hint.do_events", "settings.other.hint.nik
 script = ExtResource("97_wonw5")
 metadata/_custom_type_script = "uid://by1cd1rvin4oh"
 
+[node name="Control2" type="Control" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=1997513500]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
 [node name="ResetDataPopup" parent="SettingsWindow" unique_id=865820121 instance=ExtResource("33_id8vy")]
-visible = false
 maximize_disabled = false
 
 [node name="Control" parent="SettingsWindow/ResetDataPopup" index="1" unique_id=579132620]

@@ -197,6 +197,8 @@ namespace Tetris
 				TweenLowPass(300);
 			}; // menu
 
+			CloseRequested += QueueFree;
+
 			BlockDropped += (DestroyedLinesCount, Spin) => _score += SpinPoints[Spin][DestroyedLinesCount];
 
 			// init redraw
@@ -278,6 +280,8 @@ namespace Tetris
 
 			if (!AchievementsController.IsAchievementTakedStatic("tetris_25000") && _score >= 25000)
 				AchievementsController.TakeAchievementStatic("tetris_25000");
+			else if (!AchievementsController.IsAchievementTakedStatic("tetris_10000") && _score >= 10000)
+				AchievementsController.TakeAchievementStatic("tetris_10000");
 		}
 
 		private void ReDrawCurrentFigure(bool Drop = false) // redrawing current figure
