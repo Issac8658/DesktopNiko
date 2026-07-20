@@ -88,8 +88,8 @@ public partial class ValuesContainer : Node
 		get => _clicks;
 		set
 		{
-			EmitSignal("Clicked", (ulong)(value - _clicks));
 			_clicks = value;
+			EmitSignal("Clicked", (ulong)(value - _clicks));
 		}
 	}
 	public string Version
