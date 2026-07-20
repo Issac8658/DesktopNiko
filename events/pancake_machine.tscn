@@ -82,14 +82,16 @@ func revert():
 	called_to_clear.emit()
 
 func update_mouse_passthrough_polygon():
-	window.mouse_passthrough_polygon[0].x = 35
-	window.mouse_passthrough_polygon[0].y = viewport_container.position.y + container.position.y
-	window.mouse_passthrough_polygon[1].x = 365
-	window.mouse_passthrough_polygon[1].y = viewport_container.position.y + container.position.y
-	window.mouse_passthrough_polygon[2].x = 365
-	window.mouse_passthrough_polygon[2].y = viewport_container.position.y + viewport_container.size.y + container.position.y
-	window.mouse_passthrough_polygon[3].x = 35
-	window.mouse_passthrough_polygon[3].y = viewport_container.position.y + viewport_container.size.y + container.position.y
+	pass
+	# TODO: update this legacy code
+	#window.mouse_passthrough_polygon[0].x = 35
+	#window.mouse_passthrough_polygon[0].y = viewport_container.position.y + container.position.y
+	#window.mouse_passthrough_polygon[1].x = 365
+	#window.mouse_passthrough_polygon[1].y = viewport_container.position.y + container.position.y
+	#window.mouse_passthrough_polygon[2].x = 365
+	#window.mouse_passthrough_polygon[2].y = viewport_container.position.y + viewport_container.size.y + container.position.y
+	#window.mouse_passthrough_polygon[3].x = 35
+	#window.mouse_passthrough_polygon[3].y = viewport_container.position.y + viewport_container.size.y + container.position.y
 "
 
 [sub_resource type="Animation" id="Animation_qnufv"]
