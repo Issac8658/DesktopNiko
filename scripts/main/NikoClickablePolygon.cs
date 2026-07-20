@@ -41,8 +41,14 @@ public partial class NikoClickablePolygon : Node
 		if (_displayServerName == "Wayland" || _displayServerName == "X11")
 			return true;
 
-		if (MousePositionRelative.Y >= NikoSprite.Size.Y && MousePositionRelative.Y < NikoSprite.Size.Y + 30)
-			return true;
+		if (_valuesContainer.PanelIsFlipped)
+		{
+			if (MousePositionRelative.Y >= 0 && MousePositionRelative.Y < NikoSprite.Position.Y)
+				return true;
+		}
+		else
+			if (MousePositionRelative.Y >= NikoSprite.Size.Y && MousePositionRelative.Y < NikoSprite.Size.Y + 30)
+				return true;
 
 		Vector2 MousePositionOnRect = MousePositionRelative - (Vector2I)NikoSprite.Position;
 		Image NikoImage = NikoSprite.Texture.GetImage();

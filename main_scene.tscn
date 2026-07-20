@@ -145,6 +145,7 @@
 [ext_resource type="StyleBox" uid="uid://bt8jrmkhinmn" path="res://themes/twm_theme/dialog_panel.tres" id="114_77al4"]
 [ext_resource type="Texture2D" uid="uid://drnq140l71h0r" path="res://sprites/ui/menu_icon.tres" id="115_8g87k"]
 [ext_resource type="Script" uid="uid://cwe0iho0cgqye" path="res://scripts/ClicksLabel.cs" id="116_dftep"]
+[ext_resource type="Script" uid="uid://bcuyynax5je1r" path="res://scripts/windows/functional_windows/settings/panel_on_top_setting.gd" id="124_mfmn3"]
 
 [sub_resource type="Animation" id="Animation_u0ygc"]
 length = 2.0
@@ -645,7 +646,7 @@ volume_db = -5.0
 script = ExtResource("114_8jixl")
 NikoSprite = NodePath("../NikoBase/Niko")
 
-[node name="NikoBase" type="VBoxContainer" parent="." unique_id=738868689 node_paths=PackedStringArray("NikoClickControl", "NikoSpriteNode", "SleepParticles", "NikoCtrlr")]
+[node name="NikoBase" type="VBoxContainer" parent="." unique_id=738868689 node_paths=PackedStringArray("NikoClickControl", "NikoSpriteNode", "MenuPanel", "SleepParticles", "NikoCtrlr")]
 offset_right = 124.0
 offset_bottom = 150.0
 theme = ExtResource("112_uush8")
@@ -653,6 +654,7 @@ theme_override_constants/separation = 0
 script = ExtResource("18_wmw63")
 NikoClickControl = NodePath("Niko")
 NikoSpriteNode = NodePath("Niko")
+MenuPanel = NodePath("MenuPanel")
 SleepParticles = NodePath("GPUParticles2D")
 NikoCtrlr = NodePath("..")
 
@@ -669,6 +671,7 @@ expand_mode = 1
 libraries/ = SubResource("AnimationLibrary_7th4q")
 
 [node name="MenuPanel" type="HBoxContainer" parent="NikoBase" unique_id=356451475]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 mouse_filter = 2
@@ -3940,6 +3943,16 @@ script = ExtResource("100_wonw5")
 [node name="StateIcon2" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/WindowsAlwaysOnTop" unique_id=1105209984 instance=ExtResource("42_sp30j")]
 layout_mode = 1
 
+[node name="PanelOnTop" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=1613578129]
+use_parent_material = true
+layout_mode = 2
+button_pressed = true
+text = "settings.other.panel_on_top"
+script = ExtResource("124_mfmn3")
+
+[node name="StateIcon2" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/PanelOnTop" unique_id=840181047 instance=ExtResource("42_sp30j")]
+layout_mode = 1
+
 [node name="HBoxContainer5" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=543034811]
 use_parent_material = true
 layout_mode = 2
@@ -4102,8 +4115,8 @@ offset_bottom = 600.0
 texture = ExtResource("75_o63de")
 
 [node name="ShopContent" type="MarginContainer" parent="ShopWindow/Control/WindowContainer/Content/ShopMargin/ShopImagesContent" unique_id=1123252478]
-clip_contents = true
 custom_minimum_size = Vector2(414, 248)
+clip_contents = true
 layout_mode = 0
 offset_left = 54.0
 offset_top = 132.0
