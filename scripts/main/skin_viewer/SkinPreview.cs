@@ -70,6 +70,13 @@ public partial class SkinPreview : RigidBody2D
 				Dragging = MouseButton.IsPressed();
 			}
 		};
+
+		VisibilityChanged += () => {
+			CollisionShape.Disabled = !IsVisibleInTree();
+			MonitorControl.Visible = IsVisibleInTree();
+		};
+		CollisionShape.Disabled = !IsVisibleInTree();
+		MonitorControl.Visible = IsVisibleInTree();
 	}
 	public override void _Input(InputEvent @event)
 	{

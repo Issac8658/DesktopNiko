@@ -11,6 +11,7 @@ config_version=5
 [accessibility]
 
 general/accessibility_support=2
+general/accessibility_driver="dummy"
 
 [animation]
 
@@ -19,7 +20,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Desktop Niko"
-config/version="5.0.3"
+config/version="5.0.4"
 config/tags=PackedStringArray("niko", "non_com", "one_shot", "software")
 run/main_scene="uid://cj66sb2a5oolj"
 config/use_custom_user_dir=true
