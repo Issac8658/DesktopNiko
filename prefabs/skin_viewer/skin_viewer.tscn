@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dxttgd6e0px18" path="res://sprites/icons/quit.png" id="23_pg0m7"]
 [ext_resource type="Texture2D" uid="uid://tj87jbb0bkde" path="res://sprites/icons/link.png" id="24_o4t38"]
 [ext_resource type="Texture2D" uid="uid://bmkfjsjqgrlxn" path="res://sprites/icons/restart.png" id="24_rt5mw"]
+[ext_resource type="Texture2D" uid="uid://ilmvx2nl8iin" path="res://sprites/icons/folder.png" id="26_y18gd"]
 
 [sub_resource type="Gradient" id="Gradient_4rl6t"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -128,6 +129,17 @@ func _ready() -> void:
 	)
 "
 
+[sub_resource type="GDScript" id="GDScript_7fw5r"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pressed.connect(func ():
+		OS.shell_open(OS.get_user_data_dir() + \"/skins\")
+	)
+"
+
 [node name="SkinViewer" type="Window" unique_id=719478319 node_paths=PackedStringArray("ExitButton", "TopBorder", "RightBorder", "BottomBorder", "LeftBorder")]
 canvas_item_default_texture_filter = 0
 oversampling_override = 1.0
@@ -195,10 +207,11 @@ forward_button = NodePath("../MarginContainer/PageForward")
 backward_button = NodePath("../MarginContainer/PageBackward")
 counter_label = NodePath("../MarginContainer/HBoxContainer2/PageNumber")
 
-[node name="MainMonitor" type="StaticBody2D" parent="." unique_id=2141272195 node_paths=PackedStringArray("MonitorsContainer", "SkinPreviewImage", "NameLabel", "DescLabel", "AuthorLabel", "CommentsLabel", "ApplySkinButton")]
+[node name="MainMonitor" type="StaticBody2D" parent="." unique_id=2141272195 node_paths=PackedStringArray("MonitorsContainer", "SkinPreviewImage", "NameLabel", "DescLabel", "AuthorLabel", "CommentsLabel", "ApplySkinButton", "CollisionShape", "MonitorControl")]
 z_index = 10
 position = Vector2(960, 540)
 physics_material_override = ExtResource("8_bd1xs")
+constant_linear_velocity = Vector2(10, 0)
 script = ExtResource("10_d5j35")
 MonitorsContainer = NodePath("../Monitors")
 SkinPreviewImage = NodePath("MainMonitor/HBoxContainer/VBoxContainer2/TextureRect")
@@ -207,6 +220,8 @@ DescLabel = NodePath("MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBox
 AuthorLabel = NodePath("MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Author")
 CommentsLabel = NodePath("MainMonitor/HBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer/Comment")
 ApplySkinButton = NodePath("MainMonitor/HBoxContainer/VBoxContainer2/Button")
+CollisionShape = NodePath("CollisionShape2D")
+MonitorControl = NodePath("MainMonitor")
 
 [node name="MainMonitor" type="PanelContainer" parent="MainMonitor" unique_id=1762449007]
 material = ExtResource("11_xgbat")
@@ -303,7 +318,6 @@ horizontal_alignment = 2
 autowrap_mode = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainMonitor" unique_id=549411550]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_82vyj")
 
 [node name="Label" type="Label" parent="MainMonitor" unique_id=560358780]
@@ -471,6 +485,32 @@ icon = ExtResource("24_o4t38")
 expand_icon = true
 on_icon = ExtResource("24_o4t38")
 off_icon = ExtResource("24_o4t38")
+
+[node name="SkinsFolder" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1771553431]
+z_index = 1
+use_parent_material = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_default_cursor_shape = 2
+theme = ExtResource("2_4jyfp")
+script = SubResource("GDScript_7fw5r")
+
+[node name="StateIcon2" parent="MarginContainer/HBoxContainer/SkinsFolder" unique_id=399841520 instance=ExtResource("23_7h3ry")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -36.0
+offset_top = -16.0
+offset_right = -4.0
+offset_bottom = 16.0
+grow_horizontal = 0
+icon = ExtResource("26_y18gd")
+expand_icon = true
+on_icon = ExtResource("26_y18gd")
+off_icon = ExtResource("26_y18gd")
 
 [node name="ExitButton" type="Button" parent="MarginContainer/HBoxContainer" unique_id=2003815982]
 z_index = 1

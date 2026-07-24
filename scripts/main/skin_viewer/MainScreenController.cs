@@ -18,6 +18,10 @@ public partial class MainScreenController : Node2D
 	public Label CommentsLabel;
 	[Export]
 	public Button ApplySkinButton;
+	[Export]
+	public CollisionShape2D CollisionShape;
+	[Export]
+	public Control MonitorControl;
 
 	private SkinPreview[] SkinPreviews = [];
 	private NikoSkinManager SkinManager;
@@ -26,7 +30,6 @@ public partial class MainScreenController : Node2D
 	public override void _Ready()
 	{
 		SkinManager = GetNode("/root/NikoSkinManager") as NikoSkinManager;
-
 
 		MonitorsContainer.ChildEnteredTree += Page =>
 		{
@@ -88,6 +91,7 @@ public partial class MainScreenController : Node2D
 							}
 							else
 								isDragging = false;
+							(CollisionShape.Shape as RectangleShape2D).Size = MonitorControl.Size;
 							lastVec = MouseButton.GlobalPosition;
 						}
 						else if (Event is InputEventMouseMotion MouseMotion)
