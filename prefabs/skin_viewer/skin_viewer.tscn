@@ -156,12 +156,12 @@ RightBorder = NodePath("ScreenBounds/Right")
 BottomBorder = NodePath("ScreenBounds/Bottom")
 LeftBorder = NodePath("ScreenBounds/Left")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=409475826]
+[node name="BG" type="TextureRect" parent="." unique_id=409475826]
 self_modulate = Color(1, 1, 1, 0.26666668)
 z_index = -1
 texture_repeat = 2
 material = ExtResource("3_xgbat")
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -196,7 +196,7 @@ MaxRandomOffset = Vector2(180, 73.5)
 [node name="Monitors" type="Node2D" parent="." unique_id=2136676360 node_paths=PackedStringArray("Chupep", "PipeBuilder")]
 position = Vector2(960, 540)
 script = ExtResource("5_bd1xs")
-Chupep = NodePath("../TextureRect")
+Chupep = NodePath("../BG")
 PipeBuilder = NodePath("../Pipes")
 SkinPreviewPrefab = ExtResource("5_j3gpn")
 
