@@ -18,13 +18,13 @@ func _ready() -> void:
 			page = pages_container.get_child_count() + page
 		_update_pages();
 		if counter_label != null:
-			counter_label.text = str(page);
+			counter_label.text = str(page + 1);
 	)
 	forward_button.pressed.connect(func ():
 		page = (page + 1) % pages_container.get_child_count();
 		_update_pages();
 		if counter_label != null:
-			counter_label.text = str(page);
+			counter_label.text = str(page + 1);
 	)
 	
 	pages_container.child_entered_tree.connect(func (_node): _update_pages());
