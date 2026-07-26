@@ -5,6 +5,7 @@
 
 [node name="Line2D" type="Line2D" unique_id=1784287988]
 modulate = Color(0.24705882, 0.24705882, 0.24705882, 1)
+z_index = -1
 material = ExtResource("1_ueh7f")
 points = PackedVector2Array(0, 0, 0, 0, 0, 0)
 width = 8.0

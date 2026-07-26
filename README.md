@@ -25,10 +25,10 @@ The Steam version of the 2024 "World Machine Edition" was used as the basis, as 
 
 ## Editing and Exporting
 
-To create and export the project, I used Godot Engine Mono 4.6.3 to simplify creation and expansion.
+To create and export the project, I used Godot Engine Mono 4.7.1 to simplify creation and expansion.
 It's probably wrong to use Godot for such purposes, but I tried to maximize performance.
 
-- Download and install [Godot Mono 4.6.3](https://godotengine.org/download/archive/4.6.3-stable/)
+- Download and install [Godot Mono 4.7.1](https://godotengine.org/download/archive/4.7.1-stable/)
 - Download and install [DotNet SDK](https://dotnet.microsoft.com/download)
 - Download the project in any convenient way
 - Open Godot and import the project

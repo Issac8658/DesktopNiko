@@ -23,6 +23,7 @@ public partial class SkinViewer : Window
 		Vector2I ScreenPos = DisplayServer.ScreenGetPosition(Screen);
 		Vector2I ScreenSize = DisplayServer.ScreenGetSize(Screen);
 		Rect2I ScreenFreeArea = DisplayServer.ScreenGetUsableRect(Screen);
+		ScreenFreeArea.Position -= ScreenPos;
 		Position = ScreenPos;
 		Size = ScreenSize - new Vector2I(0, 2);
 

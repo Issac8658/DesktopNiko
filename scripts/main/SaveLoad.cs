@@ -54,7 +54,8 @@ public partial class SaveLoad : Node
 				{"NikoTimeToSleep", "NikoTimeToSleep"},
 				{"NikoCanSleep", "NikoCanSleep"},
 				{"CurrentSkin", "Skin"},
-				{"IsWorldMachine", "WorldMachine"}
+				{"IsWorldMachine", "WorldMachine"},
+				{"PanelIsFlipped", "PanelIsFlipped"}
 			}
 		},
 	};

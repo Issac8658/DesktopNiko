@@ -11,6 +11,7 @@ config_version=5
 [accessibility]
 
 general/accessibility_support=2
+general/accessibility_driver="dummy"
 
 [animation]
 
@@ -19,13 +20,13 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Desktop Niko"
-config/version="5.0.3"
+config/version="5.0.4"
 config/tags=PackedStringArray("niko", "non_com", "one_shot", "software")
 run/main_scene="uid://cj66sb2a5oolj"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="DesktopNiko"
 config/auto_accept_quit=false
-config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
+config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
 run/low_processor_mode=true
 run/low_processor_mode_sleep_usec=13800
 boot_splash/bg_color=Color(0, 0, 0, 1)
@@ -181,6 +182,8 @@ textures/decals/filter=0
 textures/light_projectors/filter=0
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 viewport/transparent_background=true
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true
 lights_and_shadows/positional_shadow/atlas_quadrant_0_subdiv=0
 lights_and_shadows/positional_shadow/atlas_quadrant_1_subdiv=0
 lights_and_shadows/positional_shadow/atlas_quadrant_2_subdiv=0

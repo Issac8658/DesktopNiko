@@ -31,6 +31,7 @@ public partial class ValuesContainer : Node
 	[Signal] public delegate void NikoSkinChangedEventHandler(string SkinId);
 	[Signal] public delegate void WorldMachineToggledEventHandler(bool Toggled);
 	[Signal] public delegate void NikoFlippedEventHandler(bool Flipped);
+	[Signal] public delegate void PanelFlippedEventHandler(bool Flipped);
 
 	#region Variables to Save
 
@@ -78,6 +79,7 @@ public partial class ValuesContainer : Node
 	private string _currentSkin = ""; // sets by SaveLoad.cs
 	private bool _isWorldMachine = false;
 	private bool _nikoIsFlipped = false;
+	private bool _panelIsFlipped = false;
 	#endregion
 	#endregion
 
@@ -88,8 +90,9 @@ public partial class ValuesContainer : Node
 		get => _clicks;
 		set
 		{
-			EmitSignal("Clicked", (ulong)(value - _clicks));
+			UInt128 old = _clicks;
 			_clicks = value;
+			EmitSignal("Clicked", (ulong)(value - old));
 		}
 	}
 	public string Version
@@ -343,6 +346,15 @@ public partial class ValuesContainer : Node
 			EmitSignal("NikoFlipped", value);
 		}
 		get => _nikoIsFlipped;
+	}
+	public bool PanelIsFlipped
+	{
+		set
+		{
+			_panelIsFlipped = value;
+			EmitSignal("PanelFlipped", value);
+		}
+		get => _panelIsFlipped;
 	}
 	#endregion
 	#endregion

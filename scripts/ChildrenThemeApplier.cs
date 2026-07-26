@@ -7,20 +7,17 @@ public partial class ChildrenThemeApplier : Node
 	{
 		Node Parent = GetParent();
 		if (Parent is CanvasItem)
-		{
 			foreach (Node child in Parent.GetChildren(true))
 				if (child is CanvasItem CanvasNode)
 				{
 					CanvasNode.SetMeta("_recursiveItemParentMaterial", CanvasNode.UseParentMaterial);
 					CanvasNode.UseParentMaterial = true;
 				}
-		}
 	}
 	public override void _ExitTree()
 	{
 		Node Parent = GetParent();
 		if (Parent is CanvasItem)
-		{
 			foreach (Node child in Parent.GetChildren(true))
 				if (child is CanvasItem CanvasNode)
 				{
@@ -31,6 +28,5 @@ public partial class ChildrenThemeApplier : Node
 						CanvasNode.RemoveMeta("_recursiveItemParentMaterial");
 					}
 				}
-		}
 	}
 }

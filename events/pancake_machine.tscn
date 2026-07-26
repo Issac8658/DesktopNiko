@@ -32,7 +32,10 @@ signal called_to_clear()
 @export var passcode_parts_contrainers : Array[Label]
 @export var cancel_button : Button
 
+var _polygon = []
+
 func _ready() -> void:
+	_polygon = window.mouse_passthrough_polygon.duplicate()
 	animator.animation_finished.connect(func (anim):
 		if anim == \"drop\":
 			ValuesContainer.ForceFacepic(\"pancakes\")
@@ -60,6 +63,9 @@ func _ready() -> void:
 		elif not anim == \"RESET\":
 			revert()
 	)
+	window.close_requested.connect(func ():
+		animator.play(\"hide\")
+	)
 
 func _process(_delta: float) -> void:
 	if window.visible:
@@ -82,14 +88,16 @@ func revert():
 	called_to_clear.emit()
 
 func update_mouse_passthrough_polygon():
-	window.mouse_passthrough_polygon[0].x = 35
-	window.mouse_passthrough_polygon[0].y = viewport_container.position.y + container.position.y
-	window.mouse_passthrough_polygon[1].x = 365
-	window.mouse_passthrough_polygon[1].y = viewport_container.position.y + container.position.y
-	window.mouse_passthrough_polygon[2].x = 365
-	window.mouse_passthrough_polygon[2].y = viewport_container.position.y + viewport_container.size.y + container.position.y
-	window.mouse_passthrough_polygon[3].x = 35
-	window.mouse_passthrough_polygon[3].y = viewport_container.position.y + viewport_container.size.y + container.position.y
+	_polygon[0].x = 35
+	_polygon[0].y = viewport_container.position.y + container.position.y
+	_polygon[1].x = 365
+	_polygon[1].y = viewport_container.position.y + container.position.y
+	_polygon[2].x = 365
+	_polygon[2].y = viewport_container.position.y + viewport_container.size.y + container.position.y
+	_polygon[3].x = 35
+	_polygon[3].y = viewport_container.position.y + viewport_container.size.y + container.position.y
+	
+	window.mouse_passthrough_polygon = _polygon
 "
 
 [sub_resource type="Animation" id="Animation_qnufv"]
@@ -534,7 +542,6 @@ transparent_bg = true
 oversampling_override = 1.0
 size = Vector2i(400, 1040)
 mouse_passthrough_polygon = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)
-visible = false
 unresizable = true
 borderless = true
 always_on_top = true
@@ -571,7 +578,7 @@ transparent_bg = true
 handle_input_locally = false
 msaa_3d = 1
 size = Vector2i(400, 426)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="Node3D" type="Node3D" parent="Window/Control/SubViewportContainer/SubViewport" unique_id=772670766]
 

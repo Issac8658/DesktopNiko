@@ -145,6 +145,7 @@
 [ext_resource type="StyleBox" uid="uid://bt8jrmkhinmn" path="res://themes/twm_theme/dialog_panel.tres" id="114_77al4"]
 [ext_resource type="Texture2D" uid="uid://drnq140l71h0r" path="res://sprites/ui/menu_icon.tres" id="115_8g87k"]
 [ext_resource type="Script" uid="uid://cwe0iho0cgqye" path="res://scripts/ClicksLabel.cs" id="116_dftep"]
+[ext_resource type="Script" uid="uid://bcuyynax5je1r" path="res://scripts/windows/functional_windows/settings/panel_on_top_setting.gd" id="124_mfmn3"]
 
 [sub_resource type="Animation" id="Animation_u0ygc"]
 length = 2.0
@@ -645,7 +646,7 @@ volume_db = -5.0
 script = ExtResource("114_8jixl")
 NikoSprite = NodePath("../NikoBase/Niko")
 
-[node name="NikoBase" type="VBoxContainer" parent="." unique_id=738868689 node_paths=PackedStringArray("NikoClickControl", "NikoSpriteNode", "SleepParticles", "NikoCtrlr")]
+[node name="NikoBase" type="VBoxContainer" parent="." unique_id=738868689 node_paths=PackedStringArray("NikoClickControl", "NikoSpriteNode", "MenuPanel", "SleepParticles", "NikoCtrlr")]
 offset_right = 124.0
 offset_bottom = 150.0
 theme = ExtResource("112_uush8")
@@ -653,6 +654,7 @@ theme_override_constants/separation = 0
 script = ExtResource("18_wmw63")
 NikoClickControl = NodePath("Niko")
 NikoSpriteNode = NodePath("Niko")
+MenuPanel = NodePath("MenuPanel")
 SleepParticles = NodePath("GPUParticles2D")
 NikoCtrlr = NodePath("..")
 
@@ -662,6 +664,7 @@ custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_default_cursor_shape = 2
+accessibility_name = "Niko"
 texture = ExtResource("16_7th4q")
 expand_mode = 1
 
@@ -669,6 +672,7 @@ expand_mode = 1
 libraries/ = SubResource("AnimationLibrary_7th4q")
 
 [node name="MenuPanel" type="HBoxContainer" parent="NikoBase" unique_id=356451475]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 mouse_filter = 2
@@ -685,12 +689,12 @@ theme_override_styles/disabled = ExtResource("114_77al4")
 icon = ExtResource("115_8g87k")
 icon_alignment = 1
 
-[node name="СounterPanel" type="PanelContainer" parent="NikoBase/MenuPanel" unique_id=472332324]
+[node name="CounterPanel" type="PanelContainer" parent="NikoBase/MenuPanel" unique_id=472332324]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 
-[node name="Counter" type="Label" parent="NikoBase/MenuPanel/СounterPanel" unique_id=632536758]
+[node name="Counter" type="Label" parent="NikoBase/MenuPanel/CounterPanel" unique_id=632536758]
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
@@ -2963,12 +2967,14 @@ size_flags_horizontal = 3
 [node name="LogsFolder" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel" unique_id=1670968315]
 use_parent_material = true
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "settings.general.actions.open_logs_folder"
 script = SubResource("GDScript_7y85w")
 
 [node name="AutorunButton" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/General/SettingsPanel" unique_id=1724100836]
 use_parent_material = true
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "settings.general.actions.add_to_autorun"
 script = ExtResource("77_q4750")
 
@@ -3118,6 +3124,7 @@ use_parent_material = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 3
+mouse_default_cursor_shape = 16
 bbcode_enabled = true
 script = SubResource("GDScript_k2ony")
 nodes = [NodePath("../../SettingsPanel/Peaceful"), NodePath("../../SettingsPanel/SavingIcon"), NodePath("../../SettingsPanel/GamingMode"), NodePath("../../SettingsPanel/ClickSound"), NodePath("../../SettingsPanel/ShowAchievements")]
@@ -3368,6 +3375,7 @@ metadata/_custom_type_script = "uid://f06fqp3valks"
 [node name="SkinsButton" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Niko/VBoxContainer2" unique_id=696722613 node_paths=PackedStringArray("skins_window")]
 use_parent_material = true
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "settings.niko.open_skins"
 script = ExtResource("105_covva")
 skins_window = NodePath("../../../../../../../../SkinViewer")
@@ -3850,6 +3858,7 @@ size_flags_horizontal = 3
 [node name="Save" type="Button" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/VBoxContainer" unique_id=1054755687]
 use_parent_material = true
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "settings.other.actions.save"
 script = SubResource("GDScript_mfmn3")
 
@@ -3857,6 +3866,7 @@ script = SubResource("GDScript_mfmn3")
 visible = false
 use_parent_material = true
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "RESET_ALL_DATA"
 
 [node name="VSeparator" type="VSeparator" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other" unique_id=1599658259]
@@ -3913,6 +3923,7 @@ layout_mode = 2
 [node name="DoEvents" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=205263746]
 use_parent_material = true
 layout_mode = 2
+mouse_default_cursor_shape = 2
 button_pressed = true
 text = "settings.other.do_events"
 script = ExtResource("98_ude2c")
@@ -3923,6 +3934,7 @@ layout_mode = 1
 [node name="NikoAlwaysOnTop" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=1709047077]
 use_parent_material = true
 layout_mode = 2
+mouse_default_cursor_shape = 2
 button_pressed = true
 text = "settings.other.niko_always_on_top"
 script = ExtResource("99_s717c")
@@ -3933,11 +3945,23 @@ layout_mode = 1
 [node name="WindowsAlwaysOnTop" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=1101211832]
 use_parent_material = true
 layout_mode = 2
+mouse_default_cursor_shape = 2
 button_pressed = true
 text = "settings.other.windows_always_on_top"
 script = ExtResource("100_wonw5")
 
 [node name="StateIcon2" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/WindowsAlwaysOnTop" unique_id=1105209984 instance=ExtResource("42_sp30j")]
+layout_mode = 1
+
+[node name="PanelOnTop" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=1613578129]
+use_parent_material = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+button_pressed = true
+text = "settings.other.panel_on_top"
+script = ExtResource("124_mfmn3")
+
+[node name="StateIcon2" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2/PanelOnTop" unique_id=840181047 instance=ExtResource("42_sp30j")]
 layout_mode = 1
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=543034811]
@@ -3962,6 +3986,7 @@ size_flags_horizontal = 3
 [node name="TaskBarIcon" type="CheckBox" parent="SettingsWindow/Control/WindowContainer/Content/MarginContainer/Other/ScrollContainer/VBoxContainer2" unique_id=979091871]
 use_parent_material = true
 layout_mode = 2
+mouse_default_cursor_shape = 2
 button_pressed = true
 text = "settings.other.taskbar_icon"
 script = ExtResource("101_ude2c")
@@ -3994,6 +4019,7 @@ use_parent_material = true
 custom_minimum_size = Vector2(0, 104)
 layout_mode = 2
 size_flags_vertical = 3
+mouse_default_cursor_shape = 16
 bbcode_enabled = true
 script = SubResource("GDScript_k2ony")
 nodes = [NodePath("../DoEvents"), NodePath("../NikoAlwaysOnTop"), NodePath("../WindowsAlwaysOnTop"), NodePath("../TaskBarIcon")]
@@ -4102,8 +4128,8 @@ offset_bottom = 600.0
 texture = ExtResource("75_o63de")
 
 [node name="ShopContent" type="MarginContainer" parent="ShopWindow/Control/WindowContainer/Content/ShopMargin/ShopImagesContent" unique_id=1123252478]
-clip_contents = true
 custom_minimum_size = Vector2(414, 248)
+clip_contents = true
 layout_mode = 0
 offset_left = 54.0
 offset_top = 132.0

@@ -855,7 +855,7 @@ namespace Tetris
 		public Color GetColor() => GetColorFromType(Color);
 
 		public static FigureColor GetRandomFigureColor() => _figureColors[GD.Randi() % (_figureColors.Length - 1) + 1];
-		public static FigureType GetRandomFigureType() => _figureTypes[GD.Randi() % (_figureTypes.Length - 1) + 1];
+		public static FigureType GetRandomFigureType() => _figureTypes[GD.Randi() % _figureTypes.Length];
 		public static Color GetColorFromType(FigureColor BlockType) => FigureColors[(int)BlockType];
 		public static Vector2I GetFormSize(bool[][] Form) => new(Form.Length, Form[0].Length);
 
