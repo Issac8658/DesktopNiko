@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_l6gkj")
-SpawnChance = 0.12
+SpawnChance = 100.0
 MaxCPS = 10
 DisplayName = "Squares"
 LinkedScene = ExtResource("1_l6gkj")
