@@ -1,5 +1,6 @@
 using Godot;
 
+[Icon("res://sprites/icons/skins.png")]
 public partial class NikoWindowControl : Control
 {
 	public readonly float[] NikoScales = [0.5f, 1f, 2f, 3f, 4f];
@@ -14,6 +15,8 @@ public partial class NikoWindowControl : Control
 	public Control NikoClickControl;
 	[Export]
 	public TextureRect NikoSpriteNode;
+	[Export]
+	public Control MenuPanel;
 	[Export]
 	public Node2D SleepParticles;
 	[Export]
@@ -33,6 +36,7 @@ public partial class NikoWindowControl : Control
 		_valuesContainer.NikoScaleChanged += (NikoScale) => UpdateScale();
 		_valuesContainer.NikoSkinChanged += (SkinId) => { NikoCtrlr.UpdateFacepic(); UpdateScale(); };
 		_valuesContainer.NikoVisibilityChanged += (Visible) => UpdateScale();
+		_valuesContainer.PanelFlipped += (Flipped) => UpdatePanel();
 		ItemRectChanged += () => _mainWindow.Size = (Vector2I)Size;
 
 		NikoClickControl.GuiInput += Event =>
@@ -50,9 +54,10 @@ public partial class NikoWindowControl : Control
 						//IsDragging = false;
 						if (_valuesContainer.SnapToBottom)
 						{
+							int offset = _valuesContainer.PanelIsFlipped ? (int)MenuPanel.Size.Y : 0;
 							Rect2I UsableRect = DisplayServer.ScreenGetUsableRect(DisplayServer.WindowGetCurrentScreen((int)DisplayServer.MainWindowId));
-							if (Mathf.Abs(_mainWindow.Position.Y + NikoSpriteNode.Size.Y - (UsableRect.Position.Y + UsableRect.Size.Y)) <= 20)
-								_mainWindow.Position = new(_mainWindow.Position.X, UsableRect.Position.Y + UsableRect.Size.Y - (int)NikoSpriteNode.Size.Y);
+							if (Mathf.Abs(_mainWindow.Position.Y + NikoSpriteNode.Size.Y + offset - (UsableRect.Position.Y + UsableRect.Size.Y)) <= 20)
+								_mainWindow.Position = new(_mainWindow.Position.X, UsableRect.Position.Y + UsableRect.Size.Y - (int)NikoSpriteNode.Size.Y - offset);
 						}
 					}
 		};
@@ -64,6 +69,7 @@ public partial class NikoWindowControl : Control
 
 		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 		UpdateScale();
+		UpdatePanel();
 	}
 
 	//public override void _Process(double delta)
@@ -82,5 +88,10 @@ public partial class NikoWindowControl : Control
 		SleepParticles.Scale = new(scale, scale);
 		_mainWindow.Size = new((int)Size.X, (int)Size.Y);
 		Size = Vector2.Zero;
+	}
+
+	public void UpdatePanel()
+	{
+		MoveChild(NikoClickControl, _valuesContainer.PanelIsFlipped ? 1 : 0);
 	}
 }

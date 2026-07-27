@@ -67,6 +67,7 @@ public partial class NikoController : Node
 	const int TIME_BEFORE_SLEEP = 6;
 
 	private ValuesContainer _valuesContainer;
+	private GlobalController _globalController;
 	private NikoSkinManager _skinManager;
 	private AchievementsController _achievementsController;
 	private Window _mainWindow;
@@ -103,6 +104,7 @@ public partial class NikoController : Node
 		OS.OpenMidiInputs();
 
 		_valuesContainer = GetNode<ValuesContainer>("/root/ValuesContainer");
+		_globalController = GetNode<GlobalController>("/root/GlobalController");
 		_skinManager = GetNode<NikoSkinManager>("/root/NikoSkinManager");
 		_achievementsController = GetNode<AchievementsController>("/root/AchievementsController");
 		_mainWindow = GetWindow();
@@ -130,6 +132,7 @@ public partial class NikoController : Node
 		_valuesContainer.FacepicUnforced += DoWhatNikoNeedToDo;
 		_valuesContainer.GlobalTimerTicked += GlobalTimerTicked;
 		_valuesContainer.NikoFlipped += Flipped => NikoSpriteNode.FlipH = Flipped;
+		_globalController.SaveStarted += () => NikoAnimationPlayer.Play("niko_look_around");
 
 		NikoSpriteNode.GuiInput += Event =>
 		{
@@ -214,9 +217,9 @@ public partial class NikoController : Node
 			_currentState = NikoState.InAnimation;
 		else if (_valuesContainer.IsFacepicForced)
 			_currentState = NikoState.ForcedFacepic;
-		else if (_idleTime >= _valuesContainer.NikoTimeToSleep)
+		else if (_valuesContainer.NikoCanSleep && _idleTime >= _valuesContainer.NikoTimeToSleep)
 			_currentState = NikoState.Sleeping;
-		else if (_idleTime >= _valuesContainer.NikoTimeToSleep - TIME_BEFORE_SLEEP)
+		else if (_valuesContainer.NikoCanSleep && _idleTime >= _valuesContainer.NikoTimeToSleep + TIME_BEFORE_SLEEP)
 			_currentState = NikoState.Sleepy;
 		else
 			_currentState = NikoState.Idle;

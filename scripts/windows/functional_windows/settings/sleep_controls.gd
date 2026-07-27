@@ -6,6 +6,7 @@ extends Control
 @export var seconds_spinbox : SpinBox
 
 func _ready() -> void:
+	toggle_checkbox.button_pressed = ValuesContainer.NikoCanSleep
 	seconds_spinbox.value_changed.connect(update)
 	minutes_spinbox.value_changed.connect(update)
 	hours_spinbox.value_changed.connect(update)
@@ -32,12 +33,9 @@ func update_spinboxes():
 	seconds_spinbox.value = time
 
 func update(_value):
-	if toggle_checkbox.button_pressed:
-		ValuesContainer.NikoTimeToSleep = int(seconds_spinbox.value + minutes_spinbox.value * 60 + hours_spinbox.value * 3600)
-		#print(GlobalControlls.sleep_time)
-		if hours_spinbox.value <= 0 and minutes_spinbox.value <= 0:
-			seconds_spinbox.min_value = 2
-		else:
-			seconds_spinbox.min_value = 0
+	ValuesContainer.NikoCanSleep = toggle_checkbox.button_pressed
+	ValuesContainer.NikoTimeToSleep = int(seconds_spinbox.value + minutes_spinbox.value * 60 + hours_spinbox.value * 3600)
+	if hours_spinbox.value <= 0 and minutes_spinbox.value <= 0:
+		seconds_spinbox.min_value = 2
 	else:
-		ValuesContainer.NikoTimeToSleep = -1
+		seconds_spinbox.min_value = 0

@@ -23,6 +23,7 @@ public partial class AchievementsRegistrar : Node
 		{"everyone_is_dancing", 		["res://sprites/achievements/everyone_is_dancing.png",			false]},
 		{"tetris", 						["res://sprites/achievements/tetris.png",						false]},
 		{"tetris_oneshot", 				["res://sprites/achievements/oneshot.png",						false]},
+		{"tetris_10000", 				["res://sprites/achievements/tetris10000.png",					false]},
 		{"tetris_25000", 				["res://sprites/achievements/tetris25000.png",					false]},
 		{"few_squares", 				["res://sprites/achievements/glitched2.png",					true]},
 		{"worst_friend", 				["res://sprites/achievements/glitched.png",						true]},

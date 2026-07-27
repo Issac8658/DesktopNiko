@@ -66,7 +66,8 @@ settings.other.actions.reset_all_data.popup_message,"Are you sure you want to co
 settings.other.do_events,Do events,Делать события,Ereignisse ausführen,Робити події
 settings.other.niko_always_on_top,Niko always on top,Нико поверх всего,Niko immer im Vordergrund,Ніко поверх усього
 settings.other.windows_always_on_top,Windows always on top,Окна поверх всего,Fenster immer im Vordergrund,Вікна поверх усього
-settings.other.taskbar_icon,Taskbar icon,Иконка в панели задач,Taskleistensymbol,Іконка в панелі завдань
+settings.other.panel_on_top,Clicks panel on top,Панель с кликами сверху,,Панель з кліками зверху
+settings.other.taskbar_icon,Taskbar icon,Иконка в панели задач,Taskleisten symbol,Іконка в панелі завдань
 settings.other.hint.do_events,Determines whether to show events during clicks.,"Определяет, показывать ли события во время кликов.","Legt fest, ob Ereignisse während des Klickens angezeigt werden sollen.","Визначає, чи показувати події під час кліків."
 settings.other.hint.niko_always_on_top,"Niko will always be on top of windows. If they will not be visible in a game, then set FRAMELESS fullscreen mode in a game.","Нико будет всегда поверх окон. Если в игре его(её) не будет видно, то поставьте БЕЗРАМОЧНЫЙ полноэкранный режим в игре.","Niko wird immer im Vordergrund der Fenster sein. Wenn Niko im Spiel nicht sichtbar ist, dann stelle den RAHMENLOSEN Vollbildmodus ein.","Ніко буде завжди поверх вікон. Якщо в грі його(її) не буде видно, то поставте БЕЗРАМКОВИЙ повноекранний режим у грі."
 settings.other.hint.windows_always_on_top,"Program's windows will always be on top of other windows.",Окна программы будут всегда поверх других окон.,"Programmfenster werden immer im Vordergrund anderer Fenster sein.",

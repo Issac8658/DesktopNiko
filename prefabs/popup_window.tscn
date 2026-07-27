@@ -11,6 +11,7 @@
 [node name="PopupWindow" unique_id=1265308202 node_paths=PackedStringArray("cancel_button", "accept_button", "PopupStreamPlayer") instance=ExtResource("1_7xd75")]
 initial_position = 4
 size = Vector2i(328, 184)
+visible = false
 transient = true
 always_on_top = false
 script = ExtResource("2_p1j5h")
@@ -63,11 +64,14 @@ alignment = 1
 use_parent_material = true
 custom_minimum_size = Vector2(112, 0)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "shared.yes"
 
 [node name="No" type="Button" parent="Control/WindowContainer/Content/PopupMargin/VBoxContainer/Actions" index="1" unique_id=2105503836]
 use_parent_material = true
 custom_minimum_size = Vector2(112, 0)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 shortcut = ExtResource("2_5ddub")
+shortcut_in_tooltip = false
 text = "shared.no"

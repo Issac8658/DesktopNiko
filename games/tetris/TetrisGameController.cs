@@ -197,6 +197,8 @@ namespace Tetris
 				TweenLowPass(300);
 			}; // menu
 
+			CloseRequested += QueueFree;
+
 			BlockDropped += (DestroyedLinesCount, Spin) => _score += SpinPoints[Spin][DestroyedLinesCount];
 
 			// init redraw
@@ -278,6 +280,8 @@ namespace Tetris
 
 			if (!AchievementsController.IsAchievementTakedStatic("tetris_25000") && _score >= 25000)
 				AchievementsController.TakeAchievementStatic("tetris_25000");
+			else if (!AchievementsController.IsAchievementTakedStatic("tetris_10000") && _score >= 10000)
+				AchievementsController.TakeAchievementStatic("tetris_10000");
 		}
 
 		private void ReDrawCurrentFigure(bool Drop = false) // redrawing current figure
@@ -851,7 +855,7 @@ namespace Tetris
 		public Color GetColor() => GetColorFromType(Color);
 
 		public static FigureColor GetRandomFigureColor() => _figureColors[GD.Randi() % (_figureColors.Length - 1) + 1];
-		public static FigureType GetRandomFigureType() => _figureTypes[GD.Randi() % (_figureTypes.Length - 1) + 1];
+		public static FigureType GetRandomFigureType() => _figureTypes[GD.Randi() % _figureTypes.Length];
 		public static Color GetColorFromType(FigureColor BlockType) => FigureColors[(int)BlockType];
 		public static Vector2I GetFormSize(bool[][] Form) => new(Form.Length, Form[0].Length);
 
